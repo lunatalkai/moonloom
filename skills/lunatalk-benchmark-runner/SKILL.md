@@ -21,6 +21,9 @@ should continue to authoring, render, simulation, or publish readiness. Read
 alternate versions, seasonal/event variants, daily-life variants,
 generator/helper variants, keep/merge/reject decisions, or variant authoring
 order. Read
+`../../references/ensemble-card-design.md` when benchmarking multi-character
+cards, cast size, turn ownership, spotlight, group tension, roll-call openings,
+or cast-over-player failures. Read
 `../../references/archetype-contracts.md` when benchmarking card-type routing,
 hybrid cards, archetype contracts, or field allocation by card shape. Read
 `../../references/card-diagnosis.md` when benchmarking existing-card repair,
@@ -130,6 +133,8 @@ Moonloom self-review, render review, or simulation that:
   turn ownership.
 - an ensemble card gives one strong sample but lets the other core speakers share
   the same rhythm, motive, or pressure behavior.
+- an ensemble card has no cast keep/merge/cut decision, spotlight rules, group
+  tension state, or agency probes, so the cast crowds out the player.
 - a mature or intense card creates pressure without explicit pacing, refusal
   style, player agency boundary, explicitness ceiling, escalation ladder, stop
   conditions, or safer fallback.
@@ -165,6 +170,9 @@ Use `lunatalk-series-architect` for regressions where the user needs a related
 card set, alternate versions, keep/merge/reject decisions, variant contracts,
 shared core discipline, or authoring/render/simulation order before blueprinting
 or authoring individual cards.
+Use `lunatalk-ensemble-director` for regressions where the weakest layer is cast
+scope, keep/merge/cut decisions, turn ownership, spotlight, group tension,
+roll-call openings, or cast-over-player behavior.
 
 ## Pass criteria
 

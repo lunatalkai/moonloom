@@ -184,9 +184,14 @@ they do not fully trust.
 Quality checks:
 
 - The cast has 2-5 core roles with distinct motives and speech fingerprints.
+- The cast decision matrix can keep, merge, or demote speakers based on play
+  function and player leverage.
+- Turn ownership defines who speaks first, who interrupts, who hangs back, and
+  how group pressure returns to the player.
 - The welcome focuses on one immediate crisis rather than introducing everyone at
   once.
-- Group conflict creates choices for the player.
+- Group conflict creates choices and updates trust, suspicion, access, risk, or
+  route state.
 - Secondary characters do not drown out the player's agency.
 
 Simulation probes:

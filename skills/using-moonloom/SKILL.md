@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, card series or variants, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, card series or variants, ensemble or multi-character cards, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -71,6 +71,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   variants, generator/helper variants, or deciding which variants to keep,
   merge, reject, author, render, or simulate first: use
   `lunatalk-series-architect` before blueprinting or authoring individual cards.
+- Ensemble cards, multi-character cards, multiple active speakers, cast size,
+  speaker keep/merge/cut decisions, group scenes, turn ownership, spotlight
+  rules, cast crowding the player, roll-call welcomes, or group tension: use
+  `lunatalk-ensemble-director` before blueprinting, opening repair, voice
+  calibration, authoring, or simulation.
 - `roleWelcome`, welcome text, opening scene, first screen, first user reply,
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
@@ -143,6 +148,10 @@ validation, render review, simulation, and publish readiness.
   related cards, role-card series, alternate versions, seasonal/event variants,
   daily-life variants, generator/helper variants, or keep/merge/reject decisions
   before blueprinting or authoring.
+- Read `../../references/ensemble-card-design.md` when the task involves ensemble
+  cards, multi-character cards, cast size, speaker keep/merge/cut decisions,
+  turn ownership, spotlight rules, group tension, roll-call openings, or cast
+  crowding the player.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.

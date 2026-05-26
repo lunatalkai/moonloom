@@ -21,7 +21,11 @@ when the task includes testing first-turn behavior. Read
 horror-leaning, or consent-sensitive. Read
 `../../references/agency-design.md` when the opening makes the player watch,
 narrates player feelings/actions, uses decorative choices, funnels all reply
-paths, or lacks meaningful refusal/route-change behavior.
+paths, or lacks meaningful refusal/route-change behavior. Read
+`../../references/ensemble-card-design.md` when the opening fails because a
+multi-character card introduces the full cast, lacks turn ownership, or lets
+speakers talk over the player. Use `lunatalk-ensemble-director` first when the
+cast structure is unresolved.
 
 ## Boundary
 
@@ -116,4 +120,5 @@ Handoff:
 - If the second turn is generic, add state change, reveal, complication, or route
   offer.
 - If an ensemble opening is a roll call, choose one focal conflict and delay the
-  rest of the cast.
+  rest of the cast. If speaker entry, spotlight, or turn ownership is unclear,
+  use `lunatalk-ensemble-director` before rewriting the welcome.

@@ -83,10 +83,11 @@
     {
       "id": 7,
       "prompt": "Create a zh-Hant ensemble mystery card with three core speakers. Make sure they do not all sound like the same narrator.",
-      "expected_output": "Builds an ensemble card with distinct motives, pressure moves, voice cards, micro-samples or talkExample guidance for weak voices, and a self-review that checks blind-line distinguishability.",
+      "expected_output": "Builds or preserves an ensemble packet before MCP authoring, then creates an ensemble card with distinct motives, pressure moves, turn ownership, spotlight rules, group tension state, voice cards, micro-samples or talkExample guidance for weak voices, and a self-review that checks blind-line distinguishability.",
       "files": [],
       "expectations": [
         "The output defines a different desire, fear, speech cue, pressure move, and player leverage for each core speaker.",
+        "The output defines cast keep/merge/cut logic, turn ownership, spotlight rules, and group tension before field creation.",
         "The roleDetailDesc includes executable voice cards or equivalent voice calibration for the core speakers.",
         "The output uses compact micro-samples or talkExample guidance when a speaker's voice may blur, rather than one long sample for only the strongest voice.",
         "The self-review includes voice calibration or blind-line risk, not only generic voice texture.",

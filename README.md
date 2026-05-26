@@ -24,6 +24,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-series-architect` plans related card sets, alternate
   versions, seasonal/event variants, daily-life variants, RPG/system variants,
   and generator/helper variants before blueprinting or authoring.
+- `skills/lunatalk-ensemble-director` plans multi-character cards, cast
+  keep/merge/cut decisions, turn ownership, spotlight rules, group tension,
+  player agency, and voice/sample tradeoffs before blueprinting or authoring.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
@@ -75,6 +78,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/card-series-design.md` defines shared-core discipline, keep/merge/
   reject rules, variant contracts, authoring order, and regression checks for
   related role-card sets.
+- `references/ensemble-card-design.md` defines cast scope, decision matrices,
+  turn ownership, spotlight rules, group tension state, opening policy, and
+  agency probes for ensemble cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
   self-review packets.

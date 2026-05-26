@@ -18,7 +18,10 @@ Read `../../references/card-authoring-templates.md` when the packet needs field
 patch targets or talkExample placement. Read `../../references/quality-rubric.md`
 for self-review. Read `../../references/playtest-loop.md` when the packet needs
 simulation probes. Read `../../references/world-engine-design.md` when the voice
-belongs to an ensemble, narrator, system role, faction, or world guide.
+belongs to an ensemble, narrator, system role, faction, or world guide. Read
+`../../references/ensemble-card-design.md` when voice blur is caused by unclear
+cast function, turn ownership, spotlight, or group tension. Use
+`lunatalk-ensemble-director` first when the cast structure is unresolved.
 
 ## Boundary
 
@@ -42,7 +45,8 @@ quality is Moonloom guidance, not an MCP validation gate.
    the player is passive, resistant, trusting, or boundary-setting.
 5. For ensemble cards, build a contrast matrix before adding samples. If two
    speakers share motive, rhythm, pressure move, and player leverage, merge or
-   redesign one.
+   redesign one. If the problem is cast size, spotlight, or turn ownership
+   rather than dialogue style, use `lunatalk-ensemble-director` first.
 6. Decide talkExample need. Prefer compact rules. Add micro-samples only when
    rules alone will not preserve the voice, the role has unusual rhythm, or
    ensemble speakers still blur.
@@ -145,6 +149,8 @@ Hand the packet to:
 
 - `lunatalk-card-blueprint` when the card still needs premise, relationship,
   world, opening, or field planning.
+- `lunatalk-ensemble-director` when speaker blur comes from missing cast
+  decisions, turn ownership, spotlight rules, or group tension.
 - `lunatalk-card-author` when the author wants a real private card or patch.
 - `lunatalk-chat-simulation` when transcripts show voice drift or generic
   replies and the author accepts normal simulation cost.

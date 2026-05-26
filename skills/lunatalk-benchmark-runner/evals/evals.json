@@ -43,11 +43,12 @@
     {
       "id": 4,
       "prompt": "Create a negative regression check for an ensemble card where the schema is valid but every cast member sounds interchangeable.",
-      "expected_output": "Treats blurred cast voice as a Moonloom writing failure, checks voice cards, contrast matrix, blind-line distinguishability, and recommends skill/prompt repairs rather than server gates.",
+      "expected_output": "Treats blurred cast voice as a Moonloom writing failure, checks ensemble packet, cast decisions, turn ownership, voice cards, contrast matrix, blind-line distinguishability, and recommends skill/prompt repairs rather than server gates.",
       "files": [],
       "expectations": [
         "The negative check can fail Moonloom self-review even if validate_role would pass.",
         "The diagnosis checks whether each core speaker has distinct motive, rhythm, pressure behavior, and player leverage.",
+        "The diagnosis routes cast scope, turn ownership, spotlight, group tension, or cast-over-player issues to lunatalk-ensemble-director when those are the weakest layer.",
         "The report uses blind-line distinguishability or equivalent voice calibration criteria.",
         "The proposed repair updates Moonloom voice guidance, roleDetailDesc, or talkExample calibration rather than MCP validation logic.",
         "The check remains public-safe and uses only synthetic example text."

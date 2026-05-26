@@ -56,10 +56,11 @@
     {
       "id": 5,
       "prompt": "I want a small ensemble card: a cashier, a busker, and a lighthouse keeper all know something different. Help me make their voices distinct before creating the card.",
-      "expected_output": "Produces an ensemble blueprint with contrast matrix, voice cards, micro-sample needs, blind-line risk, first scene, second-turn engine, and token plan.",
+      "expected_output": "Uses lunatalk-ensemble-director or ensemble-card-design before field drafting, then produces an ensemble blueprint with cast decisions, turn ownership, spotlight rules, group tension, voice cards, micro-sample needs, blind-line risk, first scene, second-turn engine, and token plan.",
       "files": [],
       "expectations": [
         "The blueprint gives each core speaker a distinct want, fear, speech cue, pressure move, and player leverage.",
+        "The blueprint preserves an ensemble packet or equivalent cast decision matrix, turn ownership, spotlight rules, and group tension state.",
         "The voice plan includes rhythm, vocabulary, action beats, concealment, refusal style, and response behavior for different player actions.",
         "The output identifies which speakers need compact micro-samples or talkExample calibration.",
         "The self-review includes voice calibration or blind-line risk.",

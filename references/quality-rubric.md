@@ -146,6 +146,10 @@ explicitly chooses a tradeoff:
   work, or the card mixes companion, story, system, RPG, generator, daily-life,
   light-setting, heavy-setting, or ensemble contracts, create an archetype packet
   before blueprinting or authoring.
+- Ensemble structure: when several active speakers, a roll-call welcome, or
+  cast-over-player behavior is present, create an ensemble packet with cast
+  keep/merge/cut, turn ownership, spotlight rules, group tension state, player
+  leverage, voice contrast, token plan, and agency probes before field drafting.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Overlong `roleDesc`: compress it into one scannable premise sentence. Normal
   cards should usually stay under 260 characters; game/system/generator cards can
@@ -169,6 +173,9 @@ explicitly chooses a tradeoff:
 - Blurred ensemble voice: add contrast by motive, pressure behavior, rhythm,
   vocabulary, and one micro-sample per weak core speaker. Do not rely on names
   alone to distinguish cast members.
+- Cast crowds out the player: define max active speakers per turn and require
+  speaker-to-speaker conflict to return pressure to the player with a choice,
+  clue, cost, route, alliance, risk, or boundary shift.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
 - Generic relationship loop: if every reply becomes flirting, comfort, apology,
