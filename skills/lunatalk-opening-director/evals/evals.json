@@ -65,6 +65,19 @@
         "The player has clear ways to help, notice, refuse, tease, ask, leave, or change the plan.",
         "The second-turn move changes habit, trust, shared object/place, distance, or the next routine hook."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "The opening packet is already coherent: place, role action, pressure, player implication, reply paths, and second-turn change are done. I only need to decide XMLV3 structure, Theme V3 split, visible status, and hidden state before authoring.",
+      "expected_output": "Hands off to lunatalk-presentation-director because the remaining problem is presentation structure, not opening repair.",
+      "files": [],
+      "expectations": [
+        "The output does not rebuild the opening when the five beats and second-turn move are already coherent.",
+        "The output routes XMLV3 structure, Theme V3 split, visible status, and hidden state to lunatalk-presentation-director.",
+        "The output preserves the existing opening packet as a prerequisite packet.",
+        "The handoff requests or produces a presentation packet before card-author or render-review.",
+        "The output does not call mutating MCP tools."
+      ]
     }
   ]
 }

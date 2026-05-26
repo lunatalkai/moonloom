@@ -16,7 +16,9 @@ Read `../../references/token-economy.md` first. Read
 archetype ranges, and token-efficient play loops. Read
 `../../references/card-authoring-templates.md` when converting the packet into
 field patches. Read `../../references/theme-v3-rendering.md` when HTML, XMLV3,
-or Theme V3 causes welcome bloat. Read `../../references/material-distillation.md`
+or Theme V3 causes welcome bloat. Read `../../references/presentation-design.md`
+when visual hierarchy exists without concrete token evidence and should be
+routed to presentation planning instead. Read `../../references/material-distillation.md`
 when a source pack or world bible is the cause of bloat. Read the narrow Moonloom
 skill for the weak layer before cutting it: character core, world engine, play
 engine, voice, agency, opening, longplay, or boundary.
@@ -26,6 +28,10 @@ engine, voice, agency, opening, longplay, or boundary.
 Do not call MCP tools from this skill. Do not treat high token count as a server
 gate. Token architecture is Moonloom writing guidance: it should preserve
 playability while moving, cutting, or compressing content.
+
+If the author has no tokenBudget, field sizes, welcome ratio, or validated bloat
+evidence and is only deciding what visual elements should appear before fields,
+use `lunatalk-presentation-director` instead.
 
 ## Workflow
 
@@ -95,6 +101,9 @@ Hand the packet to:
   turn protocol, or compact state need to become cheaper runnable rules before
   cutting.
 - `lunatalk-agency-designer` when choices or reply paths are decorative.
+- `lunatalk-presentation-director` when the work is pre-field visual hierarchy,
+  visible/hidden state, Theme V3 split, or XMLV3/HTML mode decision without
+  concrete token evidence.
 - `lunatalk-voice-director` when samples or voice rules need cheaper calibration.
 - `lunatalk-opening-director` when the welcome needs to be rebuilt.
 - `lunatalk-longplay-architect` when state, route, or memory needs compression.

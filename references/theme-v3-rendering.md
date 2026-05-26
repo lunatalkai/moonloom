@@ -1,6 +1,9 @@
 # Theme V3 and Rendering Notes
 
-Use this reference when authoring or reviewing visual card content.
+Use this reference when authoring or reviewing visual card content. For
+pre-authoring or pre-render decisions about what belongs in XMLV3, Theme V3,
+HTML, visible state, hidden state, or first-screen hierarchy, read
+`presentation-design.md` first.
 
 ## Default choice
 

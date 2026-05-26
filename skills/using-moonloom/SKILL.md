@@ -59,7 +59,19 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat,
   misplaced durable rules, or preserving playability while reducing token cost:
   use `lunatalk-token-architect` before authoring, opening repair, render review,
-  simulation, or publish readiness.
+  simulation, or publish readiness. If there is no concrete tokenBudget,
+  welcome ratio, field size, or validated bloat evidence and the author is only
+  deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
+- Pre-authoring or pre-render presentation planning, deciding XMLV3 vs plain vs
+  HTML, Theme V3 vs `roleWelcome`, visible state vs hidden JSON state, first-
+  screen hierarchy, visual affordances, status panels, choices/forms as
+  presentation, or a presentation packet before final fields: use
+  `lunatalk-presentation-director` before authoring, render review, simulation,
+  or publish readiness. If a preview URL, screenshot, render report, validation
+  report, DOM summary, contrast report, overflow report, blocked request list,
+  or console error list already exists, use `lunatalk-render-review`; if opening
+  beats or player agency are missing, use `lunatalk-opening-director` or
+  `lunatalk-agency-designer` first.
 - Author-provided files, folders, material packs, pasted notes, existing drafts,
   imported content, large world bibles, or lore that must be compressed before
   card creation: use `lunatalk-material-distiller`.
@@ -112,7 +124,10 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 - `roleWelcome`, welcome text, opening scene, first screen, first user reply,
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
-  render review, simulation, or publish readiness.
+  render review, simulation, or publish readiness. If the first two turns are
+  already coherent and the unresolved question is XMLV3/Theme V3/HTML,
+  visible/hidden state, or visual hierarchy, use
+  `lunatalk-presentation-director`.
 - Long-term playability, replayability, multi-session arcs, route seeds,
   progression, memory/state, dead third turns, repetitive loops, passive role
   behavior, session restart, or choices that do not matter: use
@@ -156,7 +171,10 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   ideation or call MCP tools unless the author asks to create or patch a real
   private role.
 - Creating or editing a real private role card: use `lunatalk-card-author`.
-- Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
+- Checking HTML/XMLV3/Theme V3 rendering after validation, preview, screenshot,
+  or render report exists: use `lunatalk-render-review`. If the author is still
+  deciding how to structure XMLV3, Theme V3, HTML, visible state, or hidden state
+  before authoring/rendering, use `lunatalk-presentation-director`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
 - Preparing public submission: use `lunatalk-publish-readiness`.
 - Running regression checks or comparing Moonloom quality across archetypes: use
@@ -232,6 +250,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/token-economy.md` when the task involves tokenBudget,
   token allocation, overlong welcomes, duplicated lore, compression plans, or
   keep / move / cut / rewrite decisions.
+- Read `../../references/presentation-design.md` when deciding XMLV3 vs plain vs
+  HTML, Theme V3 vs welcome content, visible state vs hidden JSON state,
+  first-screen hierarchy, visual affordances, or presentation packets before
+  authoring/rendering.
 - Read `../../references/card-diagnosis.md` when the task involves existing-card
   diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer
   triage, repair order, or field patch mapping before rewriting.

@@ -359,6 +359,29 @@ Token architecture packet:
 - rerun checks:
 - handoff:
 
+Presentation packet:
+- current request:
+- presentation promise:
+- prerequisite packets:
+- welcome mode: plain | xmlv3 | html
+- mode decision:
+- XMLV3 semantic plan:
+- visible content map:
+- hidden state JSON plan:
+- Theme V3 responsibilities:
+- roleDetailDesc responsibilities:
+- HTML decision:
+- visual affordance table:
+  - element:
+  - purpose:
+  - proves action / state / mood / route / risk / clue / resource / boundary:
+  - keep | move | cut:
+- first-screen hierarchy:
+- mobile / readability risks:
+- token stance:
+- render review plan:
+- handoff:
+
 Engine:
 - role desire:
 - contradiction:
@@ -412,7 +435,12 @@ Longplay packet:
 Presentation:
 - welcome mode: plain | xmlv3 | html
 - Theme V3 need:
+- XMLV3 semantic plan:
 - visible state or choices:
+- hidden state JSON:
+- visual affordances:
+- HTML decision:
+- render review plan:
 
 Token plan:
 - roleDesc target:
@@ -452,6 +480,7 @@ Inputs preserved:
 - longplay packet:
 - boundary packet:
 - token architecture packet:
+- presentation packet:
 - material / source-to-play packet:
 
 Role fields:
@@ -479,6 +508,11 @@ Role fields:
   - samples or field guidance:
 - tags:
 - Theme V3 / visual notes:
+  - presentation packet:
+  - visible content map:
+  - hidden state JSON plan:
+  - roleDetailDesc responsibilities:
+  - HTML decision:
 
 Token allocation:
 - roleDesc target:
@@ -501,6 +535,7 @@ Packet preservation checklist:
 - opening and longplay preserved:
 - boundary posture preserved:
 - token architecture preserved:
+- presentation plan preserved:
 
 Conflict resolution:
 - conflict:

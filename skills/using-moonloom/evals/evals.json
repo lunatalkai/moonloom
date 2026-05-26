@@ -325,6 +325,19 @@
         "The output does not route primarily to scenario, play-engine, world-engine, broad blueprinting, or mutating MCP tools.",
         "The route focuses on a daily-life packet with ordinary routine, small playable desire, tiny disruption, shared object/place, habit state, reply paths, boundary/romance posture, second-turn change, return-next-time hooks, and probes."
       ]
+    },
+    {
+      "id": 26,
+      "prompt": "I am not sure which Moonloom skill to use. I already have a strong opening packet and longplay plan, but I am not ready to create or render the card. I need to decide XMLV3 vs plain vs HTML, what is visible, what becomes hidden state JSON, what belongs in Theme V3, and what visual elements earn first-screen space before final fields.",
+      "expected_output": "Uses using-moonloom as the router and routes pre-authoring/pre-render presentation structure to lunatalk-presentation-director before card-author, render-review, token-architect, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes XMLV3/HTML mode, visible state, hidden JSON state, Theme V3 split, and first-screen hierarchy to lunatalk-presentation-director.",
+        "The output does not route to lunatalk-render-review because no validation, preview, screenshot, or render report exists.",
+        "The output does not route to lunatalk-token-architect unless concrete tokenBudget, field-size, welcome-ratio, or bloat evidence appears.",
+        "The route focuses on a presentation packet with mode decision, XMLV3 semantic plan, visible map, hidden state JSON plan, Theme V3 responsibilities, HTML decision, visual affordance table, render review plan, and no MCP calls."
+      ]
     }
   ]
 }

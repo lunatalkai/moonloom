@@ -11,7 +11,9 @@ Use this skill to close the visual feedback loop for LunaTalk role cards.
 
 Read `../../references/card-writer-mcp.md` for `validate_role` and
 `render_preview` details. Read `../../references/theme-v3-rendering.md` for XMLV3,
-HTML, and Theme V3 decisions. Read `../../references/quality-rubric.md` for the
+HTML, and Theme V3 decisions. Read `../../references/presentation-design.md` when
+the issue is a pre-render presentation plan rather than an actual preview or
+render result. Read `../../references/quality-rubric.md` for the
 visual quality rubric. Read `../../references/role-card-writing-framework.md` when
 render issues affect playability, token cost, or first-scene clarity. Read
 `../../references/card-diagnosis.md` when render looks readable but the existing
@@ -25,6 +27,11 @@ visibility, opening clarity, or second-turn setup.
 
 ## Workflow
 
+0. If no preview URL, screenshot, validation report, render report, DOM summary,
+   contrast report, overflow report, blocked request list, or console error list
+   exists and the author is only deciding XMLV3/Theme V3/HTML structure, visible
+   state, hidden state, or visual hierarchy before authoring/rendering, route to
+   `lunatalk-presentation-director` instead of render review.
 1. Call `validate_role` unless a fresh validation report is already available.
 2. Fix blockers before relying on visual review.
 3. Call `render_preview` with `mode: "full-card"` by default.
