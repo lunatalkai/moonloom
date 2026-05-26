@@ -20,6 +20,11 @@ collapse into generic flirting, comfort, instant intimacy, flat warmth, weak
 repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the idea has worldbuilding,
 relationship-network, faction, location, lore-heavy, or lore-dump problems. Read
+`../../references/scenario-design.md` when the idea is story, scenario, mystery,
+investigation, case-file, event, rescue, trial, betrayal, social drama, or
+depends on stakes, route branches, clue/reveal pacing, false leads, suspect
+pressure, or compact consequence state. Use `lunatalk-scenario-architect` first
+when scenario structure is the primary task. Read
 `../../references/play-engine-design.md` when the idea is RPG, adventure,
 open-world, sandbox, survival, investigation, simulator, or depends on stats,
 resources, inventory, quests, combat, turn protocol, compact state,
@@ -99,6 +104,11 @@ creation, validation, render review, simulation, and publishing workflow.
    quests, combat, compact state, turn protocol, or failure-forward behavior,
    use `lunatalk-play-engineer` first unless a play-engine packet already
    exists.
+   If the author wants a story, scenario, mystery, investigation, case-file,
+   event, trial, rescue, betrayal, or social-drama card with stakes, route
+   branches, clue/reveal pacing, false leads, suspect pressure, compact
+   consequence state, or route-funnel repair, use
+   `lunatalk-scenario-architect` first unless a scenario packet already exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -124,25 +134,28 @@ creation, validation, render review, simulation, and publishing workflow.
     inventory, quests, combat, turn protocol, failure-forward behavior, or a
     rule-manual opening, use `lunatalk-play-engineer` first or preserve its
     packet.
-11. If the weak layer is generic dialogue, speaking style, voice drift,
+11. If the weak layer is story/scenario structure, route branches, clues,
+    reveal pacing, suspect pressure, false leads, route funneling, or scenario
+    consequences, use `lunatalk-scenario-architect` first or preserve its packet.
+12. If the weak layer is generic dialogue, speaking style, voice drift,
    catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
    blur, use `lunatalk-voice-director` first or preserve its packet. Define
    voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-12. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+13. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
     durable rules, or visual bloat is the core problem, use
     `lunatalk-token-architect` first or preserve its packet before opening repair
     or field drafting.
-13. Design the first scene and the second-turn engine together. If the opening is
+14. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-14. If long-term playability, memory/state, route seeds, progression, or a dead
+15. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-15. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-16. Run Moonloom self-review and repair any weak layer before handing off.
+16. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+17. Run Moonloom self-review and repair any weak layer before handing off.
     If the author asked for a quality audit, preserve or create a
     `lunatalk-quality-auditor` scorecard before authoring.
 
@@ -175,6 +188,7 @@ Archetype packet:
   - world engine:
   - ensemble:
   - play engine:
+  - scenario:
   - agency:
   - voice:
   - opening:
@@ -351,6 +365,30 @@ Play-engine packet:
 - progression phases:
 - opening contract:
 - state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
+Scenario packet:
+- current seed or failure:
+- scenario promise:
+- card shape:
+- player role:
+- ongoing incident:
+- stakes:
+- core question:
+- story spine:
+- route branches:
+- clue / reveal ladder:
+- suspect / pressure network:
+- compact consequence state:
+- opening incident:
+- expected first user message:
+- second-turn reveal:
+- passive-player behavior:
+- false-lead handling:
+- route-funnel guardrails:
 - field allocation:
 - token plan:
 - simulation probes:

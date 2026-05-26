@@ -21,7 +21,12 @@ collapse into generic flirting, comfort loops, instant intimacy, flat warmth,
 weak repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the card needs worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
-repair. Read `../../references/play-engine-design.md` when the card is RPG,
+repair. Read `../../references/scenario-design.md` when the card is story,
+scenario, mystery, investigation, case-file, event, rescue, trial, betrayal, or
+social drama, or when it needs stakes, route branches, clue/reveal pacing, false
+leads, suspect pressure, compact consequence state, or route-funnel repair. Use
+`lunatalk-scenario-architect` first when scenario structure is the primary task.
+Read `../../references/play-engine-design.md` when the card is RPG,
 adventure, open-world, sandbox, survival, investigation, simulator, or has
 stats, resources, inventory, quests, combat, turn protocol, compact state,
 failure-forward behavior, or a rule-manual opening. Read
@@ -103,6 +108,13 @@ benchmark creation, regression checks, or example-driven iteration.
    play-engine packet already exists. Do not create or patch the card until the
    playable rule loop, state model, resource rules, and failure behavior are
    coherent.
+   If the author asks to create or repair a story, scenario, mystery,
+   investigation, case-file, event, trial, rescue, betrayal, or social-drama card
+   with stakes, route branches, clue/reveal pacing, false leads, suspect
+   pressure, compact consequence state, route-funnel repair, opening incident,
+   second-turn reveal, or scenario probes, use `lunatalk-scenario-architect`
+   first unless a scenario packet already exists. Do not create or patch the card
+   until the scenario branches, clue ladder, and consequence state are coherent.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -128,6 +140,9 @@ benchmark creation, regression checks, or example-driven iteration.
    relationship field allocation. Prefer `lunatalk-world-engineer` when the
    author needs worldbuilding, relationship networks, factions, locations, lore
    compression, or a world rule that creates play. Prefer
+   `lunatalk-scenario-architect` when the author needs story/scenario stakes,
+   route branches, clue/reveal pacing, false leads, suspect pressure, compact
+   consequence state, route-funnel repair, or scenario probes. Prefer
    `lunatalk-card-blueprint` when the author needs broader ideation,
    relationship design, voice design, or opening-scene planning before a real
    role is created. Prefer `lunatalk-voice-director` when the author primarily
@@ -176,6 +191,10 @@ benchmark creation, regression checks, or example-driven iteration.
    Use or preserve `lunatalk-agency-designer` when the patch changes player
    insertion space, reply paths, route consequences, passive-player behavior, or
    agency guardrails.
+   Use or preserve `lunatalk-scenario-architect` when the current patch changes
+   story/scenario stakes, route branches, clue/reveal pacing, suspect pressure,
+   false leads, compact consequence state, route-funnel guardrails, opening
+   incident, or second-turn reveal.
 11. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
@@ -263,6 +282,11 @@ MCP tools make the card real; Moonloom makes the card good.
   position, player controls, compact state model, resource rules, quest/risk
   model, turn protocol, failure-forward behavior, progression phases, opening
   contract, state visibility, token plan, and simulation probes.
+- Preserve the scenario packet when one exists: scenario promise, player role,
+  ongoing incident, stakes, core question, story spine, route branches,
+  clue/reveal ladder, suspect or pressure network, compact consequence state,
+  opening incident, second-turn reveal, passive-player behavior, false-lead
+  handling, route-funnel guardrails, token plan, and simulation probes.
 - Preserve the voice-director packet when one exists: current failure, voice
   promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
   grid, catchphrase policy, talkExample decision, blind-line test, pressure
@@ -371,7 +395,8 @@ MCP tools make the card real; Moonloom makes the card good.
   Preserve character names, tone, and XMLV3 tags while converting card prose to
   Traditional Chinese when needed.
 - Repair the chosen card type directly: companion needs relationship pressure and
-  emotional boundaries; story needs setting stakes and likely branches;
+  emotional boundaries; story/scenario needs stakes, route branches,
+  clue/reveal pacing, false leads, and consequence state;
   game/RPG/system cards need a play-engine packet with compact state, resource
   rules, turn protocol, failure-forward behavior, and opening setup/state/
   choices; daily-life needs a small playable desire; heavy-setting

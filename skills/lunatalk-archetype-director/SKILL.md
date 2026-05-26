@@ -28,7 +28,10 @@ when the primary task is deciding which variants to keep, merge, reject, author,
 render, or simulate first. Read `../../references/play-engine-design.md` when
 RPG/open-world, adventure, survival, investigation, simulator, stats, resources,
 quests, compact state, turn protocol, or failure-forward behavior are part of
-the card contract. Read
+the card contract. Read `../../references/scenario-design.md` when story,
+scenario, mystery, investigation, case-file, event, trial, rescue, betrayal,
+social drama, clue/reveal pacing, false leads, suspect pressure, or branch
+consequences are part of the card contract. Read
 `../../references/quality-rubric.md` for self-review probes.
 
 If the archetype decision exposes a narrow weak layer, use or preserve the
@@ -44,6 +47,9 @@ matching packet:
 - `lunatalk-play-engineer` for RPG/adventure mechanics, compact state,
   resources, inventory, quests, combat, turn protocol, failure-forward behavior,
   or rule-manual openings.
+- `lunatalk-scenario-architect` for story/scenario structure, route branches,
+  clue/reveal pacing, suspect pressure, false leads, compact consequence state,
+  route-funnel repair, opening incidents, or second-turn reveals.
 - `lunatalk-ensemble-director` for cast scope, keep/merge/cut decisions, turn
   ownership, spotlight, group tension, roll-call openings, or cast crowding the
   player.
@@ -112,6 +118,7 @@ Archetype packet:
   - relationship engine:
   - world engine:
   - play engine:
+  - scenario:
   - ensemble:
   - agency:
   - voice:
@@ -146,6 +153,10 @@ Archetype packet:
   the player gives minimal input. Use `lunatalk-play-engineer` when the blocker
   is compact state, resource rules, turn protocol, quest/risk design, or
   failure-forward behavior rather than broad archetype choice.
+- For story/scenario cards, include incident stakes and route consequences. Use
+  `lunatalk-scenario-architect` when the blocker is clue/reveal pacing, suspect
+  pressure, false leads, route funneling, compact consequence state, or
+  second-turn reveal rather than broad archetype choice.
 - Preserve player agency. The card can offer, tempt, pressure, warn, or refuse;
   it must not assign the player's feelings, memories, consent, actions, or
   commitments.
@@ -167,6 +178,10 @@ Hand the packet to:
 - `lunatalk-play-engineer` when the card shape is RPG/adventure/sandbox/system
   and playable rules, compact state, resource costs, failure-forward behavior, or
   turn protocol are not yet coherent.
+- `lunatalk-scenario-architect` when the card shape is story/mystery/scenario
+  and incident stakes, route branches, clue/reveal pacing, suspect pressure,
+  false leads, compact consequence state, or route-funnel guardrails are not yet
+  coherent.
 - A narrow Moonloom skill first when the packet identifies one weak layer as the
   blocker.
 - `lunatalk-benchmark-runner` when changing archetype guidance and testing

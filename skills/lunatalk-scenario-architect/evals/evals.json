@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-scenario-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design a zh-Hant mystery scenario card before authoring. The player arrives after a witness disappears, three suspects have conflicting stories, and choices should affect trust, evidence, public risk, and which truth can surface. I need branches, clue pacing, false leads, and probes, not an RPG system.",
+      "expected_output": "Produces a scenario packet with ongoing incident, stakes, core question, route branches, clue/reveal ladder, suspect pressure network, compact consequence state, opening incident, second-turn reveal, false-lead handling, token plan, and simulation probes without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-scenario-architect or scenario-design rather than play-engineer, world-engineer, broad blueprinting, or MCP tools.",
+        "The scenario packet defines the player role, ongoing incident, stakes, core question, and story spine.",
+        "The route branches include trigger, player leverage, pressure response, clue or reveal, cost, state change, and renewal hook.",
+        "The clue/reveal ladder includes visible clue, contradiction, false lead, partial reveal, reversal, and final pressure.",
+        "The compact consequence state changes clue, trust, evidence, public risk, access, route, or pressure."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Patch a story card concept that keeps railroading the player into the same confession scene. I want the player to be able to protect, expose, bargain, delay, or follow a false lead, and each path should change what happens later.",
+      "expected_output": "Repairs the route funnel with scenario branches, player leverage, consequence state, route-funnel guardrails, and false-lead handling before field drafting.",
+      "files": [],
+      "expectations": [
+        "The output identifies route funneling as a scenario/agency failure, not prose polish.",
+        "The repair creates multiple route branches with different costs, clues, state changes, and renewal hooks.",
+        "The route-funnel guardrails state what the card must not force, solve, reveal, or decide for the player.",
+        "False leads are recoverable and consequential rather than a dead end or punishment.",
+        "The output hands off to opening, longplay, card-author, or simulation only after the scenario packet is coherent."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Plan an event scenario card for a festival sabotage. It has a market, a stage, and a shrine, but I do not want a heavy lore map. The player should notice clues, choose who to accuse or protect, and the second turn should reveal a cost.",
+      "expected_output": "Builds a focused event scenario packet with a small pressure network, active locations only as route functions, opening incident, second-turn reveal, branch consequences, token discipline, and probes.",
+      "files": [],
+      "expectations": [
+        "The output keeps the scope focused on one incident rather than expanding into a heavy-setting world bible.",
+        "Locations are used as route functions with access, clue, risk, or pressure rather than decorative lore.",
+        "The opening incident starts inside the sabotage with a visible clue and player implication.",
+        "The second-turn reveal changes risk, access, trust, clue status, or public pressure.",
+        "The token plan puts durable branch rules in roleDetailDesc and keeps the welcome as a playable incident."
+      ]
+    }
+  ]
+}

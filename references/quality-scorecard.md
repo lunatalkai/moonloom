@@ -32,7 +32,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 | Promise | Can the player understand the fantasy, relationship, and tension in a few seconds? |
 | Archetype contract | Does one primary card shape drive the experience while overlays support it? |
 | Character appeal | Does the role have desire, contradiction, boundary, player leverage, and pressure behavior? |
-| Relationship / world engine | Does relationship, setting, faction, or system content create choices, costs, state, and routes? |
+| Relationship / world / scenario engine | Does relationship, setting, faction, incident, clue, or pressure content create choices, costs, state, and routes? |
 | Play engine | For RPG/adventure/sandbox cards, do compact state, resources, quests, turn protocol, and failure-forward behavior produce runnable turns? |
 | Player agency | Can the player accept, question, refuse, redirect, test, or change the route without being overwritten? |
 | Opening | Does the first screen include place/time, role action, pressure, player implication, and reply paths? |
@@ -66,6 +66,8 @@ Flag blockers before scoring:
 - copied or unprovided material presented as card content
 - primary archetype conflict that makes field allocation impossible
 - durable engine hidden entirely in `roleWelcome` while detail cannot sustain play
+- story/scenario route funneling that forces the player's conclusion, guilt,
+  trust, confession, or only valid path
 
 ## Quality audit packet
 
@@ -83,7 +85,7 @@ Quality audit packet:
   - promise:
   - archetype contract:
   - character appeal:
-  - relationship / world engine:
+  - relationship / world / scenario engine:
   - play engine:
   - player agency:
   - opening:

@@ -39,6 +39,19 @@
         "The output explains what to put in roleDetailDesc versus roleWelcome.",
         "The output preserves player agency and avoids making the assistant decide the player's feelings or output preferences."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want a mystery card with a city ritual, three suspects, a false lead, and a possible helper artifact. I am not sure if this is story, heavy-setting, RPG, or generator. Classify the card before fields and keep it from becoming a lore bible or rule system.",
+      "expected_output": "Classifies one primary archetype, routes story/mystery scenario structure to lunatalk-scenario-architect when scenario is primary, keeps world/generator/RPG as overlays unless their loop is primary, and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output chooses one primary archetype by what the player does, not by genre labels.",
+        "The output routes stakes, route branches, clue/reveal pacing, false leads, suspect pressure, compact consequence state, and route-funnel risk to lunatalk-scenario-architect or scenario-design.md when story/mystery is primary.",
+        "The output rejects RPG/play-engine routing unless stats, resources, turn protocol, combat, inventory, or failure-forward mechanics are the main blocker.",
+        "The output keeps worldbuilding and generator artifacts as overlays unless lore scope or artifact creation is the main loop.",
+        "The archetype packet includes scenario in required packets or recommended skill order and does not call mutating MCP tools."
+      ]
     }
   ]
 }

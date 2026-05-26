@@ -224,6 +224,19 @@
         "The quality audit packet includes evidence, critical blockers, scorecard, tier, strongest and weakest dimensions, first three repairs, and handoff.",
         "The output treats scorecard results as Moonloom writing guidance, not MCP validation, platform metrics, or a server gate."
       ]
+    },
+    {
+      "id": 18,
+      "prompt": "Create a private zh-Hant story/mystery role card, but before any MCP calls build the scenario structure: ongoing incident, stakes, route branches, clue/reveal ladder, suspect pressure, false leads, compact consequence state, opening incident, second-turn reveal, and probes. It should not become an RPG rule system.",
+      "expected_output": "Uses lunatalk-scenario-architect before MCP-backed authoring, preserves the scenario packet, then hands off to card-author only after the scenario branches and consequence state are coherent.",
+      "files": [],
+      "expectations": [
+        "The workflow routes story/mystery scenario structure to lunatalk-scenario-architect before role_create_private or field patches.",
+        "The scenario packet includes ongoing incident, stakes, core question, story spine, route branches, clue/reveal ladder, suspect pressure network, compact consequence state, route-funnel guardrails, and probes.",
+        "The workflow does not treat scenario design as RPG/open-world play-engine work unless mechanics such as stats, resources, combat, or turn protocol become primary.",
+        "The output preserves the scenario packet through authoring instead of flattening it into a generic plot summary.",
+        "The output treats scenario quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
+      ]
     }
   ]
 }

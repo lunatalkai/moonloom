@@ -120,6 +120,7 @@ Archetype packet:
   - quality audit:
   - card series:
   - card diagnosis:
+  - scenario:
   - character core:
   - relationship engine:
   - world engine:
@@ -232,6 +233,30 @@ Play-engine packet:
 - progression phases:
 - opening contract:
 - state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
+Scenario packet:
+- current seed or failure:
+- scenario promise:
+- card shape:
+- player role:
+- ongoing incident:
+- stakes:
+- core question:
+- story spine:
+- route branches:
+- clue / reveal ladder:
+- suspect / pressure network:
+- compact consequence state:
+- opening incident:
+- expected first user message:
+- second-turn reveal:
+- passive-player behavior:
+- false-lead handling:
+- route-funnel guardrails:
 - field allocation:
 - token plan:
 - simulation probes:
@@ -380,6 +405,7 @@ Inputs preserved:
 - relationship-engine packet:
 - world-engine packet:
 - play-engine packet:
+- scenario packet:
 - ensemble packet:
 - agency packet:
 - voice-director packet:
@@ -429,7 +455,7 @@ Token allocation:
 Packet preservation checklist:
 - character core preserved:
 - relationship engine preserved:
-- world / play engine preserved:
+- world / play / scenario engine preserved:
 - player agency preserved:
 - voice preserved:
 - opening and longplay preserved:

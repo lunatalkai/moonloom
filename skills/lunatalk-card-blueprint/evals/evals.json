@@ -144,6 +144,19 @@
         "The first scene and second-turn engine prove one runnable turn rather than explaining the whole rule system.",
         "The output does not call or instruct immediate mutating MCP tool use before the play-engine packet is ready."
       ]
+    },
+    {
+      "id": 12,
+      "prompt": "Before creating anything, blueprint a story/mystery card where the player must inspect clues, accuse or protect suspects, follow false leads, and avoid being railroaded into one confession scene. This is a focused incident, not RPG mechanics or a heavy setting.",
+      "expected_output": "Uses lunatalk-scenario-architect or scenario-design before broad field drafting, then produces a blueprint that preserves the scenario packet and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes story/mystery scenario structure, route branches, clue/reveal pacing, false leads, suspect pressure, consequence state, and route-funnel repair to lunatalk-scenario-architect or scenario-design.md before broad authoring.",
+        "The scenario packet defines player role, ongoing incident, stakes, core question, story spine, route branches, clue/reveal ladder, suspect or pressure network, compact consequence state, and route-funnel guardrails.",
+        "The blueprint does not route primarily to play-engineer unless explicit stats, resources, combat, turn protocol, or game-like mechanics become the blocker.",
+        "The first scene and second-turn engine prove an incident with a visible clue, player implication, and a reveal or cost rather than a briefing.",
+        "The output does not call or instruct immediate mutating MCP tool use before the scenario packet is ready."
+      ]
     }
   ]
 }
