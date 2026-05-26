@@ -43,6 +43,13 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- Author feedback, co-review, taste/preference calibration, draft comparison,
+  "almost right but off", choosing between patch options, or deciding what to
+  preserve/change/reject/delay before rewriting, simulation, or publishing: use
+  `lunatalk-collaboration-director`. If the feedback already contains concrete
+  mixed symptoms for an existing card, hand off from collaboration to
+  `lunatalk-card-doctor`; if it only needs final field application, hand off to
+  `lunatalk-card-author`.
 - Public-facing role profile work, including `roleName`, `roleDesc`, tags,
   title, tagline, short pitch, first impression, discovery surface, reason to
   open, promise compression, or making the profile feel more top-tier/popular
@@ -229,6 +236,9 @@ validation, render review, simulation, and publish readiness.
 
 - Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint,
   or auth details matter.
+- Read `../../references/author-collaboration.md` when the task involves author
+  feedback, co-review, taste/preference calibration, draft comparison, revision
+  choices, or deciding what to preserve/change/reject/delay.
 - Read `../../references/character-core-design.md` when working on character
   core, persona appeal, trope repair, relationship leverage, pressure behavior,
   or thin/generic roles.
