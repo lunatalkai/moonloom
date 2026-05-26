@@ -4,11 +4,9 @@ description: Use when the user wants an AI client to write, improve, import, res
 ---
 
 # LunaTalk Card Author
-
 Use this skill to turn an author's idea, draft, world notes, imported material,
-or prepared Moonloom packet stack into field-ready LunaTalk role content. When
-the author asks for a real private role, use the Card Writer MCP after the draft
-is coherent and self-reviewed.
+or Moonloom packet stack into field-ready LunaTalk role content. Use the Card
+Writer MCP only after the draft is coherent and self-reviewed.
 
 ## Required references
 
@@ -310,15 +308,13 @@ benchmark creation, regression checks, or example-driven iteration.
 
 Moonloom should behave like a card-writing skill framework, not a form filler.
 
-- Open the author's imagination before drafting: ask what emotional promise,
-  player fantasy, forbidden pressure, or gameplay loop they want to feel.
-- When the author gives a weak or generic idea, propose concrete alternatives:
-  a relationship pressure, a first-scene incident, a hidden contradiction, and a
-  repeatable loop.
-- When improving an existing card, diagnose the weakest layer first: promise,
-  engine, play, presentation, render, or simulation. Patch that layer directly.
-- Keep the card source compact. Strong cards usually get replayability from
-  state, consequence, and role initiative, not from longer prose.
+- Before drafting, surface the emotional promise, player fantasy, pressure, or
+  gameplay loop that should survive every route.
+- For weak ideas, propose concrete alternatives with player leverage, first-scene
+  pressure, hidden contradiction, and a repeatable loop.
+- For existing cards, diagnose the weakest layer first and patch that layer
+  directly. Keep replayability in state, consequence, and role initiative rather
+  than longer prose.
 
 ## MCP boundary
 
@@ -345,13 +341,17 @@ MCP tools make the card real; Moonloom makes the card good.
   Resolve conflicts, preserve the strongest packet signals, and assemble
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
   tags/theme notes, token allocation, validation/render/simulation handoff, and
-  self-review.
-- Preserve the profile package packet when one exists: promise angle, selected
-  `roleName`, selected `roleDesc`, candidate rationale, tag set,
-  first-impression check, fields to preserve, and fields to patch.
-- Preserve the language-style packet when one exists: target language / locale,
-  language failures, pronoun/address matrix, field pass, rewrite rules,
-  keep/rewrite/preserve decisions, verification checklist, and handoff.
+  self-review. Use the final role-field authoring packet in
+  `card-authoring-templates.md`; do not copy every optional packet into the
+  response unless it is present or required.
+- Preserve packets by name and by behavior. At minimum, keep the selected
+  premise, profile package, language-style decisions, quality audit, archetype,
+  character core, relationship/daily-life/world/play/generator/scenario/ensemble
+  engines, agency, voice, opening, longplay, boundary, token, presentation, and
+  material-distillation packets whenever they exist.
+- If a packet is missing and the missing layer blocks a good card, route to the
+  narrow skill before field assembly. Do not fill missing packets with generic
+  prose just to continue.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
   profile, detail, welcome, and examples consistently Traditional Chinese.
@@ -365,72 +365,6 @@ MCP tools make the card real; Moonloom makes the card good.
 - If the player can only watch, choices are decorative, or the card narrates the
   player's feelings/actions, use `lunatalk-agency-designer` before patching
   fields.
-- Preserve the opening packet when one exists: current failure, opening promise,
-  reply paths, expected first user message, second-turn move, what changes, and
-  token tradeoff.
-- Preserve the character-core packet when one exists: appeal promise, desire,
-  contradiction, boundary, mask/wound, player leverage, relationship asymmetry,
-  pressure behavior, interaction hooks, and token tradeoff.
-- Preserve the relationship-engine packet when one exists: relationship promise,
-  shape, asymmetry, closeness/friction state, pacing gates, repair/rupture
-  routes, player agency boundaries, reply-path matrix, passive-player behavior,
-  second-turn move, long-session renewal, field allocation, and token tradeoff.
-- Preserve the world-engine packet when one exists: world promise, player
-  position, core world rule, faction/location play functions, state model, route
-  seeds, exposition policy, and token tradeoff.
-- Preserve the play-engine packet when one exists: play promise, player
-  position, player controls, compact state model, resource rules, quest/risk
-  model, turn protocol, failure-forward behavior, progression phases, opening
-  contract, state visibility, token plan, and simulation probes.
-- Preserve the generator packet when one exists: generator promise, artifact
-  type, player role, creator persona, artifact contract, intake surface, defaults,
-  output schema, revision operations, quality rubric, artifact memory,
-  refusal/constraint handling, opening contract, field allocation, token plan,
-  and simulation probes.
-- Preserve the scenario packet when one exists: scenario promise, player role,
-  ongoing incident, stakes, core question, story spine, route branches,
-  clue/reveal ladder, suspect or pressure network, compact consequence state,
-  opening incident, second-turn reveal, passive-player behavior, false-lead
-  handling, route-funnel guardrails, token plan, and simulation probes.
-- Preserve the daily-life packet when one exists: daily-life promise, ordinary
-  routine, small playable desire, tiny disruption, shared object/place, sensory
-  anchors, player leverage, routine loop, micro-tension, habit state, reply
-  paths, closeness/distance lanes, passive-player behavior, boundary and romance
-  posture, opening moment, second-turn change, long-session renewal, token plan,
-  and simulation probes.
-- Preserve the voice-director packet when one exists: current failure, voice
-  promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
-  grid, catchphrase policy, talkExample decision, blind-line test, pressure
-  probes, field patch targets, and token tradeoff.
-- Preserve the agency packet when one exists: current failure, agency promise,
-  player insertion space, player controls/refusals/changes, agency guardrails,
-  reply-path matrix, compact state, passive-player behavior, boundary handling,
-  consequence checks, field patch targets, and token tradeoff.
-- Preserve the token architecture packet when one exists: current failure,
-  archetype, token budget signal, target allocation, field triage,
-  keep/move/cut/rewrite, compression ladder, visual budget, state budget,
-  example budget, patch order, rerun checks, and handoff.
-- Preserve the card diagnosis packet when one exists: available evidence,
-  primary and secondary failures, repair order, symptom map, field triage,
-  keep/move/cut/rewrite decisions, packets to preserve/create, verification
-  plan, stop conditions, and handoff.
-- Preserve the quality audit packet when one exists: evidence available/missing,
-  overall tier, critical blockers, scorecard, strongest and weakest dimensions,
-  first three repairs, repair skill order, validation/render/simulation stance,
-  and handoff.
-- Preserve the archetype packet when one exists: current seed, primary archetype,
-  secondary overlays, rejected archetypes, archetype contract, player promise,
-  player role, core loop, first-screen proof, field allocation, required packets,
-  recommended Moonloom skill order, hybrid failure modes, repair rules,
-  self-review probes, and handoff.
-- Preserve the card-series packet when one exists: shared core, variant map,
-  keep/merge/reject decisions, variant contracts, overlap risks, authoring order,
-  validation/render/simulation plan, and handoff. Do not flatten a series into
-  one overloaded hybrid card or create duplicate cards with the same playable
-  loop.
-- Preserve the longplay packet when one exists: continuity spine, progression
-  phases, state model, route seeds, memory threads, role initiative, continuation
-  probes, and token tradeoff.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
@@ -468,10 +402,6 @@ MCP tools make the card real; Moonloom makes the card good.
   If the cast has three or more active speakers, add compact micro-samples for
   weak or easily blurred voices instead of one long sample for the strongest
   speaker.
-- For ensemble cards, preserve the ensemble packet before field work: cast
-  keep/merge/cut decisions, turn ownership, spotlight rules, group tension,
-  player leverage, voice contrast, token plan, and agency probes. If that packet
-  is missing, use `lunatalk-ensemble-director` before patching fields.
 - Run Moonloom self-review before render: promise, anchor, relationship engine,
   daily-life engine, voice texture, voice calibration, consequence, role
   initiative, agency, opening scene, longplay, player agency, language style,
@@ -554,30 +484,17 @@ MCP tools make the card real; Moonloom makes the card good.
 
 ## Tool call discipline
 
-- Generate a unique `idempotencyKey` per mutating action and reuse it for retries.
-- Never directly edit a public role. Create or use an owned private role.
-- If a tool returns `nextRecommendedTools`, treat it as the next normal step unless
-  the author's latest instruction conflicts.
-- When `validate_role` returns patch tools, patch and validate again before render
-  or simulation. Treat those as technical fixes, not as the full writing review.
-- If validation returns blockers, patch the card before publishing.
+- Generate one `idempotencyKey` per intended mutating action and reuse it for
+  retries.
+- Never directly edit a public role; create or use an owned private role.
+- Follow `nextRecommendedTools` unless the author conflicts. Patch validation
+  blockers and validate again before render, simulation, or publishing; treat
+  those fixes as technical, not as the full writing review.
 
 ## Final response shape
 
-Report:
-
-- `roleId`
-- what changed
-- validation status
-- render review status
-- simulation status or why it was skipped
-- recommended next action
-
-For draft-only field assembly, report:
-
-- mode and route
-- final role-field authoring packet summary
-- packet preservation checklist
-- conflict resolutions
-- validation / render / simulation handoff
-- remaining risks and recommended next action
+For MCP-backed work, report `roleId`, what changed, validation status, render
+status, simulation status or why it was skipped, remaining risks, and next
+action. For draft-only work, report mode/route, role-field packet summary,
+packet preservation checklist, conflict resolutions, validation/render/simulation
+handoff, remaining risks, and next action.
