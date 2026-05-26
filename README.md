@@ -18,6 +18,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 
 - `skills/using-moonloom` is the router skill. Start here when an agent is unsure
   which Moonloom workflow applies.
+- `skills/lunatalk-mcp-operator` checks external AI client MCP readiness, tool
+  availability, auth posture, idempotency planning, and stage gates before real
+  Card Writer MCP actions.
 - `skills/lunatalk-collaboration-director` turns author feedback, co-review,
   taste/preference calibration, draft comparisons, and revision choices into a
   decision packet before rewriting, simulating, or publishing.
@@ -126,6 +129,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
   boundary-sensitive prompts, and self-review packets.
+- `references/mcp-client-workflow.md` defines external AI client readiness,
+  tool availability checks, auth handling, idempotency, and stage gates for MCP
+  operations.
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.

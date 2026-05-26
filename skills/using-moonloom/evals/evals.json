@@ -429,6 +429,19 @@
         "The output does not route directly to broad rewriting, MCP tools, paid simulation, or publish readiness before the author decision is clear.",
         "The output treats author feedback as agent-conversation workflow, not comment storage, server validation, or extra MCP scopes."
       ]
+    },
+    {
+      "id": 34,
+      "prompt": "I am not sure which Moonloom skill to use. In Cursor, the LunaTalk Card Writer MCP tools are not visible and I need to check client setup, auth, tool availability, schemaVersion, idempotency, and whether I can safely create a private role. Do not print tokens.",
+      "expected_output": "Uses using-moonloom as the router and routes MCP readiness, external client setup, auth posture, tool availability, and idempotency planning to lunatalk-mcp-operator before card-author or mutating MCP actions.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes MCP readiness, client setup, auth status, tool availability, and idempotency planning to lunatalk-mcp-operator.",
+        "The output asks for or produces an MCP operation packet with configured server, auth status, required tools, missing tools, schemaVersion, idempotency plan, safe next operation, and Moonloom handoff.",
+        "The output does not print tokens, invent tools, or call mutating Card Writer MCP tools.",
+        "The output says draft-only writing can proceed without MCP, but private creation requires readiness before handoff to lunatalk-card-author."
+      ]
     }
   ]
 }

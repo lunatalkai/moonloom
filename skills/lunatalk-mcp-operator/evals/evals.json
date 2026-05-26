@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-mcp-operator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Cursor says the LunaTalk Card Writer MCP tools are not visible. I want to know what to check before creating a private role. Do not print my token.",
+      "expected_output": "Uses lunatalk-mcp-operator, checks client config, auth posture, tool availability, intended stage, and gives a safe readiness packet without printing credentials or creating a role.",
+      "files": [],
+      "expectations": [
+        "The output treats this as MCP readiness, not card authoring.",
+        "The operation packet includes client, configured server, auth status, tool availability, required tools, missing tools, schemaVersion, and handoff.",
+        "The output says not to print tokens or authorization headers.",
+        "The output does not call mutating Card Writer tools.",
+        "The output routes private creation to lunatalk-card-author only after readiness is clear."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The MCP is configured, but I only want to brainstorm and build a blueprint first. Do I need to fix auth before Moonloom can help?",
+      "expected_output": "Explains that draft-only Moonloom writing work does not require MCP auth yet, records MCP auth as deferred, and routes ideation/blueprint work to the relevant writing skill.",
+      "files": [],
+      "expectations": [
+        "The output does not block draft-only work on MCP auth.",
+        "The operation packet marks intended stage as draft-only or pre-MCP.",
+        "The output routes to premise-workshop, card-blueprint, collaboration, or another narrow writing skill.",
+        "The output says auth must be fixed before private creation, render, simulation, or publish.",
+        "The output does not invent tools or environment URLs."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Before simulation, verify what the agent should require. The card has not run validate_role yet, and simulation costs points.",
+      "expected_output": "Uses MCP stage-gating to require validate_role with no blockers and author cost acceptance before simulate_private_chat, then hands off to chat simulation.",
+      "files": [],
+      "expectations": [
+        "The output treats simulation as costed and requires author acceptance.",
+        "The output requires validate_role before simulate_private_chat.",
+        "The operation packet names simulate_private_chat as a required tool only for the simulation stage.",
+        "The output routes behavior testing to lunatalk-chat-simulation after prerequisites.",
+        "The output does not run simulation from the operator skill."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to submit the private card publicly from Claude Desktop. What MCP readiness and confirmation should be checked first?",
+      "expected_output": "Requires publish_submit availability, explicit author confirmation, publish readiness handoff, no credentials, and no direct publish action from the operator skill.",
+      "files": [],
+      "expectations": [
+        "The output identifies public submission as a public action.",
+        "The operation packet includes required publish_submit tool availability and missing-tool handling.",
+        "The output requires explicit author confirmation before publish_submit.",
+        "The output routes to lunatalk-publish-readiness before submission.",
+        "The output does not publish or create extra MCP scopes."
+      ]
+    }
+  ]
+}
