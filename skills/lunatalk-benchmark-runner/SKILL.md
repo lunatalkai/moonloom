@@ -14,6 +14,10 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
+`../../references/premise-workshop.md` when benchmarking early mood/trope/
+aesthetic brainstorming, "popular/top-tier" requests without a settled premise,
+or whether workflows route to `lunatalk-premise-workshop` before blueprinting.
+Read
 `../../references/quality-scorecard.md` when benchmarking craft scorecards,
 quality audit routing, top-tier checks, first-three repairs, or whether drafts
 should continue to authoring, render, simulation, or publish readiness. Read
@@ -87,6 +91,10 @@ Regression should include at least one synthetic fail case. Confirm through
 Moonloom self-review, render review, or simulation that:
 
 - `roleDesc` is too long to scan quickly.
+- a request has no settled role, player position, first scene, or primary
+  contract and only asks to open up a mood/trope/aesthetic cluster, but the
+  workflow jumps straight to field drafting, broad blueprinting, MCP tools, or
+  a single overloaded premise instead of producing a premise workshop packet.
 - a draft asks for a top-tier quality audit or scorecard, but the workflow jumps
   to publish readiness, simulation, or broad rewriting instead of producing a
   quality audit packet with blockers, scorecard, tier, and first three repairs.

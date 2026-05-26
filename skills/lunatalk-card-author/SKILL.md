@@ -13,6 +13,10 @@ is coherent and self-reviewed.
 ## Required references
 
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
+`../../references/premise-workshop.md` when the author has only a mood, trope,
+aesthetic cluster, "popular/top-tier" request, or no settled role/player
+position/first scene yet; use `lunatalk-premise-workshop` before broad
+blueprinting or authoring when directions need to be chosen first. Read
 `../../references/character-core-design.md` when the role idea is thin,
 trope-only, generic, or needs persona appeal repair. Read
 `../../references/relationship-engine.md` when the card is relationship-heavy,
@@ -99,6 +103,10 @@ benchmark creation, regression checks, or example-driven iteration.
    role creation, or patching an existing private role. Also capture role
    premise, relationship dynamic, play loop, tone, language, content rating
    intent, and success criteria.
+   If the author has no settled premise yet and only gives mood, trope,
+   aesthetic cluster, or asks to brainstorm/open directions before fields, use
+   `lunatalk-premise-workshop` first unless a premise workshop packet already
+   exists.
    If the author asks whether a draft, blueprint, packet stack, or role fields
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
@@ -148,9 +156,12 @@ benchmark creation, regression checks, or example-driven iteration.
    generator, daily-life, light-setting, heavy-setting, ensemble, or a hybrid,
    use `lunatalk-archetype-director` first unless an archetype packet already
    exists.
-2. If the brief is thin, brainstorm 2-3 sharply different playable directions
-   with the author before creating the card. Make the options differ by conflict,
-   player role, first scene, and long-term loop, not only by mood. Prefer
+2. If the brief is thin but still has no settled role, player position, first
+   scene, or primary contract, use or preserve `lunatalk-premise-workshop`
+   before blueprinting or authoring. If the brief is thin but already has a
+   chosen direction, preserve that direction and fill the narrow missing layer
+   instead of reopening broad alternatives, unless the author explicitly asks to
+   compare new directions. Prefer
    `lunatalk-character-core` when the author needs persona appeal, memorable
    identity, trope repair, relationship leverage, or desire/contradiction/
    boundary design before fields. Prefer `lunatalk-relationship-architect` when

@@ -1,0 +1,70 @@
+{
+  "skill_name": "lunatalk-premise-workshop",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I do not have a character yet. I only know I want a zh-Hant LunaTalk role card that feels cozy but eerie, lets the player choose how involved they become, and could be romance, mystery, daily-life, or light fantasy. I am not ready for fields or MCP calls. Help me open the idea up.",
+      "expected_output": "Produces a premise workshop packet with taste axes, exactly three contrasted playable directions, an involvement ladder, a recommendation, risk flags, and a narrow handoff without MCP calls or final fields.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-premise-workshop in pre-blueprint mode.",
+        "The output asks at most two high-leverage questions, or states assumptions and proceeds.",
+        "The packet includes taste axes and exactly three directions that differ by primary contract, player role, first scene, core loop, and risk.",
+        "The directions include an involvement ladder where distance or refusal can continue play.",
+        "The output recommends one direction and names the next Moonloom skill without calling MCP tools or drafting final role fields."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make me something like a top vampire card, but I do not have a premise and I do not want to copy anything. I need directions first, not fields.",
+      "expected_output": "Converts the top-card request into public craft goals, avoids platform or source-data claims, proposes three original vampire-adjacent playable directions, recommends one, and hands off to archetype or blueprint.",
+      "files": [],
+      "expectations": [
+        "The output treats 'top card' as craft goals such as promise, agency, character behavior, second-turn engine, token discipline, and testable handoff.",
+        "The output does not claim access to rankings, source cards, internal metrics, traffic, user behavior, or private examples.",
+        "The three directions are original and differ by player leverage, pressure, first scene, and long-term loop.",
+        "The recommendation explains why the chosen option is more playable than a generic vampire trope.",
+        "The output does not write final fields or call MCP tools."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want cyberpunk bakery, rain, ghosts, fake marriage, found family, a cursed delivery route, maybe an RPG inventory, and a gentle romance. I just need help deciding what this card should be before any blueprint.",
+      "expected_output": "Clusters the overloaded aesthetic list into taste axes, cuts or delays motifs that do not support the primary contract, proposes three playable directions, and recommends a focused next skill.",
+      "files": [],
+      "expectations": [
+        "The output recognizes this as premise workshop before blueprinting or authoring.",
+        "The output clusters motifs into axes instead of preserving every motif at equal priority.",
+        "Each direction has one primary contract and treats other genres as overlays or delayed ideas.",
+        "The recommendation includes rejected or delayed ideas and risk flags for overload, lore dump, forced romance, or fake system mechanics.",
+        "The handoff names archetype, daily-life, scenario, relationship, play-engine, or blueprint as the next narrow step."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I already chose the premise: a retired palace cartographer hides a living map from the player, who is the only person able to redraw forbidden streets. I need roleName, roleDesc, roleDetailDesc, roleWelcome, and token allocation now.",
+      "expected_output": "Routes away from premise workshop because the premise is settled and the user asks for fields, preserving the premise and handing off to lunatalk-card-author or blueprint/field assembly instead of broad brainstorming.",
+      "files": [],
+      "expectations": [
+        "The output does not re-open broad premise ideation when a concrete premise and player leverage already exist.",
+        "The output identifies field-ready drafting or card-author handoff as the correct route.",
+        "The output preserves the retired cartographer, living map, player leverage, and forbidden streets instead of replacing them with new directions.",
+        "The output does not call MCP tools unless the author explicitly asks to create or patch a real private role.",
+        "The output names any missing packet, such as archetype, token, opening, or presentation, only if needed before final fields."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I do not have a settled premise yet. I want an intense jealous immortal romance card, maybe power imbalance, maybe horror, but I need public-safe directions first and I do not want fields, MCP calls, render, or simulation yet.",
+      "expected_output": "Runs premise workshop without final fields or MCP calls, treats mature/intense material as boundary-sensitive design work, proposes three public-safe directions with risk flags, and hands off to lunatalk-boundary-designer before blueprinting or authoring.",
+      "files": [],
+      "expectations": [
+        "The output stays in lunatalk-premise-workshop because the premise is not settled yet.",
+        "The output flags jealous, immortal, power-imbalanced, horror-leaning, or intense romance as boundary-sensitive instead of treating intensity as only an aesthetic.",
+        "The directions keep player agency, refusal, pacing, and explicitness ceiling considerations visible without writing final role fields.",
+        "The handoff names lunatalk-boundary-designer or boundary-design before blueprinting, authoring, simulation, or publish readiness.",
+        "The output does not call MCP tools, render, simulate, publish, or make platform ranking/source-data claims."
+      ]
+    }
+  ]
+}

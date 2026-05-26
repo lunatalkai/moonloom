@@ -275,6 +275,19 @@
         "The report does not ask MCP validation or server gates to judge subjective quiet-card quality.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 22,
+      "prompt": "Create a negative regression check for an early ideation request that only gives mood and genre fragments, like cozy/eerie, maybe romance, maybe mystery, maybe light fantasy, but no settled role, player position, first scene, or primary card contract. The workflow jumps straight to fields or a single overloaded blueprint.",
+      "expected_output": "Treats missing premise workshop as a Moonloom workflow regression, checks the premise workshop packet, and recommends lunatalk-premise-workshop before blueprinting, authoring, MCP calls, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom workflow even if a single overloaded idea could become technically valid.",
+        "The report requires a premise workshop packet with taste axes, exactly three directions, involvement ladder, recommendation, rejected or delayed ideas, risk flags, next decisions, and handoff.",
+        "The proposed workflow uses lunatalk-premise-workshop before broad blueprinting, field drafting, MCP calls, render, simulation, or publish readiness.",
+        "The check rejects unsupported top-card, ranking, source-data, traffic, or private-example claims.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

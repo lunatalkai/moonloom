@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -79,6 +79,13 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   imbalanced, consent-sensitive, refusal, pacing, rating, or safer-version work:
   use `lunatalk-boundary-designer` before blueprinting, authoring, simulation, or
   publish readiness.
+- No settled premise yet, only mood, trope, aesthetic, genre cluster, "make this
+  popular/top-tier", "open this idea up", "brainstorm directions", or comparing
+  several possible card concepts before blueprinting: use
+  `lunatalk-premise-workshop` before `lunatalk-card-blueprint`,
+  `lunatalk-card-author`, MCP calls, render, simulation, or publishing. If the
+  author already has a concrete role, player position, first scene, and asks for
+  fields, route to `lunatalk-card-author` or the narrow missing packet instead.
 - Card type uncertainty, mixed archetypes, companion/story/RPG/system/generator
   ambiguity, hybrid cards, choosing the primary playable contract, field
   allocation by card type, or deciding which Moonloom skills to run before
@@ -159,10 +166,12 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   from world facts, or avoiding lore dumps: use `lunatalk-world-engineer` before
   blueprinting, authoring, opening, longplay, render review, simulation, or
   publish readiness.
-- Brainstorming, premise shaping, relationship design, voice design,
-  opening-scene planning, or turning a vague idea into a card-ready blueprint
-  after source material has been distilled: use
-  `lunatalk-card-blueprint`.
+- Card-ready blueprinting after a direction exists, premise shaping with enough
+  concrete seed to define character core, relationship design, voice design,
+  opening-scene planning, or turning a chosen idea into a card-ready blueprint
+  after source material or premise workshop has been distilled: use
+  `lunatalk-card-blueprint`. If the author only has a mood, trope, aesthetic, or
+  genre cluster and wants options first, use `lunatalk-premise-workshop`.
 - Prepared packet stacks, field-ready drafts, final role fields, or assembling
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
   tags, Theme V3 notes, token allocation, validation handoff, render handoff, or
@@ -231,6 +240,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/boundary-design.md` when working on mature, adult,
   horror-leaning, emotionally intense, consent-sensitive, refusal, pacing,
   rating, or safer-version design.
+- Read `../../references/premise-workshop.md` when the author has no settled
+  role-card premise yet and needs taste axes, contrasted directions, an
+  involvement ladder, recommendation, and pre-blueprint handoff.
 - Read `../../references/opening-design.md` when working on `roleWelcome`,
   opening scenes, first screen playability, first reply paths, second-turn moves,
   hollow welcomes, or overloaded setup screens.

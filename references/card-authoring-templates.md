@@ -11,6 +11,18 @@ Before calling mutating MCP tools, draft this packet:
 Card shape:
 Language:
 Content rating intent:
+Premise workshop packet:
+- current seed:
+- author taste signals:
+- assumptions:
+- questions asked:
+- taste axes:
+- selected direction:
+- involvement ladder:
+- recommendation:
+- risk flags:
+- next decisions to lock:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
@@ -117,6 +129,7 @@ Archetype packet:
   - talkExample:
   - XMLV3 / Theme V3:
 - required packets:
+  - premise workshop:
   - quality audit:
   - card series:
   - card diagnosis:
@@ -465,6 +478,7 @@ Route:
 - visibility target: private draft | private role | public submission later
 
 Inputs preserved:
+- premise workshop packet:
 - quality audit packet:
 - archetype packet:
 - character-core packet:

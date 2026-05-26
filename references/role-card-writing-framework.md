@@ -204,6 +204,15 @@ Use this stack when the author asks for a card that should feel competitive with
 strong public cards. The goal is not longer prose. The goal is a card that can
 generate a better second turn than the first.
 
+### 0. Premise workshop
+
+If the author only has a mood, trope, aesthetic cluster, or broad taste request,
+do not rush into fields. Use `premise-workshop.md` to create taste axes, three
+contrasted directions, an involvement ladder, risk flags, and a handoff target.
+
+Premise workshop should converge. It opens options, then recommends one
+playable direction before blueprinting.
+
 ### 1. Tension triangle
 
 Every strong card needs three active forces:

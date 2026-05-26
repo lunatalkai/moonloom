@@ -23,6 +23,30 @@ or the Card Writer MCP:
 Do not treat the text below as card content to copy. Each run should produce a
 fresh original card.
 
+## Brief 0: Premise Workshop
+
+Goal: Test the earliest ideation stage before blueprinting.
+
+Author prompt:
+
+```text
+I do not have a character yet. I want a LunaTalk card that feels warm but
+unsettling, maybe about neighbors, maybe ghosts, maybe romance, maybe mystery,
+maybe light fantasy. I need directions first, not fields or MCP calls.
+```
+
+Quality checks:
+
+- The workflow routes to `lunatalk-premise-workshop` before blueprinting or
+  authoring.
+- The output has taste axes and exactly three contrasted playable directions.
+- Each direction differs by primary contract, player role, first scene, core
+  loop, and risk.
+- The packet includes an involvement ladder, recommendation, rejected or delayed
+  ideas, next decisions, and handoff target.
+- The output makes no ranking, source-data, internal-example, or performance
+  claims.
+
 ## Brief 1: Quiet Relationship Tension
 
 Goal: Create a companion/relationship card with strong emotional immediacy.

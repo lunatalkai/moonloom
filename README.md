@@ -61,14 +61,17 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-card-doctor` diagnoses existing cards, drafts, validation
   results, render reports, simulation symptoms, or author feedback before
   choosing a repair order or rewriting fields.
-- `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
-  relationship seeds into card-ready blueprints before MCP creation.
+- `skills/lunatalk-card-blueprint` turns chosen directions, packet stacks,
+  settings, and relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
   material packs, drafts, and large world bibles into source-to-play maps before
   blueprinting or authoring.
 - `skills/lunatalk-boundary-designer` turns mature, intense, horror-leaning, or
   consent-sensitive premises into boundary packets before blueprinting,
   authoring, simulation, or publish readiness.
+- `skills/lunatalk-premise-workshop` turns early mood, trope, aesthetic, genre
+  clusters, and "open this idea up" requests into contrasted playable directions
+  before blueprinting or authoring.
 - `skills/lunatalk-opening-director` turns greeting-only, hollow, or overloaded
   welcomes into opening packets with first reply paths and second-turn moves.
 - `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
@@ -115,6 +118,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/boundary-design.md` defines rating intent, explicitness ceilings,
   player agency contracts, escalation ladders, refusal behavior, safer fallbacks,
   first-scene guardrails, and probes for boundary-sensitive cards.
+- `references/premise-workshop.md` defines early taste-to-direction workshops,
+  contrast axes, involvement ladders, pressure tests, and pre-blueprint handoff
+  packets.
 - `references/opening-design.md` defines five-beat opening design, opening
   packets, first reply paths, second-turn moves, XMLV3 scaffolds, and opening
   failure repairs.
