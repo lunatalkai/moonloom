@@ -174,6 +174,8 @@ real private card:
    and how the next hook renews.
 5. `roleWelcome` gives a clear first action path through choices, a direct
    question, or an explicit "you can..." affordance.
+6. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+   detail, welcome, and examples.
 
 Validation warnings usually mean the card is still below publish-grade quality.
 Patch the card, then re-run validation before render or simulation.
@@ -189,8 +191,10 @@ When `validate_role` returns `qualityDimensions`, repair the card in this order:
 4. `agency`: make the first reply path obvious.
 5. `playerAgency`: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-6. `archetype`: satisfy the chosen card type rather than writing a generic card.
-7. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
+6. `languageStyle`: rewrite Simplified Chinese terms into Traditional Chinese
+   while preserving names, tone, and XMLV3 tags.
+7. `archetype`: satisfy the chosen card type rather than writing a generic card.
+8. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
 
 Do not treat a single high total score as enough. A card with weak agency or weak

@@ -36,6 +36,8 @@ Regression should include at least one synthetic fail case. Confirm that
 `validate_role` warns when:
 
 - `roleDesc` is too long to scan quickly.
+- a `zh-Hant` card mixes Simplified Chinese into profile, detail, welcome, or
+  examples.
 - the opening is generic despite having a question.
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator

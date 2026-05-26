@@ -16,7 +16,8 @@ the shorter pass/fail rubric.
   speaking style, boundaries, and important world context.
 - The role can respond consistently without relying on hidden assumptions.
 - The author-facing language matches the user's request. Use Traditional Chinese
-  when the author writes in Traditional Chinese or asks for it.
+  when the author writes in Traditional Chinese or asks for it. Do not mix
+  Simplified Chinese terms into `zh-Hant` card fields.
 
 ## MCP quality warnings
 
@@ -31,6 +32,8 @@ explicitly chooses a tradeoff:
 - `agency`: make the first user response path obvious.
 - `playerAgency`: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
+- `languageStyle`: rewrite mixed Simplified Chinese terms into Traditional
+  Chinese while preserving character names, tone, and XMLV3 tags.
 - `tokenEfficiency`: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
 - `archetype`: satisfy the card type's contract. Companion needs relationship
@@ -54,6 +57,8 @@ explicitly chooses a tradeoff:
   the player's decisions, feelings, or consent.
 - Generic opening: replace "Hello, I am X, what do you want to do?" with location,
   role action, pressure, player implication, and a specific reply path.
+- Language mismatch: for `zh-Hant` cards, rewrite profile, detail, welcome, and
+  examples into Traditional Chinese before render or simulation.
 
 ## Token budget review
 
