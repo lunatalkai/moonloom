@@ -24,6 +24,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   factions, locations, and lore-heavy settings into playable world-engine packets.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
+- `skills/lunatalk-agency-designer` turns spectator openings, decorative choices,
+  route funneling, and player-agency takeover into agency packets.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
@@ -67,6 +69,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/voice-calibration.md` defines executable voice cards,
   micro-samples, ensemble contrast checks, and blind-line tests for consistent
   character voice.
+- `references/agency-design.md` defines player insertion space, reply-path
+  matrices, agency guardrails, consequence checks, and interaction hooks.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.

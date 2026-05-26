@@ -78,6 +78,19 @@
         "The output includes blind-line or pressure tests as evidence before another paid run.",
         "The output recommends another simulation only after the author accepts normal billing."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "The simulation transcript shows the player refusing the role's plan, but the role narrates that the player follows anyway and all choices return to the same scene. Diagnose before another paid run.",
+      "expected_output": "Treats forced compliance and route funneling as a Moonloom agency failure, routes repair to lunatalk-agency-designer, patches user insertion space, reply paths, and consequence checks before another costed simulation.",
+      "files": [],
+      "expectations": [
+        "The diagnosis identifies player agency takeover, ignored refusal, and route funneling.",
+        "The recommended repair uses lunatalk-agency-designer or agency-design.md before another simulation.",
+        "The patch targets roleDetailDesc and roleWelcome agency rules, reply-path matrix, and consequence checks rather than MCP validation logic.",
+        "The output preserves pressure while making refusal, questioning, redirecting, and cooperation create distinct responses.",
+        "The output recommends another simulation only after the author accepts normal billing."
+      ]
     }
   ]
 }

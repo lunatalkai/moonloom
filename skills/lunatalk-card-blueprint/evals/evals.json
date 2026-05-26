@@ -65,6 +65,19 @@
         "The self-review includes voice calibration or blind-line risk.",
         "The token plan explains what to cut if voice calibration makes the card too long."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "I have a strong premise, but every version makes the player a spectator. Before creating the card, design player insertion space and interaction hooks so choices matter.",
+      "expected_output": "Uses lunatalk-agency-designer or agency-design before field drafting, then produces a blueprint with agency packet, reply-path matrix, consequence checks, and handoff readiness without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes the agency problem to lunatalk-agency-designer or agency-design.md before broad authoring.",
+        "The agency packet defines player insertion space, interaction hooks, guardrails, reply-path matrix, and consequence checks.",
+        "The player can accept, question, refuse, redirect, test, or escalate with distinct consequences.",
+        "The blueprint states what the card must not decide for the player.",
+        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+      ]
     }
   ]
 }

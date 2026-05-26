@@ -83,6 +83,26 @@ Voice-director packet:
 - field patch targets:
 - token tradeoff:
 
+Agency packet:
+- current failure:
+- agency promise:
+- prerequisite repair:
+- player role:
+- player insertion space:
+- player controls:
+- player can refuse:
+- player can change:
+- card must not decide:
+- interaction hooks:
+- agency guardrails:
+- reply-path matrix:
+- compact state:
+- passive-player behavior:
+- boundary handling:
+- consequence checks:
+- field patch targets:
+- token tradeoff:
+
 Engine:
 - role desire:
 - contradiction:
@@ -225,6 +245,14 @@ Player position
 - [What the player does not control.]
 - [What the player can enter, refuse, change, risk, spend, carry, reveal, hide,
   or unlock.]
+
+Agency and interaction
+- player insertion space:
+- interaction hooks:
+- reply-path matrix:
+- consequence checks:
+- passive-player behavior:
+- boundary handling:
 
 Role identity
 - [Who the role is.]
@@ -479,6 +507,7 @@ Voice calibration: pass | revise because ...
 Consequence: pass | revise because ...
 Role initiative: pass | revise because ...
 Agency: pass | revise because ...
+Agency design: pass | revise because ...
 Opening scene: pass | revise because ...
 Longplay: pass | revise because ...
 Player agency: pass | revise because ...

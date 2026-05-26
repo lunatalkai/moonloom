@@ -39,6 +39,19 @@
         "The second-turn move updates trust, risk, route, or cast conflict.",
         "The handoff says whether authoring or simulation is next."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "The welcome is beautiful, but it tells the player they blush, obey, and follow the role into the next room. The choices are only mood labels. Fix the first screen.",
+      "expected_output": "Routes the agency failure through lunatalk-agency-designer or agency-design, then produces an opening packet with player insertion space, concrete reply paths, and second-turn consequences.",
+      "files": [],
+      "expectations": [
+        "The output identifies player-feeling narration, forced action, and decorative choices as agency failures.",
+        "The repair uses or preserves an agency packet before polishing the welcome.",
+        "The welcome draft leaves identity, emotion, intention, method, and boundary choices to the player.",
+        "The reply paths change response, information, relationship, state, risk, route, or next hook.",
+        "The output does not call mutating MCP tools."
+      ]
     }
   ]
 }

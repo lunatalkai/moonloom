@@ -75,6 +75,11 @@ explicitly chooses a tradeoff:
   ensemble contrast, create a voice-director packet before field drafting or
   publish readiness.
 - Consequence: define what player choices change and how the next hook renews.
+- Agency designer: when the player can only watch, choices are decorative, routes
+  funnel, or the role decides the player's feelings/actions, create an agency
+  packet with player insertion space, interaction hooks, reply paths,
+  guardrails, consequence checks, and field patch targets before field drafting
+  or publish readiness.
 - Longplay: use a longplay packet when the card repeats after the opening;
   preserve continuity spine, state model, route seeds, memory, role initiative,
   and continuation probes.
@@ -152,6 +157,9 @@ explicitly chooses a tradeoff:
   the role reacts, complicates, reveals, updates state, or renews pressure.
 - Player agency takeover: the role can pressure or invite, but it must not narrate
   the player's decisions, feelings, or consent.
+- Decorative choices / route funneling: choices must change information, access,
+  relationship, risk, state, or the next role move. Use a reply-path matrix and
+  consequence checks before adding prettier UI or more exposition.
 - Missing boundary packet: for mature, adult, horror-leaning, jealous, or power-
   imbalanced cards, define explicitness ceiling, allowed pressure tools,
   escalation gates, slowdown signals, stop conditions, and safer fallback before

@@ -27,6 +27,10 @@ Read `../../references/opening-design.md` when planning `roleWelcome`, first
 screen playability, first reply paths, or second-turn moves. Read
 `../../references/longplay-design.md` when planning replayability, route seeds,
 memory/state, progression, long-session behavior, or dead third-turn repair. Read
+`../../references/agency-design.md` when the player can only watch, choices are
+decorative, the card decides the player's feelings/actions, or reply paths do not
+change consequences. Use `lunatalk-agency-designer` first when agency repair is
+the primary task. Read
 `../../references/quality-rubric.md` for the self-review checklist. Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
 horror-leaning, or boundary-sensitive. Read
@@ -63,6 +67,9 @@ creation, validation, render review, simulation, and publishing workflow.
    what changes when the player gets closer or pushes back.
 7. Define the player insertion space: what the player controls, what they can
    refuse, what they can change, and what the card must not decide for them.
+   If the weak layer is player agency, spectator play, decorative choices, route
+   funneling, player-feeling narration, or missing refusal routes, use
+   `lunatalk-agency-designer` first or preserve its packet.
 8. If the weak layer is worldbuilding, relationship networks, factions,
    locations, or lore-dump repair, use `lunatalk-world-engineer` first or
    preserve its packet. Define the world or relationship engine only as far as it
@@ -123,7 +130,32 @@ Player insertion:
 - player role:
 - player controls:
 - player can refuse:
+- player can change:
 - the card must not decide:
+- interaction hooks:
+- agency guardrails:
+- reply-path matrix:
+- consequence checks:
+
+Agency packet:
+- current failure:
+- agency promise:
+- prerequisite repair:
+- player role:
+- player insertion space:
+- player controls:
+- player can refuse:
+- player can change:
+- card must not decide:
+- interaction hooks:
+- agency guardrails:
+- reply-path matrix:
+- compact state:
+- passive-player behavior:
+- boundary handling:
+- consequence checks:
+- field patch targets:
+- token tradeoff:
 
 Boundary packet:
 - rating intent:
@@ -267,6 +299,10 @@ Handoff:
   summarize away rhythm, vocabulary, emotional tells, refusal style,
   response-mode grid, talkExample decision, blind-line test, pressure probes, or
   token tradeoff.
+- Preserve any agency packet from `lunatalk-agency-designer`; do not summarize
+  away player insertion space, player controls/refusals/changes, agency
+  guardrails, reply-path matrix, consequence checks, compact state,
+  passive-player behavior, boundary handling, or token tradeoff.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
@@ -274,8 +310,8 @@ Handoff:
   agency boundaries. For boundary-sensitive cards, produce or preserve a
   boundary packet with rating intent, explicitness ceiling, escalation ladder,
   refusal behavior, stop conditions, and safer fallback.
-- Keep the output original and public-safe. Do not copy unprovided source text or
-  make unsupported provenance claims.
+- Keep the output original and public-safe. Do not copy unprovided material or
+  make unsupported origin claims.
 - Prefer compact, executable rules over ornamental prose.
 - When voice calibration is relevant, include an explicit `voice calibration`
   self-review line covering voice cards, micro-sample need, and blind-line risk.
@@ -285,6 +321,9 @@ Handoff:
 - If the idea is generic, use `lunatalk-character-core` or add a player-specific
   leverage point, contradiction, and pressure behavior before field drafting.
 - If the first scene is passive, add role action and external pressure.
+- If the player can only watch, choices do not matter, or the card decides the
+  player's feelings/actions, use `lunatalk-agency-designer` before opening or
+  longplay repair.
 - If the role voice is generic, replace mood labels with sentence rhythm,
   vocabulary, tells, and avoided phrasing. Use `lunatalk-voice-director` when
   voice is the main requested repair.

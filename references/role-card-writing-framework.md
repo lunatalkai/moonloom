@@ -223,7 +223,31 @@ Minimum packet:
 If a card starts with calendars, factions, history, species, magic schools, or
 proper nouns, repair the world engine before adding more lore.
 
-### 4. Second-turn engine
+### 4. Player agency / insertion space
+
+Agency is not the same as adding choices. The player needs room to decide
+identity, emotion, intention, method, boundary, or route without the role taking
+those decisions away.
+
+Use `agency-design.md` when the player can only watch, choices are decorative,
+routes funnel, the welcome narrates what the player feels or does, or the role
+overrides refusal.
+
+Minimum packet:
+
+- agency promise: what the player can affect
+- player insertion space: identity, emotion, intention, method, and boundary
+  left open for the player
+- interaction hooks: knowledge, access, resource, relationship, interpretation,
+  boundary, or change authority
+- reply-path matrix: accept, question, refuse, redirect, test, or escalate, with
+  a distinct role response for each
+- consequence checks: what changes in state, access, relationship, risk, or next
+  hook
+- card must not decide: feelings, consent, commitments, actions, or route choice
+  that belong to the player
+
+### 5. Second-turn engine
 
 Design the first two turns together:
 
@@ -238,7 +262,7 @@ Before rendering, write one likely first user message and the role's intended
 second-turn move. If the second turn only restates setup, the card needs stronger
 consequence or role initiative.
 
-### 5. State economy
+### 6. State economy
 
 Track only state that changes play. Good state is compact, visible when useful,
 and tied to consequences.
@@ -253,7 +277,7 @@ Useful state types:
 Avoid decorative state that never updates. A state panel that does not affect
 future turns wastes tokens and attention.
 
-### 6. Voice fingerprint
+### 7. Voice fingerprint
 
 Voice should be executable without relying on vague adjectives. Define:
 
@@ -279,7 +303,7 @@ voice promise, rhythm, vocabulary, emotional tells, refusal style, catchphrase
 policy, response-mode grid, talkExample decision, blind-line test, pressure
 probes, field patch targets, and token tradeoff.
 
-### 7. Route seeds
+### 8. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.
 Most cards need 2-4 route seeds:
@@ -292,7 +316,7 @@ Most cards need 2-4 route seeds:
 Each route seed should have a cost or tradeoff. Choices without cost feel like a
 menu; choices with cost create memory.
 
-### 8. Token tradeoff ladder
+### 9. Token tradeoff ladder
 
 Spend tokens in this order:
 
@@ -307,7 +331,7 @@ When forced to shorten, preserve desire, contradiction, boundary, world rule,
 state, route costs, voice, and consequence first. Cut repeated lore, synonym
 lists, ornamental CSS, and NPC catalogs that do not affect the next few turns.
 
-### 9. Visual affordance
+### 10. Visual affordance
 
 Visual design should answer at least one of these:
 
@@ -319,7 +343,7 @@ Visual design should answer at least one of these:
 If XMLV3/Theme V3 looks good but does not clarify action, state, or atmosphere,
 compress it and spend the saved tokens on the engine.
 
-### 10. Material distillation
+### 11. Material distillation
 
 When an author provides notes, files, drafts, or a large world bible, do not turn
 the source into a long summary. First create a source-to-play map:
@@ -333,7 +357,7 @@ the source into a long summary. First create a source-to-play map:
 Use `material-distillation.md` before blueprinting or authoring if the agent
 would otherwise need to read a large source pack while drafting.
 
-### 11. Boundary design
+### 12. Boundary design
 
 When a card is mature, adult, emotionally intense, horror-leaning, jealous,
 power-imbalanced, or consent-sensitive, create a boundary packet before writing
@@ -349,7 +373,7 @@ the provocative parts:
 Use `boundary-design.md` before blueprinting or authoring when intensity could
 otherwise become player-agency takeover or vague disclaimers.
 
-### 12. Opening direction
+### 13. Opening direction
 
 When the current task is mostly about `roleWelcome`, treat it as a first-turn
 design problem before rewriting the whole card. Use an opening packet:
@@ -368,7 +392,7 @@ no scene, an ensemble roll call, or a pretty first screen with no next move.
 The repair should make the first screen playable and the second turn stronger;
 it should not add more exposition to a weak greeting.
 
-### 13. Longplay design
+### 14. Longplay design
 
 When the opening works but the card dies after a few turns, treat it as a
 longplay problem before adding more lore or sample dialogue. Use a longplay
@@ -435,22 +459,25 @@ Repair the card in this order during Moonloom self-review:
 6. Consequence: define what changes when the player acts.
 7. Role initiative: add proactive turn rules for passive or stalled player input.
 8. Agency: make the first reply path obvious.
-9. Opening scene: add location, time, sensory detail, role beat, pressure, and
+9. Agency design: when the player can only watch, choices are decorative, routes
+   funnel, or the card narrates player feelings/actions, create or preserve an
+   agency packet before opening or longplay repair.
+10. Opening scene: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-10. Opening direction: create or preserve an opening packet with first reply
+11. Opening direction: create or preserve an opening packet with first reply
    paths, expected first user message, second-turn move, and token tradeoff.
-11. Longplay: create or preserve a longplay packet with continuity spine, state,
+12. Longplay: create or preserve a longplay packet with continuity spine, state,
    route seeds, memory, role initiative, and continuation probes.
-12. Player agency: remove rules that decide the player's actions, feelings,
+13. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-13. Language style: rewrite Simplified Chinese terms into Traditional Chinese
+14. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-14. Archetype: satisfy the chosen card type rather than writing a generic card.
-15. Token efficiency: move reusable visual or rule structure out of welcome when
+15. Archetype: satisfy the chosen card type rather than writing a generic card.
+16. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
-16. Material distillation: convert notes, files, or world bibles into a playable
+17. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
-17. Boundary design: convert mature, intense, horror, jealous, or power-
+18. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
 

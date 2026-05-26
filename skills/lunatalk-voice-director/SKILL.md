@@ -136,8 +136,8 @@ Self-review:
   player leverage.
 - For Traditional Chinese cards, keep voice guidance, samples, and field targets
   consistently Traditional Chinese unless the author asks otherwise.
-- Keep the output original and public-safe. Do not copy unprovided source text or
-  make unsupported provenance claims.
+- Keep the output original and public-safe. Do not copy unprovided material or
+  make unsupported origin claims.
 
 ## Handoff
 

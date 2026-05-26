@@ -52,6 +52,19 @@
         "The output recommends simulation after the writing repair or an explicit cost-aware skip.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "This role passes validation and preview, but the welcome decides what the player feels and the choices all lead to the same outcome. Can we submit it?",
+      "expected_output": "Does not publish; treats player-agency takeover and route funneling as Moonloom readiness failures, recommends lunatalk-agency-designer repair, simulation or explicit skip after patch, and does not call publish_submit.",
+      "files": [],
+      "expectations": [
+        "The output says validation and preview are not enough when player agency fails.",
+        "The output routes repair to lunatalk-agency-designer or agency-design before publish readiness.",
+        "The repair checks player insertion space, reply-path matrix, guardrails, and consequence checks.",
+        "The output recommends simulation after the writing repair or an explicit cost-aware skip.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

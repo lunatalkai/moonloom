@@ -156,6 +156,19 @@
         "The output says no mutating MCP tools should run during voice design.",
         "The output treats voice quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 13,
+      "prompt": "I am not sure which Moonloom skill to use. My card has a strong premise and pretty opening, but the player can only watch. The welcome narrates what the player feels, choices are decorative, the role decides the player follows along, and every route funnels back to the same scene.",
+      "expected_output": "Uses using-moonloom as the router, routes player agency and interaction repair to lunatalk-agency-designer first, then hands off to opening, longplay, blueprint, or authoring after the agency packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes player agency, spectator play, decorative choices, and route funneling to lunatalk-agency-designer before opening or longplay repair.",
+        "The route focuses on player insertion space, agency guardrails, reply-path matrix, interaction hooks, consequence checks, and field patch targets.",
+        "The output says no mutating MCP tools should run during agency design.",
+        "The output treats agency quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }
