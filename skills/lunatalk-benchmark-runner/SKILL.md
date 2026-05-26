@@ -16,6 +16,9 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/quality-rubric.md` for pass/fail criteria. Read
 `../../references/character-core-design.md` when benchmarking generic persona,
 trope repair, ensemble identity, or character appeal. Read
+`../../references/world-engine-design.md` when benchmarking worldbuilding,
+relationship networks, factions, locations, lore-heavy settings, or lore-dump
+repair. Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
@@ -71,6 +74,9 @@ Moonloom self-review, render review, or simulation that:
   intake/output/revision loop.
 - a quiet daily-life card has mood but no small playable desire or progression.
 - a lore-rich card has many proper nouns but no immediate action surface.
+- a world-heavy card has factions, locations, calendars, systems, or history but
+  no world-engine packet, player position, compact state, route costs, or
+  exposition policy.
 - a material-heavy card copies or summarizes source material without converting it
   into player role, first scene, state, consequence, and route seeds.
 - an ensemble card introduces cast members without distinct motives, voice, or

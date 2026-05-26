@@ -14,6 +14,9 @@ Read `../../references/card-writer-mcp.md` for `publish_submit` details.
 Read `../../references/quality-rubric.md` for readiness criteria.
 Read `../../references/character-core-design.md` when the role still feels
 trope-only, generic, passive, or lacks player leverage.
+Read `../../references/world-engine-design.md` when the card has lore-heavy
+worldbuilding, decorative factions/locations, unclear player position, or weak
+world-state consequences.
 Read `../../references/role-card-writing-framework.md` if the card has not already
 been checked for playable loop, anchors, consequences, and token efficiency.
 Read `../../references/safety-and-cost.md` for public action constraints. Read
@@ -34,6 +37,10 @@ plan.
 5. Check the card against PACT: playable, anchored, consequential, token-efficient.
    If the role is trope-only, mood-only, passive, or has no player leverage,
    repair it with `lunatalk-character-core` before treating the card as ready.
+   If the setting is lore-heavy but cannot name player position, core world rule,
+   faction/location play functions, compact state, route costs, or exposition
+   policy, repair it with `lunatalk-world-engineer` before treating the card as
+   ready.
    If the welcome is greeting-only, hollow, or a long setup with no first action,
    repair it with `lunatalk-opening-director` before treating the card as ready.
    If the card repeats after the first scene or cannot name route/state/memory

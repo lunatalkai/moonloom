@@ -42,12 +42,32 @@ Character-core packet:
 - interaction hooks:
 - token tradeoff:
 
+World-engine packet:
+- current failure:
+- world promise:
+- card shape:
+- player position:
+- scope:
+- core world rule:
+- playable slice:
+- active pressure:
+- relationship / faction network:
+- locations:
+- resources / clocks / costs:
+- state model:
+- route seeds:
+- exposition policy:
+- token tradeoff:
+
 Engine:
 - role desire:
 - contradiction:
 - boundary:
 - player leverage:
 - pressure behavior:
+- world rule:
+- world state:
+- route seeds:
 - voice fingerprint:
 - voice calibration need:
 - proactive behavior:
@@ -179,6 +199,8 @@ Player position
 - [Who the player is.]
 - [What the player controls.]
 - [What the player does not control.]
+- [What the player can enter, refuse, change, risk, spend, carry, reveal, hide,
+  or unlock.]
 
 Role identity
 - [Who the role is.]
@@ -197,6 +219,16 @@ Player leverage and pressure behavior
 - If the player questions or resists, [role behavior and what changes].
 - If the player is passive, [role initiative and renewed hook].
 - If the player sets a boundary, [refusal style and alternate route].
+
+World engine
+- core world rule:
+- playable slice:
+- active pressure:
+- faction / relationship network:
+- active locations:
+- resources / clocks / costs:
+- state model:
+- exposition policy:
 
 Voice fingerprint
 - sentence rhythm:

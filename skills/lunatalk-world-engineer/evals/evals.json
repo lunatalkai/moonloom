@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-world-engineer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a heavy-setting LunaTalk card: a city where every district runs on a different calendar. Build the world and relationship engine without turning it into a lore dump.",
+      "expected_output": "Produces a world-engine packet with player position, core world rule, faction network, locations, compact state model, route seeds, exposition policy, opening implications, token tradeoff, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-world-engineer or uses world-engine-design.md.",
+        "The core world rule creates choices, costs, routes, or consequences rather than only atmosphere.",
+        "Each faction or location has a play function, player leverage, pressure, cost, or return hook.",
+        "The packet includes a compact state model and 2-4 route seeds with costs and memory.",
+        "The output avoids mutating MCP tools and keeps the opening from introducing the full lore list."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have a cozy seaside town idea with a lighthouse, market, ghost stories, and neighbors, but it feels bland. Make it playable as a light-setting card without overbuilding.",
+      "expected_output": "Builds a light-setting world engine with one core rule, one main location, small relationship network, ordinary pressure, state, route hooks, opening implications, and token discipline.",
+      "files": [],
+      "expectations": [
+        "The output chooses light-setting scope instead of bloating the card into a heavy world.",
+        "The world rule and town details create small player actions, trust shifts, routines, or consequences.",
+        "The relationship network has wants, pressure moves, and player leverage rather than only neighbor descriptions.",
+        "The packet names what lore to keep, delay, or cut.",
+        "The output hands off to blueprint or authoring without writing a full card."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My RPG academy has ten houses, twenty spell types, five currencies, and too many NPCs. Turn the setting into a playable card engine the AI can track.",
+      "expected_output": "Compresses the RPG/open-world setting into modules, compact state, active locations, faction roles, route seeds, failure pressure, update rules, and token tradeoff.",
+      "files": [],
+      "expectations": [
+        "The output identifies oversized lore and decorative stats as the failure.",
+        "The packet keeps only state that changes access, behavior, risk, route, or cost.",
+        "The setting modules are organized by play function rather than encyclopedia category.",
+        "The route seeds include trigger, world pressure, player leverage, unlock, cost, memory, and renewed hook.",
+        "The repair cuts lore, names, or currencies before cutting agency, consequence, state, or route pressure."
+      ]
+    }
+  ]
+}

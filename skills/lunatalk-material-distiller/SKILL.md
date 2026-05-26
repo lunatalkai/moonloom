@@ -46,8 +46,11 @@ playable shape.
    voice, turn behavior, and progression.
 8. Mark material as keep, delay, cut, merge, rename, or assumption.
 9. Produce a source-to-play map and token plan.
-10. Hand off to `lunatalk-card-blueprint` when the concept still needs ideation,
-    or to `lunatalk-card-author` when the role fields can be drafted directly.
+10. Hand off to `lunatalk-world-engineer` when the distilled material is still a
+    world or relationship network that needs playable rules, state, routes, or
+    lore-dump repair. Hand off to `lunatalk-card-blueprint` when the concept
+    still needs broader ideation, or to `lunatalk-card-author` when the role
+    fields can be drafted directly.
 
 ## Output format
 
@@ -113,8 +116,8 @@ Handoff:
 
 ## Repair heuristics
 
-- If the output feels like a lore summary, add player role, first-scene pressure,
-  and route costs.
+- If the output feels like a lore summary, hand off to `lunatalk-world-engineer`
+  or add player role, first-scene pressure, and route costs.
 - If the output keeps too many proper nouns, merge locations or factions by play
   function.
 - If the first scene is missing, choose the source moment with the clearest timer,

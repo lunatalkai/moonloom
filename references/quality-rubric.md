@@ -11,6 +11,9 @@ the shorter pass/fail rubric.
 - The role has a clear premise, relationship dynamic, and first playable scene.
 - The role has a memorable character core: desire, contradiction, boundary,
   player leverage, and pressure behavior that are visible in play.
+- If the card has a setting, the world rule creates player choices,
+  consequences, compact state, route seeds, and relationship or faction pressure
+  rather than only lore.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
@@ -58,6 +61,10 @@ explicitly chooses a tradeoff:
   create a character-core packet with appeal promise, player leverage,
   relationship asymmetry, pressure behavior, and interaction hooks before field
   drafting.
+- World engine: if factions, locations, calendars, magic systems, academies,
+  towns, factions, or histories do not create player action and consequences,
+  create a world-engine packet with player position, core world rule, compact
+  state, route seeds, exposition policy, and token tradeoff.
 - Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
 - Voice calibration: for voice-heavy or ensemble cards, add voice cards,
@@ -123,6 +130,11 @@ explicitly chooses a tradeoff:
 - Source dump: if roleDetailDesc reads like a lore digest, rewrite it into a
   source-to-play map: player role, first-scene pressure, durable rules, compact
   state, route seeds, and what to delay or cut.
+- Lore-heavy world with no engine: rewrite it into a world-engine packet. Every
+  faction, location, rule, and resource should change access, behavior, risk,
+  route, cost, or relationship pressure.
+- Decorative factions or places: cut, merge, or give each node a want, player
+  leverage, cost to help, pressure move, and route use.
 - Missing role initiative: add proactive turn rules. The role should know what to
   ask, reveal, escalate, or offer next instead of waiting for the player to carry
   every beat.

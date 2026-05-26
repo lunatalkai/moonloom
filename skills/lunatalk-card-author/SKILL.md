@@ -13,6 +13,9 @@ into a private LunaTalk role card using the Card Writer MCP.
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 `../../references/character-core-design.md` when the role idea is thin,
 trope-only, generic, or needs persona appeal repair. Read
+`../../references/world-engine-design.md` when the card needs worldbuilding,
+relationship networks, factions, locations, lore-heavy settings, or lore-dump
+repair. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/safety-and-cost.md` when content
@@ -50,9 +53,12 @@ benchmark creation, regression checks, or example-driven iteration.
    player role, first scene, and long-term loop, not only by mood. Prefer
    `lunatalk-character-core` when the author needs persona appeal, memorable
    identity, trope repair, relationship leverage, or desire/contradiction/
-   boundary design before fields. Prefer `lunatalk-card-blueprint` when the
-   author needs broader ideation, worldbuilding, relationship design, voice
-   design, or opening-scene planning before a real role is created.
+   boundary design before fields. Prefer `lunatalk-world-engineer` when the
+   author needs worldbuilding, relationship networks, factions, locations, lore
+   compression, or a world rule that creates play. Prefer
+   `lunatalk-card-blueprint` when the author needs broader ideation,
+   relationship design, voice design, or opening-scene planning before a real
+   role is created.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
@@ -132,12 +138,18 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the character-core packet when one exists: appeal promise, desire,
   contradiction, boundary, mask/wound, player leverage, relationship asymmetry,
   pressure behavior, interaction hooks, and token tradeoff.
+- Preserve the world-engine packet when one exists: world promise, player
+  position, core world rule, faction/location play functions, state model, route
+  seeds, exposition policy, and token tradeoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
+- For world-heavy cards, detail should carry the world engine: player position,
+  core rule, faction/location play functions, compact state, route seeds,
+  exposition policy, and what to delay or cut.
 - For persona-driven cards, the detail should make the role's engine legible:
   what the role wants, what blocks that desire, what they will not do, and what
   changes when the player pushes closer or pulls away.
@@ -192,6 +204,8 @@ MCP tools make the card real; Moonloom makes the card good.
   setup/state/choices; daily-life needs a small playable desire; heavy-setting
   needs modular lore that creates action; ensemble needs distinct motives, voices,
   and turn ownership.
+- If a heavy-setting, RPG, scenario, or light-setting card starts to read like a
+  lore digest, call `lunatalk-world-engineer` before adding more names or history.
 - For mature, intense, or sensitive premises, make the intended rating, pacing,
   taboo, refusal style, player agency boundary, and stop conditions explicit in
   the card design before writing a provocative welcome. Preserve the boundary

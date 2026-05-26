@@ -1,6 +1,6 @@
 ---
 name: lunatalk-card-blueprint
-description: Turn vague LunaTalk role-card ideas into high-quality card blueprints before MCP creation. Use this skill whenever the author asks to brainstorm, open up an idea, define a character core, build a world, design relationships, shape voice, improve a premise, plan a first scene, or prepare a card concept before creating or editing a real LunaTalk role.
+description: Turn vague LunaTalk role-card ideas into high-quality card blueprints before MCP creation. Use this skill whenever the author asks to brainstorm, open up an idea, define a character core, synthesize a prepared world engine, design relationships, shape voice, improve a premise, plan a first scene, or prepare a card concept before creating or editing a real LunaTalk role.
 ---
 
 # LunaTalk Card Blueprint
@@ -14,6 +14,8 @@ private role card.
 
 Read `../../references/character-core-design.md` when the idea has thin,
 trope-only, generic, or memorable-character problems. Read
+`../../references/world-engine-design.md` when the idea has worldbuilding,
+relationship-network, faction, location, lore-heavy, or lore-dump problems. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
 and archetype recipes. Read `../../references/card-authoring-templates.md` for
 draft packets and field templates. Read `../../references/material-distillation.md`
@@ -60,7 +62,10 @@ creation, validation, render review, simulation, and publishing workflow.
    what changes when the player gets closer or pushes back.
 7. Define the player insertion space: what the player controls, what they can
    refuse, what they can change, and what the card must not decide for them.
-8. Define the world or relationship engine only as far as it creates play.
+8. If the weak layer is worldbuilding, relationship networks, factions,
+   locations, or lore-dump repair, use `lunatalk-world-engineer` first or
+   preserve its packet. Define the world or relationship engine only as far as it
+   creates play.
 9. Define voice fingerprint: sentence rhythm, vocabulary, address terms,
    emotional tells, action beats, concealment, refusal style, and avoided
    phrasing. For ensemble cards, define a contrast matrix and at least one
@@ -129,8 +134,17 @@ Boundary packet:
 
 World / relationship engine:
 - core rule:
+- world promise:
+- player position:
+- scope:
+- playable slice:
+- active pressure:
+- relationship / faction network:
+- locations:
+- resources / clocks / costs:
+- state model:
 - route seeds:
-- state that changes:
+- exposition policy:
 - consequence loop:
 
 Voice fingerprint:
@@ -230,6 +244,9 @@ Handoff:
 - Preserve any character-core packet from `lunatalk-character-core`; do not
   summarize away desire, contradiction, boundary, player leverage, pressure
   behavior, or interaction hooks.
+- Preserve any world-engine packet from `lunatalk-world-engineer`; do not
+  summarize away player position, core world rule, faction/location play
+  functions, state model, route costs, exposition policy, or token tradeoff.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
@@ -252,7 +269,8 @@ Handoff:
   vocabulary, tells, and avoided phrasing.
 - If ensemble voices blur together, give each core role a different want, fear,
   rhythm, pressure move, and player leverage before adding more lore.
-- If the world is too large, choose one place, one rule, and one immediate cost.
+- If the world is too large, use `lunatalk-world-engineer` or choose one place,
+  one rule, one player position, and one immediate cost.
 - If the relationship is flat, add asymmetry: one side knows, needs, owes, risks,
   hides, or controls something.
 - If the card has no long loop, add route seeds with costs and state changes.
