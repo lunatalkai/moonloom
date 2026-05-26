@@ -30,6 +30,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
   self-review packets.
+- `references/playtest-loop.md` defines simulation probe design, transcript
+  triage, patch mapping, and author co-review for closed-loop card testing.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.

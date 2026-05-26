@@ -130,6 +130,8 @@ Use `tokenBudget` from `validate_role` before render or simulation:
 
 ## Simulation quality
 
+For probe design and transcript-to-patch mapping, use `playtest-loop.md`.
+
 - The role stays in character across at least one realistic user turn.
 - The first reply advances the scene instead of restating the profile.
 - The reply reflects player agency and creates consequence or a new hook.

@@ -14,7 +14,8 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
-`../../references/safety-and-cost.md` before simulation.
+`../../references/playtest-loop.md` for probe design and transcript-to-patch
+triage. Read `../../references/safety-and-cost.md` before simulation.
 
 ## Workflow
 
@@ -25,8 +26,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
    `previewUrl` when browser or multimodal access is available.
-6. Run `simulate_private_chat` with the listed probes only when normal billing is
-   acceptable.
+6. Run `simulate_private_chat` with the listed probes or a playtest plan from
+   `playtest-loop.md` only when normal billing is acceptable.
 7. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks

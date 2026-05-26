@@ -39,6 +39,32 @@
         "The output uses simulation evidence rather than vague taste comments.",
         "The report says whether another simulation pass is needed after patching."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Plan a playtest for roleId expedition-42. It is a compact RPG card and I want to know whether choices, supplies, and danger actually work, but do not spend credits until I approve.",
+      "expected_output": "Creates a playtest plan with RPG-specific probes, explains cost stance, and waits for confirmation instead of calling simulate_private_chat.",
+      "files": [],
+      "expectations": [
+        "The output includes a playtest plan with target risks, 1 to 5 realistic player probes, expected healthy behavior, cost stance, and tool-call decision.",
+        "The probes check RPG choices, resources or supplies, danger, state updates, and progression.",
+        "The output explicitly waits for author confirmation before simulation because credits were not approved.",
+        "The probes are phrased as plausible player messages, not as evaluator instructions.",
+        "The plan says what transcript evidence would trigger roleDetailDesc or roleWelcome patches."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "A boundary-sensitive romance simulation returned an agency warning: the role kept saying what I secretly wanted and pushed the scene forward after I asked to slow down. What should Moonloom do?",
+      "expected_output": "Treats the transcript as a card-design failure, maps it to player-agency and boundary patches, and recommends validation plus another simulation only after cost acceptance.",
+      "files": [],
+      "expectations": [
+        "The diagnosis identifies player agency takeover and boundary/pacing failure.",
+        "The recommended patch targets roleDetailDesc boundary rules, refusal style, pacing, and roleWelcome phrasing rather than server validation.",
+        "The output preserves the core relationship tension while moving escalation behind player choice.",
+        "The output says to run validate_role after structural patches.",
+        "The output recommends another simulation pass only if the author accepts the normal billing cost."
+      ]
     }
   ]
 }
