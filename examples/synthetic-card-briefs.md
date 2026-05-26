@@ -280,3 +280,33 @@ Simulation probes:
 - "I follow the opening hook but add one unexpected condition."
 - "I ignore the suggested choice and try a plausible alternate action."
 - "I stay quiet and wait for the role to carry the next beat."
+
+## Brief 11: Quality Scorecard
+
+Goal: Audit a draft or blueprint before creation, simulation, or publish
+readiness.
+
+Author prompt:
+
+```text
+I have a draft role card with a clear premise and a decent first scene. I am not
+submitting it yet and I do not want to spend simulation cost. Give me a quality
+scorecard, tell me whether it is a strong candidate, and name the first three
+repairs before I continue.
+```
+
+Quality checks:
+
+- The workflow routes to quality audit, not publish readiness or simulation.
+- The scorecard uses public craft dimensions and marks irrelevant dimensions
+  as `N/A`.
+- The audit flags critical blockers before assigning an overall tier.
+- The first three repairs map to concrete Moonloom skills or fields.
+- The audit treats scores as writing guidance, not MCP validation or platform
+  metrics.
+
+Simulation probes:
+
+- "I ask for the scorecard before the card exists as a private role."
+- "I ask whether the pretty first screen is hiding weak longplay."
+- "I ask which three repairs should happen before any render or simulation."

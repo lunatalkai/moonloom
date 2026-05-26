@@ -78,6 +78,19 @@
         "The output recommends rerunning validate_role and render or simulation after the token repair.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "I am not asking to submit yet. I want to know whether this private role is top-tier enough and what the first three repairs are before we decide about publishing.",
+      "expected_output": "Routes the non-submission quality request to lunatalk-quality-auditor instead of publish_submit, publish readiness, or simulation.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that the user did not explicitly ask to submit for review.",
+        "The output routes scorecard, top-tier check, and first-three repairs to lunatalk-quality-auditor.",
+        "The output does not call publish_submit or ask for publish confirmation as the next step.",
+        "The audit result includes craft tier, blockers, weakest dimensions, and handoff.",
+        "The output treats the scorecard as Moonloom craft guidance, not a publishing gate."
+      ]
     }
   ]
 }

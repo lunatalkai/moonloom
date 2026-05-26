@@ -14,6 +14,9 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
+`../../references/quality-scorecard.md` when benchmarking craft scorecards,
+quality audit routing, top-tier checks, first-three repairs, or whether drafts
+should continue to authoring, render, simulation, or publish readiness. Read
 `../../references/archetype-contracts.md` when benchmarking card-type routing,
 hybrid cards, archetype contracts, or field allocation by card shape. Read
 `../../references/card-diagnosis.md` when benchmarking existing-card repair,
@@ -63,6 +66,9 @@ Regression should include at least one synthetic fail case. Confirm through
 Moonloom self-review, render review, or simulation that:
 
 - `roleDesc` is too long to scan quickly.
+- a draft asks for a top-tier quality audit or scorecard, but the workflow jumps
+  to publish readiness, simulation, or broad rewriting instead of producing a
+  quality audit packet with blockers, scorecard, tier, and first three repairs.
 - an existing card passes validation and render review but has several writing
   failures, and the workflow jumps straight to rewriting or another simulation
   instead of producing a card diagnosis packet and repair order.
@@ -138,6 +144,9 @@ Use `lunatalk-card-doctor` for regressions where the weakest layer is not yet
 known because an existing card has mixed symptoms, vague author feedback,
 simulation findings, validation/render pass but weak behavior, or unclear repair
 order.
+Use `lunatalk-quality-auditor` for regressions where the user needs a scorecard,
+craft tier, top-tier check, good-enough review, or first-three repair list before
+authoring, render review, simulation, or publish readiness.
 Use `lunatalk-archetype-director` for regressions where the weakest layer is
 card-type selection, hybrid contract, rejected archetypes, or field allocation by
 primary card shape.

@@ -11,6 +11,21 @@ Before calling mutating MCP tools, draft this packet:
 Card shape:
 Language:
 Content rating intent:
+Quality audit packet:
+- audit scope:
+- evidence available:
+- evidence missing:
+- card shape:
+- overall tier:
+- critical blockers:
+- scorecard:
+- strongest dimensions:
+- weakest dimensions:
+- first three repairs:
+- repair skill order:
+- keep / move / cut / rewrite:
+- validation / render / simulation stance:
+- handoff:
 Card diagnosis packet:
 - current request:
 - available evidence:
@@ -42,6 +57,7 @@ Archetype packet:
   - talkExample:
   - XMLV3 / Theme V3:
 - required packets:
+  - quality audit:
   - card diagnosis:
   - character core:
   - relationship engine:
@@ -605,6 +621,7 @@ Before render or simulation, answer:
 
 ```text
 Promise: pass | revise because ...
+Quality audit: pass | revise because ...
 Anchor: pass | revise because ...
 Card diagnosis: pass | revise because ...
 Relationship engine: pass | revise because ...

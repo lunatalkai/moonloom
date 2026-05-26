@@ -22,7 +22,11 @@ relationship networks, factions, locations, lore-heavy settings, or lore-dump
 repair. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
-the card is usable. Read `../../references/safety-and-cost.md` when content
+the card is usable. Read `../../references/quality-scorecard.md` when the author
+asks for a scorecard, top-tier check, craft rating, good-enough review, or
+first-three repairs before creation, simulation, or publishing. Use
+`lunatalk-quality-auditor` first when the primary task is quality audit rather
+than field drafting. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/archetype-contracts.md` when the author is unsure which card
 type should drive the role, when several archetypes are mixed, or when field
@@ -61,6 +65,10 @@ benchmark creation, regression checks, or example-driven iteration.
 
 1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
    language, content rating intent, and success criteria.
+   If the author asks whether a draft, blueprint, packet stack, or role fields
+   are good enough, top-tier, ready to continue, or needs a scorecard / first
+   three repairs, use `lunatalk-quality-auditor` first unless a quality audit
+   packet already exists.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -216,6 +224,10 @@ MCP tools make the card real; Moonloom makes the card good.
   primary and secondary failures, repair order, symptom map, field triage,
   keep/move/cut/rewrite decisions, packets to preserve/create, verification
   plan, stop conditions, and handoff.
+- Preserve the quality audit packet when one exists: evidence available/missing,
+  overall tier, critical blockers, scorecard, strongest and weakest dimensions,
+  first three repairs, repair skill order, validation/render/simulation stance,
+  and handoff.
 - Preserve the archetype packet when one exists: current seed, primary archetype,
   secondary overlays, rejected archetypes, archetype contract, player promise,
   player role, core loop, first-screen proof, field allocation, required packets,
@@ -269,6 +281,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - If an existing card has several failures at once, diagnose first with
   `lunatalk-card-doctor`; do not directly rewrite all fields or spend another
   simulation pass before the repair order is clear.
+- If the author primarily asks "is this good enough?" or asks for a craft score,
+  audit first with `lunatalk-quality-auditor`; do not patch or simulate until the
+  first three repairs are clear.
 - Patch detail with the role's want/need, the contradiction that blocks it, the
   boundaries that keep escalation playable, the player's leverage, and the role's
   pressure behavior for trust, resistance, passivity, and boundaries.
