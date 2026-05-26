@@ -148,6 +148,16 @@ Check:
   used in play.
 - Use compact state blocks only when the state will actually be updated.
 
+When `validate_role` returns `tokenBudget`, use it as a structural check:
+
+- `roleDetailDescChars` should usually carry the durable engine.
+- `roleWelcomeChars` should usually stay below `roleDetailDescChars`; an
+  interactive setup can be longer, but it must add immediate agency.
+- `welcomeToDetailRatio > 2` usually means lore, rules, or visual scaffolding
+  should move out of welcome.
+- `estimatedTokens` is approximate. Use it to compare revisions, not as a billing
+  statement.
+
 ## Validation-facing minimums
 
 Moonloom should aim above these minimums, but never ignore them when authoring a
