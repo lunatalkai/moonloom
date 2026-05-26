@@ -4,14 +4,14 @@
     {
       "id": 1,
       "prompt": "I only have a vague idea: make me a popular vampire card. Help me make it top-tier before we create anything.",
-      "expected_output": "Produces 2-3 distinct playable directions, recommends one, defines tension triangle, character core, player leverage, voice fingerprint, first scene, second-turn engine, token plan, self-review, and handoff readiness without calling MCP tools.",
+      "expected_output": "Routes no-settled-premise popular-vampire ideation to lunatalk-premise-workshop before broad blueprinting, translates top-tier/popular into public craft goals, and waits for a selected direction or premise workshop packet before building the full blueprint.",
       "files": [],
       "expectations": [
-        "The output proposes 2-3 directions that differ by player role, conflict, first scene, and long-term loop.",
-        "The recommended direction explains why it is stronger than a generic vampire trope.",
-        "The blueprint defines role desire, player leverage, and external pressure.",
-        "The blueprint includes a second-turn engine that escalates, reveals, complicates, or opens a route.",
-        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+        "The output recognizes that this is earlier than blueprinting because there is no settled role, player position, first scene, or primary contract.",
+        "The output routes to lunatalk-premise-workshop or requires a premise workshop packet before building a full blueprint.",
+        "The output treats top-tier/popular as public craft goals, not ranking, traffic, source-card, private-example, or platform-data claims.",
+        "The premise workshop expectation includes exactly three directions that differ by primary contract, player role, first scene, core loop, and risk.",
+        "The output does not call or instruct immediate mutating MCP tool use before a direction is selected."
       ]
     },
     {
@@ -159,6 +159,19 @@
         "The blueprint does not route primarily to play-engineer unless explicit stats, resources, combat, turn protocol, or game-like mechanics become the blocker.",
         "The first scene and second-turn engine prove an incident with a visible clue, player implication, and a reveal or cost rather than a briefing.",
         "The output does not call or instruct immediate mutating MCP tool use before the scenario packet is ready."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Before blueprinting, I only have taste signals: warm but unsettling, maybe neighbors, maybe ghosts, maybe romance, maybe mystery. I want Moonloom to compare directions first and not write fields.",
+      "expected_output": "Routes no-settled-premise taste-signal work to lunatalk-premise-workshop before broad blueprinting, then asks for or preserves a premise workshop packet before continuing.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that this is earlier than card blueprinting because no settled role, player position, first scene, or primary contract exists.",
+        "The output routes to lunatalk-premise-workshop or requires a premise workshop packet before building a full blueprint.",
+        "The expected packet includes taste axes, three directions, involvement ladder, recommendation, risk flags, next decisions, and handoff.",
+        "The output does not draft final role fields or call MCP tools.",
+        "If it continues toward blueprinting, it preserves the selected direction instead of re-brainstorming from scratch."
       ]
     }
   ]

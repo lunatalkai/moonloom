@@ -1,17 +1,22 @@
 ---
 name: lunatalk-card-blueprint
-description: Turn vague LunaTalk role-card ideas into high-quality card blueprints before MCP creation. Use this skill whenever the author asks to brainstorm, open up an idea, define a character core, synthesize a prepared world engine, design relationships, shape voice, improve a premise, plan a first scene, or prepare a card concept before creating or editing a real LunaTalk role.
+description: Use when a LunaTalk role-card task has a chosen direction, premise workshop packet, prepared source-to-play map, or enough concrete seed to define character core, relationship, world, voice, first scene, and play loop before creating or editing a real role.
 ---
 
 # LunaTalk Card Blueprint
 
-Use this skill before mutating MCP tools when the author has a thin idea, a genre
-label, a trope, a world seed, or a card that feels generic. The output is a
+Use this skill before mutating MCP tools when the author has a chosen direction,
+premise workshop packet, world seed, or card that feels generic. The output is a
 public-safe blueprint packet that `lunatalk-card-author` can turn into a real
 private role card.
 
 ## Required references
 
+Read `../../references/premise-workshop.md` when the author does not yet have a
+settled role, player position, first scene, or primary card contract and needs
+contrasted directions before blueprinting. Use `lunatalk-premise-workshop` first
+when the task is only mood/trope/aesthetic brainstorming or comparing possible
+directions.
 Read `../../references/character-core-design.md` when the idea has thin,
 trope-only, generic, or memorable-character problems. Read
 `../../references/relationship-engine.md` when the idea is relationship-heavy,
@@ -90,6 +95,10 @@ creation, validation, render review, simulation, and publishing workflow.
 1. Restate the author's seed in one sentence.
 2. Identify missing inputs: player role, relationship pressure, card shape,
    content rating intent, language, and success criteria.
+   If the author has only a mood, trope, aesthetic cluster, "top card" request,
+   or asks to open up directions before any blueprint, use
+   `lunatalk-premise-workshop` first unless a premise workshop packet already
+   exists.
    If the author provided source material or a large world document, use
    `lunatalk-material-distiller` first unless a source-to-play map already
    exists.
@@ -124,6 +133,9 @@ creation, validation, render review, simulation, and publishing workflow.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
+   If a premise workshop packet exists, preserve its selected direction, risk
+   flags, involvement ladder, and next decisions instead of re-brainstorming from
+   scratch.
 4. Pick or recommend one direction. Explain why it is more playable than the
    generic version.
 5. Build the tension triangle: role desire, player leverage, external pressure.
@@ -181,6 +193,16 @@ Return this structure:
 
 ```text
 Seed:
+
+Premise workshop packet:
+- current seed:
+- author taste signals:
+- selected direction:
+- involvement ladder:
+- recommendation:
+- risk flags:
+- next decisions:
+- handoff:
 
 Archetype packet:
 - current seed:

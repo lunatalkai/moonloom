@@ -57,13 +57,14 @@
     {
       "id": 5,
       "prompt": "I only have a vague idea: make me a popular vampire card. Help me turn it into a top-tier LunaTalk card, not a generic trope.",
-      "expected_output": "Starts with Moonloom ideation before tool calls, proposes distinct playable directions, chooses a concrete player role and first-scene pressure, then drafts promise/engine/play/presentation layers with a self-review checklist.",
+      "expected_output": "Starts with lunatalk-premise-workshop before tool calls or field drafting, translates top-tier/popular into public craft goals, proposes distinct playable directions, chooses a concrete player role and first-scene pressure, then hands off to blueprinting or authoring only after the direction is selected.",
       "files": [],
       "expectations": [
-        "The output brainstorms 2-3 sharply different playable directions before creating or patching a role.",
-        "Each direction differs by conflict, player role, first scene, and long-term loop, not only mood.",
+        "The output uses or preserves lunatalk-premise-workshop because there is no settled premise yet.",
+        "The output treats popular/top-tier as public craft goals, not platform ranking, traffic, source-card, or private data claims.",
+        "The output proposes exactly three sharply different playable directions before creating or patching a role.",
+        "Each direction differs by primary contract, conflict, player role, first scene, and long-term loop, not only mood.",
         "The chosen direction defines a tension triangle: role desire, player leverage, and external pressure.",
-        "The final roleDesc is compact enough to scan or includes a compressed final version when the draft is dense.",
         "The output does not call mutating MCP tools before a Moonloom draft and self-review are ready.",
         "The final direction includes a second-turn engine that can escalate, reveal, complicate, or offer a route."
       ]

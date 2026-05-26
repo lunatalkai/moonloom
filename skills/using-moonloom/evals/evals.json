@@ -43,12 +43,12 @@
     {
       "id": 4,
       "prompt": "I only have a vague card idea and want Moonloom to help me open it up before creating anything.",
-      "expected_output": "Routes to lunatalk-card-blueprint first, produces a blueprint packet without mutating MCP tools, then hands off to lunatalk-card-author only when the blueprint is ready.",
+      "expected_output": "Routes to lunatalk-premise-workshop first, produces a premise workshop packet without mutating MCP tools, then hands off to blueprinting or authoring only after a direction is selected.",
       "files": [],
       "expectations": [
-        "The output routes vague ideation to lunatalk-card-blueprint before lunatalk-card-author.",
-        "The workflow says no mutating MCP tools should run during blueprinting.",
-        "The blueprint step includes directions, tension triangle, character core, player insertion, first scene, second-turn engine, token plan, and self-review.",
+        "The output routes no-settled-premise ideation to lunatalk-premise-workshop before lunatalk-card-blueprint or lunatalk-card-author.",
+        "The workflow says no mutating MCP tools should run during premise workshop.",
+        "The premise workshop packet includes taste axes, exactly three contrasted directions, involvement ladder, recommendation, risk flags, next decisions, and handoff.",
         "The handoff preserves concrete details instead of summarizing them away.",
         "The output keeps MCP validation as a later technical step after authoring."
       ]
@@ -337,6 +337,19 @@
         "The output does not route to lunatalk-render-review because no validation, preview, screenshot, or render report exists.",
         "The output does not route to lunatalk-token-architect unless concrete tokenBudget, field-size, welcome-ratio, or bloat evidence appears.",
         "The route focuses on a presentation packet with mode decision, XMLV3 semantic plan, visible map, hidden state JSON plan, Theme V3 responsibilities, HTML decision, visual affordance table, render review plan, and no MCP calls."
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "I am not sure which Moonloom skill to use. I do not have a character yet, only a mood: cozy but eerie, maybe romance, maybe mystery, maybe daily-life, maybe light fantasy. I want to open the idea up and compare directions before any blueprint, fields, MCP calls, render, or simulation.",
+      "expected_output": "Uses using-moonloom as the router and routes no-settled-premise mood/genre brainstorming to lunatalk-premise-workshop before card-blueprint, card-author, MCP calls, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes no-character, no-settled-premise mood and genre-cluster brainstorming to lunatalk-premise-workshop.",
+        "The output does not route directly to lunatalk-card-blueprint until a direction or premise workshop packet exists.",
+        "The route focuses on taste axes, three contrasted playable directions, involvement ladder, recommendation, risk flags, next decisions, and handoff.",
+        "The output says no mutating MCP tools, render, simulation, publish, or final role fields should run during premise workshop."
       ]
     }
   ]
