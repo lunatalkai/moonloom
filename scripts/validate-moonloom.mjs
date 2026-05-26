@@ -27,6 +27,28 @@ const SECRET_PATTERNS = [
   { label: 'API key', pattern: /\bsk-[A-Za-z0-9][A-Za-z0-9._-]{15,}\b/g },
 ];
 
+const FORBIDDEN_PUBLIC_CLAIM_PATTERNS = [
+  { label: 'protected origin claim', pattern: /\b(?:production|prod)\s+data\b/gi },
+  { label: 'protected training-origin claim', pattern: /\btraining\s+data\b/gi },
+  {
+    label: 'protected localized origin claim',
+    pattern: /(?:\u751f\u7522|\u751f\u4ea7)(?:\u8cc7\u6599|\u8d44\u6599|\u6578\u64da|\u6570\u636e)/g,
+  },
+  {
+    label: 'protected non-public source claim',
+    pattern: /\binternal\s+(?:database|data|source|metric|example)s?\b/gi,
+  },
+  {
+    label: 'protected audience-origin claim',
+    pattern: /\breal[-\s]?user\s+(?:behavior|data|logs?|analytics)\b/gi,
+  },
+  { label: 'protected card-source claim', pattern: /\braw\s+card\s+(?:content|text|data)\b/gi },
+  {
+    label: 'environment-specific LunaTalk URL',
+    pattern: /\bhttps?:\/\/(?:api|admin)\.lunatalk\.(?:ai|pro)\b/gi,
+  },
+];
+
 function issue(code, file, message) {
   return { code, file, message };
 }
@@ -242,6 +264,12 @@ async function scanReleaseSafety(root, issues) {
       pattern.lastIndex = 0;
       if (pattern.test(content)) {
         issues.push(issue('release.secret_pattern', relativePath, `Found ${label}-shaped text.`));
+      }
+    }
+    for (const { label, pattern } of FORBIDDEN_PUBLIC_CLAIM_PATTERNS) {
+      pattern.lastIndex = 0;
+      if (pattern.test(content)) {
+        issues.push(issue('release.forbidden_public_claim', relativePath, `Found ${label}.`));
       }
     }
   }
