@@ -124,8 +124,8 @@ Build 4-8 tags from these buckets:
 5. special mechanic or format: compact-state, XMLV3, Theme-V3, inventory,
    clue-route, memory-thread, multi-speaker
 
-Prefer concrete tags over duplicate synonyms. Do not include internal product,
-traffic, ranking, or audience-size claims.
+Prefer concrete tags over duplicate synonyms. Do not include unsupported product,
+origin, performance, or audience-size claims.
 
 ## First-impression check
 
@@ -190,7 +190,6 @@ Profile package packet:
 
 ## Public-safety posture
 
-Keep the package original and public-safe. Do not mention source cards, private
-examples, internal metrics, rankings, traffic, user behavior, or non-public
-origin. Treat "popular" or "top-tier" as craft goals: clear promise, specific
-player role, distinct pressure, scannable length, and honest handoff.
+Keep the package original and public-safe. Do not attach unsupported origin or
+performance claims. Treat "popular" or "top-tier" as craft goals: clear promise,
+specific player role, distinct pressure, scannable length, and honest handoff.

@@ -9,7 +9,7 @@
       "expectations": [
         "The output recognizes that this is earlier than blueprinting because there is no settled role, player position, first scene, or primary contract.",
         "The output routes to lunatalk-premise-workshop or requires a premise workshop packet before building a full blueprint.",
-        "The output treats top-tier/popular as public craft goals, not ranking, traffic, source-card, private-example, or platform-data claims.",
+        "The output treats top-tier/popular as public craft goals, not unsupported origin or performance claims.",
         "The premise workshop expectation includes exactly three directions that differ by primary contract, player role, first scene, core loop, and risk.",
         "The output does not call or instruct immediate mutating MCP tool use before a direction is selected."
       ]

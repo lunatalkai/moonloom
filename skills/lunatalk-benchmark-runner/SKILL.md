@@ -12,6 +12,10 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 ## Required references
 
 Read `../../examples/synthetic-card-briefs.md` first. Read
+`../../examples/sample-card-packets.md` and
+`../../references/sample-driven-calibration.md` when benchmark output needs a
+public synthetic expected-output shape, sample comparison, or copy-risk review.
+Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
 `../../references/premise-workshop.md` when benchmarking early mood/trope/
@@ -257,6 +261,8 @@ intake.
   with an explicit cost-aware reason.
 - `tokenBudget` is reasonable for the archetype.
 - The card does not copy benchmark text verbatim; it is a fresh original card.
+- The card does not copy sample packet names, scene text, tag strings, resource
+  labels, artifact schema labels, or distinctive fictional details.
 - The benchmark identifies whether failures belong to Moonloom writing guidance,
   render/theme guidance, simulation behavior, or MCP technical flow.
 

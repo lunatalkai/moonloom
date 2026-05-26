@@ -173,7 +173,7 @@ Premise workshop packet:
 | Failure | Repair |
 |---|---|
 | Vibe only | convert mood into player role, pressure, and first scene |
-| "Popular card" request | define public craft goals; do not claim platform data |
+| "Popular card" request | define public craft goals; do not attach unsupported performance claims |
 | Too many genres | pick one primary contract and keep the rest as overlays |
 | Romance becomes assumed | define romance as central, optional, absent, or gated |
 | Mystery has no leverage | give the player clue, access, suspicion, or choice |
@@ -184,8 +184,7 @@ Premise workshop packet:
 
 ## Public-safety posture
 
-Keep the output original and public-safe. Do not reference private examples,
-source cards, internal metrics, traffic, ranking, user behavior, or any claim that
-Moonloom learned from non-public data. If the author asks for "top card" quality,
-translate that into craft goals: clear promise, strong player agency, memorable
-role behavior, consequential second turn, token discipline, and testable handoff.
+Keep the output original and public-safe. Do not attach unsupported origin or
+performance claims. If the author asks for "top card" quality, translate that
+into craft goals: clear promise, strong player agency, memorable role behavior,
+consequential second turn, token discipline, and testable handoff.

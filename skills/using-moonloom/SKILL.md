@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, language consistency, zh-Hant/zh-TW style, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, generator/helper artifact loops, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, sample or golden-example calibration, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, language consistency, zh-Hant/zh-TW style, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, generator/helper artifact loops, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -55,6 +55,12 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   mixed symptoms for an existing card, hand off from collaboration to
   `lunatalk-card-doctor`; if it only needs final field application, hand off to
   `lunatalk-card-author`.
+- Examples, golden samples, sample output packets, benchmark expected-output
+  shapes, draft-to-sample comparison, "make it like the good examples", or
+  copy-risk review before blueprinting, authoring, simulation, or publishing:
+  use `lunatalk-sample-calibrator`. Treat samples as public synthetic structure
+  fixtures only; do not copy sample text, names, tags, scenes, resources, or
+  artifact schemas into a real card.
 - Public-facing role profile work, including `roleName`, `roleDesc`, tags,
   title, tagline, short pitch, first impression, discovery surface, reason to
   open, promise compression, or making the profile feel more top-tier/popular
@@ -247,6 +253,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/author-collaboration.md` when the task involves author
   feedback, co-review, taste/preference calibration, draft comparison, revision
   choices, or deciding what to preserve/change/reject/delay.
+- Read `../../references/sample-driven-calibration.md` and
+  `../../examples/sample-card-packets.md` when the task involves examples,
+  golden samples, sample output packets, benchmark expected-output shapes,
+  draft-to-sample comparison, or copy-risk review.
 - Read `../../references/character-core-design.md` when working on character
   core, persona appeal, trope repair, relationship leverage, pressure behavior,
   or thin/generic roles.
