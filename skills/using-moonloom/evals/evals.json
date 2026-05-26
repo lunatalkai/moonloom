@@ -130,6 +130,19 @@
         "The output says no mutating MCP tools should run during character-core design.",
         "The output treats character appeal as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "I am not sure which Moonloom skill to use. I want to build a city with factions, locations, calendar rules, relationship networks, and routes, but I do not want a lore dump.",
+      "expected_output": "Uses using-moonloom as the router, routes worldbuilding and lore-dump repair to lunatalk-world-engineer first, then hands off to blueprint or authoring after the world-engine packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes worldbuilding, factions, locations, relationship networks, and lore-dump repair to lunatalk-world-engineer before lunatalk-card-blueprint or lunatalk-card-author.",
+        "The route focuses on world promise, player position, core world rule, faction/location play functions, compact state, route seeds, exposition policy, and token tradeoff.",
+        "The output says no mutating MCP tools should run during world-engine design.",
+        "The output treats worldbuilding quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }

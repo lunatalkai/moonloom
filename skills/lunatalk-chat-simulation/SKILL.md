@@ -18,6 +18,9 @@ patch mapping, and author co-review.
 Read `../../references/character-core-design.md` when simulation shows a generic
 persona, weak motive, missing leverage, passive pressure response, or behavior
 that collapses to a trope.
+Read `../../references/world-engine-design.md` when simulation shows lore
+dumping, decorative factions/locations, passive world response, broken state, or
+route choices that do not change the world.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together.
 Read `../../references/opening-design.md` when testing the opening hook, first
@@ -92,6 +95,9 @@ Playtest plan:
   reveal, state change, or renewed pressure.
 - Tone, boundaries, and content rating match the card.
 - The reply uses relevant world details without dumping the whole setting.
+- World-heavy replies should use the world engine: answer lore questions through
+  objects, demands, consequences, witnesses, contradictions, state changes, or
+  route offers.
 - Player actions produce visible consequence, state change, relationship movement,
   or a new hook.
 - For longplay tests, use continuation probes from the longplay packet and check
@@ -116,6 +122,8 @@ Playtest plan:
   rules, or compact micro-samples before running another simulation.
 - If a single-role persona becomes generic under pressure, patch the
   character-core packet before adding more sample dialogue.
+- If a world-heavy card dumps lore or treats factions/locations as scenery, patch
+  the world-engine packet before adding more setting text.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to
   player choice, pacing, refusal style, stop conditions, and the boundary
   packet's explicitness ceiling and escalation ladder.

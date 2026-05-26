@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core or persona appeal, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -59,9 +59,14 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   leverage, asymmetry, emotional hook, or distinctiveness repair: use
   `lunatalk-character-core` before blueprinting, authoring, voice, opening,
   longplay, simulation, or publish readiness.
-- Brainstorming, premise shaping, worldbuilding, relationship design, voice
-  design, opening-scene planning, or turning a vague idea into a card-ready
-  blueprint after source material has been distilled: use
+- Worldbuilding, relationship networks, factions, locations, lore-heavy settings,
+  light-setting or heavy-setting design, playable world rules, state/consequence
+  from world facts, or avoiding lore dumps: use `lunatalk-world-engineer` before
+  blueprinting, authoring, opening, longplay, render review, simulation, or
+  publish readiness.
+- Brainstorming, premise shaping, relationship design, voice design,
+  opening-scene planning, or turning a vague idea into a card-ready blueprint
+  after source material has been distilled: use
   `lunatalk-card-blueprint`.
 - Creating or editing a role card: use `lunatalk-card-author`.
 - Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
@@ -81,6 +86,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/character-core-design.md` when working on character
   core, persona appeal, trope repair, relationship leverage, pressure behavior,
   or thin/generic roles.
+- Read `../../references/world-engine-design.md` when working on worldbuilding,
+  relationship networks, factions, locations, playable world rules, lore-heavy
+  settings, compact state, route seeds, or lore-dump repair.
 - Read `../../references/role-card-writing-framework.md` before writing or deeply
   revising any role card.
 - Read `../../references/card-authoring-templates.md` when producing or checking

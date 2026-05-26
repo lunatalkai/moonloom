@@ -117,6 +117,19 @@
         "The report does not ask MCP validation to judge subjective character appeal.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "Create a negative regression check for a schema-valid fantasy city card with many calendars, factions, and district names but no playable world engine.",
+      "expected_output": "Treats lore-heavy worldbuilding without player action as a Moonloom writing failure, checks world-engine packet fields, and recommends world-engine repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing player position, core world rule, faction/location play functions, compact state, route costs, exposition policy, or token tradeoff.",
+        "The proposed repair uses lunatalk-world-engineer or world-engine-design.md before blueprint or authoring.",
+        "The report does not ask MCP validation to judge lore or worldbuilding quality.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }
