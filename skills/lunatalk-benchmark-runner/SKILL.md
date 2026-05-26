@@ -26,7 +26,9 @@ when the benchmark touches dialogue, persona consistency, or ensemble cards. Rea
 screen playability, or second-turn behavior. Read
 `../../references/longplay-design.md` when benchmarking long-term playability,
 route seeds, memory/state, progression, passive/stalled behavior, or session
-continuation. Read
+continuation. Read `../../references/agency-design.md` when benchmarking player
+agency, spectator openings, decorative choices, role-controlled player actions,
+or route funneling. Read
 `../../references/boundary-design.md` when benchmarking mature, adult, horror,
 jealous, consent-sensitive, or boundary-sensitive cards. Read
 `../../references/playtest-loop.md` for probe design and transcript-to-patch
@@ -72,6 +74,9 @@ Moonloom self-review, render review, or simulation that:
 - a card has a strong opening but no continuity spine, route costs, memory
   threads, role initiative, or continuation probes.
 - the card controls the player's actions, feelings, consent, or commitments.
+- the player can only watch, choices are mood labels, or every reply path funnels
+  into the same response with no state, information, relationship, risk, route,
+  or next-hook difference.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.
 - a quiet daily-life card has mood but no small playable desire or progression.
@@ -95,6 +100,10 @@ a technical safety, format, ownership, billing, or publish-control issue.
 Use `lunatalk-voice-director` for regressions where the weakest layer is generic
 dialogue, repeated phrasing, catchphrase overuse, refusal voice, blind-line
 failure, or ensemble voice blur.
+Use `lunatalk-agency-designer` for regressions where the weakest layer is player
+insertion space, decorative choices, route funneling, role-controlled player
+feelings/actions, missing refusal routes, or consequences that ignore player
+choice.
 
 ## Pass criteria
 

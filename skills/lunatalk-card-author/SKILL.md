@@ -34,7 +34,9 @@ power-imbalanced, or needs refusal/pacing repair. Read
 first screen playability, first reply paths, or second-turn moves. Read
 `../../references/longplay-design.md` when creating or repairing long-term
 playability, route seeds, memory/state, progression, passive/stalled behavior, or
-dead third-turn loops. Read
+dead third-turn loops. Read `../../references/agency-design.md` when the card
+lets the player only watch, narrates player feelings/actions, has decorative
+choices, funnels routes, or lacks meaningful refusal/route-change behavior. Read
 `../../references/playtest-loop.md` when designing or interpreting private chat
 simulations. Use `../../examples/synthetic-card-briefs.md` when the task asks for
 benchmark creation, regression checks, or example-driven iteration.
@@ -62,7 +64,9 @@ benchmark creation, regression checks, or example-driven iteration.
    role is created. Prefer `lunatalk-voice-director` when the author primarily
    asks for character voice, speaking style, generic dialogue repair,
    catchphrase discipline, refusal style, talkExample need, blind-line tests, or
-   ensemble voice contrast.
+   ensemble voice contrast. Prefer `lunatalk-agency-designer` when the author
+   primarily asks for player agency, user insertion space, interaction hooks,
+   decorative choices, route funneling, or player-agency takeover.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
@@ -77,6 +81,9 @@ benchmark creation, regression checks, or example-driven iteration.
    playability, memory/state, route seeds, progression, or a dead third-turn
    loop. Use or preserve `lunatalk-voice-director` when the current patch changes
    speech style, voice cards, talkExample, refusal voice, or ensemble contrast.
+   Use or preserve `lunatalk-agency-designer` when the patch changes player
+   insertion space, reply paths, route consequences, passive-player behavior, or
+   agency guardrails.
 9. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
@@ -137,6 +144,9 @@ MCP tools make the card real; Moonloom makes the card good.
   dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
+- If the player can only watch, choices are decorative, or the card narrates the
+  player's feelings/actions, use `lunatalk-agency-designer` before patching
+  fields.
 - Preserve the opening packet when one exists: current failure, opening promise,
   reply paths, expected first user message, second-turn move, what changes, and
   token tradeoff.
@@ -150,6 +160,10 @@ MCP tools make the card real; Moonloom makes the card good.
   promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
   grid, catchphrase policy, talkExample decision, blind-line test, pressure
   probes, field patch targets, and token tradeoff.
+- Preserve the agency packet when one exists: current failure, agency promise,
+  player insertion space, player controls/refusals/changes, agency guardrails,
+  reply-path matrix, compact state, passive-player behavior, boundary handling,
+  consequence checks, field patch targets, and token tradeoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.

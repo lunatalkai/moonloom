@@ -18,7 +18,10 @@ for welcome and self-review checks. Read `../../references/theme-v3-rendering.md
 when the welcome uses XMLV3 or HTML. Read `../../references/playtest-loop.md`
 when the task includes testing first-turn behavior. Read
 `../../references/boundary-design.md` when the opening is mature, intense,
-horror-leaning, or consent-sensitive.
+horror-leaning, or consent-sensitive. Read
+`../../references/agency-design.md` when the opening makes the player watch,
+narrates player feelings/actions, uses decorative choices, funnels all reply
+paths, or lacks meaningful refusal/route-change behavior.
 
 ## Boundary
 
@@ -33,16 +36,19 @@ opening, then hand off to authoring, render review, or simulation.
    action, too-long welcome, or second-turn dead end.
 2. Infer or ask only for missing information that blocks the opening: player
    role, card shape, role desire, current location, pressure, and content rating.
-3. Build the five beats: place/time, role action, pressure, player implication,
+3. Use or preserve `lunatalk-agency-designer` when the first-screen problem is
+   spectator play, decorative choices, player-feeling narration, route funneling,
+   or missing refusal/redirect paths.
+4. Build the five beats: place/time, role action, pressure, player implication,
    and reply paths.
-4. Write one expected first user message.
-5. Write the role's second-turn move and what changes.
-6. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
+5. Write one expected first user message.
+6. Write the role's second-turn move and what changes.
+7. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
    choices, or state visibility help the first screen.
-7. State token tradeoff: what stays in welcome, what belongs in detail, and what
+8. State token tradeoff: what stays in welcome, what belongs in detail, and what
    to cut.
-8. Run opening self-review.
-9. Hand off to `lunatalk-card-author` for actual private-card patching, or to
+9. Run opening self-review.
+10. Hand off to `lunatalk-card-author` for actual private-card patching, or to
    `lunatalk-chat-simulation` for first-turn probes after author approval and
    normal billing acceptance.
 
@@ -90,6 +96,8 @@ Handoff:
 
 - Do not polish a greeting. Replace it with a scene.
 - Do not make choices carry the whole opening. Add scene beats first.
+- Do not let choices become mood labels. Each reply path should change response,
+  information, relationship, state, risk, route, or the next hook.
 - Do not put the full world bible in welcome. Keep only what the first action
   needs.
 - Do not write a beautiful first screen that has no second-turn consequence.
@@ -103,6 +111,7 @@ Handoff:
 - If the role waits for the player, add a role action already happening.
 - If the player has no reason to care, add player implication and pressure.
 - If the opening is just mood, add a concrete object, decision, risk, or route.
+- If the player can only watch, run agency design before rewriting prose.
 - If the opening is too long, move reusable lore and rules to `roleDetailDesc`.
 - If the second turn is generic, add state change, reveal, complication, or route
   offer.

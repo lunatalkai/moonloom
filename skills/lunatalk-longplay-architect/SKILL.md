@@ -19,6 +19,9 @@ when turning the packet into `roleDetailDesc` patch targets. Read
 design. Read `../../references/voice-calibration.md` when long sessions cause
 voice drift. Read `../../references/boundary-design.md` when routes involve
 mature, intense, horror-leaning, jealous, or consent-sensitive pressure.
+Read `../../references/agency-design.md` when choices are cosmetic, routes
+funnel back to the same scene, the player can only watch progression, or route
+changes do not create distinct consequences.
 
 ## Boundary
 
@@ -33,17 +36,20 @@ Design the longplay engine, then hand off to authoring or simulation.
    session restart.
 2. Preserve any working opening packet. Do not rewrite the welcome unless the
    longplay failure starts on the first screen.
-3. Define the continuity spine: what choice changes what pressure over time.
-4. Build 3-6 progression phases with triggers, role behavior, player leverage,
+3. Use or preserve `lunatalk-agency-designer` when the failure is decorative
+   choices, route funneling, spectator progression, missing refusal/redirect
+   routes, or consequences that ignore player choice.
+4. Define the continuity spine: what choice changes what pressure over time.
+5. Build 3-6 progression phases with triggers, role behavior, player leverage,
    unlocks, and risks.
-5. Design a compact state model that the role can update every 2-3 turns.
-6. Write 2-4 route seeds. Each route needs trigger, role pressure, player
+6. Design a compact state model that the role can update every 2-3 turns.
+7. Write 2-4 route seeds. Each route needs trigger, role pressure, player
    leverage, unlock, cost, memory, and renewal hook.
-7. Write memory threads and return-later behavior.
-8. Write role initiative for accepting, questioning, resisting, passive,
+8. Write memory threads and return-later behavior.
+9. Write role initiative for accepting, questioning, resisting, passive,
    route-changing, and returning-later player messages.
-9. Produce continuation probes and pass/fail triggers.
-10. State token tradeoff and handoff target.
+10. Produce continuation probes and pass/fail triggers.
+11. State token tradeoff and handoff target.
 
 ## Output format
 
@@ -102,6 +108,8 @@ Handoff:
 - If the player carries every beat, add passive-player behavior and role
   initiative table.
 - If choices feel cosmetic, add route costs and memory left behind.
+- If every route returns to one scene, build a reply-path matrix and consequence
+  checks before adding more route labels.
 - If the card forgets later, add return-later behavior and unresolved hooks.
 - If state is too large, cut to fields that change access, behavior, risk, route,
   or relationship.

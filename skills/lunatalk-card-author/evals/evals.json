@@ -105,6 +105,19 @@
         "The output runs validate_role only for technical blockers after structural patches.",
         "The output does not ask MCP validation to judge subjective voice craft."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "Patch an existing role whose premise is strong, but the player can only watch, the welcome tells them what they feel, and all choices lead to the same scene. Focus on agency before changing other fields.",
+      "expected_output": "Uses lunatalk-agency-designer before field patches, preserves the agency packet, patches roleDetailDesc and roleWelcome reply paths/consequence checks, validates after structural changes, and avoids treating agency craft as an MCP gate.",
+      "files": [],
+      "expectations": [
+        "The workflow routes the agency-specific repair to lunatalk-agency-designer before broad blueprinting or unrelated rewrites.",
+        "The agency packet includes player insertion space, interaction hooks, agency guardrails, reply-path matrix, consequence checks, and field patch targets.",
+        "The patch removes role control over player feelings/actions and makes refusal, questioning, redirecting, testing, and cooperation produce distinct responses.",
+        "The output runs validate_role only for technical blockers after structural patches.",
+        "The output does not ask MCP validation to judge subjective interaction design."
+      ]
     }
   ]
 }

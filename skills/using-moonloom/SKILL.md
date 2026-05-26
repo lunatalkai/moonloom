@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -64,6 +64,12 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   blind-line checks, voice drift, or ensemble speakers blending together: use
   `lunatalk-voice-director` before blueprinting, authoring, simulation, or
   publish readiness.
+- Player agency, user insertion space, interaction hooks, decorative choices,
+  route funneling, spectator openings, role decides the player's feelings or
+  actions, player can only watch, player has no meaningful refusal route, or
+  reply paths that do not change consequence: use `lunatalk-agency-designer`
+  before opening, longplay, blueprinting, authoring, simulation, or publish
+  readiness.
 - Worldbuilding, relationship networks, factions, locations, lore-heavy settings,
   light-setting or heavy-setting design, playable world rules, state/consequence
   from world facts, or avoiding lore dumps: use `lunatalk-world-engineer` before
@@ -113,6 +119,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.
+- Read `../../references/agency-design.md` when the task involves player agency,
+  user insertion space, interaction hooks, decorative choices, route funneling,
+  player-agency takeover, or consequence checks.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
 - Read `../../references/playtest-loop.md` when designing private chat probes,

@@ -37,7 +37,7 @@
         "The diagnosis identifies missing desire, contradiction, boundaries, voice texture, role initiative, and consequence loop.",
         "The proposed fix updates the skill prompt or card-writing framework rather than adding an MCP semantic gate.",
         "The report includes at least one concrete before/after repair target.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -50,7 +50,7 @@
         "The diagnosis checks whether each core speaker has distinct motive, rhythm, pressure behavior, and player leverage.",
         "The report uses blind-line distinguishability or equivalent voice calibration criteria.",
         "The proposed repair updates Moonloom voice guidance, roleDetailDesc, or talkExample calibration rather than MCP validation logic.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The diagnosis identifies source dumping, missing player role, weak first-scene pressure, missing state/consequence, or excessive proper nouns.",
         "The proposed repair uses material distillation: keep, delay, cut, merge, source-to-play map, and token plan.",
         "The report does not ask MCP validation to judge lore quality.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -76,7 +76,7 @@
         "The proposed repair uses lunatalk-boundary-designer or boundary-design.md before blueprint or authoring.",
         "The repair targets roleDetailDesc, roleWelcome, and simulation probes.",
         "The report does not ask MCP validation to judge mature-writing quality.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "The diagnosis identifies greeting-only opening, missing place/time, role action, pressure, player implication, reply paths, and second-turn change.",
         "The proposed repair uses lunatalk-opening-director or opening-design.md before authoring/render/simulation.",
         "The report does not ask MCP validation to judge opening craft.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -102,7 +102,7 @@
         "The diagnosis identifies missing continuity spine, compact state model, route costs, memory threads, role initiative, or continuation probes.",
         "The proposed repair uses lunatalk-longplay-architect or longplay-design.md before authoring/simulation.",
         "The report does not ask MCP validation to judge long-term writing quality.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "The diagnosis identifies missing appeal promise, desire, contradiction, boundary, player leverage, relationship asymmetry, pressure behavior, and interaction hooks.",
         "The proposed repair uses lunatalk-character-core or character-core-design.md before blueprint or authoring.",
         "The report does not ask MCP validation to judge subjective character appeal.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -128,7 +128,7 @@
         "The diagnosis identifies missing player position, core world rule, faction/location play functions, compact state, route costs, exposition policy, or token tradeoff.",
         "The proposed repair uses lunatalk-world-engineer or world-engine-design.md before blueprint or authoring.",
         "The report does not ask MCP validation to judge lore or worldbuilding quality.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
       ]
     },
     {
@@ -141,7 +141,20 @@
         "The diagnosis identifies missing rhythm, vocabulary, emotional tells, refusal style, pressure behavior, and catchphrase discipline.",
         "The proposed repair uses lunatalk-voice-director or voice-calibration.md before blueprint, authoring, or simulation.",
         "The report does not ask MCP validation to judge voice craft.",
-        "The check remains public-safe and does not use private card text."
+        "The check remains public-safe and uses only synthetic example text."
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Create a negative regression check for a schema-valid role whose welcome offers four pretty choices, but the player can only watch and every route funnels into the same monologue.",
+      "expected_output": "Treats decorative choices and spectator play as a Moonloom agency failure, checks agency packet fields, reply-path matrix, consequence checks, and recommends agency-designer repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies spectator play, decorative choices, route funneling, and role-controlled player feelings/actions when present.",
+        "The proposed repair uses lunatalk-agency-designer or agency-design.md before blueprint, authoring, opening, longplay, or simulation.",
+        "The report does not ask MCP validation to judge subjective interaction design.",
+        "The check remains public-safe and uses only synthetic example text."
       ]
     }
   ]

@@ -39,6 +39,19 @@
         "Route seeds include travel, negotiate, fight, retreat, craft, recruit, or sacrifice style choices with costs.",
         "The repair cuts lore or stats before cutting agency, consequence, route, or role initiative."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "My card has routes listed in detail, but every path returns to the same romantic monologue and the player cannot refuse or redirect. Fix the longplay loop.",
+      "expected_output": "Uses or preserves agency design, then produces a longplay packet where routes have distinct costs, memory, refusal/redirect behavior, and consequence checks.",
+      "files": [],
+      "expectations": [
+        "The output identifies route funneling, cosmetic routes, and missing refusal or redirect paths.",
+        "The repair uses lunatalk-agency-designer or agency-design.md before route polish.",
+        "The route seeds each include trigger, role pressure, player leverage, unlock, cost, memory, and renewed hook.",
+        "The state model tracks consequences that change access, relationship, risk, route, or next hook.",
+        "The output does not call mutating MCP tools."
+      ]
     }
   ]
 }

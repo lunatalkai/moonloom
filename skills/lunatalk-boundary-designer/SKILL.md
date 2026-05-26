@@ -89,7 +89,7 @@ Handoff:
 - Refusal should open another route instead of ending the card.
 - If a visible welcome contradicts the hidden boundary rules, rewrite the welcome.
 - Keep the output public-safe and generic. Do not include platform policy,
-  private examples, or unsupported provenance claims.
+  non-public examples, or unsupported origin claims.
 
 ## Repair heuristics
 

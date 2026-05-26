@@ -30,6 +30,11 @@ user reply path, second-turn move, or onboarding clarity.
 Read `../../references/longplay-design.md` when testing long-term playability,
 route seeds, memory/state, progression, passive/stalled behavior, or session
 continuation.
+Read `../../references/agency-design.md` when the transcript shows the player can
+only watch, the role narrates player feelings/actions, refusal is ignored,
+choices are decorative, or route changes funnel back to one outcome. Use
+`lunatalk-agency-designer` when the transcript points to user insertion space,
+interaction hooks, agency guardrails, reply paths, or consequence checks.
 Read `../../references/boundary-design.md` when simulation touches mature,
 adult, horror-leaning, consent-sensitive, refusal, pacing, jealousy, power
 imbalance, or safer-version behavior.
@@ -102,6 +107,10 @@ Playtest plan:
   route offers.
 - Player actions produce visible consequence, state change, relationship movement,
   or a new hook.
+- The role never narrates the player's feelings, consent, commitments, or
+  irreversible actions. If it does, patch agency design before another paid run.
+- Refusal, questioning, redirecting, testing, and cooperation should create
+  distinct role responses rather than collapse into one forced path.
 - For longplay tests, use continuation probes from the longplay packet and check
   whether the role changes state, recalls a memory thread, shifts route pressure,
   or renews a hook without waiting for the player to write the whole plot.
@@ -129,6 +138,8 @@ Playtest plan:
   vocabulary, refusal style, catchphrase, or pressure-speech repair.
 - If a world-heavy card dumps lore or treats factions/locations as scenery, patch
   the world-engine packet before adding more setting text.
+- If the player can only watch, choices are decorative, or all routes collapse
+  into the same response, patch the agency packet before changing prose polish.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to
   player choice, pacing, refusal style, stop conditions, and the boundary
   packet's explicitness ceiling and escalation ladder.

@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-agency-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk card has a strong premise and a pretty opening, but the player can only watch the role perform. The welcome narrates what the player feels, choices are decorative, the role decides the player follows along, and every route funnels back to the same scene. Build the agency packet before writing fields.",
+      "expected_output": "Produces an agency packet with player insertion space, agency guardrails, reply-path matrix, consequence checks, field patch targets, token tradeoff, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats spectator play and player-action narration as an agency-design failure rather than an MCP validation issue.",
+        "The packet defines what the player controls, can refuse, can change, and what the card must not decide.",
+        "The reply-path matrix includes at least accept, question, refuse, challenge, passive or delay, and boundary-setting style paths.",
+        "Each meaningful path changes state, route, relationship, risk, information, resource, location, or boundary terms.",
+        "The output names concrete field patch targets before authoring."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The card has four choices in XMLV3, but they are only mood labels and all lead back to the same reply. Redesign the interaction hooks and consequence checks.",
+      "expected_output": "Converts decorative choices into meaningful reply paths with player leverage, consequences, state changes, and handoff targets for opening or longplay repair.",
+      "files": [],
+      "expectations": [
+        "The output identifies decorative choices as an agency failure.",
+        "The repair replaces mood labels with concrete actions or stances that change consequences.",
+        "The plan defines interaction hooks and player leverage rather than only adding more options.",
+        "The consequence checks reject different wording with the same route result.",
+        "The output avoids mutating MCP tools during agency design."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "A simulation transcript shows the role keeps deciding that I obey, blush, and secretly want the route, even when I refuse. What should Moonloom patch before another paid simulation?",
+      "expected_output": "Maps transcript evidence to agency guardrails, boundary handling, refusal routes, roleDetailDesc or roleWelcome patches, validation after structural changes, and another simulation only after cost acceptance.",
+      "files": [],
+      "expectations": [
+        "The diagnosis identifies player-agency takeover and forced interiority.",
+        "The repair preserves role pressure while removing lines that decide the player's feelings, consent, or actions.",
+        "The refusal route keeps play alive through alternate route, cost, changed boundary, or later-return hook.",
+        "The patch targets Moonloom card fields or prompts rather than MCP/server semantic gates.",
+        "The output recommends another simulation only after the author accepts normal billing."
+      ]
+    }
+  ]
+}
