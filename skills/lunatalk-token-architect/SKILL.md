@@ -21,7 +21,10 @@ when visual hierarchy exists without concrete token evidence and should be
 routed to presentation planning instead. Read `../../references/material-distillation.md`
 when a source pack or world bible is the cause of bloat. Read the narrow Moonloom
 skill for the weak layer before cutting it: character core, world engine, play
-engine, voice, agency, opening, longplay, or boundary.
+engine, generator, voice, agency, opening, longplay, or boundary.
+Read `../../references/generator-design.md` when schema, examples, intake
+controls, artifact memory, revision operations, or generator visual structure
+are being compressed.
 
 ## Boundary
 
@@ -47,6 +50,9 @@ use `lunatalk-presentation-director` instead.
    lore to play functions, rebuild welcome, then preserve style only where it
    improves play.
 7. Preserve or request the relevant narrow packet before cutting a weak layer.
+   For generator/helper cards, preserve the artifact contract, default-start
+   path, output schema, named revision operations, quality rubric, and artifact
+   memory before moving or cutting schema/examples.
 8. Name rerun checks and handoff target.
 
 ## Output Format
@@ -65,6 +71,7 @@ Token architecture packet:
 - visual budget:
 - state budget:
 - example budget:
+- generator packet preservation:
 - patch order:
 - rerun checks:
 - handoff:
@@ -88,6 +95,9 @@ Self-review:
   action, route, mood, or risk.
 - Do not add examples unless they teach voice, output format, refusal handling,
   or pressure behavior more cheaply than rules.
+- Do not compress a generator/helper card by deleting the artifact schema,
+  default-start path, revision operations, or artifact memory. Move or shorten
+  them, but keep the loop executable.
 - Do not use token count as proof of quality. A short generic card can still fail.
 - Keep the output original and public-safe.
 
@@ -100,6 +110,9 @@ Hand the packet to:
 - `lunatalk-play-engineer` when stats, inventory, resources, quests, combat,
   turn protocol, or compact state need to become cheaper runnable rules before
   cutting.
+- `lunatalk-generator-architect` when the artifact contract, output schema,
+  revision operations, default-start path, or artifact memory is unclear before
+  compression.
 - `lunatalk-agency-designer` when choices or reply paths are decorative.
 - `lunatalk-presentation-director` when the work is pre-field visual hierarchy,
   visible/hidden state, Theme V3 split, or XMLV3/HTML mode decision without

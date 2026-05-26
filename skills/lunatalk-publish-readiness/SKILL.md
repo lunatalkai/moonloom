@@ -39,6 +39,10 @@ world-state consequences.
 Read `../../references/play-engine-design.md` when RPG/adventure/sandbox/
 survival/investigation mechanics, compact state, resources, quests, combat, turn
 protocol, or failure-forward behavior are part of the readiness risk.
+Read `../../references/generator-design.md` when generator/helper/
+creator-assistant behavior, artifact output, intake defaults, output schema,
+named revisions, artifact memory, advice-only drift, or endless intake is part
+of the readiness risk.
 Read `../../references/role-card-writing-framework.md` if the card has not already
 been checked for playable loop, anchors, consequences, and token efficiency.
 Read `../../references/token-economy.md` when `validate_role.tokenBudget`,
@@ -88,6 +92,11 @@ matter, or the card decides the player's feelings/actions.
    name compact state, resource consequences, quest/risk routes, turn protocol,
    failure-forward behavior, opening contract, and play-engine probes, repair it
    with `lunatalk-play-engineer` before treating the card as ready.
+   If the card is a generator, helper, creator-assistant, or artifact-producing
+   role but cannot produce a usable artifact after minimal intake/defaults, keep
+   a stable output schema, support named revision operations, preserve artifact
+   memory, or avoid advice-only/endless-intake behavior, repair it with
+   `lunatalk-generator-architect` before treating the card as ready.
    If dialogue is generic, voice cards are missing, catchphrases repeat, refusal
    voice breaks character, or ensemble speakers are not distinguishable, repair
    it with `lunatalk-voice-director` before treating the card as ready.

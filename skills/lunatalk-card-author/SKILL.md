@@ -52,6 +52,11 @@ Read `../../references/play-engine-design.md` when the card is RPG,
 adventure, open-world, sandbox, survival, investigation, simulator, or has
 stats, resources, inventory, quests, combat, turn protocol, compact state,
 failure-forward behavior, or a rule-manual opening. Read
+`../../references/generator-design.md` when the card is a generator, helper, or
+creator assistant, or when it needs an artifact contract, intake defaults, output
+schema, named revision operations, or repair for advice-only drift / endless
+intake. Use `lunatalk-generator-architect` first when artifact production is the
+primary task.
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/quality-scorecard.md` when the author
@@ -142,6 +147,11 @@ benchmark creation, regression checks, or example-driven iteration.
    spotlight rules, or group tension, use `lunatalk-ensemble-director` first
    unless an ensemble packet already exists. Do not create or patch the card
    until the cast structure, player leverage, and turn ownership are coherent.
+   If the author is unsure whether the card is companion, story, system, RPG,
+   generator, daily-life, light-setting, heavy-setting, ensemble, or a hybrid,
+   or if generator/helper behavior is only a small overlay inside another card
+   contract, use `lunatalk-archetype-director` first unless an archetype packet
+   already exists.
    If the author asks to create or repair an RPG, adventure, open-world,
    sandbox, survival, investigation, simulator, or game-like card with stats,
    resources, inventory, quests, combat, turn protocol, compact state updates,
@@ -149,6 +159,12 @@ benchmark creation, regression checks, or example-driven iteration.
    play-engine packet already exists. Do not create or patch the card until the
    playable rule loop, state model, resource rules, and failure behavior are
    coherent.
+   If the author asks to create or repair a primary generator, helper,
+   creator-assistant, artifact-producing, intake/defaults, output-schema,
+   revision-command, or advice-only assistant card, use
+   `lunatalk-generator-architect` first unless a generator packet already exists.
+   Do not create or patch the card until the artifact contract, defaults, schema,
+   revision operations, and artifact memory are coherent.
    If the author asks to create or repair a story, scenario, mystery,
    investigation, case-file, event, trial, rescue, betrayal, or social-drama card
    with stakes, route branches, clue/reveal pacing, false leads, suspect
@@ -173,10 +189,6 @@ benchmark creation, regression checks, or example-driven iteration.
    If the goal is mature, intense, adult, horror-leaning, consent-sensitive, or
    boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
    packet already exists.
-   If the author is unsure whether the card is companion, story, system, RPG,
-   generator, daily-life, light-setting, heavy-setting, ensemble, or a hybrid,
-   use `lunatalk-archetype-director` first unless an archetype packet already
-   exists.
 2. If the brief is thin but still has no settled role, player position, first
    scene, or primary contract, use or preserve `lunatalk-premise-workshop`
    before blueprinting or authoring. If the brief is thin but already has a
@@ -213,6 +225,9 @@ benchmark creation, regression checks, or example-driven iteration.
    `lunatalk-play-engineer` when the author primarily asks for RPG/adventure
    mechanics, resources, inventory, quests, combat, compact state, turn
    protocol, failure-forward behavior, or rule-manual opening repair. Prefer
+   `lunatalk-generator-architect` when the author primarily asks for a generator,
+   helper, creator-assistant, artifact output, intake defaults, stable schema,
+   revision commands, or repair for advice-only / endless-intake behavior. Prefer
    `lunatalk-token-architect` when the author primarily asks about tokenBudget,
    welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
    preserving playability while reducing token cost. Prefer
@@ -262,6 +277,9 @@ benchmark creation, regression checks, or example-driven iteration.
    ordinary routine, small playable desire, tiny disruption, shared object/place,
    habit state, passive-player behavior, boundary/romance posture, routine reply
    paths, second-turn change, or return-next-time hooks.
+   Use or preserve `lunatalk-generator-architect` when the current patch changes
+   artifact type, intake rules, defaults, output schema, revision operations,
+   artifact memory, diegetic creator behavior, or advice-only drift.
 11. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Use or
    preserve `lunatalk-presentation-director` when the opening is coherent but the
@@ -364,6 +382,11 @@ MCP tools make the card real; Moonloom makes the card good.
   position, player controls, compact state model, resource rules, quest/risk
   model, turn protocol, failure-forward behavior, progression phases, opening
   contract, state visibility, token plan, and simulation probes.
+- Preserve the generator packet when one exists: generator promise, artifact
+  type, player role, creator persona, artifact contract, intake surface, defaults,
+  output schema, revision operations, quality rubric, artifact memory,
+  refusal/constraint handling, opening contract, field allocation, token plan,
+  and simulation probes.
 - Preserve the scenario packet when one exists: scenario promise, player role,
   ongoing incident, stakes, core question, story spine, route branches,
   clue/reveal ladder, suspect or pressure network, compact consequence state,
@@ -492,11 +515,13 @@ MCP tools make the card real; Moonloom makes the card good.
   clue/reveal pacing, false leads, and consequence state;
   game/RPG/system cards need a play-engine packet with compact state, resource
   rules, turn protocol, failure-forward behavior, and opening setup/state/
-  choices; daily-life needs a routine loop, small playable desire, tiny
-  disruption, shared object/place, habit state, passive-player behavior, and
-  second-turn change; heavy-setting
-  needs modular lore that creates action; ensemble needs distinct motives, voices,
-  and turn ownership.
+  choices; generator/helper cards need an artifact contract, intake defaults,
+  stable output schema, named revision operations, quality rubric, and at least
+  one usable artifact per normal turn; daily-life needs a routine loop, small
+  playable desire, tiny disruption, shared object/place, habit state,
+  passive-player behavior, and second-turn change; heavy-setting needs modular
+  lore that creates action; ensemble needs distinct motives, voices, and turn
+  ownership.
 - When making a related card set, author the anchor card first and then only one
   clearly distinct secondary variant. Validate and render before adding more
   variants, and simulate only variants whose behavior changed and whose cost is

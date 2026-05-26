@@ -32,6 +32,9 @@ the card contract. Read `../../references/scenario-design.md` when story,
 scenario, mystery, investigation, case-file, event, trial, rescue, betrayal,
 social drama, clue/reveal pacing, false leads, suspect pressure, or branch
 consequences are part of the card contract. Read
+`../../references/generator-design.md` when generator, helper, creator-assistant,
+artifact output, intake/defaults, output schema, revision operations, or
+advice-only drift are part of the card contract. Read
 `../../references/daily-life-design.md` when daily-life, slice-of-life, quiet
 routine, neighbor, roommate, cohabitation, cafe, workplace, shared object, habit
 state, or low-stakes progression are part of the card contract. Read
@@ -50,6 +53,9 @@ matching packet:
 - `lunatalk-play-engineer` for RPG/adventure mechanics, compact state,
   resources, inventory, quests, combat, turn protocol, failure-forward behavior,
   or rule-manual openings.
+- `lunatalk-generator-architect` for generator/helper cards, artifact contracts,
+  intake defaults, output schemas, revision operations, advice-only drift, or
+  endless intake.
 - `lunatalk-scenario-architect` for story/scenario structure, route branches,
   clue/reveal pacing, suspect pressure, false leads, compact consequence state,
   route-funnel repair, opening incidents, or second-turn reveals.
@@ -124,6 +130,7 @@ Archetype packet:
   - relationship engine:
   - world engine:
   - play engine:
+  - generator:
   - scenario:
   - daily-life:
   - ensemble:
@@ -163,6 +170,11 @@ Archetype packet:
   the player gives minimal input. Use `lunatalk-play-engineer` when the blocker
   is compact state, resource rules, turn protocol, quest/risk design, or
   failure-forward behavior rather than broad archetype choice.
+- For generator/helper cards, include artifact contract, defaults, schema, and
+  revision operations. The card should produce a usable artifact when the player
+  gives minimal input. Use `lunatalk-generator-architect` when the blocker is
+  intake, output schema, revision loop, artifact memory, or advice-only drift
+  rather than broad archetype choice.
 - For story/scenario cards, include incident stakes and route consequences. Use
   `lunatalk-scenario-architect` when the blocker is clue/reveal pacing, suspect
   pressure, false leads, route funneling, compact consequence state, or
@@ -188,6 +200,9 @@ Hand the packet to:
 - `lunatalk-play-engineer` when the card shape is RPG/adventure/sandbox/system
   and playable rules, compact state, resource costs, failure-forward behavior, or
   turn protocol are not yet coherent.
+- `lunatalk-generator-architect` when the card shape is generator/helper/creator
+  assistant and artifact contract, intake defaults, output schema, revision
+  operations, artifact memory, or advice-only drift are not yet coherent.
 - `lunatalk-scenario-architect` when the card shape is story/mystery/scenario
   and incident stakes, route branches, clue/reveal pacing, suspect pressure,
   false leads, compact consequence state, or route-funnel guardrails are not yet

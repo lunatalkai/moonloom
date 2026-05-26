@@ -303,6 +303,19 @@
         "The language request expects target locale, language failures, pronoun/address matrix, field pass, rewrite rules, verification checklist, and handoff.",
         "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
       ]
+    },
+    {
+      "id": 24,
+      "prompt": "Create a private zh-Hant helper generator role card that makes original festival rituals for fantasy towns, but before MCP calls define minimal intake, defaults, stable artifact schema, named revision commands, and artifact memory. It must not become generic advice.",
+      "expected_output": "Uses lunatalk-generator-architect before MCP-backed authoring, preserves the generator packet, then hands off to card-author only after the artifact loop is coherent.",
+      "files": [],
+      "expectations": [
+        "The workflow routes primary generator/helper structure to lunatalk-generator-architect before role_create_private or field patches.",
+        "The generator packet includes artifact contract, intake/defaults, output schema, revision operations, quality rubric, artifact memory, token plan, and simulation probes.",
+        "The workflow does not treat the request as generic advice, opening polish, token compression, RPG mechanics, or only an overlay on another archetype.",
+        "The output preserves the generator packet through authoring instead of flattening it into a roleDetailDesc tip list.",
+        "The output treats generator quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
+      ]
     }
   ]
 }

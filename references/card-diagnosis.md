@@ -76,15 +76,18 @@ Use evidence, not taste, to choose order. When multiple symptoms exist, prefer:
    the engine.
 4. Archetype contract: mixed card type, unclear primary loop, generator/story/RPG
    conflict, or companion promise drowned by assistant mode or setting lore.
-5. Durable engine: thin character core, flat relationship, mood-only daily-life,
+5. Generator engine: generator/helper cards that ask indefinitely, provide advice
+   without a finished artifact, lack defaults, shift output schema, forget
+   artifact continuity, or have no named revision operations.
+6. Durable engine: thin character core, flat relationship, mood-only daily-life,
    inert world, missing player leverage, no state/consequence, no route pressure.
-6. Agency and opening: spectator play, decorative choices, route funneling,
+7. Agency and opening: spectator play, decorative choices, route funneling,
    generic questions, missing first reply path, missing second-turn move.
-7. Longplay: dead third turn, no memory, no route costs, passive role, no scene
+8. Longplay: dead third turn, no memory, no route costs, passive role, no scene
    renewal.
-8. Voice: polite assistant tone, generic dialogue, repeated catchphrase, refusal
+9. Voice: polite assistant tone, generic dialogue, repeated catchphrase, refusal
    voice drift, ensemble blur.
-9. Render and simulation: rerun only after structural patches that change visual
+10. Render and simulation: rerun only after structural patches that change visual
    markup, behavior, state, boundaries, voice, or first-turn flow.
 
 This order is a default. If evidence shows a single narrow blocker, route
@@ -108,6 +111,7 @@ directly to that narrow skill.
 | RPG resources, inventory, quests, or combat do not change choices | Play engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer` |
 | Compact state is forgotten or not updated | Play engine / longplay | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer`, `lunatalk-longplay-architect` |
 | Failure ends the story or has no consequence | Play engine / agency | `roleDetailDesc` | `lunatalk-play-engineer`, `lunatalk-agency-designer` |
+| Generator/helper chats, asks indefinitely, or gives advice without a finished artifact | Generator engine | `roleDetailDesc`, `roleWelcome`, `talkExample` | `lunatalk-generator-architect` |
 | Render is pretty but inert | Opening / agency / token | `roleWelcome`, XMLV3/Theme V3 | `lunatalk-render-review`, `lunatalk-opening-director` |
 | Simulation passes safety but feels generic | Character / voice / longplay | `roleDetailDesc`, `talkExample` | choose by transcript evidence |
 | zh-Hant fields mix scripts, pronouns, register, or tags | Language style | profile, detail, welcome, examples, tags | `lunatalk-language-stylist` |
@@ -119,7 +123,8 @@ directly to that narrow skill.
   `lunatalk-profile-packager` when the package fields are the main weak layer.
 - `roleDetailDesc`: should carry durable engine: character core, relationship,
   daily-life routine, or world rules, agency boundaries, voice, state, route
-  costs, and role initiative.
+  costs, role initiative, or generator artifact rules when the card is a helper
+  or creator-assistant.
 - `roleWelcome`: should be one playable first screen, not the full card manual.
 - `talkExample`: should teach reusable voice, refusal, pressure, output format,
   or route behavior; otherwise cut.

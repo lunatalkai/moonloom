@@ -144,14 +144,14 @@ then map the observed problem to a card patch.
 | Cast talks over the player | ensemble turn ownership | `lunatalk-ensemble-director`; cast table, spotlight rules, and scene rules |
 | RPG/system loses state | play engine / state economy | `lunatalk-play-engineer`; compact state format, turn protocol, and update rules |
 | RPG resources or failure do not affect choices | play engine | `lunatalk-play-engineer`; resource rules, quest/risk model, and failure-forward behavior |
-| Assistant card chats but produces no artifact | generator contract | output schema, defaults, and revision commands |
+| Assistant card chats but produces no artifact | generator engine | `lunatalk-generator-architect`; artifact contract, defaults, stable output schema, revision commands, and artifact memory |
 
 ## Patch loop
 
 1. Summarize the observed failure with one transcript-backed sentence.
 2. Identify the weakest Moonloom dimension: promise, anchor, voice texture,
    consequence, role initiative, agency, opening scene, player agency, boundary,
-   archetype fit, or token efficiency.
+   archetype fit, generator engine, or token efficiency.
 3. Patch the smallest source field that can fix the failure.
 4. Run `validate_role` after structural patches.
 5. Re-run simulation only if the patch changes behavior, boundary handling,

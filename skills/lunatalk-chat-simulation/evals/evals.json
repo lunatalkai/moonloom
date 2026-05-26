@@ -91,6 +91,19 @@
         "The output preserves pressure while making refusal, questioning, redirecting, and cooperation create distinct responses.",
         "The output recommends another simulation only after the author accepts normal billing."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "A generator/helper simulation stayed technically safe, but the role kept asking for more preferences, gave writing advice, changed its format, and never produced the finished ritual artifact. Diagnose before another paid run.",
+      "expected_output": "Treats the transcript as a Moonloom generator-engine failure, routes repair to lunatalk-generator-architect, patches artifact contract/defaults/schema/revisions/artifact memory, and reruns simulation only after cost acceptance.",
+      "files": [],
+      "expectations": [
+        "The diagnosis identifies endless intake, advice-only drift, unstable output format, and missing artifact delivery.",
+        "The recommended repair uses lunatalk-generator-architect or generator-design.md before another simulation.",
+        "The patch targets roleDetailDesc, roleWelcome, and talkExample generator rules rather than MCP validation logic.",
+        "The output says the next simulation should use realistic artifact and revision probes.",
+        "The output recommends another simulation only after the author accepts normal billing."
+      ]
     }
   ]
 }

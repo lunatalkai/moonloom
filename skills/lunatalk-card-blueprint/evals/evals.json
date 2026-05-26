@@ -173,6 +173,19 @@
         "The output does not draft final role fields or call MCP tools.",
         "If it continues toward blueprinting, it preserves the selected direction instead of re-brainstorming from scratch."
       ]
+    },
+    {
+      "id": 14,
+      "prompt": "Before creating anything, blueprint a primary helper generator card that makes fantasy town festival rituals. It should ask minimal intake, use defaults, output one finished ritual artifact, keep a stable schema, and support named revisions.",
+      "expected_output": "Routes the primary generator/helper request to lunatalk-generator-architect before broad field drafting, then preserves the generator packet through blueprinting without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes generator/helper, artifact output, minimal intake, defaults, stable schema, and named revisions to lunatalk-generator-architect or generator-design before broad authoring.",
+        "The generator packet includes artifact contract, intake/defaults, output schema, revision operations, quality rubric, artifact memory, token plan, and simulation probes.",
+        "The blueprint does not treat this as a generic advice card, pure opening polish, RPG play-engine, or relationship overlay.",
+        "The first screen and second-turn concept prove a finished artifact plus revision path rather than a long questionnaire.",
+        "The output does not call or instruct immediate mutating MCP tool use before the generator packet is ready."
+      ]
     }
   ]
 }

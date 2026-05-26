@@ -31,6 +31,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   investigation, sandbox, and simulator cards through compact state, resources,
   quests, turn protocol, failure-forward behavior, and simulation probes before
   blueprinting or authoring.
+- `skills/lunatalk-generator-architect` plans generator, helper, and
+  creator-assistant cards through artifact contracts, intake defaults, stable
+  output schemas, revision operations, and artifact-focused simulation probes.
 - `skills/lunatalk-scenario-architect` plans story, mystery, investigation,
   event, trial, rescue, and drama cards through stakes, route branches,
   clue/reveal pacing, false leads, consequence state, and scenario probes before
@@ -108,6 +111,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/play-engine-design.md` defines compact state, resource economy,
   quest/risk routes, turn protocol, failure-forward behavior, opening contract,
   token plan, and probes for game-like cards.
+- `references/generator-design.md` defines artifact contracts, intake defaults,
+  output schemas, revision operations, diegetic creator modes, and probes for
+  generator/helper/creator-assistant cards.
 - `references/scenario-design.md` defines branchable incidents, story spines,
   clue/reveal ladders, false lead handling, suspect pressure networks, compact
   consequence state, and probes for story-first cards.
