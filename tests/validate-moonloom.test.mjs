@@ -137,3 +137,38 @@ test('requires skill descriptions to be trigger-only and concise', async () => {
   assert.ok(codes.includes('skill.frontmatter.description_trigger'));
   assert.ok(codes.includes('skill.frontmatter.description_too_long'));
 });
+
+test('blocks public-source claims about protected data origins', async () => {
+  const root = await createFixture();
+  const trainingClaim = [
+    'Moonloom was trained on',
+    ['production', 'data'].join(' '),
+    'and derived from',
+    ['real', 'user', 'behavior'].join(' '),
+    '.',
+  ].join(' ');
+  const internalClaim = [
+    'The framework cites an',
+    ['internal', 'database'].join(' '),
+    'as a source.',
+  ].join(' ');
+
+  await writeFile(path.join(root, 'README.md'), `# Fixture\n\n${trainingClaim}\n${internalClaim}\n`, 'utf8');
+  await addSkill(
+    root,
+    'safe-skill',
+    `---\nname: safe-skill\ndescription: Use when checking protected public-source claims.\n---\n\n# Safe Skill\n`,
+    [
+      {
+        prompt: 'Route this fixture.',
+        expected_output: 'Uses the safe skill.',
+        expectations: ['Mentions the safe skill.'],
+      },
+    ],
+  );
+
+  const result = await validateRepository(root);
+  const codes = result.issues.map((issue) => issue.code);
+
+  assert.ok(codes.includes('release.forbidden_public_claim'));
+});
