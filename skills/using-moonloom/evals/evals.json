@@ -52,6 +52,19 @@
         "The handoff preserves concrete details instead of summarizing them away.",
         "The output keeps MCP validation as a later technical step after authoring."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "I am not sure which Moonloom skill to use. I want to check a card idea, maybe make it real later, and maybe test it.",
+      "expected_output": "Uses using-moonloom as the router, classifies the task into blueprint first, then card authoring, then render/simulation only after a private role exists and the author accepts cost where needed.",
+      "files": [],
+      "expectations": [
+        "The output explicitly treats using-moonloom as the starting router because the user is unsure which skill applies.",
+        "The output routes ideation or card-quality shaping to lunatalk-card-blueprint before MCP-backed authoring.",
+        "The output routes real private-card creation or editing to lunatalk-card-author after the blueprint is ready.",
+        "The output routes visual checks to lunatalk-render-review and behavior checks to lunatalk-chat-simulation only when those stages are actually relevant.",
+        "The output mentions that simulation uses normal billing or should be skipped until the author accepts the cost."
+      ]
     }
   ]
 }

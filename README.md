@@ -16,7 +16,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 
 ## What is included
 
-- `skills/using-moonloom` routes agents into the right Moonloom workflow.
+- `skills/using-moonloom` is the router skill. Start here when an agent is unsure
+  which Moonloom workflow applies.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-card-author` guides end-to-end private role card creation.
