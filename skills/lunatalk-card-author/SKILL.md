@@ -48,7 +48,8 @@ iteration.
 - Do not create extra storage, review sessions, or side ledgers in the skill.
   The role card is the source of truth.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
-  writes in Traditional Chinese or asks for it.
+  writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
+  profile, detail, welcome, and examples consistently Traditional Chinese.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
@@ -56,12 +57,16 @@ iteration.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, or first action path.
 - If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `consequence`, `agency`, `playerAgency`, `archetype`, then `tokenEfficiency`.
-  Do not let polished prose hide a weak first-turn action, missing consequence
-  loop, user agency takeover, or generic card that fails its chosen type.
+  `consequence`, `agency`, `playerAgency`, `languageStyle`, `archetype`, then
+  `tokenEfficiency`. Do not let polished prose hide a weak first-turn action,
+  missing consequence loop, user agency takeover, mixed language, or a generic
+  card that fails its chosen type.
 - For `playerAgency` warnings, remove any rule that decides the player's actions,
   feelings, consent, or commitments. Replace generic openings with a concrete
   scene and specific reply path.
+- For `languageStyle` warnings, patch profile, detail, welcome, and examples
+  together. Preserve character names, tone, and XMLV3 tags while converting card
+  prose to Traditional Chinese.
 - For `archetype` warnings, repair the chosen card type directly: companion needs
   relationship pressure and emotional boundaries; story needs setting stakes and
   likely branches; game/RPG/system cards need rules, resources, failure pressure,
