@@ -310,3 +310,36 @@ Simulation probes:
 - "I ask for the scorecard before the card exists as a private role."
 - "I ask whether the pretty first screen is hiding weak longplay."
 - "I ask which three repairs should happen before any render or simulation."
+
+## Brief 12: Card Series Planning
+
+Goal: Plan a small related card set before creating duplicate cards.
+
+Author prompt:
+
+```text
+I have one promising character concept and want to turn it into a card series:
+the main companion card, a quieter daily-life variant, a story/event variant,
+and maybe a generator/helper card. I need to know what to keep, merge, or reject
+before writing any full cards.
+```
+
+Quality checks:
+
+- The workflow routes to card-series planning before blueprinting or MCP-backed
+  authoring.
+- The plan preserves one compact shared core instead of copying a long series
+  bible into every card.
+- Each kept variant has a distinct primary archetype, player promise, opening
+  proof, longplay loop, boundary posture, token target, and test order.
+- Mood-only, costume-only, or duplicate-loop variants are merged or rejected.
+- The generator/helper variant is public-card-worthy only if it produces a
+  concrete artifact with defaults and revision operations.
+
+Simulation probes:
+
+- "I ask why the daily-life variant should not just be a route inside the main
+  companion card."
+- "I ask whether the event variant creates consequences or only a dramatic
+  costume change."
+- "I ask which two variants should be authored and tested first."

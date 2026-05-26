@@ -25,7 +25,12 @@ and archetype recipes. Read `../../references/archetype-contracts.md` when the
 author is unsure whether the card is companion, story, system, RPG, generator,
 daily-life, light-setting, heavy-setting, ensemble, or a hybrid. Use
 `lunatalk-archetype-director` first when card type or hybrid contract is the
-primary problem. Read `../../references/card-authoring-templates.md` for
+primary problem. Read `../../references/card-series-design.md` when the author
+wants a related card set, alternate version, seasonal/event variant, daily-life
+variant, RPG/system variant, generator/helper variant, or keep/merge/reject
+decision before individual blueprints. Use `lunatalk-series-architect` first
+when series or variant planning is the primary task. Read
+`../../references/card-authoring-templates.md` for
 draft packets and field templates. Read `../../references/material-distillation.md`
 when the idea comes from files, notes, imported drafts, source fragments, or a
 large world bible. Read `../../references/voice-calibration.md` when the idea
@@ -73,6 +78,9 @@ creation, validation, render review, simulation, and publishing workflow.
    packet already exists.
    If the card shape is unclear or mixes several archetypes, use
    `lunatalk-archetype-director` first unless an archetype packet already exists.
+   If the author wants several related cards, alternate versions, variants, a
+   card set, or a keep/merge/reject decision, use `lunatalk-series-architect`
+   first unless a card-series packet already exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -167,6 +175,20 @@ Quality audit:
 - weakest dimensions:
 - first three repairs:
 - repair skill order:
+
+Card-series packet:
+- current seed:
+- series goal:
+- shared core:
+- variant map:
+  - keep:
+  - merge:
+  - reject:
+- variant contracts:
+- overlap risks:
+- authoring order:
+- validation / render / simulation plan:
+- handoff:
 
 Recommended direction:
 - why this is stronger:
@@ -410,6 +432,9 @@ Handoff:
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
+- Preserve any card-series packet from `lunatalk-series-architect`; do not
+  summarize away shared core, keep/merge/reject decisions, variant contracts,
+  overlap risks, authoring order, or validation/render/simulation plan.
 - Make mature or intense cards explicit about rating, pacing, refusal, and player
   agency boundaries. For boundary-sensitive cards, produce or preserve a
   boundary packet with rating intent, explicitness ceiling, escalation ladder,
@@ -442,6 +467,9 @@ Handoff:
 - If the card has no long loop, add route seeds with costs and state changes.
 - If the welcome wants to become a manual, move durable rules to detail and keep
   the opening as a playable scene.
+- If one character concept is being split into several cards, use
+  `lunatalk-series-architect` first so variants prove distinct contracts instead
+  of becoming duplicate moods, costumes, or intensity levels.
 
 ## Handoff to authoring
 

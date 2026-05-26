@@ -481,6 +481,27 @@ Use `longplay-design.md` when a card repeats setup, waits for the player to inve
 every beat, forgets choices, has decorative state, restarts every session, or
 cannot name what changes after the opening.
 
+### 16. Card series and variants
+
+When one character or setting could become several cards, plan the series before
+writing fields. Use `card-series-design.md` to decide what to keep, merge, or
+reject. A variant needs a different playable contract, not only a different mood,
+costume, season, or intensity level.
+
+Minimum packet:
+
+- shared core: identity, desire, contradiction, boundary, player leverage,
+  relationship asymmetry, voice baseline, and reusable motifs
+- variant map: keep, merge, reject
+- variant contracts: primary archetype, player promise, unique pressure, opening
+  proof, longplay loop, boundary posture, token target, and field allocation
+- overlap risks: duplicate opening, same second-turn move, copied lore, same
+  player role, same route loop, or vague generator/helper behavior
+- authoring order and cost-aware validation / render / simulation plan
+
+Author the anchor card first. Add a secondary variant only when it can prove a
+different loop. Stop before the set becomes thin copies of the same card.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -509,7 +530,9 @@ a real private card:
    information.
 10. Long-session cards can name a continuity spine, compact state model, route
     seeds, memory threads, and return-later behavior.
-11. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+11. Related card sets can name the shared core, each kept variant's distinct
+    playable contract, and which proposed variants were merged or rejected.
+12. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
     detail, welcome, and examples.
 
 These are writing checks. Do not wait for `validate_role` to enforce them.
@@ -550,6 +573,9 @@ Repair the card in this order during Moonloom self-review:
 18. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
+19. Card series: when several related cards are proposed, create a series packet
+    before blueprinting individual cards; merge or reject variants that do not
+    prove a distinct player promise.
 
 Do not treat a single high validation result as enough. A card with weak agency
 or weak consequence still needs repair even if it has polished prose.

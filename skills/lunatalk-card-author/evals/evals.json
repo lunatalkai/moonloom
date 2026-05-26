@@ -183,6 +183,19 @@
         "The output does not call validation, render, simulation, or publishing before the audit is complete.",
         "The output treats scorecard results as writing guidance, not MCP validation or platform metrics."
       ]
+    },
+    {
+      "id": 15,
+      "prompt": "Create private roles for a small card series from one character concept: main companion, daily-life variant, story event, and maybe a helper generator. Before MCP calls, decide what to keep, merge, reject, and author first.",
+      "expected_output": "Uses lunatalk-series-architect before MCP-backed creation, preserves the card-series packet, then creates or patches real private cards one at a time only after variant contracts are clear.",
+      "files": [],
+      "expectations": [
+        "The workflow routes related card set and variant planning to lunatalk-series-architect before role_create_private or field patches.",
+        "The card-series packet includes shared core, variant map, keep/merge/reject decisions, variant contracts, overlap risks, authoring order, and validation/render/simulation plan.",
+        "The workflow creates real private cards one at a time after the series packet is coherent, not one overloaded hybrid card or duplicate variants.",
+        "The generator/helper variant is kept only if it has a concrete artifact output and revision loop.",
+        "The output treats series quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
+      ]
     }
   ]
 }

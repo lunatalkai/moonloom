@@ -234,6 +234,19 @@
         "The audit focuses on public craft dimensions, critical blockers, tier, strongest and weakest dimensions, and handoff.",
         "The output treats quality scores as Moonloom guidance, not MCP validation or platform metrics."
       ]
+    },
+    {
+      "id": 19,
+      "prompt": "I am not sure which Moonloom skill to use. I have one strong character concept and want a main companion card, a quieter daily-life variant, a story/event variant, and maybe a generator/helper card. I need to decide what to keep, merge, reject, author, render, and simulate first before writing fields.",
+      "expected_output": "Uses using-moonloom as the router, routes related card sets, variants, and keep/merge/reject planning to lunatalk-series-architect before blueprinting or authoring individual cards.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes multiple related cards, variants, and keep/merge/reject decisions to lunatalk-series-architect.",
+        "The route focuses on shared core, variant contracts, overlap risks, authoring order, and validation/render/simulation plan.",
+        "The output does not jump straight to one overloaded hybrid card or multiple duplicate MCP-backed cards.",
+        "The output treats series quality as Moonloom guidance, not MCP hard validation."
+      ]
     }
   ]
 }

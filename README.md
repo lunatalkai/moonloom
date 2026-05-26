@@ -21,6 +21,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-archetype-director` chooses the primary card contract,
   secondary overlays, field allocation, hybrid risks, and Moonloom skill order
   before blueprinting or authoring mixed card types.
+- `skills/lunatalk-series-architect` plans related card sets, alternate
+  versions, seasonal/event variants, daily-life variants, RPG/system variants,
+  and generator/helper variants before blueprinting or authoring.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
@@ -69,6 +72,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/archetype-contracts.md` defines primary card contracts, hybrid
   rules, field allocation, and archetype packets for companion, story, system,
   RPG, generator, daily-life, light-setting, heavy-setting, and ensemble cards.
+- `references/card-series-design.md` defines shared-core discipline, keep/merge/
+  reject rules, variant contracts, authoring order, and regression checks for
+  related role-card sets.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
   self-review packets.

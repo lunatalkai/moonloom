@@ -18,6 +18,10 @@ Read `../../references/archetype-contracts.md` first. Read
 `../../references/role-card-writing-framework.md` for PACT, field allocation, and
 archetype recipes. Read `../../references/card-authoring-templates.md` when the
 packet must be handed to blueprinting or authoring. Read
+`../../references/card-series-design.md` when the author is choosing archetypes
+across several related cards or variants. Use `lunatalk-series-architect` first
+when the primary task is deciding which variants to keep, merge, reject, author,
+render, or simulate first. Read
 `../../references/quality-rubric.md` for self-review probes.
 
 If the archetype decision exposes a narrow weak layer, use or preserve the
@@ -54,6 +58,9 @@ guidance.
 ## Workflow
 
 1. Restate the seed in one sentence.
+   If the author wants several related cards, alternate versions, variants, or a
+   card set, use `lunatalk-series-architect` first unless the request is only
+   choosing the primary contract for one specific variant.
 2. Name the primary archetype by player promise, not by aesthetic genre.
 3. Name secondary overlays and what each overlay is allowed to do.
 4. Reject any tempting archetype that would require a different primary loop.
@@ -135,6 +142,8 @@ Hand the packet to:
   directions, character core, world engine, voice, opening, or field planning.
 - `lunatalk-card-author` when the author wants a real private card or patch and
   the archetype contract is clear.
+- `lunatalk-series-architect` when several related cards need keep/merge/reject
+  decisions before individual archetype packets.
 - A narrow Moonloom skill first when the packet identifies one weak layer as the
   blocker.
 - `lunatalk-benchmark-runner` when changing archetype guidance and testing

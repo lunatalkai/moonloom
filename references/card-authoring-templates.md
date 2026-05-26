@@ -26,6 +26,38 @@ Quality audit packet:
 - keep / move / cut / rewrite:
 - validation / render / simulation stance:
 - handoff:
+Card-series packet:
+- current seed:
+- series goal:
+- shared core:
+  - identity:
+  - desire:
+  - contradiction:
+  - boundary:
+  - player leverage:
+  - relationship asymmetry:
+  - voice baseline:
+  - reusable motifs:
+- variant map:
+  - keep:
+  - merge:
+  - reject:
+- variant contracts:
+  - [variant]:
+    - primary archetype:
+    - player promise:
+    - player role:
+    - unique pressure:
+    - opening proof:
+    - longplay loop:
+    - boundary posture:
+    - token target:
+    - field allocation:
+    - required Moonloom packets:
+- overlap risks:
+- authoring order:
+- validation / render / simulation plan:
+- handoff:
 Card diagnosis packet:
 - current request:
 - available evidence:
@@ -58,6 +90,7 @@ Archetype packet:
   - XMLV3 / Theme V3:
 - required packets:
   - quality audit:
+  - card series:
   - card diagnosis:
   - character core:
   - relationship engine:
@@ -310,6 +343,48 @@ Ready for:
 - blueprint: yes | no
 - authoring: yes | no
 ```
+
+## Card-series handoff packet
+
+Use after `lunatalk-series-architect` has planned related cards or variants.
+
+```text
+Card-series packet:
+- current seed:
+- series goal:
+- shared core:
+  - identity:
+  - desire:
+  - contradiction:
+  - boundary:
+  - player leverage:
+  - relationship asymmetry:
+  - voice baseline:
+  - reusable motifs:
+- variant map:
+  - keep:
+  - merge:
+  - reject:
+- variant contracts:
+  - [variant]:
+    - primary archetype:
+    - player promise:
+    - player role:
+    - unique pressure:
+    - opening proof:
+    - longplay loop:
+    - boundary posture:
+    - token target:
+    - field allocation:
+    - required Moonloom packets:
+- overlap risks:
+- authoring order:
+- validation / render / simulation plan:
+- handoff:
+```
+
+Do not turn the packet into copied lore. Use it to choose which individual card
+to blueprint next and which proposed variants should stay merged or rejected.
 
 ## `roleDesc` patterns
 
@@ -622,6 +697,7 @@ Before render or simulation, answer:
 ```text
 Promise: pass | revise because ...
 Quality audit: pass | revise because ...
+Card series: pass | revise because ...
 Anchor: pass | revise because ...
 Card diagnosis: pass | revise because ...
 Relationship engine: pass | revise because ...
