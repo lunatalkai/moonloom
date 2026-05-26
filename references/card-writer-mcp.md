@@ -120,6 +120,9 @@ Update the role detail body.
 
 Update the opening welcome. Supported modes are `plain`, `html`, and `xmlv3`.
 Prefer `xmlv3` for new cards unless the author explicitly needs custom HTML.
+For XMLV3, use registered tags such as `<scene>`, `<n>`, `<speaker>`, `<d>`,
+`<quote>`, `<choice>`, `<form>`, and `<state>`. `<state>` must be JSON and is
+hidden from inline rendering.
 
 ```json
 {

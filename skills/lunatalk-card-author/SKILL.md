@@ -54,6 +54,10 @@ iteration.
   style, boundaries, world facts, and the consequence loop.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
+- In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for
+  dialogue. Do not invent aliases such as `<narration>` or `<dialogue>`.
+- Treat `<state>` as hidden JSON data. If text should be visible, put it in
+  `<n>`; if it should drive state UI, make it valid JSON.
 - For high-retention cards, design the loop explicitly: hook, agency,
   consequence, memory, progression, and renewed hook.
 
