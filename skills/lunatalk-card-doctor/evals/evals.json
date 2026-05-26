@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-card-doctor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an existing LunaTalk role draft. validate_role passes and the render preview looks good, but simulation says it is boring after one reply. roleDesc is pretty but vague, roleDetailDesc is biography and setting trivia, roleWelcome is long visual XMLV3, choices all funnel to the same response, voice sounds polite, and tokenBudget says welcomeToDetailRatio 5.8. Diagnose before rewriting fields.",
+      "expected_output": "Produces a card diagnosis packet with evidence, primary and secondary failures, repair order, symptom map, field triage, keep/move/cut/rewrite decisions, packets to create, verification plan, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output routes multi-symptom existing-card repair to lunatalk-card-doctor rather than jumping straight to broad authoring or another simulation.",
+        "The diagnosis identifies token allocation, weak durable engine, agency route funneling, generic voice, opening/second-turn failure, and longplay risk as separate layers.",
+        "The patch plan maps symptoms to source fields and narrow Moonloom skills.",
+        "The output delays simulation until structural patches are defined and cost is accepted.",
+        "The output treats validate_role passing and render polish as insufficient proof of writing quality."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "An author says their existing private card feels off but cannot explain why. The first screen is playable, but later replies ignore choices, repeat the setup, and sound like a calm assistant. Give me a diagnosis and patch order before touching the card.",
+      "expected_output": "Builds an evidence-backed diagnosis packet that translates vague feedback into observable failures, preserves the working opening, routes longplay/agency/voice repairs, and provides a minimal patch plan.",
+      "files": [],
+      "expectations": [
+        "The output does not rewrite the working opening just because later turns fail.",
+        "The diagnosis turns vague author feedback into observable failures with patch triggers.",
+        "The repair order prioritizes agency and longplay before voice polish when choices and continuation fail.",
+        "The field triage targets roleDetailDesc before roleWelcome unless evidence shows the opening is the blocker.",
+        "The output keeps the author feedback surface in the agent conversation and does not create review storage."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Before publishing, review a private card where validation is clean, render is readable, and simulation was skipped, but the draft mixes companion romance, a city lore dump, and a generator-like advice mode. I need to know what to fix first.",
+      "expected_output": "Uses card diagnosis to classify mixed symptoms, routes primary contract uncertainty to archetype director, identifies lore dump and assistant-mode drift, and blocks publish readiness until narrow packets are repaired.",
+      "files": [],
+      "expectations": [
+        "The diagnosis treats clean validation and readable render as technical evidence, not publish-grade quality proof.",
+        "The repair order starts with archetype contract when the primary card type is unclear.",
+        "The symptom map routes lore dump to world-engine/token repair and assistant-mode drift to archetype or generator contract repair.",
+        "The output recommends publish readiness only after diagnosis and narrow repairs are complete.",
+        "The output does not add MCP hard gates for subjective quality."
+      ]
+    }
+  ]
+}

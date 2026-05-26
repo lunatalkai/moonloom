@@ -31,6 +31,10 @@ card type or hybrid contract is the primary problem. Read
 `../../references/card-authoring-templates.md` when turning an idea into concrete
 field drafts. Read `../../references/material-distillation.md` when the author
 provides files, notes, imported drafts, source fragments, or a large world bible.
+Read `../../references/card-diagnosis.md` when improving an existing card with
+mixed symptoms, author feedback, validation/render passing but weak behavior,
+simulation failures, or unclear repair order. Use `lunatalk-card-doctor` first
+when the weakest layer is not obvious.
 Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
 Theme V3. Read `../../references/token-economy.md` when `validate_role`
 returns tokenBudget warnings, when `roleWelcome` is much longer than
@@ -57,6 +61,10 @@ benchmark creation, regression checks, or example-driven iteration.
 
 1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
    language, content rating intent, and success criteria.
+   If the author is improving an existing card and provides several symptoms,
+   feedback, validation/render output, simulation findings, or asks what to fix
+   first, use `lunatalk-card-doctor` first unless a diagnosis packet already
+   exists.
    If the author provides large source material, local files, a draft, or a world
    bible, use `lunatalk-material-distiller` first and author from its
    source-to-play map instead of pasting the source into role fields.
@@ -204,6 +212,10 @@ MCP tools make the card real; Moonloom makes the card good.
   archetype, token budget signal, target allocation, field triage,
   keep/move/cut/rewrite, compression ladder, visual budget, state budget,
   example budget, patch order, rerun checks, and handoff.
+- Preserve the card diagnosis packet when one exists: available evidence,
+  primary and secondary failures, repair order, symptom map, field triage,
+  keep/move/cut/rewrite decisions, packets to preserve/create, verification
+  plan, stop conditions, and handoff.
 - Preserve the archetype packet when one exists: current seed, primary archetype,
   secondary overlays, rejected archetypes, archetype contract, player promise,
   player role, core loop, first-screen proof, field allocation, required packets,
@@ -254,6 +266,9 @@ MCP tools make the card real; Moonloom makes the card good.
   role behavior, weak first-turn action, hollow opening, missing consequence loop,
   user agency takeover, mixed language, or a generic card that fails its chosen
   type.
+- If an existing card has several failures at once, diagnose first with
+  `lunatalk-card-doctor`; do not directly rewrite all fields or spend another
+  simulation pass before the repair order is clear.
 - Patch detail with the role's want/need, the contradiction that blocks it, the
   boundaries that keep escalation playable, the player's leverage, and the role's
   pressure behavior for trust, resistance, passivity, and boundaries.

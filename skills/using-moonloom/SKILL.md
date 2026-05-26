@@ -38,6 +38,12 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- Existing card or draft diagnosis, mixed symptoms, author feedback like boring
+  or off, validate/render passing but behavior still weak, simulation symptoms,
+  deciding what to fix first, weakest-layer triage, field patch mapping, or
+  keep/move/cut/rewrite repair order before rewriting fields: use
+  `lunatalk-card-doctor` before token architecture, render review, authoring,
+  simulation, or publish readiness.
 - TokenBudget, estimatedTokens, roleDescChars, roleDetailDescChars,
   roleWelcomeChars, welcomeToDetailRatio, overlong welcome, field allocation,
   keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat,
@@ -146,6 +152,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/token-economy.md` when the task involves tokenBudget,
   token allocation, overlong welcomes, duplicated lore, compression plans, or
   keep / move / cut / rewrite decisions.
+- Read `../../references/card-diagnosis.md` when the task involves existing-card
+  diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer
+  triage, repair order, or field patch mapping before rewriting.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
 - Read `../../references/playtest-loop.md` when designing private chat probes,

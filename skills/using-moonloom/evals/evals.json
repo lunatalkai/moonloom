@@ -208,6 +208,19 @@
         "The output says no mutating MCP tools should run during relationship-engine design.",
         "The output treats relationship quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 17,
+      "prompt": "I am not sure which Moonloom skill to use. I have an existing card where validate_role passes and render looks fine, but author feedback and simulation say it is boring. It has a vague roleDesc, biography-heavy detail, long visual welcome, route funneling, polite voice, and high welcomeToDetailRatio. I need to know what to fix first before rewriting.",
+      "expected_output": "Uses using-moonloom as the router, routes mixed existing-card symptoms and repair-order triage to lunatalk-card-doctor first, then hands off to narrow Moonloom skills or card-author after a diagnosis packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes existing-card diagnosis, mixed symptoms, author feedback, simulation symptoms, and repair order to lunatalk-card-doctor.",
+        "The route focuses on evidence, weakest layer, symptom map, field triage, keep/move/cut/rewrite, packets to create, and verification plan.",
+        "The output does not jump straight to broad rewriting or another costed simulation.",
+        "The output treats validation/render passing as insufficient proof of writing quality."
+      ]
     }
   ]
 }

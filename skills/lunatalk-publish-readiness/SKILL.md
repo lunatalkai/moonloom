@@ -12,6 +12,10 @@ review, and to call `publish_submit` only after explicit author confirmation.
 
 Read `../../references/card-writer-mcp.md` for `publish_submit` details.
 Read `../../references/quality-rubric.md` for readiness criteria.
+Read `../../references/card-diagnosis.md` when the card has several readiness
+risks at once, author feedback is vague, validation/render pass but behavior is
+weak, or the repair order is unclear. Use `lunatalk-card-doctor` before publish
+readiness when the card needs diagnosis rather than a final yes/no check.
 Read `../../references/character-core-design.md` when the role still feels
 trope-only, generic, passive, or lacks player leverage.
 Read `../../references/world-engine-design.md` when the card has lore-heavy
@@ -42,6 +46,9 @@ matter, or the card decides the player's feelings/actions.
 3. Call `validate_role`.
 4. Resolve all blockers.
 5. Check the card against PACT: playable, anchored, consequential, token-efficient.
+   If several readiness risks appear at once, run `lunatalk-card-doctor` first
+   to create a diagnosis packet and repair order instead of treating readiness as
+   a single checklist failure.
    If the role is trope-only, mood-only, passive, or has no player leverage,
    repair it with `lunatalk-character-core` before treating the card as ready.
    If the setting is lore-heavy but cannot name player position, core world rule,

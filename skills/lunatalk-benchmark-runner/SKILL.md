@@ -16,6 +16,9 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/quality-rubric.md` for pass/fail criteria. Read
 `../../references/archetype-contracts.md` when benchmarking card-type routing,
 hybrid cards, archetype contracts, or field allocation by card shape. Read
+`../../references/card-diagnosis.md` when benchmarking existing-card repair,
+mixed symptoms, validation/render pass but behavior failure, simulation triage,
+or repair-order routing. Read
 `../../references/character-core-design.md` when benchmarking generic persona,
 trope repair, ensemble identity, or character appeal. Read
 `../../references/relationship-engine.md` when benchmarking companion, romance,
@@ -60,6 +63,9 @@ Regression should include at least one synthetic fail case. Confirm through
 Moonloom self-review, render review, or simulation that:
 
 - `roleDesc` is too long to scan quickly.
+- an existing card passes validation and render review but has several writing
+  failures, and the workflow jumps straight to rewriting or another simulation
+  instead of producing a card diagnosis packet and repair order.
 - a `zh-Hant` card mixes Simplified Chinese into profile, detail, welcome, or
   examples.
 - the opening has choices but no concrete location, sensory beat, role action, or
@@ -128,6 +134,10 @@ choice.
 Use `lunatalk-token-architect` for regressions where the weakest layer is field
 allocation, `tokenBudget`, high `welcomeToDetailRatio`, duplicated lore,
 overlong welcome, visual bloat, or compression that risks deleting the engine.
+Use `lunatalk-card-doctor` for regressions where the weakest layer is not yet
+known because an existing card has mixed symptoms, vague author feedback,
+simulation findings, validation/render pass but weak behavior, or unclear repair
+order.
 Use `lunatalk-archetype-director` for regressions where the weakest layer is
 card-type selection, hybrid contract, rejected archetypes, or field allocation by
 primary card shape.

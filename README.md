@@ -34,6 +34,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   route funneling, and player-agency takeover into agency packets.
 - `skills/lunatalk-token-architect` turns tokenBudget warnings, overlong
   welcomes, misplaced rules, and visual bloat into token architecture packets.
+- `skills/lunatalk-card-doctor` diagnoses existing cards, drafts, validation
+  results, render reports, simulation symptoms, or author feedback before
+  choosing a repair order or rewriting fields.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
@@ -87,6 +90,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   matrices, agency guardrails, consequence checks, and interaction hooks.
 - `references/token-economy.md` defines token budget diagnostics, field
   allocation, compression ladders, and keep / move / cut / rewrite plans.
+- `references/card-diagnosis.md` defines multi-symptom card diagnosis,
+  weakest-layer triage, field patch mapping, repair order, and verification
+  planning for existing-card improvement.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.

@@ -157,6 +157,19 @@
         "The output runs validate_role only for technical blockers after structural patches.",
         "The output does not ask MCP validation to judge subjective relationship craft."
       ]
+    },
+    {
+      "id": 13,
+      "prompt": "Patch an existing private role where validation passes, render is readable, but author feedback and simulation show several problems: vague premise, biography-heavy detail, overlong visual welcome, route funneling, polite voice, and high welcomeToDetailRatio. Diagnose before patching.",
+      "expected_output": "Uses lunatalk-card-doctor before field patches, preserves the card diagnosis packet, then applies narrow skill packets and MCP-backed patches only after the repair order is clear.",
+      "files": [],
+      "expectations": [
+        "The workflow routes mixed existing-card symptoms to lunatalk-card-doctor before broad field rewriting.",
+        "The diagnosis packet includes evidence, primary and secondary failures, repair order, symptom map, field triage, keep/move/cut/rewrite, verification plan, and handoff.",
+        "The patch plan preserves working packets and maps each fix to roleDesc, roleDetailDesc, roleWelcome, talkExample, or XMLV3/Theme V3.",
+        "The workflow delays another simulate_private_chat run until structural patches are done and cost is accepted.",
+        "The output uses validate_role only for technical blockers after patching, not as proof of writing quality."
+      ]
     }
   ]
 }
