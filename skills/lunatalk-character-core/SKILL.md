@@ -13,7 +13,11 @@ character-core packet, not a full card and not a mutating MCP operation.
 Read `../../references/character-core-design.md` first. Read
 `../../references/role-card-writing-framework.md` for PACT, tension triangle, and
 archetype context. Read `../../references/card-authoring-templates.md` when the
-packet needs field patch targets. Read `../../references/voice-calibration.md`
+packet needs field patch targets. Read `../../references/relationship-engine.md`
+when the role has slow-burn, romance, friendship, rivalry, cohabitation,
+daily-life, generic flirting, comfort-loop, repair/rupture, or relationship
+pacing problems after the character core is clear. Read
+`../../references/voice-calibration.md`
 when the role's voice, ensemble contrast, or pressure behavior may drift. Use
 `lunatalk-voice-director` when the remaining weak layer is speaking style,
 catchphrase discipline, refusal voice, talkExample need, or ensemble voice
@@ -48,10 +52,13 @@ longplay, simulation, or publish readiness.
    boundary-setting, and trust-breaking player input.
 8. State field implications: roleDesc, roleDetailDesc, roleWelcome, optional
    talkExample, XMLV3/Theme V3, and token tradeoff.
-9. If the remaining weak layer is speaking style, catchphrase discipline, refusal
+9. If the remaining weak layer is relationship state, pacing, generic flirting,
+   comfort loops, repair/rupture, refusal routes, or relationship field
+   allocation, name `lunatalk-relationship-architect` as the next skill.
+10. If the remaining weak layer is speaking style, catchphrase discipline, refusal
    voice, or ensemble voice contrast, name `lunatalk-voice-director` as the next
    skill.
-10. Run the self-review and name the next Moonloom skill.
+11. Run the self-review and name the next Moonloom skill.
 
 ## Output format
 
@@ -111,6 +118,9 @@ Self-review:
 - If the role is trope-only, add contradiction and cost.
 - If the role is passive, add pressure behavior for passive or resistant players.
 - If the relationship is flat, add asymmetry the player can affect.
+- If the relationship keeps becoming generic flirting or comfort, hand off to
+  `lunatalk-relationship-architect` for closeness/friction state, pacing gates,
+  repair/rupture routes, and reply-path matrix.
 - If the secret is decorative, make it create a player decision.
 - If the role is too powerful, define what power cannot solve and what the player
   controls.
@@ -126,6 +136,9 @@ Hand the packet to:
 - `lunatalk-voice-director` when the character core is clear but speaking style,
   catchphrase use, refusal voice, talkExample need, or ensemble contrast still
   needs calibration.
+- `lunatalk-relationship-architect` when the character core is clear but
+  relationship pacing, generic flirting, comfort loops, repair/rupture, or
+  closeness/friction state still needs design.
 - `lunatalk-card-author` when the author wants a real private card or patch.
 - `lunatalk-opening-director` when the first scene must reveal the core.
 - `lunatalk-longplay-architect` when the core needs progression, route state, or

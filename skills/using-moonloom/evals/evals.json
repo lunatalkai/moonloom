@@ -195,6 +195,19 @@
         "The output does not treat all archetypes as equal and does not jump straight to MCP-backed authoring.",
         "The output treats archetype quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 16,
+      "prompt": "I am not sure which Moonloom skill to use. My companion card has a good character core and opening, but it becomes generic flirting and comfort after two turns. It is a slow-burn ex-rival cohabitation setup, and I need repair and rupture routes before writing fields.",
+      "expected_output": "Uses using-moonloom as the router, routes relationship dynamics and comfort-loop repair to lunatalk-relationship-architect first, then hands off to blueprint or authoring after a relationship-engine packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes generic flirting, comfort loops, slow-burn pacing, ex-rival cohabitation, repair routes, and rupture routes to lunatalk-relationship-architect.",
+        "The route focuses on relationship promise, asymmetry, closeness/friction state, pacing gates, reply-path matrix, passive-player behavior, field allocation, and simulation probes.",
+        "The output says no mutating MCP tools should run during relationship-engine design.",
+        "The output treats relationship quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }

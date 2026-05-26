@@ -29,6 +29,7 @@ Archetype packet:
   - XMLV3 / Theme V3:
 - required packets:
   - character core:
+  - relationship engine:
   - world engine:
   - agency:
   - voice:
@@ -71,6 +72,38 @@ Character-core packet:
 - pressure behavior:
 - interaction hooks:
 - token tradeoff:
+
+Relationship-engine packet:
+- current failure:
+- relationship promise:
+- relationship shape:
+- card archetype:
+- player role:
+- relationship asymmetry:
+- emotional contract:
+- intimacy / closeness states:
+- friction states:
+- pacing gates:
+- repair routes:
+- rupture / distance routes:
+- player agency boundaries:
+- interaction hooks:
+- reply-path matrix:
+- compact relationship state:
+- passive-player behavior:
+- second-turn relationship move:
+- long-session renewal:
+- voice implications:
+- talkExample decision:
+- field allocation:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- token tradeoff:
+- simulation probes:
+- handoff:
 
 World-engine packet:
 - current failure:
@@ -298,6 +331,17 @@ Agency and interaction
 - consequence checks:
 - passive-player behavior:
 - boundary handling:
+
+Relationship engine
+- relationship promise:
+- asymmetry:
+- closeness / friction state:
+- pacing gates:
+- repair routes:
+- rupture / distance routes:
+- passive-player behavior:
+- second-turn relationship move:
+- long-session renewal:
 
 Role identity
 - [Who the role is.]
@@ -547,6 +591,7 @@ Before render or simulation, answer:
 ```text
 Promise: pass | revise because ...
 Anchor: pass | revise because ...
+Relationship engine: pass | revise because ...
 Voice texture: pass | revise because ...
 Voice calibration: pass | revise because ...
 Consequence: pass | revise because ...

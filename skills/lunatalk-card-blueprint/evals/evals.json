@@ -104,6 +104,19 @@
         "The first scene and second-turn engine prove the primary contract rather than explaining every overlay.",
         "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "Before creating anything, blueprint a slow-burn ex-rival cohabitation card whose character core and opening are good, but every draft becomes generic flirting or comfort. I need a relationship engine before fields.",
+      "expected_output": "Uses lunatalk-relationship-architect or relationship-engine before broad field drafting, then produces a blueprint that preserves the relationship-engine packet and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes relationship dynamics, generic flirting, comfort-loop repair, slow-burn pacing, and ex-rival cohabitation to lunatalk-relationship-architect or relationship-engine.md before broad authoring.",
+        "The relationship-engine packet defines promise, asymmetry, closeness/friction state, pacing gates, repair routes, rupture/distance routes, and player agency boundaries.",
+        "The blueprint preserves reply-path matrix, passive-player behavior, second-turn relationship move, long-session renewal, field allocation, and token tradeoff.",
+        "The first scene and second-turn engine prove relationship state change rather than only mood or affection.",
+        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+      ]
     }
   ]
 }

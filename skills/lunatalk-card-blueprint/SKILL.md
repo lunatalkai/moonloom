@@ -14,6 +14,10 @@ private role card.
 
 Read `../../references/character-core-design.md` when the idea has thin,
 trope-only, generic, or memorable-character problems. Read
+`../../references/relationship-engine.md` when the idea is relationship-heavy,
+slow-burn, companion, romance, friendship, rivalry, cohabitation, or when drafts
+collapse into generic flirting, comfort, instant intimacy, flat warmth, weak
+repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the idea has worldbuilding,
 relationship-network, faction, location, lore-heavy, or lore-dump problems. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
@@ -74,34 +78,36 @@ creation, validation, render review, simulation, and publishing workflow.
    preserve its packet. Define the character core: identity, desire,
    contradiction, boundary, mask/wound, player leverage, pressure behavior, and
    what changes when the player gets closer or pushes back.
-7. Define the player insertion space: what the player controls, what they can
+7. If the weak layer is relationship play, generic flirting, comfort loops,
+   instant intimacy, slow-burn pacing, trust/friction state, or repair/rupture
+   routes, use `lunatalk-relationship-architect` first or preserve its packet.
+8. Define the player insertion space: what the player controls, what they can
    refuse, what they can change, and what the card must not decide for them.
    If the weak layer is player agency, spectator play, decorative choices, route
    funneling, player-feeling narration, or missing refusal routes, use
    `lunatalk-agency-designer` first or preserve its packet.
-8. If the weak layer is worldbuilding, relationship networks, factions,
+9. If the weak layer is worldbuilding, relationship networks, factions,
    locations, or lore-dump repair, use `lunatalk-world-engineer` first or
-   preserve its packet. Define the world or relationship engine only as far as it
-   creates play.
-9. If the weak layer is generic dialogue, speaking style, voice drift,
+   preserve its packet. Define the world engine only as far as it creates play.
+10. If the weak layer is generic dialogue, speaking style, voice drift,
    catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
    blur, use `lunatalk-voice-director` first or preserve its packet. Define
    voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-10. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+11. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
     durable rules, or visual bloat is the core problem, use
     `lunatalk-token-architect` first or preserve its packet before opening repair
     or field drafting.
-11. Design the first scene and the second-turn engine together. If the opening is
+12. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-12. If long-term playability, memory/state, route seeds, progression, or a dead
+13. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-13. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-14. Run Moonloom self-review and repair any weak layer before handing off.
+14. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+15. Run Moonloom self-review and repair any weak layer before handing off.
 
 ## Blueprint packet
 
@@ -128,6 +134,7 @@ Archetype packet:
   - XMLV3 / Theme V3:
 - required packets:
   - character core:
+  - relationship engine:
   - world engine:
   - agency:
   - voice:
@@ -169,6 +176,26 @@ Character core:
 - pressure behavior:
 - interaction hooks:
 - what changes through play:
+
+Relationship engine:
+- current failure:
+- relationship promise:
+- relationship shape:
+- relationship asymmetry:
+- emotional contract:
+- intimacy / closeness states:
+- friction states:
+- pacing gates:
+- repair routes:
+- rupture / distance routes:
+- player agency boundaries:
+- reply-path matrix:
+- compact relationship state:
+- passive-player behavior:
+- second-turn relationship move:
+- long-session renewal:
+- field allocation:
+- token tradeoff:
 
 Player insertion:
 - player role:
@@ -212,7 +239,7 @@ Boundary packet:
 - stop conditions:
 - safer fallback:
 
-World / relationship engine:
+World engine:
 - core rule:
 - world promise:
 - player position:
@@ -318,6 +345,7 @@ Token architecture packet:
 Self-review:
 - promise:
 - anchor:
+- relationship engine:
 - voice texture:
 - voice calibration:
 - consequence:

@@ -312,6 +312,7 @@ Archetype packet:
   - XMLV3 / Theme V3:
 - required packets:
   - character core:
+  - relationship engine:
   - world engine:
   - agency:
   - voice:
