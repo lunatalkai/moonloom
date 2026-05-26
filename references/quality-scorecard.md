@@ -94,6 +94,7 @@ Quality audit packet:
   - second-turn engine:
   - longplay:
   - voice:
+  - language style:
   - boundary handling:
   - token allocation:
   - presentation:
@@ -119,8 +120,11 @@ Choose first repairs by risk and leverage:
 4. Opening and second-turn engine.
 5. Longplay and state.
 6. Voice calibration.
-7. Token allocation and presentation polish, unless allocation hides the engine.
-8. Simulation and publishing only after the writing layer is worth testing.
+7. Language style when script, register, pronouns, address terms, or field
+   mismatch is the narrow weak layer after the engine, opening, and voice are
+   coherent.
+8. Token allocation and presentation polish, unless allocation hides the engine.
+9. Simulation and publishing only after the writing layer is worth testing.
 
 If the audit reveals several interacting symptoms and the repair order is still
 unclear, hand off to `lunatalk-card-doctor`. If the weak layer is narrow, hand

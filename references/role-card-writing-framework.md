@@ -43,6 +43,11 @@ generic `roleName`, overlong `roleDesc`, vague tags, or a first impression that
 does not explain why the player should open the card. Profile packaging should
 preserve the engine and patch the promise surface, not reopen broad ideation.
 
+Use `language-style.md` when the engine, opening, and voice card already work but
+the language layer is weak: mixed Traditional/Simplified Chinese, translated-
+sounding prose, pronoun/address drift, mixed-language tags, punctuation mismatch,
+or inconsistent register across profile, detail, welcome, and examples.
+
 ### 2. Engine layer
 
 This is the role's durable behavior and world logic. It belongs mostly in
@@ -427,6 +432,11 @@ voice promise, rhythm, vocabulary, emotional tells, refusal style, catchphrase
 policy, response-mode grid, talkExample decision, blind-line test, pressure
 probes, field patch targets, and token tradeoff.
 
+When the voice card is already coherent but the prose surface is not, use
+`lunatalk-language-stylist` instead of redesigning the voice. It should produce a
+language-style packet with target locale, language failures, pronoun/address
+matrix, field pass, rewrite rules, verification checklist, and handoff.
+
 ### 9. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.
@@ -596,7 +606,10 @@ a real private card:
 12. Related card sets can name the shared core, each kept variant's distinct
     playable contract, and which proposed variants were merged or rejected.
 13. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
-    detail, welcome, and examples.
+    detail, welcome, and examples. If the issue includes register drift,
+    pronoun/address mismatch, translated cadence, mixed-language tags, or
+    field-to-field wording mismatch, create a language-style packet before final
+    field assembly.
 
 These are writing checks. Do not wait for `validate_role` to enforce them.
 
@@ -629,8 +642,11 @@ Repair the card in this order during Moonloom self-review:
    route seeds, memory, role initiative, and continuation probes.
 14. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-15. Language style: rewrite Simplified Chinese terms into Traditional Chinese
-   while preserving names, tone, and XMLV3 tags.
+15. Language style: create or preserve a language-style packet when script,
+    register, pronouns, address terms, mixed-language tags, or field mismatch is
+    the narrow weak layer. Rewrite Simplified Chinese terms into Traditional
+    Chinese while preserving names, tone, XMLV3 tags, JSON keys, and the existing
+    engine.
 16. Archetype: satisfy the chosen card type rather than writing a generic card.
 17. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.

@@ -99,6 +99,11 @@ explicitly chooses a tradeoff:
   rating, good-enough review, or first-three repairs, create a quality audit
   packet with evidence-backed scores, blockers, tier, strongest and weakest
   dimensions, repair order, and handoff before rewriting fields.
+- Language style: when the engine, opening, and voice card are coherent but
+  `zh-Hant` / `zh-TW` prose mixes scripts, sounds translated, drifts in pronouns
+  or address terms, uses mismatched tags, or changes register between fields,
+  create a language-style packet before field assembly, render, simulation, or
+  publish readiness.
 - Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
 - Card diagnosis: if an existing card has several symptoms, author feedback is
@@ -166,8 +171,11 @@ explicitly chooses a tradeoff:
   a boundary packet with rating intent, explicitness ceiling, player agency
   contract, escalation ladder, refusal behavior, stop conditions, safer fallback,
   first-scene guardrails, and probes.
-- Language style: rewrite mixed Simplified Chinese terms into Traditional
-  Chinese while preserving character names, tone, and XMLV3 tags.
+- Language style: create or preserve a language-style packet when script,
+  register, pronouns, address terms, or field-to-field wording mismatch needs a
+  focused pass. Rewrite mixed Simplified Chinese terms into Traditional Chinese
+  while preserving character names, tone, XMLV3 tags, JSON keys, and the existing
+  engine.
 - Token efficiency: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
 - Token architect: when `tokenBudget` shows a long welcome, thin detail, high

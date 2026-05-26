@@ -51,6 +51,41 @@ Profile package packet:
 - fields to preserve:
 - fields to patch:
 - handoff:
+Language-style packet:
+- current request:
+- target language / locale:
+- card shape:
+- preserve:
+  - engine:
+  - opening:
+  - voice card:
+  - boundary posture:
+  - XMLV3 / Theme V3 tags:
+- language failures:
+  - script:
+  - register:
+  - pronouns / address terms:
+  - translated-sounding prose:
+  - mixed-language tags:
+  - field mismatch:
+- pronoun / address matrix:
+  - role self-reference:
+  - role address for player:
+  - player reference:
+  - intimacy / formality ladder:
+  - stage-based variations:
+- field pass:
+  - roleName:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - tags:
+  - XMLV3 / Theme V3:
+- rewrite rules:
+- keep / rewrite / preserve:
+- verification checklist:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
@@ -508,6 +543,7 @@ Route:
 Inputs preserved:
 - premise workshop packet:
 - profile package packet:
+- language-style packet:
 - quality audit packet:
 - archetype packet:
 - character-core packet:
@@ -529,6 +565,12 @@ Inputs preserved:
 Role fields:
 - roleName:
 - roleDesc:
+- language style:
+  - target language / locale:
+  - pronoun / address matrix:
+  - register:
+  - script consistency:
+  - intentional code-switching / preserved terms:
 - roleDetailDesc structure:
   - core premise:
   - player position:

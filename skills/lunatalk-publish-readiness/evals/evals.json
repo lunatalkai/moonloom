@@ -104,6 +104,19 @@
         "The output recommends rerunning readiness checks after the profile package is applied.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "This private zh-Hant role passes validation and preview, and the engine, opening, and voice are coherent, but the public fields mix Simplified Chinese, English tags, drifting pronouns, and a translated-sounding welcome. Can we submit it?",
+      "expected_output": "Does not publish; treats language inconsistency as a Moonloom readiness failure, routes to lunatalk-language-stylist, then requires another readiness check before explicit submission.",
+      "files": [],
+      "expectations": [
+        "The output keeps publish_submit blocked even though validation and preview pass.",
+        "The output identifies language consistency as the readiness risk: script mixing, mixed tags, pronoun drift, and translated prose.",
+        "The output routes repair to lunatalk-language-stylist before publish readiness continues.",
+        "The output preserves the coherent engine, opening, and voice instead of broad rewriting.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

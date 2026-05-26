@@ -364,6 +364,45 @@
         "The route focuses on a profile package packet with promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
         "The output says no MCP tools, render, simulation, publish, or whole-card rewrite should run during profile packaging."
       ]
+    },
+    {
+      "id": 29,
+      "prompt": "I am not sure which Moonloom skill to use. The card engine, opening, and voice card are coherent, but the language layer is weak: zh-Hant fields mix Simplified Chinese, English tags, translated-sounding sentences, inconsistent pronouns/address terms, and talkExample uses a different register from roleDetailDesc. I do not want plot, voice, or MCP changes yet.",
+      "expected_output": "Uses using-moonloom as the router and routes narrow language-style work to lunatalk-language-stylist before card-author, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes zh-Hant cleanup, script mixing, translated-sounding prose, pronoun/address drift, mixed tags, and field register mismatch to lunatalk-language-stylist.",
+        "The output does not route directly to lunatalk-card-author because the unresolved layer is language consistency before field assembly.",
+        "The route focuses on a language-style packet with target locale, failures, pronoun/address matrix, field pass, rewrite rules, verification checklist, and handoff.",
+        "The output says no plot rewrite, voice redesign, MCP tools, render, simulation, or publish should run during language styling."
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "I am not sure which Moonloom skill to use. The zh-Hant wording is inconsistent, but the opening is still a greeting-only scene with no location, role action, pressure, or second-turn path. I do not want MCP calls yet.",
+      "expected_output": "Uses using-moonloom as the router and routes unresolved opening structure to lunatalk-opening-director or card-doctor before language-stylist.",
+      "files": [],
+      "expectations": [
+        "The output does not route directly to lunatalk-language-stylist because the opening is not coherent enough to preserve.",
+        "The output routes the missing location, role action, pressure, and second-turn path to lunatalk-opening-director or lunatalk-card-doctor.",
+        "The output explains that language-stylist can run later after the engine/opening/voice preconditions are met.",
+        "The output avoids MCP tools, render, simulation, and publishing during routing.",
+        "The output keeps language style as Moonloom guidance, not an MCP/server gate."
+      ]
+    },
+    {
+      "id": 31,
+      "prompt": "I am not sure which Moonloom skill to use. This mature jealous-romance card has mixed zh-Hant language and translated-sounding prose, but it has no rating posture, refusal behavior, or player agency contract. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes missing sensitive-content boundary posture to lunatalk-boundary-designer before language-stylist.",
+      "files": [],
+      "expectations": [
+        "The output treats missing rating posture, refusal behavior, and player agency contract as a boundary-design blocker.",
+        "The output routes to lunatalk-boundary-designer before lunatalk-language-stylist.",
+        "The output does not polish mature pressure or jealousy before the boundary packet exists.",
+        "The output says language-stylist can run later after boundary posture and engine/opening/voice preconditions are clear.",
+        "The output avoids MCP tools, render, simulation, and publishing during routing."
+      ]
     }
   ]
 }

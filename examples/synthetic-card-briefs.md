@@ -451,3 +451,39 @@ Simulation probes:
 - "I ask why this card is worth opening from the profile alone."
 - "I compare two roleDesc candidates and ask which one preserves the engine."
 - "I ask whether the tags are concrete enough to distinguish the card."
+
+## Brief 15: Language Style Cleanup
+
+Goal: Repair language consistency after the card engine, opening, and voice are
+coherent.
+
+Author prompt:
+
+```text
+I have a coherent zh-Hant role draft with a clear engine, playable first scene,
+and voice card. The language layer is weak: profile, detail, welcome, examples,
+and tags mix Simplified and Traditional Chinese, the prose sounds translated,
+pronouns drift, and talkExample uses a different register from roleDetailDesc.
+I want a language pass only, not a plot rewrite or MCP calls.
+```
+
+Quality checks:
+
+- The workflow routes to language styling, not broad diagnosis, voice redesign,
+  final field assembly, publishing, or simulation.
+- The language-style packet preserves the existing engine, opening, voice card,
+  boundary posture, XMLV3 tags, and JSON keys.
+- The packet includes target locale, language failures, pronoun/address matrix,
+  field pass, rewrite rules, verification checklist, and handoff.
+- `roleDetailDesc`, `roleWelcome`, and `talkExample` share one register while
+  preserving their different functions.
+- The pass distinguishes accidental mixed-language prose from intentional proper
+  nouns, platform taxonomy, XMLV3 tags, JSON keys, or in-world code-switching.
+
+Simulation probes:
+
+- "I compare the welcome and talkExample and ask whether the same role could
+  plausibly produce both."
+- "I ask whether the pronoun/address matrix explains every shift in address."
+- "I ask whether any Traditional Chinese cleanup accidentally changed the route,
+  boundary, or player agency."

@@ -21,6 +21,10 @@ presentation, PACT, and top-card patterns. Read
 `../../references/profile-packaging.md` when the promise score is weak because
 `roleName`, `roleDesc`, tags, first impression, discovery surface, or
 reason-to-open are unclear despite a coherent engine. Read
+`../../references/language-style.md` when a coherent draft has language-style
+failures such as zh-Hant / zh-TW inconsistency, Simplified/Traditional mixing,
+translated-sounding prose, pronoun/address drift, mixed-language tags, or
+field-to-field register mismatch. Read
 `../../references/card-authoring-templates.md` when the audit needs to preserve
 existing packets or hand off to field drafting.
 
@@ -81,6 +85,7 @@ Quality audit packet:
   - second-turn engine:
   - longplay:
   - voice:
+  - language style:
   - boundary handling:
   - token allocation:
   - presentation:
@@ -135,6 +140,9 @@ Hand off to:
   `lunatalk-longplay-architect` when play, reply paths, second turn, or
   continuation fails.
 - `lunatalk-voice-director` when voice is the weakest remaining dimension.
+- `lunatalk-language-stylist` when the engine, opening, and voice are coherent
+  but script, register, pronouns, address terms, mixed-language tags, or
+  field-to-field wording are the weakest remaining dimension.
 - `lunatalk-token-architect` when field allocation hides the engine.
 - `lunatalk-card-author` when the author wants the repairs applied to a private
   card.

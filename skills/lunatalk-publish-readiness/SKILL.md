@@ -21,6 +21,12 @@ the readiness risk: generic `roleName`, overlong or vague `roleDesc`, vague tags
 weak first impression, discovery surface, or reason-to-open. Use
 `lunatalk-profile-packager` before publish readiness when the card engine is
 coherent but profile packaging is the weak layer.
+Read `../../references/language-style.md` when the readiness risk is language
+consistency: zh-Hant / zh-TW inconsistency, Simplified/Traditional mixing,
+translated-sounding prose, pronoun/address drift, mixed-language tags, or
+field-to-field register mismatch. Use `lunatalk-language-stylist` before publish
+readiness when the card engine, opening, and voice are coherent but language
+style is the weak layer.
 Read `../../references/card-diagnosis.md` when the card has several readiness
 risks at once, author feedback is vague, validation/render pass but behavior is
 weak, or the repair order is unclear. Use `lunatalk-card-doctor` before publish
@@ -65,6 +71,10 @@ matter, or the card decides the player's feelings/actions.
    mood-only tags, or a weak first-impression reason-to-open while the engine is
    otherwise coherent, repair it with `lunatalk-profile-packager` before treating
    the card as ready.
+   If a `zh-Hant` / `zh-TW` role mixes Simplified Chinese, English tags that are
+   not intentional taxonomy, translated-sounding prose, drifting pronouns or
+   address terms, or mismatched register between detail, welcome, and examples,
+   repair it with `lunatalk-language-stylist` before treating the card as ready.
    If several readiness risks appear at once, run `lunatalk-card-doctor` first
    to create a diagnosis packet and repair order instead of treating readiness as
    a single checklist failure.

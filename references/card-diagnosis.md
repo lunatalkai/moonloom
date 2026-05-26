@@ -110,6 +110,7 @@ directly to that narrow skill.
 | Failure ends the story or has no consequence | Play engine / agency | `roleDetailDesc` | `lunatalk-play-engineer`, `lunatalk-agency-designer` |
 | Render is pretty but inert | Opening / agency / token | `roleWelcome`, XMLV3/Theme V3 | `lunatalk-render-review`, `lunatalk-opening-director` |
 | Simulation passes safety but feels generic | Character / voice / longplay | `roleDetailDesc`, `talkExample` | choose by transcript evidence |
+| zh-Hant fields mix scripts, pronouns, register, or tags | Language style | profile, detail, welcome, examples, tags | `lunatalk-language-stylist` |
 
 ## Field triage
 
@@ -122,6 +123,10 @@ directly to that narrow skill.
 - `roleWelcome`: should be one playable first screen, not the full card manual.
 - `talkExample`: should teach reusable voice, refusal, pressure, output format,
   or route behavior; otherwise cut.
+- Language style: profile, detail, welcome, examples, and user-facing tags should
+  share one target language, script, register, and pronoun/address matrix. Use
+  `lunatalk-language-stylist` when this is the main weak layer and the engine,
+  opening, and voice card are otherwise coherent.
 - XMLV3 / Theme V3: should reveal state, mood, route, or choices that help the
   player act. Move reusable styling to Theme V3 when possible.
 

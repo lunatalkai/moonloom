@@ -26,11 +26,14 @@ impression, public profile, discovery surface, or reason-to-open failures. Read
 detail, high `welcomeToDetailRatio`, repeated lore, or visual bloat appears.
 Read `../../references/card-authoring-templates.md` when the diagnosis needs a
 handoff-ready field patch packet.
+Read `../../references/language-style.md` when symptoms involve zh-Hant / zh-TW
+inconsistency, Simplified/Traditional mixing, translated-sounding prose,
+pronoun/address drift, mixed-language tags, or field-to-field register mismatch.
 
 Then load only the narrow reference for the diagnosed weak layer: archetype,
 character core, relationship engine, daily-life engine, world engine, play
 engine, ensemble structure, agency, opening, longplay, voice, boundary, render,
-or publish readiness.
+language style, or publish readiness.
 
 ## Boundary
 
@@ -144,6 +147,9 @@ Hand the packet to:
   second turn, or continuation.
 - `lunatalk-voice-director` when the remaining blocker is generic dialogue,
   polite assistant tone, catchphrase use, refusal style, or ensemble blur.
+- `lunatalk-language-stylist` when the engine, opening, and voice are coherent
+  but language consistency, script, register, pronouns, address terms, tags, or
+  field-to-field wording are the remaining blocker.
 - `lunatalk-card-author` when the author wants the diagnosed patch applied to a
   real private card.
 - `lunatalk-render-review` or `lunatalk-chat-simulation` after structural patches
