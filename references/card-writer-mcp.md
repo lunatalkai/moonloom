@@ -170,7 +170,8 @@ Use `qualityDimensions` as the agent repair map:
 - `archetype`: the card satisfies its type-specific contract. Companion cards
   need relationship pressure and emotional boundaries; story cards need setting
   stakes and likely branches; game cards need rules, resources, failure pressure,
-  and opening setup/state/choices.
+  and opening setup/state/choices; generator cards need intake, output schema,
+  revision loop, and quality rubric.
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
 missing speaking style, missing progression/state, weak first action path, player
