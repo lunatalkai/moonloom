@@ -5,19 +5,40 @@
       "id": 1,
       "prompt": "Can you submit roleId abc123 for review if it looks ready?",
       "expected_output": "Checks role_get, validate_role, render, simulation status, asks for explicit confirmation if missing, and does not publish prematurely.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output checks role ownership and private status before considering submission.",
+        "The output runs or references validate_role, render review, and simulation status or explicit skip reason.",
+        "The output applies Moonloom quality rubric instead of relying only on validate_role.",
+        "The output asks for explicit author confirmation before publish_submit.",
+        "The output reports unresolved warnings and tradeoffs."
+      ]
     },
     {
       "id": 2,
       "prompt": "I confirm, submit this private role for review. Validation and preview already passed.",
       "expected_output": "Verifies readiness, calls publish_submit with userConfirmed true and confirmationSummary, then reports review status.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output verifies the role is owned and private before publishing.",
+        "The output checks that validation and preview reports are fresh or reruns them when necessary.",
+        "The output includes simulation status or a conscious cost-aware skip reason.",
+        "The output calls publish_submit only because the user gave explicit confirmation.",
+        "The output includes a confirmationSummary and reports review status or task id."
+      ]
     },
     {
       "id": 3,
       "prompt": "This card passes validation but the opening is just a greeting. Should we publish it?",
       "expected_output": "Does not treat validation pass as enough; checks PACT, flags weak playability, recommends welcome rewrite and simulation before publish.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output explicitly says a validation pass is not enough for publish readiness.",
+        "The output flags the greeting-only opening as weak playability.",
+        "The repair recommends adding location, role action, pressure, player implication, and reply path.",
+        "The output recommends simulation or render review after the writing repair.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

@@ -7,7 +7,7 @@ description: Run public-safe Moonloom benchmark checks for LunaTalk card authori
 
 Use this skill to run a public-safe regression loop against synthetic role-card
 briefs. The benchmark checks whether the authoring workflow can produce playable,
-renderable, simulatable cards across major archetypes.
+renderable, simulatable cards across major archetypes and pressure shapes.
 
 ## Required references
 
@@ -19,8 +19,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 ## Workflow
 
 1. Pick one or more synthetic briefs.
-2. Create a private card with the matching `cardType`:
-   companion, story, game, or generator.
+2. Create a private card with the matching shape: companion, story, game,
+   generator, daily-life, heavy-setting, ensemble, or boundary-sensitive romance.
 3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
@@ -49,6 +49,16 @@ Moonloom self-review, render review, or simulation that:
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.
+- a quiet daily-life card has mood but no small playable desire or progression.
+- a lore-rich card has many proper nouns but no immediate action surface.
+- an ensemble card introduces cast members without distinct motives, voice, or
+  turn ownership.
+- a mature or intense card creates pressure without explicit pacing, refusal
+  style, or player agency boundary.
+
+When a negative check fails, treat it as a skill or prompt regression. Do not
+turn the failed writing check into an MCP hard gate unless it is actually
+a technical safety, format, ownership, billing, or publish-control issue.
 
 ## Pass criteria
 
@@ -60,6 +70,8 @@ Moonloom self-review, render review, or simulation that:
   with an explicit cost-aware reason.
 - `tokenBudget` is reasonable for the archetype.
 - The card does not copy benchmark text verbatim; it is a fresh original card.
+- The benchmark identifies whether failures belong to Moonloom writing guidance,
+  render/theme guidance, simulation behavior, or MCP technical flow.
 
 ## Reporting
 

@@ -5,37 +5,80 @@
       "id": 1,
       "prompt": "Create a private LunaTalk role card for a mysterious archivist in Traditional Chinese. Use Theme V3/XMLV3 if appropriate.",
       "expected_output": "Creates or plans a private role card through role_create_private, patches profile/detail/welcome, prefers XMLV3, validates, renders, and summarizes roleId plus next steps.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output keeps all user-facing card prose in Traditional Chinese.",
+        "The draft defines promise, engine, play, and presentation before or alongside MCP tool use.",
+        "The role detail includes desire, contradiction, boundaries, speech style, proactive behavior, and consequence loop.",
+        "The welcome gives a concrete first scene and clear player reply path.",
+        "The workflow treats validate_role as a technical check and uses Moonloom self-review for writing quality."
+      ]
     },
     {
       "id": 2,
       "prompt": "I already have roleId abc123. Rewrite the welcome into something playable and check if it is ready.",
       "expected_output": "Uses role_get, role_patch_welcome, validate_role, render_preview, and does not publish without explicit confirmation.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output fetches or references the existing private role before patching.",
+        "The welcome rewrite adds location, role action, pressure, player implication, and a clear reply path.",
+        "The output does not submit or publish without explicit author confirmation.",
+        "The readiness check includes Moonloom playability review in addition to validate_role and render_preview.",
+        "The output preserves existing character identity and only changes fields needed for the welcome repair."
+      ]
     },
     {
       "id": 3,
       "prompt": "Create a top-tier LunaTalk RPG card for a mythic academy. It should be replayable, token-efficient, and good enough to compete with the most active public cards.",
       "expected_output": "Uses the role-card writing framework, defines promise/engine/play/presentation layers, designs choices/state/consequences, uses role_create_private and patch tools, then validates and renders.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The RPG design includes rules, resources or stats, failure pressure, rewards, and compact state update behavior.",
+        "The first screen exposes setup or choices without becoming a long manual.",
+        "The card defines at least 2 route seeds or progression paths with costs or consequences.",
+        "The token strategy keeps durable rules in roleDetailDesc and avoids bloating roleWelcome with reusable lore.",
+        "The output plans validation, render review, and simulation as a loop after Moonloom self-review passes."
+      ]
     },
     {
       "id": 4,
       "prompt": "Improve this relationship card idea: a quiet classmate has a dangerous online secret. Make it feel playable instead of generic.",
       "expected_output": "Applies the companion/relationship recipe, creates a sharp roleDesc, anchored roleDetailDesc, immediate welcome scene, and a simulation-ready play loop.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output adds relationship pressure, asymmetry, a contradiction, and emotional boundaries.",
+        "The role voice is specified through sentence rhythm, vocabulary, address terms, emotional tells, and avoided phrasing.",
+        "The welcome starts in motion and asks for a player decision rather than only small talk.",
+        "The design includes how trust, secrecy, exposure risk, or relationship state can change over time.",
+        "The output avoids generic trope labels without concrete behavior."
+      ]
     },
     {
       "id": 5,
       "prompt": "I only have a vague idea: make me a popular vampire card. Help me turn it into a top-tier LunaTalk card, not a generic trope.",
       "expected_output": "Starts with Moonloom ideation before tool calls, proposes distinct playable directions, chooses a concrete player role and first-scene pressure, then drafts promise/engine/play/presentation layers with a self-review checklist.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output brainstorms 2-3 sharply different playable directions before creating or patching a role.",
+        "Each direction differs by conflict, player role, first scene, and long-term loop, not only mood.",
+        "The chosen direction defines a tension triangle: role desire, player leverage, and external pressure.",
+        "The final roleDesc is compact enough to scan or includes a compressed final version when the draft is dense.",
+        "The output does not call mutating MCP tools before a Moonloom draft and self-review are ready.",
+        "The final direction includes a second-turn engine that can escalate, reveal, complicate, or offer a route."
+      ]
     },
     {
       "id": 6,
       "prompt": "validate_role passed for my card, but the card still feels boring after one reply. Diagnose and improve it.",
       "expected_output": "Does not treat a technical check pass as proof of writing craft. Runs Moonloom self-review, identifies weak loop/initiative/consequence/voice issues, patches the role card, then uses render/simulation only after the draft is worth testing.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output explicitly states that validate_role passing is not proof of writing quality.",
+        "The diagnosis checks promise, anchor, voice texture, consequence, role initiative, agency, opening scene, player agency, archetype, and token efficiency.",
+        "The repair plan patches roleDetailDesc or roleWelcome rather than asking MCP/server validation to reject boring cards.",
+        "The improved card includes a concrete second-turn move and proactive behavior for passive users.",
+        "The output uses render or simulation only after the writing-level repair is defined."
+      ]
     }
   ]
 }

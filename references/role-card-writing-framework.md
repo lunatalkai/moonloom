@@ -158,6 +158,110 @@ When `validate_role` returns `tokenBudget`, use it as a structural check:
 - `estimatedTokens` is approximate. Use it to compare revisions, not as a billing
   statement.
 
+## Top-card pattern stack
+
+Use this stack when the author asks for a card that should feel competitive with
+strong public cards. The goal is not longer prose. The goal is a card that can
+generate a better second turn than the first.
+
+### 1. Tension triangle
+
+Every strong card needs three active forces:
+
+- Role desire: what the role wants from the player, the world, or themselves.
+- Player leverage: what the player can decide, withhold, reveal, risk, or change.
+- External pressure: a timer, secret, location, debt, threat, rule, opportunity,
+  or social consequence that makes this scene start now.
+
+If one side is missing, repair it before writing style polish. A beautiful card
+with no player leverage becomes passive. A rich setting with no external pressure
+becomes a lore dump.
+
+### 2. Second-turn engine
+
+Design the first two turns together:
+
+```text
+Turn 0: welcome creates the hook and reply path.
+Turn 1: role response reacts to the user and changes something.
+Turn 2: the role can escalate, reveal, complicate, or offer a route without
+waiting for the user to invent the whole plot.
+```
+
+Before rendering, write one likely first user message and the role's intended
+second-turn move. If the second turn only restates setup, the card needs stronger
+consequence or role initiative.
+
+### 3. State economy
+
+Track only state that changes play. Good state is compact, visible when useful,
+and tied to consequences.
+
+Useful state types:
+
+- relationship: trust, suspicion, intimacy, debt, rivalry, loyalty
+- world: time, location, danger, faction alert, route progress
+- resource: supplies, stamina, money, clues, reputation, magic, crew morale
+- promise: secret fragments, vows, taboos, unresolved choices
+
+Avoid decorative state that never updates. A state panel that does not affect
+future turns wastes tokens and attention.
+
+### 4. Voice fingerprint
+
+Voice should be executable without relying on vague adjectives. Define:
+
+- sentence rhythm: short cuts, layered clauses, clipped replies, ceremonial tone
+- vocabulary: address terms, recurring metaphors, technical words, slang, taboo
+  terms, what the role refuses to say
+- emotional tells: what changes when embarrassed, cornered, angry, relieved, or
+  afraid
+- action beats: what the role does while speaking
+- refusal style: how the role sets boundaries while staying in character
+
+Do not stop at "gentle", "witty", "cold", "natural", or "human-like". Those are
+labels, not instructions the model can reliably execute.
+
+### 5. Route seeds
+
+Give the card enough branches to stay replayable without writing a full novel.
+Most cards need 2-4 route seeds:
+
+- closer: trust, confession, alliance, intimacy, tutoring, cohabitation
+- conflict: accusation, betrayal, rivalry, taboo, public exposure, failed mission
+- exploration: new room, clue, location, faction, ritual, hidden system
+- mastery: rules learned, resource optimized, rank gained, artifact crafted
+
+Each route seed should have a cost or tradeoff. Choices without cost feel like a
+menu; choices with cost create memory.
+
+### 6. Token tradeoff ladder
+
+Spend tokens in this order:
+
+1. Durable engine in `roleDetailDesc`.
+2. First playable scene in `roleWelcome`.
+3. Compact examples only when they teach voice or output format.
+4. Visual structure through XMLV3/Theme V3 when it improves agency or state
+   visibility.
+5. Decorative prose last, and only if it also improves mood or action clarity.
+
+When forced to shorten, preserve desire, contradiction, boundary, voice, and
+consequence first. Cut repeated lore, synonym lists, ornamental CSS, and NPC
+catalogs that do not affect the next few turns.
+
+### 7. Visual affordance
+
+Visual design should answer at least one of these:
+
+- What can the player do next?
+- What state changed?
+- What mood or risk frames this scene?
+- Which route or mode is currently active?
+
+If XMLV3/Theme V3 looks good but does not clarify action, state, or atmosphere,
+compress it and spend the saved tokens on the engine.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -249,6 +353,15 @@ Good first-scene pressures:
 - returning home after an absence
 - social mask cracking in private
 
+Top-card checks:
+
+- The relationship has asymmetry: one side knows, needs, risks, or owes something
+  the other does not.
+- The role's boundary is clear enough that closeness has pacing.
+- The first scene asks for a player decision, not just comfort or small talk.
+- The second turn can reveal a secret, test a boundary, or create a practical
+  consequence.
+
 ### Story / scenario card
 
 Goal: make the player enter an ongoing situation.
@@ -262,6 +375,15 @@ Use:
 - lightweight memory rules
 
 Welcome should begin inside the scene, not at the character sheet.
+
+Top-card checks:
+
+- The setting creates scenes by rule, not only by description.
+- The player has a position in the conflict: witness, suspect, heir, recruit,
+  exile, investigator, rival, or caretaker.
+- Branches change route state, not just scenery.
+- Named places are useful only when the player can visit, lose, protect, unlock,
+  or be trapped by them.
 
 ### System / simulator card
 
@@ -278,6 +400,13 @@ Use:
 The highest-usage cards often succeed here because they provide agency and
 replayability. Make the first message a clear control surface.
 
+Top-card checks:
+
+- The first turn can start even if the user gives minimal input.
+- The system has defaults, commands, and a revision loop.
+- Each generated result includes hooks or next actions, not only description.
+- The card knows when to ask one clarifying question and when to proceed.
+
 ### RPG / open-world card
 
 Goal: durable long-session play.
@@ -293,6 +422,15 @@ Use:
 RPG cards can justify long `roleDetailDesc`, but only if the detail is modular:
 core rules, world map, progression, NPC behavior, combat, economy, and output
 format should be separated.
+
+Top-card checks:
+
+- The player has meaningful choices under pressure: spend, risk, retreat, bargain,
+  scout, fight, hide, craft, recruit, or sacrifice.
+- State is small enough to update every turn.
+- Failure changes the world without ending the session too early.
+- NPCs have motives and limits; they are not just quest signs.
+- Rewards unlock new choices rather than only increasing numbers.
 
 ### Generator / creator assistant card
 
@@ -311,6 +449,15 @@ Use:
 The card should not just chat about the task; it should drive the user toward a
 finished artifact.
 
+Top-card checks:
+
+- The card produces a usable artifact in the same turn when the user gives enough
+  input.
+- The card offers defaults when the user skips intake.
+- The revision loop has named operations such as expand, compress, change tone,
+  add conflict, localize, or format.
+- The quality rubric is part of the card's behavior, not only a note.
+
 ### Canon/IP adaptation card
 
 Goal: preserve recognizable fantasy while avoiding brittle trivia dependence.
@@ -324,6 +471,86 @@ Use:
 
 Do not rely on the model "knowing everything." Put the facts needed for this card's
 scene in `roleDetailDesc`.
+
+### Daily-life / slice-of-life card
+
+Goal: make low-stakes scenes emotionally playable instead of flat.
+
+Use:
+
+- one ordinary routine with a hidden pressure
+- a relationship or habit that can change slowly
+- small choices that reveal preference, trust, embarrassment, jealousy, comfort,
+  avoidance, or shared history
+- sensory anchors: room, weather, food, object, sound, task, or time of day
+
+Top-card checks:
+
+- The scene has a reason to start now even if the premise is quiet.
+- The role wants something small but specific.
+- The first turn gives the player a natural action: help, tease, refuse, ask,
+  notice, hide, offer, leave, or change the plan.
+- Progression comes from accumulated tiny changes, not sudden melodrama.
+
+### Light-setting card
+
+Goal: provide a clean fantasy or relationship frame without overloading the
+player with lore.
+
+Use:
+
+- one core rule or hook
+- one main location
+- one role relationship
+- one progression path
+- no more lore than the first scene can use
+
+Top-card checks:
+
+- A new player understands the premise from `roleDesc` and the first screen.
+- The welcome does not require reading a manual.
+- Detail contains enough behavior anchors to prevent generic drift.
+- Extra lore is introduced only when it creates a new choice or consequence.
+
+### Heavy-setting / lore-rich card
+
+Goal: make a large world playable through modular structure.
+
+Use:
+
+- a compact summary before deep lore
+- modules for rules, factions, places, routes, history, and output behavior
+- a clear player position inside the setting
+- state rules that decide what lore becomes relevant next
+- named entities only when they can affect play
+
+Top-card checks:
+
+- The first scene works even if the player ignores most lore.
+- Long lore is organized by how it is used in play.
+- Each faction, location, or system creates a possible action, obstacle, cost, or
+  reward.
+- Token-heavy sections are justified by future behavior, not worldbuilding pride.
+
+### Ensemble / multi-character card
+
+Goal: support multiple characters without losing voice, agency, or focus.
+
+Use:
+
+- 2-5 active core roles for most cards
+- a cast table with motive, relationship to player, speech cue, and conflict
+- clear turn ownership: who speaks first, who interrupts, who hangs back
+- scene rules for introducing secondary roles gradually
+- memory rules for alliances, suspicion, promises, and unresolved conflicts
+
+Top-card checks:
+
+- Each core role has a distinct desire and speech fingerprint.
+- The card does not let the cast drown out the player.
+- The welcome starts with one focal interaction, not a roll call.
+- Group conflict creates choices: side with, mediate, hide, expose, split up,
+  bargain, or leave.
 
 ## Field allocation
 
