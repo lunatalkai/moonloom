@@ -65,6 +65,19 @@
         "The output recommends simulation after the writing repair or an explicit cost-aware skip.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "The role passes validation and preview, but tokenBudget reports roleDetailDescChars 1200, roleWelcomeChars 7600, welcomeToDetailRatio over 6, and repeated lore panels in the welcome. Should we submit it?",
+      "expected_output": "Does not publish; treats the token allocation as a Moonloom readiness failure, routes to lunatalk-token-architect, and requires field triage plus render or simulation follow-up before explicit submission.",
+      "files": [],
+      "expectations": [
+        "The output says validation and preview are not enough when token allocation fails.",
+        "The output routes repair to lunatalk-token-architect or token-economy before publish readiness.",
+        "The repair includes field triage, target allocation, keep/move/cut/rewrite, compression ladder, and patch order.",
+        "The output recommends rerunning validate_role and render or simulation after the token repair.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

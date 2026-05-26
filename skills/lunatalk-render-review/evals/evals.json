@@ -39,6 +39,19 @@
         "The output keeps MCP validation as technical validation and uses Moonloom rubric for playability.",
         "The review says whether another render pass is needed after patching."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "The XMLV3 preview is visually polished, but the welcome is huge because it repeats lore in decorative panels and validate_role shows welcomeToDetailRatio above 6.",
+      "expected_output": "Treats the visual issue as token architecture and first-screen clarity risk, routes to lunatalk-token-architect before further styling, and asks for another render pass after patching.",
+      "files": [],
+      "expectations": [
+        "The review checks render status but does not treat a pretty screenshot as enough.",
+        "The output identifies visual panels and repeated lore as token allocation risk.",
+        "The output routes repair to lunatalk-token-architect or token-economy before more visual polish.",
+        "The repair targets moving durable rules and lore out of roleWelcome while preserving first action clarity.",
+        "The review says another render pass is needed after patching."
+      ]
     }
   ]
 }

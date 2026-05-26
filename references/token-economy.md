@@ -1,0 +1,130 @@
+# Moonloom Token Economy
+
+Use this reference when a role card spends context in the wrong field, repeats
+lore, bloats `roleWelcome`, hides durable rules in visual markup, or needs a
+keep / move / cut / rewrite plan before render or simulation.
+
+## Core Rule
+
+Tokens are not a length target. They are attention budget. Spend them where they
+change future behavior:
+
+```text
+promise -> durable engine -> playable opening -> compact state -> optional style
+```
+
+If the first screen is doing the work of the whole card, repair field allocation
+before polishing prose.
+
+## Token Architecture Packet
+
+Return this packet before patching fields:
+
+```text
+Token architecture packet:
+- current failure:
+- archetype:
+- token budget signal:
+- target allocation:
+- field triage:
+- keep / move / cut / rewrite:
+- compression ladder:
+- visual budget:
+- state budget:
+- example budget:
+- patch order:
+- rerun checks:
+- handoff:
+```
+
+## Reading Token Signals
+
+Use `validate_role.tokenBudget` as a structural diagnostic, not as a taste
+judgment.
+
+- `roleDescChars`: promise layer. Too long means the premise is not scannable.
+- `roleDetailDescChars`: durable engine. Too short means the card may drift after
+  the first turn.
+- `roleWelcomeChars`: play layer. Too long usually means the welcome is carrying
+  lore, rules, visual structure, or repeated monologue.
+- `welcomeToDetailRatio`: allocation health. Above `2` with a long welcome is a
+  strong signal to move durable content into detail.
+- `estimatedTokens`: comparison signal. Use it to compare revisions, not as a
+  billing statement.
+
+## Field Targets
+
+These ranges are starting points. Preserve playability before hitting a number.
+
+| Archetype | roleDesc | roleDetailDesc | roleWelcome |
+|---|---:|---:|---:|
+| Companion / relationship | 80-260 | 1,200-2,200 | 250-700 |
+| Daily-life | 80-220 | 800-1,800 | 200-600 |
+| Story / mystery / scenario | 120-260 | 2,000-4,000 | 600-1,200 |
+| Ensemble | 140-300 | 2,500-5,000 | 700-1,400 |
+| System / RPG / sandbox | 180-500 | 4,500-10,000 | 900-2,000 |
+| Generator / assistant | 180-500 | 3,000-7,000 | 700-1,600 |
+
+When unsure, keep `roleWelcome` below `roleDetailDesc` unless the welcome is a
+true setup UI with forms, default paths, and immediate player control.
+
+## Field Triage
+
+| Field | Keep | Move | Cut | Rewrite |
+|---|---|---|---|---|
+| `roleDesc` | player role, situation, tension | rules, lore names | mood stacks, duplicate clauses | one scannable promise |
+| `roleDetailDesc` | durable engine, voice, boundaries, state | hidden welcome rules | trivia, ornamental lists | compact labeled sections |
+| `roleWelcome` | place/time, role action, pressure, player implication, reply paths | lore, rules, route logic | duplicated monologues, long panels | one playable scene |
+| XMLV3/HTML | semantic tags, short state JSON | reusable visuals to Theme V3 | decorative layout with no action value | XMLV3 first; HTML only when needed |
+| `talkExample` | small pressure samples when voice drifts | repeated monologue | samples that teach nothing | 2-4 micro-samples tied to behavior |
+
+## Compression Ladder
+
+1. Delete exact duplicates and repeated monologues.
+2. Remove decorative visual panels that do not reveal state, action, route, or
+   mood the player can use.
+3. Move durable rules from `roleWelcome` into `roleDetailDesc`.
+4. Convert lore into play functions: clue, cost, access, route, state, boundary,
+   voice, or player leverage.
+5. Replace mood-label choices with consequence choices.
+6. Compress `roleDesc` into one promise sentence.
+7. Rebuild `roleWelcome` from the five beats instead of shrinking a bad screen.
+8. Add compact state only for values that change future replies.
+9. Preserve character pressure behavior before preserving decoration.
+
+## Visual Budget
+
+Visual structure earns tokens only when it clarifies:
+
+- what the player can do now
+- what state changed
+- which route or mode is active
+- what mood or risk frames the scene
+
+Use XMLV3 for semantic scene structure and Theme V3 for reusable style. Use HTML
+only for a specific layout need that XMLV3 and Theme V3 cannot express.
+
+## Patch Order
+
+1. Classify the archetype.
+2. Read the token budget signal and name the allocation failure.
+3. Rewrite `roleDesc` if it is not scannable.
+4. Move durable rules, lore functions, voice, boundaries, and state into
+   `roleDetailDesc`.
+5. Use character core, world engine, agency, voice, opening, or longplay packets
+   when the weak layer is not only length.
+6. Rebuild `roleWelcome` as one playable screen.
+7. Cut or move visual scaffolding.
+8. Re-run self-review, then `validate_role`, then render or simulation only when
+   the draft is worth testing.
+
+## Self-Review
+
+- Does each long section change future behavior, state, voice, route, or first
+  action?
+- Is `roleWelcome` a playable scene rather than a poster or manual?
+- Can `roleDetailDesc` sustain the card after turn one?
+- Did compression preserve desire, contradiction, boundary, player leverage,
+  voice, route costs, and consequence?
+- Did visual structure move to XMLV3/Theme V3 when it is reusable?
+- Are examples short enough to teach behavior rather than consume context?

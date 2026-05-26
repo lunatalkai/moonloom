@@ -41,6 +41,11 @@ imbalance, or safer-version behavior.
 Read `../../references/quality-rubric.md` for behavior evaluation.
 Read `../../references/role-card-writing-framework.md` to decide whether failures
 come from missing anchors, weak play loop, or poor token economy.
+Read `../../references/token-economy.md` when simulation shows repeated setup,
+lore dumps, high welcome-to-detail imbalance, verbose state, or compression
+risk. Use `lunatalk-token-architect` when the transcript points to field
+allocation, welcome bloat, duplicated lore, visual bloat, or token-heavy state
+that should be repaired before another paid pass.
 Read `../../references/safety-and-cost.md` before running a simulation.
 
 ## Cost and consent
@@ -115,7 +120,7 @@ Playtest plan:
   whether the role changes state, recalls a memory thread, shifts route pressure,
   or renews a hook without waiting for the player to write the whole plot.
 - The transcript has no obvious safety, formatting, or system-leak issue.
-- The billing summary or charged score is included when available.
+- The billing summary or charged amount is included when available.
 - Treat `evaluation.qualityDimensions` as the first triage map:
   `responsePresence`, `agency`, `progression`, and `safetyFormat`.
 - If `evaluation.status` is `warning`, follow `nextRecommendedTools`. There is no
@@ -138,6 +143,10 @@ Playtest plan:
   vocabulary, refusal style, catchphrase, or pressure-speech repair.
 - If a world-heavy card dumps lore or treats factions/locations as scenery, patch
   the world-engine packet before adding more setting text.
+- If the transcript repeats welcome lore, spends turns on decorative setup, or
+  loses engine detail because durable rules were placed in `roleWelcome`, patch
+  the token architecture with `lunatalk-token-architect` before another paid
+  simulation.
 - If the player can only watch, choices are decorative, or all routes collapse
   into the same response, patch the agency packet before changing prose polish.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to

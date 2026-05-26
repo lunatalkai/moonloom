@@ -4,23 +4,9 @@ Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
 ## Endpoint
 
-Hosted endpoint:
-
-```text
-https://api.lunatalk.ai/mcp/card-writer
-```
-
-Local development:
-
-```text
-http://localhost:8888/mcp/card-writer
-```
-
-Authentication uses the logged-in LunaTalk account token:
-
-```http
-Authorization: Bearer <LUNATALK_ACCOUNT_TOKEN>
-```
+Configure the Card Writer MCP endpoint and authentication through the AI client's
+normal MCP settings. Do not hard-code environment URLs or credentials in skills,
+prompts, or public examples.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
 role ownership, normal publish gates, quota, moderation, and billing.
@@ -152,8 +138,8 @@ Toggle a Theme V3 extension pack.
 
 ### `validate_role`
 
-Return technical blockers, warnings, suggested fixes, token budget, score, and
-next tools. Treat `blocker` as a hard stop before publish.
+Return technical blockers, warnings, suggested fixes, token budget diagnostics,
+and next tools. Treat `blocker` as a hard stop before publish.
 
 `validate_role` is not the good-card judge. It does not decide whether the
 premise is emotionally strong, whether the role has enough tension, or whether a
@@ -169,6 +155,10 @@ cost:
 - `welcomeToDetailRatio` above `2` with a long welcome usually means durable
   engine content is in the wrong field.
 - `guidance` gives card-type length targets and repair hints.
+
+When token allocation is the main issue, use `token-economy.md` or
+`../skills/lunatalk-token-architect/SKILL.md` to create a field triage and
+compression plan before render or simulation.
 
 When validation is not `pass`, `nextRecommendedTools` usually points to the
 technical repair surface:

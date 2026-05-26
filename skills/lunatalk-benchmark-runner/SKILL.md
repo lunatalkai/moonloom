@@ -28,7 +28,9 @@ screen playability, or second-turn behavior. Read
 route seeds, memory/state, progression, passive/stalled behavior, or session
 continuation. Read `../../references/agency-design.md` when benchmarking player
 agency, spectator openings, decorative choices, role-controlled player actions,
-or route funneling. Read
+or route funneling. Read `../../references/token-economy.md` when benchmarking
+tokenBudget, overlong welcomes, duplicated lore, field allocation, visual bloat,
+or keep/move/cut/rewrite repairs. Read
 `../../references/boundary-design.md` when benchmarking mature, adult, horror,
 jealous, consent-sensitive, or boundary-sensitive cards. Read
 `../../references/playtest-loop.md` for probe design and transcript-to-patch
@@ -86,6 +88,8 @@ Moonloom self-review, render review, or simulation that:
   exposition policy.
 - a material-heavy card copies or summarizes source material without converting it
   into player role, first scene, state, consequence, and route seeds.
+- a card puts durable rules, repeated lore, duplicated monologues, or visual
+  panels into `roleWelcome` while `roleDetailDesc` is too thin to sustain play.
 - an ensemble card introduces cast members without distinct motives, voice, or
   turn ownership.
 - an ensemble card gives one strong sample but lets the other core speakers share
@@ -104,6 +108,9 @@ Use `lunatalk-agency-designer` for regressions where the weakest layer is player
 insertion space, decorative choices, route funneling, role-controlled player
 feelings/actions, missing refusal routes, or consequences that ignore player
 choice.
+Use `lunatalk-token-architect` for regressions where the weakest layer is field
+allocation, `tokenBudget`, high `welcomeToDetailRatio`, duplicated lore,
+overlong welcome, visual bloat, or compression that risks deleting the engine.
 
 ## Pass criteria
 

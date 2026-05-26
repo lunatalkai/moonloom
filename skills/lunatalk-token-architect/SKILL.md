@@ -1,0 +1,98 @@
+---
+name: lunatalk-token-architect
+description: Use when a LunaTalk role-card task involves tokenBudget, estimatedTokens, roleDescChars, roleDetailDescChars, roleWelcomeChars, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat, or preserving playability while reducing token cost.
+---
+
+# LunaTalk Token Architect
+
+Use this skill when the weak layer is context allocation. The output is a token
+architecture packet, not a full card and not a mutating MCP operation.
+
+## Required References
+
+Read `../../references/token-economy.md` first. Read
+`../../references/card-writer-mcp.md` when interpreting `validate_role` and
+`tokenBudget`. Read `../../references/role-card-writing-framework.md` for PACT,
+archetype ranges, and token-efficient play loops. Read
+`../../references/card-authoring-templates.md` when converting the packet into
+field patches. Read `../../references/theme-v3-rendering.md` when HTML, XMLV3,
+or Theme V3 causes welcome bloat. Read `../../references/material-distillation.md`
+when a source pack or world bible is the cause of bloat. Read the narrow Moonloom
+skill for the weak layer before cutting it: character core, world engine, voice,
+agency, opening, longplay, or boundary.
+
+## Boundary
+
+Do not call MCP tools from this skill. Do not treat high token count as a server
+gate. Token architecture is Moonloom writing guidance: it should preserve
+playability while moving, cutting, or compressing content.
+
+## Workflow
+
+1. Identify the token failure: overlong `roleDesc`, thin `roleDetailDesc`, bloated
+   `roleWelcome`, high `welcomeToDetailRatio`, repeated lore, duplicated
+   monologue, visual bloat, misplaced durable rules, or excessive examples.
+2. Classify archetype and state target field ranges.
+3. Interpret token budget signals without treating `estimatedTokens` as billing.
+4. Produce field triage for `roleDesc`, `roleDetailDesc`, `roleWelcome`,
+   XMLV3/HTML/Theme V3, and `talkExample`.
+5. Build a keep / move / cut / rewrite plan.
+6. Apply the compression ladder: remove duplicates, move durable rules, convert
+   lore to play functions, rebuild welcome, then preserve style only where it
+   improves play.
+7. Preserve or request the relevant narrow packet before cutting a weak layer.
+8. Name rerun checks and handoff target.
+
+## Output Format
+
+Return:
+
+```text
+Token architecture packet:
+- current failure:
+- archetype:
+- token budget signal:
+- target allocation:
+- field triage:
+- keep / move / cut / rewrite:
+- compression ladder:
+- visual budget:
+- state budget:
+- example budget:
+- patch order:
+- rerun checks:
+- handoff:
+
+Self-review:
+- promise remains scannable:
+- durable engine moved to detail:
+- welcome is a playable screen:
+- visual structure earns tokens:
+- compression preserved character core, agency, voice, route, and boundary:
+- next skill:
+```
+
+## Quality Rules
+
+- Do not solve bloat by deleting the engine. Preserve desire, contradiction,
+  boundary, player leverage, voice, route costs, consequence, and refusal rules.
+- Do not compress a bad welcome into a shorter bad welcome. Rebuild it from the
+  five beats when the structure is wrong.
+- Do not let XMLV3 or HTML become a poster. Visual content must reveal state,
+  action, route, mood, or risk.
+- Do not add examples unless they teach voice, output format, refusal handling,
+  or pressure behavior more cheaply than rules.
+- Do not use token count as proof of quality. A short generic card can still fail.
+- Keep the output original and public-safe.
+
+## Handoff
+
+Hand the packet to:
+
+- `lunatalk-character-core` when compression reveals a thin role engine.
+- `lunatalk-world-engineer` when lore needs to become playable rules.
+- `lunatalk-agency-designer` when choices or reply paths are decorative.
+- `lunatalk-voice-director` when samples or voice rules need cheaper calibration.
+- `lunatalk-opening-director` when the welcome needs to be rebuilt.
+- `lunatalk-longplay-architect` when state, route, or memory needs compression.
+- `lunatalk-card-author` when the author wants MCP-backed field patches.

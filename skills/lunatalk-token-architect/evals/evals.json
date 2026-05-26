@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-token-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "validate_role returned roleDescChars 520, roleDetailDescChars 1450, roleWelcomeChars 9200, estimatedTokens 4200, and welcomeToDetailRatio 6.3. The welcome contains durable rules, duplicated monologues, decorative XMLV3 choices, and visual panels. Build a token architecture packet before render or simulation.",
+      "expected_output": "Produces a token architecture packet with target allocation, field triage, keep/move/cut/rewrite plan, compression ladder, visual budget, patch order, rerun checks, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output identifies inverted field allocation and overlong welcome as the primary token failure.",
+        "The packet interprets tokenBudget as a structural diagnostic, not a billing statement or proof of quality.",
+        "The field triage covers roleDesc, roleDetailDesc, roleWelcome, XMLV3/HTML/Theme V3, and talkExample.",
+        "The compression ladder preserves character core, agency, voice, route, boundary, and consequence before decoration.",
+        "The output says to rerun validate_role, render, or simulation only after writing-level repair."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My relationship card is short overall, but roleDetailDesc is only 300 chars and the welcome has 1800 chars of beautiful first-person mood prose. It plays well for one turn and then drifts. Diagnose token allocation and patch order.",
+      "expected_output": "Treats thin detail plus long welcome as allocation drift, moves durable engine into detail, rebuilds welcome as a compact scene, and gives target ranges for relationship cards.",
+      "files": [],
+      "expectations": [
+        "The output does not treat low total token count as proof of quality.",
+        "The diagnosis explains why thin roleDetailDesc causes drift after the first turn.",
+        "The repair moves desire, contradiction, boundary, voice, agency, and longplay behavior into roleDetailDesc.",
+        "The welcome target is compact and preserves one playable scene rather than mood prose.",
+        "The packet includes relationship-card target ranges."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My RPG card has lots of stats, forms, and commands. roleWelcome is 2600 chars, roleDetailDesc is 8200 chars, and the setup UI is useful. Should Moonloom cut the welcome aggressively?",
+      "expected_output": "Recognizes that some system/RPG welcomes can be longer when they are functional setup UI, keeps useful controls, cuts decorative manual text, and checks whether state and defaults improve agency.",
+      "files": [],
+      "expectations": [
+        "The output does not blindly enforce roleWelcome below all other fields for functional setup cards.",
+        "The packet distinguishes useful setup UI from manual-like or decorative bloat.",
+        "The repair preserves defaults, state, choices, resources, and immediate first crisis.",
+        "The compression plan moves reusable rules into roleDetailDesc and style into Theme V3.",
+        "The packet includes rerun checks for validate_role and render before simulation."
+      ]
+    }
+  ]
+}

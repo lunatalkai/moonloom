@@ -29,7 +29,7 @@ use it.
 - If the material contains personal, confidential, or irrelevant details, omit
   them unless the author explicitly wants a fictionalized counterpart.
 - Preserve public attribution only when the author requests it and it belongs in
-  the card. Most role cards do not need source provenance in player-facing text.
+  the card. Most role cards do not need source claims in player-facing text.
 - When adapting copyrighted or canon-like material, keep only the requested
   playable fantasy, relationship shape, tone, and scene mechanics unless the
   author has rights or explicitly wants a fan/canon card.

@@ -118,6 +118,19 @@
         "The output runs validate_role only for technical blockers after structural patches.",
         "The output does not ask MCP validation to judge subjective interaction design."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "Patch an existing role after validate_role reports roleWelcomeChars 9000, roleDetailDescChars 1200, and welcomeToDetailRatio over 6. Focus on token architecture before render or simulation.",
+      "expected_output": "Uses lunatalk-token-architect before field patches, preserves the token architecture packet, patches roleDesc/detail/welcome allocation, validates after structural changes, and avoids treating token count as a writing-quality gate.",
+      "files": [],
+      "expectations": [
+        "The workflow routes tokenBudget and field allocation repair to lunatalk-token-architect before render or simulation.",
+        "The token architecture packet includes target allocation, field triage, keep/move/cut/rewrite plan, compression ladder, visual budget, patch order, and rerun checks.",
+        "The patch moves durable rules from roleWelcome into roleDetailDesc and rebuilds welcome as a playable scene.",
+        "The output runs validate_role only for technical blockers and tokenBudget comparison after structural patches.",
+        "The output does not treat token count as proof of quality or a billing statement."
+      ]
     }
   ]
 }

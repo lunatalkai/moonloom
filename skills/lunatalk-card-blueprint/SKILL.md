@@ -30,7 +30,10 @@ memory/state, progression, long-session behavior, or dead third-turn repair. Rea
 `../../references/agency-design.md` when the player can only watch, choices are
 decorative, the card decides the player's feelings/actions, or reply paths do not
 change consequences. Use `lunatalk-agency-designer` first when agency repair is
-the primary task. Read
+the primary task. Read `../../references/token-economy.md` when the idea needs
+token planning, field allocation, welcome compression, visual budget, example
+budget, or a keep/move/cut/rewrite plan. Use `lunatalk-token-architect` first
+when token architecture is the primary task. Read
 `../../references/quality-rubric.md` for the self-review checklist. Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
 horror-leaning, or boundary-sensitive. Read
@@ -81,14 +84,18 @@ creation, validation, render review, simulation, and publishing workflow.
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-10. Design the first scene and the second-turn engine together. If the opening is
+10. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+    durable rules, or visual bloat is the core problem, use
+    `lunatalk-token-architect` first or preserve its packet before opening repair
+    or field drafting.
+11. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-11. If long-term playability, memory/state, route seeds, progression, or a dead
+12. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-12. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-13. Run Moonloom self-review and repair any weak layer before handing off.
+13. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+14. Run Moonloom self-review and repair any weak layer before handing off.
 
 ## Blueprint packet
 
@@ -258,6 +265,19 @@ Token plan:
 - what can move to Theme V3/XMLV3:
 - what to cut first:
 
+Token architecture packet:
+- current failure:
+- token budget signal:
+- target allocation:
+- field triage:
+- keep / move / cut / rewrite:
+- compression ladder:
+- visual budget:
+- state budget:
+- example budget:
+- patch order:
+- rerun checks:
+
 Self-review:
 - promise:
 - anchor:
@@ -303,6 +323,10 @@ Handoff:
   away player insertion space, player controls/refusals/changes, agency
   guardrails, reply-path matrix, consequence checks, compact state,
   passive-player behavior, boundary handling, or token tradeoff.
+- Preserve any token architecture packet from `lunatalk-token-architect`; do not
+  summarize away token budget signal, target allocation, field triage,
+  keep/move/cut/rewrite, compression ladder, visual budget, state budget,
+  example budget, patch order, or rerun checks.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
@@ -324,6 +348,8 @@ Handoff:
 - If the player can only watch, choices do not matter, or the card decides the
   player's feelings/actions, use `lunatalk-agency-designer` before opening or
   longplay repair.
+- If the welcome is carrying rules, lore, repeated monologue, or visual structure
+  that belongs elsewhere, use `lunatalk-token-architect` before field drafting.
 - If the role voice is generic, replace mood labels with sentence rhythm,
   vocabulary, tells, and avoided phrasing. Use `lunatalk-voice-director` when
   voice is the main requested repair.

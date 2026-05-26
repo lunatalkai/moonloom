@@ -158,6 +158,10 @@ When `validate_role` returns `tokenBudget`, use it as a structural check:
 - `estimatedTokens` is approximate. Use it to compare revisions, not as a billing
   statement.
 
+Use `token-economy.md` when the repair needs a field-by-field allocation plan,
+keep / move / cut / rewrite decisions, visual budget, example budget, or a
+compression ladder before render or simulation.
+
 ## Top-card pattern stack
 
 Use this stack when the author asks for a card that should feel competitive with
@@ -331,6 +335,12 @@ When forced to shorten, preserve desire, contradiction, boundary, world rule,
 state, route costs, voice, and consequence first. Cut repeated lore, synonym
 lists, ornamental CSS, and NPC catalogs that do not affect the next few turns.
 
+When the card has a high `welcomeToDetailRatio`, a very long `roleWelcome`, or
+durable rules hidden in the first screen, produce a token architecture packet
+before further writing. The packet should name target allocation, field triage,
+keep/move/cut/rewrite decisions, visual budget, state budget, example budget, and
+rerun checks.
+
 ### 10. Visual affordance
 
 Visual design should answer at least one of these:
@@ -481,8 +491,8 @@ Repair the card in this order during Moonloom self-review:
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
 
-Do not treat a single high total score as enough. A card with weak agency or weak
-consequence still needs repair even if it has polished prose.
+Do not treat a single high validation result as enough. A card with weak agency
+or weak consequence still needs repair even if it has polished prose.
 
 For `archetype` repairs, match the card type:
 

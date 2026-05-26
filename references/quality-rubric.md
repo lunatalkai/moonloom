@@ -103,6 +103,11 @@ explicitly chooses a tradeoff:
   Chinese while preserving character names, tone, and XMLV3 tags.
 - Token efficiency: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
+- Token architect: when `tokenBudget` shows a long welcome, thin detail, high
+  `welcomeToDetailRatio`, duplicated lore, misplaced durable rules, or visual
+  bloat, create a token architecture packet with target allocation, field triage,
+  keep/move/cut/rewrite, compression ladder, visual budget, patch order, and
+  rerun checks before render or simulation.
 - Material distillation: for files, notes, imported drafts, or world bibles, keep
   only source material that affects player agency, consequence, voice, state,
   route seeds, or the first scene.
@@ -168,6 +173,10 @@ explicitly chooses a tradeoff:
   role action, pressure, player implication, and a specific reply path.
 - Language mismatch: for `zh-Hant` cards, rewrite profile, detail, welcome, and
   examples into Traditional Chinese before render or simulation.
+- Token allocation failure: if `roleWelcome` carries lore, durable rules, repeated
+  monologue, or visual panels while `roleDetailDesc` cannot sustain the card
+  after turn one, move the engine to detail and rebuild the welcome rather than
+  trimming decoration only.
 
 ## Token budget review
 
@@ -219,7 +228,7 @@ For probe design and transcript-to-patch mapping, use `playtest-loop.md`.
 - The reply reflects player agency and creates consequence or a new hook.
 - The role's tone matches the role card and content rating intent.
 - The simulation does not expose implementation details or moderation artifacts.
-- The cost/charged score is included in the agent's summary when available.
+- The cost or charged amount is included in the agent's summary when available.
 - `simulate_private_chat` evaluation passes `responsePresence`, `agency`,
   `progression`, and `safetyFormat`, or the author explicitly accepts the
   remaining tradeoff.
