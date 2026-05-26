@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "lunatalk-card-writer": {
+      "type": "http",
+      "url": "https://api.lunatalk.ai/mcp/card-writer",
+      "headers": {
+        "Authorization": "Bearer ${LUNATALK_ACCOUNT_TOKEN}"
+      }
+    }
+  }
+}

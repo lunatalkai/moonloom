@@ -1,0 +1,46 @@
+{
+  "name": "moonloom",
+  "version": "0.1.0",
+  "description": "LunaTalk AI creation skills and MCP workflows for external agent clients.",
+  "author": {
+    "name": "LunaTalk AI",
+    "email": "contact@lunatalk.ai",
+    "url": "https://lunatalk.ai"
+  },
+  "homepage": "https://github.com/lunatalkai/moonloom",
+  "repository": "https://github.com/lunatalkai/moonloom",
+  "license": "MIT",
+  "keywords": [
+    "lunatalk",
+    "mcp",
+    "skills",
+    "role-cards",
+    "creator-tools",
+    "ai-agents"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Moonloom",
+    "shortDescription": "LunaTalk creation workflows for AI agents",
+    "longDescription": "Moonloom helps AI clients create, validate, render-review, simulate, and submit LunaTalk role cards through LunaTalk MCP tools.",
+    "developerName": "LunaTalk AI",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Create a LunaTalk role card with Moonloom.",
+      "Review this LunaTalk card before publishing.",
+      "Simulate a private chat for this card."
+    ],
+    "websiteURL": "https://github.com/lunatalkai/moonloom",
+    "privacyPolicyURL": "https://lunatalk.ai/privacy",
+    "termsOfServiceURL": "https://lunatalk.ai/terms",
+    "brandColor": "#F3D37B",
+    "composerIcon": "./assets/moonloom.svg",
+    "screenshots": []
+  }
+}

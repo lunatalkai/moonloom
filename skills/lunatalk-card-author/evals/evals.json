@@ -1,0 +1,17 @@
+{
+  "skill_name": "lunatalk-card-author",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a private LunaTalk role card for a mysterious archivist in Traditional Chinese. Use Theme V3/XMLV3 if appropriate.",
+      "expected_output": "Creates or plans a private role card through role_create_private, patches profile/detail/welcome, prefers XMLV3, validates, renders, and summarizes roleId plus next steps.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I already have roleId abc123. Rewrite the welcome into something playable and check if it is ready.",
+      "expected_output": "Uses role_get, role_patch_welcome, validate_role, render_preview, and does not publish without explicit confirmation.",
+      "files": []
+    }
+  ]
+}

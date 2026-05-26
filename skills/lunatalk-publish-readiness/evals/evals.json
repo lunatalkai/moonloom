@@ -1,0 +1,17 @@
+{
+  "skill_name": "lunatalk-publish-readiness",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Can you submit roleId abc123 for review if it looks ready?",
+      "expected_output": "Checks role_get, validate_role, render, simulation status, asks for explicit confirmation if missing, and does not publish prematurely.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I confirm, submit this private role for review. Validation and preview already passed.",
+      "expected_output": "Verifies readiness, calls publish_submit with userConfirmed true and confirmationSummary, then reports review status.",
+      "files": []
+    }
+  ]
+}
