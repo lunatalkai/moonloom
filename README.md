@@ -24,6 +24,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
+- `references/card-authoring-templates.md` provides reusable draft packets,
+  field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
+  self-review packets.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.

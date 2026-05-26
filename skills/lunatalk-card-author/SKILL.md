@@ -15,9 +15,10 @@ Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
-`../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
-Theme V3. Use `../../examples/synthetic-card-briefs.md` when the task asks for
-benchmark creation, regression checks, or example-driven iteration.
+`../../references/card-authoring-templates.md` when turning an idea into concrete
+field drafts. Read `../../references/theme-v3-rendering.md` if the welcome uses
+HTML, XMLV3, or Theme V3. Use `../../examples/synthetic-card-briefs.md` when the
+task asks for benchmark creation, regression checks, or example-driven iteration.
 
 ## Workflow
 
@@ -29,7 +30,9 @@ benchmark creation, regression checks, or example-driven iteration.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
-4. Draft the card in Moonloom first: promise, engine, play, and presentation.
+4. Draft the card in Moonloom first: promise, engine, play, and presentation. Use
+   the universal draft packet from `card-authoring-templates.md` for thin or
+   high-stakes briefs.
 5. Run Moonloom self-review before calling mutating tools.
 6. If there is no `roleId`, call `role_create_private`.
 7. Patch profile fields with `role_patch_profile`.
