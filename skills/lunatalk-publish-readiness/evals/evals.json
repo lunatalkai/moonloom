@@ -12,6 +12,12 @@
       "prompt": "I confirm, submit this private role for review. Validation and preview already passed.",
       "expected_output": "Verifies readiness, calls publish_submit with userConfirmed true and confirmationSummary, then reports review status.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "This card passes validation but the opening is just a greeting. Should we publish it?",
+      "expected_output": "Does not treat validation pass as enough; checks PACT, flags weak playability, recommends welcome rewrite and simulation before publish.",
+      "files": []
     }
   ]
 }

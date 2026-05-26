@@ -3,9 +3,14 @@
 Use this rubric when deciding whether a LunaTalk role card is usable, needs more
 iteration, or is ready to submit for public review.
 
+For writing guidance, read `role-card-writing-framework.md` first. This file is
+the shorter pass/fail rubric.
+
 ## Role card quality
 
 - The role has a clear premise, relationship dynamic, and first playable scene.
+- The card has a repeatable play loop: hook, agency, consequence, memory,
+  progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
 - `roleDetailDesc` contains stable identity, backstory, personality, constraints,
   speaking style, boundaries, and important world context.
@@ -18,6 +23,8 @@ iteration, or is ready to submit for public review.
 - The welcome creates an immediate interaction opportunity.
 - The player has a clear way to respond in the first turn.
 - The welcome does not dump the full world bible.
+- System/RPG/sandbox cards expose setup fields or choices without burying the first
+  action in a long manual.
 - New cards should prefer XMLV3 plus Theme V3. Use HTML only for a specific visual
   need or a legacy import.
 - Long visual structure should move toward Theme V3 rather than bloating welcome.
@@ -34,6 +41,7 @@ iteration, or is ready to submit for public review.
 
 - The role stays in character across at least one realistic user turn.
 - The first reply advances the scene instead of restating the profile.
+- The reply reflects player agency and creates consequence or a new hook.
 - The role's tone matches the role card and content rating intent.
 - The simulation does not expose implementation details or moderation artifacts.
 - The cost/charged score is included in the agent's summary when available.

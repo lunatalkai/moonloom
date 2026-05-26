@@ -11,6 +11,8 @@ Use this skill to test role behavior through LunaTalk's real private chat pipeli
 
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/quality-rubric.md` for behavior evaluation.
+Read `../../references/role-card-writing-framework.md` to decide whether failures
+come from missing anchors, weak play loop, or poor token economy.
 Read `../../references/safety-and-cost.md` before running a simulation.
 
 ## Cost and consent
@@ -36,6 +38,8 @@ costs normal chat resources before calling the tool.
 - The reply advances the scene and gives the player something to do.
 - Tone, boundaries, and content rating match the card.
 - The reply uses relevant world details without dumping the whole setting.
+- Player actions produce visible consequence, state change, relationship movement,
+  or a new hook.
 - The transcript has no obvious safety, formatting, or system-leak issue.
 - The billing summary or charged score is included when available.
 

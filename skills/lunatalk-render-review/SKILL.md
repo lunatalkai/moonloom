@@ -12,7 +12,8 @@ Use this skill to close the visual feedback loop for LunaTalk role cards.
 Read `../../references/card-writer-mcp.md` for `validate_role` and
 `render_preview` details. Read `../../references/theme-v3-rendering.md` for XMLV3,
 HTML, and Theme V3 decisions. Read `../../references/quality-rubric.md` for the
-visual quality rubric.
+visual quality rubric. Read `../../references/role-card-writing-framework.md` when
+render issues affect playability, token cost, or first-scene clarity.
 
 ## Workflow
 
@@ -34,6 +35,8 @@ visual quality rubric.
 - HTML has no scripts, inline event handlers, external URLs, or unsupported assets.
 - XMLV3 parses cleanly and does not fall back into unstructured raw text.
 - The role's visual style supports the premise without hiding story content.
+- The preview makes the next user action obvious; a beautiful but inert first
+  screen is a card quality problem, not only a visual problem.
 
 ## Reporting
 

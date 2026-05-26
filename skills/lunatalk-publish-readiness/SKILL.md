@@ -12,6 +12,8 @@ review, and to call `publish_submit` only after explicit author confirmation.
 
 Read `../../references/card-writer-mcp.md` for `publish_submit` details.
 Read `../../references/quality-rubric.md` for readiness criteria.
+Read `../../references/role-card-writing-framework.md` if the card has not already
+been checked for playable loop, anchors, consequences, and token efficiency.
 Read `../../references/safety-and-cost.md` for public action constraints.
 
 ## Readiness checklist
@@ -20,11 +22,12 @@ Read `../../references/safety-and-cost.md` for public action constraints.
 2. Confirm the role is private and owned by the authenticated account.
 3. Call `validate_role`.
 4. Resolve all blockers.
-5. Review `render_preview`, or record that the author explicitly accepted the risk.
-6. Run `simulate_private_chat`, or record that the author explicitly skipped the
+5. Check the card against PACT: playable, anchored, consequential, token-efficient.
+6. Review `render_preview`, or record that the author explicitly accepted the risk.
+7. Run `simulate_private_chat`, or record that the author explicitly skipped the
    real behavior check after understanding normal billing.
-7. Summarize remaining warnings and tradeoffs.
-8. Ask for explicit confirmation if the author has not already given it.
+8. Summarize remaining warnings and tradeoffs.
+9. Ask for explicit confirmation if the author has not already given it.
 
 ## Publishing rule
 
