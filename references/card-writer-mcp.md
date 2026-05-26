@@ -227,6 +227,18 @@ Required:
 
 `messages` must contain 1 to 5 user turns.
 
+The response includes `evaluation`:
+
+- `responsePresence`: catches empty or too-thin replies.
+- `agency`: checks whether the reply gives the player a next action path.
+- `progression`: checks whether the reply advances scene, relationship, route,
+  risk, state, or a renewed hook.
+- `safetyFormat`: catches obvious system/model artifacts.
+
+If `evaluation.status` is `warning`, follow `nextRecommendedTools`: patch
+`roleDetailDesc` and/or `roleWelcome`, run `validate_role`, then rerun
+`simulate_private_chat`. There is no separate `simulation_evaluate` tool.
+
 ### `publish_submit`
 
 Submit a private role for public review. Only call this after the author explicitly

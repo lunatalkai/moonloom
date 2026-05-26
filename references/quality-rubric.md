@@ -85,6 +85,9 @@ Use `tokenBudget` from `validate_role` before render or simulation:
 - The role's tone matches the role card and content rating intent.
 - The simulation does not expose implementation details or moderation artifacts.
 - The cost/charged score is included in the agent's summary when available.
+- `simulate_private_chat` evaluation passes `responsePresence`, `agency`,
+  `progression`, and `safetyFormat`, or the author explicitly accepts the
+  remaining tradeoff.
 
 ## Publish readiness
 
