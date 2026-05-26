@@ -17,8 +17,10 @@ the card is usable. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/card-authoring-templates.md` when turning an idea into concrete
 field drafts. Read `../../references/theme-v3-rendering.md` if the welcome uses
-HTML, XMLV3, or Theme V3. Use `../../examples/synthetic-card-briefs.md` when the
-task asks for benchmark creation, regression checks, or example-driven iteration.
+HTML, XMLV3, or Theme V3. Read `../../references/playtest-loop.md` when designing
+or interpreting private chat simulations. Use `../../examples/synthetic-card-briefs.md`
+when the task asks for benchmark creation, regression checks, or example-driven
+iteration.
 
 ## Workflow
 
@@ -50,7 +52,9 @@ task asks for benchmark creation, regression checks, or example-driven iteration
     `role-card-writing-framework.md` and `quality-rubric.md`.
 14. Call `render_preview` and review the result with `lunatalk-render-review`.
 15. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
-    needs to be tested and the author accepts normal chat billing.
+    needs to be tested and the author accepts normal chat billing. Include a
+    playtest plan, transcript triage, and evidence-backed patch decision, not
+    only a tool status check.
 16. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 

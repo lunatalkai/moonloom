@@ -59,6 +59,8 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
+- Read `../../references/playtest-loop.md` when designing private chat probes,
+  reading simulation transcripts, or deciding how to patch behavior failures.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or
   regression checks.
