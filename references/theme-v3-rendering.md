@@ -22,6 +22,33 @@ render consistently across clients.
 Keep tags meaningful and parseable. If validation warns about raw fallback text,
 rewrite the welcome into explicit XMLV3 tags.
 
+Use the core tags first:
+
+- `<scene>` wraps an opening beat.
+- `<n>` is narration, physical action, and stage direction.
+- `<speaker>` marks speaker changes.
+- `<d>` is dialogue.
+- `<quote>` is inner thought or emotional emphasis.
+- `<choice>` gives a player action prompt.
+- `<form>`, `<input>`, `<radio>`, and `<checkbox>` are for setup fields.
+- `<state>` is hidden state data, not visible prose.
+
+Do not invent aliases such as `<narration>` or `<dialogue>`. They may fall back
+to visible text, but Theme V3 styling and validation are less reliable. Use
+`<n>` and `<d>` instead.
+
+`<state>` must contain valid JSON and is not rendered inline. If the player
+should see a status sentence, write it in `<n>` and reserve `<state>` for
+machine-readable updates, for example:
+
+```xml
+<state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"trust","label":"信任","value":"低"}]}</state>
+```
+
+`<action>` belongs to the battle extension pack. For prose actions, use `<n>`.
+Only use `<action>` for battle markers with attributes such as `type`, `by`,
+`target`, or `skill`.
+
 ## When to use Theme V3
 
 Use Theme V3 for reusable visual identity: typography, colors, panels, speech
@@ -44,9 +71,10 @@ handlers, or external URLs. Treat any validation blocker as mandatory to fix.
 ## Render review loop
 
 1. Call `validate_role`.
-2. Call `render_preview` with `mode: "full-card"` unless inspecting a specific
+2. Fix validation blockers before relying on visual review.
+3. Call `render_preview` with `mode: "full-card"` unless inspecting a specific
    `html` or `xmlv3` issue.
-3. Open the `previewUrl` when the client has browser or multimodal access.
-4. Check both desktop and mobile if available.
-5. Patch the card or theme.
-6. Re-run validation and render preview until blockers are gone.
+4. Open the `previewUrl` when the client has browser or multimodal access.
+5. Check both desktop and mobile if available.
+6. Patch the card or theme.
+7. Re-run validation and render preview until blockers are gone.

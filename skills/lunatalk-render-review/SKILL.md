@@ -34,6 +34,8 @@ render issues affect playability, token cost, or first-scene clarity.
 - Mobile and desktop maintain the intended hierarchy.
 - HTML has no scripts, inline event handlers, external URLs, or unsupported assets.
 - XMLV3 parses cleanly and does not fall back into unstructured raw text.
+- XMLV3 visible text uses registered tags. Hidden data tags such as `<state>` do
+  not substitute for on-screen status copy.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.

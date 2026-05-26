@@ -35,6 +35,8 @@ the shorter pass/fail rubric.
 - Desktop and mobile both preserve the intended hierarchy.
 - HTML does not use scripts, inline event handlers, or external URLs.
 - XMLV3 parses and has meaningful structured tags rather than raw fallback text.
+- XMLV3 uses registered tags. Avoid invented aliases such as `<narration>` or
+  `<dialogue>`, and keep visible prose out of hidden data tags.
 - Theme V3 tokens support the card mood without making the page one-note.
 
 ## Simulation quality
