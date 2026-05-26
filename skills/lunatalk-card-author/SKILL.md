@@ -73,6 +73,8 @@ iteration.
 - Never directly edit a public role. Create or use an owned private role.
 - If a tool returns `nextRecommendedTools`, treat it as the next normal step unless
   the author's latest instruction conflicts.
+- When `validate_role` returns patch tools, patch and validate again before render
+  or simulation unless the author explicitly accepts the remaining tradeoff.
 - If validation returns blockers, patch the card before publishing.
 
 ## Final response shape

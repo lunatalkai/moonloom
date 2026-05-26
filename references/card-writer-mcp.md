@@ -170,6 +170,19 @@ missing speaking style, missing progression/state, weak first action path, or
 token-heavy welcome should be patched before render review unless the author
 explicitly accepts the tradeoff.
 
+When validation is not `pass`, `nextRecommendedTools` usually points to the
+repair surface:
+
+- `role_patch_profile` for premise/profile issues.
+- `role_patch_detail` for anchor, voice, progression, and consequence issues.
+- `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome
+  issues.
+- `validate_role` after the patch.
+
+Do not call `render_preview` or `simulate_private_chat` just because they are
+available. Use them after validation passes, or after the author explicitly
+accepts the remaining tradeoff.
+
 ### `render_preview`
 
 Create a short-lived preview URL and structured render report.
