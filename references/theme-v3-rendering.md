@@ -81,5 +81,29 @@ handlers, or external URLs. Treat any validation blocker as mandatory to fix.
 5. Read `evaluation` for capture readiness, semantic structure, readability, and
    first-screen action visibility.
 6. Check both desktop and mobile if available.
-7. Patch the card or theme.
-8. Re-run validation and render preview until blockers are gone.
+7. Produce a render repair packet before patching.
+8. Patch the card or theme.
+9. Re-run validation and render preview until blockers are gone.
+
+## Render repair packet
+
+```text
+Render repair packet:
+- roleId:
+- render mode:
+- preview evidence:
+- visual failures:
+- playability failures:
+- technical blockers:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerender stance:
+- handoff:
+```
+
+Patch XMLV3 or Theme V3 only when the evidence points to visual structure,
+readability, hidden/visible state, or first-screen hierarchy. If the preview is
+pretty but inert, route to opening or agency repair before styling.
