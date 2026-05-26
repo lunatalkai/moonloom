@@ -198,6 +198,32 @@
         "The generator/helper variant is kept only if it has a concrete artifact output and revision loop.",
         "The output treats series quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
       ]
+    },
+    {
+      "id": 16,
+      "prompt": "I have a completed zh-Hant Moonloom packet stack for one private role: character core, relationship engine, world engine, opening packet, voice packet, token architecture, and quality audit. Do not call MCP tools yet and do not brainstorm new directions. Assemble a field-ready draft with roleName, roleDesc, roleDetailDesc structure, roleWelcome mode and XMLV3/plain draft, talkExample decision, tags/theme notes, token allocation, packet-preservation checklist, conflict resolution, validation/render/simulation handoff, and self-review.",
+      "expected_output": "Treats the request as draft-only field assembly, preserves the packet stack, produces a final role-field authoring packet, and stops before role_create_private or patch tools.",
+      "files": [],
+      "expectations": [
+        "The workflow sets mode to draft-only field assembly and does not call role_create_private, patch tools, render, simulation, or publish tools.",
+        "The output preserves the prepared packet stack instead of re-brainstorming, flattening packets, or dropping character, relationship, world, opening, voice, token, or quality-audit constraints.",
+        "The output produces a final role-field authoring packet with roleName, roleDesc, roleDetailDesc, roleWelcome, talkExample decision, tags/theme notes, token allocation, packet-preservation checklist, conflict resolution, validation/render/simulation handoff, and self-review.",
+        "The output keeps zh-Hant user-facing card content consistent and preserves valid XMLV3 tags if XMLV3 mode is selected.",
+        "The output states the next step is author approval or MCP-backed creation/patching, not automatic validation, render, simulation, or publish."
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "I have a prepared Moonloom packet stack, but before you assemble final role fields I want to know whether it is top-tier enough to continue. Give me a scorecard, overall tier, critical blockers, and first three repairs. Do not call MCP tools yet.",
+      "expected_output": "Routes the packet-stack scorecard/top-tier request to lunatalk-quality-auditor before draft-only field assembly, preserves the audit packet, and avoids MCP tools.",
+      "files": [],
+      "expectations": [
+        "The workflow routes scorecard, top-tier review, overall tier, critical blockers, and first-three repair requests to lunatalk-quality-auditor before assembling final role fields.",
+        "The output does not treat the prepared packet stack as a reason to skip the quality audit or jump directly to draft-only field assembly.",
+        "The output does not call role_create_private, patch tools, render, simulation, or publish tools during the audit.",
+        "The quality audit packet includes evidence, critical blockers, scorecard, tier, strongest and weakest dimensions, first three repairs, and handoff.",
+        "The output treats scorecard results as Moonloom writing guidance, not MCP validation, platform metrics, or a server gate."
+      ]
     }
   ]
 }
