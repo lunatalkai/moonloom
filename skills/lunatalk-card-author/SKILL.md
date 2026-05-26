@@ -17,6 +17,11 @@ Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 aesthetic cluster, "popular/top-tier" request, or no settled role/player
 position/first scene yet; use `lunatalk-premise-workshop` before broad
 blueprinting or authoring when directions need to be chosen first. Read
+`../../references/profile-packaging.md` when the current task focuses on
+`roleName`, `roleDesc`, tags, title, tagline, short pitch, card profile,
+first impression, discovery surface, or promise compression; use
+`lunatalk-profile-packager` before field assembly or profile patching when the
+engine exists but the public package is weak. Read
 `../../references/character-core-design.md` when the role idea is thin,
 trope-only, generic, or needs persona appeal repair. Read
 `../../references/relationship-engine.md` when the card is relationship-heavy,
@@ -107,6 +112,10 @@ benchmark creation, regression checks, or example-driven iteration.
    aesthetic cluster, or asks to brainstorm/open directions before fields, use
    `lunatalk-premise-workshop` first unless a premise workshop packet already
    exists.
+   If the author asks for `roleName`, `roleDesc`, tags, title, tagline, short
+   pitch, public-facing package, first impression, discovery surface, or why a
+   player should open the card, use `lunatalk-profile-packager` first unless a
+   profile package packet already exists.
    If the author asks whether a draft, blueprint, packet stack, or role fields
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
@@ -303,6 +312,9 @@ MCP tools make the card real; Moonloom makes the card good.
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
   tags/theme notes, token allocation, validation/render/simulation handoff, and
   self-review.
+- Preserve the profile package packet when one exists: promise angle, selected
+  `roleName`, selected `roleDesc`, candidate rationale, tag set,
+  first-impression check, fields to preserve, and fields to patch.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
   profile, detail, welcome, and examples consistently Traditional Chinese.

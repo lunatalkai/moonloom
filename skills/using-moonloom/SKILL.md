@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -43,17 +43,29 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- Public-facing role profile work, including `roleName`, `roleDesc`, tags,
+  title, tagline, short pitch, first impression, discovery surface, reason to
+  open, promise compression, or making the profile feel more top-tier/popular
+  after a premise/engine exists: use
+  `lunatalk-profile-packager` before `lunatalk-card-author`, MCP calls, render,
+  simulation, or publishing. If the premise is not settled, route to
+  `lunatalk-premise-workshop`; if the author asks for a whole-card scorecard,
+  route to `lunatalk-quality-auditor`. Do not create a separate "copy polish"
+  route for profile fields; translate popularity language into public craft
+  goals inside `lunatalk-profile-packager`.
 - Quality audit, scorecard, craft rating, top-tier check, "is this good enough",
   first-three repairs, or deciding whether a draft, blueprint, packet stack, or
   role fields should continue to authoring, render review, simulation, or publish
-  readiness: use `lunatalk-quality-auditor` unless the main task is a concrete
-  multi-symptom diagnosis for an existing card.
+  readiness: use `lunatalk-quality-auditor` unless the main task is narrow
+  public profile packaging or a concrete multi-symptom diagnosis for an existing
+  card.
 - Existing card or draft diagnosis, mixed symptoms, author feedback like boring
   or off, validate/render passing but behavior still weak, simulation symptoms,
   deciding what to fix first, weakest-layer triage, field patch mapping, or
   keep/move/cut/rewrite repair order before rewriting fields: use
   `lunatalk-card-doctor` before token architecture, render review, authoring,
-  simulation, or publish readiness.
+  simulation, or publish readiness, unless the main symptom is only profile
+  packaging (`roleName`, `roleDesc`, tags, title, tagline, first impression).
 - TokenBudget, estimatedTokens, roleDescChars, roleDetailDescChars,
   roleWelcomeChars, welcomeToDetailRatio, overlong welcome, field allocation,
   keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat,
@@ -243,6 +255,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/premise-workshop.md` when the author has no settled
   role-card premise yet and needs taste axes, contrasted directions, an
   involvement ladder, recommendation, and pre-blueprint handoff.
+- Read `../../references/profile-packaging.md` when the task involves
+  `roleName`, `roleDesc`, tags, card profile, title, tagline, public-facing
+  package, first impression, discovery surface, or promise compression.
 - Read `../../references/opening-design.md` when working on `roleWelcome`,
   opening scenes, first screen playability, first reply paths, second-turn moves,
   hollow welcomes, or overloaded setup screens.

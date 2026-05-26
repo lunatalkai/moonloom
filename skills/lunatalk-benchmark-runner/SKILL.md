@@ -21,6 +21,9 @@ Read
 `../../references/quality-scorecard.md` when benchmarking craft scorecards,
 quality audit routing, top-tier checks, first-three repairs, or whether drafts
 should continue to authoring, render, simulation, or publish readiness. Read
+`../../references/profile-packaging.md` when benchmarking `roleName`,
+`roleDesc`, tags, public-facing profile, first impression, discovery surface, or
+promise compression for a coherent card engine. Read
 `../../references/card-series-design.md` when benchmarking related card sets,
 alternate versions, seasonal/event variants, daily-life variants,
 generator/helper variants, keep/merge/reject decisions, or variant authoring
@@ -98,6 +101,10 @@ Moonloom self-review, render review, or simulation that:
 - a draft asks for a top-tier quality audit or scorecard, but the workflow jumps
   to publish readiness, simulation, or broad rewriting instead of producing a
   quality audit packet with blockers, scorecard, tier, and first three repairs.
+- a coherent card has a generic `roleName`, overlong or vague `roleDesc`,
+  broad mood-only tags, or weak first impression, but the workflow jumps to
+  broad diagnosis, field assembly, render, simulation, or publish readiness
+  instead of producing a profile package packet.
 - a role-card series request asks which variants to keep, merge, reject, author,
   render, or simulate first, but the workflow jumps straight to one overloaded
   hybrid card or several duplicate cards instead of producing a card-series
@@ -201,6 +208,9 @@ order.
 Use `lunatalk-quality-auditor` for regressions where the user needs a scorecard,
 craft tier, top-tier check, good-enough review, or first-three repair list before
 authoring, render review, simulation, or publish readiness.
+Use `lunatalk-profile-packager` for regressions where the coherent card engine
+exists but the weakest layer is `roleName`, `roleDesc`, tags, public-facing
+profile, first impression, discovery surface, or promise compression.
 Use `lunatalk-archetype-director` for regressions where the weakest layer is
 card-type selection, hybrid contract, rejected archetypes, or field allocation by
 primary card shape.

@@ -38,6 +38,11 @@ Keep `roleDesc` tight: usually 80-260 characters for normal cards, up to 500 for
 systems, RPGs, or generators with many modes. If the premise cannot be stated
 briefly, the card is not ready to write.
 
+Use `profile-packaging.md` when the engine exists but the public package is weak:
+generic `roleName`, overlong `roleDesc`, vague tags, or a first impression that
+does not explain why the player should open the card. Profile packaging should
+preserve the engine and patch the promise surface, not reopen broad ideation.
+
 ### 2. Engine layer
 
 This is the role's durable behavior and world logic. It belongs mostly in
@@ -564,30 +569,33 @@ a real private card:
 
 1. `roleDesc` sells the premise in one compact sentence: who, relationship, and
    tension.
-2. `roleDetailDesc` is long enough to act as an engine, not a label. Include
+2. If the public profile is weak, a profile package packet preserves the engine
+   and defines selected `roleName`, selected `roleDesc`, concrete tags, and a
+   first-impression check before field assembly or publish readiness.
+3. `roleDetailDesc` is long enough to act as an engine, not a label. Include
    identity, desire, contradiction, boundaries, speech style, and progression
    rules.
-3. Speaking style is explicit and executable: sentence length, rhythm, vocabulary,
+4. Speaking style is explicit and executable: sentence length, rhythm, vocabulary,
    address terms, emotional tells, restraint, and what the role avoids saying.
-4. Voice texture is not just a mood label. Avoid stopping at "natural",
+5. Voice texture is not just a mood label. Avoid stopping at "natural",
    "gentle", "witty", or "like a real person"; state how that voice appears in
    actual replies.
-5. Progression is explicit: what player choices change, which state can move,
+6. Progression is explicit: what player choices change, which state can move,
    and how the next hook renews.
-6. Role initiative is explicit: what the role asks, reveals, escalates, or offers
+7. Role initiative is explicit: what the role asks, reveals, escalates, or offers
    when the player is passive or stalls.
-7. `roleWelcome` gives a clear first action path through choices, a direct
+8. `roleWelcome` gives a clear first action path through choices, a direct
    question, or an explicit "you can..." affordance.
-8. `roleWelcome` is not only a menu. It opens with concrete sensory/location
+9. `roleWelcome` is not only a menu. It opens with concrete sensory/location
    context, a role beat, pressure, and a reason the player is implicated.
-9. Before render or simulation, the author can name one likely first user reply
+10. Before render or simulation, the author can name one likely first user reply
    and one second-turn move that changes state, relationship, risk, route, or
    information.
-10. Long-session cards can name a continuity spine, compact state model, route
+11. Long-session cards can name a continuity spine, compact state model, route
     seeds, memory threads, and return-later behavior.
-11. Related card sets can name the shared core, each kept variant's distinct
+12. Related card sets can name the shared core, each kept variant's distinct
     playable contract, and which proposed variants were merged or rejected.
-12. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+13. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
     detail, welcome, and examples.
 
 These are writing checks. Do not wait for `validate_role` to enforce them.

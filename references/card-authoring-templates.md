@@ -23,6 +23,34 @@ Premise workshop packet:
 - risk flags:
 - next decisions to lock:
 - handoff:
+Profile package packet:
+- current request:
+- card shape:
+- language:
+- premise / engine preserved:
+- promise angle:
+  - player role:
+  - role / system:
+  - central tension:
+  - repeated play loop:
+  - strongest unusual detail:
+  - first-screen proof:
+- roleName candidates:
+  - candidate:
+  - angle:
+  - risk:
+- selected roleName:
+- roleDesc candidates:
+  - candidate:
+  - char estimate:
+  - angle:
+  - cut / moved:
+- selected roleDesc:
+- tag set:
+- first-impression check:
+- fields to preserve:
+- fields to patch:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
@@ -479,6 +507,7 @@ Route:
 
 Inputs preserved:
 - premise workshop packet:
+- profile package packet:
 - quality audit packet:
 - archetype packet:
 - character-core packet:

@@ -94,7 +94,8 @@ directly to that narrow skill.
 
 | Symptom | Likely missing layer | Source field | Narrow skill |
 |---|---|---|---|
-| Pretty premise but vague expectation | Promise | `roleDesc` | `lunatalk-card-blueprint` or `lunatalk-archetype-director` |
+| Pretty premise but vague expectation | Promise | `roleDesc` | `lunatalk-profile-packager`, `lunatalk-card-blueprint`, or `lunatalk-archetype-director` |
+| Generic roleName, overlong roleDesc, vague tags, or weak reason to open | Profile packaging / promise compression | `roleName`, `roleDesc`, tags | `lunatalk-profile-packager` |
 | Biography or trivia with no present pressure | Character core / world engine | `roleDetailDesc` | `lunatalk-character-core` or `lunatalk-world-engineer` |
 | Long visual welcome carries lore/rules | Token architecture / opening | `roleWelcome`, XMLV3/HTML | `lunatalk-token-architect` then `lunatalk-opening-director` |
 | Choices all return to same response | Agency / consequence | `roleWelcome`, `roleDetailDesc` | `lunatalk-agency-designer` |
@@ -113,7 +114,8 @@ directly to that narrow skill.
 ## Field triage
 
 - `roleDesc`: should state promise, player relation, and tension. Rewrite vague
-  aesthetic descriptions into one scannable contract.
+  aesthetic descriptions into one scannable contract. Use
+  `lunatalk-profile-packager` when the package fields are the main weak layer.
 - `roleDetailDesc`: should carry durable engine: character core, relationship,
   daily-life routine, or world rules, agency boundaries, voice, state, route
   costs, and role initiative.

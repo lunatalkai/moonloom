@@ -16,6 +16,11 @@ Read `../../references/quality-scorecard.md` when the author asks for a craft
 score, top-tier check, good-enough review, or first-three repairs instead of
 explicit submission. Use `lunatalk-quality-auditor` before publish readiness when
 the task is quality audit rather than a public submission decision.
+Read `../../references/profile-packaging.md` when the public-facing package is
+the readiness risk: generic `roleName`, overlong or vague `roleDesc`, vague tags,
+weak first impression, discovery surface, or reason-to-open. Use
+`lunatalk-profile-packager` before publish readiness when the card engine is
+coherent but profile packaging is the weak layer.
 Read `../../references/card-diagnosis.md` when the card has several readiness
 risks at once, author feedback is vague, validation/render pass but behavior is
 weak, or the repair order is unclear. Use `lunatalk-card-doctor` before publish
@@ -56,6 +61,10 @@ matter, or the card decides the player's feelings/actions.
    If the author is asking for a scorecard or quality tier and has not explicitly
    asked to submit, run `lunatalk-quality-auditor` instead of treating the task as
    publish readiness.
+   If the role has a generic `roleName`, overlong or vague `roleDesc`, broad
+   mood-only tags, or a weak first-impression reason-to-open while the engine is
+   otherwise coherent, repair it with `lunatalk-profile-packager` before treating
+   the card as ready.
    If several readiness risks appear at once, run `lunatalk-card-doctor` first
    to create a diagnosis packet and repair order instead of treating readiness as
    a single checklist failure.

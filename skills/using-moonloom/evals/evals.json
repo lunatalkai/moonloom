@@ -351,6 +351,19 @@
         "The route focuses on taste axes, three contrasted playable directions, involvement ladder, recommendation, risk flags, next decisions, and handoff.",
         "The output says no mutating MCP tools, render, simulation, publish, or final role fields should run during premise workshop."
       ]
+    },
+    {
+      "id": 28,
+      "prompt": "I am not sure which Moonloom skill to use. I have a coherent card premise and draft fields, but the public-facing package is weak: roleName is generic, roleDesc is too long, tags are vague, and the first impression does not tell the player why to open the card. I do not want MCP calls yet.",
+      "expected_output": "Uses using-moonloom as the router and routes narrow public-facing profile work to lunatalk-profile-packager before card-doctor, card-author, MCP calls, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes roleName, roleDesc, tags, first impression, public-facing package, and reason-to-open work to lunatalk-profile-packager.",
+        "The output does not route the request to lunatalk-card-doctor because the main symptom is only profile packaging.",
+        "The route focuses on a profile package packet with promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
+        "The output says no MCP tools, render, simulation, publish, or whole-card rewrite should run during profile packaging."
+      ]
     }
   ]
 }

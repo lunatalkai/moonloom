@@ -277,6 +277,19 @@
         "The presentation request expects welcome mode, XMLV3 semantic plan, visible content map, hidden state JSON plan, Theme V3 responsibilities, roleDetailDesc responsibilities, HTML decision, visual affordance table, and render handoff.",
         "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
       ]
+    },
+    {
+      "id": 22,
+      "prompt": "I have a coherent zh-Hant packet stack with character core, opening, longplay, and token plan. Before you assemble final fields, the public card profile still feels weak: roleName is generic, roleDesc is a long synopsis, tags are vague, and the first impression does not explain why to open it. Do not call MCP tools yet.",
+      "expected_output": "Routes unresolved profile packaging to lunatalk-profile-packager before draft-only field assembly, preserves the existing packet stack, and avoids MCP tools.",
+      "files": [],
+      "expectations": [
+        "The workflow does not assemble final role fields while roleName, roleDesc, tags, and first-impression promise are unresolved.",
+        "The output routes to lunatalk-profile-packager before draft-only field assembly or MCP-backed creation.",
+        "The output preserves character core, opening, longplay, and token packets as prerequisites for the profile package packet.",
+        "The profile request expects promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
+        "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
+      ]
     }
   ]
 }

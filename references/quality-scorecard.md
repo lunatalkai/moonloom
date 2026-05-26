@@ -29,7 +29,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 
 | Dimension | Score asks |
 |---|---|
-| Promise | Can the player understand the fantasy, relationship, and tension in a few seconds? |
+| Promise | Can the player understand the fantasy, relationship, tension, and reason to open in a few seconds through `roleName`, `roleDesc`, tags, and first screen? |
 | Archetype contract | Does one primary card shape drive the experience while overlays support it? |
 | Character appeal | Does the role have desire, contradiction, boundary, player leverage, and pressure behavior? |
 | Relationship / daily-life / world / scenario engine | Does relationship, routine, setting, faction, incident, clue, or pressure content create choices, costs, state, and routes? |
@@ -112,7 +112,9 @@ Quality audit packet:
 Choose first repairs by risk and leverage:
 
 1. Critical blockers and player agency.
-2. Archetype contract and promise.
+2. Archetype contract and promise. Use `lunatalk-profile-packager` when the
+   engine exists but `roleName`, `roleDesc`, tags, or first impression are the
+   weak layer.
 3. Durable engine: character core, relationship engine, daily-life engine, world engine, play engine, or system rules.
 4. Opening and second-turn engine.
 5. Longplay and state.

@@ -18,6 +18,9 @@ Read `../../references/quality-scorecard.md` first. Read
 `../../references/quality-rubric.md` for the broader self-review checklist. Read
 `../../references/role-card-writing-framework.md` for promise, engine, play,
 presentation, PACT, and top-card patterns. Read
+`../../references/profile-packaging.md` when the promise score is weak because
+`roleName`, `roleDesc`, tags, first impression, discovery surface, or
+reason-to-open are unclear despite a coherent engine. Read
 `../../references/card-authoring-templates.md` when the audit needs to preserve
 existing packets or hand off to field drafting.
 
@@ -118,6 +121,9 @@ Hand off to:
 
 - `lunatalk-card-doctor` when several weak dimensions interact and the repair
   order needs diagnosis.
+- `lunatalk-profile-packager` when the engine is coherent but `roleName`,
+  `roleDesc`, tags, first impression, discovery surface, or reason-to-open are
+  the weakest layer.
 - `lunatalk-archetype-director` when the primary contract is unclear.
 - `lunatalk-character-core`, `lunatalk-relationship-architect`,
   `lunatalk-daily-life-architect`, or `lunatalk-world-engineer` when the durable
