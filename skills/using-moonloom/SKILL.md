@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -39,6 +39,10 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 - Author-provided files, folders, material packs, pasted notes, existing drafts,
   imported content, large world bibles, or lore that must be compressed before
   card creation: use `lunatalk-material-distiller`.
+- Mature, adult, NSFW, emotionally intense, horror-leaning, jealous, power-
+  imbalanced, consent-sensitive, refusal, pacing, rating, or safer-version work:
+  use `lunatalk-boundary-designer` before blueprinting, authoring, simulation, or
+  publish readiness.
 - Brainstorming, premise shaping, character core, worldbuilding, relationship
   design, voice design, opening-scene planning, or turning a vague idea into a
   card-ready blueprint after source material has been distilled: use
@@ -65,6 +69,9 @@ validation, render review, simulation, and publish readiness.
   plan, or self-review packet.
 - Read `../../references/material-distillation.md` when working from local files,
   notes, material packs, imported drafts, source fragments, or large world bibles.
+- Read `../../references/boundary-design.md` when working on mature, adult,
+  horror-leaning, emotionally intense, consent-sensitive, refusal, pacing,
+  rating, or safer-version design.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.

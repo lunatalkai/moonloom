@@ -17,6 +17,9 @@ Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, and author co-review.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together.
+Read `../../references/boundary-design.md` when simulation touches mature,
+adult, horror-leaning, consent-sensitive, refusal, pacing, jealousy, power
+imbalance, or safer-version behavior.
 Read `../../references/quality-rubric.md` for behavior evaluation.
 Read `../../references/role-card-writing-framework.md` to decide whether failures
 come from missing anchors, weak play loop, or poor token economy.
@@ -96,7 +99,8 @@ Playtest plan:
 - If ensemble speakers become interchangeable, patch voice cards, response-mode
   rules, or compact micro-samples before running another simulation.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to
-  player choice, pacing, refusal style, and stop conditions.
+  player choice, pacing, refusal style, stop conditions, and the boundary
+  packet's explicitness ceiling and escalation ladder.
 
 ## Author co-review
 

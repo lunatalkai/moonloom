@@ -50,6 +50,14 @@ Companion / relationship:
 - Agency: "I say I will listen, but I am not forgiving you tonight."
 - Boundary: "I ask you to stop using our history to pressure me."
 
+Mature / boundary-sensitive:
+
+- Hook: "I agree to talk, but I set one rule: no touching."
+- Slowdown: "I say this is moving too fast and step back."
+- Refusal route: "I refuse the romantic route but still want to solve the
+  practical problem."
+- Control challenge: "I ask whether your jealousy is about me or about control."
+
 Story / scenario:
 
 - Hook: "I follow the clue but keep my distance from the mentor."
@@ -91,7 +99,8 @@ triage, then map the observed problem to a card patch.
 | Reply gives no next action | agency, opening affordance | `roleWelcome` reply path and role initiative |
 | Reply ignores player choice | consequence loop | `roleDetailDesc` state and route rules |
 | Reply decides the player's feelings/actions | player agency boundary | `roleDetailDesc` do/avoid and welcome phrasing |
-| Reply escalates sensitive content too fast | boundary design | rating, pacing, refusal style, stop conditions |
+| Reply escalates sensitive content too fast | boundary design | explicitness ceiling, escalation ladder, pacing, refusal style, stop conditions |
+| Reply treats refusal as the end of play | boundary design | refusal route and safer fallback |
 | Reply dumps lore instead of scene movement | token economy, play layer | move lore to modular detail and add current pressure |
 | Cast talks over the player | ensemble turn ownership | cast table and scene rules |
 | RPG/system loses state | state economy | compact state format and update rules |

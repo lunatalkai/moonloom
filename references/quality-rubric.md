@@ -62,7 +62,11 @@ explicitly chooses a tradeoff:
 - Player agency: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
 - Boundary design: clarify rating, pacing, taboo, refusal style, and stop
-  conditions when the premise can become sensitive.
+  conditions when the premise can become sensitive. Mature, adult, horror-
+  leaning, jealous, power-imbalanced, or consent-sensitive cards should include
+  a boundary packet with rating intent, explicitness ceiling, player agency
+  contract, escalation ladder, refusal behavior, stop conditions, safer fallback,
+  first-scene guardrails, and probes.
 - Language style: rewrite mixed Simplified Chinese terms into Traditional
   Chinese while preserving character names, tone, and XMLV3 tags.
 - Token efficiency: reduce welcome bloat or move durable visual structure into
@@ -103,6 +107,10 @@ explicitly chooses a tradeoff:
   role action or beat, pressure, and a reason the player is implicated now.
 - Player agency takeover: the role can pressure or invite, but it must not narrate
   the player's decisions, feelings, or consent.
+- Missing boundary packet: for mature, adult, horror-leaning, jealous, or power-
+  imbalanced cards, define explicitness ceiling, allowed pressure tools,
+  escalation gates, slowdown signals, stop conditions, and safer fallback before
+  writing the welcome.
 - Generic opening: replace "Hello, I am X, what do you want to do?" with location,
   role action, pressure, player implication, and a specific reply path.
 - Language mismatch: for `zh-Hant` cards, rewrite profile, detail, welcome, and

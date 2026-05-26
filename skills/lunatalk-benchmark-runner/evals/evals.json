@@ -65,6 +65,19 @@
         "The report does not ask MCP validation to judge lore quality.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Create a negative regression check for a mature jealous romance card that passes validation but has no explicitness ceiling, no refusal route, and escalates after the player says slow down.",
+      "expected_output": "Treats missing boundary mechanics as a Moonloom writing failure, checks boundary packet fields, and recommends boundary design repairs rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The report identifies missing explicitness ceiling, refusal route, slowdown behavior, escalation ladder, and player agency contract.",
+        "The proposed repair uses lunatalk-boundary-designer or boundary-design.md before blueprint or authoring.",
+        "The repair targets roleDetailDesc, roleWelcome, and simulation probes.",
+        "The report does not ask MCP validation to judge mature-writing quality.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

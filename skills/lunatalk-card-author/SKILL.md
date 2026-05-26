@@ -21,9 +21,12 @@ provides files, notes, imported drafts, source fragments, or a large world bible
 Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
 Theme V3. Read `../../references/voice-calibration.md` when the card relies on
 distinctive voice, dialogue examples, long-session consistency, or ensemble cast
-contrast. Read `../../references/playtest-loop.md` when designing or interpreting
-private chat simulations. Use `../../examples/synthetic-card-briefs.md` when the
-task asks for benchmark creation, regression checks, or example-driven iteration.
+contrast. Read `../../references/boundary-design.md` when the card is mature,
+adult, NSFW, emotionally intense, horror-leaning, consent-sensitive, jealous,
+power-imbalanced, or needs refusal/pacing repair. Read
+`../../references/playtest-loop.md` when designing or interpreting private chat
+simulations. Use `../../examples/synthetic-card-briefs.md` when the task asks for
+benchmark creation, regression checks, or example-driven iteration.
 
 ## Workflow
 
@@ -32,6 +35,9 @@ task asks for benchmark creation, regression checks, or example-driven iteration
    If the author provides large source material, local files, a draft, or a world
    bible, use `lunatalk-material-distiller` first and author from its
    source-to-play map instead of pasting the source into role fields.
+   If the goal is mature, intense, adult, horror-leaning, consent-sensitive, or
+   boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
+   packet already exists.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
    player role, first scene, and long-term loop, not only by mood. Prefer
@@ -158,7 +164,9 @@ MCP tools make the card real; Moonloom makes the card good.
   and turn ownership.
 - For mature, intense, or sensitive premises, make the intended rating, pacing,
   taboo, refusal style, player agency boundary, and stop conditions explicit in
-  the card design before writing a provocative welcome.
+  the card design before writing a provocative welcome. Preserve the boundary
+  packet's explicitness ceiling, escalation ladder, allowed pressure tools,
+  disallowed moves, safer fallback, and simulation probes.
 - If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
   repeated lore, or visual scaffolding out of welcome before render/simulation.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style

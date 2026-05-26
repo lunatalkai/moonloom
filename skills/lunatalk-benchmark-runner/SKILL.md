@@ -17,6 +17,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
+`../../references/boundary-design.md` when benchmarking mature, adult, horror,
+jealous, consent-sensitive, or boundary-sensitive cards. Read
 `../../references/playtest-loop.md` for probe design and transcript-to-patch
 triage. Read `../../references/safety-and-cost.md` before simulation.
 
@@ -62,7 +64,8 @@ Moonloom self-review, render review, or simulation that:
 - an ensemble card gives one strong sample but lets the other core speakers share
   the same rhythm, motive, or pressure behavior.
 - a mature or intense card creates pressure without explicit pacing, refusal
-  style, or player agency boundary.
+  style, player agency boundary, explicitness ceiling, escalation ladder, stop
+  conditions, or safer fallback.
 
 When a negative check fails, treat it as a skill or prompt regression. Do not
 turn the failed writing check into an MCP hard gate unless it is actually
