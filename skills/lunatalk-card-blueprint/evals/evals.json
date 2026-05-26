@@ -91,6 +91,19 @@
         "The welcome concept stays playable and compact for the archetype.",
         "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "Before creating anything, blueprint a hybrid card that mixes a quiet relationship, a memory-currency city, mystery routes, and a small contract generator. I need to know the card type and skill order before fields.",
+      "expected_output": "Uses lunatalk-archetype-director or archetype-contracts before broad field drafting, then produces a blueprint that preserves the archetype packet and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes card-shape uncertainty to lunatalk-archetype-director or archetype-contracts.md before broad authoring.",
+        "The archetype packet chooses one primary contract and limits secondary overlays.",
+        "The blueprint preserves field allocation, required packets, skill order, and hybrid failure modes.",
+        "The first scene and second-turn engine prove the primary contract rather than explaining every overlay.",
+        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+      ]
     }
   ]
 }

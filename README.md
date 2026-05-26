@@ -18,6 +18,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 
 - `skills/using-moonloom` is the router skill. Start here when an agent is unsure
   which Moonloom workflow applies.
+- `skills/lunatalk-archetype-director` chooses the primary card contract,
+  secondary overlays, field allocation, hybrid risks, and Moonloom skill order
+  before blueprinting or authoring mixed card types.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-world-engineer` turns world seeds, relationship networks,
@@ -51,6 +54,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   networks, location functions, compact state, route seeds, and lore compression.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
+- `references/archetype-contracts.md` defines primary card contracts, hybrid
+  rules, field allocation, and archetype packets for companion, story, system,
+  RPG, generator, daily-life, light-setting, heavy-setting, and ensemble cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
   self-review packets.

@@ -131,6 +131,19 @@
         "The output runs validate_role only for technical blockers and tokenBudget comparison after structural patches.",
         "The output does not treat token count as proof of quality or a billing statement."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "Create a private role from a hybrid idea: companion romance, memory-city mystery, RPG-like routes, and a small contract generator. Before calling any MCP tool, decide which card type should drive it.",
+      "expected_output": "Uses lunatalk-archetype-director before MCP-backed creation, preserves the archetype packet, then hands off to blueprint or authoring only after card contract and field allocation are clear.",
+      "files": [],
+      "expectations": [
+        "The workflow routes card-type and hybrid-contract uncertainty to lunatalk-archetype-director before mutating MCP calls.",
+        "The archetype packet chooses one primary contract and identifies secondary overlays and rejected archetypes.",
+        "The packet includes field allocation, required Moonloom packets, skill order, and hybrid failure modes.",
+        "The workflow preserves the packet through card blueprinting or authoring instead of flattening it into a generic idea.",
+        "The output treats archetype design as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
+      ]
     }
   ]
 }

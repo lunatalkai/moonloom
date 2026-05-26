@@ -182,6 +182,19 @@
         "The output says no mutating MCP tools should run during token architecture design.",
         "The output treats tokenBudget as a structural diagnostic, not as a writing-quality gate or billing statement."
       ]
+    },
+    {
+      "id": 15,
+      "prompt": "I am not sure which Moonloom skill to use. My card mixes slow-burn romance, a memory-trading city, mystery story routes, and a small artifact generator. I do not know whether it is companion, story, heavy-setting, RPG, or generator.",
+      "expected_output": "Uses using-moonloom as the router, routes card-type uncertainty and hybrid contract design to lunatalk-archetype-director first, then hands off to the narrow Moonloom skills and blueprint after an archetype packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes card type uncertainty, mixed archetypes, and primary contract selection to lunatalk-archetype-director.",
+        "The route asks for or produces an archetype packet with primary archetype, secondary overlays, rejected archetypes, field allocation, and hybrid failure modes.",
+        "The output does not treat all archetypes as equal and does not jump straight to MCP-backed authoring.",
+        "The output treats archetype quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }

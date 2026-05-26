@@ -51,6 +51,10 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   imbalanced, consent-sensitive, refusal, pacing, rating, or safer-version work:
   use `lunatalk-boundary-designer` before blueprinting, authoring, simulation, or
   publish readiness.
+- Card type uncertainty, mixed archetypes, companion/story/RPG/system/generator
+  ambiguity, hybrid cards, choosing the primary playable contract, field
+  allocation by card type, or deciding which Moonloom skills to run before
+  blueprinting: use `lunatalk-archetype-director`.
 - `roleWelcome`, welcome text, opening scene, first screen, first user reply,
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
@@ -108,6 +112,9 @@ validation, render review, simulation, and publish readiness.
   settings, compact state, route seeds, or lore-dump repair.
 - Read `../../references/role-card-writing-framework.md` before writing or deeply
   revising any role card.
+- Read `../../references/archetype-contracts.md` when the task involves card
+  type selection, hybrid archetypes, primary/secondary card contracts, or field
+  allocation by card shape.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.

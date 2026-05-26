@@ -17,7 +17,11 @@ trope-only, generic, or memorable-character problems. Read
 `../../references/world-engine-design.md` when the idea has worldbuilding,
 relationship-network, faction, location, lore-heavy, or lore-dump problems. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
-and archetype recipes. Read `../../references/card-authoring-templates.md` for
+and archetype recipes. Read `../../references/archetype-contracts.md` when the
+author is unsure whether the card is companion, story, system, RPG, generator,
+daily-life, light-setting, heavy-setting, ensemble, or a hybrid. Use
+`lunatalk-archetype-director` first when card type or hybrid contract is the
+primary problem. Read `../../references/card-authoring-templates.md` for
 draft packets and field templates. Read `../../references/material-distillation.md`
 when the idea comes from files, notes, imported drafts, source fragments, or a
 large world bible. Read `../../references/voice-calibration.md` when the idea
@@ -58,6 +62,8 @@ creation, validation, render review, simulation, and publishing workflow.
    If the premise is mature, intense, horror-leaning, consent-sensitive, or
    boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
    packet already exists.
+   If the card shape is unclear or mixes several archetypes, use
+   `lunatalk-archetype-director` first unless an archetype packet already exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -103,6 +109,37 @@ Return this structure:
 
 ```text
 Seed:
+
+Archetype packet:
+- current seed:
+- primary archetype:
+- secondary overlays:
+- rejected archetypes:
+- archetype contract:
+- player promise:
+- player role:
+- core loop:
+- first-screen proof:
+- field allocation:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- required packets:
+  - character core:
+  - world engine:
+  - agency:
+  - voice:
+  - opening:
+  - longplay:
+  - boundary:
+  - token:
+- recommended Moonloom skill order:
+- hybrid failure modes:
+- repair rules:
+- self-review probes:
+- handoff:
 
 Directions:
 1. ...

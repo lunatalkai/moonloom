@@ -9,6 +9,8 @@ the shorter pass/fail rubric.
 ## Role card quality
 
 - The role has a clear premise, relationship dynamic, and first playable scene.
+- The card has one clear primary archetype contract. Secondary overlays support
+  the player promise instead of competing with it.
 - The role has a memorable character core: desire, contradiction, boundary,
   player leverage, and pressure behavior that are visible in play.
 - If the card has a setting, the world rule creates player choices,
@@ -37,6 +39,8 @@ A top-card candidate should pass three harder checks:
 - The second turn is better than the first. The card can escalate, reveal,
   complicate, or offer a new route without waiting for the player to write the
   whole plot.
+- The primary archetype is visible on the first screen and still supported by the
+  durable engine in `roleDetailDesc`.
 - The opening has a concrete packet: five beats, reply paths, expected first user
   message, second-turn move, and visible change.
 - The longplay engine has a continuity spine, compact state model, route costs,
@@ -116,6 +120,10 @@ explicitly chooses a tradeoff:
   branches; game needs rules, resources, failure pressure, and opening
   setup/state/choices; generator needs intake, output schema, revision loop, and
   quality rubric.
+- Archetype director: when the author is unsure which card type should drive the
+  work, or the card mixes companion, story, system, RPG, generator, daily-life,
+  light-setting, heavy-setting, or ensemble contracts, create an archetype packet
+  before blueprinting or authoring.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Overlong `roleDesc`: compress it into one scannable premise sentence. Normal
   cards should usually stay under 260 characters; game/system/generator cards can

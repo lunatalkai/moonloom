@@ -20,6 +20,10 @@ repair. Read
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
+`../../references/archetype-contracts.md` when the author is unsure which card
+type should drive the role, when several archetypes are mixed, or when field
+allocation depends on card shape. Use `lunatalk-archetype-director` first when
+card type or hybrid contract is the primary problem. Read
 `../../references/card-authoring-templates.md` when turning an idea into concrete
 field drafts. Read `../../references/material-distillation.md` when the author
 provides files, notes, imported drafts, source fragments, or a large world bible.
@@ -55,6 +59,10 @@ benchmark creation, regression checks, or example-driven iteration.
    If the goal is mature, intense, adult, horror-leaning, consent-sensitive, or
    boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
    packet already exists.
+   If the author is unsure whether the card is companion, story, system, RPG,
+   generator, daily-life, light-setting, heavy-setting, ensemble, or a hybrid,
+   use `lunatalk-archetype-director` first unless an archetype packet already
+   exists.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
    player role, first scene, and long-term loop, not only by mood. Prefer
@@ -74,7 +82,7 @@ benchmark creation, regression checks, or example-driven iteration.
    `lunatalk-token-architect` when the author primarily asks about tokenBudget,
    welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
    preserving playability while reducing token cost.
-3. Choose the archetype or pressure shape: companion/relationship,
+3. Choose or preserve the archetype packet: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
 4. Draft the card in Moonloom first: promise, engine, play, and presentation. Use
@@ -181,6 +189,11 @@ MCP tools make the card real; Moonloom makes the card good.
   archetype, token budget signal, target allocation, field triage,
   keep/move/cut/rewrite, compression ladder, visual budget, state budget,
   example budget, patch order, rerun checks, and handoff.
+- Preserve the archetype packet when one exists: current seed, primary archetype,
+  secondary overlays, rejected archetypes, archetype contract, player promise,
+  player role, core loop, first-screen proof, field allocation, required packets,
+  recommended Moonloom skill order, hybrid failure modes, repair rules,
+  self-review probes, and handoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.

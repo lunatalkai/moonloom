@@ -169,6 +169,19 @@
         "The repair includes token architecture packet, field triage, target allocation, keep/move/cut/rewrite, compression ladder, and patch order.",
         "The report does not ask MCP validation to judge subjective token architecture beyond technical diagnostics."
       ]
+    },
+    {
+      "id": 14,
+      "prompt": "Create a negative regression check for a schema-valid hybrid card that claims to be companion, RPG, heavy-setting, mystery, and generator at equal priority, so the welcome becomes a manual and the role behaves like a generic assistant.",
+      "expected_output": "Treats missing primary archetype contract as a Moonloom writing failure, checks archetype packet fields, and recommends archetype-director repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing primary archetype, unclear secondary overlays, rejected archetypes, field allocation, or hybrid failure modes.",
+        "The proposed repair uses lunatalk-archetype-director or archetype-contracts.md before blueprint or authoring.",
+        "The report does not ask MCP validation to judge subjective archetype quality.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }
