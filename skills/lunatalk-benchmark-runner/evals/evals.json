@@ -302,6 +302,20 @@
         "The check rejects unsupported top-card, popularity, ranking, traffic, source-data, or private-example claims.",
         "The report treats profile quality as Moonloom writing guidance rather than MCP validation, platform metrics, or server gates."
       ]
+    },
+    {
+      "id": 24,
+      "prompt": "Create a negative regression check for a coherent zh-Hant role whose engine, opening, and voice are good, but the language layer is weak: profile, detail, welcome, examples, and tags mix Simplified/Traditional Chinese, English tags, translated-sounding prose, and pronoun/register drift.",
+      "expected_output": "Treats weak language consistency as a Moonloom style-layer failure, checks the language-style packet, and recommends lunatalk-language-stylist before broad diagnosis, field assembly, render, simulation, publish readiness, or server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role and render_preview would pass.",
+        "The diagnosis identifies language-style failures: script mixing, translated-sounding prose, pronoun/address drift, mixed tags, and field register mismatch.",
+        "The proposed repair uses lunatalk-language-stylist or language-style.md before broad card-doctor diagnosis, final field assembly, render, simulation, or publish readiness.",
+        "The report preserves coherent engine, opening, and voice instead of treating language cleanup as a full-card rewrite.",
+        "The report keeps language quality inside Moonloom skills rather than MCP/server hard gates.",
+        "The output avoids source/provenance claims and does not invent examples beyond the provided draft."
+      ]
     }
   ]
 }

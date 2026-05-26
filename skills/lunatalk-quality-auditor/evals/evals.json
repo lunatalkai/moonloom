@@ -65,6 +65,19 @@
         "The output preserves the coherent engine, opening, and longplay instead of broad diagnosis or re-blueprinting.",
         "The output does not call MCP tools or treat profile quality as platform metrics or an MCP gate."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Audit this coherent zh-Hant packet stack before field assembly. Character core, opening, longplay, and voice are strong, but profile/detail/welcome/examples mix Simplified and Traditional Chinese, pronouns drift, tags are partly English, and talkExample uses a different register from detail. Do not call MCP tools.",
+      "expected_output": "Uses lunatalk-quality-auditor for the scorecard, marks language style as a narrow weak layer, and hands off to lunatalk-language-stylist without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output keeps the task in lunatalk-quality-auditor because the user asked for an audit or scorecard.",
+        "The language-style dimension identifies script mixing, pronoun drift, mixed tags, and register mismatch as the main weak layer.",
+        "The first repair or handoff routes to lunatalk-language-stylist before card-author, render, simulation, or publish readiness.",
+        "The output preserves the coherent engine, opening, longplay, and voice instead of broad diagnosis or re-blueprinting.",
+        "The output does not call MCP tools or treat language style as platform metrics or an MCP gate."
+      ]
     }
   ]
 }

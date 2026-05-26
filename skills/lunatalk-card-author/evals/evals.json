@@ -290,6 +290,19 @@
         "The profile request expects promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
         "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
       ]
+    },
+    {
+      "id": 23,
+      "prompt": "I have a coherent zh-Hant packet stack with character core, opening, voice card, and token plan. Before assembling final fields, the language layer is inconsistent: some fields are Simplified Chinese, tags are partly English, pronouns drift, roleWelcome feels translated, and talkExample has a different register from roleDetailDesc. Do not call MCP tools yet.",
+      "expected_output": "Routes unresolved language consistency to lunatalk-language-stylist before draft-only field assembly, preserves the existing packet stack, and avoids MCP tools.",
+      "files": [],
+      "expectations": [
+        "The workflow does not assemble final role fields while zh-Hant consistency, register, pronouns, tags, and talkExample alignment are unresolved.",
+        "The output routes to lunatalk-language-stylist before draft-only field assembly or MCP-backed creation.",
+        "The output preserves character core, opening, voice card, and token packets as prerequisites for the language-style packet.",
+        "The language request expects target locale, language failures, pronoun/address matrix, field pass, rewrite rules, verification checklist, and handoff.",
+        "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
+      ]
     }
   ]
 }

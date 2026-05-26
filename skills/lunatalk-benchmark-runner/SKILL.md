@@ -24,6 +24,10 @@ should continue to authoring, render, simulation, or publish readiness. Read
 `../../references/profile-packaging.md` when benchmarking `roleName`,
 `roleDesc`, tags, public-facing profile, first impression, discovery surface, or
 promise compression for a coherent card engine. Read
+`../../references/language-style.md` when benchmarking language consistency,
+zh-Hant / zh-TW cleanup, Simplified/Traditional mixing, translated-sounding
+prose, pronoun/address drift, mixed-language tags, or register mismatch across
+fields. Read
 `../../references/card-series-design.md` when benchmarking related card sets,
 alternate versions, seasonal/event variants, daily-life variants,
 generator/helper variants, keep/merge/reject decisions, or variant authoring
@@ -117,7 +121,8 @@ Moonloom self-review, render review, or simulation that:
   opening-only repair, longplay-only repair, or RPG mechanics instead of
   producing a scenario packet.
 - a `zh-Hant` card mixes Simplified Chinese into profile, detail, welcome, or
-  examples.
+  examples, or has no language-style packet when script, register, pronouns,
+  address terms, tags, or field-to-field wording are the weak layer.
 - the opening has choices but no concrete location, sensory beat, role action, or
   pressure.
 - the detail defines consequences but lacks proactive turn rules for passive or
@@ -211,6 +216,10 @@ authoring, render review, simulation, or publish readiness.
 Use `lunatalk-profile-packager` for regressions where the coherent card engine
 exists but the weakest layer is `roleName`, `roleDesc`, tags, public-facing
 profile, first impression, discovery surface, or promise compression.
+Use `lunatalk-language-stylist` for regressions where the coherent card engine,
+opening, and voice exist but the weakest layer is language consistency, zh-Hant /
+zh-TW style, Simplified/Traditional mixing, translated-sounding prose, pronouns,
+address terms, mixed-language tags, or field-to-field register mismatch.
 Use `lunatalk-archetype-director` for regressions where the weakest layer is
 card-type selection, hybrid contract, rejected archetypes, or field allocation by
 primary card shape.

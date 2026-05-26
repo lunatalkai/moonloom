@@ -1,0 +1,83 @@
+{
+  "skill_name": "lunatalk-language-stylist",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The card engine, opening, and voice card are coherent, but the zh-Hant fields mix Simplified Chinese, English tags, translated-sounding sentences, inconsistent pronouns, and talkExample uses a different register from roleDetailDesc. Do not change plot, voice rules, or MCP state.",
+      "expected_output": "Routes to lunatalk-language-stylist, preserves engine/opening/voice, returns a language-style packet with zh-Hant cleanup, pronoun/address matrix, field pass, verification checklist, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the problem as a language-style layer, not plot, voice redesign, broad diagnosis, or final field assembly.",
+        "The output preserves the coherent engine, opening, voice card, boundary posture, XMLV3 tags, and JSON keys.",
+        "The packet includes target language/locale, language failures, pronoun/address matrix, field pass, rewrite rules, and verification checklist.",
+        "The field pass covers roleName, roleDesc, roleDetailDesc, roleWelcome, talkExample, tags, and XMLV3/Theme V3 visible prose.",
+        "The output does not call MCP tools, render, simulate, publish, or make unsupported platform/source claims."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Before final fields, make this zh-TW daily-life card sound natural instead of machine-translated. Keep the neighbor routine engine and first scene intact. I only want register, punctuation, address terms, and Traditional Chinese consistency.",
+      "expected_output": "Uses lunatalk-language-stylist for a zh-TW language pass, keeps the daily-life engine and opening intact, and hands off to card-author only after the language packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output routes zh-TW naturalness, register, punctuation, address terms, and Traditional Chinese consistency to lunatalk-language-stylist.",
+        "The output preserves the daily-life routine engine and first scene instead of re-blueprinting or rewriting plot.",
+        "The address matrix specifies role self-reference, player address, and intimacy/formality behavior.",
+        "The rewrite rules remove translationese while preserving pressure, reply paths, and player agency.",
+        "The handoff goes to lunatalk-card-author for draft-only assembly or patching only after the language packet."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My fantasy card intentionally uses an English spell name and XMLV3 tags, but the surrounding zh-Hant prose is inconsistent. Clean language style without translating proper nouns, tag names, JSON keys, or in-world code-switching.",
+      "expected_output": "Uses lunatalk-language-stylist, preserves intentional English/proper nouns/XMLV3/JSON, rewrites only visible prose that should be zh-Hant, and avoids engine drift.",
+      "files": [],
+      "expectations": [
+        "The output distinguishes intentional code-switching and proper nouns from accidental mixed-language prose.",
+        "The output preserves registered XMLV3 tags, JSON keys, platform terms, and in-world labels.",
+        "The output rewrites only visible prose and user-facing fields that should follow the target language.",
+        "The output verifies no plot, engine, boundary, or voice-rule change was introduced.",
+        "The output does not call MCP tools or create hard validation gates for style."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I think the wording is bad, but the real issue may be that the character's refusal style and pressure behavior are not defined. Should this be a language pass?",
+      "expected_output": "Does not force language-stylist; routes to lunatalk-voice-director when rhythm/refusal/pressure behavior is the actual missing layer, with language-stylist only as a later cleanup.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that missing refusal style and pressure behavior are voice-design issues, not only language cleanup.",
+        "The output routes to lunatalk-voice-director before language-stylist.",
+        "The output explains that language-stylist can run later after voice rules are coherent.",
+        "The output avoids final field assembly and MCP calls during the voice/language decision.",
+        "The output keeps style guidance as Moonloom writing guidance rather than MCP validation."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "This zh-Hant horror-romance card mostly needs wording cleanup, but it has no explicitness ceiling, refusal behavior, or player agency contract. Can language-stylist just make the prose sound better?",
+      "expected_output": "Does not run language-stylist first; routes sensitive-content boundary uncertainty to lunatalk-boundary-designer before any language pass.",
+      "files": [],
+      "expectations": [
+        "The output identifies missing explicitness ceiling, refusal behavior, and player agency contract as boundary-design blockers.",
+        "The output routes to lunatalk-boundary-designer before language-stylist.",
+        "The output does not soften or polish sensitive pressure as a substitute for a boundary packet.",
+        "The output keeps MCP tools, render, simulation, and publishing off during the boundary decision.",
+        "The output says language-stylist can run later after boundary posture is clear."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "The zh-Hant prose is inconsistent, but the opening is still a generic greeting with no place, role action, pressure, or first reply path. Should this go directly to language cleanup?",
+      "expected_output": "Does not route directly to language-stylist; routes unresolved opening structure to lunatalk-opening-director or card-doctor before language cleanup.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that language-stylist requires the engine, opening, and voice plan to be coherent enough to preserve.",
+        "The output routes the missing opening structure to lunatalk-opening-director or lunatalk-card-doctor first.",
+        "The output does not use language cleanup to hide a hollow opening.",
+        "The output keeps plot/engine repair separate from later language-style cleanup.",
+        "The output does not call MCP tools or create style validation gates."
+      ]
+    }
+  ]
+}

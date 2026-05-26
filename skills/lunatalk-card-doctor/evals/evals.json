@@ -65,6 +65,19 @@
         "The profile package expectation includes promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
         "The output does not call MCP tools or turn subjective profile quality into a server gate."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "I almost used card-doctor, but the only issue is language consistency: a coherent zh-Hant draft mixes Simplified Chinese, English tags, inconsistent address terms, and translated-sounding welcome prose. Engine, opening, and voice are coherent.",
+      "expected_output": "Routes away from broad card diagnosis to lunatalk-language-stylist, preserves the coherent engine/opening/voice, and does not create a multi-layer diagnosis packet.",
+      "files": [],
+      "expectations": [
+        "The output recognizes this as a narrow language-style problem, not mixed existing-card diagnosis.",
+        "The output routes to lunatalk-language-stylist instead of running a broad card-doctor repair order.",
+        "The output preserves the coherent engine, opening, and voice card.",
+        "The language-style expectation includes target locale, language failures, pronoun/address matrix, field pass, verification checklist, and handoff.",
+        "The output does not call MCP tools or turn language style into a server gate."
+      ]
     }
   ]
 }

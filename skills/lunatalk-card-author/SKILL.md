@@ -22,6 +22,12 @@ blueprinting or authoring when directions need to be chosen first. Read
 first impression, discovery surface, or promise compression; use
 `lunatalk-profile-packager` before field assembly or profile patching when the
 engine exists but the public package is weak. Read
+`../../references/language-style.md` when the current task focuses on language
+consistency, zh-Hant / zh-TW cleanup, Traditional/Simplified mixing,
+translated-sounding prose, register alignment, pronouns, address terms,
+punctuation, mixed-language tags, or field-to-field wording mismatch; use
+`lunatalk-language-stylist` before field assembly or patching when the engine,
+opening, and voice card are coherent but the language surface is weak. Read
 `../../references/character-core-design.md` when the role idea is thin,
 trope-only, generic, or needs persona appeal repair. Read
 `../../references/relationship-engine.md` when the card is relationship-heavy,
@@ -116,6 +122,12 @@ benchmark creation, regression checks, or example-driven iteration.
    pitch, public-facing package, first impression, discovery surface, or why a
    player should open the card, use `lunatalk-profile-packager` first unless a
    profile package packet already exists.
+   If the author asks for language consistency, zh-Hant / zh-TW cleanup,
+   Traditional/Simplified mixing, translated-sounding prose, register alignment,
+   pronouns, address terms, punctuation, mixed-language tags, or mismatch between
+   `roleDesc`, `roleDetailDesc`, `roleWelcome`, and `talkExample`, use
+   `lunatalk-language-stylist` first unless a language-style packet already
+   exists.
    If the author asks whether a draft, blueprint, packet stack, or role fields
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
@@ -194,6 +206,10 @@ benchmark creation, regression checks, or example-driven iteration.
    ensemble voice contrast. Prefer `lunatalk-agency-designer` when the author
    primarily asks for player agency, user insertion space, interaction hooks,
    decorative choices, route funneling, or player-agency takeover. Prefer
+   `lunatalk-language-stylist` when the author primarily asks for script
+   consistency, zh-Hant / zh-TW localization, translated-sounding prose,
+   pronouns, address terms, register, punctuation, or field-to-field language
+   mismatch after the voice rules are already coherent. Prefer
    `lunatalk-play-engineer` when the author primarily asks for RPG/adventure
    mechanics, resources, inventory, quests, combat, compact state, turn
    protocol, failure-forward behavior, or rule-manual opening repair. Prefer
@@ -315,9 +331,15 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the profile package packet when one exists: promise angle, selected
   `roleName`, selected `roleDesc`, candidate rationale, tag set,
   first-impression check, fields to preserve, and fields to patch.
+- Preserve the language-style packet when one exists: target language / locale,
+  language failures, pronoun/address matrix, field pass, rewrite rules,
+  keep/rewrite/preserve decisions, verification checklist, and handoff.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
   profile, detail, welcome, and examples consistently Traditional Chinese.
+  If the issue is more than a simple script preference, use
+  `lunatalk-language-stylist` before patching fields so the language pass does
+  not accidentally change engine, opening, voice rules, XMLV3 tags, or JSON keys.
 - Keep `roleDesc` scannable. If a draft exceeds the recommended length or feels
   dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply

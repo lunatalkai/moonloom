@@ -74,6 +74,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   before blueprinting or authoring.
 - `skills/lunatalk-profile-packager` sharpens `roleName`, `roleDesc`, tags, and
   first-impression promise when the card engine exists but the public profile is weak.
+- `skills/lunatalk-language-stylist` cleans language consistency, zh-Hant /
+  zh-TW style, register, pronouns, address terms, and field-to-field wording
+  without changing the card engine.
 - `skills/lunatalk-opening-director` turns greeting-only, hollow, or overloaded
   welcomes into opening packets with first reply paths and second-turn moves.
 - `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
@@ -125,6 +128,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   packets.
 - `references/profile-packaging.md` defines role profile packaging, promise
   compression, scannable `roleDesc` patterns, tag sets, and first-impression checks.
+- `references/language-style.md` defines language-style packets, Traditional
+  Chinese consistency, register alignment, pronoun/address matrices, and
+  field-level localization passes.
 - `references/opening-design.md` defines five-beat opening design, opening
   packets, first reply paths, second-turn moves, XMLV3 scaffolds, and opening
   failure repairs.
