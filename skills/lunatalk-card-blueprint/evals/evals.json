@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-card-blueprint",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I only have a vague idea: make me a popular vampire card. Help me make it top-tier before we create anything.",
+      "expected_output": "Produces 2-3 distinct playable directions, recommends one, defines tension triangle, character core, player leverage, voice fingerprint, first scene, second-turn engine, token plan, self-review, and handoff readiness without calling MCP tools.",
+      "files": [],
+      "expectations": [
+        "The output proposes 2-3 directions that differ by player role, conflict, first scene, and long-term loop.",
+        "The recommended direction explains why it is stronger than a generic vampire trope.",
+        "The blueprint defines role desire, player leverage, and external pressure.",
+        "The blueprint includes a second-turn engine that escalates, reveals, complicates, or opens a route.",
+        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make a quiet daily-life card about a neighbor watering rooftop plants before dawn. I want it emotionally observant, not boring.",
+      "expected_output": "Builds a daily-life blueprint with small desire, ordinary pressure, player insertion, sensory first scene, slow progression loop, voice fingerprint, and token-conscious field draft.",
+      "files": [],
+      "expectations": [
+        "The blueprint gives the role a small concrete desire rather than only a mood.",
+        "The first scene includes ordinary routine, sensory anchors, role action, pressure, and player implication.",
+        "The progression loop uses habit, trust, shared objects, or small disclosures.",
+        "The output avoids sudden melodrama as the only source of tension.",
+        "The roleDesc and welcome concept remain compact and scannable."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want a huge fantasy city where every district has a different calendar. Help me avoid lore dump and make it playable.",
+      "expected_output": "Builds a heavy-setting blueprint with immediate player role, modular world rules, one concrete starting problem, route seeds, state economy, and a welcome concept that starts in action.",
+      "files": [],
+      "expectations": [
+        "The blueprint starts from a concrete player position and immediate problem.",
+        "The world rules create choices, costs, routes, or consequences rather than only atmosphere.",
+        "The output modularizes lore into rules, factions or locations that affect play.",
+        "The welcome concept does not require reading a long manual before acting.",
+        "The token plan states what lore to keep, delay, or cut."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Design a tense romance card about an ex-partner after a public scandal, but keep player agency and boundaries clear.",
+      "expected_output": "Builds a boundary-sensitive romance blueprint with rating intent, escalation gate, refusal handling, emotional pressure, player leverage, first scene, second-turn engine, and self-review.",
+      "files": [],
+      "expectations": [
+        "The blueprint defines rating intent, pacing, refusal style, stop conditions, and what the role must not decide for the player.",
+        "The role can create emotional pressure without deciding the player's feelings, consent, actions, or commitments.",
+        "The first scene has both emotional stakes and a practical reason to interact.",
+        "Escalation is gated behind player choice and consequence.",
+        "The self-review includes boundary design and player agency."
+      ]
+    }
+  ]
+}

@@ -26,7 +26,10 @@ task asks for benchmark creation, regression checks, or example-driven iteration
    language, content rating intent, and success criteria.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
-   player role, first scene, and long-term loop, not only by mood.
+   player role, first scene, and long-term loop, not only by mood. Prefer
+   `lunatalk-card-blueprint` when the author needs ideation, character core,
+   worldbuilding, relationship design, voice design, or opening-scene planning
+   before a real role is created.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
