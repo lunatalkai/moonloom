@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, sample or golden-example calibration, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, language consistency, zh-Hant/zh-TW style, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, generator/helper artifact loops, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile packaging, language style, variants, ensemble/story/daily-life/RPG/generator/material workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom

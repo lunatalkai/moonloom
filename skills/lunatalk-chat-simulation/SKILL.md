@@ -1,6 +1,6 @@
 ---
 name: lunatalk-chat-simulation
-description: Run and evaluate LunaTalk private chat simulations through simulate_private_chat. Use this skill whenever the user wants an AI client to test a card's behavior, dialogue quality, first-turn response, role consistency, or end-to-end LunaTalk chat behavior before publishing.
+description: Use when a LunaTalk private role needs chat simulation, realistic probe design, transcript triage, behavior repair, simulation repair handoff, or billed simulate_private_chat readiness after validation.
 ---
 
 # LunaTalk Chat Simulation

@@ -1,6 +1,6 @@
 ---
 name: lunatalk-publish-readiness
-description: Check whether a LunaTalk private role card is ready for public submission. Use this skill whenever the user asks to publish, submit for review, make a role public, prepare a LunaTalk card for review, or decide whether a private card is ready to go live.
+description: Use when a LunaTalk private role needs public submission readiness, publish blocker triage, author confirmation, publish_submit handoff, or a decision about whether a private card is ready for review.
 ---
 
 # LunaTalk Publish Readiness

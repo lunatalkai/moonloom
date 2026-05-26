@@ -137,6 +137,25 @@ async function validateSkill(root, skillName, issues, summary) {
     issues.push(
       issue('skill.frontmatter.description', relativeSkillPath, 'Frontmatter description is missing.'),
     );
+  } else {
+    if (!fields.description.startsWith('Use when')) {
+      issues.push(
+        issue(
+          'skill.frontmatter.description_trigger',
+          relativeSkillPath,
+          'Frontmatter description should start with "Use when" and describe trigger conditions.',
+        ),
+      );
+    }
+    if (fields.description.length > 500) {
+      issues.push(
+        issue(
+          'skill.frontmatter.description_too_long',
+          relativeSkillPath,
+          `Frontmatter description has ${fields.description.length} characters; keep it under 500.`,
+        ),
+      );
+    }
   }
   if (lines > 500) {
     issues.push(issue('skill.size.too_large', relativeSkillPath, `SKILL.md has ${lines} lines.`));
