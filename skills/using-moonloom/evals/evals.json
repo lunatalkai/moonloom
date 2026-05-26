@@ -299,6 +299,19 @@
         "The output says no mutating MCP tools, render, simulation, or publish tools should run during the audit.",
         "The output treats the quality scorecard as Moonloom writing guidance, not MCP validation, platform metrics, or a server gate."
       ]
+    },
+    {
+      "id": 24,
+      "prompt": "I am not sure which Moonloom skill to use. I want a zh-Hant story/mystery card where the player enters an ongoing incident, investigates conflicting clues, chooses who to trust, protects or exposes someone, and branches without railroading. It is not RPG/open-world mechanics, not mainly romance, and not a big lore bible. I need stakes, route branches, clue/reveal pacing, suspect pressure, false leads, consequence state, opening incident, second-turn reveal, and simulation probes before fields.",
+      "expected_output": "Uses using-moonloom as the router and routes story/mystery scenario structure to lunatalk-scenario-architect before blueprinting, opening repair, longplay, authoring, or simulation.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes story, mystery, ongoing incident, route branches, clue/reveal pacing, suspect pressure, false leads, and consequence state to lunatalk-scenario-architect.",
+        "The output does not route primarily to lunatalk-play-engineer because explicit game mechanics, stats, resources, combat, and turn protocol are not the main blocker.",
+        "The output does not route primarily to broad worldbuilding, relationship repair, opening-only repair, longplay-only repair, broad blueprinting, or mutating MCP tools.",
+        "The route focuses on a scenario packet with stakes, story spine, route branches, clue/reveal ladder, suspect pressure network, compact consequence state, opening incident, second-turn reveal, route-funnel guardrails, and probes."
+      ]
     }
   ]
 }

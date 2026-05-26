@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -81,6 +81,16 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   rules, cast crowding the player, roll-call welcomes, or group tension: use
   `lunatalk-ensemble-director` before blueprinting, opening repair, voice
   calibration, authoring, or simulation.
+- Story, scenario, mystery, investigation, case-file, event, trial, rescue,
+  betrayal, social-drama, or plot-heavy cards where the primary blocker is
+  stakes, route branches, clue/reveal pacing, suspect pressure, false leads,
+  compact consequence state, route-funnel repair, opening incident, second-turn
+  reveal, or scenario probes: use `lunatalk-scenario-architect` before
+  blueprinting, opening repair, longplay repair, authoring, or simulation. If
+  the primary blocker is explicit resources, stats, inventory, combat, turn
+  protocol, or game-like mechanics, use `lunatalk-play-engineer`; if it is
+  factions, locations, relationship networks, lore compression, or world scope,
+  use `lunatalk-world-engineer`.
 - RPG, adventure, open-world, sandbox, survival, investigation, or simulator
   tasks where playable mechanics are the primary blocker: stats, resources,
   inventory, quests, combat, turn protocol, compact state updates,
@@ -178,6 +188,10 @@ validation, render review, simulation, and publish readiness.
   adventure, open-world, sandbox, survival, investigation, simulator, stats,
   resources, inventory, quests, combat, turn protocol, compact state updates,
   failure-forward behavior, or rule-manual openings.
+- Read `../../references/scenario-design.md` when the task involves story,
+  scenario, mystery, investigation, event, trial, rescue, betrayal, clue/reveal
+  pacing, false leads, suspect pressure, route-funnel repair, branch
+  consequences, or a focused incident without game-like mechanics.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.

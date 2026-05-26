@@ -31,6 +31,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
   investigation, sandbox, and simulator cards through compact state, resources,
   quests, turn protocol, failure-forward behavior, and simulation probes before
   blueprinting or authoring.
+- `skills/lunatalk-scenario-architect` plans story, mystery, investigation,
+  event, trial, rescue, and drama cards through stakes, route branches,
+  clue/reveal pacing, false leads, consequence state, and scenario probes before
+  blueprinting or authoring.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
@@ -89,6 +93,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/play-engine-design.md` defines compact state, resource economy,
   quest/risk routes, turn protocol, failure-forward behavior, opening contract,
   token plan, and probes for game-like cards.
+- `references/scenario-design.md` defines branchable incidents, story spines,
+  clue/reveal ladders, false lead handling, suspect pressure networks, compact
+  consequence state, and probes for story-first cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
   boundary-sensitive prompts, and self-review packets.

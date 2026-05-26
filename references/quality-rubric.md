@@ -23,6 +23,10 @@ not a platform metric or MCP validation rule.
 - If the card has a setting, the world rule creates player choices,
   consequences, compact state, route seeds, and relationship or faction pressure
   rather than only lore.
+- If the card is story, scenario, mystery, investigation, case-file, event,
+  rescue, trial, or drama-focused, its scenario engine has stakes, route
+  branches, clue/reveal pacing, false-lead handling, compact consequence state,
+  and route-funnel guardrails rather than a fixed plot summary.
 - If the card is RPG, adventure, open-world, survival, investigation, sandbox, or
   simulator-like, its play engine has compact state, resource rules, quest/risk
   routes, turn protocol, failure-forward behavior, and state-update probes rather
@@ -52,6 +56,8 @@ A top-card candidate should pass three harder checks:
   whole plot.
 - The primary archetype is visible on the first screen and still supported by the
   durable engine in `roleDetailDesc`.
+- Story/scenario cards can reveal one new clue, cost, pressure, or contradiction
+  on the second turn without forcing the player's conclusion or route.
 - The opening has a concrete packet: five beats, reply paths, expected first user
   message, second-turn move, and visible change.
 - The longplay engine has a continuity spine, compact state model, route costs,

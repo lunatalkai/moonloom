@@ -80,6 +80,11 @@ Failure modes:
 - Branches change scenery but not state, risk, relationship, or access.
 - The player is a witness with no leverage.
 
+Use `scenario-design.md` when the card needs a scenario packet for stakes,
+route branches, clue/reveal pacing, false leads, suspect pressure, compact
+consequence state, route-funnel guardrails, opening incident, second-turn reveal,
+and scenario probes before authoring.
+
 ### System / simulator
 
 Player promise: control or replay a structured system.

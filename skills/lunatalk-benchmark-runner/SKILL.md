@@ -36,6 +36,9 @@ friendship, rivalry, cohabitation, daily-life, slow-burn pacing, generic
 flirting, comfort loops, repair/rupture routes, or relationship state. Read
 `../../references/world-engine-design.md` when benchmarking worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
+repair. Read `../../references/scenario-design.md` when benchmarking story,
+scenario, mystery, case-file, event, trial, rescue, betrayal, clue/reveal
+pacing, false leads, suspect pressure, branch consequences, or route-funnel
 repair. Read `../../references/play-engine-design.md` when benchmarking RPG,
 adventure, open-world, survival, investigation, simulator, stats, resources,
 inventory, quests, combat, turn protocol, compact state updates, or
@@ -62,6 +65,8 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
 1. Pick one or more synthetic briefs.
 2. Create a private card with the matching shape: companion, story, game,
    generator, daily-life, heavy-setting, ensemble, or boundary-sensitive romance.
+   For story/mystery/event briefs, confirm a scenario packet exists before
+   authoring.
 3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
@@ -86,6 +91,10 @@ Moonloom self-review, render review, or simulation that:
 - an existing card passes validation and render review but has several writing
   failures, and the workflow jumps straight to rewriting or another simulation
   instead of producing a card diagnosis packet and repair order.
+- a story/mystery request asks for clue/reveal pacing, route branches, false
+  leads, and consequence state, but the workflow jumps to broad blueprinting,
+  opening-only repair, longplay-only repair, or RPG mechanics instead of
+  producing a scenario packet.
 - a `zh-Hant` card mixes Simplified Chinese into profile, detail, welcome, or
   examples.
 - the opening has choices but no concrete location, sensory beat, role action, or

@@ -353,3 +353,36 @@ Simulation probes:
 - "I ask whether the event variant creates consequences or only a dramatic
   costume change."
 - "I ask which two variants should be authored and tested first."
+
+## Brief 13: Branching Mystery Scenario
+
+Goal: Create a story/mystery card that branches through clues and consequences
+without becoming an RPG system or a railroaded plot.
+
+Author prompt:
+
+```text
+Create a mystery scenario card set during a festival sabotage. I arrive just as
+the stage lights fail, a witness vanishes, and three people have conflicting
+stories. I should be able to inspect clues, accuse or protect someone, follow a
+false lead, bargain for access, or delay the public announcement.
+```
+
+Quality checks:
+
+- The workflow creates or preserves a scenario packet before authoring.
+- The scenario has an ongoing incident, stakes, core question, and story spine.
+- Route branches change clue, trust, access, public risk, evidence status, or
+  pressure rather than leading to the same confession scene.
+- The clue/reveal ladder includes a visible clue, contradiction, false lead,
+  partial reveal, reversal, and final pressure.
+- The welcome starts inside the incident and the second turn reveals a cost or
+  complication.
+- The card preserves player agency and does not decide who the player trusts,
+  accuses, protects, or believes.
+
+Simulation probes:
+
+- "I pocket the broken charm before anyone notices and ask who last touched it."
+- "I publicly accuse the stage manager but keep one clue hidden."
+- "I follow the witness's false trail instead of questioning the obvious suspect."

@@ -249,6 +249,19 @@
         "The report requires compact state, resource rules, quest/risk model, turn protocol, failure-forward behavior, opening contract, token plan, and simulation probes.",
         "The report does not ask MCP validation to judge subjective play-engine quality."
       ]
+    },
+    {
+      "id": 20,
+      "prompt": "Create a negative regression check for a schema-valid story/mystery card whose welcome has an incident and pretty choices, but every path funnels to the same confession, false leads punish curiosity, and later turns reveal no cost or new clue.",
+      "expected_output": "Treats route funneling and weak clue/reveal pacing as a Moonloom scenario failure, checks the scenario packet, and recommends lunatalk-scenario-architect before broad blueprinting, opening-only repair, longplay-only repair, or server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing or weak scenario packet fields: ongoing incident, stakes, core question, route branches, clue/reveal ladder, suspect pressure network, compact consequence state, route-funnel guardrails, and second-turn reveal.",
+        "The proposed repair uses lunatalk-scenario-architect or scenario-design.md before broad blueprinting, opening-only repair, longplay-only repair, or simulation.",
+        "The report rejects false leads that dead-end, punish curiosity, or require the player to guess the intended route.",
+        "The report treats scenario quality as Moonloom writing guidance rather than MCP validation, platform metrics, or server gates."
+      ]
     }
   ]
 }
