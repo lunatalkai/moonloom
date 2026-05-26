@@ -14,6 +14,8 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
+`../../references/archetype-contracts.md` when benchmarking card-type routing,
+hybrid cards, archetype contracts, or field allocation by card shape. Read
 `../../references/character-core-design.md` when benchmarking generic persona,
 trope repair, ensemble identity, or character appeal. Read
 `../../references/world-engine-design.md` when benchmarking worldbuilding,
@@ -81,6 +83,10 @@ Moonloom self-review, render review, or simulation that:
   or next-hook difference.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.
+- a hybrid card treats all archetypes as equal instead of choosing one primary
+  playable contract and secondary overlays.
+- a companion plus heavy-setting or generator card lets lore or assistant mode
+  replace the relationship engine.
 - a quiet daily-life card has mood but no small playable desire or progression.
 - a lore-rich card has many proper nouns but no immediate action surface.
 - a world-heavy card has factions, locations, calendars, systems, or history but
@@ -111,6 +117,9 @@ choice.
 Use `lunatalk-token-architect` for regressions where the weakest layer is field
 allocation, `tokenBudget`, high `welcomeToDetailRatio`, duplicated lore,
 overlong welcome, visual bloat, or compression that risks deleting the engine.
+Use `lunatalk-archetype-director` for regressions where the weakest layer is
+card-type selection, hybrid contract, rejected archetypes, or field allocation by
+primary card shape.
 
 ## Pass criteria
 

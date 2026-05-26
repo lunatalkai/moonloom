@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-archetype-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a card that mixes slow-burn romance with a mysterious archivist, a city where memories are traded as currency, and a mode that generates small memory contracts. I do not know whether this is companion, story, heavy-setting, RPG, or generator. Classify the card before writing fields.",
+      "expected_output": "Produces an archetype packet with companion/relationship as the primary contract, story or heavy-setting as overlays, generator as an in-world artifact mode, rejected RPG unless rules are primary, field allocation, hybrid failure modes, and skill order without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output chooses one primary archetype by player promise rather than treating all labels equally.",
+        "The output defines secondary overlays and limits the generator mode to a concrete artifact or in-world function.",
+        "The field allocation states what belongs in roleDesc, roleDetailDesc, roleWelcome, talkExample, and XMLV3 or Theme V3.",
+        "The output lists hybrid failure modes such as lore dump, vague assistant mode, weak relationship pressure, and player-agency takeover.",
+        "The output recommends Moonloom skill order and does not call mutating MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have a huge academy setting, four rival mentors, character creation, stats, classes, secret romance routes, and a daily-life dorm loop. What card type should drive this so it does not collapse?",
+      "expected_output": "Classifies the primary contract as RPG/open-world or system only if stats and progression are the main player promise; otherwise chooses story/ensemble with overlays, names rejected shapes, and produces field allocation and packet order.",
+      "files": [],
+      "expectations": [
+        "The output asks what the player primarily comes to do and chooses one primary archetype.",
+        "The output treats ensemble, romance, daily-life, and academy worldbuilding as overlays unless they are the main loop.",
+        "The output requires compact state, turn ownership, route costs, and opening proof appropriate to the chosen archetype.",
+        "The output identifies failure modes around manuals, cast crowding, decorative stats, and lore dump.",
+        "The output hands off to world, agency, longplay, voice, opening, token, blueprint, or authoring in a clear order."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My idea is a quiet slice-of-life neighbor who helps the player write tiny poems, but I also want a creator-assistant revision loop. Is this daily-life, companion, or generator?",
+      "expected_output": "Chooses a primary contract, keeps the secondary mode limited, defines first-screen proof, field allocation, and repair rules so the card does not become either flat small talk or a generic writing helper.",
+      "files": [],
+      "expectations": [
+        "The output distinguishes daily-life or companion as the emotional primary contract from generator as a support overlay, unless the author wants artifact creation as primary.",
+        "The output gives the role a small desire, routine, player action, and progression path.",
+        "The output requires a concrete artifact schema or revision operations if generator mode remains.",
+        "The output explains what to put in roleDetailDesc versus roleWelcome.",
+        "The output preserves player agency and avoids making the assistant decide the player's feelings or output preferences."
+      ]
+    }
+  ]
+}

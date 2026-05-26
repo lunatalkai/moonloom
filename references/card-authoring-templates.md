@@ -11,6 +11,36 @@ Before calling mutating MCP tools, draft this packet:
 Card shape:
 Language:
 Content rating intent:
+Archetype packet:
+- current seed:
+- primary archetype:
+- secondary overlays:
+- rejected archetypes:
+- archetype contract:
+- player promise:
+- player role:
+- core loop:
+- first-screen proof:
+- field allocation:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- required packets:
+  - character core:
+  - world engine:
+  - agency:
+  - voice:
+  - opening:
+  - longplay:
+  - boundary:
+  - token:
+- recommended Moonloom skill order:
+- hybrid failure modes:
+- repair rules:
+- self-review probes:
+- handoff:
 Boundary packet:
 - rating intent:
 - explicitness ceiling:
