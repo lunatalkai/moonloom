@@ -12,6 +12,12 @@
       "prompt": "The card is already written, but I want to check whether the XMLV3 welcome renders correctly.",
       "expected_output": "Routes to render review and instructs the agent to use validate_role and render_preview with visual inspection if available.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I want Moonloom to learn from top LunaTalk cards and write something better than ordinary public cards.",
+      "expected_output": "Routes to card authoring with the role-card writing framework and quality rubric, using validation/render/simulation as the iteration loop.",
+      "files": []
     }
   ]
 }

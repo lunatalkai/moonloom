@@ -12,6 +12,12 @@
       "prompt": "Before publishing, test whether the role handles a confused first-time player.",
       "expected_output": "Chooses a realistic user message, runs or plans private simulation, evaluates onboarding clarity and scene advancement, and reports cost summary.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The transcript feels boring after the first reply. Diagnose whether the card lacks agency, consequence, or anchors.",
+      "expected_output": "Uses the framework's evaluation probes, identifies weak loop components, and recommends targeted patches to roleDetailDesc or roleWelcome.",
+      "files": []
     }
   ]
 }

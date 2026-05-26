@@ -12,6 +12,18 @@
       "prompt": "I already have roleId abc123. Rewrite the welcome into something playable and check if it is ready.",
       "expected_output": "Uses role_get, role_patch_welcome, validate_role, render_preview, and does not publish without explicit confirmation.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create a top-tier LunaTalk RPG card for a mythic academy. It should be replayable, token-efficient, and good enough to compete with the most active public cards.",
+      "expected_output": "Uses the role-card writing framework, defines promise/engine/play/presentation layers, designs choices/state/consequences, uses role_create_private and patch tools, then validates and renders.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Improve this relationship card idea: a quiet classmate has a dangerous online secret. Make it feel playable instead of generic.",
+      "expected_output": "Applies the companion/relationship recipe, creates a sharp roleDesc, anchored roleDetailDesc, immediate welcome scene, and a simulation-ready play loop.",
+      "files": []
     }
   ]
 }

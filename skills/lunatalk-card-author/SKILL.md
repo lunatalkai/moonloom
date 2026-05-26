@@ -11,28 +11,31 @@ into a private LunaTalk role card using the Card Writer MCP.
 ## Required references
 
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
-`../../references/quality-rubric.md` when judging whether the card is usable.
-Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
-Theme V3.
+`../../references/role-card-writing-framework.md` before writing or deeply
+revising the card. Read `../../references/quality-rubric.md` when judging whether
+the card is usable. Read `../../references/theme-v3-rendering.md` if the welcome
+uses HTML, XMLV3, or Theme V3.
 
 ## Workflow
 
-1. Capture the card goal: role premise, relationship dynamic, tone, language,
-   content rating intent, and success criteria.
+1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
+   language, content rating intent, and success criteria.
 2. If there is no `roleId`, call `role_create_private`.
-3. Patch profile fields with `role_patch_profile`.
-4. Patch stable character and world context with `role_patch_detail`.
-5. Patch the opening scene with `role_patch_welcome`.
-6. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
+3. Choose the archetype: companion/relationship, story/scenario, system/simulator,
+   RPG/open-world, generator/assistant, or canon/IP adaptation.
+4. Patch profile fields with `role_patch_profile`.
+5. Patch stable character and world context with `role_patch_detail`.
+6. Patch the opening scene with `role_patch_welcome`.
+7. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML or legacy HTML.
-7. Optionally use `theme_bind` and `extension_enable` for Theme V3.
-8. Call `validate_role`.
-9. Fix blockers before moving on. Treat warnings as work items unless the author
+8. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+9. Call `validate_role`.
+10. Fix blockers before moving on. Treat warnings as work items unless the author
    explicitly accepts the tradeoff.
-10. Call `render_preview` and review the result with `lunatalk-render-review`.
-11. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
+11. Call `render_preview` and review the result with `lunatalk-render-review`.
+12. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing.
-12. Summarize the card, validation result, render result, simulation result, and
+13. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 
 ## Authoring guidance
@@ -43,11 +46,14 @@ Theme V3.
   The role card is the source of truth.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it.
-- The first scene should invite the player to act immediately.
+- The first scene should invite the player to act immediately. If the first reply
+  path is unclear, the card is not ready.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
-  style, boundaries, and world facts.
+  style, boundaries, world facts, and the consequence loop.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
+- For high-retention cards, design the loop explicitly: hook, agency,
+  consequence, memory, progression, and renewed hook.
 
 ## Tool call discipline
 

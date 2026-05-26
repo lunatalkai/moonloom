@@ -12,6 +12,12 @@
       "prompt": "This welcome uses custom HTML. Check whether it can pass LunaTalk rendering rules.",
       "expected_output": "Checks validation blockers for scripts, inline handlers, external URLs, length, and then uses render preview for visual review.",
       "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "The preview looks pretty, but I am not sure the first screen tells the player what to do next.",
+      "expected_output": "Reviews render as a playability surface, checks first-action clarity, and recommends visual or welcome changes rather than only aesthetic notes.",
+      "files": []
     }
   ]
 }

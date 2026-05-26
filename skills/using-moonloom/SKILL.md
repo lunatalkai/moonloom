@@ -30,6 +30,8 @@ and let it call validation, render review, simulation, and publish readiness as 
 
 - Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint,
   or auth details matter.
+- Read `../../references/role-card-writing-framework.md` before writing or deeply
+  revising any role card.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
@@ -41,4 +43,6 @@ and let it call validation, render review, simulation, and publish readiness as 
 - Use idempotency keys for every mutating tool call.
 - Prefer XMLV3 plus Theme V3 for new cards.
 - Use render preview and simulation as the quality loop, not as optional decoration.
+- Optimize for playable loops: hook, agency, consequence, memory, progression, and
+  a new hook.
 - Do not call `publish_submit` until the author explicitly confirms submission.
