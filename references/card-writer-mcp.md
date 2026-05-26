@@ -159,6 +159,9 @@ Use `qualityDimensions` as the agent repair map:
 
 - `promise`: the premise, player relationship, and tension are clear.
 - `anchor`: the durable identity, behavior, and voice are strong enough.
+- `voiceTexture`: the speaking style is specific enough to prevent generic drift:
+  sentence rhythm, vocabulary, address terms, emotional tells, and avoided
+  phrasing.
 - `consequence`: player choices can change state, relationship, route, risk, or
   other meaningful variables.
 - `roleInitiative`: the role or system knows how to advance play when the player
@@ -181,10 +184,10 @@ Use `qualityDimensions` as the agent repair map:
   revision loop, and quality rubric.
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
-missing speaking style, missing progression/state, missing initiative, weak first
-action path, player agency takeover, hollow opening, generic opening, language
-mismatch, or token-heavy welcome should be patched before render review unless the
-author explicitly accepts the tradeoff.
+missing or generic speaking style, missing progression/state, missing initiative,
+weak first action path, player agency takeover, hollow opening, generic opening,
+language mismatch, or token-heavy welcome should be patched before render review
+unless the author explicitly accepts the tradeoff.
 
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:
@@ -201,6 +204,8 @@ repair surface:
 
 - `role_patch_profile` for premise/profile issues.
 - `role_patch_detail` for anchor, voice, progression, and consequence issues.
+- `role_patch_detail` for `voiceTexture` issues: replace generic tone labels with
+  concrete sentence rhythm, vocabulary, address terms, and behavioral tells.
 - `role_patch_detail` for `roleInitiative` issues: add proactive turn rules for
   passive or stalled player input.
 - `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome

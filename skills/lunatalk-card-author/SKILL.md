@@ -55,15 +55,21 @@ iteration.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
+- Speaking style must be executable. Replace labels such as natural, gentle,
+  witty, or like a real person with sentence rhythm, vocabulary, address terms,
+  emotional tells, and what the role avoids saying.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, concrete opening scene, or first
   action path.
 - If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `consequence`, `roleInitiative`, `agency`, `openingScene`, `playerAgency`,
-  `languageStyle`, `archetype`, then `tokenEfficiency`. Do not let polished prose
-  hide passive role behavior, weak first-turn action, hollow opening, missing
-  consequence loop, user agency takeover, mixed language, or a generic card that
-  fails its chosen type.
+  `voiceTexture`, `consequence`, `roleInitiative`, `agency`, `openingScene`,
+  `playerAgency`, `languageStyle`, `archetype`, then `tokenEfficiency`. Do not let
+  polished prose hide generic voice, passive role behavior, weak first-turn
+  action, hollow opening, missing consequence loop, user agency takeover, mixed
+  language, or a generic card that fails its chosen type.
+- For `voiceTexture` warnings, patch detail with concrete voice behavior:
+  sentence rhythm, vocabulary, address terms, emotional tells, and avoided
+  phrasing.
 - For `roleInitiative` warnings, patch detail with proactive turn rules: what the
   role asks, reveals, escalates, or offers when the player is passive or stalls.
 - For `openingScene` warnings, rewrite welcome before render review. Add
