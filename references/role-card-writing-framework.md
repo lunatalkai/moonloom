@@ -35,8 +35,8 @@ Good promise examples by shape:
 - "You are an anomalous entity being evaluated by a secret research bureau."
 
 Keep `roleDesc` tight: usually 80-260 characters for normal cards, up to 500 for
-systems with many modes. If the premise cannot be stated briefly, the card is not
-ready to write.
+systems, RPGs, or generators with many modes. If the premise cannot be stated
+briefly, the card is not ready to write.
 
 ### 2. Engine layer
 
