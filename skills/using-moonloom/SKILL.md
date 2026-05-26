@@ -39,6 +39,28 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 4. Keep all role edits on private cards unless the author is explicitly submitting
    a private card for public review.
 
+## Router output
+
+When the author is unsure which workflow applies, asks for routing, or the task
+could match several skills, return this packet before loading narrower skills,
+calling MCP tools, or rewriting fields:
+
+```text
+Router packet:
+- intent:
+- route:
+- mode:
+- next skill:
+- references to load:
+- do not do yet:
+- handoff:
+```
+
+Use `mode` to distinguish draft-only work, MCP readiness, real private-card
+mutation, render review, simulation, publish readiness, benchmark, or
+collaboration. If several routes are plausible, choose the first decisive
+bottleneck and list delayed routes under `do not do yet`.
+
 ## Skill routing
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
