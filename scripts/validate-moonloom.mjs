@@ -142,12 +142,19 @@ async function validateSkill(root, skillName, issues, summary) {
     issues.push(issue('skill.size.too_large', relativeSkillPath, `SKILL.md has ${lines} lines.`));
   }
 
-  for (const match of content.matchAll(/\.\.\/\.\.\/references\/([A-Za-z0-9._/-]+\.md)/g)) {
-    const referencePath = path.join('references', match[1]);
-    if (!(await exists(path.join(root, referencePath)))) {
-      issues.push(
-        issue('skill.reference.missing', relativeSkillPath, `Missing referenced file: ${referencePath}`),
-      );
+  const repoLinkPatterns = [
+    { directory: 'references', pattern: /\.\.\/\.\.\/references\/([A-Za-z0-9._/-]+\.md)/g },
+    { directory: 'examples', pattern: /\.\.\/\.\.\/examples\/([A-Za-z0-9._/-]+\.md)/g },
+  ];
+
+  for (const { directory, pattern } of repoLinkPatterns) {
+    for (const match of content.matchAll(pattern)) {
+      const referencePath = path.join(directory, match[1]);
+      if (!(await exists(path.join(root, referencePath)))) {
+        issues.push(
+          issue('skill.reference.missing', relativeSkillPath, `Missing referenced file: ${referencePath}`),
+        );
+      }
     }
   }
 

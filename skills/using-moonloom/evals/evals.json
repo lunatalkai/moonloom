@@ -455,6 +455,19 @@
         "The output says not to copy sample names, scenes, tag strings, voice lines, resources, artifact schemas, or fictional details.",
         "The output does not route directly to broad rewriting, final fields, MCP validation, render, simulation, or publish readiness before the calibration packet identifies the missing layer."
       ]
+    },
+    {
+      "id": 36,
+      "prompt": "I may be using Moonloom but I do not know what to do first. I have a vague author request, a possible MCP setup issue, and a draft that might need testing later. Give me only the routing decision first.",
+      "expected_output": "Returns a Router packet before narrower work, with route, mode, next skill, references to load, do not do yet, and handoff, choosing the first decisive bottleneck instead of running MCP tools, rewriting fields, render, simulation, or publish readiness.",
+      "files": [],
+      "expectations": [
+        "The output includes a Router packet before doing any narrower Moonloom work.",
+        "The Router packet includes route, mode, next skill, references to load, do not do yet, and handoff.",
+        "The output chooses the first decisive bottleneck rather than trying to run multiple workflows at once.",
+        "The output delays MCP tools, field rewriting, render review, simulation, and publishing until the routed skill has produced a handoff packet.",
+        "The output treats using-moonloom as the entry router when the author is unsure which skill applies."
+      ]
     }
   ]
 }
