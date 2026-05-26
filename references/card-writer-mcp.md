@@ -206,8 +206,17 @@ Create a short-lived preview URL and structured render report.
 Optional `mode`: `full-card`, `xmlv3`, or `html`.
 Optional `viewports`: usually `desktop` and `mobile`.
 
+The response includes `evaluation`:
+
+- `captureReadiness`: preview URL and viewport contract are usable.
+- `semanticStructure`: HTML/XMLV3 safety and parse health.
+- `readability`: overflow, contrast, console warnings, and runtime health.
+- `actionVisibility`: the first screen exposes a player action path.
+
 The first version uses client-side capture. If the AI client has browser or
-multimodal access, open `previewUrl` and inspect it visually.
+multimodal access, open `previewUrl` and inspect it visually. If
+`evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
+`roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 
 ### `simulate_private_chat`
 

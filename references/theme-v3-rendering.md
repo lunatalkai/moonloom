@@ -75,6 +75,8 @@ handlers, or external URLs. Treat any validation blocker as mandatory to fix.
 3. Call `render_preview` with `mode: "full-card"` unless inspecting a specific
    `html` or `xmlv3` issue.
 4. Open the `previewUrl` when the client has browser or multimodal access.
-5. Check both desktop and mobile if available.
-6. Patch the card or theme.
-7. Re-run validation and render preview until blockers are gone.
+5. Read `evaluation` for capture readiness, semantic structure, readability, and
+   first-screen action visibility.
+6. Check both desktop and mobile if available.
+7. Patch the card or theme.
+8. Re-run validation and render preview until blockers are gone.
