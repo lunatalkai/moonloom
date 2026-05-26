@@ -1,6 +1,6 @@
 ---
 name: lunatalk-benchmark-runner
-description: Run public-safe Moonloom benchmark checks for LunaTalk card authoring quality. Use this skill when evaluating whether Moonloom can guide MCP-backed creation of strong cards across companion, daily-life, story, game/RPG, and generator archetypes, or when running regression checks after changing prompts, skills, render review, or simulation behavior.
+description: Use when running public-safe Moonloom regression checks for synthetic role-card briefs, benchmark reports, authoring prompt changes, skill changes, MCP workflow checks, render review, simulation behavior, or archetype coverage across companion, daily-life, story, RPG/game, generator, and ensemble cards.
 ---
 
 # LunaTalk Benchmark Runner

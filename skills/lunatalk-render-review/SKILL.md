@@ -1,6 +1,6 @@
 ---
 name: lunatalk-render-review
-description: Review LunaTalk card rendering through validate_role and render_preview. Use this skill whenever the user asks whether a LunaTalk role card, HTML welcome, XMLV3 welcome, Theme V3 style, preview URL, screenshot, or render report looks correct or needs visual fixes.
+description: Use when a LunaTalk role has validate_role/render_preview output, preview URL, screenshot, render report, HTML/XMLV3/Theme V3 visual issue, readability warning, overflow, contrast, or first-action visibility problem.
 ---
 
 # LunaTalk Render Review

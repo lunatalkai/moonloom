@@ -101,3 +101,39 @@ test('requires each eval case to declare expectations', async () => {
 
   assert.ok(codes.includes('skill.evals.expectations'));
 });
+
+test('requires skill descriptions to be trigger-only and concise', async () => {
+  const root = await createFixture();
+
+  await addSkill(
+    root,
+    'bad-description-skill',
+    `---\nname: bad-description-skill\ndescription: This skill summarizes a workflow instead of naming when it should trigger.\n---\n\n# Bad Description\n`,
+    [
+      {
+        prompt: 'Route this fixture.',
+        expected_output: 'Uses the bad description skill.',
+        expectations: ['Mentions the bad description skill.'],
+      },
+    ],
+  );
+
+  await addSkill(
+    root,
+    'long-description-skill',
+    `---\nname: long-description-skill\ndescription: Use when ${'a'.repeat(501)}\n---\n\n# Long Description\n`,
+    [
+      {
+        prompt: 'Route this fixture.',
+        expected_output: 'Uses the long description skill.',
+        expectations: ['Mentions the long description skill.'],
+      },
+    ],
+  );
+
+  const result = await validateRepository(root);
+  const codes = result.issues.map((issue) => issue.code);
+
+  assert.ok(codes.includes('skill.frontmatter.description_trigger'));
+  assert.ok(codes.includes('skill.frontmatter.description_too_long'));
+});
