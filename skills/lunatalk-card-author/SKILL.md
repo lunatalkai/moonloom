@@ -26,6 +26,9 @@ adult, NSFW, emotionally intense, horror-leaning, consent-sensitive, jealous,
 power-imbalanced, or needs refusal/pacing repair. Read
 `../../references/opening-design.md` when creating or repairing `roleWelcome`,
 first screen playability, first reply paths, or second-turn moves. Read
+`../../references/longplay-design.md` when creating or repairing long-term
+playability, route seeds, memory/state, progression, passive/stalled behavior, or
+dead third-turn loops. Read
 `../../references/playtest-loop.md` when designing or interpreting private chat
 simulations. Use `../../examples/synthetic-card-briefs.md` when the task asks for
 benchmark creation, regression checks, or example-driven iteration.
@@ -55,7 +58,10 @@ benchmark creation, regression checks, or example-driven iteration.
 5. Run Moonloom self-review before calling mutating tools.
 6. If there is no `roleId`, call `role_create_private`.
 7. Patch profile fields with `role_patch_profile`.
-8. Patch stable character and world context with `role_patch_detail`.
+8. Before patching stable character and world context with `role_patch_detail`,
+   use `lunatalk-longplay-architect` when the current task is long-term
+   playability, memory/state, route seeds, progression, or a dead third-turn
+   loop.
 9. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
@@ -119,6 +125,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the opening packet when one exists: current failure, opening promise,
   reply paths, expected first user message, second-turn move, what changes, and
   token tradeoff.
+- Preserve the longplay packet when one exists: continuity spine, progression
+  phases, state model, route seeds, memory threads, role initiative, continuation
+  probes, and token tradeoff.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
@@ -137,8 +146,9 @@ MCP tools make the card real; Moonloom makes the card good.
   weak or easily blurred voices instead of one long sample for the strongest
   speaker.
 - Run Moonloom self-review before render: promise, anchor, voice texture,
-  voice calibration, consequence, role initiative, agency, opening scene, player
-  agency, language style, boundary design, archetype, then token efficiency.
+  voice calibration, consequence, role initiative, agency, opening scene,
+  longplay, player agency, language style, boundary design, archetype, then token
+  efficiency.
   When voice calibration is relevant, do not merge it into generic voice texture;
   report the voice cards, micro-sample need, and blind-line risk explicitly.
 - Do not let polished prose hide a weak character engine, generic voice, passive
@@ -187,6 +197,8 @@ MCP tools make the card real; Moonloom makes the card good.
   `<n>`; if it should drive state UI, make it valid JSON.
 - For high-retention cards, design the loop explicitly: hook, agency,
   consequence, memory, progression, and renewed hook.
+- If the card is strong for one scene but weak over time, call
+  `lunatalk-longplay-architect` before adding more lore or sample dialogue.
 - Before finalizing, write one expected first user message and one expected second
   turn. If the card cannot produce a more interesting second turn than the first,
   revise the engine before render or simulation.

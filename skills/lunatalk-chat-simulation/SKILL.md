@@ -19,6 +19,9 @@ Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together.
 Read `../../references/opening-design.md` when testing the opening hook, first
 user reply path, second-turn move, or onboarding clarity.
+Read `../../references/longplay-design.md` when testing long-term playability,
+route seeds, memory/state, progression, passive/stalled behavior, or session
+continuation.
 Read `../../references/boundary-design.md` when simulation touches mature,
 adult, horror-leaning, consent-sensitive, refusal, pacing, jealousy, power
 imbalance, or safer-version behavior.
@@ -40,8 +43,8 @@ When the author asks only for a test plan, do not call the tool.
 2. Confirm `validate_role` has no blockers. If it still has blockers, patch and
    validate before spending simulation cost.
 3. Build a playtest plan before the tool call:
-   - target risk: opening hook, agency, continuity, boundary, token/progression,
-     archetype behavior, or onboarding clarity
+   - target risk: opening hook, agency, continuity, longplay, boundary,
+     token/progression, archetype behavior, or onboarding clarity
    - probe count: 1 to 5 user messages
    - probe text: realistic player messages, not evaluator instructions
    - expected healthy behavior: what the role should do if the card works
@@ -86,6 +89,9 @@ Playtest plan:
 - The reply uses relevant world details without dumping the whole setting.
 - Player actions produce visible consequence, state change, relationship movement,
   or a new hook.
+- For longplay tests, use continuation probes from the longplay packet and check
+  whether the role changes state, recalls a memory thread, shifts route pressure,
+  or renews a hook without waiting for the player to write the whole plot.
 - The transcript has no obvious safety, formatting, or system-leak issue.
 - The billing summary or charged score is included when available.
 - Treat `evaluation.qualityDimensions` as the first triage map:

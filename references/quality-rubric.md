@@ -34,6 +34,8 @@ A top-card candidate should pass three harder checks:
   whole plot.
 - The opening has a concrete packet: five beats, reply paths, expected first user
   message, second-turn move, and visible change.
+- The longplay engine has a continuity spine, compact state model, route costs,
+  memory threads, role initiative, and continuation probes.
 - The role is recognizable from behavior, not just name or lore. Sentence rhythm,
   choices, refusals, and emotional tells should make the role feel specific.
 - In ensemble cards, core speakers remain distinguishable under pressure. A
@@ -56,6 +58,9 @@ explicitly chooses a tradeoff:
   response-mode rules, or compact micro-samples when the role would otherwise
   drift or blend with other speakers.
 - Consequence: define what player choices change and how the next hook renews.
+- Longplay: use a longplay packet when the card repeats after the opening;
+  preserve continuity spine, state model, route seeds, memory, role initiative,
+  and continuation probes.
 - Role initiative: define what the role asks, reveals, escalates, or offers when
   the player is passive or stalls.
 - Agency: make the first user response path obvious.
@@ -100,6 +105,8 @@ explicitly chooses a tradeoff:
   alone to distinguish cast members.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
+- Dead third turn: define continuity spine, route costs, memory threads, and
+  passive-player behavior before adding more lore.
 - Source dump: if roleDetailDesc reads like a lore digest, rewrite it into a
   source-to-play map: player role, first-scene pressure, durable rules, compact
   state, route seeds, and what to delay or cut.
@@ -168,6 +175,8 @@ For probe design and transcript-to-patch mapping, use `playtest-loop.md`.
 
 - The role stays in character across at least one realistic user turn.
 - The first reply advances the scene instead of restating the profile.
+- Continuation probes show the role can sustain play after the opening through
+  changed state, route pressure, memory callback, or renewed hook.
 - The reply reflects player agency and creates consequence or a new hook.
 - The role's tone matches the role card and content rating intent.
 - The simulation does not expose implementation details or moderation artifacts.

@@ -55,6 +55,18 @@ Opening packet:
 - what changes:
 - token tradeoff:
 
+Longplay packet:
+- continuity spine:
+- progression phases:
+- state model:
+- route seeds:
+- memory threads:
+- role initiative:
+- passive / stalled player behavior:
+- scene renewal rules:
+- continuation probes:
+- token tradeoff:
+
 Presentation:
 - welcome mode: plain | xmlv3 | html
 - Theme V3 need:
@@ -185,6 +197,13 @@ Routes
 - route 1:
 - route 2:
 - route 3:
+
+Longplay engine
+- continuity spine:
+- progression phases:
+- memory threads:
+- role initiative:
+- scene renewal rule:
 
 Do / Avoid
 - Do:
@@ -361,6 +380,7 @@ Consequence: pass | revise because ...
 Role initiative: pass | revise because ...
 Agency: pass | revise because ...
 Opening scene: pass | revise because ...
+Longplay: pass | revise because ...
 Player agency: pass | revise because ...
 Boundary design: pass | revise because ...
 Archetype fit: pass | revise because ...

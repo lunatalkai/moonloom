@@ -91,6 +91,19 @@
         "The report does not ask MCP validation to judge opening craft.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "Create a negative regression check for a schema-valid card with a strong opening that becomes repetitive after three turns and has no route costs or memory.",
+      "expected_output": "Treats weak longplay as a Moonloom writing failure, checks continuity spine, state model, route seeds, memory threads, role initiative, and continuation probes.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing continuity spine, compact state model, route costs, memory threads, role initiative, or continuation probes.",
+        "The proposed repair uses lunatalk-longplay-architect or longplay-design.md before authoring/simulation.",
+        "The report does not ask MCP validation to judge long-term writing quality.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

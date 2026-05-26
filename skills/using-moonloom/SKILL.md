@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, opening or welcome repair, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -47,6 +47,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
   render review, simulation, or publish readiness.
+- Long-term playability, replayability, multi-session arcs, route seeds,
+  progression, memory/state, dead third turns, repetitive loops, passive role
+  behavior, session restart, or choices that do not matter: use
+  `lunatalk-longplay-architect` before authoring, simulation, or publish
+  readiness.
 - Brainstorming, premise shaping, character core, worldbuilding, relationship
   design, voice design, opening-scene planning, or turning a vague idea into a
   card-ready blueprint after source material has been distilled: use
@@ -79,6 +84,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/opening-design.md` when working on `roleWelcome`,
   opening scenes, first screen playability, first reply paths, second-turn moves,
   hollow welcomes, or overloaded setup screens.
+- Read `../../references/longplay-design.md` when working on long-term
+  playability, route seeds, progression, memory/state, passive/stalled behavior,
+  session continuation, or dead third-turn repairs.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.
