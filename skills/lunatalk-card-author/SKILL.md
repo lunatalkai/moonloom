@@ -11,6 +11,8 @@ into a private LunaTalk role card using the Card Writer MCP.
 ## Required references
 
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
+`../../references/character-core-design.md` when the role idea is thin,
+trope-only, generic, or needs persona appeal repair. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/safety-and-cost.md` when content
@@ -46,9 +48,11 @@ benchmark creation, regression checks, or example-driven iteration.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
    player role, first scene, and long-term loop, not only by mood. Prefer
-   `lunatalk-card-blueprint` when the author needs ideation, character core,
-   worldbuilding, relationship design, voice design, or opening-scene planning
-   before a real role is created.
+   `lunatalk-character-core` when the author needs persona appeal, memorable
+   identity, trope repair, relationship leverage, or desire/contradiction/
+   boundary design before fields. Prefer `lunatalk-card-blueprint` when the
+   author needs broader ideation, worldbuilding, relationship design, voice
+   design, or opening-scene planning before a real role is created.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
@@ -125,6 +129,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the opening packet when one exists: current failure, opening promise,
   reply paths, expected first user message, second-turn move, what changes, and
   token tradeoff.
+- Preserve the character-core packet when one exists: appeal promise, desire,
+  contradiction, boundary, mask/wound, player leverage, relationship asymmetry,
+  pressure behavior, interaction hooks, and token tradeoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.
@@ -134,6 +141,8 @@ MCP tools make the card real; Moonloom makes the card good.
 - For persona-driven cards, the detail should make the role's engine legible:
   what the role wants, what blocks that desire, what they will not do, and what
   changes when the player pushes closer or pulls away.
+- If the role feels like a trope, mood, or biography rather than a person who can
+  act under pressure, call `lunatalk-character-core` before patching fields.
 - Speaking style must be executable. Replace labels such as natural, gentle,
   witty, or like a real person with sentence rhythm, vocabulary, address terms,
   emotional tells, and what the role avoids saying.
@@ -155,8 +164,9 @@ MCP tools make the card real; Moonloom makes the card good.
   role behavior, weak first-turn action, hollow opening, missing consequence loop,
   user agency takeover, mixed language, or a generic card that fails its chosen
   type.
-- Patch detail with the role's want/need, the contradiction that blocks it, and
-  the boundaries that keep escalation playable.
+- Patch detail with the role's want/need, the contradiction that blocks it, the
+  boundaries that keep escalation playable, the player's leverage, and the role's
+  pressure behavior for trust, resistance, passivity, and boundaries.
 - Patch detail with concrete voice behavior: sentence rhythm, vocabulary, address
   terms, emotional tells, and avoided phrasing.
 - Patch blurred ensemble voices with contrast first, then micro-samples only when

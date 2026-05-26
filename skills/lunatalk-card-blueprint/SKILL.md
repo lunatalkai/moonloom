@@ -12,9 +12,11 @@ private role card.
 
 ## Required references
 
-Read `../../references/role-card-writing-framework.md` for the top-card pattern
-stack and archetype recipes. Read `../../references/card-authoring-templates.md`
-for draft packets and field templates. Read `../../references/material-distillation.md`
+Read `../../references/character-core-design.md` when the idea has thin,
+trope-only, generic, or memorable-character problems. Read
+`../../references/role-card-writing-framework.md` for the top-card pattern stack
+and archetype recipes. Read `../../references/card-authoring-templates.md` for
+draft packets and field templates. Read `../../references/material-distillation.md`
 when the idea comes from files, notes, imported drafts, source fragments, or a
 large world bible. Read `../../references/voice-calibration.md` when the idea
 depends on distinctive dialogue, role consistency, or ensemble cast contrast.
@@ -52,8 +54,10 @@ creation, validation, render review, simulation, and publishing workflow.
 4. Pick or recommend one direction. Explain why it is more playable than the
    generic version.
 5. Build the tension triangle: role desire, player leverage, external pressure.
-6. Define the character core: identity, desire, contradiction, boundary, wound,
-   mask, and what changes when the player gets closer or pushes back.
+6. If the weak layer is character appeal, use `lunatalk-character-core` first or
+   preserve its packet. Define the character core: identity, desire,
+   contradiction, boundary, mask/wound, player leverage, pressure behavior, and
+   what changes when the player gets closer or pushes back.
 7. Define the player insertion space: what the player controls, what they can
    refuse, what they can change, and what the card must not decide for them.
 8. Define the world or relationship engine only as far as it creates play.
@@ -94,11 +98,16 @@ Tension triangle:
 - external pressure:
 
 Character core:
+- appeal promise:
 - identity:
 - desire:
 - contradiction:
 - boundary:
 - wound / mask:
+- player leverage:
+- relationship asymmetry:
+- pressure behavior:
+- interaction hooks:
 - what changes through play:
 
 Player insertion:
@@ -218,6 +227,9 @@ Handoff:
 - Make ensemble cards start with one focal crisis and clear turn ownership.
 - Preserve any opening packet from `lunatalk-opening-director`; do not summarize
   away the expected first user message or second-turn move.
+- Preserve any character-core packet from `lunatalk-character-core`; do not
+  summarize away desire, contradiction, boundary, player leverage, pressure
+  behavior, or interaction hooks.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
@@ -233,7 +245,8 @@ Handoff:
 
 ## Repair heuristics
 
-- If the idea is generic, add a player-specific leverage point.
+- If the idea is generic, use `lunatalk-character-core` or add a player-specific
+  leverage point, contradiction, and pressure behavior before field drafting.
 - If the first scene is passive, add role action and external pressure.
 - If the role voice is generic, replace mood labels with sentence rhythm,
   vocabulary, tells, and avoided phrasing.

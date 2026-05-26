@@ -177,7 +177,28 @@ If one side is missing, repair it before writing style polish. A beautiful card
 with no player leverage becomes passive. A rich setting with no external pressure
 becomes a lore dump.
 
-### 2. Second-turn engine
+### 2. Character core
+
+Before polishing fields, make sure the role is memorable as behavior, not only as
+a trope, mood, or biography. Use `character-core-design.md` when the weak layer is
+persona appeal.
+
+Minimum packet:
+
+- appeal promise: why this role is memorable beyond the label
+- desire: what the role wants enough to act
+- contradiction: what blocks or complicates that desire
+- boundary: what the role will not do, and how pacing works
+- mask / wound: what the role hides or protects
+- player leverage: what the player can know, withhold, risk, or change
+- relationship asymmetry: who knows, needs, owes, risks, or controls what
+- pressure behavior: how the role reacts to trust, resistance, passivity, and
+  boundaries
+
+If the idea is "cold but soft", "quiet but secretly likes the player", or "a
+powerful X", repair the core before writing longer prose.
+
+### 3. Second-turn engine
 
 Design the first two turns together:
 
@@ -192,7 +213,7 @@ Before rendering, write one likely first user message and the role's intended
 second-turn move. If the second turn only restates setup, the card needs stronger
 consequence or role initiative.
 
-### 3. State economy
+### 4. State economy
 
 Track only state that changes play. Good state is compact, visible when useful,
 and tied to consequences.
@@ -207,7 +228,7 @@ Useful state types:
 Avoid decorative state that never updates. A state panel that does not affect
 future turns wastes tokens and attention.
 
-### 4. Voice fingerprint
+### 5. Voice fingerprint
 
 Voice should be executable without relying on vague adjectives. Define:
 
@@ -227,7 +248,7 @@ For voice-heavy, romance, companion, assistant, or ensemble cards, use
 and blind-line checks. Ensemble cards should not rely on one strong speaker while
 the rest of the cast remains generic.
 
-### 5. Route seeds
+### 6. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.
 Most cards need 2-4 route seeds:
@@ -240,7 +261,7 @@ Most cards need 2-4 route seeds:
 Each route seed should have a cost or tradeoff. Choices without cost feel like a
 menu; choices with cost create memory.
 
-### 6. Token tradeoff ladder
+### 7. Token tradeoff ladder
 
 Spend tokens in this order:
 
@@ -255,7 +276,7 @@ When forced to shorten, preserve desire, contradiction, boundary, voice, and
 consequence first. Cut repeated lore, synonym lists, ornamental CSS, and NPC
 catalogs that do not affect the next few turns.
 
-### 7. Visual affordance
+### 8. Visual affordance
 
 Visual design should answer at least one of these:
 
@@ -375,26 +396,28 @@ Repair the card in this order during Moonloom self-review:
 1. Promise: make the premise readable in three seconds.
 2. Anchor: add the durable identity, desire, contradiction, boundary, and voice
    anchors that prevent generic drift.
-3. Voice texture: replace generic tone labels with executable voice behavior.
-4. Consequence: define what changes when the player acts.
-5. Role initiative: add proactive turn rules for passive or stalled player input.
-6. Agency: make the first reply path obvious.
-7. Opening scene: add location, time, sensory detail, role beat, pressure, and
+3. Character core: use a character-core packet when the role is trope-only,
+   mood-only, passive, or missing player leverage and pressure behavior.
+4. Voice texture: replace generic tone labels with executable voice behavior.
+5. Consequence: define what changes when the player acts.
+6. Role initiative: add proactive turn rules for passive or stalled player input.
+7. Agency: make the first reply path obvious.
+8. Opening scene: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-8. Opening direction: create or preserve an opening packet with first reply
+9. Opening direction: create or preserve an opening packet with first reply
    paths, expected first user message, second-turn move, and token tradeoff.
-9. Longplay: create or preserve a longplay packet with continuity spine, state,
+10. Longplay: create or preserve a longplay packet with continuity spine, state,
    route seeds, memory, role initiative, and continuation probes.
-10. Player agency: remove rules that decide the player's actions, feelings,
+11. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-11. Language style: rewrite Simplified Chinese terms into Traditional Chinese
+12. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-12. Archetype: satisfy the chosen card type rather than writing a generic card.
-13. Token efficiency: move reusable visual or rule structure out of welcome when
+13. Archetype: satisfy the chosen card type rather than writing a generic card.
+14. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
-14. Material distillation: convert notes, files, or world bibles into a playable
+15. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
-15. Boundary design: convert mature, intense, horror, jealous, or power-
+16. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
 

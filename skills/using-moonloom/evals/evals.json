@@ -117,6 +117,19 @@
         "The workflow can hand off to lunatalk-card-author only when the author wants to patch the private role.",
         "The output treats longplay quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "I do not know which Moonloom skill to use. My idea is just \"a quiet classmate secretly likes the player\" and it feels generic. I want to make the character memorable before writing fields.",
+      "expected_output": "Uses using-moonloom as the router, routes character appeal and generic persona repair to lunatalk-character-core first, then hands off to blueprint or authoring after the character-core packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes thin, generic, character-core work to lunatalk-character-core before lunatalk-card-blueprint or lunatalk-card-author.",
+        "The route focuses on appeal promise, desire, contradiction, boundary, player leverage, pressure behavior, and interaction hooks.",
+        "The output says no mutating MCP tools should run during character-core design.",
+        "The output treats character appeal as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }

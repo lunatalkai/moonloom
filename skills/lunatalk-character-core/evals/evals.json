@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-character-core",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk idea is only \"a quiet classmate who secretly likes the player\". Make the character memorable before writing fields.",
+      "expected_output": "Produces a character-core packet with appeal promise, desire, contradiction, boundary, player leverage, relationship asymmetry, interaction hooks, pressure behavior, field implications, self-review, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-character-core or uses character-core-design.md.",
+        "The repair changes quiet and secret crush from labels into behavior, stakes, and player leverage.",
+        "The packet defines desire, contradiction, boundary, mask or wound, relationship asymmetry, and interaction hooks.",
+        "The pressure behavior covers trusting, questioning or resisting, passive input, and boundary-setting without deciding player feelings.",
+        "The output hands off to blueprint or authoring without calling mutating MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My role is a powerful vampire CEO who is cold but secretly soft. It feels like every other version. Make the core distinct without taking over the player's agency.",
+      "expected_output": "Transforms trope labels into a distinct pressure engine, defines what power cannot solve, what the player controls, boundaries, refusal route, voice/opening/longplay implications, and token tradeoff.",
+      "files": [],
+      "expectations": [
+        "The output replaces cold, powerful, and secretly soft with concrete pressure behavior and costs.",
+        "The packet states what the role wants, what blocks that desire, and what the player can change or withhold.",
+        "The role has hard limits and a refusal or slowdown route that preserves player agency.",
+        "The output avoids generic dominance as the only appeal and does not narrate the player's attraction, consent, or loyalty.",
+        "The field patch targets identify roleDesc, roleDetailDesc, roleWelcome, and optional voice calibration."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have an ensemble of four friends, but they all sound interchangeable. Redesign their character cores before writing the card.",
+      "expected_output": "Produces an ensemble contrast matrix with distinct desires, fears or costs, boundaries, pressure moves, player leverage, merge/cut guidance, and voice implications.",
+      "files": [],
+      "expectations": [
+        "The output treats blurred ensemble identity as a character-core failure.",
+        "The packet includes a contrast matrix for all four roles with desire, fear or cost, boundary, pressure move, and player leverage.",
+        "The guidance identifies any role that should be merged, cut, or redesigned.",
+        "The voice implications explain how to prevent roles from sharing the same rhythm, motive, or pressure behavior.",
+        "The output stays at design and handoff level without creating or patching a real card."
+      ]
+    }
+  ]
+}

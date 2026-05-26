@@ -9,6 +9,8 @@ the shorter pass/fail rubric.
 ## Role card quality
 
 - The role has a clear premise, relationship dynamic, and first playable scene.
+- The role has a memorable character core: desire, contradiction, boundary,
+  player leverage, and pressure behavior that are visible in play.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
@@ -52,6 +54,10 @@ explicitly chooses a tradeoff:
 - Promise: clarify the premise, player relationship, and tension.
 - Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
+- Character core: if the role is trope-only, mood-only, passive, or forgettable,
+  create a character-core packet with appeal promise, player leverage,
+  relationship asymmetry, pressure behavior, and interaction hooks before field
+  drafting.
 - Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
 - Voice calibration: for voice-heavy or ensemble cards, add voice cards,
@@ -95,6 +101,13 @@ explicitly chooses a tradeoff:
   use up to about 500 only when modes require it.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.
+- Trope-only character: replace labels such as quiet, cold, powerful, mysterious,
+  secretly soft, or kind with behavior under pressure, cost, player leverage, and
+  a boundary.
+- Backstory without present pressure: convert history into what starts now, what
+  the player can affect, and what the role risks losing.
+- Player has no leverage: give the player knowledge, access, trust, resource,
+  interpretation, boundary, or change authority that can alter the next turn.
 - Missing speaking style: specify sentence length, emotional tells, vocabulary,
   and what the role avoids saying.
 - Generic speaking style: "natural", "gentle", or "like a real person" is not
