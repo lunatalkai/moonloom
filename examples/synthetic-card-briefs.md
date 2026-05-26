@@ -4,6 +4,25 @@ Use these fictional briefs to test whether Moonloom can create playable LunaTalk
 role cards. They are not finished cards; they are pressure tests for authoring,
 validation, rendering, and simulation.
 
+## How to use these briefs
+
+Use these as a public-safe regression benchmark after changing Moonloom guidance
+or the Card Writer MCP:
+
+1. Pick one brief and create a private card with the matching `cardType`.
+2. Run `validate_role`; fix all blockers and quality warnings unless the author
+   explicitly accepts a tradeoff.
+3. Run `render_preview`; fix `evaluation` warnings and inspect `previewUrl` when
+   browser or multimodal review is available.
+4. Run `simulate_private_chat` with the listed probes if normal billing is
+   acceptable.
+5. A benchmark pass means validation passes, render evaluation passes, simulation
+   evaluation passes, and the result stays within a reasonable token budget for
+   its archetype.
+
+Do not treat the text below as card content to copy. Each run should produce a
+fresh original card.
+
 ## Brief 1: Quiet Relationship Tension
 
 Goal: Create a companion/relationship card with strong emotional immediacy.

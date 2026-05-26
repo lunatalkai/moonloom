@@ -288,8 +288,10 @@ Use:
 
 - intake questions
 - output schema
-- iteration loop
+- revision loop with stable commands
 - quality rubric
+- default assumptions when the user skips intake
+- at least one finished artifact per normal turn
 - refusal/constraint handling
 
 The card should not just chat about the task; it should drive the user toward a

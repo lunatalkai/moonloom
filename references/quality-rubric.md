@@ -36,7 +36,8 @@ explicitly chooses a tradeoff:
 - `archetype`: satisfy the card type's contract. Companion needs relationship
   pressure and emotional boundaries; story needs setting stakes and likely
   branches; game needs rules, resources, failure pressure, and opening
-  setup/state/choices.
+  setup/state/choices; generator needs intake, output schema, revision loop, and
+  quality rubric.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.
