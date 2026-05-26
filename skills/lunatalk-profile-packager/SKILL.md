@@ -25,8 +25,8 @@ publish a real role from this skill.
 Do not reopen the premise unless the profile surface exposes a missing engine.
 Preserve the existing card engine and patch only the public promise surface.
 
-Do not present packaging advice as platform data, ranking, traffic, source-card,
-or private-example analysis. Keep output original and public-safe.
+Do not present packaging advice as unsupported origin or performance analysis.
+Keep output original and public-safe.
 
 ## Workflow
 

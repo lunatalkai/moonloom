@@ -285,7 +285,7 @@
         "The negative check can fail Moonloom workflow even if a single overloaded idea could become technically valid.",
         "The report requires a premise workshop packet with taste axes, exactly three directions, involvement ladder, recommendation, rejected or delayed ideas, risk flags, next decisions, and handoff.",
         "The proposed workflow uses lunatalk-premise-workshop before broad blueprinting, field drafting, MCP calls, render, simulation, or publish readiness.",
-        "The check rejects unsupported top-card, ranking, source-data, traffic, or private-example claims.",
+        "The check rejects unsupported top-card, origin, or performance claims.",
         "The check remains public-safe and uses only synthetic example text."
       ]
     },
@@ -299,7 +299,7 @@
         "The diagnosis identifies weak profile fields: generic roleName, overlong or vague roleDesc, vague tags, and missing first-impression reason-to-open.",
         "The proposed repair uses lunatalk-profile-packager or profile-packaging.md before broad card-doctor diagnosis, final field assembly, render, simulation, or publish readiness.",
         "The report requires a profile package packet with promise angle, roleName candidates, roleDesc candidates, concrete tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
-        "The check rejects unsupported top-card, popularity, ranking, traffic, source-data, or private-example claims.",
+        "The check rejects unsupported top-card, popularity, origin, or performance claims.",
         "The report treats profile quality as Moonloom writing guidance rather than MCP validation, platform metrics, or server gates."
       ]
     },

@@ -28,7 +28,7 @@ Language style is not the same as voice design:
 - Use `card-authoring-templates.md` when the author wants final field assembly or
   a real private role patch.
 
-Do not invent platform metrics, source examples, private data, or origin claims.
+Do not invent platform metrics, origin claims, or unsupported performance claims.
 Keep the output original and public-safe.
 
 ## Language-style packet

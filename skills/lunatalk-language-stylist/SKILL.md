@@ -34,8 +34,8 @@ Do not use language styling to invent a missing boundary contract. If sensitive
 content has no clear rating posture, explicitness ceiling, refusal behavior, or
 player agency contract, route to `lunatalk-boundary-designer` first.
 
-Do not present language advice as platform data, source-card analysis, ranking,
-traffic, or private examples. Keep output original and public-safe.
+Do not present language advice as unsupported origin or performance analysis.
+Keep output original and public-safe.
 
 ## Workflow
 

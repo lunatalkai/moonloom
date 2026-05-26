@@ -94,5 +94,6 @@ Self-review:
   premise, blueprint, collaboration, token, presentation, or quality packets.
 - Do not retry mutating calls with new idempotency keys unless the intended
   operation changed.
-- Keep output public-safe. Do not mention private infrastructure, internal URLs,
-  account internals, or unsupported platform claims.
+- Keep output public-safe. Do not mention deployment details,
+  environment-specific URLs, account implementation details, or unsupported
+  platform claims.

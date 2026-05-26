@@ -44,8 +44,7 @@ Quality checks:
   loop, and risk.
 - The packet includes an involvement ladder, recommendation, rejected or delayed
   ideas, next decisions, and handoff target.
-- The output makes no ranking, source-data, internal-example, or performance
-  claims.
+- The output makes no unsupported origin or performance claims.
 
 ## Brief 1: Quiet Relationship Tension
 

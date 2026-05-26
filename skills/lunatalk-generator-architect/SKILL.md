@@ -33,8 +33,8 @@ instead when the main loop is a branchable incident. Use
 `lunatalk-archetype-director` first when the author is still deciding whether the
 generator is primary or only an overlay.
 
-Do not present generator design as platform data, source-card analysis, ranking,
-traffic, or private examples. Keep output original and public-safe.
+Do not present generator design as unsupported origin or performance analysis.
+Keep output original and public-safe.
 
 ## Workflow
 

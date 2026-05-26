@@ -17,11 +17,11 @@
     {
       "id": 2,
       "prompt": "Make me something like a top vampire card, but I do not have a premise and I do not want to copy anything. I need directions first, not fields.",
-      "expected_output": "Converts the top-card request into public craft goals, avoids platform or source-data claims, proposes three original vampire-adjacent playable directions, recommends one, and hands off to archetype or blueprint.",
+      "expected_output": "Converts the top-card request into public craft goals, avoids unsupported origin or performance claims, proposes three original vampire-adjacent playable directions, recommends one, and hands off to archetype or blueprint.",
       "files": [],
       "expectations": [
         "The output treats 'top card' as craft goals such as promise, agency, character behavior, second-turn engine, token discipline, and testable handoff.",
-        "The output does not claim access to rankings, source cards, internal metrics, traffic, user behavior, or private examples.",
+        "The output does not attach unsupported origin or performance claims.",
         "The three directions are original and differ by player leverage, pressure, first scene, and long-term loop.",
         "The recommendation explains why the chosen option is more playable than a generic vampire trope.",
         "The output does not write final fields or call MCP tools."
@@ -63,7 +63,7 @@
         "The output flags jealous, immortal, power-imbalanced, horror-leaning, or intense romance as boundary-sensitive instead of treating intensity as only an aesthetic.",
         "The directions keep player agency, refusal, pacing, and explicitness ceiling considerations visible without writing final role fields.",
         "The handoff names lunatalk-boundary-designer or boundary-design before blueprinting, authoring, simulation, or publish readiness.",
-        "The output does not call MCP tools, render, simulate, publish, or make platform ranking/source-data claims."
+        "The output does not call MCP tools, render, simulate, publish, or make unsupported origin/performance claims."
       ]
     }
   ]

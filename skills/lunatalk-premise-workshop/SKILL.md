@@ -42,8 +42,8 @@ publish a real role from this skill. Do not write final `roleName`, `roleDesc`,
 `roleDetailDesc`, `roleWelcome`, or `talkExample` unless the author explicitly
 asks to continue through `lunatalk-card-author`.
 
-Do not present public craft guidance as private data analysis. Keep the output
-original and public-safe.
+Do not present public craft guidance as unsupported origin or performance
+analysis. Keep the output original and public-safe.
 
 ## Workflow
 

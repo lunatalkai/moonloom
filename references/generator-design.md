@@ -39,8 +39,8 @@ Route away when:
 - the generator is only a small overlay inside a companion/story/world card:
   keep it as an in-world artifact mode and use `archetype-contracts.md`
 
-Do not present generator quality as platform data, usage data, ranking, private
-examples, or source-card analysis. Keep the output original and public-safe.
+Do not present generator quality as unsupported origin or performance analysis.
+Keep the output original and public-safe.
 
 ## Generator Packet
 

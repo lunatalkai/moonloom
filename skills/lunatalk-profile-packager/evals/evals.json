@@ -60,7 +60,7 @@
       "files": [],
       "expectations": [
         "The output treats popular/top-tier language as craft goals such as clarity, specificity, agency, hook, and honest first-screen proof.",
-        "The output does not claim platform ranking, traffic, source-card analysis, private-example access, or non-public performance knowledge.",
+        "The output does not attach unsupported origin or performance claims.",
         "The output does not replace unsupported popularity claims with market words like premium, high-demand, viral, trending, best, or top-ranked.",
         "The output preserves the existing card engine and patches only roleName, roleDesc, tags, and first-impression promise.",
         "The output returns roleName candidates, roleDesc candidates, tag set, first-impression check, and handoff.",

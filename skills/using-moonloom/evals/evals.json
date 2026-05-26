@@ -442,6 +442,19 @@
         "The output does not print tokens, invent tools, or call mutating Card Writer MCP tools.",
         "The output says draft-only writing can proceed without MCP, but private creation requires readiness before handoff to lunatalk-card-author."
       ]
+    },
+    {
+      "id": 35,
+      "prompt": "I am not sure which Moonloom skill to use. I have a draft and want to compare it against public golden sample packet shapes before deciding whether to blueprint, rewrite, or author final fields. I do not want to copy sample prose.",
+      "expected_output": "Uses using-moonloom as the router and routes example/golden-sample calibration, draft-to-sample comparison, benchmark shape review, and copy-risk checking to lunatalk-sample-calibrator before rewriting or MCP actions.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes examples, golden samples, sample output packets, and draft-to-sample comparison to lunatalk-sample-calibrator.",
+        "The output treats samples as public synthetic structure fixtures, not source cards or performance/ranking evidence.",
+        "The output says not to copy sample names, scenes, tag strings, voice lines, resources, artifact schemas, or fictional details.",
+        "The output does not route directly to broad rewriting, final fields, MCP validation, render, simulation, or publish readiness before the calibration packet identifies the missing layer."
+      ]
     }
   ]
 }

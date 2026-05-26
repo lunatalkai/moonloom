@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-sample-calibrator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Show me a golden sample shape for a slow-burn relationship card, then calibrate my draft against it. I want structure, not copied prose, and no MCP calls yet.",
+      "expected_output": "Uses lunatalk-sample-calibrator, selects the relationship sample as structure-only guidance, compares promise/engine/opening/voice/longplay/probes, flags copy risk, and hands off to the narrow repair or authoring skill without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the sample as a public synthetic teaching fixture, not a source card or platform-performance example.",
+        "The output produces a sample calibration packet with selected sample, structure borrowed not text, draft gaps, copy-risk check, repair skill order, and handoff.",
+        "The output explicitly says not to copy sample names, scene text, tag strings, voice lines, or fictional details.",
+        "The output compares field allocation, opening proof, player agency, relationship progression, and probes.",
+        "The output does not call MCP tools, render, simulate, publish, or provide final fields from this skill."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My RPG expedition card feels like a rule manual. Compare it to a strong sample and tell me what structure to borrow without reusing the sample's ice-city content.",
+      "expected_output": "Uses the RPG / play engine sample for structure-only calibration, preserves originality, identifies rule-manual welcome and state/turn-protocol issues, and routes to play-engine or authoring repair.",
+      "files": [],
+      "expectations": [
+        "The output selects the RPG / play engine sample as the primary sample.",
+        "The output borrows compact state, resource consequence, turn protocol, failure-forward behavior, and probe type rather than setting, route labels, or resource names.",
+        "The output identifies whether the welcome, detail, or talkExample needs the patch.",
+        "The output routes to lunatalk-play-engineer or lunatalk-card-author based on missing structure.",
+        "The output does not reuse sample location names, resource labels, crew roles, or opening text."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want my generator/helper card to look like the sample. Can you turn the sample into my card?",
+      "expected_output": "Refuses copying while offering sample-driven calibration, explains structure-only reuse, checks artifact contract/defaults/schema/revision loop, and routes to generator architecture or card authoring.",
+      "files": [],
+      "expectations": [
+        "The output does not convert the sample text directly into the user's card.",
+        "The output keeps the generator sample as structure-only guidance for artifact contract, intake defaults, output schema, revision operations, and artifact continuity.",
+        "The output asks for or infers a fresh artifact domain instead of reusing the ritual sample's fictional content.",
+        "The output includes copy-risk check and originality repair.",
+        "The output does not mention non-public examples, rankings, or origin-analysis claims."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Which Moonloom workflow should I use if I have a draft and want to compare it against benchmark samples before deciding the next repair?",
+      "expected_output": "Routes from using-moonloom to lunatalk-sample-calibrator, then creates a calibration packet before quality audit, blueprinting, or authoring.",
+      "files": [],
+      "expectations": [
+        "The output names lunatalk-sample-calibrator as the narrow skill for sample comparison.",
+        "The output says sample comparison should happen before broad rewriting or MCP calls.",
+        "The output distinguishes sample calibration from quality scorecard and card diagnosis.",
+        "The output hands off to the next narrow skill after identifying the missing layer.",
+        "The output keeps samples public-safe and structure-only."
+      ]
+    }
+  ]
+}
