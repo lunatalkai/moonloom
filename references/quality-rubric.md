@@ -45,6 +45,17 @@ explicitly chooses a tradeoff:
 - Weak first action path: add choices, a direct question, or an explicit response
   path in the opening scene.
 
+## Token budget review
+
+Use `tokenBudget` from `validate_role` before render or simulation:
+
+- If welcome is much longer than detail, move durable rules, reusable lore, or
+  visual scaffolding into `roleDetailDesc`, XMLV3 state, or Theme V3.
+- If detail is short but welcome is long, the card often plays well for one turn
+  and then drifts.
+- If total size is large, keep only material that changes behavior, state, or
+  user agency.
+
 ## Welcome quality
 
 - The welcome creates an immediate interaction opportunity.

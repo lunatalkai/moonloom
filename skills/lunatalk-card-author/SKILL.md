@@ -63,6 +63,8 @@ iteration.
   relationship pressure and emotional boundaries; story needs setting stakes and
   likely branches; game/RPG/system cards need rules, resources, failure pressure,
   and opening setup/state/choices.
+- If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
+  repeated lore, or visual scaffolding out of welcome before render/simulation.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for

@@ -152,8 +152,8 @@ Toggle a Theme V3 extension pack.
 
 ### `validate_role`
 
-Return blockers, warnings, suggested fixes, quality dimensions, score, and next
-tools. Treat `blocker` as a hard stop before publish.
+Return blockers, warnings, suggested fixes, quality dimensions, token budget,
+score, and next tools. Treat `blocker` as a hard stop before publish.
 
 Use `qualityDimensions` as the agent repair map:
 
@@ -173,6 +173,16 @@ Treat quality warnings as normal iteration work: thin premise, thin detail,
 missing speaking style, missing progression/state, weak first action path, or
 token-heavy welcome should be patched before render review unless the author
 explicitly accepts the tradeoff.
+
+Use `tokenBudget` to inspect role structure before spending render or simulation
+cost:
+
+- `roleDescChars`, `roleDetailDescChars`, and `roleWelcomeChars` show where the
+  card spends context.
+- `estimatedTokens` is approximate and should be used for comparison, not billing.
+- `welcomeToDetailRatio` above `2` with a long welcome usually means durable
+  engine content is in the wrong field.
+- `guidance` gives card-type length targets and repair hints.
 
 When validation is not `pass`, `nextRecommendedTools` usually points to the
 repair surface:
