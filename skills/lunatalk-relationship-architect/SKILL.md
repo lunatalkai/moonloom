@@ -38,6 +38,12 @@ unless the author explicitly asks to continue through `lunatalk-card-author`.
 Do not turn relationship quality into MCP validation. Relationship design is
 Moonloom writing guidance.
 
+Use `lunatalk-daily-life-architect` instead when the primary blocker is ordinary
+routine, small playable desire, tiny disruption, shared object/place, habit
+state, passive-player routine behavior, second-turn routine change, or
+return-next-time hooks and intimacy/romance/repair-rupture is only a secondary
+overlay.
+
 ## Workflow
 
 1. Diagnose the current failure: generic flirting, comfort loop, rivalry as

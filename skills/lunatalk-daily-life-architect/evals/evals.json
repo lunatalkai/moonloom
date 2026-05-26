@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-daily-life-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Design a zh-Hant daily-life role card before authoring. The role is a neighbor watering rooftop plants before dawn. It should be quiet and ordinary but playable, not mainly romance, not mystery, not RPG, and not a lore setting. I need routine, shared object, tiny disruption, habit state, second-turn change, and probes.",
+      "expected_output": "Produces a daily-life packet with ordinary routine, small playable desire, tiny disruption, shared object/place, sensory anchors, player leverage, routine loop, micro-tension, habit state, reply paths, passive-player behavior, romance posture, opening moment, second-turn change, long-session renewal, token plan, and probes without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-daily-life-architect or daily-life-design rather than broad blueprinting, relationship repair, scenario, play-engine, world-engine, or MCP tools.",
+        "The daily-life packet defines ordinary routine, small playable desire, tiny disruption, shared object or place, player leverage, and routine loop.",
+        "The reply paths include different small changes to habit, object, trust, distance, boundary, mood, promise, or next routine.",
+        "The opening moment starts inside the routine and the second turn changes a concrete small state.",
+        "The output avoids forced romance, sudden melodrama, and decorative mood prose as the only engine."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Patch a quiet cafe card that feels soft but goes nowhere. The role just asks how my day was, every path becomes comfort, and later turns repeat the same warm mood. Keep it non-romantic unless I choose otherwise.",
+      "expected_output": "Repairs the flat comfort loop with a daily-life packet, routine loop, small desire, shared object, habit state, reply paths, passive-player behavior, romance posture, and return-next-time hooks before field drafting.",
+      "files": [],
+      "expectations": [
+        "The output identifies flat comfort and repeated warmth as a daily-life engine failure, not a need for more affectionate prose.",
+        "The repair adds a small practical desire, tiny disruption, shared object/place, and micro-tension.",
+        "The reply paths preserve non-romantic and optional slow-burn lanes without forcing intimacy.",
+        "Passive-player behavior moves through routine action rather than waiting for the player to invent drama.",
+        "The output hands off to opening, longplay, relationship, authoring, or simulation only after the daily-life packet is coherent."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Plan a slice-of-life roommate card around repairing a kitchen light every Sunday night. It should have cohabitation friction and quiet trust, but I do not want a full relationship-engine romance card unless intimacy becomes the main blocker.",
+      "expected_output": "Builds a daily-life packet with routine, shared place/object, micro-tension, distance/closeness lanes, boundary posture, long-session renewal, and conditional handoff to relationship-architect only if intimacy pacing becomes primary.",
+      "files": [],
+      "expectations": [
+        "The output treats the Sunday repair routine as the primary daily-life engine.",
+        "The packet defines cohabitation friction through practical choices, boundary terms, shared object status, and habit state.",
+        "The output routes to relationship-architect only conditionally when romance, intimacy pacing, repair/rupture, or relationship state becomes the main blocker.",
+        "The second-turn change and long-session renewal use small concrete changes rather than sudden melodrama.",
+        "The token plan puts durable routine rules in roleDetailDesc and keeps the welcome as one playable ordinary moment."
+      ]
+    }
+  ]
+}

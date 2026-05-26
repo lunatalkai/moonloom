@@ -25,6 +25,12 @@ investigation, case-file, event, rescue, trial, betrayal, social drama, or
 depends on stakes, route branches, clue/reveal pacing, false leads, suspect
 pressure, or compact consequence state. Use `lunatalk-scenario-architect` first
 when scenario structure is the primary task. Read
+`../../references/daily-life-design.md` when the idea is daily-life,
+slice-of-life, quiet companion, neighbor, roommate, cohabitation, cafe, workplace,
+school, ordinary routine, low-stakes, shared-object, habit-state, or depends on
+small playable desire, tiny disruption, passive-player behavior, or
+return-next-time hooks. Use `lunatalk-daily-life-architect` first when quiet
+routine structure is the primary task. Read
 `../../references/play-engine-design.md` when the idea is RPG, adventure,
 open-world, sandbox, survival, investigation, simulator, or depends on stats,
 resources, inventory, quests, combat, turn protocol, compact state,
@@ -109,6 +115,12 @@ creation, validation, render review, simulation, and publishing workflow.
    branches, clue/reveal pacing, false leads, suspect pressure, compact
    consequence state, or route-funnel repair, use
    `lunatalk-scenario-architect` first unless a scenario packet already exists.
+   If the author wants a daily-life, slice-of-life, quiet companion, neighbor,
+   roommate, cohabitation, cafe, workplace, school, or ordinary-routine card with
+   small playable desire, tiny disruption, shared object/place, habit state,
+   passive-player behavior, second-turn change, or return-next-time hooks, use
+   `lunatalk-daily-life-architect` first unless a daily-life packet already
+   exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -137,25 +149,29 @@ creation, validation, render review, simulation, and publishing workflow.
 11. If the weak layer is story/scenario structure, route branches, clues,
     reveal pacing, suspect pressure, false leads, route funneling, or scenario
     consequences, use `lunatalk-scenario-architect` first or preserve its packet.
-12. If the weak layer is generic dialogue, speaking style, voice drift,
+12. If the weak layer is daily-life structure, quiet routine, small playable
+    desire, tiny disruption, shared object, habit state, passive-player behavior,
+    second-turn change, or return-next-time renewal, use
+    `lunatalk-daily-life-architect` first or preserve its packet.
+13. If the weak layer is generic dialogue, speaking style, voice drift,
    catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
    blur, use `lunatalk-voice-director` first or preserve its packet. Define
    voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-13. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+14. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
     durable rules, or visual bloat is the core problem, use
     `lunatalk-token-architect` first or preserve its packet before opening repair
     or field drafting.
-14. Design the first scene and the second-turn engine together. If the opening is
+15. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-15. If long-term playability, memory/state, route seeds, progression, or a dead
+16. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-16. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-17. Run Moonloom self-review and repair any weak layer before handing off.
+17. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+18. Run Moonloom self-review and repair any weak layer before handing off.
     If the author asked for a quality audit, preserve or create a
     `lunatalk-quality-auditor` scorecard before authoring.
 
@@ -189,6 +205,7 @@ Archetype packet:
   - ensemble:
   - play engine:
   - scenario:
+  - daily-life:
   - agency:
   - voice:
   - opening:
@@ -389,6 +406,33 @@ Scenario packet:
 - passive-player behavior:
 - false-lead handling:
 - route-funnel guardrails:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
+Daily-life packet:
+- current seed or failure:
+- daily-life promise:
+- card shape:
+- player role:
+- ordinary routine:
+- small playable desire:
+- tiny disruption:
+- shared object / place:
+- sensory anchors:
+- player leverage:
+- routine loop:
+- micro-tension:
+- habit state:
+- reply paths:
+- closeness / distance lanes:
+- passive-player behavior:
+- boundary and romance posture:
+- opening moment:
+- expected first user message:
+- second-turn change:
+- long-session renewal:
 - field allocation:
 - token plan:
 - simulation probes:

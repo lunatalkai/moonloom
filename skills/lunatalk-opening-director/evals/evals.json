@@ -52,6 +52,19 @@
         "The reply paths change response, information, relationship, state, risk, route, or next hook.",
         "The output does not call mutating MCP tools."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Fix the welcome for my quiet daily-life neighbor card. It starts with pleasant rooftop plant watering, but nothing small changes and the player has no reason to act.",
+      "expected_output": "Uses or preserves lunatalk-daily-life-architect or daily-life-design before welcome polish, then builds an opening around ordinary action, tiny disruption, shared object/place, player implication, reply paths, and second-turn habit-state change.",
+      "files": [],
+      "expectations": [
+        "The output identifies the daily-life routine engine as unresolved before polishing prose.",
+        "The repair uses or preserves a daily-life packet with ordinary routine, small desire, tiny disruption, shared object/place, and habit state.",
+        "The welcome opens on one specific ordinary action instead of general atmosphere.",
+        "The player has clear ways to help, notice, refuse, tease, ask, leave, or change the plan.",
+        "The second-turn move changes habit, trust, shared object/place, distance, or the next routine hook."
+      ]
     }
   ]
 }

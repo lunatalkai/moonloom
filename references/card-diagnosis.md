@@ -76,8 +76,8 @@ Use evidence, not taste, to choose order. When multiple symptoms exist, prefer:
    the engine.
 4. Archetype contract: mixed card type, unclear primary loop, generator/story/RPG
    conflict, or companion promise drowned by assistant mode or setting lore.
-5. Durable engine: thin character core, flat relationship, inert world, missing
-   player leverage, no state/consequence, no route pressure.
+5. Durable engine: thin character core, flat relationship, mood-only daily-life,
+   inert world, missing player leverage, no state/consequence, no route pressure.
 6. Agency and opening: spectator play, decorative choices, route funneling,
    generic questions, missing first reply path, missing second-turn move.
 7. Longplay: dead third turn, no memory, no route costs, passive role, no scene
@@ -102,6 +102,7 @@ directly to that narrow skill.
 | Boring after one reply | Longplay / durable engine | `roleDetailDesc` | `lunatalk-longplay-architect` |
 | Polite assistant voice | Voice / weak core | `roleDetailDesc`, `talkExample` | `lunatalk-voice-director` |
 | Relationship becomes comfort/flirting loop | Relationship engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-relationship-architect` |
+| Quiet routine becomes mood-only small talk | Daily-life engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-daily-life-architect` |
 | Lore dump during chat | World engine / token economy | `roleDetailDesc`, `roleWelcome` | `lunatalk-world-engineer`, `lunatalk-token-architect` |
 | RPG resources, inventory, quests, or combat do not change choices | Play engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer` |
 | Compact state is forgotten or not updated | Play engine / longplay | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer`, `lunatalk-longplay-architect` |
@@ -113,8 +114,9 @@ directly to that narrow skill.
 
 - `roleDesc`: should state promise, player relation, and tension. Rewrite vague
   aesthetic descriptions into one scannable contract.
-- `roleDetailDesc`: should carry durable engine: character core, relationship or
-  world rules, agency boundaries, voice, state, route costs, and role initiative.
+- `roleDetailDesc`: should carry durable engine: character core, relationship,
+  daily-life routine, or world rules, agency boundaries, voice, state, route
+  costs, and role initiative.
 - `roleWelcome`: should be one playable first screen, not the full card manual.
 - `talkExample`: should teach reusable voice, refusal, pressure, output format,
   or route behavior; otherwise cut.

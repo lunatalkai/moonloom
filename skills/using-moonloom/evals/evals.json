@@ -312,6 +312,19 @@
         "The output does not route primarily to broad worldbuilding, relationship repair, opening-only repair, longplay-only repair, broad blueprinting, or mutating MCP tools.",
         "The route focuses on a scenario packet with stakes, story spine, route branches, clue/reveal ladder, suspect pressure network, compact consequence state, opening incident, second-turn reveal, route-funnel guardrails, and probes."
       ]
+    },
+    {
+      "id": 25,
+      "prompt": "I am not sure which Moonloom skill to use. I want a zh-Hant daily-life / slice-of-life card about a neighbor watering rooftop plants before dawn. It should feel quiet and ordinary but not boring, not mainly romance, not a dramatic mystery, not RPG, and not a big lore setting. I need small playable desire, repeated routine, shared object, tiny disruption, habit state, first-scene action, second-turn change, passive-player behavior, long-session renewal, and simulation probes before final fields.",
+      "expected_output": "Uses using-moonloom as the router and routes daily-life/slice-of-life routine structure to lunatalk-daily-life-architect before blueprinting, relationship repair, opening repair, longplay, authoring, or simulation.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes daily-life, slice-of-life, quiet routine, shared object, tiny disruption, habit state, passive-player behavior, and second-turn change to lunatalk-daily-life-architect.",
+        "The output does not route primarily to relationship-architect because romance, intimacy pacing, and repair/rupture are not the main blocker.",
+        "The output does not route primarily to scenario, play-engine, world-engine, broad blueprinting, or mutating MCP tools.",
+        "The route focuses on a daily-life packet with ordinary routine, small playable desire, tiny disruption, shared object/place, habit state, reply paths, boundary/romance posture, second-turn change, return-next-time hooks, and probes."
+      ]
     }
   ]
 }

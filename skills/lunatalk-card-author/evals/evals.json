@@ -237,6 +237,19 @@
         "The output preserves the scenario packet through authoring instead of flattening it into a generic plot summary.",
         "The output treats scenario quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
       ]
+    },
+    {
+      "id": 19,
+      "prompt": "Create a private zh-Hant daily-life role card about a neighbor watering rooftop plants before dawn, but before any MCP calls build the quiet routine structure: small playable desire, tiny disruption, shared object/place, habit state, passive-player behavior, second-turn change, non-forced romance posture, return-next-time hooks, and probes. It should not become a dramatic mystery or RPG.",
+      "expected_output": "Uses lunatalk-daily-life-architect before MCP-backed authoring, preserves the daily-life packet, then hands off to card-author only after the routine loop and first two turns are coherent.",
+      "files": [],
+      "expectations": [
+        "The workflow routes daily-life/slice-of-life routine structure to lunatalk-daily-life-architect before role_create_private or field patches.",
+        "The daily-life packet includes ordinary routine, small playable desire, tiny disruption, shared object/place, sensory anchors, player leverage, routine loop, habit state, reply paths, passive-player behavior, boundary/romance posture, second-turn change, long-session renewal, and probes.",
+        "The workflow does not treat the daily-life request as relationship-architect work unless intimacy pacing, romance, or repair/rupture becomes primary.",
+        "The output preserves the daily-life packet through authoring instead of flattening it into generic atmosphere or comfort prose.",
+        "The output treats daily-life quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
+      ]
     }
   ]
 }

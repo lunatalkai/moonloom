@@ -39,6 +39,19 @@
         "The output recommends publish readiness only after diagnosis and narrow repairs are complete.",
         "The output does not add MCP hard gates for subjective quality."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Diagnose a daily-life roommate card that looks technically valid and has a cozy welcome, but later turns are all chores and small talk with no habit change, shared-object memory, or player leverage.",
+      "expected_output": "Classifies the issue as a daily-life engine failure, routes to lunatalk-daily-life-architect before opening or longplay polish, maps field patches, and keeps technical validation separate from writing quality.",
+      "files": [],
+      "expectations": [
+        "The diagnosis treats valid fields and readable render as technical evidence, not proof of playability.",
+        "The symptom map identifies flat routine, missing habit state, missing shared-object memory, and weak player leverage.",
+        "The repair order routes to lunatalk-daily-life-architect or daily-life-design before opening or longplay polish.",
+        "The field triage targets roleDetailDesc for routine/state rules and roleWelcome for one playable ordinary moment.",
+        "The output keeps subjective writing repair inside Moonloom skills rather than MCP/server hard gates."
+      ]
     }
   ]
 }

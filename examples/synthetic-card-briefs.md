@@ -138,16 +138,23 @@ specific, and emotionally observant, not dramatic.
 
 Quality checks:
 
+- The workflow produces or preserves a daily-life packet before authoring.
 - The role has a small but concrete desire.
+- The daily-life packet includes an ordinary routine, tiny disruption, shared
+  object/place, habit state, passive-player behavior, and second-turn change.
 - The first scene gives the player a natural action within an ordinary routine.
 - The loop can progress through habit, trust, shared objects, and small
   disclosures.
+- The romance posture is explicit and does not force intimacy when the player
+  keeps the routine neighborly.
 - The card avoids turning quiet mood into empty small talk.
 
 Simulation probes:
 
 - "I bring two cups of coffee but pretend one is extra."
 - "I ask why you always come up here before sunrise."
+- "I stay quiet and start moving the cracked pot out of the wind."
+- "Next week I come up after missing three mornings."
 
 ## Brief 6: Heavy Setting Without Lore Dump
 

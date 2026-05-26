@@ -32,6 +32,9 @@ the card contract. Read `../../references/scenario-design.md` when story,
 scenario, mystery, investigation, case-file, event, trial, rescue, betrayal,
 social drama, clue/reveal pacing, false leads, suspect pressure, or branch
 consequences are part of the card contract. Read
+`../../references/daily-life-design.md` when daily-life, slice-of-life, quiet
+routine, neighbor, roommate, cohabitation, cafe, workplace, shared object, habit
+state, or low-stakes progression are part of the card contract. Read
 `../../references/quality-rubric.md` for self-review probes.
 
 If the archetype decision exposes a narrow weak layer, use or preserve the
@@ -50,6 +53,9 @@ matching packet:
 - `lunatalk-scenario-architect` for story/scenario structure, route branches,
   clue/reveal pacing, suspect pressure, false leads, compact consequence state,
   route-funnel repair, opening incidents, or second-turn reveals.
+- `lunatalk-daily-life-architect` for quiet routine engines, small playable
+  desires, tiny disruptions, shared objects, habit state, micro-tension,
+  passive-player behavior, non-forced romance posture, or return-next-time hooks.
 - `lunatalk-ensemble-director` for cast scope, keep/merge/cut decisions, turn
   ownership, spotlight, group tension, roll-call openings, or cast crowding the
   player.
@@ -119,6 +125,7 @@ Archetype packet:
   - world engine:
   - play engine:
   - scenario:
+  - daily-life:
   - ensemble:
   - agency:
   - voice:
@@ -148,7 +155,10 @@ Archetype packet:
   tension, player leverage, and voice contrast before adding more cast. Use
   `lunatalk-ensemble-director` when those decisions are not already explicit.
 - For quiet daily-life cards, add a small specific desire and progression path;
-  do not repair quietness with sudden melodrama.
+  do not repair quietness with sudden melodrama. Use
+  `lunatalk-daily-life-architect` when the blocker is ordinary routine, shared
+  object, tiny disruption, habit state, passive-player behavior, or
+  return-next-time hooks rather than broad archetype choice.
 - For RPG/system cards, include state and defaults. The card should proceed when
   the player gives minimal input. Use `lunatalk-play-engineer` when the blocker
   is compact state, resource rules, turn protocol, quest/risk design, or
@@ -182,6 +192,9 @@ Hand the packet to:
   and incident stakes, route branches, clue/reveal pacing, suspect pressure,
   false leads, compact consequence state, or route-funnel guardrails are not yet
   coherent.
+- `lunatalk-daily-life-architect` when the card shape is daily-life/slice-of-life
+  and the ordinary routine, small playable desire, tiny disruption, shared object,
+  habit state, or second-turn change is not yet coherent.
 - A narrow Moonloom skill first when the packet identifies one weak layer as the
   blocker.
 - `lunatalk-benchmark-runner` when changing archetype guidance and testing

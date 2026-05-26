@@ -39,6 +39,19 @@
         "The output delays simulation when structural repairs are already evident.",
         "The output does not turn the scorecard into an MCP/server gate."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Audit a quiet daily-life blueprint before authoring. The mood is gentle and pretty, but I worry it has no small desire, no habit state, no return-next-time hook, and no way for a passive player to matter.",
+      "expected_output": "Scores daily-life engine quality as craft guidance, flags missing routine/state/renewal blockers, and recommends lunatalk-daily-life-architect before authoring or simulation.",
+      "files": [],
+      "expectations": [
+        "The audit scores daily-life engine separately from presentation and general relationship tone.",
+        "The blockers include missing small desire, habit state, player leverage, passive-player behavior, or return-next-time hook as applicable.",
+        "The first repairs route to lunatalk-daily-life-architect or daily-life-design before card-author.",
+        "The scorecard remains public craft guidance and not platform metrics, analytics, or MCP validation.",
+        "The output does not call mutating MCP tools."
+      ]
     }
   ]
 }
