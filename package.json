@@ -1,0 +1,11 @@
+{
+  "name": "moonloom",
+  "version": "0.1.0",
+  "description": "LunaTalk AI creation toolkit for agent clients.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node scripts/validate-moonloom.mjs"
+  },
+  "license": "MIT"
+}

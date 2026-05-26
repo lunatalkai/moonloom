@@ -178,6 +178,12 @@ link to these files relative to the skill directory, for example
 `../../references/voice-calibration.md`. When an agent runs from the repository
 root, the same file is available as `references/voice-calibration.md`.
 
+## Local validation
+
+Run `npm test` for validator unit tests and `npm run validate` before publishing
+changes. The validator checks plugin JSON, skill frontmatter, eval coverage,
+reference links, skill size, and basic release-safety patterns.
+
 ## MCP endpoint
 
 Configure the Card Writer MCP endpoint and authentication through the AI client's
