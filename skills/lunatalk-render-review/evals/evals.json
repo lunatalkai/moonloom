@@ -1,0 +1,17 @@
+{
+  "skill_name": "lunatalk-render-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the preview URL for roleId abc123 and tell me if the XMLV3 welcome is visually safe on mobile.",
+      "expected_output": "Runs or references render_preview, checks mobile readability/overflow/contrast, and proposes concrete patches.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "This welcome uses custom HTML. Check whether it can pass LunaTalk rendering rules.",
+      "expected_output": "Checks validation blockers for scripts, inline handlers, external URLs, length, and then uses render preview for visual review.",
+      "files": []
+    }
+  ]
+}

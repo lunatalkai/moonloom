@@ -1,0 +1,17 @@
+{
+  "skill_name": "lunatalk-chat-simulation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run a private simulation for roleId abc123 with one opening user turn and tell me if the role stays in character.",
+      "expected_output": "Uses simulate_private_chat, notes normal billing, evaluates the transcript for role consistency, and recommends patches if needed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Before publishing, test whether the role handles a confused first-time player.",
+      "expected_output": "Chooses a realistic user message, runs or plans private simulation, evaluates onboarding clarity and scene advancement, and reports cost summary.",
+      "files": []
+    }
+  ]
+}

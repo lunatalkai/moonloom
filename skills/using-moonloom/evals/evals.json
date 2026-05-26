@@ -1,0 +1,17 @@
+{
+  "skill_name": "using-moonloom",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want Cursor to create a LunaTalk role card through the MCP. What workflow should it follow?",
+      "expected_output": "Routes to card authoring, references the Card Writer MCP, and includes validation, render preview, simulation, and explicit publish confirmation.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "The card is already written, but I want to check whether the XMLV3 welcome renders correctly.",
+      "expected_output": "Routes to render review and instructs the agent to use validate_role and render_preview with visual inspection if available.",
+      "files": []
+    }
+  ]
+}
