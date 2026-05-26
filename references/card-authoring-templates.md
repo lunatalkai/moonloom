@@ -1,0 +1,232 @@
+# Moonloom Card Authoring Templates
+
+Use these templates after choosing the card shape. They are scaffolds, not
+finished prose. Replace every bracketed field with concrete card content.
+
+## Universal draft packet
+
+Before calling mutating MCP tools, draft this packet:
+
+```text
+Card shape:
+Language:
+Content rating intent:
+Player role:
+
+Promise:
+- fantasy:
+- relationship:
+- central tension:
+
+Engine:
+- role desire:
+- contradiction:
+- boundary:
+- voice fingerprint:
+- proactive behavior:
+- consequence loop:
+
+Play:
+- first scene:
+- first reply path:
+- expected first user message:
+- expected second-turn move:
+
+Presentation:
+- welcome mode: plain | xmlv3 | html
+- Theme V3 need:
+- visible state or choices:
+
+Token plan:
+- roleDesc target:
+- roleDetailDesc target:
+- roleWelcome target:
+- what to cut first:
+```
+
+## `roleDesc` patterns
+
+Use one compact sentence. It should make the player understand the card in three
+seconds.
+
+```text
+[Player role] is pulled into [situation] with [role/system], where [tension]
+forces [play loop].
+```
+
+```text
+[Role] needs [player leverage] before [external pressure] breaks [relationship,
+secret, mission, or world rule].
+```
+
+For daily-life cards:
+
+```text
+You keep meeting [role] during [ordinary routine], where [small pressure] slowly
+turns [relationship or habit] into [play loop].
+```
+
+For RPG/system cards:
+
+```text
+Lead [player position] through [world/system], managing [resources] and [risk] as
+choices change [state or route].
+```
+
+## `roleDetailDesc` section template
+
+Use headings or compact labels. Keep durable rules here, not in welcome.
+
+```text
+Core premise
+- [One paragraph that restates the playable promise.]
+
+Player position
+- [Who the player is.]
+- [What the player controls.]
+- [What the player does not control.]
+
+Role identity
+- [Who the role is.]
+- [What they want.]
+- [What they fear, hide, owe, or refuse.]
+
+Contradiction and boundary
+- [Contradiction that creates tension.]
+- [Boundaries and pacing rules.]
+- [What the role must not decide for the player.]
+
+Voice fingerprint
+- sentence rhythm:
+- vocabulary:
+- address terms:
+- emotional tells:
+- avoided phrasing:
+- refusal style:
+
+Proactive behavior
+- If the player is passive, [role action].
+- If the player resists, [role action].
+- If the player cooperates, [role action].
+- If the scene stalls, [new hook].
+
+Progression and consequence
+- state that changes:
+- what raises it:
+- what lowers it:
+- what it unlocks:
+
+Routes
+- route 1:
+- route 2:
+- route 3:
+
+Do / Avoid
+- Do:
+- Avoid:
+```
+
+## `roleWelcome` scene template
+
+Use for companion, story, daily-life, romance, and ensemble cards.
+
+```xml
+<scene>
+  <state>{"location":"[place]","time":"[time]","tension":"[short state]"}</state>
+  <n>[Sensory opening tied to place/time.]</n>
+  <n>[Role action already in progress.]</n>
+  <speaker>[Role name]</speaker>
+  <d>[Dialogue that reveals pressure and invites response.]</d>
+  <n>[Player implication: why the player matters now.]</n>
+  <choice>[Concrete action option 1]</choice>
+  <choice>[Concrete action option 2]</choice>
+  <choice>[Concrete action option 3]</choice>
+</scene>
+```
+
+Do not use choices as a substitute for scene. The scene must already contain
+place, role action, pressure, and player implication.
+
+## System / RPG welcome template
+
+```xml
+<scene>
+  <state>{"mode":"setup","resources":{"[key]":"[value]"},"risk":"[level]"}</state>
+  <n>[One-sentence premise and immediate situation.]</n>
+  <n>[What the player controls and what pressure is active.]</n>
+  <form>
+    <input name="[field]" label="[setup field]" />
+    <radio name="[mode]" label="[mode choice]" options="[option A]|[option B]|[option C]" />
+  </form>
+  <choice>[Start with default setup]</choice>
+  <choice>[Ask for a custom setup]</choice>
+  <choice>[Jump into the first crisis]</choice>
+</scene>
+```
+
+The system should proceed with defaults if the player gives minimal input.
+
+## Ensemble cast template
+
+Use no more than five core roles unless the card is explicitly a large simulator.
+
+```text
+Cast
+- [Name]: motive, player relationship, speech cue, conflict with another cast
+  member, what they do under pressure.
+- [Name]: motive, player relationship, speech cue, conflict with another cast
+  member, what they do under pressure.
+
+Turn ownership
+- Opening focus:
+- Who interrupts:
+- Who hangs back:
+- When secondary roles enter:
+```
+
+The welcome should start with one focal crisis. Do not introduce the full cast in
+a roll call.
+
+## Boundary-sensitive template
+
+Use when the card is mature, emotionally intense, horror-leaning, or otherwise
+likely to need pacing and consent clarity.
+
+```text
+Rating intent:
+Allowed tension:
+Escalation gate:
+Player refusal handling:
+Role refusal style:
+Stop conditions:
+What the role may invite:
+What the role must not decide:
+Safer fallback:
+```
+
+The role can create pressure while still preserving player agency. If the player
+sets a boundary, the role should react in character and keep the scene playable.
+
+## Self-review packet
+
+Before render or simulation, answer:
+
+```text
+Promise: pass | revise because ...
+Anchor: pass | revise because ...
+Voice texture: pass | revise because ...
+Consequence: pass | revise because ...
+Role initiative: pass | revise because ...
+Agency: pass | revise because ...
+Opening scene: pass | revise because ...
+Player agency: pass | revise because ...
+Boundary design: pass | revise because ...
+Archetype fit: pass | revise because ...
+Token efficiency: pass | revise because ...
+
+Expected first user message:
+Expected second-turn move:
+Cut if too long:
+```
+
+If any item says `revise`, patch the draft before calling render or simulation.
