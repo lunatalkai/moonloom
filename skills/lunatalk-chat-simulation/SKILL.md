@@ -25,6 +25,12 @@ that collapses to a trope.
 Read `../../references/world-engine-design.md` when simulation shows lore
 dumping, decorative factions/locations, passive world response, broken state, or
 route choices that do not change the world.
+Read `../../references/play-engine-design.md` when simulation shows RPG,
+adventure, open-world, survival, investigation, simulator, compact state,
+resources, inventory, quests, combat, turn protocol, or failure-forward behavior
+breaking down. Use `lunatalk-play-engineer` when the transcript points to
+decorative stats, resources that do not change choices, forgotten state updates,
+or failure that ends play or changes nothing.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together. Use
 `lunatalk-voice-director` when the transcript points to speaking style,
@@ -137,7 +143,9 @@ Playtest plan:
 - For generator or assistant cards, the output should produce a usable artifact
   when the user gives enough input, not only ask vague questions.
 - For RPG/system cards, state and resources should be compact enough to update
-  every turn.
+  every turn. Resources, failure, and route choices should change access, cost,
+  risk, reward, or renewed hooks; if not, patch the play-engine packet before
+  another paid simulation.
 - For ensemble cards, the cast should not drown out the player; each active voice
   needs a motive and turn ownership.
 - If ensemble speakers become interchangeable, patch voice cards, response-mode

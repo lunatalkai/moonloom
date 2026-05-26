@@ -19,7 +19,10 @@ collapse into generic flirting, comfort loops, instant intimacy, flat warmth,
 weak repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the card needs worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
-repair. Read
+repair. Read `../../references/play-engine-design.md` when the card is RPG,
+adventure, open-world, sandbox, survival, investigation, simulator, or has
+stats, resources, inventory, quests, combat, turn protocol, compact state,
+failure-forward behavior, or a rule-manual opening. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/quality-scorecard.md` when the author
@@ -89,6 +92,13 @@ benchmark creation, regression checks, or example-driven iteration.
    spotlight rules, or group tension, use `lunatalk-ensemble-director` first
    unless an ensemble packet already exists. Do not create or patch the card
    until the cast structure, player leverage, and turn ownership are coherent.
+   If the author asks to create or repair an RPG, adventure, open-world,
+   sandbox, survival, investigation, simulator, or game-like card with stats,
+   resources, inventory, quests, combat, turn protocol, compact state updates,
+   or failure-forward behavior, use `lunatalk-play-engineer` first unless a
+   play-engine packet already exists. Do not create or patch the card until the
+   playable rule loop, state model, resource rules, and failure behavior are
+   coherent.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -122,6 +132,9 @@ benchmark creation, regression checks, or example-driven iteration.
    ensemble voice contrast. Prefer `lunatalk-agency-designer` when the author
    primarily asks for player agency, user insertion space, interaction hooks,
    decorative choices, route funneling, or player-agency takeover. Prefer
+   `lunatalk-play-engineer` when the author primarily asks for RPG/adventure
+   mechanics, resources, inventory, quests, combat, compact state, turn
+   protocol, failure-forward behavior, or rule-manual opening repair. Prefer
    `lunatalk-token-architect` when the author primarily asks about tokenBudget,
    welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
    preserving playability while reducing token cost.
@@ -139,7 +152,10 @@ benchmark creation, regression checks, or example-driven iteration.
    duplicated lore, visual bloat, or misplaced durable rules, use or preserve
    `lunatalk-token-architect` before patching fields.
 9. Before patching stable character and world context with `role_patch_detail`,
-   use `lunatalk-longplay-architect` when the current task is long-term
+   use or preserve `lunatalk-play-engineer` when the current patch changes
+   RPG/adventure rules, compact state, resources, inventory, quests, combat,
+   turn protocol, failure-forward behavior, or visible state updates.
+   Use `lunatalk-longplay-architect` when the current task is long-term
    playability, memory/state, route seeds, progression, or a dead third-turn
    loop. Use or preserve `lunatalk-voice-director` when the current patch changes
    speech style, voice cards, talkExample, refusal voice, or ensemble contrast.
@@ -228,6 +244,10 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the world-engine packet when one exists: world promise, player
   position, core world rule, faction/location play functions, state model, route
   seeds, exposition policy, and token tradeoff.
+- Preserve the play-engine packet when one exists: play promise, player
+  position, player controls, compact state model, resource rules, quest/risk
+  model, turn protocol, failure-forward behavior, progression phases, opening
+  contract, state visibility, token plan, and simulation probes.
 - Preserve the voice-director packet when one exists: current failure, voice
   promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
   grid, catchphrase policy, talkExample decision, blind-line test, pressure
@@ -337,8 +357,9 @@ MCP tools make the card real; Moonloom makes the card good.
   Traditional Chinese when needed.
 - Repair the chosen card type directly: companion needs relationship pressure and
   emotional boundaries; story needs setting stakes and likely branches;
-  game/RPG/system cards need rules, resources, failure pressure, and opening
-  setup/state/choices; daily-life needs a small playable desire; heavy-setting
+  game/RPG/system cards need a play-engine packet with compact state, resource
+  rules, turn protocol, failure-forward behavior, and opening setup/state/
+  choices; daily-life needs a small playable desire; heavy-setting
   needs modular lore that creates action; ensemble needs distinct motives, voices,
   and turn ownership.
 - When making a related card set, author the anchor card first and then only one

@@ -22,8 +22,8 @@ presentation, PACT, and top-card patterns. Read
 existing packets or hand off to field drafting.
 
 Read narrow references only for weak dimensions: archetype contracts, character
-core, relationship engine, world engine, agency, opening, longplay, voice,
-boundary, token economy, Theme V3 rendering, or playtest loop.
+core, relationship engine, world engine, play engine, agency, opening, longplay,
+voice, boundary, token economy, Theme V3 rendering, or playtest loop.
 
 ## Boundary
 
@@ -71,6 +71,7 @@ Quality audit packet:
   - archetype contract:
   - character appeal:
   - relationship / world engine:
+  - play engine:
   - player agency:
   - opening:
   - second-turn engine:
@@ -119,6 +120,9 @@ Hand off to:
 - `lunatalk-archetype-director` when the primary contract is unclear.
 - `lunatalk-character-core`, `lunatalk-relationship-architect`, or
   `lunatalk-world-engineer` when the durable engine is weak.
+- `lunatalk-play-engineer` when RPG/adventure/sandbox mechanics, compact state,
+  resources, quest/risk routes, turn protocol, or failure-forward behavior are
+  the weakest dimension.
 - `lunatalk-agency-designer`, `lunatalk-opening-director`, or
   `lunatalk-longplay-architect` when play, reply paths, second turn, or
   continuation fails.

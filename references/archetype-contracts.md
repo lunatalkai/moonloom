@@ -132,6 +132,12 @@ Failure modes:
 - Long lore but no rules.
 - Stats exist but never change choices.
 - The opening is a manual with no playable scene.
+- Failure either ends the story immediately or is ignored.
+- Compact state is not updated after the player's action.
+
+Use `play-engine-design.md` when the card needs a coherent packet for compact
+state, resource rules, quest/risk routes, turn protocol, failure-forward behavior,
+opening contract, token plan, and simulation probes before authoring.
 
 ### Generator / creator assistant
 

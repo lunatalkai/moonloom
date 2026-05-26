@@ -16,7 +16,12 @@ Read `../../references/world-engine-design.md` first. Read
 and field allocation. Read `../../references/card-authoring-templates.md` when
 the packet needs field patch targets. Read `../../references/material-distillation.md`
 when the author provides source files, pasted notes, imported drafts, or a world
-bible. Read `../../references/longplay-design.md` when the task needs route
+bible. Read `../../references/play-engine-design.md` when RPG/open-world,
+adventure, survival, investigation, simulator, stats, resources, inventory,
+quests, combat, turn protocol, compact state, or failure-forward behavior are the
+main blocker. Use `lunatalk-play-engineer` first when playable mechanics are the
+primary task rather than broad world scope. Read
+`../../references/longplay-design.md` when the task needs route
 costs, state, memory, progression, or long-session behavior. Read
 `../../references/opening-design.md` when the task needs first-screen pressure.
 Read `../../references/voice-calibration.md` when the world uses ensemble voices
@@ -128,5 +133,8 @@ Hand the packet to:
   without becoming a lore tour.
 - `lunatalk-longplay-architect` when the world needs deeper route state, memory,
   progression, or continuation probes.
+- `lunatalk-play-engineer` when RPG/open-world mechanics, resources, compact
+  state updates, turn protocol, quest/risk routes, or failure-forward behavior
+  need a coherent packet before opening, authoring, or simulation.
 - `lunatalk-chat-simulation` when transcripts show lore dumping, passive world
   response, decorative state, or weak route consequences.

@@ -25,7 +25,10 @@ multi-character structure rather than choosing the primary archetype. Read
 `../../references/card-series-design.md` when the author is choosing archetypes
 across several related cards or variants. Use `lunatalk-series-architect` first
 when the primary task is deciding which variants to keep, merge, reject, author,
-render, or simulate first. Read
+render, or simulate first. Read `../../references/play-engine-design.md` when
+RPG/open-world, adventure, survival, investigation, simulator, stats, resources,
+quests, compact state, turn protocol, or failure-forward behavior are part of
+the card contract. Read
 `../../references/quality-rubric.md` for self-review probes.
 
 If the archetype decision exposes a narrow weak layer, use or preserve the
@@ -38,6 +41,9 @@ matching packet:
   or missing repair/rupture routes.
 - `lunatalk-world-engineer` for lore-heavy, faction, location, relationship
   network, light-setting, heavy-setting, RPG, or lore-dump problems.
+- `lunatalk-play-engineer` for RPG/adventure mechanics, compact state,
+  resources, inventory, quests, combat, turn protocol, failure-forward behavior,
+  or rule-manual openings.
 - `lunatalk-ensemble-director` for cast scope, keep/merge/cut decisions, turn
   ownership, spotlight, group tension, roll-call openings, or cast crowding the
   player.
@@ -105,6 +111,7 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - play engine:
   - ensemble:
   - agency:
   - voice:
@@ -136,7 +143,9 @@ Archetype packet:
 - For quiet daily-life cards, add a small specific desire and progression path;
   do not repair quietness with sudden melodrama.
 - For RPG/system cards, include state and defaults. The card should proceed when
-  the player gives minimal input.
+  the player gives minimal input. Use `lunatalk-play-engineer` when the blocker
+  is compact state, resource rules, turn protocol, quest/risk design, or
+  failure-forward behavior rather than broad archetype choice.
 - Preserve player agency. The card can offer, tempt, pressure, warn, or refuse;
   it must not assign the player's feelings, memories, consent, actions, or
   commitments.
@@ -155,6 +164,9 @@ Hand the packet to:
   decisions before individual archetype packets.
 - `lunatalk-ensemble-director` when the card shape is ensemble but cast
   structure, spotlight, turn ownership, or group tension is not yet playable.
+- `lunatalk-play-engineer` when the card shape is RPG/adventure/sandbox/system
+  and playable rules, compact state, resource costs, failure-forward behavior, or
+  turn protocol are not yet coherent.
 - A narrow Moonloom skill first when the packet identifies one weak layer as the
   blocker.
 - `lunatalk-benchmark-runner` when changing archetype guidance and testing

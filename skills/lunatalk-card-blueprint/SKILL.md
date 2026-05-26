@@ -20,6 +20,10 @@ collapse into generic flirting, comfort, instant intimacy, flat warmth, weak
 repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the idea has worldbuilding,
 relationship-network, faction, location, lore-heavy, or lore-dump problems. Read
+`../../references/play-engine-design.md` when the idea is RPG, adventure,
+open-world, sandbox, survival, investigation, simulator, or depends on stats,
+resources, inventory, quests, combat, turn protocol, compact state,
+failure-forward behavior, or rule-manual opening repair. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
 and archetype recipes. Read `../../references/archetype-contracts.md` when the
 author is unsure whether the card is companion, story, system, RPG, generator,
@@ -90,6 +94,11 @@ creation, validation, render review, simulation, and publishing workflow.
    keep/merge/cut decisions, turn ownership, spotlight rules, group tension, or
    a fix for cast-over-player behavior, use `lunatalk-ensemble-director` first
    unless an ensemble packet already exists.
+   If the author wants an RPG, adventure, open-world, sandbox, survival,
+   investigation, simulator, or game-like card with stats, resources, inventory,
+   quests, combat, compact state, turn protocol, or failure-forward behavior,
+   use `lunatalk-play-engineer` first unless a play-engine packet already
+   exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -111,25 +120,29 @@ creation, validation, render review, simulation, and publishing workflow.
 9. If the weak layer is worldbuilding, relationship networks, factions,
    locations, or lore-dump repair, use `lunatalk-world-engineer` first or
    preserve its packet. Define the world engine only as far as it creates play.
-10. If the weak layer is generic dialogue, speaking style, voice drift,
+10. If the weak layer is RPG/adventure mechanics, compact state, resources,
+    inventory, quests, combat, turn protocol, failure-forward behavior, or a
+    rule-manual opening, use `lunatalk-play-engineer` first or preserve its
+    packet.
+11. If the weak layer is generic dialogue, speaking style, voice drift,
    catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
    blur, use `lunatalk-voice-director` first or preserve its packet. Define
    voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-11. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+12. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
     durable rules, or visual bloat is the core problem, use
     `lunatalk-token-architect` first or preserve its packet before opening repair
     or field drafting.
-12. Design the first scene and the second-turn engine together. If the opening is
+13. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-13. If long-term playability, memory/state, route seeds, progression, or a dead
+14. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-14. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-15. Run Moonloom self-review and repair any weak layer before handing off.
+15. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+16. Run Moonloom self-review and repair any weak layer before handing off.
     If the author asked for a quality audit, preserve or create a
     `lunatalk-quality-auditor` scorecard before authoring.
 
@@ -161,6 +174,7 @@ Archetype packet:
   - relationship engine:
   - world engine:
   - ensemble:
+  - play engine:
   - agency:
   - voice:
   - opening:
@@ -321,6 +335,27 @@ World engine:
 - exposition policy:
 - consequence loop:
 
+Play-engine packet:
+- current failure:
+- card shape:
+- play promise:
+- player position:
+- player controls:
+- card must not decide:
+- core loop:
+- compact state model:
+- resource rules:
+- quest / risk model:
+- turn protocol:
+- failure-forward behavior:
+- progression phases:
+- opening contract:
+- state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
 Voice fingerprint:
 - rhythm:
 - vocabulary:
@@ -450,6 +485,10 @@ Handoff:
 - Preserve any world-engine packet from `lunatalk-world-engineer`; do not
   summarize away player position, core world rule, faction/location play
   functions, state model, route costs, exposition policy, or token tradeoff.
+- Preserve any play-engine packet from `lunatalk-play-engineer`; do not summarize
+  away compact state, resource rules, quest/risk model, turn protocol,
+  failure-forward behavior, opening contract, state visibility, token plan, or
+  simulation probes.
 - Preserve any voice-director packet from `lunatalk-voice-director`; do not
   summarize away rhythm, vocabulary, emotional tells, refusal style,
   response-mode grid, talkExample decision, blind-line test, pressure probes, or
@@ -495,6 +534,9 @@ Handoff:
   rhythm, pressure move, and player leverage before adding more lore.
 - If the world is too large, use `lunatalk-world-engineer` or choose one place,
   one rule, one player position, and one immediate cost.
+- If an RPG, adventure, survival, investigation, or simulator card is becoming a
+  rulebook or decorative stat sheet, use `lunatalk-play-engineer` before opening,
+  longplay, or authoring.
 - If the relationship is flat, add asymmetry: one side knows, needs, owes, risks,
   hides, or controls something.
 - If the card has no long loop, add route seeds with costs and state changes.

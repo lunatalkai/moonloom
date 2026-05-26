@@ -131,6 +131,19 @@
         "Mood-only or duplicate-loop variants are merged or rejected instead of becoming thin cards.",
         "The output does not call or instruct immediate mutating MCP tool use before the series packet is ready."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "Before creating anything, blueprint a cursed-port adventure card with stats, inventory, factions, quests, and combat. The current idea keeps turning into a rule manual and the resources never affect choices. I need the playable rules before fields.",
+      "expected_output": "Uses lunatalk-play-engineer or play-engine-design before broad field drafting, then produces a blueprint that preserves the play-engine packet and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes RPG/adventure mechanics, stats, inventory, quests, combat, resources, compact state, and rule-manual repair to lunatalk-play-engineer or play-engine-design.md before broad authoring.",
+        "The play-engine packet defines player controls, compact state model, resource rules, quest/risk model, turn protocol, failure-forward behavior, opening contract, token plan, and simulation probes.",
+        "The blueprint preserves player agency and states what the card must not decide for the player.",
+        "The first scene and second-turn engine prove one runnable turn rather than explaining the whole rule system.",
+        "The output does not call or instruct immediate mutating MCP tool use before the play-engine packet is ready."
+      ]
     }
   ]
 }

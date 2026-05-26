@@ -25,7 +25,11 @@ paths, or lacks meaningful refusal/route-change behavior. Read
 `../../references/ensemble-card-design.md` when the opening fails because a
 multi-character card introduces the full cast, lacks turn ownership, or lets
 speakers talk over the player. Use `lunatalk-ensemble-director` first when the
-cast structure is unresolved.
+cast structure is unresolved. Read `../../references/play-engine-design.md` when
+an RPG, adventure, open-world, survival, investigation, simulator, or game-like
+opening reads like a rule manual, exposes decorative stats, lacks compact state,
+or offers choices without resource/risk/state consequences. Use
+`lunatalk-play-engineer` first when the playable rules are unresolved.
 
 ## Boundary
 
@@ -43,6 +47,9 @@ opening, then hand off to authoring, render review, or simulation.
 3. Use or preserve `lunatalk-agency-designer` when the first-screen problem is
    spectator play, decorative choices, player-feeling narration, route funneling,
    or missing refusal/redirect paths.
+   Use or preserve `lunatalk-play-engineer` when the first-screen problem is a
+   game manual, decorative state, unclear resources, missing turn protocol, or
+   choices with no risk/cost/state update.
 4. Build the five beats: place/time, role action, pressure, player implication,
    and reply paths.
 5. Write one expected first user message.
@@ -122,3 +129,6 @@ Handoff:
 - If an ensemble opening is a roll call, choose one focal conflict and delay the
   rest of the cast. If speaker entry, spotlight, or turn ownership is unclear,
   use `lunatalk-ensemble-director` before rewriting the welcome.
+- If a game-like opening is a manual, define a play-engine packet first, then
+  rebuild the welcome around one crisis, visible compact state, and 2-4 choices
+  tied to resource, risk, route, or state.

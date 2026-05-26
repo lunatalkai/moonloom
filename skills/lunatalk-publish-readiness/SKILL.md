@@ -25,6 +25,9 @@ trope-only, generic, passive, or lacks player leverage.
 Read `../../references/world-engine-design.md` when the card has lore-heavy
 worldbuilding, decorative factions/locations, unclear player position, or weak
 world-state consequences.
+Read `../../references/play-engine-design.md` when RPG/adventure/sandbox/
+survival/investigation mechanics, compact state, resources, quests, combat, turn
+protocol, or failure-forward behavior are part of the readiness risk.
 Read `../../references/role-card-writing-framework.md` if the card has not already
 been checked for playable loop, anchors, consequences, and token efficiency.
 Read `../../references/token-economy.md` when `validate_role.tokenBudget`,
@@ -62,6 +65,10 @@ matter, or the card decides the player's feelings/actions.
    faction/location play functions, compact state, route costs, or exposition
    policy, repair it with `lunatalk-world-engineer` before treating the card as
    ready.
+   If the card is RPG/adventure/sandbox/survival/investigation-like but cannot
+   name compact state, resource consequences, quest/risk routes, turn protocol,
+   failure-forward behavior, opening contract, and play-engine probes, repair it
+   with `lunatalk-play-engineer` before treating the card as ready.
    If dialogue is generic, voice cards are missing, catchphrases repeat, refusal
    voice breaks character, or ensemble speakers are not distinguishable, repair
    it with `lunatalk-voice-director` before treating the card as ready.
