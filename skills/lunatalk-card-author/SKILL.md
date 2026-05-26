@@ -228,6 +228,8 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
 16. If `validate_role.tokenBudget` shows allocation drift, use
     `lunatalk-token-architect` before render or simulation.
 17. Call `render_preview` and review the result with `lunatalk-render-review`.
+    If render found visual or first-action failures, preserve render repair
+    before patching visual fields or before another render pass.
 18. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing. Include a
     playtest plan, transcript triage, simulation repair packet, and
@@ -278,7 +280,7 @@ MCP tools make the card real; Moonloom makes the card good.
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, profile package, language-style decisions,
-  quality audit, simulation repair, archetype, character core,
+  quality audit, render repair, simulation repair, archetype, character core,
   relationship/daily-life/world/play/generator/scenario/ensemble engines,
   agency, voice, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.

@@ -40,7 +40,36 @@ visibility, opening clarity, or second-turn setup.
    visually inspect desktop and mobile.
 6. Use `evaluation` first, then `structuredReport`, DOM summary, console errors,
    blocked requests, overflow, contrast, and XML tag lists.
-7. Patch the role or theme, then re-run validation and preview.
+7. Produce a render repair packet before patching the role/theme or running
+   another render pass.
+8. Patch the role or theme, then re-run validation and preview.
+
+## Render repair packet
+
+When preview evidence shows a blocker, warning, or playability risk, return this
+packet before another render pass or visual patch:
+
+```text
+Render repair packet:
+- roleId:
+- render mode:
+- preview evidence:
+- visual failures:
+- playability failures:
+- technical blockers:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerender stance:
+- handoff:
+```
+
+Use `lunatalk-card-doctor` when readable render combines with mixed behavior
+symptoms. Use `lunatalk-token-architect` for welcome bloat or visual panels that
+carry durable rules, `lunatalk-opening-director` for inert first screens, and
+`lunatalk-presentation-director` for XMLV3/Theme V3 structure changes.
 
 ## What to check
 

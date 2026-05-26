@@ -101,6 +101,20 @@ Sample calibration packet:
 - opening proof changes:
 - simulation probes to keep:
 - handoff:
+Render repair packet:
+- roleId:
+- render mode:
+- preview evidence:
+- visual failures:
+- playability failures:
+- technical blockers:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerender stance:
+- handoff:
 Simulation repair packet:
 - roleId:
 - probes run:

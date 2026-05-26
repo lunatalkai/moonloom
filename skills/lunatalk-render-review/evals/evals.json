@@ -78,6 +78,19 @@
         "The expected packet includes welcome mode, visible content map, hidden state JSON plan, Theme V3 responsibilities, and HTML decision.",
         "The output names render review as a later proof step after a role draft or preview exists."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "The render report shows mobile overflow, low contrast, and actionVisibility warning. Before another render pass, give me the repair handoff only; do not patch the card yet.",
+      "expected_output": "Returns a Render repair packet with render mode, preview evidence, visual failures, playability failures, patch target, next Moonloom skill, validation needed, and rerender stance before another render pass.",
+      "files": [],
+      "expectations": [
+        "The output includes a Render repair packet rather than only a visual summary.",
+        "The packet names render mode, preview evidence, visual failures, playability failures, technical blockers, patch target, next Moonloom skill, fields to preserve, fields to patch, validation needed, rerender stance, and handoff.",
+        "The output routes actionVisibility or inert first-screen issues to opening, agency, presentation, token, or card-doctor repair before cosmetic styling if needed.",
+        "The output delays another render pass until after the visual or first-action patch is applied.",
+        "The output treats overflow, contrast, and action visibility as Moonloom render/playability repairs, not subjective server gates."
+      ]
     }
   ]
 }
