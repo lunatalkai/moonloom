@@ -14,6 +14,10 @@ Read `../../references/card-writer-mcp.md` for `validate_role` and
 HTML, and Theme V3 decisions. Read `../../references/quality-rubric.md` for the
 visual quality rubric. Read `../../references/role-card-writing-framework.md` when
 render issues affect playability, token cost, or first-scene clarity. Read
+`../../references/card-diagnosis.md` when render looks readable but the existing
+card also has author feedback, simulation symptoms, weak behavior, or several
+writing risks and the repair order is unclear. Use `lunatalk-card-doctor` before
+another render pass or visual-only patch in that case. Read
 `../../references/token-economy.md` when visual panels, repeated lore, HTML/XMLV3
 bulk, or welcome-first layout creates token allocation risk. Read
 `../../references/opening-design.md` when visual warnings affect first action
@@ -45,6 +49,10 @@ visibility, opening clarity, or second-turn setup.
   screen is a card quality problem, not only a visual problem.
 - If the first screen is visually valid but inert, patch the opening packet or
   welcome scene before tuning only CSS or Theme V3.
+- If the preview is readable but the existing card also has mixed symptoms such
+  as boring behavior, simulation failures, route funneling, generic voice, vague
+  premise, or unclear repair order, create or preserve a `lunatalk-card-doctor`
+  diagnosis packet before choosing token, opening, or visual patches.
 - If the first screen is visually elaborate because durable rules, repeated lore,
   duplicated monologues, or large visual panels live in `roleWelcome`, use
   `lunatalk-token-architect` before more visual polish.

@@ -52,6 +52,19 @@
         "The repair targets moving durable rules and lore out of roleWelcome while preserving first action clarity.",
         "The review says another render pass is needed after patching."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "The full-card preview is readable and visually polished, but the existing card also has author feedback and simulation symptoms: boring after one reply, route funneling, vague premise, polite assistant voice, and high welcomeToDetailRatio. Tell me what render fix to do first.",
+      "expected_output": "Does not treat readable render as the main problem; routes the mixed existing-card symptoms to lunatalk-card-doctor before token, opening, or visual patches.",
+      "files": [],
+      "expectations": [
+        "The review recognizes that readable render does not prove writing quality or behavior quality.",
+        "The output routes mixed symptoms and unclear repair order to lunatalk-card-doctor before token architecture or another render pass.",
+        "The diagnosis request preserves render evidence while mapping behavior symptoms to source fields and narrow Moonloom skills.",
+        "The output does not patch only CSS, Theme V3, or visual panels when the durable engine and agency are weak.",
+        "The output keeps MCP validation and render review as technical/visual checks, not subjective writing gates."
+      ]
     }
   ]
 }

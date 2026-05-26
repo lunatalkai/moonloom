@@ -11,6 +11,20 @@ Before calling mutating MCP tools, draft this packet:
 Card shape:
 Language:
 Content rating intent:
+Card diagnosis packet:
+- current request:
+- available evidence:
+- card shape:
+- primary failure:
+- secondary failures:
+- repair order:
+- symptom map:
+- field triage:
+- keep / move / cut / rewrite:
+- packets to preserve:
+- packets to create next:
+- validation / render / simulation rerun plan:
+- handoff:
 Archetype packet:
 - current seed:
 - primary archetype:
@@ -28,6 +42,7 @@ Archetype packet:
   - talkExample:
   - XMLV3 / Theme V3:
 - required packets:
+  - card diagnosis:
   - character core:
   - relationship engine:
   - world engine:
@@ -591,6 +606,7 @@ Before render or simulation, answer:
 ```text
 Promise: pass | revise because ...
 Anchor: pass | revise because ...
+Card diagnosis: pass | revise because ...
 Relationship engine: pass | revise because ...
 Voice texture: pass | revise because ...
 Voice calibration: pass | revise because ...

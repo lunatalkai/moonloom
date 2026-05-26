@@ -15,6 +15,10 @@ decide whether another pass is worth the cost.
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, and author co-review.
+Read `../../references/card-diagnosis.md` when the transcript has multiple
+symptoms and the weakest layer or repair order is unclear. Use
+`lunatalk-card-doctor` before another simulation when validation/render passed
+but behavior is still boring, generic, passive, or inconsistent.
 Read `../../references/character-core-design.md` when simulation shows a generic
 persona, weak motive, missing leverage, passive pressure response, or behavior
 that collapses to a trope.
@@ -73,6 +77,8 @@ When the author asks only for a test plan, do not call the tool.
 5. Read every simulated turn and the returned `evaluation`. Evaluate behavior,
    not just whether the tool ran.
 6. Map each failure to a Moonloom patch target using `playtest-loop.md`.
+   If the transcript shows several failures at once, create or preserve a
+   `lunatalk-card-doctor` diagnosis packet before choosing field patches.
 7. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.

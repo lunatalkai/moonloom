@@ -250,3 +250,33 @@ Simulation probes:
 - "I say I can share the kitchen, but I am not ready to be friends."
 - "I accuse you of turning every helpful gesture into another contest."
 - "I stay quiet and start fixing the broken shelf instead of discussing us."
+
+## Brief 10: Existing Card Diagnosis
+
+Goal: Diagnose a technically valid card that still fails behaviorally before
+rewriting fields or spending another simulation pass.
+
+Author prompt:
+
+```text
+I have an existing role card. Validation passes and the preview looks readable,
+but the card feels boring after one reply. The premise is pretty but vague, the
+detail is mostly biography and setting trivia, the visual welcome is long, the
+choices all lead to similar replies, the voice sounds like a polite assistant,
+and the token report says the welcome is much longer than detail.
+```
+
+Quality checks:
+
+- The workflow produces a card diagnosis packet before rewriting fields.
+- The diagnosis maps each symptom to source field, missing layer, narrow
+  Moonloom skill, and patch target.
+- The patch order does not treat validation or render polish as enough.
+- The plan delays another simulation until structural patches are defined and
+  cost is accepted.
+
+Simulation probes:
+
+- "I follow the opening hook but add one unexpected condition."
+- "I ignore the suggested choice and try a plausible alternate action."
+- "I stay quiet and wait for the role to carry the next beat."

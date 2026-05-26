@@ -162,6 +162,27 @@ Use `token-economy.md` when the repair needs a field-by-field allocation plan,
 keep / move / cut / rewrite decisions, visual budget, example budget, or a
 compression ladder before render or simulation.
 
+## Existing-card diagnosis
+
+When improving an existing card, diagnose before rewriting. A technically valid
+card can still be weak if validation passes, render looks good, and the behavior
+fails after one reply.
+
+Use `card-diagnosis.md` when the card has mixed symptoms:
+
+- vague promise plus biography-heavy detail
+- long visual welcome plus thin durable engine
+- author feedback such as boring, off, passive, too generic, too verbose, or too
+  controlling
+- simulation symptoms across voice, agency, opening, longplay, or token
+  allocation
+- unclear repair order
+
+The diagnosis should produce evidence, weakest layer, repair order, symptom map,
+field triage, keep / move / cut / rewrite decisions, and verification plan. Do
+not rewrite every field or spend another simulation pass until the patch target
+is clear.
+
 ## Top-card pattern stack
 
 Use this stack when the author asks for a card that should feel competitive with

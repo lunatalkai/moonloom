@@ -195,6 +195,19 @@
         "The report does not ask MCP validation to judge subjective relationship craft.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 16,
+      "prompt": "Create a negative regression check for an existing card that passes validate_role and render_preview but receives author feedback and simulation symptoms across several layers: vague promise, biography-heavy detail, bloated welcome, route funneling, generic voice, and high welcomeToDetailRatio.",
+      "expected_output": "Treats multi-symptom existing-card repair as a Moonloom diagnosis failure, checks the card diagnosis packet, and recommends card-doctor triage before rewriting or another simulation.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role and render_preview pass.",
+        "The diagnosis identifies mixed symptoms and requires evidence, weakest layer, repair order, symptom map, field triage, and verification plan.",
+        "The proposed repair uses lunatalk-card-doctor before broad field rewriting or another costed simulation.",
+        "The report maps follow-up repairs to narrow Moonloom skills rather than asking MCP validation to judge subjective quality.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

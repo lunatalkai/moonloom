@@ -64,6 +64,11 @@ explicitly chooses a tradeoff:
 - Promise: clarify the premise, player relationship, and tension.
 - Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
+- Card diagnosis: if an existing card has several symptoms, author feedback is
+  vague, validation/render passes but behavior is weak, or the repair order is
+  unclear, create a card diagnosis packet with evidence, weakest layer, symptom
+  map, field triage, keep/move/cut/rewrite decisions, and verification plan
+  before rewriting fields.
 - Character core: if the role is trope-only, mood-only, passive, or forgettable,
   create a character-core packet with appeal promise, player leverage,
   relationship asymmetry, pressure behavior, and interaction hooks before field
