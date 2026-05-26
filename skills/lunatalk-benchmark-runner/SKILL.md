@@ -17,6 +17,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
+`../../references/opening-design.md` when benchmarking welcome repair, first
+screen playability, or second-turn behavior. Read
 `../../references/boundary-design.md` when benchmarking mature, adult, horror,
 jealous, consent-sensitive, or boundary-sensitive cards. Read
 `../../references/playtest-loop.md` for probe design and transcript-to-patch
@@ -52,6 +54,8 @@ Moonloom self-review, render review, or simulation that:
 - the speaking style is only generic tone labels such as natural, gentle, or like
   a real person.
 - the opening is generic despite having a question.
+- a schema-valid welcome is only a greeting or hollow question and has no opening
+  packet, expected first user message, or second-turn move.
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.

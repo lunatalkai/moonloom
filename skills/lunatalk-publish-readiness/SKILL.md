@@ -17,6 +17,8 @@ been checked for playable loop, anchors, consequences, and token efficiency.
 Read `../../references/safety-and-cost.md` for public action constraints. Read
 `../../references/boundary-design.md` when a mature, adult, horror-leaning,
 jealous, power-imbalanced, or consent-sensitive card needs boundary readiness.
+Read `../../references/opening-design.md` when the welcome is greeting-only,
+hollow, overloaded, or unclear about the first user action.
 
 ## Readiness checklist
 
@@ -25,6 +27,8 @@ jealous, power-imbalanced, or consent-sensitive card needs boundary readiness.
 3. Call `validate_role`.
 4. Resolve all blockers.
 5. Check the card against PACT: playable, anchored, consequential, token-efficient.
+   If the welcome is greeting-only, hollow, or a long setup with no first action,
+   repair it with `lunatalk-opening-director` before treating the card as ready.
    For boundary-sensitive cards, confirm rating intent, explicitness ceiling,
    player agency contract, escalation ladder, refusal route, stop conditions, and
    safer fallback are encoded in the card.

@@ -42,6 +42,23 @@ Before running the probes, state the patch triggers: what transcript evidence
 would cause a `roleDetailDesc`, `roleWelcome`, profile, or jailbreak change. This
 keeps the simulation from becoming a vague taste check.
 
+## Opening probe
+
+Use when the goal is to test whether the first screen works.
+
+```text
+Opening probe:
+- expected first user message:
+- expected second-turn move:
+- what should change:
+- failure trigger:
+```
+
+The probe should use a normal player reply that follows the welcome's affordance.
+If the role only repeats the welcome, asks another generic question, or fails to
+change state, relationship, route, risk, or information, patch the opening packet
+or `roleWelcome` before spending more simulation cost.
+
 ## Probe recipes by card type
 
 Companion / relationship:
@@ -97,6 +114,7 @@ triage, then map the observed problem to a card patch.
 |---|---|---|
 | Reply is generic, short, or repeats setup | anchor, voice fingerprint | `roleDetailDesc` voice and behavior rules |
 | Reply gives no next action | agency, opening affordance | `roleWelcome` reply path and role initiative |
+| Reply restates welcome or asks another generic question | opening direction, second-turn engine | opening packet and `roleWelcome` second-turn move |
 | Reply ignores player choice | consequence loop | `roleDetailDesc` state and route rules |
 | Reply decides the player's feelings/actions | player agency boundary | `roleDetailDesc` do/avoid and welcome phrasing |
 | Reply escalates sensitive content too fast | boundary design | explicitness ceiling, escalation ladder, pacing, refusal style, stop conditions |

@@ -13,7 +13,9 @@ Read `../../references/card-writer-mcp.md` for `validate_role` and
 `render_preview` details. Read `../../references/theme-v3-rendering.md` for XMLV3,
 HTML, and Theme V3 decisions. Read `../../references/quality-rubric.md` for the
 visual quality rubric. Read `../../references/role-card-writing-framework.md` when
-render issues affect playability, token cost, or first-scene clarity.
+render issues affect playability, token cost, or first-scene clarity. Read
+`../../references/opening-design.md` when visual warnings affect first action
+visibility, opening clarity, or second-turn setup.
 
 ## Workflow
 
@@ -39,6 +41,8 @@ render issues affect playability, token cost, or first-scene clarity.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.
+- If the first screen is visually valid but inert, patch the opening packet or
+  welcome scene before tuning only CSS or Theme V3.
 - Treat `evaluation.qualityDimensions` as the structured review map:
   `captureReadiness`, `semanticStructure`, `readability`, and
   `actionVisibility`.

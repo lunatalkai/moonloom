@@ -297,6 +297,25 @@ the provocative parts:
 Use `boundary-design.md` before blueprinting or authoring when intensity could
 otherwise become player-agency takeover or vague disclaimers.
 
+### 10. Opening direction
+
+When the current task is mostly about `roleWelcome`, treat it as a first-turn
+design problem before rewriting the whole card. Use an opening packet:
+
+- current failure
+- opening promise
+- player role
+- place/time, role action, pressure, player implication, and reply paths
+- expected first user message
+- second-turn move
+- what changes
+- token tradeoff
+
+Use `opening-design.md` when a welcome is greeting-only, a lore tour, a menu with
+no scene, an ensemble roll call, or a pretty first screen with no next move.
+The repair should make the first screen playable and the second turn stronger;
+it should not add more exposition to a weak greeting.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -320,7 +339,10 @@ a real private card:
    question, or an explicit "you can..." affordance.
 8. `roleWelcome` is not only a menu. It opens with concrete sensory/location
    context, a role beat, pressure, and a reason the player is implicated.
-9. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+9. Before render or simulation, the author can name one likely first user reply
+   and one second-turn move that changes state, relationship, risk, route, or
+   information.
+10. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
    detail, welcome, and examples.
 
 These are writing checks. Do not wait for `validate_role` to enforce them.
@@ -338,16 +360,18 @@ Repair the card in this order during Moonloom self-review:
 6. Agency: make the first reply path obvious.
 7. Opening scene: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-8. Player agency: remove rules that decide the player's actions, feelings,
+8. Opening direction: create or preserve an opening packet with first reply
+   paths, expected first user message, second-turn move, and token tradeoff.
+9. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-9. Language style: rewrite Simplified Chinese terms into Traditional Chinese
+10. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-10. Archetype: satisfy the chosen card type rather than writing a generic card.
-11. Token efficiency: move reusable visual or rule structure out of welcome when
+11. Archetype: satisfy the chosen card type rather than writing a generic card.
+12. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
-12. Material distillation: convert notes, files, or world bibles into a playable
+13. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
-13. Boundary design: convert mature, intense, horror, jealous, or power-
+14. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
 
