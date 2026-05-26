@@ -62,7 +62,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   welcomes into opening packets with first reply paths and second-turn moves.
 - `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
   weak memory, and flat routes into longplay packets for sustained sessions.
-- `skills/lunatalk-card-author` guides end-to-end private role card creation.
+- `skills/lunatalk-card-author` assembles packet stacks into field-ready drafts
+  and guides end-to-end private role card creation.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
@@ -89,8 +90,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   quest/risk routes, turn protocol, failure-forward behavior, opening contract,
   token plan, and probes for game-like cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
-  field templates, XMLV3 welcome scaffolds, boundary-sensitive prompts, and
-  self-review packets.
+  final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
+  boundary-sensitive prompts, and self-review packets.
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.

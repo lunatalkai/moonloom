@@ -273,6 +273,32 @@
         "The output does not jump straight to broad worldbuilding, opening-only repair, longplay-only repair, broad authoring, or mutating MCP tools.",
         "The output treats play-engine quality as Moonloom guidance, not MCP hard validation."
       ]
+    },
+    {
+      "id": 22,
+      "prompt": "I am not sure which Moonloom skill to use. I already have a coherent packet stack: character-core, relationship-engine, world-engine, opening, voice-director, token architecture, and quality audit. I do not want more ideation or MCP calls yet. I need final field-ready roleName, roleDesc, roleDetailDesc, roleWelcome, talkExample decision, tags/theme notes, token allocation, packet-preservation checklist, conflict resolution, validation/render/simulation handoff, and self-review.",
+      "expected_output": "Uses using-moonloom as the router, routes prepared packet stacks and final field-ready draft assembly to lunatalk-card-author in draft-only field assembly mode, and returns a final role-field authoring packet without mutating MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes prepared packet stacks and final field-ready draft assembly to lunatalk-card-author, not to broad blueprinting, opening-only repair, voice-only repair, token-only repair, render review, simulation, or publish readiness.",
+        "The output sets draft-only field assembly mode and says no mutating MCP tools should run until the author asks to create or patch a real private role.",
+        "The output asks for or produces a final role-field authoring packet with roleName, roleDesc, roleDetailDesc, roleWelcome, talkExample decision, tags/theme notes, token allocation, packet-preservation checklist, conflict resolution, validation/render/simulation handoff, and self-review.",
+        "The output preserves the prepared packet stack and avoids re-running broad ideation unless a required packet is missing or contradictory."
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "I am not sure which Moonloom skill to use. I have a prepared packet stack for a private role, but before assembling final fields I want a top-tier quality audit: scorecard, overall tier, critical blockers, and first three repairs. Do not call MCP tools yet.",
+      "expected_output": "Uses using-moonloom as the router and routes packet-stack scorecard/top-tier review to lunatalk-quality-auditor before draft-only field assembly or MCP-backed authoring.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes scorecard, top-tier review, overall tier, critical blockers, and first-three repair requests to lunatalk-quality-auditor even though a prepared packet stack exists.",
+        "The output does not route directly to lunatalk-card-author draft-only field assembly until the quality audit packet is complete.",
+        "The output says no mutating MCP tools, render, simulation, or publish tools should run during the audit.",
+        "The output treats the quality scorecard as Moonloom writing guidance, not MCP validation, platform metrics, or a server gate."
+      ]
     }
   ]
 }

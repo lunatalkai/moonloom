@@ -358,6 +358,108 @@ Token plan:
 - what to cut first:
 ```
 
+## Final role-field authoring packet
+
+Use when the author already has Moonloom packets and asks for field-ready role
+fields before MCP calls. This packet assembles existing design work; it should
+not restart ideation unless a required packet is missing or contradictory.
+
+```text
+Route:
+- entry skill:
+- selected skill:
+- mode: draft-only field assembly | MCP-backed creation | patch existing role
+- MCP calls now: yes | no
+- language:
+- visibility target: private draft | private role | public submission later
+
+Inputs preserved:
+- quality audit packet:
+- archetype packet:
+- character-core packet:
+- relationship-engine packet:
+- world-engine packet:
+- play-engine packet:
+- ensemble packet:
+- agency packet:
+- voice-director packet:
+- opening packet:
+- longplay packet:
+- boundary packet:
+- token architecture packet:
+- material / source-to-play packet:
+
+Role fields:
+- roleName:
+- roleDesc:
+- roleDetailDesc structure:
+  - core premise:
+  - player position:
+  - agency and interaction:
+  - relationship / world / play engine:
+  - role identity:
+  - contradiction and boundary:
+  - voice fingerprint:
+  - proactive behavior:
+  - progression and consequence:
+- roleWelcome:
+  - mode: plain | xmlv3 | html
+  - first-screen promise:
+  - XMLV3 / plain draft:
+  - first reply paths:
+  - expected second-turn move:
+- talkExample:
+  - decision: omit | micro-samples | full examples
+  - reason:
+  - samples or field guidance:
+- tags:
+- Theme V3 / visual notes:
+
+Token allocation:
+- roleDesc target:
+- roleDetailDesc target:
+- roleWelcome target:
+- talkExample target:
+- Theme / visual budget:
+- keep:
+- move:
+- cut:
+- rewrite:
+
+Packet preservation checklist:
+- character core preserved:
+- relationship engine preserved:
+- world / play engine preserved:
+- player agency preserved:
+- voice preserved:
+- opening and longplay preserved:
+- boundary posture preserved:
+- token architecture preserved:
+
+Conflict resolution:
+- conflict:
+  - chosen rule:
+  - rejected / delayed rule:
+  - reason:
+
+Validation / render / simulation handoff:
+- validate_role risks:
+- render_preview focus:
+- private chat simulation probes:
+- cost / billing note:
+- publish readiness stance:
+
+Self-review:
+- promise:
+- engine:
+- play:
+- presentation:
+- player agency:
+- language consistency:
+- token efficiency:
+- remaining risks:
+```
+
 ## Source-to-play handoff packet
 
 Use after `lunatalk-material-distiller` has processed notes, files, drafts, or a

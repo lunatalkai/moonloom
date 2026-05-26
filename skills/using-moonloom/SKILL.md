@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, card series or variants, ensemble or multi-character cards, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -21,6 +21,11 @@ When there is any reasonable chance the task is about LunaTalk creation, role
 cards, card quality, Theme V3/XMLV3, MCP card tools, render review, simulation,
 or publishing, start with this skill and route from here. Do this before making
 MCP calls or choosing a narrower Moonloom skill.
+
+If the task says "not sure which skill", "which Moonloom workflow", "route this",
+"use Moonloom", "use MCP later", or otherwise asks for tool/skill selection, stay
+in this router until the route is explicit. The output should name the route,
+mode, next skill, and handoff packet before doing any narrower work.
 
 If the task is ambiguous, do not guess silently. Classify the author's intent,
 pick the narrowest matching skill, and state the route in the response. If no
@@ -125,7 +130,14 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   opening-scene planning, or turning a vague idea into a card-ready blueprint
   after source material has been distilled: use
   `lunatalk-card-blueprint`.
-- Creating or editing a role card: use `lunatalk-card-author`.
+- Prepared packet stacks, field-ready drafts, final role fields, or assembling
+  `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
+  tags, Theme V3 notes, token allocation, validation handoff, render handoff, or
+  simulation handoff after ideation packets already exist: use
+  `lunatalk-card-author` in draft-only field assembly mode. Do not re-run broad
+  ideation or call MCP tools unless the author asks to create or patch a real
+  private role.
+- Creating or editing a real private role card: use `lunatalk-card-author`.
 - Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
 - Preparing public submission: use `lunatalk-publish-readiness`.

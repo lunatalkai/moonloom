@@ -1,12 +1,14 @@
 ---
 name: lunatalk-card-author
-description: Create or edit LunaTalk private role cards through the Card Writer MCP. Use this skill whenever the user wants an AI client to write, improve, import, restructure, or iterate on a LunaTalk role card, especially when the workflow should produce a real private card rather than only text.
+description: Use when the user wants an AI client to write, improve, import, restructure, iterate on, or assemble field-ready drafts for a LunaTalk role card, including prepared Moonloom packet stacks and MCP-backed private role creation or editing.
 ---
 
 # LunaTalk Card Author
 
-Use this skill to turn an author's idea, draft, world notes, or imported material
-into a private LunaTalk role card using the Card Writer MCP.
+Use this skill to turn an author's idea, draft, world notes, imported material,
+or prepared Moonloom packet stack into field-ready LunaTalk role content. When
+the author asks for a real private role, use the Card Writer MCP after the draft
+is coherent and self-reviewed.
 
 ## Required references
 
@@ -76,8 +78,10 @@ benchmark creation, regression checks, or example-driven iteration.
 
 ## Workflow
 
-1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
-   language, content rating intent, and success criteria.
+1. Capture the card goal and mode: draft-only field assembly, MCP-backed private
+   role creation, or patching an existing private role. Also capture role
+   premise, relationship dynamic, play loop, tone, language, content rating
+   intent, and success criteria.
    If the author asks whether a draft, blueprint, packet stack, or role fields
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
@@ -143,15 +147,21 @@ benchmark creation, regression checks, or example-driven iteration.
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
 4. Draft the card in Moonloom first: promise, engine, play, and presentation. Use
    the universal draft packet from `card-authoring-templates.md` for thin or
-   high-stakes briefs.
+   high-stakes briefs. When the author already provides a coherent packet stack
+   and asks for final fields, produce the final role-field authoring packet from
+   `card-authoring-templates.md`.
 5. Run Moonloom self-review before calling mutating tools.
-6. If there is no `roleId`, call `role_create_private`.
-7. Patch profile fields with `role_patch_profile`.
-8. If the current card or draft has an overlong `roleDesc`, thin
+6. If the mode is draft-only field assembly or the author forbids MCP calls,
+   stop here after returning the final role-field authoring packet. Do not call
+   `role_create_private`, patch tools, render, simulation, or publish tools until
+   the author asks to create or patch a real private role.
+7. If there is no `roleId`, call `role_create_private`.
+8. Patch profile fields with `role_patch_profile`.
+9. If the current card or draft has an overlong `roleDesc`, thin
    `roleDetailDesc`, overlong `roleWelcome`, high `welcomeToDetailRatio`,
    duplicated lore, visual bloat, or misplaced durable rules, use or preserve
    `lunatalk-token-architect` before patching fields.
-9. Before patching stable character and world context with `role_patch_detail`,
+10. Before patching stable character and world context with `role_patch_detail`,
    use or preserve `lunatalk-play-engineer` when the current patch changes
    RPG/adventure rules, compact state, resources, inventory, quests, combat,
    turn protocol, failure-forward behavior, or visible state updates.
@@ -166,24 +176,24 @@ benchmark creation, regression checks, or example-driven iteration.
    Use or preserve `lunatalk-agency-designer` when the patch changes player
    insertion space, reply paths, route consequences, passive-player behavior, or
    agency guardrails.
-10. Before patching the welcome, use `lunatalk-opening-director` when the current
+11. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
-11. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
+12. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML or legacy HTML.
-12. Optionally use `theme_bind` and `extension_enable` for Theme V3.
-13. Call `validate_role`.
-14. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
+13. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+14. Call `validate_role`.
+15. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
     `role-card-writing-framework.md` and `quality-rubric.md`.
-15. If `validate_role.tokenBudget` shows allocation drift, use
+16. If `validate_role.tokenBudget` shows allocation drift, use
     `lunatalk-token-architect` before render or simulation.
-16. Call `render_preview` and review the result with `lunatalk-render-review`.
-17. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
+17. Call `render_preview` and review the result with `lunatalk-render-review`.
+18. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing. Include a
     playtest plan, transcript triage, and evidence-backed patch decision, not
     only a tool status check.
-18. Summarize the card, validation result, render result, simulation result, and
+19. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 
 ## Collaboration Loop
@@ -221,6 +231,11 @@ MCP tools make the card real; Moonloom makes the card good.
   the agent chat, not an in-app comment system.
 - Do not create extra storage, review sessions, or side ledgers in the skill.
   The role card is the source of truth.
+- When a prepared packet stack already exists, do not brainstorm from scratch.
+  Resolve conflicts, preserve the strongest packet signals, and assemble
+  `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
+  tags/theme notes, token allocation, validation/render/simulation handoff, and
+  self-review.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
   profile, detail, welcome, and examples consistently Traditional Chinese.
@@ -412,3 +427,12 @@ Report:
 - render review status
 - simulation status or why it was skipped
 - recommended next action
+
+For draft-only field assembly, report:
+
+- mode and route
+- final role-field authoring packet summary
+- packet preservation checklist
+- conflict resolutions
+- validation / render / simulation handoff
+- remaining risks and recommended next action
