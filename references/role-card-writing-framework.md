@@ -1,8 +1,8 @@
 # Moonloom Role Card Writing Framework
 
 Use this framework when writing, improving, reviewing, or simulating LunaTalk role
-cards. It is derived from LunaTalk production card data and should evolve after
-future evaluation passes.
+cards. It should evolve through author feedback, render review, and simulation
+results.
 
 ## Core thesis
 
@@ -32,7 +32,7 @@ Good promise examples by shape:
 - "You are a new student in a living magical academy."
 - "Your quiet classmate has a dangerous secret."
 - "You can generate and govern an entire world."
-- "You are an unknown SCP being contained by the Foundation."
+- "You are an anomalous entity being evaluated by a secret research bureau."
 
 Keep `roleDesc` tight: usually 80-260 characters for normal cards, up to 500 for
 systems with many modes. If the premise cannot be stated briefly, the card is not
@@ -53,7 +53,7 @@ Include:
 - what the role should proactively do when the player is passive
 - what must remain stable across long sessions
 
-Data-informed length targets:
+Practical length targets:
 
 - Companion or relationship card: 800-2,200 characters
 - Scenario/story card: 1,500-4,000 characters
@@ -84,7 +84,7 @@ Avoid:
 - long menu screens with no scene
 - visual HTML that consumes tokens but adds no playable affordance
 
-Data-informed welcome targets:
+Practical welcome targets:
 
 - Companion or relationship card: 80-700 characters
 - Story or scenario card: 200-1,200 characters

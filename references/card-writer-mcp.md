@@ -4,7 +4,7 @@ Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
 ## Endpoint
 
-Production:
+Hosted endpoint:
 
 ```text
 https://api.lunatalk.ai/mcp/card-writer
