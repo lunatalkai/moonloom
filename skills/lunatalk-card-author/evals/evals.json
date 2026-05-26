@@ -24,6 +24,18 @@
       "prompt": "Improve this relationship card idea: a quiet classmate has a dangerous online secret. Make it feel playable instead of generic.",
       "expected_output": "Applies the companion/relationship recipe, creates a sharp roleDesc, anchored roleDetailDesc, immediate welcome scene, and a simulation-ready play loop.",
       "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "I only have a vague idea: make me a popular vampire card. Help me turn it into a top-tier LunaTalk card, not a generic trope.",
+      "expected_output": "Starts with Moonloom ideation before tool calls, proposes distinct playable directions, chooses a concrete player role and first-scene pressure, then drafts promise/engine/play/presentation layers with a self-review checklist.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "validate_role passed for my card, but the card still feels boring after one reply. Diagnose and improve it.",
+      "expected_output": "Does not treat a technical check pass as proof of writing craft. Runs Moonloom self-review, identifies weak loop/initiative/consequence/voice issues, patches the role card, then uses render/simulation only after the draft is worth testing.",
+      "files": []
     }
   ]
 }

@@ -22,24 +22,43 @@ iteration.
 
 1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
    language, content rating intent, and success criteria.
-2. If there is no `roleId`, call `role_create_private`.
+2. If the brief is thin, brainstorm 2-3 sharply different playable directions
+   with the author before creating the card. Make the options differ by conflict,
+   player role, first scene, and long-term loop, not only by mood.
 3. Choose the archetype: companion/relationship, story/scenario, system/simulator,
    RPG/open-world, generator/assistant, or canon/IP adaptation.
-4. Patch profile fields with `role_patch_profile`.
-5. Patch stable character and world context with `role_patch_detail`.
-6. Patch the opening scene with `role_patch_welcome`.
-7. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
+4. Draft the card in Moonloom first: promise, engine, play, and presentation.
+5. Run Moonloom self-review before calling mutating tools.
+6. If there is no `roleId`, call `role_create_private`.
+7. Patch profile fields with `role_patch_profile`.
+8. Patch stable character and world context with `role_patch_detail`.
+9. Patch the opening scene with `role_patch_welcome`.
+10. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML or legacy HTML.
-8. Optionally use `theme_bind` and `extension_enable` for Theme V3.
-9. Call `validate_role`.
-10. Fix blockers before moving on. Treat warnings as work items unless the author
-   explicitly accepts the tradeoff. Use `qualityDimensions` to repair the weakest
-   dimension first.
-11. Call `render_preview` and review the result with `lunatalk-render-review`.
-12. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
+11. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+12. Call `validate_role`.
+13. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
+    quality; run the Moonloom self-review checklist from
+    `role-card-writing-framework.md` and `quality-rubric.md`.
+14. Call `render_preview` and review the result with `lunatalk-render-review`.
+15. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing.
-13. Summarize the card, validation result, render result, simulation result, and
+16. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
+
+## Collaboration Loop
+
+Moonloom should behave like a card-writing skill framework, not a form filler.
+
+- Open the author's imagination before drafting: ask what emotional promise,
+  player fantasy, forbidden pressure, or gameplay loop they want to feel.
+- When the author gives a weak or generic idea, propose concrete alternatives:
+  a relationship pressure, a first-scene incident, a hidden contradiction, and a
+  repeatable loop.
+- When improving an existing card, diagnose the weakest layer first: promise,
+  engine, play, presentation, render, or simulation. Patch that layer directly.
+- Keep the card source compact. Strong cards usually get replayability from
+  state, consequence, and role initiative, not from longer prose.
 
 ## Authoring guidance
 
@@ -55,36 +74,38 @@ iteration.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
+- For persona-driven cards, the detail should make the role's engine legible:
+  what the role wants, what blocks that desire, what they will not do, and what
+  changes when the player pushes closer or pulls away.
 - Speaking style must be executable. Replace labels such as natural, gentle,
   witty, or like a real person with sentence rhythm, vocabulary, address terms,
   emotional tells, and what the role avoids saying.
-- Clear `validate_role` quality warnings by strengthening the premise, role
-  engine, speaking style, progression rules, concrete opening scene, or first
-  action path.
-- If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `voiceTexture`, `consequence`, `roleInitiative`, `agency`, `openingScene`,
-  `playerAgency`, `languageStyle`, `archetype`, then `tokenEfficiency`. Do not let
-  polished prose hide generic voice, passive role behavior, weak first-turn
-  action, hollow opening, missing consequence loop, user agency takeover, mixed
-  language, or a generic card that fails its chosen type.
-- For `voiceTexture` warnings, patch detail with concrete voice behavior:
-  sentence rhythm, vocabulary, address terms, emotional tells, and avoided
-  phrasing.
-- For `roleInitiative` warnings, patch detail with proactive turn rules: what the
-  role asks, reveals, escalates, or offers when the player is passive or stalls.
-- For `openingScene` warnings, rewrite welcome before render review. Add
+- Run Moonloom self-review before render: promise, anchor, voice texture,
+  consequence, role initiative, agency, opening scene, player agency, language
+  style, archetype, then token efficiency.
+- Do not let polished prose hide a weak character engine, generic voice, passive
+  role behavior, weak first-turn action, hollow opening, missing consequence loop,
+  user agency takeover, mixed language, or a generic card that fails its chosen
+  type.
+- Patch detail with the role's want/need, the contradiction that blocks it, and
+  the boundaries that keep escalation playable.
+- Patch detail with concrete voice behavior: sentence rhythm, vocabulary, address
+  terms, emotional tells, and avoided phrasing.
+- Patch detail with proactive turn rules: what the role asks, reveals, escalates,
+  or offers when the player is passive or stalls.
+- Rewrite welcome before render review when it lacks a real opening scene. Add
   location/time or sensory context, a concrete role beat, pressure, and player
   implication before choices or setup fields.
-- For `playerAgency` warnings, remove any rule that decides the player's actions,
-  feelings, consent, or commitments. Replace generic openings with a concrete
-  scene and specific reply path.
-- For `languageStyle` warnings, patch profile, detail, welcome, and examples
-  together. Preserve character names, tone, and XMLV3 tags while converting card
-  prose to Traditional Chinese.
-- For `archetype` warnings, repair the chosen card type directly: companion needs
-  relationship pressure and emotional boundaries; story needs setting stakes and
-  likely branches; game/RPG/system cards need rules, resources, failure pressure,
-  and opening setup/state/choices.
+- Remove any rule that decides the player's actions, feelings, consent, or
+  commitments. Replace generic openings with a concrete scene and specific reply
+  path.
+- Patch profile, detail, welcome, and examples together for language consistency.
+  Preserve character names, tone, and XMLV3 tags while converting card prose to
+  Traditional Chinese when needed.
+- Repair the chosen card type directly: companion needs relationship pressure and
+  emotional boundaries; story needs setting stakes and likely branches;
+  game/RPG/system cards need rules, resources, failure pressure, and opening
+  setup/state/choices.
 - If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
   repeated lore, or visual scaffolding out of welcome before render/simulation.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
@@ -95,6 +116,9 @@ iteration.
   `<n>`; if it should drive state UI, make it valid JSON.
 - For high-retention cards, design the loop explicitly: hook, agency,
   consequence, memory, progression, and renewed hook.
+- Before finalizing, write one expected first user message and one expected second
+  turn. If the card cannot produce a more interesting second turn than the first,
+  revise the engine before render or simulation.
 
 ## Tool call discipline
 
@@ -103,7 +127,7 @@ iteration.
 - If a tool returns `nextRecommendedTools`, treat it as the next normal step unless
   the author's latest instruction conflicts.
 - When `validate_role` returns patch tools, patch and validate again before render
-  or simulation unless the author explicitly accepts the remaining tradeoff.
+  or simulation. Treat those as technical fixes, not as the full writing review.
 - If validation returns blockers, patch the card before publishing.
 
 ## Final response shape

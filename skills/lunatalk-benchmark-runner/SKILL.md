@@ -1,6 +1,6 @@
 ---
 name: lunatalk-benchmark-runner
-description: Run public-safe Moonloom benchmark checks for LunaTalk card authoring quality. Use this skill when evaluating whether Moonloom or the Card Writer MCP can create strong cards across companion, story, game/RPG, and generator archetypes, or when running regression checks after changing prompts, skills, validation, render review, or simulation behavior.
+description: Run public-safe Moonloom benchmark checks for LunaTalk card authoring quality. Use this skill when evaluating whether Moonloom can guide MCP-backed creation of strong cards across companion, story, game/RPG, and generator archetypes, or when running regression checks after changing prompts, skills, render review, or simulation behavior.
 ---
 
 # LunaTalk Benchmark Runner
@@ -21,9 +21,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 1. Pick one or more synthetic briefs.
 2. Create a private card with the matching `cardType`:
    companion, story, game, or generator.
-3. Run `validate_role`.
-4. Patch until validation has no blockers and no quality warnings, unless the
-   author explicitly accepts a tradeoff.
+3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
+4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
    `previewUrl` when browser or multimodal access is available.
 6. Run `simulate_private_chat` with the listed probes only when normal billing is
@@ -32,8 +31,8 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 
 ## Negative checks
 
-Regression should include at least one synthetic fail case. Confirm that
-`validate_role` warns when:
+Regression should include at least one synthetic fail case. Confirm through
+Moonloom self-review, render review, or simulation that:
 
 - `roleDesc` is too long to scan quickly.
 - a `zh-Hant` card mixes Simplified Chinese into profile, detail, welcome, or
@@ -42,6 +41,8 @@ Regression should include at least one synthetic fail case. Confirm that
   pressure.
 - the detail defines consequences but lacks proactive turn rules for passive or
   stalled player input.
+- a persona-driven card has scene structure but lacks a clear want/need,
+  contradiction, or boundary.
 - the speaking style is only generic tone labels such as natural, gentle, or like
   a real person.
 - the opening is generic despite having a question.
@@ -51,7 +52,8 @@ Regression should include at least one synthetic fail case. Confirm that
 
 ## Pass criteria
 
-- `validate_role.status` is `pass`.
+- Moonloom self-review finds no unresolved publish-grade writing issue.
+- `validate_role.status` is `pass` with no technical blockers.
 - `render_preview.evaluation.status` is `pass`, or any remaining visual risk is
   explicitly accepted.
 - `simulate_private_chat.evaluation.status` is `pass`, or simulation was skipped
@@ -66,7 +68,7 @@ Return:
 - briefs tested
 - role IDs created or edited
 - validation/render/simulation status
-- weakest quality dimensions
+- weakest Moonloom self-review dimensions
 - patch loop count
 - cost summary when simulation ran
-- whether Moonloom guidance or MCP validation needs another iteration
+- whether Moonloom guidance or the MCP technical flow needs another iteration

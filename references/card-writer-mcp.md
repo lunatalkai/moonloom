@@ -152,42 +152,13 @@ Toggle a Theme V3 extension pack.
 
 ### `validate_role`
 
-Return blockers, warnings, suggested fixes, quality dimensions, token budget,
-score, and next tools. Treat `blocker` as a hard stop before publish.
+Return technical blockers, warnings, suggested fixes, token budget, score, and
+next tools. Treat `blocker` as a hard stop before publish.
 
-Use `qualityDimensions` as the agent repair map:
-
-- `promise`: the premise, player relationship, and tension are clear.
-- `anchor`: the durable identity, behavior, and voice are strong enough.
-- `voiceTexture`: the speaking style is specific enough to prevent generic drift:
-  sentence rhythm, vocabulary, address terms, emotional tells, and avoided
-  phrasing.
-- `consequence`: player choices can change state, relationship, route, risk, or
-  other meaningful variables.
-- `roleInitiative`: the role or system knows how to advance play when the player
-  is passive, including what it asks, reveals, escalates, or offers.
-- `agency`: the first user action path is obvious.
-- `openingScene`: the welcome has a concrete first scene, not only choices or a
-  menu. It should expose location/time/sensory context, a role beat, pressure, and
-  player implication.
-- `playerAgency`: the card does not decide the player's actions, feelings,
-  consent, or commitments. It also catches generic openings such as "Hello, I am
-  X, what do you want to do?"
-- `languageStyle`: `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently
-  across profile, detail, welcome, and examples.
-- `tokenEfficiency`: welcome/detail/render structure spends tokens where they
-  improve play.
-- `archetype`: the card satisfies its type-specific contract. Companion cards
-  need relationship pressure and emotional boundaries; story cards need setting
-  stakes and likely branches; game cards need rules, resources, failure pressure,
-  and opening setup/state/choices; generator cards need intake, output schema,
-  revision loop, and quality rubric.
-
-Treat quality warnings as normal iteration work: thin premise, thin detail,
-missing or generic speaking style, missing progression/state, missing initiative,
-weak first action path, player agency takeover, hollow opening, generic opening,
-language mismatch, or token-heavy welcome should be patched before render review
-unless the author explicitly accepts the tradeoff.
+`validate_role` is not the good-card judge. It does not decide whether the
+premise is emotionally strong, whether the role has enough tension, or whether a
+card satisfies the Moonloom writing framework. Those decisions belong to the
+agent's Moonloom skills and author conversation.
 
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:
@@ -200,27 +171,17 @@ cost:
 - `guidance` gives card-type length targets and repair hints.
 
 When validation is not `pass`, `nextRecommendedTools` usually points to the
-repair surface:
+technical repair surface:
 
-- `role_patch_profile` for premise/profile issues.
-- `role_patch_detail` for anchor, voice, progression, and consequence issues.
-- `role_patch_detail` for `voiceTexture` issues: replace generic tone labels with
-  concrete sentence rhythm, vocabulary, address terms, and behavioral tells.
-- `role_patch_detail` for `roleInitiative` issues: add proactive turn rules for
-  passive or stalled player input.
-- `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome
-  issues.
-- `role_patch_welcome` for `openingScene` issues: add sensory/location context
-  and a concrete first beat before the choices.
-- `role_patch_profile`, `role_patch_detail`, and `role_patch_welcome` together
-  for `languageStyle` issues, because mixed language can appear in any card field.
-- `role_patch_detail` plus sometimes `role_patch_welcome` for `archetype` issues,
-  depending on whether the missing part is durable logic or first-screen setup.
+- `role_patch_profile` when required profile fields are missing.
+- `role_patch_detail` when required detail fields are missing.
+- `role_patch_welcome` for required welcome content, unsafe HTML, invalid XMLV3,
+  or unsupported render tags.
 - `validate_role` after the patch.
 
 Do not call `render_preview` or `simulate_private_chat` just because they are
-available. Use them after validation passes, or after the author explicitly
-accepts the remaining tradeoff.
+available. Use them after `validate_role` has no blockers and after the Moonloom
+self-review says the draft is worth testing visually or behaviorally.
 
 ### `render_preview`
 
