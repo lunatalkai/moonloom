@@ -76,6 +76,9 @@ Use `tokenBudget` from `validate_role` before render or simulation:
 - XMLV3 uses registered tags. Avoid invented aliases such as `<narration>` or
   `<dialogue>`, and keep visible prose out of hidden data tags.
 - Theme V3 tokens support the card mood without making the page one-note.
+- `render_preview` evaluation passes `captureReadiness`, `semanticStructure`,
+  `readability`, and `actionVisibility`, or the author explicitly accepts the
+  remaining visual risk.
 
 ## Simulation quality
 

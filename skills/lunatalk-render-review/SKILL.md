@@ -23,8 +23,8 @@ render issues affect playability, token cost, or first-scene clarity.
 4. If a specific issue is being debugged, use `mode: "xmlv3"` or `mode: "html"`.
 5. If the AI client can open a browser or inspect images, open `previewUrl` and
    visually inspect desktop and mobile.
-6. If the client cannot see the page, use `structuredReport`, DOM summary,
-   console errors, blocked requests, overflow, contrast, and XML tag lists.
+6. Use `evaluation` first, then `structuredReport`, DOM summary, console errors,
+   blocked requests, overflow, contrast, and XML tag lists.
 7. Patch the role or theme, then re-run validation and preview.
 
 ## What to check
@@ -39,6 +39,11 @@ render issues affect playability, token cost, or first-scene clarity.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.
+- Treat `evaluation.qualityDimensions` as the structured review map:
+  `captureReadiness`, `semanticStructure`, `readability`, and
+  `actionVisibility`.
+- `evaluation` does not replace screenshot review. If the client has browser or
+  multimodal access, still inspect the rendered preview.
 
 ## Reporting
 
@@ -46,6 +51,7 @@ Return a compact review:
 
 - render mode and preview status
 - visible issues
+- render evaluation warnings
 - validation blockers or warnings
 - patch recommendations
 - whether another render pass is needed
