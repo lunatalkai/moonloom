@@ -161,6 +161,8 @@ Use `qualityDimensions` as the agent repair map:
 - `anchor`: the durable identity, behavior, and voice are strong enough.
 - `consequence`: player choices can change state, relationship, route, risk, or
   other meaningful variables.
+- `roleInitiative`: the role or system knows how to advance play when the player
+  is passive, including what it asks, reveals, escalates, or offers.
 - `agency`: the first user action path is obvious.
 - `openingScene`: the welcome has a concrete first scene, not only choices or a
   menu. It should expose location/time/sensory context, a role beat, pressure, and
@@ -179,10 +181,10 @@ Use `qualityDimensions` as the agent repair map:
   revision loop, and quality rubric.
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
-missing speaking style, missing progression/state, weak first action path, player
-agency takeover, hollow opening, generic opening, language mismatch, or token-heavy
-welcome should be patched before render review unless the author explicitly
-accepts the tradeoff.
+missing speaking style, missing progression/state, missing initiative, weak first
+action path, player agency takeover, hollow opening, generic opening, language
+mismatch, or token-heavy welcome should be patched before render review unless the
+author explicitly accepts the tradeoff.
 
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:
@@ -199,6 +201,8 @@ repair surface:
 
 - `role_patch_profile` for premise/profile issues.
 - `role_patch_detail` for anchor, voice, progression, and consequence issues.
+- `role_patch_detail` for `roleInitiative` issues: add proactive turn rules for
+  passive or stalled player input.
 - `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome
   issues.
 - `role_patch_welcome` for `openingScene` issues: add sensory/location context

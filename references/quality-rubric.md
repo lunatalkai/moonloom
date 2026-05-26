@@ -29,6 +29,8 @@ explicitly chooses a tradeoff:
 - `anchor`: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
 - `consequence`: define what player choices change and how the next hook renews.
+- `roleInitiative`: define what the role asks, reveals, escalates, or offers when
+  the player is passive or stalls.
 - `agency`: make the first user response path obvious.
 - `openingScene`: add concrete location, time, sensory context, role beat,
   pressure, and player implication before choices.
@@ -53,6 +55,9 @@ explicitly chooses a tradeoff:
   and what the role avoids saying.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
+- Missing role initiative: add proactive turn rules. The role should know what to
+  ask, reveal, escalate, or offer next instead of waiting for the player to carry
+  every beat.
 - Weak first action path: add choices, a direct question, or an explicit response
   path in the opening scene.
 - Hollow opening: choices alone are not enough. Add a visible place, sensory cue,

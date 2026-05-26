@@ -40,6 +40,8 @@ Regression should include at least one synthetic fail case. Confirm that
   examples.
 - the opening has choices but no concrete location, sensory beat, role action, or
   pressure.
+- the detail defines consequences but lacks proactive turn rules for passive or
+  stalled player input.
 - the opening is generic despite having a question.
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator

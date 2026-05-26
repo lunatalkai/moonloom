@@ -53,15 +53,19 @@ iteration.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
-  style, boundaries, world facts, and the consequence loop.
+  style, boundaries, world facts, proactive turn behavior, and the consequence
+  loop.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, concrete opening scene, or first
   action path.
 - If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `consequence`, `agency`, `openingScene`, `playerAgency`, `languageStyle`,
-  `archetype`, then `tokenEfficiency`. Do not let polished prose hide a weak
-  first-turn action, hollow opening, missing consequence loop, user agency
-  takeover, mixed language, or a generic card that fails its chosen type.
+  `consequence`, `roleInitiative`, `agency`, `openingScene`, `playerAgency`,
+  `languageStyle`, `archetype`, then `tokenEfficiency`. Do not let polished prose
+  hide passive role behavior, weak first-turn action, hollow opening, missing
+  consequence loop, user agency takeover, mixed language, or a generic card that
+  fails its chosen type.
+- For `roleInitiative` warnings, patch detail with proactive turn rules: what the
+  role asks, reveals, escalates, or offers when the player is passive or stalls.
 - For `openingScene` warnings, rewrite welcome before render review. Add
   location/time or sensory context, a concrete role beat, pressure, and player
   implication before choices or setup fields.
