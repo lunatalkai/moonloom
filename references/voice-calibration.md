@@ -6,6 +6,9 @@ player recognizes a role after several turns, even when the scene changes.
 When the voice problem comes from a weak motive, generic persona, or missing
 player leverage, repair the character core first with `character-core-design.md`;
 voice rules cannot compensate for a role that has no pressure behavior.
+Use `../skills/lunatalk-voice-director/SKILL.md` when the task is primarily
+generic dialogue, speaking-style repair, catchphrase discipline, voice drift,
+blind-line testing, or ensemble voice contrast.
 
 ## Core rule
 
@@ -45,6 +48,39 @@ Voice card: [name]
 
 Use it in `roleDetailDesc`. Keep it short enough to survive token pressure.
 
+## Voice-director packet
+
+When voice is the current weak layer, produce a packet before writing fields:
+
+```text
+Voice-director packet:
+- current failure:
+- voice promise:
+- role / speaker scope:
+- prerequisite core repair:
+- social surface:
+- private motive:
+- pressure behavior:
+- sentence rhythm:
+- vocabulary:
+- address terms:
+- emotional tells:
+- action beats:
+- concealment:
+- refusal style:
+- never says:
+- catchphrase policy:
+- response-mode grid:
+- talkExample decision:
+- blind-line test:
+- pressure probes:
+- field patch targets:
+- token tradeoff:
+```
+
+The packet should be handoff-ready for blueprint, authoring, simulation, or
+publish readiness. It should not call MCP tools by itself.
+
 ## Minimum samples
 
 Single-persona cards usually need one useful `talkExample` only when voice cannot
@@ -61,6 +97,20 @@ micro-sample can be one player line plus one role response. It should teach:
 
 Do not add long sample scenes only to decorate the card. Samples cost tokens, so
 they must teach voice, format, or decision behavior.
+
+## Catchphrase discipline
+
+A catchphrase can support voice, but it cannot be the voice. Use one only when it
+changes with pressure:
+
+- calm state: the phrase may appear as habit
+- trust: the phrase softens, shortens, or becomes more honest
+- resistance: the phrase becomes a deflection, not a wall
+- boundary: the phrase disappears or turns into a clear refusal
+- fear or stress: the role revises the phrase or corrects itself
+
+If a phrase appears in every reply, it becomes noise. Replace repetition with
+rhythm, vocabulary, action beats, and decision behavior.
 
 ## Ensemble contrast matrix
 
@@ -105,6 +155,22 @@ pushes boundary | [refusal style] | [safe continuation]
 ```
 
 This grid prevents voices from collapsing when the player behaves unexpectedly.
+
+## Calibration ladder
+
+Use this order when repairing voice:
+
+1. Core repair: desire, contradiction, boundary, player leverage, pressure
+   behavior.
+2. Voice card: social surface, private motive, rhythm, vocabulary, tells,
+   concealment, refusal style.
+3. Response-mode grid: trust, question, resistance, passivity, boundary, and
+   betrayal when relevant.
+4. Blind-line test: anonymous lines should be identifiable without names.
+5. Micro-sample or talkExample: add only when rules still do not preserve the
+   voice.
+6. Simulation probe: use real LunaTalk simulation only after the card is private,
+   valid, and the author accepts normal chat billing.
 
 ## Talk example placement
 

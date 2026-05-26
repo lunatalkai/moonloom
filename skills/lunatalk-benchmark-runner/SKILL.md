@@ -64,6 +64,8 @@ Moonloom self-review, render review, or simulation that:
   hooks.
 - the speaking style is only generic tone labels such as natural, gentle, or like
   a real person.
+- the card repeats a catchphrase as the whole voice instead of defining rhythm,
+  vocabulary, emotional tells, refusal style, and pressure behavior.
 - the opening is generic despite having a question.
 - a schema-valid welcome is only a greeting or hollow question and has no opening
   packet, expected first user message, or second-turn move.
@@ -90,6 +92,9 @@ Moonloom self-review, render review, or simulation that:
 When a negative check fails, treat it as a skill or prompt regression. Do not
 turn the failed writing check into an MCP hard gate unless it is actually
 a technical safety, format, ownership, billing, or publish-control issue.
+Use `lunatalk-voice-director` for regressions where the weakest layer is generic
+dialogue, repeated phrasing, catchphrase overuse, refusal voice, blind-line
+failure, or ensemble voice blur.
 
 ## Pass criteria
 

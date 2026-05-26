@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -59,6 +59,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   leverage, asymmetry, emotional hook, or distinctiveness repair: use
   `lunatalk-character-core` before blueprinting, authoring, voice, opening,
   longplay, simulation, or publish readiness.
+- Character voice, speaking style, generic dialogue, catchphrase or repeated
+  phrasing problems, emotional tells, refusal style, talkExample need,
+  blind-line checks, voice drift, or ensemble speakers blending together: use
+  `lunatalk-voice-director` before blueprinting, authoring, simulation, or
+  publish readiness.
 - Worldbuilding, relationship networks, factions, locations, lore-heavy settings,
   light-setting or heavy-setting design, playable world rules, state/consequence
   from world facts, or avoiding lore dumps: use `lunatalk-world-engineer` before

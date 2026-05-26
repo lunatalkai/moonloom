@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-voice-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk role has a good premise, but the character voice is generic. The role is a calm archivist who hides fear through precise corrections, but every reply sounds like a normal polite assistant. Build the voice packet before writing fields.",
+      "expected_output": "Produces a voice-director packet with executable rhythm, vocabulary, emotional tells, refusal style, pressure behavior, blind-line tests, talkExample decision, field patch targets, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats generic dialogue as a voice-design failure rather than an MCP validation issue.",
+        "The packet defines sentence rhythm, vocabulary, address terms, emotional tells, action beats, concealment, refusal style, and never-says.",
+        "The pressure behavior covers trust, questioning, resistance, passive input, and boundary-setting.",
+        "The output includes blind-line or pressure tests before field writing.",
+        "The talkExample decision explains whether micro-samples are needed and what to cut if tokens are tight."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My ensemble mystery card has three speakers, but all of them sound like the same narrator. Redesign the voices before authoring.",
+      "expected_output": "Produces an ensemble voice plan with contrast matrix, distinct motives, speech cues, pressure moves, player leverage, blind-line checks, micro-sample guidance, and handoff targets.",
+      "files": [],
+      "expectations": [
+        "The output treats blurred ensemble voice as a Moonloom voice-director problem.",
+        "Each core speaker gets a distinct want, fear or cost, speech cue, pressure move, and player leverage.",
+        "The plan uses blind-line distinguishability or equivalent anonymous-line checks.",
+        "The output recommends merging or redesigning speakers that do not change play.",
+        "The output uses compact micro-samples only when rules alone are not enough."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The card's rogue character repeats one charming catchphrase in every reply and ignores boundaries when the player resists. Fix the voice without making server validation police style.",
+      "expected_output": "Creates a voice repair packet with catchphrase discipline, in-character refusal style, pressure behavior under resistance, player-agency preservation, field patch targets, and no MCP hard-gate proposal.",
+      "files": [],
+      "expectations": [
+        "The output says catchphrases are not enough to define voice.",
+        "The repair defines how the phrase changes or disappears under pressure instead of repeating every turn.",
+        "The refusal style respects player agency and keeps play going through an alternate route.",
+        "The patch targets Moonloom card fields or talkExample guidance rather than MCP/server semantic gates.",
+        "The output includes tests for resistance or boundary-setting behavior."
+      ]
+    }
+  ]
+}

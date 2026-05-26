@@ -273,6 +273,12 @@ For voice-heavy, romance, companion, assistant, or ensemble cards, use
 and blind-line checks. Ensemble cards should not rely on one strong speaker while
 the rest of the cast remains generic.
 
+When voice is the primary requested repair, use `lunatalk-voice-director` before
+field drafting. It should produce a voice-director packet with current failure,
+voice promise, rhythm, vocabulary, emotional tells, refusal style, catchphrase
+policy, response-mode grid, talkExample decision, blind-line test, pressure
+probes, field patch targets, and token tradeoff.
+
 ### 7. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.

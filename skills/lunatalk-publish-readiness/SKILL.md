@@ -26,7 +26,9 @@ Read `../../references/opening-design.md` when the welcome is greeting-only,
 hollow, overloaded, or unclear about the first user action.
 Read `../../references/longplay-design.md` when the card has repetitive loops,
 weak memory/state, missing route costs, dead third turns, or no continuation
-plan.
+plan. Read `../../references/voice-calibration.md` when dialogue is generic,
+voice drifts, refusal breaks character, catchphrases repeat, or ensemble
+speakers blend together.
 
 ## Readiness checklist
 
@@ -41,6 +43,9 @@ plan.
    faction/location play functions, compact state, route costs, or exposition
    policy, repair it with `lunatalk-world-engineer` before treating the card as
    ready.
+   If dialogue is generic, voice cards are missing, catchphrases repeat, refusal
+   voice breaks character, or ensemble speakers are not distinguishable, repair
+   it with `lunatalk-voice-director` before treating the card as ready.
    If the welcome is greeting-only, hollow, or a long setup with no first action,
    repair it with `lunatalk-opening-director` before treating the card as ready.
    If the card repeats after the first scene or cannot name route/state/memory

@@ -59,6 +59,30 @@ World-engine packet:
 - exposition policy:
 - token tradeoff:
 
+Voice-director packet:
+- current failure:
+- voice promise:
+- role / speaker scope:
+- prerequisite core repair:
+- social surface:
+- private motive:
+- pressure behavior:
+- sentence rhythm:
+- vocabulary:
+- address terms:
+- emotional tells:
+- action beats:
+- concealment:
+- refusal style:
+- never says:
+- catchphrase policy:
+- response-mode grid:
+- talkExample decision:
+- blind-line test:
+- pressure probes:
+- field patch targets:
+- token tradeoff:
+
 Engine:
 - role desire:
 - contradiction:
@@ -363,6 +387,9 @@ Use when a card has a strong persona, a delicate speaking style, or an ensemble
 cast whose voices may blur together.
 
 ```text
+Current failure:
+Voice promise:
+
 Voice cards
 - [Name]:
   - rhythm:
@@ -376,6 +403,15 @@ Voice cards
   - if player is passive:
   - if player resists:
   - if player trusts them:
+
+Response-mode grid
+- trust:
+- question:
+- resist:
+- passive:
+- boundary:
+
+Catchphrase policy:
 
 Ensemble contrast
 - [Name]: wants, fears, speech cue, pressure move, player leverage
@@ -391,6 +427,13 @@ Talk example need
 - no example needed because:
 - add micro-sample for:
 - cut elsewhere to pay tokens:
+
+Pressure probes
+- trust:
+- question:
+- resist:
+- passive:
+- boundary:
 ```
 
 For ensemble cards with three or more core speakers, add one compact micro-sample

@@ -22,6 +22,7 @@ draft packets and field templates. Read `../../references/material-distillation.
 when the idea comes from files, notes, imported drafts, source fragments, or a
 large world bible. Read `../../references/voice-calibration.md` when the idea
 depends on distinctive dialogue, role consistency, or ensemble cast contrast.
+Use `lunatalk-voice-director` first when voice repair is the primary task.
 Read `../../references/opening-design.md` when planning `roleWelcome`, first
 screen playability, first reply paths, or second-turn moves. Read
 `../../references/longplay-design.md` when planning replayability, route seeds,
@@ -66,10 +67,13 @@ creation, validation, render review, simulation, and publishing workflow.
    locations, or lore-dump repair, use `lunatalk-world-engineer` first or
    preserve its packet. Define the world or relationship engine only as far as it
    creates play.
-9. Define voice fingerprint: sentence rhythm, vocabulary, address terms,
-   emotional tells, action beats, concealment, refusal style, and avoided
-   phrasing. For ensemble cards, define a contrast matrix and at least one
-   calibration need per weak core speaker.
+9. If the weak layer is generic dialogue, speaking style, voice drift,
+   catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
+   blur, use `lunatalk-voice-director` first or preserve its packet. Define
+   voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
+   tells, action beats, concealment, refusal style, and avoided phrasing. For
+   ensemble cards, define a contrast matrix and at least one calibration need per
+   weak core speaker.
 10. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
@@ -163,6 +167,18 @@ Voice calibration:
 - micro-samples needed:
 - blind-line risk:
 
+Voice-director packet:
+- current failure:
+- voice promise:
+- prerequisite core repair:
+- catchphrase policy:
+- response-mode grid:
+- talkExample decision:
+- blind-line test:
+- pressure probes:
+- field patch targets:
+- token tradeoff:
+
 First scene:
 - place/time:
 - role action:
@@ -247,6 +263,10 @@ Handoff:
 - Preserve any world-engine packet from `lunatalk-world-engineer`; do not
   summarize away player position, core world rule, faction/location play
   functions, state model, route costs, exposition policy, or token tradeoff.
+- Preserve any voice-director packet from `lunatalk-voice-director`; do not
+  summarize away rhythm, vocabulary, emotional tells, refusal style,
+  response-mode grid, talkExample decision, blind-line test, pressure probes, or
+  token tradeoff.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
@@ -266,7 +286,8 @@ Handoff:
   leverage point, contradiction, and pressure behavior before field drafting.
 - If the first scene is passive, add role action and external pressure.
 - If the role voice is generic, replace mood labels with sentence rhythm,
-  vocabulary, tells, and avoided phrasing.
+  vocabulary, tells, and avoided phrasing. Use `lunatalk-voice-director` when
+  voice is the main requested repair.
 - If ensemble voices blur together, give each core role a different want, fear,
   rhythm, pressure move, and player leverage before adding more lore.
 - If the world is too large, use `lunatalk-world-engineer` or choose one place,

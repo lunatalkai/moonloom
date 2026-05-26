@@ -20,7 +20,8 @@ bible. Read `../../references/longplay-design.md` when the task needs route
 costs, state, memory, progression, or long-session behavior. Read
 `../../references/opening-design.md` when the task needs first-screen pressure.
 Read `../../references/voice-calibration.md` when the world uses ensemble voices
-or a narrator/system voice.
+or a narrator/system voice. Use `lunatalk-voice-director` when the remaining
+problem is voice contrast rather than world mechanics.
 
 ## Boundary
 
@@ -120,6 +121,8 @@ Hand the packet to:
 
 - `lunatalk-card-blueprint` when the concept still needs character core, voice,
   first-scene planning, or field-level synthesis.
+- `lunatalk-voice-director` when narrator, faction, guide, or ensemble voices
+  need contrast after the world engine is clear.
 - `lunatalk-card-author` when the author wants a real private card or patch.
 - `lunatalk-opening-director` when the first screen must reveal the world rule
   without becoming a lore tour.

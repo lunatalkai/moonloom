@@ -22,6 +22,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-world-engineer` turns world seeds, relationship networks,
   factions, locations, and lore-heavy settings into playable world-engine packets.
+- `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
+  catchphrase overuse, and blurred ensemble speakers into voice-director packets.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
@@ -73,6 +75,14 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/synthetic-card-briefs.md` provides fictional benchmark prompts for
   testing authoring, render review, and simulation loops.
 - `.mcp.json` contains an example remote MCP client configuration.
+
+## Skill references
+
+Shared references live in the repository-level `references/` directory so every
+skill can reuse the same public guidance without duplicating it. Inside a skill,
+link to these files relative to the skill directory, for example
+`../../references/voice-calibration.md`. When an agent runs from the repository
+root, the same file is available as `references/voice-calibration.md`.
 
 ## MCP endpoint
 

@@ -130,6 +130,19 @@
         "The report does not ask MCP validation to judge lore or worldbuilding quality.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 11,
+      "prompt": "Create a negative regression check for a schema-valid role whose dialogue is generic assistant politeness and whose only unique trait is one repeated catchphrase.",
+      "expected_output": "Treats generic dialogue and catchphrase-only identity as a Moonloom voice failure, checks the voice-director packet, blind-line distinguishability, pressure behavior, and recommends prompt or field repairs rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing rhythm, vocabulary, emotional tells, refusal style, pressure behavior, and catchphrase discipline.",
+        "The proposed repair uses lunatalk-voice-director or voice-calibration.md before blueprint, authoring, or simulation.",
+        "The report does not ask MCP validation to judge voice craft.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }
