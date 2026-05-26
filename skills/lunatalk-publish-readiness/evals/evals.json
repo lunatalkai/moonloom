@@ -91,6 +91,19 @@
         "The audit result includes craft tier, blockers, weakest dimensions, and handoff.",
         "The output treats the scorecard as Moonloom craft guidance, not a publishing gate."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "This private role passes validation and preview, and the engine is coherent, but roleName is generic, roleDesc is vague and too long, tags are mood-only, and the first impression does not explain why to open it. Can we submit it?",
+      "expected_output": "Does not publish; treats weak public-facing profile packaging as a Moonloom readiness failure, routes to lunatalk-profile-packager, then requires another readiness check before explicit submission.",
+      "files": [],
+      "expectations": [
+        "The output says validation and preview are not enough when the public profile fails the promise layer.",
+        "The output routes repair to lunatalk-profile-packager before publish readiness continues.",
+        "The repair expects roleName candidates, roleDesc candidates, concrete tags, first-impression check, and engine preservation.",
+        "The output recommends rerunning readiness checks after the profile package is applied.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

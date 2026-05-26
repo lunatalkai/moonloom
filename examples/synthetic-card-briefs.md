@@ -417,3 +417,37 @@ Simulation probes:
 - "I pocket the broken charm before anyone notices and ask who last touched it."
 - "I publicly accuse the stage manager but keep one clue hidden."
 - "I follow the witness's false trail instead of questioning the obvious suspect."
+
+## Brief 14: Public Profile Packaging
+
+Goal: Repair the public-facing package after the card engine is coherent.
+
+Author prompt:
+
+```text
+I have a coherent role draft with a clear engine and playable first scene, but
+the public profile is weak. The roleName is generic, the roleDesc reads like a
+long synopsis, the tags are vague mood words, and a new player cannot tell why to
+open it. I want roleName, short roleDesc, tags, and a first-impression check
+before final field assembly.
+```
+
+Quality checks:
+
+- The workflow routes to profile packaging, not broad diagnosis, publishing, or
+  simulation.
+- The package preserves the existing engine instead of reopening premise or
+  rewriting the whole card.
+- The package proposes three roleName candidates with different promise angles.
+- The roleDesc candidates are scannable and include player relation, tension, and
+  play loop.
+- Tags include card shape, relationship or role axis, action loop, tone/rating
+  posture, and mechanic/format signals rather than duplicate mood synonyms.
+- The first-impression check verifies that the first screen can prove the public
+  promise.
+
+Simulation probes:
+
+- "I ask why this card is worth opening from the profile alone."
+- "I compare two roleDesc candidates and ask which one preserves the engine."
+- "I ask whether the tags are concrete enough to distinguish the card."

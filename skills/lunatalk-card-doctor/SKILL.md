@@ -19,6 +19,9 @@ Read `../../references/card-diagnosis.md` first. Read
 `../../references/quality-rubric.md` for self-review dimensions. Read
 `../../references/playtest-loop.md` when the evidence includes simulation
 transcripts, behavior failure, or a probe plan. Read
+`../../references/profile-packaging.md` when the symptoms involve generic
+`roleName`, overlong or vague `roleDesc`, weak tags, title/tagline, first
+impression, public profile, discovery surface, or reason-to-open failures. Read
 `../../references/token-economy.md` when `tokenBudget`, overlong welcome, thin
 detail, high `welcomeToDetailRatio`, repeated lore, or visual bloat appears.
 Read `../../references/card-authoring-templates.md` when the diagnosis needs a
@@ -123,6 +126,9 @@ Hand the packet to:
 
 - `lunatalk-token-architect` when allocation, welcome bloat, or compression is
   the first repair.
+- `lunatalk-profile-packager` when the engine is coherent but `roleName`,
+  `roleDesc`, tags, short pitch, public profile, or first impression is the weak
+  layer.
 - `lunatalk-archetype-director` when card type or primary contract is unclear.
 - `lunatalk-character-core`, `lunatalk-relationship-architect`,
   `lunatalk-daily-life-architect`, or `lunatalk-world-engineer` when the durable

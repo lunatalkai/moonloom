@@ -52,6 +52,19 @@
         "The field triage targets roleDetailDesc for routine/state rules and roleWelcome for one playable ordinary moment.",
         "The output keeps subjective writing repair inside Moonloom skills rather than MCP/server hard gates."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "I almost used card-doctor, but the only problem is the public profile: roleName is generic, roleDesc is too long, tags are vague, and the first impression does not explain the reason to open. The engine, opening, and longplay are already coherent.",
+      "expected_output": "Routes away from broad card diagnosis to lunatalk-profile-packager, preserves the coherent engine, and does not create a multi-layer diagnosis packet.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that this is a narrow profile packaging problem, not mixed existing-card diagnosis.",
+        "The output routes to lunatalk-profile-packager instead of running a broad card-doctor repair order.",
+        "The output preserves the coherent engine, opening, and longplay packets.",
+        "The profile package expectation includes promise angle, roleName candidates, roleDesc candidates, tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
+        "The output does not call MCP tools or turn subjective profile quality into a server gate."
+      ]
     }
   ]
 }

@@ -52,6 +52,19 @@
         "The scorecard remains public craft guidance and not platform metrics, analytics, or MCP validation.",
         "The output does not call mutating MCP tools."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Audit this coherent packet stack before field assembly. The engine, opening, and longplay are strong, but the promise score is weak because roleName is generic, roleDesc is too long, tags are vague, and the first impression does not explain why to open it. Do not call MCP tools.",
+      "expected_output": "Uses lunatalk-quality-auditor for the scorecard, marks profile packaging as the first promise repair, and hands off to lunatalk-profile-packager without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output keeps the task in lunatalk-quality-auditor because the user asked for an audit or scorecard.",
+        "The promise dimension identifies weak roleName, roleDesc, tags, and first-impression reason-to-open as the main weak layer.",
+        "The first repair or handoff routes to lunatalk-profile-packager before card-author, render, simulation, or publish readiness.",
+        "The output preserves the coherent engine, opening, and longplay instead of broad diagnosis or re-blueprinting.",
+        "The output does not call MCP tools or treat profile quality as platform metrics or an MCP gate."
+      ]
     }
   ]
 }

@@ -72,6 +72,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-premise-workshop` turns early mood, trope, aesthetic, genre
   clusters, and "open this idea up" requests into contrasted playable directions
   before blueprinting or authoring.
+- `skills/lunatalk-profile-packager` sharpens `roleName`, `roleDesc`, tags, and
+  first-impression promise when the card engine exists but the public profile is weak.
 - `skills/lunatalk-opening-director` turns greeting-only, hollow, or overloaded
   welcomes into opening packets with first reply paths and second-turn moves.
 - `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
@@ -121,6 +123,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/premise-workshop.md` defines early taste-to-direction workshops,
   contrast axes, involvement ladders, pressure tests, and pre-blueprint handoff
   packets.
+- `references/profile-packaging.md` defines role profile packaging, promise
+  compression, scannable `roleDesc` patterns, tag sets, and first-impression checks.
 - `references/opening-design.md` defines five-beat opening design, opening
   packets, first reply paths, second-turn moves, XMLV3 scaffolds, and opening
   failure repairs.

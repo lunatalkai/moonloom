@@ -1,0 +1,71 @@
+{
+  "skill_name": "lunatalk-profile-packager",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a coherent LunaTalk card draft, but the public-facing package is weak: roleName is generic, roleDesc is too long, tags are vague, and a new player cannot tell why to open it. I do not want MCP calls yet.",
+      "expected_output": "Routes to lunatalk-profile-packager, preserves the existing engine, returns a profile package packet with roleName candidates, roleDesc candidates, a specific tag set, first-impression check, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the issue as profile packaging / promise compression, not publish readiness or whole-card rewriting.",
+        "The output produces three roleName candidates with different promise angles.",
+        "The output produces roleDesc candidates that include player relation, tension, and play loop while staying scannable.",
+        "The tag set uses concrete card shape, relationship or role axis, action loop, tone/rating, and mechanic/format signals.",
+        "The output does not call MCP tools, render, simulate, publish, or claim platform performance."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make this already-planned zh-Hant daily-life neighbor card easier to understand from the card profile. The routine engine and opening are done; I only need roleName, a short roleDesc, and tags before field assembly.",
+      "expected_output": "Keeps the daily-life engine intact, packages the profile in zh-Hant, avoids re-blueprinting, and hands off to draft-only card authoring after the profile package packet.",
+      "files": [],
+      "expectations": [
+        "The output preserves the existing daily-life packet or engine instead of reopening premise workshop.",
+        "The roleDesc pattern promises routine, player relation, small pressure, and play loop in Traditional Chinese.",
+        "The tags include daily-life or slice-of-life, relationship/role axis, action loop, and tone without vague duplicates.",
+        "The first-impression check verifies that the first screen can prove the public promise.",
+        "The output hands off to lunatalk-card-author only after the profile package is coherent."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My RPG card has a solid play-engine packet, but the roleDesc reads like a manual and the tags are just fantasy, adventure, magic. Compress the public promise without cutting the rules.",
+      "expected_output": "Uses lunatalk-profile-packager with play-engine preservation, moves manual details out of roleDesc, creates RPG/system tags tied to player controls/resources/risk, and routes token or authoring only if needed.",
+      "files": [],
+      "expectations": [
+        "The output preserves the play-engine packet and does not delete resources, state, or turn protocol from the engine.",
+        "The roleDesc candidates summarize player position, system/world, resource or risk pressure, and state/route change.",
+        "The output cuts manual detail from roleDesc and keeps durable rules in roleDetailDesc.",
+        "The tags include primary shape, action loop, and mechanic signals rather than only broad fantasy mood.",
+        "The output avoids MCP calls and unsupported popularity/ranking claims."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want a title and tagline for a card idea, but the premise is still only 'cozy vampire maybe mystery maybe romance'. I need the public package.",
+      "expected_output": "Routes away from profile packaging because the premise is not settled, asks for or requires premise workshop first, and does not invent final roleName/roleDesc/tags.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that profile packaging requires a chosen premise or engine.",
+        "The output routes to lunatalk-premise-workshop before final profile fields.",
+        "The output may suggest packaging criteria but does not lock final roleName, roleDesc, or tags.",
+        "The output does not call MCP tools.",
+        "The output keeps popular/top-card language as public craft goals if mentioned."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Package this coherent card profile so it sounds top-tier and more popular than nearby cards. The engine is done, but roleName and roleDesc are bland. Do not use MCP tools.",
+      "expected_output": "Uses lunatalk-profile-packager, translates top-tier/popular language into public craft goals, avoids ranking/source/traffic claims, preserves the engine, and returns profile candidates without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats popular/top-tier language as craft goals such as clarity, specificity, agency, hook, and honest first-screen proof.",
+        "The output does not claim platform ranking, traffic, source-card analysis, private-example access, or non-public performance knowledge.",
+        "The output does not replace unsupported popularity claims with market words like premium, high-demand, viral, trending, best, or top-ranked.",
+        "The output preserves the existing card engine and patches only roleName, roleDesc, tags, and first-impression promise.",
+        "The output returns roleName candidates, roleDesc candidates, tag set, first-impression check, and handoff.",
+        "The output does not call MCP tools, render, simulate, publish, or add server gates."
+      ]
+    }
+  ]
+}

@@ -288,6 +288,20 @@
         "The check rejects unsupported top-card, ranking, source-data, traffic, or private-example claims.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 23,
+      "prompt": "Create a negative regression check for a coherent schema-valid role whose engine and opening are good, but the public profile is weak: roleName is generic, roleDesc is a long synopsis, tags are vague mood labels, and a new player cannot tell why to open the card.",
+      "expected_output": "Treats weak public-facing profile packaging as a Moonloom promise-layer failure, checks the profile package packet, and recommends lunatalk-profile-packager before broad diagnosis, field assembly, render, simulation, publish readiness, or server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role and render_preview would pass.",
+        "The diagnosis identifies weak profile fields: generic roleName, overlong or vague roleDesc, vague tags, and missing first-impression reason-to-open.",
+        "The proposed repair uses lunatalk-profile-packager or profile-packaging.md before broad card-doctor diagnosis, final field assembly, render, simulation, or publish readiness.",
+        "The report requires a profile package packet with promise angle, roleName candidates, roleDesc candidates, concrete tag set, first-impression check, fields to preserve, fields to patch, and handoff.",
+        "The check rejects unsupported top-card, popularity, ranking, traffic, source-data, or private-example claims.",
+        "The report treats profile quality as Moonloom writing guidance rather than MCP validation, platform metrics, or server gates."
+      ]
     }
   ]
 }

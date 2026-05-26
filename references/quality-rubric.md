@@ -15,6 +15,9 @@ not a platform metric or MCP validation rule.
 - The role has a clear premise, relationship dynamic, and first playable scene.
 - The card has one clear primary archetype contract. Secondary overlays support
   the player promise instead of competing with it.
+- The public-facing profile is scannable and specific: `roleName`, `roleDesc`,
+  tags, and the first screen agree on who the player is, what pressure starts
+  play, and why the card is worth opening.
 - The role has a memorable character core: desire, contradiction, boundary,
   player leverage, and pressure behavior that are visible in play.
 - Relationship-heavy cards have a relationship engine: promise, asymmetry,
@@ -87,6 +90,11 @@ The first publish-grade pass should satisfy these items unless the author
 explicitly chooses a tradeoff:
 
 - Promise: clarify the premise, player relationship, and tension.
+- Profile packaging: if the engine is coherent but `roleName`, `roleDesc`, tags,
+  or first impression do not explain the reason to open, create a profile
+  package packet with promise angle, name candidates, description candidates,
+  concrete tags, first-impression check, and handoff before field assembly or
+  publish readiness.
 - Quality audit: when the author asks for a scorecard, top-tier check, craft
   rating, good-enough review, or first-three repairs, create a quality audit
   packet with evidence-backed scores, blockers, tier, strongest and weakest
@@ -184,10 +192,17 @@ explicitly chooses a tradeoff:
   cast-over-player behavior is present, create an ensemble packet with cast
   keep/merge/cut, turn ownership, spotlight rules, group tension state, player
   leverage, voice contrast, token plan, and agency probes before field drafting.
+- Generic `roleName`: replace trope labels with a specific pressure role,
+  contradiction, place, object, event, or system that points to playable tension.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Overlong `roleDesc`: compress it into one scannable premise sentence. Normal
   cards should usually stay under 260 characters; game/system/generator cards can
   use up to about 500 only when modes require it.
+- Vague tags: replace duplicate mood labels with card shape, player action loop,
+  relationship/role axis, tone/rating posture, and mechanic or format signals.
+- Weak first impression: align `roleName`, `roleDesc`, tags, and the first screen
+  so the promised play loop is immediately visible without adding ranking,
+  traffic, or popularity claims.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.
 - Trope-only character: replace labels such as quiet, cold, powerful, mysterious,
