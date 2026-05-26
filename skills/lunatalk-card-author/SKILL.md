@@ -13,10 +13,11 @@ into a private LunaTalk role card using the Card Writer MCP.
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
-the card is usable. Read `../../references/theme-v3-rendering.md` if the welcome
-uses HTML, XMLV3, or Theme V3. Use `../../examples/synthetic-card-briefs.md` when
-the task asks for benchmark creation, regression checks, or example-driven
-iteration.
+the card is usable. Read `../../references/safety-and-cost.md` when content
+rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
+`../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
+Theme V3. Use `../../examples/synthetic-card-briefs.md` when the task asks for
+benchmark creation, regression checks, or example-driven iteration.
 
 ## Workflow
 
@@ -25,8 +26,9 @@ iteration.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
    player role, first scene, and long-term loop, not only by mood.
-3. Choose the archetype: companion/relationship, story/scenario, system/simulator,
-   RPG/open-world, generator/assistant, or canon/IP adaptation.
+3. Choose the archetype or pressure shape: companion/relationship,
+   story/scenario, system/simulator, RPG/open-world, generator/assistant,
+   canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
 4. Draft the card in Moonloom first: promise, engine, play, and presentation.
 5. Run Moonloom self-review before calling mutating tools.
 6. If there is no `roleId`, call `role_create_private`.
@@ -60,6 +62,21 @@ Moonloom should behave like a card-writing skill framework, not a form filler.
 - Keep the card source compact. Strong cards usually get replayability from
   state, consequence, and role initiative, not from longer prose.
 
+## MCP boundary
+
+MCP tools make the card real; Moonloom makes the card good.
+
+- Do not ask MCP to reject a technically valid card because it is generic,
+  passive, emotionally thin, or missing a strong second-turn loop.
+- Use MCP validation for concrete blockers: required fields, unsafe HTML,
+  invalid XMLV3, unsupported render tags, ownership, and publish prerequisites.
+- Use Moonloom references and self-review for writing quality. If
+  `validate_role` passes but the card still feels weak, patch the role-card
+  prompt, detail, welcome, voice rules, or play loop before render or simulation.
+- When improving the system itself, update this skill, the writing framework,
+  rubric, or eval expectations. Do not convert writing taste into hidden server
+  gates.
+
 ## Authoring guidance
 
 - Keep the author in the loop through conversation. The author feedback surface is
@@ -69,6 +86,8 @@ Moonloom should behave like a card-writing skill framework, not a form filler.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
   profile, detail, welcome, and examples consistently Traditional Chinese.
+- Keep `roleDesc` scannable. If a draft exceeds the recommended length or feels
+  dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
@@ -82,7 +101,7 @@ Moonloom should behave like a card-writing skill framework, not a form filler.
   emotional tells, and what the role avoids saying.
 - Run Moonloom self-review before render: promise, anchor, voice texture,
   consequence, role initiative, agency, opening scene, player agency, language
-  style, archetype, then token efficiency.
+  style, boundary design, archetype, then token efficiency.
 - Do not let polished prose hide a weak character engine, generic voice, passive
   role behavior, weak first-turn action, hollow opening, missing consequence loop,
   user agency takeover, mixed language, or a generic card that fails its chosen
@@ -105,7 +124,12 @@ Moonloom should behave like a card-writing skill framework, not a form filler.
 - Repair the chosen card type directly: companion needs relationship pressure and
   emotional boundaries; story needs setting stakes and likely branches;
   game/RPG/system cards need rules, resources, failure pressure, and opening
-  setup/state/choices.
+  setup/state/choices; daily-life needs a small playable desire; heavy-setting
+  needs modular lore that creates action; ensemble needs distinct motives, voices,
+  and turn ownership.
+- For mature, intense, or sensitive premises, make the intended rating, pacing,
+  taboo, refusal style, player agency boundary, and stop conditions explicit in
+  the card design before writing a provocative welcome.
 - If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
   repeated lore, or visual scaffolding out of welcome before render/simulation.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style

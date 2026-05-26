@@ -1,6 +1,6 @@
 {
   "name": "moonloom-dev",
-  "description": "Development marketplace for Moonloom LunaTalk creation skills.",
+  "description": "Development marketplace for Moonloom LunaTalk role-card authoring skills.",
   "owner": {
     "name": "LunaTalk AI",
     "email": "contact@lunatalk.ai"
@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "moonloom",
-      "description": "LunaTalk AI creation skills and MCP workflows for external agent clients.",
+      "description": "LunaTalk role-card authoring skills and MCP workflows for external agent clients.",
       "version": "0.1.0",
       "source": "./",
       "author": {

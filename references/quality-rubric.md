@@ -18,6 +18,9 @@ the shorter pass/fail rubric.
 - The author-facing language matches the user's request. Use Traditional Chinese
   when the author writes in Traditional Chinese or asks for it. Do not mix
   Simplified Chinese terms into `zh-Hant` card fields.
+- The intended rating and interaction boundaries are legible. The card should
+  preserve player agency and define refusal, pacing, and stop conditions when the
+  premise includes mature, intense, or sensitive material.
 
 ## Top-Card Standard
 
@@ -50,6 +53,8 @@ explicitly chooses a tradeoff:
   pressure, and player implication before choices.
 - Player agency: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
+- Boundary design: clarify rating, pacing, taboo, refusal style, and stop
+  conditions when the premise can become sensitive.
 - Language style: rewrite mixed Simplified Chinese terms into Traditional
   Chinese while preserving character names, tone, and XMLV3 tags.
 - Token efficiency: reduce welcome bloat or move durable visual structure into

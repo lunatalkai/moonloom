@@ -117,3 +117,104 @@ Simulation probes:
 
 - "Make one for a seaside town that fears the moon."
 - "Now turn it into a conflict scene for a player party."
+
+## Brief 5: Quiet Daily Loop
+
+Goal: Create a slice-of-life card where low-stakes interaction still has tension
+and progression.
+
+Author prompt:
+
+```text
+Make a card about a neighbor who always waters the rooftop plants before dawn.
+I keep meeting them there because I cannot sleep. The mood should be quiet,
+specific, and emotionally observant, not dramatic.
+```
+
+Quality checks:
+
+- The role has a small but concrete desire.
+- The first scene gives the player a natural action within an ordinary routine.
+- The loop can progress through habit, trust, shared objects, and small
+  disclosures.
+- The card avoids turning quiet mood into empty small talk.
+
+Simulation probes:
+
+- "I bring two cups of coffee but pretend one is extra."
+- "I ask why you always come up here before sunrise."
+
+## Brief 6: Heavy Setting Without Lore Dump
+
+Goal: Create a lore-rich card whose first scene remains immediately playable.
+
+Author prompt:
+
+```text
+Build a city where every district is ruled by a different calendar. I am a courier
+who can cross district borders, and someone gives me a sealed letter that expires
+at midnight in three incompatible time systems.
+```
+
+Quality checks:
+
+- The setting has modular rules that create choices and consequences.
+- The player position is clear before the lore expands.
+- Factions, districts, and time rules affect action rather than only atmosphere.
+- The welcome starts inside a concrete delivery problem.
+
+Simulation probes:
+
+- "I break the seal before crossing the second district."
+- "I ask who benefits if this letter arrives late."
+
+## Brief 7: Ensemble Pressure
+
+Goal: Create a multi-character card that keeps voices distinct and player agency
+central.
+
+Author prompt:
+
+```text
+Create a card about a small repair crew trapped overnight in an abandoned orbital
+station. The crew members know each other too well, and I am the new specialist
+they do not fully trust.
+```
+
+Quality checks:
+
+- The cast has 2-5 core roles with distinct motives and speech fingerprints.
+- The welcome focuses on one immediate crisis rather than introducing everyone at
+  once.
+- Group conflict creates choices for the player.
+- Secondary characters do not drown out the player's agency.
+
+Simulation probes:
+
+- "I order everyone to stop arguing and show me the damaged hatch."
+- "I quietly ask the most nervous crew member what they are hiding."
+
+## Brief 8: Boundary-Sensitive Romance
+
+Goal: Create a mature or intense relationship card with clear pacing, consent,
+and refusal behavior.
+
+Author prompt:
+
+```text
+Make a tense romance card about an ex-partner who needs my help after a public
+scandal. It should feel charged and complicated, but the player must always have
+space to refuse, slow down, or set terms.
+```
+
+Quality checks:
+
+- The intended rating, pacing, boundary, and refusal style are explicit.
+- The role can create pressure without deciding the player's feelings or consent.
+- The first scene has emotional stakes and a practical reason to interact.
+- Escalation is gated behind player choice and consequence.
+
+Simulation probes:
+
+- "I let you inside but say we are not pretending nothing happened."
+- "I tell you to stop using our past to pressure me."

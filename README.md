@@ -9,6 +9,11 @@ Card Writer MCP; the project is intentionally broader than card writing so it ca
 later include worldbuilding, material packs, import flows, moderation assistance,
 and creator workflow automation.
 
+Moonloom is designed as a role-card authoring framework, not only a tool catalog.
+It helps an agent collaborate with an author through ideation, character
+positioning, worldbuilding, opening-scene design, voice control, interaction-loop
+repair, token budgeting, render review, simulation, and publish readiness.
+
 ## What is included
 
 - `skills/using-moonloom` routes agents into the right Moonloom workflow.
@@ -19,6 +24,11 @@ and creator workflow automation.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
+- `references/quality-rubric.md` defines the public checklist for judging whether
+  a card is playable, anchored, consequential, token-efficient, visually readable,
+  and ready for simulation or submission.
+- `references/safety-and-cost.md` covers ownership, public actions, mature-content
+  boundaries, simulation cost, and credential handling.
 - `examples/synthetic-card-briefs.md` provides fictional benchmark prompts for
   testing authoring, render review, and simulation loops.
 - `.mcp.json` contains an example remote MCP client configuration.

@@ -5,19 +5,40 @@
       "id": 1,
       "prompt": "Run a public-safe Moonloom benchmark for one companion brief and report whether the workflow can produce a top-card candidate.",
       "expected_output": "Uses synthetic briefs only, runs Moonloom self-review before MCP technical checks, checks render and simulation when allowed, and reports weakest Moonloom dimensions rather than expecting technical checks to judge writing craft.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The run uses only synthetic benchmark briefs and does not reference unprovided source material.",
+        "The benchmark scores Moonloom writing dimensions before validate_role.",
+        "The report separates MCP technical blockers from Moonloom writing failures.",
+        "The companion card check includes relationship pressure, contradiction, boundary, voice, first-scene action, and second-turn engine.",
+        "The report lists weakest dimensions and concrete skill or prompt improvements."
+      ]
     },
     {
       "id": 2,
       "prompt": "After changing the card author skill, test whether Moonloom still creates token-efficient RPG cards with playable state and consequences.",
       "expected_output": "Selects the RPG synthetic brief, judges promise/engine/play/presentation quality, checks tokenBudget as a diagnostic signal, and reports render/simulation status plus whether the skill needs another iteration.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The RPG benchmark checks rules, resources, risk, rewards, compact state, and player choice pressure.",
+        "The report uses tokenBudget as a diagnostic signal rather than a writing-quality gate.",
+        "The benchmark checks whether roleWelcome is shorter than or justified relative to the durable engine.",
+        "The report includes render and simulation status or a cost-aware reason for skipping simulation.",
+        "The conclusion says whether Moonloom guidance, MCP technical flow, or both need another iteration."
+      ]
     },
     {
       "id": 3,
       "prompt": "Create a negative regression check for a generic relationship card that has a valid schema but no emotional engine.",
       "expected_output": "Treats the schema-valid card as a Moonloom self-review failure, identifies missing desire/contradiction/boundaries/initiative, and does not claim validate_role should catch those writing issues.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing desire, contradiction, boundaries, voice texture, role initiative, and consequence loop.",
+        "The proposed fix updates the skill prompt or card-writing framework rather than adding an MCP semantic gate.",
+        "The report includes at least one concrete before/after repair target.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

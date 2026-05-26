@@ -5,19 +5,40 @@
       "id": 1,
       "prompt": "Use the preview URL for roleId abc123 and tell me if the XMLV3 welcome is visually safe on mobile.",
       "expected_output": "Runs or references render_preview, checks mobile readability/overflow/contrast, and proposes concrete patches.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The review checks validate_role status before trusting preview results.",
+        "The review inspects mobile readability, overflow, clipping, contrast, and action visibility.",
+        "The review checks XMLV3 tag usage and hidden state usage.",
+        "The output proposes concrete roleWelcome or theme patches when issues are found.",
+        "The output does not treat a pretty screenshot as enough if the first action path is unclear."
+      ]
     },
     {
       "id": 2,
       "prompt": "This welcome uses custom HTML. Check whether it can pass LunaTalk rendering rules.",
       "expected_output": "Checks validation blockers for scripts, inline handlers, external URLs, length, and then uses render preview for visual review.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The review checks scripts, inline handlers, external URLs, unsupported assets, and HTML safety blockers.",
+        "The output fixes technical blockers before relying on render_preview.",
+        "The visual review includes readability and mobile layout checks.",
+        "The output recommends XMLV3 plus Theme V3 when custom HTML is unnecessary.",
+        "The output separates technical HTML safety from writing/playability quality."
+      ]
     },
     {
       "id": 3,
       "prompt": "The preview looks pretty, but I am not sure the first screen tells the player what to do next.",
       "expected_output": "Reviews render as a playability surface, checks first-action clarity, and recommends visual or welcome changes rather than only aesthetic notes.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The review treats first-action clarity as a render and card-quality issue.",
+        "The output checks whether the first screen shows role action, pressure, player implication, and reply path.",
+        "The output suggests welcome or XMLV3 structure changes, not only color or spacing changes.",
+        "The output keeps MCP validation as technical validation and uses Moonloom rubric for playability.",
+        "The review says whether another render pass is needed after patching."
+      ]
     }
   ]
 }

@@ -5,19 +5,40 @@
       "id": 1,
       "prompt": "I want Cursor to create a LunaTalk role card through the MCP. What workflow should it follow?",
       "expected_output": "Routes to card authoring, references the Card Writer MCP, and includes validation, render preview, simulation, and explicit publish confirmation.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output routes the task to lunatalk-card-author first.",
+        "The workflow starts with ideation and Moonloom self-review before mutating MCP calls.",
+        "The workflow uses validate_role for technical blockers and Moonloom skills for writing quality.",
+        "The workflow includes render review, optional cost-aware simulation, and explicit publish confirmation.",
+        "The output does not invent separate MCP scopes or side storage."
+      ]
     },
     {
       "id": 2,
       "prompt": "The card is already written, but I want to check whether the XMLV3 welcome renders correctly.",
       "expected_output": "Routes to render review and instructs the agent to use validate_role and render_preview with visual inspection if available.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output routes the task to lunatalk-render-review.",
+        "The workflow calls or references validate_role before render_preview.",
+        "The review checks XMLV3 tag validity, hidden state usage, readability, overflow, contrast, and first-action visibility.",
+        "The output recommends browser or multimodal inspection when available.",
+        "The output treats visual playability issues as card revisions, not only aesthetics."
+      ]
     },
     {
       "id": 3,
       "prompt": "I want Moonloom to learn from top LunaTalk cards and write something better than ordinary public cards.",
       "expected_output": "Routes to card authoring with the role-card writing framework and quality rubric, using validation/render/simulation as the iteration loop.",
-      "files": []
+      "files": [],
+      "expectations": [
+        "The output routes to public-safe card authoring and benchmark workflow rather than copying unprovided source material.",
+        "The response describes learning as generalized SOP, rubric, templates, or prompts, not as copied examples.",
+        "The workflow uses the top-card pattern stack, archetype recipes, and Moonloom self-review.",
+        "The workflow includes synthetic regression tests and simulation probes.",
+        "The output preserves the boundary that MCP does not judge subjective writing quality."
+      ]
     }
   ]
 }

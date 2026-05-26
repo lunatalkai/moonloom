@@ -50,6 +50,13 @@ and let it call validation, render review, simulation, and publish readiness as 
 - Prefer XMLV3 plus Theme V3 for new cards.
 - Use Moonloom self-review, render preview, and simulation as the quality loop,
   not as optional decoration.
+- Treat MCP validation as mechanical validation. It can block unsafe HTML,
+  invalid XMLV3, missing fields, or publish prerequisites, but it is not
+  responsible for deciding whether a card is emotionally strong, playable, or
+  original enough.
+- Keep writing quality inside the Moonloom skills. When a card is boring,
+  generic, passive, or weak after a technical pass, revise the role-card prompt
+  and authoring framework rather than expecting MCP to reject it.
 - Optimize for playable loops: hook, agency, consequence, memory, progression, and
   a new hook.
 - Do not call `publish_submit` until the author explicitly confirms submission.
