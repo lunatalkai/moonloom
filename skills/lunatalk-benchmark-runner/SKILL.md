@@ -30,6 +30,17 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
    acceptable.
 7. Record pass/fail by archetype and list the weakest dimension.
 
+## Negative checks
+
+Regression should include at least one synthetic fail case. Confirm that
+`validate_role` warns when:
+
+- `roleDesc` is too long to scan quickly.
+- the opening is generic despite having a question.
+- the card controls the player's actions, feelings, consent, or commitments.
+- an archetype is missing its contract, such as game rules/resources or generator
+  intake/output/revision loop.
+
 ## Pass criteria
 
 - `validate_role.status` is `pass`.

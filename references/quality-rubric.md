@@ -39,6 +39,9 @@ explicitly chooses a tradeoff:
   setup/state/choices; generator needs intake, output schema, revision loop, and
   quality rubric.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
+- Overlong `roleDesc`: compress it into one scannable premise sentence. Normal
+  cards should usually stay under 260 characters; game/system/generator cards can
+  use up to about 500 only when modes require it.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.
 - Missing speaking style: specify sentence length, emotional tells, vocabulary,
