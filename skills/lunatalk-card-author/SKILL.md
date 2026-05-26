@@ -56,9 +56,12 @@ iteration.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, or first action path.
 - If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `consequence`, `agency`, `archetype`, then `tokenEfficiency`. Do not let
-  polished prose hide a weak first-turn action, missing consequence loop, or
-  generic card that fails its chosen type.
+  `consequence`, `agency`, `playerAgency`, `archetype`, then `tokenEfficiency`.
+  Do not let polished prose hide a weak first-turn action, missing consequence
+  loop, user agency takeover, or generic card that fails its chosen type.
+- For `playerAgency` warnings, remove any rule that decides the player's actions,
+  feelings, consent, or commitments. Replace generic openings with a concrete
+  scene and specific reply path.
 - For `archetype` warnings, repair the chosen card type directly: companion needs
   relationship pressure and emotional boundaries; story needs setting stakes and
   likely branches; game/RPG/system cards need rules, resources, failure pressure,

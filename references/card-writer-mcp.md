@@ -162,6 +162,9 @@ Use `qualityDimensions` as the agent repair map:
 - `consequence`: player choices can change state, relationship, route, risk, or
   other meaningful variables.
 - `agency`: the first user action path is obvious.
+- `playerAgency`: the card does not decide the player's actions, feelings,
+  consent, or commitments. It also catches generic openings such as "Hello, I am
+  X, what do you want to do?"
 - `tokenEfficiency`: welcome/detail/render structure spends tokens where they
   improve play.
 - `archetype`: the card satisfies its type-specific contract. Companion cards
@@ -170,9 +173,9 @@ Use `qualityDimensions` as the agent repair map:
   and opening setup/state/choices.
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
-missing speaking style, missing progression/state, weak first action path, or
-token-heavy welcome should be patched before render review unless the author
-explicitly accepts the tradeoff.
+missing speaking style, missing progression/state, weak first action path, player
+agency takeover, generic opening, or token-heavy welcome should be patched before
+render review unless the author explicitly accepts the tradeoff.
 
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:

@@ -29,6 +29,8 @@ explicitly chooses a tradeoff:
   speaking style, and behavioral tells.
 - `consequence`: define what player choices change and how the next hook renews.
 - `agency`: make the first user response path obvious.
+- `playerAgency`: remove instructions that decide the player's actions, feelings,
+  consent, or commitments; replace generic openings with a concrete scene.
 - `tokenEfficiency`: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
 - `archetype`: satisfy the card type's contract. Companion needs relationship
@@ -44,6 +46,10 @@ explicitly chooses a tradeoff:
   risk, location, resources, routes, or relationship state.
 - Weak first action path: add choices, a direct question, or an explicit response
   path in the opening scene.
+- Player agency takeover: the role can pressure or invite, but it must not narrate
+  the player's decisions, feelings, or consent.
+- Generic opening: replace "Hello, I am X, what do you want to do?" with location,
+  role action, pressure, player implication, and a specific reply path.
 
 ## Token budget review
 
