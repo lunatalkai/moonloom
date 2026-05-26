@@ -316,6 +316,19 @@
         "The output preserves the generator packet through authoring instead of flattening it into a roleDetailDesc tip list.",
         "The output treats generator quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
       ]
+    },
+    {
+      "id": 25,
+      "prompt": "Before assembling final fields for my RPG expedition draft, compare it against public golden sample packet shapes. The current draft reads like a rule manual, and I want structure-only calibration, not copied prose or MCP calls.",
+      "expected_output": "Routes golden sample packet comparison to lunatalk-sample-calibrator before draft-only field assembly or MCP-backed creation, preserves the sample calibration packet, and only hands off to play-engine repair or card-author after copy-risk and field allocation are clear.",
+      "files": [],
+      "expectations": [
+        "The workflow routes examples, golden samples, sample output packets, draft-to-sample comparison, and copy-risk review to lunatalk-sample-calibrator before final field assembly.",
+        "The sample calibration packet includes selected sample, structure borrowed not text, draft strengths, draft gaps, copy-risk check, missing Moonloom layer, repair skill order, field allocation changes, opening proof changes, simulation probes, and handoff.",
+        "The output treats samples as structure-only public synthetic fixtures and does not reuse sample prose, names, tag strings, resources, scene setup, or fictional details.",
+        "The output routes an RPG rule-manual weakness to lunatalk-play-engineer or opening repair before card-author if the play engine is missing.",
+        "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools during sample calibration."
+      ]
     }
   ]
 }

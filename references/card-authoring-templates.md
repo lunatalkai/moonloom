@@ -86,6 +86,21 @@ Language-style packet:
 - keep / rewrite / preserve:
 - verification checklist:
 - handoff:
+Sample calibration packet:
+- request:
+- selected sample:
+- secondary overlay:
+- card shape:
+- structure borrowed, not text:
+- draft strengths:
+- draft gaps:
+- copy-risk check:
+- missing Moonloom layer:
+- repair skill order:
+- field allocation changes:
+- opening proof changes:
+- simulation probes to keep:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
