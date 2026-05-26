@@ -1,6 +1,6 @@
 ---
 name: lunatalk-benchmark-runner
-description: Use when running public-safe Moonloom regression checks for synthetic role-card briefs, benchmark reports, authoring prompt changes, skill changes, MCP workflow checks, render review, simulation behavior, or archetype coverage across companion, daily-life, story, RPG/game, generator, and ensemble cards.
+description: Use when running public-safe Moonloom regression checks, benchmark handoff reports, Benchmark report packet handoffs, synthetic role-card briefs, authoring prompt changes, skill changes, MCP workflow checks, render review, simulation behavior, or archetype coverage across companion, daily-life, story, RPG/game, generator, and ensemble cards.
 ---
 
 # LunaTalk Benchmark Runner
@@ -266,14 +266,35 @@ intake.
 - The benchmark identifies whether failures belong to Moonloom writing guidance,
   render/theme guidance, simulation behavior, or MCP technical flow.
 
-## Reporting
+## Benchmark report packet
 
-Return:
+Return one packet after every benchmark run. The packet is the handoff from
+trial-card evidence to the next Moonloom skill or prompt repair:
 
-- briefs tested
-- role IDs created or edited
-- validation/render/simulation status
-- weakest Moonloom self-review dimensions
-- patch loop count
-- cost summary when simulation ran
-- whether Moonloom guidance or the MCP technical flow needs another iteration
+```text
+Benchmark report packet:
+- benchmark scope:
+- synthetic briefs tested:
+- positive cases:
+- negative cases:
+- Moonloom self-review result:
+- MCP technical status:
+- render status:
+- simulation status:
+- tokenBudget findings:
+- weakest Moonloom dimensions:
+- patch loop count:
+- cost stance:
+- regression classification:
+- next Moonloom skill repairs:
+- prompt or skill changes needed:
+- do not turn into MCP gates:
+- handoff:
+```
+
+Use `positive cases` for cards or workflows that passed the craft and technical
+checks. Use `negative cases` for schema-valid but weak behavior, routing errors,
+or cost/render/simulation failures. `regression classification` should separate
+Moonloom writing guidance, render/theme guidance, simulation behavior, and MCP
+technical flow. `do not turn into MCP gates` should name any subjective writing
+failures that must stay in skills rather than server validation.

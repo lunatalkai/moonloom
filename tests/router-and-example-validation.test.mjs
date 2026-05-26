@@ -65,6 +65,18 @@ test('using-moonloom evals cover explicit router packet output', async () => {
   assert.match(evals, /route, mode, next skill, references to load, do not do yet, and handoff/i);
 });
 
+test('using-moonloom preserves benchmark report packet handoff', async () => {
+  const skill = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
+  const evals = await readFile('skills/using-moonloom/evals/evals.json', 'utf8');
+
+  assert.match(skill, /description: Use when.*benchmark handoff reports/i);
+  assert.match(skill, /description: Use when.*Benchmark report packet/i);
+  assert.match(skill, /lunatalk-benchmark-runner/);
+  assert.match(skill, /Benchmark report packet/);
+  assert.match(evals, /Benchmark report packet/);
+  assert.match(evals, /benchmark handoff report/i);
+});
+
 test('validator reports missing root examples referenced by skills', async () => {
   const root = await createFixture();
 

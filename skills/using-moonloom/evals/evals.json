@@ -468,6 +468,19 @@
         "The output delays MCP tools, field rewriting, render review, simulation, and publishing until the routed skill has produced a handoff packet.",
         "The output treats using-moonloom as the entry router when the author is unsure which skill applies."
       ]
+    },
+    {
+      "id": 37,
+      "prompt": "Use Moonloom. I ran a benchmark with a companion brief, an RPG brief, and a negative generator case. Validation passed for two cards, render warned on mobile, simulation was skipped for cost, and the generator case failed because it asked more questions instead of producing an artifact. Return only the benchmark handoff report.",
+      "expected_output": "Routes to lunatalk-benchmark-runner and returns a Benchmark report packet with positive cases, negative cases, technical statuses, cost stance, weakest Moonloom dimensions, regression classification, next Moonloom skill repairs, prompt or skill changes needed, and do not turn into MCP gates.",
+      "files": [],
+      "expectations": [
+        "The output treats benchmark handoff reports as lunatalk-benchmark-runner work.",
+        "The output returns a Benchmark report packet rather than loose prose.",
+        "The packet separates positive cases from negative cases and records render, simulation, validation, tokenBudget, and cost stance.",
+        "The packet maps the failed generator case to next Moonloom skill repairs.",
+        "The output includes do not turn into MCP gates for subjective writing failures."
+      ]
     }
   ]
 }

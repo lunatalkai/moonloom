@@ -98,7 +98,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
-- `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
+- `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks
+  and returns benchmark report packets for the next prompt or skill repair.
 - `references/character-core-design.md` defines desire, contradiction, boundary,
   player leverage, relationship asymmetry, pressure behavior, and appeal repair.
 - `references/relationship-engine.md` defines relationship promise, asymmetry,
