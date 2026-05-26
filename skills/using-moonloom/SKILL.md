@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, card series or variants, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -66,6 +66,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   ambiguity, hybrid cards, choosing the primary playable contract, field
   allocation by card type, or deciding which Moonloom skills to run before
   blueprinting: use `lunatalk-archetype-director`.
+- Multiple related cards, role-card series, card set planning, alternate
+  versions, spin-offs, seasonal/event variants, daily-life variants, RPG/system
+  variants, generator/helper variants, or deciding which variants to keep,
+  merge, reject, author, render, or simulate first: use
+  `lunatalk-series-architect` before blueprinting or authoring individual cards.
 - `roleWelcome`, welcome text, opening scene, first screen, first user reply,
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
@@ -134,6 +139,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/archetype-contracts.md` when the task involves card
   type selection, hybrid archetypes, primary/secondary card contracts, or field
   allocation by card shape.
+- Read `../../references/card-series-design.md` when the task involves multiple
+  related cards, role-card series, alternate versions, seasonal/event variants,
+  daily-life variants, generator/helper variants, or keep/merge/reject decisions
+  before blueprinting or authoring.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.

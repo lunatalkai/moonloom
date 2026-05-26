@@ -221,6 +221,19 @@
         "The report treats scorecard results as Moonloom writing guidance rather than MCP validation, platform metrics, or ranking claims.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 18,
+      "prompt": "Create a negative regression check for a role-card series request where one character is split into main, daily-life, event, and helper variants, but the workflow creates duplicate cards or one overloaded hybrid without a keep/merge/reject plan.",
+      "expected_output": "Treats missing series planning as a Moonloom workflow regression, checks the card-series packet, and recommends lunatalk-series-architect before blueprinting or authoring individual cards.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom workflow even if each proposed card could be technically valid.",
+        "The report requires a card-series packet with shared core, variant map, keep/merge/reject decisions, variant contracts, overlap risks, authoring order, and validation/render/simulation plan.",
+        "The proposed workflow uses lunatalk-series-architect before creating one overloaded hybrid card or duplicate related cards.",
+        "The check rejects mood-only, costume-only, or duplicate-loop variants unless they become routes inside another card.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

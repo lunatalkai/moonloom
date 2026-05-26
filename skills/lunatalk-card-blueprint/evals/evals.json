@@ -117,6 +117,19 @@
         "The first scene and second-turn engine prove relationship state change rather than only mood or affection.",
         "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "Before creating any individual card, blueprint a small related card set from one character: main companion, quiet daily-life, event story, and optional helper generator. Decide what survives as variants first.",
+      "expected_output": "Uses lunatalk-series-architect or card-series-design before individual blueprints, preserves the card-series packet, and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes related card set and variant planning to lunatalk-series-architect or card-series-design.md before individual card drafting.",
+        "The card-series packet includes shared core, variant map, keep/merge/reject decisions, variant contracts, overlap risks, authoring order, and test plan.",
+        "Each kept variant has a distinct primary archetype, player promise, opening proof, longplay loop, boundary posture, token target, and field allocation.",
+        "Mood-only or duplicate-loop variants are merged or rejected instead of becoming thin cards.",
+        "The output does not call or instruct immediate mutating MCP tool use before the series packet is ready."
+      ]
     }
   ]
 }

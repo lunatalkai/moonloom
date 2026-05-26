@@ -26,7 +26,12 @@ the card is usable. Read `../../references/quality-scorecard.md` when the author
 asks for a scorecard, top-tier check, craft rating, good-enough review, or
 first-three repairs before creation, simulation, or publishing. Use
 `lunatalk-quality-auditor` first when the primary task is quality audit rather
-than field drafting. Read `../../references/safety-and-cost.md` when content
+than field drafting. Read `../../references/card-series-design.md` when the
+author wants multiple related cards, alternate versions, seasonal/event
+variants, daily-life variants, RPG/system variants, generator/helper variants,
+or a keep/merge/reject plan before real card creation. Use
+`lunatalk-series-architect` first when series planning is the primary task. Read
+`../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/archetype-contracts.md` when the author is unsure which card
 type should drive the role, when several archetypes are mixed, or when field
@@ -69,6 +74,11 @@ benchmark creation, regression checks, or example-driven iteration.
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
    packet already exists.
+   If the author asks to create or plan several related cards, alternate
+   versions, variants, a card set, or decides what to keep, merge, reject, or
+   author first, use `lunatalk-series-architect` first unless a card-series
+   packet already exists. Create real private cards one at a time after the
+   series packet is coherent.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -233,6 +243,11 @@ MCP tools make the card real; Moonloom makes the card good.
   player role, core loop, first-screen proof, field allocation, required packets,
   recommended Moonloom skill order, hybrid failure modes, repair rules,
   self-review probes, and handoff.
+- Preserve the card-series packet when one exists: shared core, variant map,
+  keep/merge/reject decisions, variant contracts, overlap risks, authoring order,
+  validation/render/simulation plan, and handoff. Do not flatten a series into
+  one overloaded hybrid card or create duplicate cards with the same playable
+  loop.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.
@@ -312,6 +327,10 @@ MCP tools make the card real; Moonloom makes the card good.
   setup/state/choices; daily-life needs a small playable desire; heavy-setting
   needs modular lore that creates action; ensemble needs distinct motives, voices,
   and turn ownership.
+- When making a related card set, author the anchor card first and then only one
+  clearly distinct secondary variant. Validate and render before adding more
+  variants, and simulate only variants whose behavior changed and whose cost is
+  accepted.
 - If a heavy-setting, RPG, scenario, or light-setting card starts to read like a
   lore digest, call `lunatalk-world-engineer` before adding more names or history.
 - For mature, intense, or sensitive premises, make the intended rating, pacing,

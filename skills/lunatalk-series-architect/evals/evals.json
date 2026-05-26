@@ -1,0 +1,46 @@
+{
+  "skill_name": "lunatalk-series-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have one strong character concept and want a main companion card, a quieter daily-life variant, a story/event variant, and maybe a generator/helper card. Plan the series before any card creation.",
+      "expected_output": "Produces a card-series packet that keeps, merges, or rejects variants; preserves a compact shared core; gives each kept variant a distinct primary contract, opening proof, longplay loop, boundary posture, token target, authoring order, and validation/render/simulation plan; and makes no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output produces a card-series packet rather than full role fields.",
+        "The variant map classifies proposed cards as keep, merge, or reject.",
+        "Each kept variant has a distinct player promise, primary archetype, opening proof, longplay loop, boundary posture, and token target.",
+        "The generator/helper variant is kept only if it produces a concrete artifact with defaults or revision operations.",
+        "The plan separates packet-driven variant decisions from validation, render, and simulation checks after drafting.",
+        "The output does not call MCP tools or treat series quality as an MCP/server gate."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I want five alternate versions of the same romantic character: rainy night, cafe, summer festival, jealous ex, and private tutor. They all feel similar. Decide what to merge or reject before writing.",
+      "expected_output": "Identifies duplicate loops, keeps only variants with distinct playable contracts, merges mood-only or costume-only versions into routes, and routes boundary-sensitive intensity to boundary design when needed.",
+      "files": [],
+      "expectations": [
+        "The output does not accept all five variants by default.",
+        "The plan identifies overlap risks such as duplicate opening, same player role, same second-turn move, or same relationship loop.",
+        "Mood-only or scene-skin variants are merged into the main card or rejected.",
+        "Boundary-sensitive variants get a separate boundary posture and handoff when kept.",
+        "The authoring order starts with the anchor card and one clearly distinct variant."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have a fantasy academy setting and want a companion mentor card, a mystery event card, a compact RPG expedition card, and an artifact generator. Build a series plan that does not become one overloaded hybrid card.",
+      "expected_output": "Separates the cards by primary archetype and player promise, preserves only a compact shared setting core, rejects overloaded hybrids, assigns field allocation, authoring order, and validation/render/simulation plan per variant, and hands off to blueprint or archetype work.",
+      "files": [],
+      "expectations": [
+        "The output treats each kept card as a separate primary contract instead of one overloaded hybrid.",
+        "The shared core is compact and does not copy a long setting bible into every card.",
+        "Each variant names a unique opening proof and longplay loop.",
+        "The plan includes token discipline for repeated lore and variant-specific field allocation.",
+        "The plan includes validation/render/simulation checks without treating them as the reason a variant exists.",
+        "The handoff points to blueprinting or narrow Moonloom skills before real card authoring."
+      ]
+    }
+  ]
+}

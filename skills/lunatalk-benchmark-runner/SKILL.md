@@ -17,6 +17,10 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/quality-scorecard.md` when benchmarking craft scorecards,
 quality audit routing, top-tier checks, first-three repairs, or whether drafts
 should continue to authoring, render, simulation, or publish readiness. Read
+`../../references/card-series-design.md` when benchmarking related card sets,
+alternate versions, seasonal/event variants, daily-life variants,
+generator/helper variants, keep/merge/reject decisions, or variant authoring
+order. Read
 `../../references/archetype-contracts.md` when benchmarking card-type routing,
 hybrid cards, archetype contracts, or field allocation by card shape. Read
 `../../references/card-diagnosis.md` when benchmarking existing-card repair,
@@ -69,6 +73,10 @@ Moonloom self-review, render review, or simulation that:
 - a draft asks for a top-tier quality audit or scorecard, but the workflow jumps
   to publish readiness, simulation, or broad rewriting instead of producing a
   quality audit packet with blockers, scorecard, tier, and first three repairs.
+- a role-card series request asks which variants to keep, merge, reject, author,
+  render, or simulate first, but the workflow jumps straight to one overloaded
+  hybrid card or several duplicate cards instead of producing a card-series
+  packet.
 - an existing card passes validation and render review but has several writing
   failures, and the workflow jumps straight to rewriting or another simulation
   instead of producing a card diagnosis packet and repair order.
@@ -104,6 +112,9 @@ Moonloom self-review, render review, or simulation that:
   intake/output/revision loop.
 - a hybrid card treats all archetypes as equal instead of choosing one primary
   playable contract and secondary overlays.
+- a proposed card set keeps mood-only, costume-only, or seasonal variants that
+  have the same player role, same first-screen proof, same second-turn move, and
+  same longplay loop.
 - a companion plus heavy-setting or generator card lets lore or assistant mode
   replace the relationship engine.
 - a quiet daily-life card has mood but no small playable desire or progression.
@@ -150,6 +161,10 @@ authoring, render review, simulation, or publish readiness.
 Use `lunatalk-archetype-director` for regressions where the weakest layer is
 card-type selection, hybrid contract, rejected archetypes, or field allocation by
 primary card shape.
+Use `lunatalk-series-architect` for regressions where the user needs a related
+card set, alternate versions, keep/merge/reject decisions, variant contracts,
+shared core discipline, or authoring/render/simulation order before blueprinting
+or authoring individual cards.
 
 ## Pass criteria
 
