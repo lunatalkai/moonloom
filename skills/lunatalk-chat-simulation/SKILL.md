@@ -22,7 +22,9 @@ Read `../../references/world-engine-design.md` when simulation shows lore
 dumping, decorative factions/locations, passive world response, broken state, or
 route choices that do not change the world.
 Read `../../references/voice-calibration.md` when simulation shows generic
-dialogue, voice drift, or ensemble speakers blending together.
+dialogue, voice drift, or ensemble speakers blending together. Use
+`lunatalk-voice-director` when the transcript points to speaking style,
+catchphrase overuse, refusal voice, or blind-line failures.
 Read `../../references/opening-design.md` when testing the opening hook, first
 user reply path, second-turn move, or onboarding clarity.
 Read `../../references/longplay-design.md` when testing long-term playability,
@@ -119,9 +121,12 @@ Playtest plan:
 - For ensemble cards, the cast should not drown out the player; each active voice
   needs a motive and turn ownership.
 - If ensemble speakers become interchangeable, patch voice cards, response-mode
-  rules, or compact micro-samples before running another simulation.
-- If a single-role persona becomes generic under pressure, patch the
-  character-core packet before adding more sample dialogue.
+  rules, or compact micro-samples with `lunatalk-voice-director` before running
+  another simulation.
+- If a single-role persona becomes generic under pressure, first decide whether
+  the missing layer is character core or voice. Use `lunatalk-character-core`
+  for weak motive/leverage, and `lunatalk-voice-director` for rhythm,
+  vocabulary, refusal style, catchphrase, or pressure-speech repair.
 - If a world-heavy card dumps lore or treats factions/locations as scenery, patch
   the world-engine packet before adding more setting text.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to

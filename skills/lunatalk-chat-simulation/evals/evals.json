@@ -65,6 +65,19 @@
         "The output says to run validate_role after structural patches.",
         "The output recommends another simulation pass only if the author accepts the normal billing cost."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "The simulation transcript stayed technically safe, but the role kept answering like a polite assistant and repeated the same catchphrase. What should Moonloom patch before spending another simulation?",
+      "expected_output": "Treats generic dialogue and catchphrase repetition as a Moonloom voice failure, routes repair to lunatalk-voice-director, patches voice rules or talkExample guidance, validates structural changes, and only re-runs simulation after cost acceptance.",
+      "files": [],
+      "expectations": [
+        "The diagnosis identifies generic assistant voice or catchphrase repetition as a voice-director issue.",
+        "The recommended repair uses lunatalk-voice-director or voice-calibration guidance before another simulation.",
+        "The patch targets roleDetailDesc voice rules, response-mode grid, or compact talkExample guidance rather than MCP validation logic.",
+        "The output includes blind-line or pressure tests as evidence before another paid run.",
+        "The output recommends another simulation only after the author accepts normal billing."
+      ]
     }
   ]
 }

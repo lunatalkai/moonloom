@@ -92,6 +92,19 @@
         "The self-review includes voice calibration or blind-line risk, not only generic voice texture.",
         "The token plan pays for voice calibration by cutting decorative lore, repeated mood adjectives, or non-playable prose."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "Patch an existing private role whose premise is strong but the dialogue sounds like a polite assistant. Focus only on voice before changing other fields.",
+      "expected_output": "Uses lunatalk-voice-director before field patches, preserves the voice-director packet, patches roleDetailDesc or talkExample guidance, validates after structural changes, and avoids treating voice quality as an MCP gate.",
+      "files": [],
+      "expectations": [
+        "The workflow routes the voice-specific repair to lunatalk-voice-director before broad blueprinting or unrelated rewrites.",
+        "The voice packet includes rhythm, vocabulary, emotional tells, refusal style, response-mode grid, blind-line test, and talkExample decision.",
+        "The patch targets roleDetailDesc, roleWelcome, or talkExample only as needed for voice survival.",
+        "The output runs validate_role only for technical blockers after structural patches.",
+        "The output does not ask MCP validation to judge subjective voice craft."
+      ]
     }
   ]
 }

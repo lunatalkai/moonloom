@@ -14,7 +14,10 @@ Read `../../references/character-core-design.md` first. Read
 `../../references/role-card-writing-framework.md` for PACT, tension triangle, and
 archetype context. Read `../../references/card-authoring-templates.md` when the
 packet needs field patch targets. Read `../../references/voice-calibration.md`
-when the role's voice, ensemble contrast, or pressure behavior may drift. Read
+when the role's voice, ensemble contrast, or pressure behavior may drift. Use
+`lunatalk-voice-director` when the remaining weak layer is speaking style,
+catchphrase discipline, refusal voice, talkExample need, or ensemble voice
+contrast. Read
 `../../references/boundary-design.md` when the role involves mature, intense,
 jealous, horror-leaning, power-imbalanced, consent-sensitive, refusal, or pacing
 pressure. Read `../../references/opening-design.md` or
@@ -45,7 +48,10 @@ longplay, simulation, or publish readiness.
    boundary-setting, and trust-breaking player input.
 8. State field implications: roleDesc, roleDetailDesc, roleWelcome, optional
    talkExample, XMLV3/Theme V3, and token tradeoff.
-9. Run the self-review and name the next Moonloom skill.
+9. If the remaining weak layer is speaking style, catchphrase discipline, refusal
+   voice, or ensemble voice contrast, name `lunatalk-voice-director` as the next
+   skill.
+10. Run the self-review and name the next Moonloom skill.
 
 ## Output format
 
@@ -117,6 +123,9 @@ Hand the packet to:
 
 - `lunatalk-card-blueprint` when the concept still needs direction, world, voice,
   opening, or field planning.
+- `lunatalk-voice-director` when the character core is clear but speaking style,
+  catchphrase use, refusal voice, talkExample need, or ensemble contrast still
+  needs calibration.
 - `lunatalk-card-author` when the author wants a real private card or patch.
 - `lunatalk-opening-director` when the first scene must reveal the core.
 - `lunatalk-longplay-architect` when the core needs progression, route state, or

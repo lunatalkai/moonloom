@@ -26,7 +26,8 @@ provides files, notes, imported drafts, source fragments, or a large world bible
 Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
 Theme V3. Read `../../references/voice-calibration.md` when the card relies on
 distinctive voice, dialogue examples, long-session consistency, or ensemble cast
-contrast. Read `../../references/boundary-design.md` when the card is mature,
+contrast. Use `lunatalk-voice-director` first when voice repair is the primary
+task. Read `../../references/boundary-design.md` when the card is mature,
 adult, NSFW, emotionally intense, horror-leaning, consent-sensitive, jealous,
 power-imbalanced, or needs refusal/pacing repair. Read
 `../../references/opening-design.md` when creating or repairing `roleWelcome`,
@@ -58,7 +59,10 @@ benchmark creation, regression checks, or example-driven iteration.
    compression, or a world rule that creates play. Prefer
    `lunatalk-card-blueprint` when the author needs broader ideation,
    relationship design, voice design, or opening-scene planning before a real
-   role is created.
+   role is created. Prefer `lunatalk-voice-director` when the author primarily
+   asks for character voice, speaking style, generic dialogue repair,
+   catchphrase discipline, refusal style, talkExample need, blind-line tests, or
+   ensemble voice contrast.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
@@ -71,7 +75,8 @@ benchmark creation, regression checks, or example-driven iteration.
 8. Before patching stable character and world context with `role_patch_detail`,
    use `lunatalk-longplay-architect` when the current task is long-term
    playability, memory/state, route seeds, progression, or a dead third-turn
-   loop.
+   loop. Use or preserve `lunatalk-voice-director` when the current patch changes
+   speech style, voice cards, talkExample, refusal voice, or ensemble contrast.
 9. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
@@ -141,6 +146,10 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the world-engine packet when one exists: world promise, player
   position, core world rule, faction/location play functions, state model, route
   seeds, exposition policy, and token tradeoff.
+- Preserve the voice-director packet when one exists: current failure, voice
+  promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
+  grid, catchphrase policy, talkExample decision, blind-line test, pressure
+  probes, field patch targets, and token tradeoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.
@@ -161,6 +170,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - For voice-heavy cards, write a voice card: surface, private motive, rhythm,
   vocabulary, action beats, concealment, refusal style, passive-player behavior,
   resistance behavior, and trust behavior.
+- If voice is the main problem, use `lunatalk-voice-director` before patching
+  fields so the voice card, pressure grid, talkExample decision, and blind-line
+  test stay coherent.
 - For ensemble cards, run a contrast check before finalizing: each core speaker
   needs a different want, fear, speech cue, pressure move, and player leverage.
   If the cast has three or more active speakers, add compact micro-samples for

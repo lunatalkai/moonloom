@@ -39,6 +39,19 @@
         "The output recommends simulation or render review after the writing repair.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "This private role passes validation and preview, but every speaker sounds like the same polite narrator. Should we submit it?",
+      "expected_output": "Does not publish; treats blurred voice as a Moonloom readiness failure, recommends lunatalk-voice-director repair, blind-line checks, and simulation before explicit submission.",
+      "files": [],
+      "expectations": [
+        "The output says validation and preview are not enough when voice quality fails.",
+        "The output routes voice repair to lunatalk-voice-director or voice-calibration before publish readiness.",
+        "The repair checks voice cards, response-mode rules, talkExample need, and blind-line distinguishability.",
+        "The output recommends simulation after the writing repair or an explicit cost-aware skip.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

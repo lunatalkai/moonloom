@@ -70,6 +70,10 @@ explicitly chooses a tradeoff:
 - Voice calibration: for voice-heavy or ensemble cards, add voice cards,
   response-mode rules, or compact micro-samples when the role would otherwise
   drift or blend with other speakers.
+- Voice director: when the author primarily asks for speaking style, generic
+  dialogue repair, catchphrase discipline, refusal voice, blind-line checks, or
+  ensemble contrast, create a voice-director packet before field drafting or
+  publish readiness.
 - Consequence: define what player choices change and how the next hook renews.
 - Longplay: use a longplay packet when the card repeats after the opening;
   preserve continuity spine, state model, route seeds, memory, role initiative,
@@ -120,6 +124,8 @@ explicitly chooses a tradeoff:
 - Generic speaking style: "natural", "gentle", or "like a real person" is not
   enough. Add executable voice texture: rhythm, vocabulary, address terms,
   emotional tells, and forbidden phrasing.
+- Catchphrase-only voice: repeated phrases are not a voice. Define how the phrase
+  changes under trust, resistance, pressure, and boundary-setting, or cut it.
 - Blurred ensemble voice: add contrast by motive, pressure behavior, rhythm,
   vocabulary, and one micro-sample per weak core speaker. Do not rely on names
   alone to distinguish cast members.
