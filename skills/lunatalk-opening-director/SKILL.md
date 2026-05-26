@@ -15,7 +15,10 @@ first reply paths, second-turn engines, mode recipes, XMLV3 scaffolds, and
 failure repairs. Read `../../references/card-authoring-templates.md` when turning
 the packet into a welcome scaffold. Read `../../references/quality-rubric.md`
 for welcome and self-review checks. Read `../../references/theme-v3-rendering.md`
-when the welcome uses XMLV3 or HTML. Read `../../references/playtest-loop.md`
+when the welcome uses XMLV3 or HTML. Read
+`../../references/presentation-design.md` when the first two turns are coherent
+but the unresolved layer is XMLV3/Theme V3/HTML structure, visible state, hidden
+state, or first-screen visual hierarchy. Read `../../references/playtest-loop.md`
 when the task includes testing first-turn behavior. Read
 `../../references/daily-life-design.md` when a daily-life, slice-of-life,
 neighbor, roommate, cafe, workplace, school, quiet routine, shared object, or
@@ -65,7 +68,10 @@ opening, then hand off to authoring, render review, or simulation.
 6. Write one expected first user message.
 7. Write the role's second-turn move and what changes.
 8. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
-   choices, or state visibility help the first screen.
+   choices, or state visibility help the first screen. If the five beats and
+   second-turn move are already coherent and the remaining problem is visual
+   hierarchy, Theme V3 split, hidden state, or HTML justification, hand off to
+   `lunatalk-presentation-director`.
 9. State token tradeoff: what stays in welcome, what belongs in detail, and what
    to cut.
 10. Run opening self-review.

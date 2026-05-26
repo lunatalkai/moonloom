@@ -250,6 +250,32 @@
         "The output preserves the daily-life packet through authoring instead of flattening it into generic atmosphere or comfort prose.",
         "The output treats daily-life quality as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
       ]
+    },
+    {
+      "id": 20,
+      "prompt": "I have a completed zh-Hant packet stack for one role, including opening and longplay. Do not call MCP tools yet. Before assembling final fields, preserve this presentation packet: XMLV3 welcome, visible status map, hidden JSON state, Theme V3 responsibilities, no custom HTML. Assemble the field-ready role packet without dropping the presentation plan.",
+      "expected_output": "Treats the request as draft-only field assembly, preserves the presentation packet in final role fields, and stops before MCP calls.",
+      "files": [],
+      "expectations": [
+        "The workflow sets mode to draft-only field assembly and does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools.",
+        "The output preserves the presentation packet instead of re-deciding mode or flattening it into generic theme notes.",
+        "The roleWelcome section includes mode, first-screen promise, XMLV3/plain draft, visible content, hidden state JSON plan, first reply paths, and expected second-turn move.",
+        "The Theme V3 / visual notes separate reusable style from story logic and hidden state.",
+        "The validation/render/simulation handoff names render_preview as a later proof step after author approval or MCP-backed creation."
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "I have a coherent zh-Hant packet stack with character core, opening, longplay, and token plan, but presentation is still undecided: XMLV3 vs plain vs HTML, visible status versus hidden state, Theme V3 split, and first-screen hierarchy. Do not call MCP tools and do not assemble final fields until the presentation layer is decided.",
+      "expected_output": "Routes unresolved presentation structure to lunatalk-presentation-director before final field assembly, preserves the existing packet stack, and does not call MCP tools.",
+      "files": [],
+      "expectations": [
+        "The workflow does not assemble final role fields while presentation mode, visible/hidden state, Theme V3 split, and hierarchy are unresolved.",
+        "The output routes to lunatalk-presentation-director before draft-only field assembly or MCP-backed creation.",
+        "The output preserves character core, opening, longplay, and token packets as prerequisites for the presentation packet.",
+        "The presentation request expects welcome mode, XMLV3 semantic plan, visible content map, hidden state JSON plan, Theme V3 responsibilities, roleDetailDesc responsibilities, HTML decision, visual affordance table, and render handoff.",
+        "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools."
+      ]
     }
   ]
 }

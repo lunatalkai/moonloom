@@ -39,6 +39,19 @@
         "The compression plan moves reusable rules into roleDetailDesc and style into Theme V3.",
         "The packet includes rerun checks for validate_role and render before simulation."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I have no tokenBudget or field sizes yet. I am still before writing fields and need to decide which visual panels, status blocks, and route labels should appear on the first screen versus Theme V3 or hidden state.",
+      "expected_output": "Routes the request to lunatalk-presentation-director because it is pre-field visual hierarchy without concrete token evidence, not token architecture.",
+      "files": [],
+      "expectations": [
+        "The output does not invent tokenBudget numbers or treat the task as field allocation repair.",
+        "The output routes pre-field visual hierarchy, visible/hidden state, and Theme V3 split to lunatalk-presentation-director.",
+        "The output says token architecture becomes relevant only after field sizes, welcome ratio, duplicated lore, or concrete bloat evidence appears.",
+        "The presentation handoff includes a visual affordance table rather than a compression ladder.",
+        "The output does not call MCP tools."
+      ]
     }
   ]
 }

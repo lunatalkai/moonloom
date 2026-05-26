@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-presentation-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a strong opening packet and longplay plan, but before authoring final fields I need a LunaTalk XMLV3 welcome plus Theme V3 styling plan. Decide what is visible, what becomes hidden state JSON, what belongs in Theme V3, and whether HTML is needed. Do not call MCP tools yet.",
+      "expected_output": "Produces a presentation packet with welcome mode, XMLV3 semantic plan, visible content map, hidden state JSON plan, Theme V3 responsibilities, roleDetailDesc responsibilities, HTML decision, affordance table, hierarchy, risks, token stance, render handoff, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the task as pre-authoring or pre-render presentation planning, not render review.",
+        "The output prefers XMLV3 plus Theme V3 unless a concrete HTML layout need is justified.",
+        "The packet separates visible content, hidden JSON state, Theme V3 style, and roleDetailDesc responsibilities.",
+        "The visual affordance table keeps only elements that prove action, state, mood, route, risk, clue, resource, boundary, or relationship pressure.",
+        "The output does not call validate_role, render_preview, simulate_private_chat, or mutating card tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My draft welcome uses custom HTML because I want the first screen to look premium, but it is just an ordinary character scene with status, dialogue, and two choices. Before writing fields, decide whether to keep HTML or convert to XMLV3 plus Theme V3.",
+      "expected_output": "Rejects unnecessary HTML, chooses XMLV3 plus Theme V3, and returns a presentation packet that maps scene/dialogue/choices/status to XMLV3 and visual style to Theme V3.",
+      "files": [],
+      "expectations": [
+        "The output does not preserve HTML only for decoration or premium feel.",
+        "The output maps ordinary scene content to XMLV3 semantic tags.",
+        "The output assigns typography, panels, colors, and atmosphere to Theme V3.",
+        "The output keeps hidden state as compact JSON instead of visible prose.",
+        "The output hands off to card-author or render-review only after the presentation plan is ready."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The card idea is solid and I am not ready to write fields, but I keep adding decorative panels, badges, route labels, and mood blocks. Decide what earns first-screen space, what moves to Theme V3, and what gets cut.",
+      "expected_output": "Produces a presentation packet centered on the visual affordance test, keeps elements that change action/state/mood/route, moves reusable style to Theme V3, cuts decorative clutter, and avoids token-architect unless concrete token evidence exists.",
+      "files": [],
+      "expectations": [
+        "The output routes pre-field visual hierarchy to presentation design rather than token architecture by default.",
+        "The visual affordance table marks each panel, badge, route label, and mood block as keep, move, or cut.",
+        "Kept elements must create a visible player action, state, route, risk, clue, resource, boundary, or relationship pressure.",
+        "Theme V3 receives reusable style but not story logic or route consequences.",
+        "The output names render review as a later proof step after authoring."
+      ]
+    }
+  ]
+}

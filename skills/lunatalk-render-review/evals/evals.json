@@ -65,6 +65,19 @@
         "The output does not patch only CSS, Theme V3, or visual panels when the durable engine and agency are weak.",
         "The output keeps MCP validation and render review as technical/visual checks, not subjective writing gates."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "I do not have a preview or validation report yet. Before authoring, decide whether my first screen should be XMLV3, Theme V3, or custom HTML, and where visible status versus hidden state belongs.",
+      "expected_output": "Routes away from render review to lunatalk-presentation-director because no preview/render evidence exists, and does not call validate_role or render_preview.",
+      "files": [],
+      "expectations": [
+        "The output recognizes the task is pre-authoring/pre-render presentation planning, not render review.",
+        "The output routes to lunatalk-presentation-director before validation, preview, screenshot review, or visual patches.",
+        "The output does not call validate_role or render_preview as the first step.",
+        "The expected packet includes welcome mode, visible content map, hidden state JSON plan, Theme V3 responsibilities, and HTML decision.",
+        "The output names render review as a later proof step after a role draft or preview exists."
+      ]
     }
   ]
 }

@@ -67,7 +67,12 @@ mixed symptoms, author feedback, validation/render passing but weak behavior,
 simulation failures, or unclear repair order. Use `lunatalk-card-doctor` first
 when the weakest layer is not obvious.
 Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
-Theme V3. Read `../../references/token-economy.md` when `validate_role`
+Theme V3. Read `../../references/presentation-design.md` when the author needs a
+pre-render decision about XMLV3 vs plain vs HTML, Theme V3 vs `roleWelcome`,
+visible state vs hidden JSON state, visual affordances, or first-screen
+hierarchy. Use `lunatalk-presentation-director` first when presentation
+structure is the primary unresolved layer and no fresh preview or validation
+report exists. Read `../../references/token-economy.md` when `validate_role`
 returns tokenBudget warnings, when `roleWelcome` is much longer than
 `roleDetailDesc`, when durable rules are hidden in welcome, or when the task asks
 for compression, keep/move/cut/rewrite, or field allocation repair. Read
@@ -174,13 +179,17 @@ benchmark creation, regression checks, or example-driven iteration.
    protocol, failure-forward behavior, or rule-manual opening repair. Prefer
    `lunatalk-token-architect` when the author primarily asks about tokenBudget,
    welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
-   preserving playability while reducing token cost.
+   preserving playability while reducing token cost. Prefer
+   `lunatalk-presentation-director` when the author primarily asks how to present
+   a coherent card through XMLV3, Theme V3, HTML, visible state, hidden state, or
+   first-screen hierarchy before final fields or render review.
 3. Choose or preserve the archetype packet: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
 4. Draft the card in Moonloom first: promise, engine, play, and presentation. Use
    the universal draft packet from `card-authoring-templates.md` for thin or
-   high-stakes briefs. When the author already provides a coherent packet stack
+   high-stakes briefs. Preserve any `lunatalk-presentation-director` packet when
+   assembling fields. When the author already provides a coherent packet stack
    and asks for final fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.
 5. Run Moonloom self-review before calling mutating tools.
@@ -218,10 +227,16 @@ benchmark creation, regression checks, or example-driven iteration.
    habit state, passive-player behavior, boundary/romance posture, routine reply
    paths, second-turn change, or return-next-time hooks.
 11. Before patching the welcome, use `lunatalk-opening-director` when the current
-   task is welcome/opening repair or the first-action path is unclear. Patch the
-   opening scene with `role_patch_welcome` from the opening packet.
+   task is welcome/opening repair or the first-action path is unclear. Use or
+   preserve `lunatalk-presentation-director` when the opening is coherent but the
+   unresolved layer is welcome mode, XMLV3 structure, Theme V3 split, hidden
+   state, visible status, visual affordances, or first-screen hierarchy. Patch
+   the opening scene with `role_patch_welcome` from the opening and presentation
+   packets.
 12. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
-   Use `html` only when the author explicitly needs custom HTML or legacy HTML.
+   Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
+   a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot
+   express.
 13. Optionally use `theme_bind` and `extension_enable` for Theme V3.
 14. Call `validate_role`.
 15. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
