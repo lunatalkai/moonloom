@@ -222,6 +222,11 @@ Voice should be executable without relying on vague adjectives. Define:
 Do not stop at "gentle", "witty", "cold", "natural", or "human-like". Those are
 labels, not instructions the model can reliably execute.
 
+For voice-heavy, romance, companion, assistant, or ensemble cards, use
+`voice-calibration.md` to create voice cards, micro-samples, response-mode rules,
+and blind-line checks. Ensemble cards should not rely on one strong speaker while
+the rest of the cast remains generic.
+
 ### 5. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.
@@ -543,6 +548,8 @@ Use:
 - clear turn ownership: who speaks first, who interrupts, who hangs back
 - scene rules for introducing secondary roles gradually
 - memory rules for alliances, suspicion, promises, and unresolved conflicts
+- one compact voice card or micro-sample for each core speaker when voices may
+  blur together
 
 Top-card checks:
 
@@ -551,6 +558,8 @@ Top-card checks:
 - The welcome starts with one focal interaction, not a roll call.
 - Group conflict creates choices: side with, mediate, hide, expose, split up,
   bargain, or leave.
+- A blind-line test can identify the speaker from rhythm, motive, or pressure
+  behavior without needing the name.
 
 ## Field allocation
 
@@ -601,7 +610,8 @@ For systems:
 ### `talkExample`
 
 Use only when it teaches voice or format that the detail cannot capture. Do not
-fill it with generic dialogue.
+fill it with generic dialogue. For ensemble cards, prefer compact micro-samples
+over a long scene that showcases only the loudest character.
 
 ### `jailbreak`
 
@@ -618,6 +628,8 @@ when the card needs stable formatting or style constraints that repeatedly fail.
 - State panels that are never updated.
 - HTML/CSS decoration that makes the card harder to read.
 - Many NPC names but no immediate scene.
+- Ensemble cast members who share the same narrator voice and differ only by
+  name or catchphrase.
 - Canon card that assumes model memory instead of encoding needed facts.
 - Helper/generator card that asks vague questions and never outputs a finished
   artifact.

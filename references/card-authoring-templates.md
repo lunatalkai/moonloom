@@ -23,6 +23,7 @@ Engine:
 - contradiction:
 - boundary:
 - voice fingerprint:
+- voice calibration need:
 - proactive behavior:
 - consequence loop:
 
@@ -187,6 +188,46 @@ Turn ownership
 The welcome should start with one focal crisis. Do not introduce the full cast in
 a roll call.
 
+## Voice calibration packet
+
+Use when a card has a strong persona, a delicate speaking style, or an ensemble
+cast whose voices may blur together.
+
+```text
+Voice cards
+- [Name]:
+  - rhythm:
+  - vocabulary:
+  - address terms:
+  - emotional tells:
+  - action beats:
+  - concealment:
+  - refusal style:
+  - never says:
+  - if player is passive:
+  - if player resists:
+  - if player trusts them:
+
+Ensemble contrast
+- [Name]: wants, fears, speech cue, pressure move, player leverage
+- [Name]: wants, fears, speech cue, pressure move, player leverage
+
+Blind-line test
+- anonymous line 1:
+- anonymous line 2:
+- anonymous line 3:
+- can identify speakers: yes | no
+
+Talk example need
+- no example needed because:
+- add micro-sample for:
+- cut elsewhere to pay tokens:
+```
+
+For ensemble cards with three or more core speakers, add one compact micro-sample
+per core role if the cast voices are not already unmistakable in `roleDetailDesc`.
+Each sample should teach pressure behavior, not just a catchphrase.
+
 ## Boundary-sensitive template
 
 Use when the card is mature, emotionally intense, horror-leaning, or otherwise
@@ -215,6 +256,7 @@ Before render or simulation, answer:
 Promise: pass | revise because ...
 Anchor: pass | revise because ...
 Voice texture: pass | revise because ...
+Voice calibration: pass | revise because ...
 Consequence: pass | revise because ...
 Role initiative: pass | revise because ...
 Agency: pass | revise because ...

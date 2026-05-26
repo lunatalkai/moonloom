@@ -31,6 +31,8 @@ A top-card candidate should pass three harder checks:
   whole plot.
 - The role is recognizable from behavior, not just name or lore. Sentence rhythm,
   choices, refusals, and emotional tells should make the role feel specific.
+- In ensemble cards, core speakers remain distinguishable under pressure. A
+  blind-line check should not collapse the cast into one narrator.
 - The token spend is purposeful. Long sections must create durable behavior,
   state, style, or replayable routes; otherwise compress them.
 
@@ -45,6 +47,9 @@ explicitly chooses a tradeoff:
   speaking style, and behavioral tells.
 - Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
+- Voice calibration: for voice-heavy or ensemble cards, add voice cards,
+  response-mode rules, or compact micro-samples when the role would otherwise
+  drift or blend with other speakers.
 - Consequence: define what player choices change and how the next hook renews.
 - Role initiative: define what the role asks, reveals, escalates, or offers when
   the player is passive or stalls.
@@ -75,6 +80,9 @@ explicitly chooses a tradeoff:
 - Generic speaking style: "natural", "gentle", or "like a real person" is not
   enough. Add executable voice texture: rhythm, vocabulary, address terms,
   emotional tells, and forbidden phrasing.
+- Blurred ensemble voice: add contrast by motive, pressure behavior, rhythm,
+  vocabulary, and one micro-sample per weak core speaker. Do not rely on names
+  alone to distinguish cast members.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
 - Missing role initiative: add proactive turn rules. The role should know what to

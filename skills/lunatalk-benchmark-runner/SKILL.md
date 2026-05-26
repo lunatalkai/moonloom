@@ -14,8 +14,10 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
-`../../references/playtest-loop.md` for probe design and transcript-to-patch
-triage. Read `../../references/safety-and-cost.md` before simulation.
+`../../references/voice-calibration.md` when the benchmark touches dialogue,
+persona consistency, or ensemble cards. Read `../../references/playtest-loop.md`
+for probe design and transcript-to-patch triage. Read
+`../../references/safety-and-cost.md` before simulation.
 
 ## Workflow
 
@@ -54,6 +56,8 @@ Moonloom self-review, render review, or simulation that:
 - a lore-rich card has many proper nouns but no immediate action surface.
 - an ensemble card introduces cast members without distinct motives, voice, or
   turn ownership.
+- an ensemble card gives one strong sample but lets the other core speakers share
+  the same rhythm, motive, or pressure behavior.
 - a mature or intense card creates pressure without explicit pacing, refusal
   style, or player agency boundary.
 

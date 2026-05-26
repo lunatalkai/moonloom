@@ -17,8 +17,10 @@ the card is usable. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/card-authoring-templates.md` when turning an idea into concrete
 field drafts. Read `../../references/theme-v3-rendering.md` if the welcome uses
-HTML, XMLV3, or Theme V3. Read `../../references/playtest-loop.md` when designing
-or interpreting private chat simulations. Use `../../examples/synthetic-card-briefs.md`
+HTML, XMLV3, or Theme V3. Read `../../references/voice-calibration.md` when the
+card relies on distinctive voice, dialogue examples, long-session consistency, or
+ensemble cast contrast. Read `../../references/playtest-loop.md` when designing or
+interpreting private chat simulations. Use `../../examples/synthetic-card-briefs.md`
 when the task asks for benchmark creation, regression checks, or example-driven
 iteration.
 
@@ -109,9 +111,19 @@ MCP tools make the card real; Moonloom makes the card good.
 - Speaking style must be executable. Replace labels such as natural, gentle,
   witty, or like a real person with sentence rhythm, vocabulary, address terms,
   emotional tells, and what the role avoids saying.
+- For voice-heavy cards, write a voice card: surface, private motive, rhythm,
+  vocabulary, action beats, concealment, refusal style, passive-player behavior,
+  resistance behavior, and trust behavior.
+- For ensemble cards, run a contrast check before finalizing: each core speaker
+  needs a different want, fear, speech cue, pressure move, and player leverage.
+  If the cast has three or more active speakers, add compact micro-samples for
+  weak or easily blurred voices instead of one long sample for the strongest
+  speaker.
 - Run Moonloom self-review before render: promise, anchor, voice texture,
-  consequence, role initiative, agency, opening scene, player agency, language
-  style, boundary design, archetype, then token efficiency.
+  voice calibration, consequence, role initiative, agency, opening scene, player
+  agency, language style, boundary design, archetype, then token efficiency.
+  When voice calibration is relevant, do not merge it into generic voice texture;
+  report the voice cards, micro-sample need, and blind-line risk explicitly.
 - Do not let polished prose hide a weak character engine, generic voice, passive
   role behavior, weak first-turn action, hollow opening, missing consequence loop,
   user agency takeover, mixed language, or a generic card that fails its chosen
@@ -120,6 +132,9 @@ MCP tools make the card real; Moonloom makes the card good.
   the boundaries that keep escalation playable.
 - Patch detail with concrete voice behavior: sentence rhythm, vocabulary, address
   terms, emotional tells, and avoided phrasing.
+- Patch blurred ensemble voices with contrast first, then micro-samples only when
+  rules alone are not enough. Pay for those samples by cutting repeated mood
+  adjectives or lore that does not change play.
 - Patch detail with proactive turn rules: what the role asks, reveals, escalates,
   or offers when the player is passive or stalls.
 - Rewrite welcome before render review when it lacks a real opening scene. Add

@@ -79,6 +79,19 @@
         "The improved card includes a concrete second-turn move and proactive behavior for passive users.",
         "The output uses render or simulation only after the writing-level repair is defined."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Create a zh-Hant ensemble mystery card with three core speakers. Make sure they do not all sound like the same narrator.",
+      "expected_output": "Builds an ensemble card with distinct motives, pressure moves, voice cards, micro-samples or talkExample guidance for weak voices, and a self-review that checks blind-line distinguishability.",
+      "files": [],
+      "expectations": [
+        "The output defines a different desire, fear, speech cue, pressure move, and player leverage for each core speaker.",
+        "The roleDetailDesc includes executable voice cards or equivalent voice calibration for the core speakers.",
+        "The output uses compact micro-samples or talkExample guidance when a speaker's voice may blur, rather than one long sample for only the strongest voice.",
+        "The self-review includes voice calibration or blind-line risk, not only generic voice texture.",
+        "The token plan pays for voice calibration by cutting decorative lore, repeated mood adjectives, or non-playable prose."
+      ]
     }
   ]
 }

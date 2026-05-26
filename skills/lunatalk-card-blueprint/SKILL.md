@@ -14,9 +14,11 @@ private role card.
 
 Read `../../references/role-card-writing-framework.md` for the top-card pattern
 stack and archetype recipes. Read `../../references/card-authoring-templates.md`
-for draft packets and field templates. Read `../../references/quality-rubric.md`
-for the self-review checklist. Read `../../references/safety-and-cost.md` when
-the premise is mature, intense, horror-leaning, or boundary-sensitive.
+for draft packets and field templates. Read `../../references/voice-calibration.md`
+when the idea depends on distinctive dialogue, role consistency, or ensemble
+cast contrast. Read `../../references/quality-rubric.md` for the self-review
+checklist. Read `../../references/safety-and-cost.md` when the premise is mature,
+intense, horror-leaning, or boundary-sensitive.
 
 ## Boundary
 
@@ -41,7 +43,9 @@ creation, validation, render review, simulation, and publishing workflow.
    refuse, what they can change, and what the card must not decide for them.
 8. Define the world or relationship engine only as far as it creates play.
 9. Define voice fingerprint: sentence rhythm, vocabulary, address terms,
-   emotional tells, action beats, refusal style, and avoided phrasing.
+   emotional tells, action beats, concealment, refusal style, and avoided
+   phrasing. For ensemble cards, define a contrast matrix and at least one
+   calibration need per weak core speaker.
 10. Design the first scene and the second-turn engine together.
 11. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
 12. Run Moonloom self-review and repair any weak layer before handing off.
@@ -95,8 +99,15 @@ Voice fingerprint:
 - address terms:
 - emotional tells:
 - action beats:
+- concealment:
 - refusal style:
 - avoided phrasing:
+
+Voice calibration:
+- voice cards needed:
+- ensemble contrast:
+- micro-samples needed:
+- blind-line risk:
 
 First scene:
 - place/time:
@@ -127,6 +138,7 @@ Self-review:
 - promise:
 - anchor:
 - voice texture:
+- voice calibration:
 - consequence:
 - role initiative:
 - agency:
@@ -156,6 +168,8 @@ Handoff:
 - Keep the output original and public-safe. Do not copy unprovided source text or
   make unsupported provenance claims.
 - Prefer compact, executable rules over ornamental prose.
+- When voice calibration is relevant, include an explicit `voice calibration`
+  self-review line covering voice cards, micro-sample need, and blind-line risk.
 
 ## Repair heuristics
 
@@ -163,6 +177,8 @@ Handoff:
 - If the first scene is passive, add role action and external pressure.
 - If the role voice is generic, replace mood labels with sentence rhythm,
   vocabulary, tells, and avoided phrasing.
+- If ensemble voices blur together, give each core role a different want, fear,
+  rhythm, pressure move, and player leverage before adding more lore.
 - If the world is too large, choose one place, one rule, and one immediate cost.
 - If the relationship is flat, add asymmetry: one side knows, needs, owes, risks,
   hides, or controls something.

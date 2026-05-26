@@ -32,6 +32,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   self-review packets.
 - `references/playtest-loop.md` defines simulation probe design, transcript
   triage, patch mapping, and author co-review for closed-loop card testing.
+- `references/voice-calibration.md` defines executable voice cards,
+  micro-samples, ensemble contrast checks, and blind-line tests for consistent
+  character voice.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.
