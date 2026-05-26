@@ -152,13 +152,38 @@ then map the observed problem to a card patch.
 2. Identify the weakest Moonloom dimension: promise, anchor, voice texture,
    consequence, role initiative, agency, opening scene, player agency, boundary,
    archetype fit, generator engine, or token efficiency.
-3. Patch the smallest source field that can fix the failure.
-4. Run `validate_role` after structural patches.
-5. Re-run simulation only if the patch changes behavior, boundary handling,
+3. Produce a simulation repair packet before patching fields.
+4. Patch the smallest source field that can fix the failure.
+5. Run `validate_role` after structural patches.
+6. Re-run simulation only if the patch changes behavior, boundary handling,
    state, voice, or first-turn flow.
-6. Stop after two failed repair loops and ask the author to choose a design
+7. Stop after two failed repair loops and ask the author to choose a design
    direction, because repeated failure usually means the premise or player role is
    underdefined.
+
+## Simulation repair packet
+
+```text
+Simulation repair packet:
+- roleId:
+- probes run:
+- transcript-backed failures:
+- evaluation signals:
+- weakest Moonloom dimension:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerun stance:
+- cost stance:
+- handoff:
+```
+
+The packet is the handoff between simulation evidence and authoring. It should
+not be a transcript dump. Quote or paraphrase only enough evidence to justify the
+weakest layer, then route to `lunatalk-card-doctor` for mixed failures or to the
+narrow Moonloom skill for a single clear layer.
 
 ## Human co-review
 

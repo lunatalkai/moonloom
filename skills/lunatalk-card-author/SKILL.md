@@ -230,8 +230,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
 17. Call `render_preview` and review the result with `lunatalk-render-review`.
 18. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing. Include a
-    playtest plan, transcript triage, and evidence-backed patch decision, not
-    only a tool status check.
+    playtest plan, transcript triage, simulation repair packet, and
+    evidence-backed patch decision, not only a tool status check.
+    If simulation found behavior failures, preserve simulation repair before
+    patching fields or before another simulation pass.
 19. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 
@@ -276,10 +278,10 @@ MCP tools make the card real; Moonloom makes the card good.
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, profile package, language-style decisions,
-  quality audit, archetype, character core, relationship/daily-life/world/play/
-  generator/scenario/ensemble engines, agency, voice, opening, longplay,
-  boundary, token, presentation, and material-distillation packets whenever they
-  exist.
+  quality audit, simulation repair, archetype, character core,
+  relationship/daily-life/world/play/generator/scenario/ensemble engines,
+  agency, voice, opening, longplay, boundary, token, presentation, and
+  material-distillation packets whenever they exist.
 - If a packet is missing and the missing layer blocks a good card, route to the
   narrow skill before field assembly. Do not fill missing packets with generic
   prose just to continue.

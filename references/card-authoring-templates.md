@@ -101,6 +101,20 @@ Sample calibration packet:
 - opening proof changes:
 - simulation probes to keep:
 - handoff:
+Simulation repair packet:
+- roleId:
+- probes run:
+- transcript-backed failures:
+- evaluation signals:
+- weakest Moonloom dimension:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerun stance:
+- cost stance:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
