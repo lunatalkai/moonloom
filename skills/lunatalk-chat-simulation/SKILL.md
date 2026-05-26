@@ -90,11 +90,13 @@ When the author asks only for a test plan, do not call the tool.
 6. Map each failure to a Moonloom patch target using `playtest-loop.md`.
    If the transcript shows several failures at once, create or preserve a
    `lunatalk-card-doctor` diagnosis packet before choosing field patches.
-7. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
+7. Produce a simulation repair packet before patching fields or paying for
+   another simulation pass.
+8. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
-8. Run `validate_role` after structural patches.
-9. Re-run simulation when the patch changes core behavior, boundary handling,
+9. Run `validate_role` after structural patches.
+10. Re-run simulation when the patch changes core behavior, boundary handling,
    state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
@@ -112,6 +114,33 @@ Playtest plan:
 - cost stance:
 - tool call: run now | wait for confirmation | skipped
 ```
+
+## Simulation repair packet
+
+When a transcript fails or returns `warning`, return this packet before another
+paid run or field patch:
+
+```text
+Simulation repair packet:
+- roleId:
+- probes run:
+- transcript-backed failures:
+- evaluation signals:
+- weakest Moonloom dimension:
+- patch target:
+- next Moonloom skill:
+- fields to preserve:
+- fields to patch:
+- validation needed:
+- rerun stance:
+- cost stance:
+- handoff:
+```
+
+Use `lunatalk-card-doctor` as `next Moonloom skill` when several failures
+interact. Use the narrow skill when the transcript points clearly to one layer:
+agency, opening, longplay, voice, boundary, token, play engine, generator,
+world, relationship, daily-life, ensemble, or character core.
 
 ## Evaluation criteria
 

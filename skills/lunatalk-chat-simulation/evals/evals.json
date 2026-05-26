@@ -104,6 +104,19 @@
         "The output says the next simulation should use realistic artifact and revision probes.",
         "The output recommends another simulation only after the author accepts normal billing."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "A private simulation warning says the role ignored my refusal, repeated the welcome setup, and then switched into generic assistant tone. Before another paid run, give me the repair handoff only.",
+      "expected_output": "Returns a Simulation repair packet with transcript-backed failures, weakest Moonloom dimension, patch target, next Moonloom skill, fields to preserve and patch, validation needed, rerun stance, and cost stance before another paid run.",
+      "files": [],
+      "expectations": [
+        "The output includes a Simulation repair packet rather than only a transcript summary.",
+        "The packet names probes run, transcript-backed failures, evaluation signals, weakest Moonloom dimension, patch target, next Moonloom skill, fields to preserve, fields to patch, validation needed, rerun stance, cost stance, and handoff.",
+        "The output routes mixed failures to lunatalk-card-doctor or clearly explains the first narrow Moonloom skill if one layer dominates.",
+        "The output delays another paid simulation until after the patch changes behavior and the author accepts normal billing.",
+        "The output treats refusal failure, repeated setup, and generic assistant tone as Moonloom writing-layer repairs, not MCP/server validation gates."
+      ]
     }
   ]
 }
