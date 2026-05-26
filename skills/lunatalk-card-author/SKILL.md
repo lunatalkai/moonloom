@@ -10,106 +10,30 @@ Writer MCP only after the draft is coherent and self-reviewed.
 
 ## Required references
 
-Read `../../references/card-writer-mcp.md` before making MCP calls. Read
-`../../references/premise-workshop.md` when the author has only a mood, trope,
-aesthetic cluster, "popular/top-tier" request, or no settled role/player
-position/first scene yet; use `lunatalk-premise-workshop` before broad
-blueprinting or authoring when directions need to be chosen first. Read
-`../../references/profile-packaging.md` when the current task focuses on
-`roleName`, `roleDesc`, tags, title, tagline, short pitch, card profile,
-first impression, discovery surface, or promise compression; use
-`lunatalk-profile-packager` before field assembly or profile patching when the
-engine exists but the public package is weak. Read
-`../../references/language-style.md` when the current task focuses on language
-consistency, zh-Hant / zh-TW cleanup, Traditional/Simplified mixing,
-translated-sounding prose, register alignment, pronouns, address terms,
-punctuation, mixed-language tags, or field-to-field wording mismatch; use
-`lunatalk-language-stylist` before field assembly or patching when the engine,
-opening, and voice card are coherent but the language surface is weak. Read
-`../../references/character-core-design.md` when the role idea is thin,
-trope-only, generic, or needs persona appeal repair. Read
-`../../references/relationship-engine.md` when the card is relationship-heavy,
-slow-burn, companion, romance, friendship, rivalry, cohabitation, or when drafts
-collapse into generic flirting, comfort loops, instant intimacy, flat warmth,
-weak repair, or weak rupture routes. Read
-`../../references/world-engine-design.md` when the card needs worldbuilding,
-relationship networks, factions, locations, lore-heavy settings, or lore-dump
-repair. Read `../../references/scenario-design.md` when the card is story,
-scenario, mystery, investigation, case-file, event, rescue, trial, betrayal, or
-social drama, or when it needs stakes, route branches, clue/reveal pacing, false
-leads, suspect pressure, compact consequence state, or route-funnel repair. Use
-`lunatalk-scenario-architect` first when scenario structure is the primary task.
-Read `../../references/daily-life-design.md` when the card is daily-life,
-slice-of-life, quiet companion, neighbor, roommate, cohabitation, cafe,
-workplace, school, ordinary-routine, low-stakes, habit-state, shared-object,
-comfort-loop, flat small-talk, or when it needs small playable desire, tiny
-disruption, passive-player behavior, second-turn change, or return-next-time
-hooks. Use `lunatalk-daily-life-architect` first when quiet routine structure is
-the primary task.
-Read `../../references/play-engine-design.md` when the card is RPG,
-adventure, open-world, sandbox, survival, investigation, simulator, or has
-stats, resources, inventory, quests, combat, turn protocol, compact state,
-failure-forward behavior, or a rule-manual opening. Read
-`../../references/generator-design.md` when the card is a generator, helper, or
-creator assistant, or when it needs an artifact contract, intake defaults, output
-schema, named revision operations, or repair for advice-only drift / endless
-intake. Use `lunatalk-generator-architect` first when artifact production is the
-primary task.
-`../../references/role-card-writing-framework.md` before writing or deeply
-revising the card. Read `../../references/quality-rubric.md` when judging whether
-the card is usable. Read `../../references/quality-scorecard.md` when the author
-asks for a scorecard, top-tier check, craft rating, good-enough review, or
-first-three repairs before creation, simulation, or publishing. Use
-`lunatalk-quality-auditor` first when the primary task is quality audit rather
-than field drafting. Read `../../references/card-series-design.md` when the
-author wants multiple related cards, alternate versions, seasonal/event
-variants, daily-life variants, RPG/system variants, generator/helper variants,
-or a keep/merge/reject plan before real card creation. Use
-`lunatalk-series-architect` first when series planning is the primary task. Read
-`../../references/ensemble-card-design.md` when the card has multiple active
-speakers, ensemble cast structure, cast keep/merge/cut decisions, turn ownership,
-spotlight rules, group tension, roll-call openings, or cast-over-player risk.
-Use `lunatalk-ensemble-director` first when ensemble structure is the primary
-task. Read
-`../../references/safety-and-cost.md` when content
-rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
-`../../references/archetype-contracts.md` when the author is unsure which card
-type should drive the role, when several archetypes are mixed, or when field
-allocation depends on card shape. Use `lunatalk-archetype-director` first when
-card type or hybrid contract is the primary problem. Read
-`../../references/card-authoring-templates.md` when turning an idea into concrete
-field drafts. Read `../../references/material-distillation.md` when the author
-provides files, notes, imported drafts, source fragments, or a large world bible.
-Read `../../references/card-diagnosis.md` when improving an existing card with
-mixed symptoms, author feedback, validation/render passing but weak behavior,
-simulation failures, or unclear repair order. Use `lunatalk-card-doctor` first
-when the weakest layer is not obvious.
-Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
-Theme V3. Read `../../references/presentation-design.md` when the author needs a
-pre-render decision about XMLV3 vs plain vs HTML, Theme V3 vs `roleWelcome`,
-visible state vs hidden JSON state, visual affordances, or first-screen
-hierarchy. Use `lunatalk-presentation-director` first when presentation
-structure is the primary unresolved layer and no fresh preview or validation
-report exists. Read `../../references/token-economy.md` when `validate_role`
-returns tokenBudget warnings, when `roleWelcome` is much longer than
-`roleDetailDesc`, when durable rules are hidden in welcome, or when the task asks
-for compression, keep/move/cut/rewrite, or field allocation repair. Read
-`../../references/voice-calibration.md` when the card relies on
-distinctive voice, dialogue examples, long-session consistency, or ensemble cast
-contrast. Use `lunatalk-voice-director` first when voice repair is the primary
-task. Read `../../references/boundary-design.md` when the card is mature,
-adult, NSFW, emotionally intense, horror-leaning, consent-sensitive, jealous,
-power-imbalanced, or needs refusal/pacing repair. Read
-`../../references/opening-design.md` when creating or repairing `roleWelcome`,
-first screen playability, first reply paths, or second-turn moves. Read
-`../../references/longplay-design.md` when creating or repairing long-term
-playability, route seeds, memory/state, progression, passive/stalled behavior, or
-dead third-turn loops. Read `../../references/agency-design.md` when the card
-lets the player only watch, narrates player feelings/actions, has decorative
-choices, funnels routes, or lacks meaningful refusal/route-change behavior. Read
-`../../references/playtest-loop.md` when designing or interpreting private chat
-simulations. Use `../../examples/synthetic-card-briefs.md` when the task asks for
-benchmark creation, regression checks, or example-driven iteration.
+Read `../../references/card-writer-mcp.md` before MCP calls and
+`../../references/card-authoring-templates.md` before final field drafts.
+
+Load the narrow reference and skill before authoring when that layer is primary:
+`../../references/premise-workshop.md` / `lunatalk-premise-workshop` for loose
+ideas; `../../references/sample-driven-calibration.md` plus
+`../../examples/sample-card-packets.md` / `lunatalk-sample-calibrator` for
+examples, golden samples, sample output packets, benchmark expected-output
+shapes, draft-to-sample comparison, or copy-risk review; `profile-packaging.md`,
+`language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
+`ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
+`presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
+`boundary-design.md`, `opening-design.md`, `longplay-design.md`,
+`agency-design.md`, or `playtest-loop.md` for their matching focused tasks.
+
+For card-shape engines, use `character-core-design.md`,
+`relationship-engine.md`, `world-engine-design.md`, `scenario-design.md`,
+`daily-life-design.md`, `play-engine-design.md`, and `generator-design.md` with
+their matching Moonloom skills before fields when those layers are unresolved.
+Use `material-distillation.md` for author-provided files or large notes,
+`theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `safety-and-cost.md` for
+rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
+`quality-rubric.md` for Moonloom self-review, and
+`../../examples/synthetic-card-briefs.md` for benchmark or regression work.
 
 ## Workflow
 
@@ -121,6 +45,12 @@ benchmark creation, regression checks, or example-driven iteration.
    aesthetic cluster, or asks to brainstorm/open directions before fields, use
    `lunatalk-premise-workshop` first unless a premise workshop packet already
    exists.
+   If the author asks for examples, golden samples, sample output packets,
+   benchmark expected-output shapes, draft-to-sample comparison, "make it like
+   this sample", or copy-risk review before fields, use
+   `lunatalk-sample-calibrator` first unless a sample calibration packet already
+   exists. Treat samples as structure-only calibration, not final prose and not
+   a reason to call MCP tools.
    If the author asks for `roleName`, `roleDesc`, tags, title, tagline, short
    pitch, public-facing package, first impression, discovery surface, or why a
    player should open the card, use `lunatalk-profile-packager` first unless a
@@ -345,10 +275,11 @@ MCP tools make the card real; Moonloom makes the card good.
   `card-authoring-templates.md`; do not copy every optional packet into the
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
-  premise, profile package, language-style decisions, quality audit, archetype,
-  character core, relationship/daily-life/world/play/generator/scenario/ensemble
-  engines, agency, voice, opening, longplay, boundary, token, presentation, and
-  material-distillation packets whenever they exist.
+  premise, sample calibration, profile package, language-style decisions,
+  quality audit, archetype, character core, relationship/daily-life/world/play/
+  generator/scenario/ensemble engines, agency, voice, opening, longplay,
+  boundary, token, presentation, and material-distillation packets whenever they
+  exist.
 - If a packet is missing and the missing layer blocks a good card, route to the
   narrow skill before field assembly. Do not fill missing packets with generic
   prose just to continue.
