@@ -22,6 +22,8 @@ right specialized skill and MCP tool sequence.
 - Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
 - Preparing public submission: use `lunatalk-publish-readiness`.
+- Running regression checks or comparing Moonloom quality across archetypes: use
+  `lunatalk-benchmark-runner`.
 
 If the author asks for an end-to-end creation flow, start with `lunatalk-card-author`
 and let it call validation, render review, simulation, and publish readiness as needed.
@@ -36,6 +38,8 @@ and let it call validation, render review, simulation, and publish readiness as 
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
+- Read `../../examples/synthetic-card-briefs.md` when running benchmark or
+  regression checks.
 
 ## Operating principles
 

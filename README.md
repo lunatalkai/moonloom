@@ -16,6 +16,7 @@ and creator workflow automation.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
+- `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `examples/synthetic-card-briefs.md` provides fictional benchmark prompts for
