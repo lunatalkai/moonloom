@@ -56,8 +56,13 @@ iteration.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, or first action path.
 - If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
-  `consequence`, `agency`, then `tokenEfficiency`. Do not let polished prose hide
-  a weak first-turn action or a missing consequence loop.
+  `consequence`, `agency`, `archetype`, then `tokenEfficiency`. Do not let
+  polished prose hide a weak first-turn action, missing consequence loop, or
+  generic card that fails its chosen type.
+- For `archetype` warnings, repair the chosen card type directly: companion needs
+  relationship pressure and emotional boundaries; story needs setting stakes and
+  likely branches; game/RPG/system cards need rules, resources, failure pressure,
+  and opening setup/state/choices.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for

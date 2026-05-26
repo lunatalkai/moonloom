@@ -164,6 +164,10 @@ Use `qualityDimensions` as the agent repair map:
 - `agency`: the first user action path is obvious.
 - `tokenEfficiency`: welcome/detail/render structure spends tokens where they
   improve play.
+- `archetype`: the card satisfies its type-specific contract. Companion cards
+  need relationship pressure and emotional boundaries; story cards need setting
+  stakes and likely branches; game cards need rules, resources, failure pressure,
+  and opening setup/state/choices.
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
 missing speaking style, missing progression/state, weak first action path, or
@@ -177,6 +181,8 @@ repair surface:
 - `role_patch_detail` for anchor, voice, progression, and consequence issues.
 - `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome
   issues.
+- `role_patch_detail` plus sometimes `role_patch_welcome` for `archetype` issues,
+  depending on whether the missing part is durable logic or first-screen setup.
 - `validate_role` after the patch.
 
 Do not call `render_preview` or `simulate_private_chat` just because they are
