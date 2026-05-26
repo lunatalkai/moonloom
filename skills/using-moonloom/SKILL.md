@@ -5,8 +5,10 @@ description: Use Moonloom for LunaTalk creation workflows. Use this skill whenev
 
 # Using Moonloom
 
-Moonloom is a workflow router for LunaTalk creation work. Use it to choose the
-right specialized skill and MCP tool sequence.
+Moonloom is the skill framework for LunaTalk creation work. Use it to choose the
+right specialized skill, guide the author through ideation and revision, and call
+the MCP tools only when the card is ready for concrete creation, render review,
+simulation, or publishing.
 
 ## Start here
 
@@ -46,7 +48,8 @@ and let it call validation, render review, simulation, and publish readiness as 
 - Use the authenticated LunaTalk account; do not invent separate MCP scopes.
 - Use idempotency keys for every mutating tool call.
 - Prefer XMLV3 plus Theme V3 for new cards.
-- Use render preview and simulation as the quality loop, not as optional decoration.
+- Use Moonloom self-review, render preview, and simulation as the quality loop,
+  not as optional decoration.
 - Optimize for playable loops: hook, agency, consequence, memory, progression, and
   a new hook.
 - Do not call `publish_submit` until the author explicitly confirms submission.

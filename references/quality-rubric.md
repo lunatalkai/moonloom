@@ -19,30 +19,42 @@ the shorter pass/fail rubric.
   when the author writes in Traditional Chinese or asks for it. Do not mix
   Simplified Chinese terms into `zh-Hant` card fields.
 
-## MCP quality warnings
+## Top-Card Standard
 
-Treat quality warnings from `validate_role` as work items, not decorative lint.
-The first publish-grade pass should clear these warnings unless the author
+A top-card candidate should pass three harder checks:
+
+- The second turn is better than the first. The card can escalate, reveal,
+  complicate, or offer a new route without waiting for the player to write the
+  whole plot.
+- The role is recognizable from behavior, not just name or lore. Sentence rhythm,
+  choices, refusals, and emotional tells should make the role feel specific.
+- The token spend is purposeful. Long sections must create durable behavior,
+  state, style, or replayable routes; otherwise compress them.
+
+## Moonloom Self-Review
+
+Treat this checklist as the agent's writing review, not as MCP hard validation.
+The first publish-grade pass should satisfy these items unless the author
 explicitly chooses a tradeoff:
 
-- `promise`: clarify the premise, player relationship, and tension.
-- `anchor`: strengthen durable identity, desire, contradiction, boundaries,
+- Promise: clarify the premise, player relationship, and tension.
+- Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
-- `voiceTexture`: replace generic tone labels with sentence rhythm, vocabulary,
+- Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
-- `consequence`: define what player choices change and how the next hook renews.
-- `roleInitiative`: define what the role asks, reveals, escalates, or offers when
+- Consequence: define what player choices change and how the next hook renews.
+- Role initiative: define what the role asks, reveals, escalates, or offers when
   the player is passive or stalls.
-- `agency`: make the first user response path obvious.
-- `openingScene`: add concrete location, time, sensory context, role beat,
+- Agency: make the first user response path obvious.
+- Opening scene: add concrete location, time, sensory context, role beat,
   pressure, and player implication before choices.
-- `playerAgency`: remove instructions that decide the player's actions, feelings,
+- Player agency: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
-- `languageStyle`: rewrite mixed Simplified Chinese terms into Traditional
+- Language style: rewrite mixed Simplified Chinese terms into Traditional
   Chinese while preserving character names, tone, and XMLV3 tags.
-- `tokenEfficiency`: reduce welcome bloat or move durable visual structure into
+- Token efficiency: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
-- `archetype`: satisfy the card type's contract. Companion needs relationship
+- Archetype: satisfy the card type's contract. Companion needs relationship
   pressure and emotional boundaries; story needs setting stakes and likely
   branches; game needs rules, resources, failure pressure, and opening
   setup/state/choices; generator needs intake, output schema, revision loop, and
@@ -84,6 +96,8 @@ Use `tokenBudget` from `validate_role` before render or simulation:
   and then drifts.
 - If total size is large, keep only material that changes behavior, state, or
   user agency.
+- `tokenBudget` is a diagnostic signal. It should guide Moonloom edits but should
+  not replace the writing review.
 
 ## Welcome quality
 

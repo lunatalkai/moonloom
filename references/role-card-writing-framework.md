@@ -158,10 +158,10 @@ When `validate_role` returns `tokenBudget`, use it as a structural check:
 - `estimatedTokens` is approximate. Use it to compare revisions, not as a billing
   statement.
 
-## Validation-facing minimums
+## Moonloom Self-Review Minimums
 
-Moonloom should aim above these minimums, but never ignore them when authoring a
-real private card:
+Moonloom should aim above these minimums before it asks MCP to render or simulate
+a real private card:
 
 1. `roleDesc` sells the premise in one compact sentence: who, relationship, and
    tension.
@@ -184,28 +184,27 @@ real private card:
 9. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
    detail, welcome, and examples.
 
-Validation warnings usually mean the card is still below publish-grade quality.
-Patch the card, then re-run validation before render or simulation.
+These are writing checks. Do not wait for `validate_role` to enforce them.
 
-## Agent repair dimensions
+## Agent Repair Dimensions
 
-When `validate_role` returns `qualityDimensions`, repair the card in this order:
+Repair the card in this order during Moonloom self-review:
 
-1. `promise`: make the premise readable in three seconds.
-2. `anchor`: add the durable identity, desire, contradiction, boundary, and voice
+1. Promise: make the premise readable in three seconds.
+2. Anchor: add the durable identity, desire, contradiction, boundary, and voice
    anchors that prevent generic drift.
-3. `voiceTexture`: replace generic tone labels with executable voice behavior.
-4. `consequence`: define what changes when the player acts.
-5. `roleInitiative`: add proactive turn rules for passive or stalled player input.
-6. `agency`: make the first reply path obvious.
-7. `openingScene`: add location, time, sensory detail, role beat, pressure, and
+3. Voice texture: replace generic tone labels with executable voice behavior.
+4. Consequence: define what changes when the player acts.
+5. Role initiative: add proactive turn rules for passive or stalled player input.
+6. Agency: make the first reply path obvious.
+7. Opening scene: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-8. `playerAgency`: remove rules that decide the player's actions, feelings,
+8. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-9. `languageStyle`: rewrite Simplified Chinese terms into Traditional Chinese
+9. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-10. `archetype`: satisfy the chosen card type rather than writing a generic card.
-11. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
+10. Archetype: satisfy the chosen card type rather than writing a generic card.
+11. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
 
 Do not treat a single high total score as enough. A card with weak agency or weak

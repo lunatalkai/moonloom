@@ -10,15 +10,15 @@ Use these as a public-safe regression benchmark after changing Moonloom guidance
 or the Card Writer MCP:
 
 1. Pick one brief and create a private card with the matching `cardType`.
-2. Run `validate_role`; fix all blockers and quality warnings unless the author
-   explicitly accepts a tradeoff.
-3. Run `render_preview`; fix `evaluation` warnings and inspect `previewUrl` when
+2. Run Moonloom self-review against the quality checks below.
+3. Run `validate_role`; fix technical blockers.
+4. Run `render_preview`; fix `evaluation` warnings and inspect `previewUrl` when
    browser or multimodal review is available.
-4. Run `simulate_private_chat` with the listed probes if normal billing is
+5. Run `simulate_private_chat` with the listed probes if normal billing is
    acceptable.
-5. A benchmark pass means validation passes, render evaluation passes, simulation
-   evaluation passes, and the result stays within a reasonable token budget for
-   its archetype.
+6. A benchmark pass means Moonloom self-review passes, validation has no blockers,
+   render evaluation passes, simulation evaluation passes, and the result stays
+   within a reasonable token budget for its archetype.
 
 Do not treat the text below as card content to copy. Each run should produce a
 fresh original card.

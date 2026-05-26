@@ -1,0 +1,23 @@
+{
+  "skill_name": "lunatalk-benchmark-runner",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run a public-safe Moonloom benchmark for one companion brief and report whether the workflow can produce a top-card candidate.",
+      "expected_output": "Uses synthetic briefs only, runs Moonloom self-review before MCP technical checks, checks render and simulation when allowed, and reports weakest Moonloom dimensions rather than expecting technical checks to judge writing craft.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "After changing the card author skill, test whether Moonloom still creates token-efficient RPG cards with playable state and consequences.",
+      "expected_output": "Selects the RPG synthetic brief, judges promise/engine/play/presentation quality, checks tokenBudget as a diagnostic signal, and reports render/simulation status plus whether the skill needs another iteration.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Create a negative regression check for a generic relationship card that has a valid schema but no emotional engine.",
+      "expected_output": "Treats the schema-valid card as a Moonloom self-review failure, identifies missing desire/contradiction/boundaries/initiative, and does not claim validate_role should catch those writing issues.",
+      "files": []
+    }
+  ]
+}
