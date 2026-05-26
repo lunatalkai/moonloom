@@ -1,0 +1,70 @@
+{
+  "skill_name": "lunatalk-generator-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a LunaTalk generator card that helps players design original festival rituals for fantasy towns. It should ask minimal intake questions, proceed with defaults, produce a finished ritual artifact, keep a stable output schema, and support named revision commands. Do not call MCP tools.",
+      "expected_output": "Uses lunatalk-generator-architect, returns a generator packet with artifact contract, intake defaults, output schema, revision operations, quality rubric, field allocation, simulation probes, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the task as generator architecture, not generic card authoring, RPG/system design, or broad archetype classification.",
+        "The packet defines a finished artifact type and stable output schema for fantasy-town rituals.",
+        "The intake surface has defaults and a proceed rule so the card does not ask questions indefinitely.",
+        "The revision operations are named and state what they preserve.",
+        "The output does not call MCP tools, render, simulate, publish, or make platform/source claims."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My helper card keeps giving writing advice instead of producing the artifact. It asks five setup questions and never outputs a finished item. Repair the generator loop before fields.",
+      "expected_output": "Routes to lunatalk-generator-architect, diagnoses advice-only drift and endless intake, and creates defaults, schema, artifact contract, revision operations, and opening repair targets.",
+      "files": [],
+      "expectations": [
+        "The output identifies advice-only drift and endless intake as generator contract failures.",
+        "The output requires one usable artifact when enough input or defaults are available.",
+        "The packet includes opening contract and field allocation for roleDesc, roleDetailDesc, roleWelcome, and talkExample.",
+        "The output routes only to opening, token, voice, or authoring after the generator packet is coherent.",
+        "The output keeps generator quality as Moonloom guidance, not an MCP/server gate."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want a diegetic oracle who creates travel omens as usable scene prompts. The role should stay in character, but still return a structured artifact and revision commands. Plan it before authoring.",
+      "expected_output": "Uses lunatalk-generator-architect, defines diegetic creator persona plus artifact contract, schema, defaults, revision operations, voice handoff, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output distinguishes diegetic flavor from the usable artifact requirement.",
+        "The packet defines how the oracle stays in character while still producing structured outputs.",
+        "The schema creates travel omens as scene prompts with reusable sections.",
+        "The handoff names lunatalk-voice-director only if diegetic voice remains weak after the generator packet.",
+        "The output does not turn the oracle into a generic assistant or vague lore narrator."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "This might be a generator, but the main player promise is resource management, inventory, quests, and failure-forward travel turns. Should generator-architect handle it?",
+      "expected_output": "Does not force generator-architect; routes RPG/system mechanics to lunatalk-play-engineer, with generator only as a possible overlay.",
+      "files": [],
+      "expectations": [
+        "The output recognizes stats, inventory, quests, resources, and turn protocol as play-engine concerns.",
+        "The output routes to lunatalk-play-engineer before generator-architect.",
+        "The output treats generator output as an overlay only if artifact production is not the primary loop.",
+        "The output does not call MCP tools.",
+        "The output preserves player agency and failure-forward testing as play-engine responsibilities."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I only want a small contract generator as an overlay inside a slow-burn companion card. The emotional relationship is the main fantasy. Which skill should run first?",
+      "expected_output": "Does not route directly to generator-architect as primary; routes primary contract uncertainty or relationship-first design to archetype/relationship guidance, limiting the generator to an overlay with concrete artifact rules.",
+      "files": [],
+      "expectations": [
+        "The output identifies relationship/companion as the likely primary contract.",
+        "The output routes to lunatalk-archetype-director or lunatalk-relationship-architect before generator-architect if the primary contract is still unresolved.",
+        "The output keeps the generator overlay concrete: artifact, schema, defaults, and revision operations.",
+        "The output avoids making the companion card a vague helper assistant.",
+        "The output does not call MCP tools."
+      ]
+    }
+  ]
+}

@@ -137,6 +137,7 @@ symbols, conflicts, and scene prompts.
 
 Quality checks:
 
+- The workflow creates or preserves a generator packet before authoring.
 - The card has an intake loop, output schema, revision loop, and quality rubric.
 - The welcome asks for enough information but offers defaults.
 - The assistant produces artifacts, not only advice.

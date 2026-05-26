@@ -316,6 +316,19 @@
         "The report keeps language quality inside Moonloom skills rather than MCP/server hard gates.",
         "The output avoids source/provenance claims and does not invent examples beyond the provided draft."
       ]
+    },
+    {
+      "id": 25,
+      "prompt": "Create a negative regression check for a schema-valid generator/helper card that keeps asking intake questions, gives advice instead of an artifact, changes its output schema, forgets the previous result, and has no named revision commands.",
+      "expected_output": "Treats missing generator artifact loop as a Moonloom generator-engine failure, checks the generator packet, and recommends lunatalk-generator-architect before broad authoring, simulation, publish readiness, or server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role and render_preview would pass.",
+        "The diagnosis identifies missing or weak generator packet fields: artifact contract, intake defaults, stable output schema, named revision operations, quality rubric, artifact memory, field allocation, and probes.",
+        "The proposed repair uses lunatalk-generator-architect or generator-design.md before broad blueprinting, field assembly, render, simulation, or publish readiness.",
+        "The report keeps generator quality inside Moonloom guidance and does not add MCP/server hard gates.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

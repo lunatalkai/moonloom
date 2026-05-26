@@ -149,6 +149,10 @@ opening contract, token plan, and simulation probes before authoring.
 Player promise: create a usable artifact through intake, defaults, output, and
 revision.
 
+Use `generator-design.md` or `lunatalk-generator-architect` when this is the
+primary contract, or when a helper card gives advice, asks indefinitely, drifts
+schema, forgets artifact continuity, or lacks named revision operations.
+
 Required engine:
 
 - clear artifact type

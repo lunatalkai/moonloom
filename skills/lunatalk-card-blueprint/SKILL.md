@@ -40,6 +40,11 @@ routine structure is the primary task. Read
 open-world, sandbox, survival, investigation, simulator, or depends on stats,
 resources, inventory, quests, combat, turn protocol, compact state,
 failure-forward behavior, or rule-manual opening repair. Read
+`../../references/generator-design.md` when the idea is a generator, helper,
+creator assistant, artifact-producing card, or depends on intake/defaults, output
+schema, named revision operations, artifact memory, or advice-only repair. Use
+`lunatalk-generator-architect` first when artifact production is the primary
+task. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
 and archetype recipes. Read `../../references/archetype-contracts.md` when the
 author is unsure whether the card is companion, story, system, RPG, generator,
@@ -119,6 +124,10 @@ creation, validation, render review, simulation, and publishing workflow.
    quests, combat, compact state, turn protocol, or failure-forward behavior,
    use `lunatalk-play-engineer` first unless a play-engine packet already
    exists.
+   If the author wants a generator, helper, creator-assistant, or
+   artifact-producing card with intake defaults, output schema, named revisions,
+   artifact continuity, or repair for advice-only/endless-intake behavior, use
+   `lunatalk-generator-architect` first unless a generator packet already exists.
    If the author wants a story, scenario, mystery, investigation, case-file,
    event, trial, rescue, betrayal, or social-drama card with stakes, route
    branches, clue/reveal pacing, false leads, suspect pressure, compact
@@ -158,32 +167,36 @@ creation, validation, render review, simulation, and publishing workflow.
     inventory, quests, combat, turn protocol, failure-forward behavior, or a
     rule-manual opening, use `lunatalk-play-engineer` first or preserve its
     packet.
-11. If the weak layer is story/scenario structure, route branches, clues,
+11. If the weak layer is generator/creator-assistant structure, artifact output,
+    intake defaults, stable output schema, revision commands, artifact memory, or
+    advice-only drift, use `lunatalk-generator-architect` first or preserve its
+    packet.
+12. If the weak layer is story/scenario structure, route branches, clues,
     reveal pacing, suspect pressure, false leads, route funneling, or scenario
     consequences, use `lunatalk-scenario-architect` first or preserve its packet.
-12. If the weak layer is daily-life structure, quiet routine, small playable
+13. If the weak layer is daily-life structure, quiet routine, small playable
     desire, tiny disruption, shared object, habit state, passive-player behavior,
     second-turn change, or return-next-time renewal, use
     `lunatalk-daily-life-architect` first or preserve its packet.
-13. If the weak layer is generic dialogue, speaking style, voice drift,
+14. If the weak layer is generic dialogue, speaking style, voice drift,
    catchphrase overuse, refusal voice, talkExample placement, or ensemble voice
    blur, use `lunatalk-voice-director` first or preserve its packet. Define
    voice fingerprint: sentence rhythm, vocabulary, address terms, emotional
    tells, action beats, concealment, refusal style, and avoided phrasing. For
    ensemble cards, define a contrast matrix and at least one calibration need per
    weak core speaker.
-14. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
+15. If field allocation, token budget, welcome bloat, duplicated lore, misplaced
     durable rules, or visual bloat is the core problem, use
     `lunatalk-token-architect` first or preserve its packet before opening repair
     or field drafting.
-15. Design the first scene and the second-turn engine together. If the opening is
+16. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-16. If long-term playability, memory/state, route seeds, progression, or a dead
+17. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-17. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-18. Run Moonloom self-review and repair any weak layer before handing off.
+18. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+19. Run Moonloom self-review and repair any weak layer before handing off.
     If the author asked for a quality audit, preserve or create a
     `lunatalk-quality-auditor` scorecard before authoring.
 
@@ -226,6 +239,7 @@ Archetype packet:
   - world engine:
   - ensemble:
   - play engine:
+  - generator:
   - scenario:
   - daily-life:
   - agency:
@@ -404,6 +418,27 @@ Play-engine packet:
 - progression phases:
 - opening contract:
 - state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
+Generator packet:
+- current seed or failure:
+- generator promise:
+- card shape:
+- artifact type:
+- player role:
+- creator persona:
+- artifact contract:
+- intake surface:
+- output schema:
+- revision operations:
+- quality rubric:
+- artifact memory:
+- refusal / constraint handling:
+- diegetic mode:
+- opening contract:
 - field allocation:
 - token plan:
 - simulation probes:
@@ -593,6 +628,10 @@ Handoff:
   away compact state, resource rules, quest/risk model, turn protocol,
   failure-forward behavior, opening contract, state visibility, token plan, or
   simulation probes.
+- Preserve any generator packet from `lunatalk-generator-architect`; do not
+  summarize away artifact contract, intake defaults, output schema, revision
+  operations, quality rubric, artifact memory, opening contract, field
+  allocation, token plan, or simulation probes.
 - Preserve any voice-director packet from `lunatalk-voice-director`; do not
   summarize away rhythm, vocabulary, emotional tells, refusal style,
   response-mode grid, talkExample decision, blind-line test, pressure probes, or

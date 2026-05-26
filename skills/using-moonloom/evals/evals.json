@@ -403,6 +403,19 @@
         "The output says language-stylist can run later after boundary posture and engine/opening/voice preconditions are clear.",
         "The output avoids MCP tools, render, simulation, and publishing during routing."
       ]
+    },
+    {
+      "id": 32,
+      "prompt": "I am not sure which Moonloom skill to use. I want a generator/creator-assistant role card that helps players design original festival rituals for fantasy towns. It should ask minimal intake questions, proceed with defaults, produce a finished artifact, keep a stable output schema, support named revision commands, and avoid becoming generic advice or an RPG system. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes primary generator/helper artifact-loop design to lunatalk-generator-architect before blueprinting, authoring, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes generator, creator-assistant, artifact output, intake defaults, stable schema, and named revision operations to lunatalk-generator-architect.",
+        "The output does not route primarily to lunatalk-play-engineer because resources, stats, quests, and turn protocol are not the main loop.",
+        "The output does not route directly to broad blueprinting, field assembly, MCP tools, render, simulation, or publish readiness.",
+        "The output treats generator quality as Moonloom skill guidance, not an MCP/server gate."
+      ]
     }
   ]
 }

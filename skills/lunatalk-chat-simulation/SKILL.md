@@ -31,6 +31,11 @@ resources, inventory, quests, combat, turn protocol, or failure-forward behavior
 breaking down. Use `lunatalk-play-engineer` when the transcript points to
 decorative stats, resources that do not change choices, forgotten state updates,
 or failure that ends play or changes nothing.
+Read `../../references/generator-design.md` when simulation shows a generator,
+helper, creator-assistant, artifact-producing card, advice-only drift, endless
+intake, unstable output schema, missing revision commands, or lost artifact
+continuity. Use `lunatalk-generator-architect` when the transcript points to a
+broken artifact loop.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together. Use
 `lunatalk-voice-director` when the transcript points to speaking style,
@@ -141,7 +146,11 @@ Playtest plan:
   than the setup: it should react, complicate, reveal, offer a route, update
   state, or renew pressure without taking over the player's agency.
 - For generator or assistant cards, the output should produce a usable artifact
-  when the user gives enough input, not only ask vague questions.
+  when the user gives enough input or accepts defaults, preserve a stable schema,
+  remember the artifact version, and support named revision operations. If the
+  transcript is advice-only, asks indefinitely, changes format, or forgets prior
+  artifacts, patch with `lunatalk-generator-architect` before another paid
+  simulation.
 - For RPG/system cards, state and resources should be compact enough to update
   every turn. Resources, failure, and route choices should change access, cost,
   risk, reward, or renewed hooks; if not, patch the play-engine packet before

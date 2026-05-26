@@ -202,6 +202,7 @@ Archetype packet:
   - daily-life:
   - world engine:
   - play engine:
+  - generator:
   - ensemble:
   - agency:
   - voice:
@@ -347,6 +348,27 @@ Play-engine packet:
 - progression phases:
 - opening contract:
 - state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
+Generator packet:
+- current seed or failure:
+- generator promise:
+- card shape:
+- artifact type:
+- player role:
+- creator persona:
+- artifact contract:
+- intake surface:
+- output schema:
+- revision operations:
+- quality rubric:
+- artifact memory:
+- refusal / constraint handling:
+- diegetic mode:
+- opening contract:
 - field allocation:
 - token plan:
 - simulation probes:
@@ -525,6 +547,54 @@ Token plan:
 - what to cut first:
 ```
 
+## Generator Packet
+
+Use before field assembly when the card's primary loop is artifact creation.
+
+```text
+Generator packet:
+- current seed or failure:
+- generator promise:
+- card shape:
+- artifact type:
+- player role:
+- creator persona:
+- artifact contract:
+  - artifact must include:
+  - artifact may include:
+  - artifact must not include:
+- intake surface:
+  - required inputs:
+  - optional inputs:
+  - defaults:
+  - when to ask:
+  - when to proceed:
+- output schema:
+  - sections:
+  - ordering:
+  - length target:
+  - formatting rules:
+- revision operations:
+  - [operation]:
+    - trigger:
+    - effect:
+    - preserves:
+- quality rubric:
+- artifact memory:
+- refusal / constraint handling:
+- diegetic mode:
+- opening contract:
+- field allocation:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- token plan:
+- simulation probes:
+- handoff:
+```
+
 ## Final role-field authoring packet
 
 Use when the author already has Moonloom packets and asks for field-ready role
@@ -551,6 +621,7 @@ Inputs preserved:
 - daily-life packet:
 - world-engine packet:
 - play-engine packet:
+- generator packet:
 - scenario packet:
 - ensemble packet:
 - agency packet:
@@ -576,6 +647,7 @@ Role fields:
   - player position:
   - agency and interaction:
   - relationship / daily-life / world / play engine:
+  - generator artifact loop:
   - role identity:
   - contradiction and boundary:
   - voice fingerprint:
@@ -615,6 +687,7 @@ Packet preservation checklist:
 - relationship engine preserved:
 - daily-life engine preserved:
 - world / play / scenario engine preserved:
+- generator artifact loop preserved:
 - player agency preserved:
 - voice preserved:
 - opening and longplay preserved:

@@ -34,6 +34,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 | Character appeal | Does the role have desire, contradiction, boundary, player leverage, and pressure behavior? |
 | Relationship / daily-life / world / scenario engine | Does relationship, routine, setting, faction, incident, clue, or pressure content create choices, costs, state, and routes? |
 | Play engine | For RPG/adventure/sandbox cards, do compact state, resources, quests, turn protocol, and failure-forward behavior produce runnable turns? |
+| Generator engine | For generator/helper cards, does the card produce a usable artifact through intake defaults, stable schema, revision operations, and artifact continuity? |
 | Player agency | Can the player accept, question, refuse, redirect, test, or change the route without being overwritten? |
 | Opening | Does the first screen include place/time, role action, pressure, player implication, and reply paths? |
 | Second-turn engine | Can the role's next move react, reveal, complicate, update state, or renew pressure? |
@@ -70,6 +71,8 @@ Flag blockers before scoring:
   trust, confession, or only valid path
 - quiet daily-life card with no small playable desire, tiny disruption, habit
   change, shared object/place, passive-player behavior, or second-turn change
+- generator/helper card that asks indefinitely, gives advice only, has no stable
+  output schema, or cannot produce one usable artifact from defaults
 
 ## Quality audit packet
 
@@ -89,6 +92,7 @@ Quality audit packet:
   - character appeal:
   - relationship / daily-life / world / scenario engine:
   - play engine:
+  - generator engine:
   - player agency:
   - opening:
   - second-turn engine:
@@ -116,7 +120,8 @@ Choose first repairs by risk and leverage:
 2. Archetype contract and promise. Use `lunatalk-profile-packager` when the
    engine exists but `roleName`, `roleDesc`, tags, or first impression are the
    weak layer.
-3. Durable engine: character core, relationship engine, daily-life engine, world engine, play engine, or system rules.
+3. Durable engine: character core, relationship engine, daily-life engine, world
+   engine, play engine, generator engine, or system rules.
 4. Opening and second-turn engine.
 5. Longplay and state.
 6. Voice calibration.

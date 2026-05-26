@@ -39,6 +39,10 @@ not a platform metric or MCP validation rule.
   simulator-like, its play engine has compact state, resource rules, quest/risk
   routes, turn protocol, failure-forward behavior, and state-update probes rather
   than decorative stats or a rule manual.
+- If the card is a generator, helper, creator-assistant, or artifact-producing
+  card, its generator engine has a concrete artifact contract, intake defaults,
+  stable output schema, named revision operations, artifact memory, and one
+  usable artifact path from minimal input rather than only advice.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
@@ -137,6 +141,12 @@ explicitly chooses a tradeoff:
   choices, create a play-engine packet with player controls, compact state,
   resource rules, quest/risk model, turn protocol, failure-forward behavior,
   opening contract, token plan, and simulation probes before field drafting.
+- Generator engine: if a generator, helper, creator-assistant, or
+  artifact-producing card asks indefinitely, gives advice without the artifact,
+  lacks defaults, shifts output format, forgets prior artifacts, or has no named
+  revision operations, create a generator packet with artifact contract, intake
+  surface, output schema, quality rubric, revision commands, artifact memory,
+  field allocation, and probes before field drafting.
 - Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
 - Voice calibration: for voice-heavy or ensemble cards, add voice cards,
@@ -190,8 +200,9 @@ explicitly chooses a tradeoff:
   pressure and emotional boundaries; story needs setting stakes and likely
   branches; game needs rules, resources, failure pressure, and opening
   setup/state/choices; daily-life needs routine, small desire, tiny disruption,
-  shared object, habit state, and small change; generator needs intake, output
-  schema, revision loop, and quality rubric.
+  shared object, habit state, and small change; generator needs artifact
+  contract, intake defaults, stable output schema, named revision loop, artifact
+  memory, quality rubric, and one usable artifact from minimal input.
 - Archetype director: when the author is unsure which card type should drive the
   work, or the card mixes companion, story, system, RPG, generator, daily-life,
   light-setting, heavy-setting, or ensemble contracts, create an archetype packet
@@ -254,6 +265,10 @@ explicitly chooses a tradeoff:
 - Game-like card with no runnable engine: rewrite it into a play-engine packet.
   Every stat, resource, item, quest, combat rule, and risk should affect choices,
   visible state, cost, route, reward, or failure-forward consequence.
+- Generator/helper card with no artifact engine: rewrite it into a generator
+  packet. The card should accept sparse input, choose sensible defaults, produce
+  a finished artifact in a stable schema, remember the artifact version, and
+  support named revision operations instead of only giving advice.
 - Forgotten compact state: add a turn protocol that resolves the player's action,
   updates state after every assistant turn, narrates the next pressure, and
   offers choices with visible cost or risk.

@@ -117,6 +117,19 @@
         "The output preserves the coherent engine, opening, and voice instead of broad rewriting.",
         "The output does not call publish_submit."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "This private helper role passes validation and preview, but in simulation it keeps asking intake questions, gives advice instead of a finished artifact, changes schema every turn, and forgets the previous draft when I ask for a named revision. Can we submit it?",
+      "expected_output": "Does not publish; treats weak generator behavior as a Moonloom readiness failure, routes to lunatalk-generator-architect, preserves normal render/simulation readiness after repair, and does not call publish_submit.",
+      "files": [],
+      "expectations": [
+        "The output says validation and preview are not enough when a generator/helper card fails its artifact loop.",
+        "The output routes artifact output, intake defaults, schema stability, named revisions, and artifact memory repair to lunatalk-generator-architect or generator-design before publish readiness continues.",
+        "The repair expects a generator packet with artifact contract, defaults, output schema, revision operations, quality rubric, artifact memory, token plan, and simulation probes.",
+        "The output recommends rerunning readiness checks and simulation after the generator repair or recording an explicit cost-aware skip.",
+        "The output does not call publish_submit."
+      ]
     }
   ]
 }

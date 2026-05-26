@@ -39,6 +39,12 @@ an RPG, adventure, open-world, survival, investigation, simulator, or game-like
 opening reads like a rule manual, exposes decorative stats, lacks compact state,
 or offers choices without resource/risk/state consequences. Use
 `lunatalk-play-engineer` first when the playable rules are unresolved.
+Read `../../references/generator-design.md` when the opening belongs to a
+generator/helper/creator-assistant card and the first screen fails because
+intake stalls, defaults are missing, the artifact promise is unclear, or the
+player cannot reach a finished artifact quickly. Use or preserve
+`lunatalk-generator-architect` first when the artifact contract, schema,
+revision operations, or artifact memory is unresolved.
 
 ## Boundary
 
@@ -65,17 +71,21 @@ opening, then hand off to authoring, render review, or simulation.
    choices with no risk/cost/state update.
 5. Build the five beats: place/time, role action, pressure, player implication,
    and reply paths.
-6. Write one expected first user message.
-7. Write the role's second-turn move and what changes.
-8. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
+6. Preserve any generator packet before polishing a generator/helper opening.
+   The welcome may reduce intake friction, but it must not remove the artifact
+   contract, default-start path, output schema, named revisions, or artifact
+   memory.
+7. Write one expected first user message.
+8. Write the role's second-turn move and what changes.
+9. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
    choices, or state visibility help the first screen. If the five beats and
    second-turn move are already coherent and the remaining problem is visual
    hierarchy, Theme V3 split, hidden state, or HTML justification, hand off to
    `lunatalk-presentation-director`.
-9. State token tradeoff: what stays in welcome, what belongs in detail, and what
+10. State token tradeoff: what stays in welcome, what belongs in detail, and what
    to cut.
-10. Run opening self-review.
-11. Hand off to `lunatalk-card-author` for actual private-card patching, or to
+11. Run opening self-review.
+12. Hand off to `lunatalk-card-author` for actual private-card patching, or to
    `lunatalk-chat-simulation` for first-turn probes after author approval and
    normal billing acceptance.
 
@@ -99,6 +109,7 @@ Opening packet:
 - renewed hook:
 - state visibility:
 - welcome mode:
+- generator packet preservation:
 - token tradeoff:
 
 Welcome draft:
@@ -151,3 +162,6 @@ Handoff:
 - If a game-like opening is a manual, define a play-engine packet first, then
   rebuild the welcome around one crisis, visible compact state, and 2-4 choices
   tied to resource, risk, route, or state.
+- If a generator/helper opening is an intake form, preserve the generator packet
+  and rebuild the first screen around one default-start path, one optional input
+  path, one artifact promise, and one second-turn revision or refinement move.

@@ -29,9 +29,9 @@ field-to-field register mismatch. Read
 existing packets or hand off to field drafting.
 
 Read narrow references only for weak dimensions: archetype contracts, character
-core, relationship engine, daily-life engine, world engine, play engine, agency,
-opening, longplay, voice, boundary, token economy, Theme V3 rendering, or
-playtest loop.
+core, relationship engine, daily-life engine, world engine, play engine,
+generator engine, agency, opening, longplay, voice, boundary, token economy,
+Theme V3 rendering, or playtest loop.
 
 ## Boundary
 
@@ -80,6 +80,7 @@ Quality audit packet:
   - character appeal:
   - relationship / daily-life / world engine:
   - play engine:
+  - generator engine:
   - player agency:
   - opening:
   - second-turn engine:
@@ -109,7 +110,9 @@ Self-review:
 ## Quality rules
 
 - Use `N/A` for dimensions that do not apply. Do not punish a simple companion
-  card for lacking RPG mechanics or a generator schema.
+  card for lacking RPG mechanics or a generator schema. Do score generator
+  cards on whether they can produce a usable artifact through defaults, stable
+  schema, named revisions, and artifact continuity.
 - A beautiful welcome cannot compensate for no durable engine.
 - A strong premise cannot compensate for player-agency takeover.
 - A long detail field is not automatically strong; it must create reusable
@@ -136,6 +139,9 @@ Hand off to:
 - `lunatalk-play-engineer` when RPG/adventure/sandbox mechanics, compact state,
   resources, quest/risk routes, turn protocol, or failure-forward behavior are
   the weakest dimension.
+- `lunatalk-generator-architect` when generator/helper/creator-assistant cards
+  give advice only, ask indefinitely, lack intake defaults, drift output schema,
+  forget artifacts, or have no named revision operations.
 - `lunatalk-agency-designer`, `lunatalk-opening-director`, or
   `lunatalk-longplay-architect` when play, reply paths, second turn, or
   continuation fails.

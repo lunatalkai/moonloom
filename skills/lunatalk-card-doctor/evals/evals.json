@@ -78,6 +78,19 @@
         "The language-style expectation includes target locale, language failures, pronoun/address matrix, field pass, verification checklist, and handoff.",
         "The output does not call MCP tools or turn language style into a server gate."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Diagnose an existing generator/helper card that validates and renders, but simulation shows it asks three more intake questions every turn, gives generic advice, changes output format, and never produces a finished artifact. Do not rewrite fields yet.",
+      "expected_output": "Uses card diagnosis to classify the primary failure as generator engine, maps symptoms to lunatalk-generator-architect, and delays simulation or authoring until artifact contract, defaults, schema, revisions, and artifact memory are repaired.",
+      "files": [],
+      "expectations": [
+        "The diagnosis treats valid fields and readable render as technical evidence, not proof that the generator card is playable.",
+        "The symptom map identifies endless intake, advice-only drift, unstable output schema, and missing artifact continuity.",
+        "The repair order routes to lunatalk-generator-architect before broad authoring, render polish, another paid simulation, or publish readiness.",
+        "The field triage targets roleDetailDesc, roleWelcome, and talkExample for artifact contract, defaults, schema, revision operations, and probes.",
+        "The output keeps generator quality inside Moonloom skills rather than MCP/server hard gates."
+      ]
     }
   ]
 }

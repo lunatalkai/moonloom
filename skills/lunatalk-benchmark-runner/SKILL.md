@@ -59,6 +59,10 @@ repair. Read `../../references/play-engine-design.md` when benchmarking RPG,
 adventure, open-world, survival, investigation, simulator, stats, resources,
 inventory, quests, combat, turn protocol, compact state updates, or
 failure-forward behavior. Read
+`../../references/generator-design.md` when benchmarking generator/helper/
+creator-assistant cards, artifact contracts, intake defaults, output schema,
+revision commands, advice-only drift, endless intake, or artifact continuity.
+Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
@@ -83,7 +87,8 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    generator, daily-life, heavy-setting, ensemble, or boundary-sensitive romance.
    For story/mystery/event briefs, confirm a scenario packet exists before
    authoring. For daily-life/slice-of-life briefs, confirm a daily-life packet
-   exists before authoring.
+   exists before authoring. For generator/helper briefs, confirm a generator
+   packet exists before authoring.
 3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
@@ -150,7 +155,11 @@ Moonloom self-review, render review, or simulation that:
   into the same response with no state, information, relationship, risk, route,
   or next-hook difference.
 - an archetype is missing its contract, such as game rules/resources or generator
-  intake/output/revision loop.
+  artifact contract, intake defaults, stable output schema, artifact memory, and
+  revision loop.
+- a generator/helper card asks indefinitely, gives advice only, changes output
+  shape across turns, forgets the previous artifact, or cannot produce one
+  usable artifact from minimal input with sensible defaults.
 - an RPG/adventure/sandbox card has stats, resources, inventory, quests, or
   combat but no play-engine packet, compact state update rule, turn protocol,
   resource consequences, failure-forward behavior, opening contract, or
@@ -233,6 +242,10 @@ roll-call openings, or cast-over-player behavior.
 Use `lunatalk-play-engineer` for regressions where the weakest layer is
 RPG/adventure mechanics, compact state, resource rules, inventory, quests,
 combat, turn protocol, failure-forward behavior, or a rule-manual opening.
+Use `lunatalk-generator-architect` for regressions where the weakest layer is a
+generator/helper/creator-assistant artifact loop, intake defaults, output schema,
+named revision operations, artifact continuity, advice-only drift, or endless
+intake.
 
 ## Pass criteria
 

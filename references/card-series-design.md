@@ -134,6 +134,8 @@ stateful play.
 ### Generator / helper variant
 
 Use only when it produces a concrete artifact for players or creators.
+Use `generator-design.md` or `lunatalk-generator-architect` when this variant is
+kept and the artifact contract is not already coherent.
 
 - Promise: produce a usable artifact through intake, defaults, output schema, and
   revision operations.

@@ -32,8 +32,8 @@ pronoun/address drift, mixed-language tags, or field-to-field register mismatch.
 
 Then load only the narrow reference for the diagnosed weak layer: archetype,
 character core, relationship engine, daily-life engine, world engine, play
-engine, ensemble structure, agency, opening, longplay, voice, boundary, render,
-language style, or publish readiness.
+engine, generator engine, ensemble structure, agency, opening, longplay, voice,
+boundary, render, language style, or publish readiness.
 
 ## Boundary
 
@@ -142,6 +142,9 @@ Hand the packet to:
 - `lunatalk-play-engineer` when RPG/adventure mechanics, compact state,
   resources, inventory, quests, combat, turn protocol, failure-forward behavior,
   or rule-manual openings are the structural failure.
+- `lunatalk-generator-architect` when generator/helper/creator-assistant cards
+  give advice instead of artifacts, ask indefinitely, lack defaults, drift output
+  schema, forget artifact continuity, or have no named revision operations.
 - `lunatalk-agency-designer`, `lunatalk-opening-director`, or
   `lunatalk-longplay-architect` when play fails through choices, first screen,
   second turn, or continuation.

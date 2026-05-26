@@ -78,6 +78,19 @@
         "The output preserves the coherent engine, opening, longplay, and voice instead of broad diagnosis or re-blueprinting.",
         "The output does not call MCP tools or treat language style as platform metrics or an MCP gate."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Audit this generator/helper blueprint before field assembly. It asks useful questions, but I worry it may become advice-only, shift output format, forget the previous artifact, and lack named revision commands. Do not call MCP tools.",
+      "expected_output": "Uses lunatalk-quality-auditor for the scorecard, scores generator engine as a relevant dimension, and hands off to lunatalk-generator-architect when artifact contract, defaults, schema, revisions, or artifact memory are weak.",
+      "files": [],
+      "expectations": [
+        "The output keeps the task in lunatalk-quality-auditor because the user asked for an audit or scorecard.",
+        "The generator-engine dimension checks artifact contract, intake defaults, stable output schema, named revision operations, artifact continuity, and advice-only drift.",
+        "The first repair or handoff routes to lunatalk-generator-architect before card-author, render, simulation, or publish readiness when generator structure is weak.",
+        "The output uses N/A for unrelated dimensions instead of forcing RPG, romance, or worldbuilding requirements onto the generator card.",
+        "The output does not call MCP tools or treat generator quality as a server gate."
+      ]
     }
   ]
 }

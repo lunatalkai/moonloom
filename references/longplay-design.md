@@ -208,7 +208,8 @@ If the role says "what now?" after every exchange, the longplay engine is weak.
 - State: artifact version, constraints, accepted choices, rejected options.
 - Routes: expand, compress, reframe, localize, format, test, publish.
 - Renewal: every reply should produce or revise an artifact.
-- Failure to avoid: endless intake questions without output.
+- Failure to avoid: endless intake questions, advice-only replies, schema drift,
+  or forgotten artifacts. Use `generator-design.md` when this is the weak layer.
 
 ## Detail patch template
 

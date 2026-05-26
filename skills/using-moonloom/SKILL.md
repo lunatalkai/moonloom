@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, language consistency, zh-Hant/zh-TW style, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, early premise workshop, mood/trope/aesthetic brainstorming, field-ready drafts, prepared packet stacks, roleName/roleDesc/tags/profile packaging, language consistency, zh-Hant/zh-TW style, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, generator/helper artifact loops, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -152,6 +152,14 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   `lunatalk-world-engineer` first; if it is only first-screen structure, use
   `lunatalk-opening-director`; if it is only continuation after a working
   opening, use `lunatalk-longplay-architect`.
+- Generator, helper, creator-assistant, artifact-producing, intake/defaults,
+  output schema, named revision operations, advice-only drift, endless intake, or
+  diegetic creator cards where the primary blocker is producing a usable artifact:
+  use `lunatalk-generator-architect` before blueprinting, authoring, opening
+  repair, simulation, or publish readiness. If the author is still deciding
+  whether generator is primary or only an overlay, use
+  `lunatalk-archetype-director` first; if stats/resources/turn protocol are the
+  main loop, use `lunatalk-play-engineer`.
 - `roleWelcome`, welcome text, opening scene, first screen, first user reply,
   second-turn move, greeting-only or hollow openings, onboarding clarity, or
   first-action path repair: use `lunatalk-opening-director` before authoring,
@@ -247,6 +255,10 @@ validation, render review, simulation, and publish readiness.
   adventure, open-world, sandbox, survival, investigation, simulator, stats,
   resources, inventory, quests, combat, turn protocol, compact state updates,
   failure-forward behavior, or rule-manual openings.
+- Read `../../references/generator-design.md` when the task involves generator,
+  helper, creator-assistant, artifact-producing cards, intake/defaults, output
+  schema, named revision operations, advice-only drift, endless intake, diegetic
+  creator modes, or generator simulation probes.
 - Read `../../references/scenario-design.md` when the task involves story,
   scenario, mystery, investigation, event, trial, rescue, betrayal, clue/reveal
   pacing, false leads, suspect pressure, route-funnel repair, branch

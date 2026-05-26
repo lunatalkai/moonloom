@@ -788,6 +788,10 @@ Top-card checks:
 
 Goal: help the user produce an artifact.
 
+Use `generator-design.md` or `lunatalk-generator-architect` before blueprinting
+or authoring when artifact production is the primary loop, or when the draft is
+advice-only, asks indefinitely, shifts output format, or lacks revision commands.
+
 Use:
 
 - intake questions
@@ -995,7 +999,8 @@ when the card needs stable formatting or style constraints that repeatedly fail.
 - Ensemble cast members who share the same narrator voice and differ only by
   name or catchphrase.
 - Canon card that assumes model memory instead of encoding needed facts.
-- Helper/generator card that asks vague questions and never outputs a finished
+- Helper/generator card that asks vague questions, gives advice only, changes
+  output schema, forgets the previous artifact, or never outputs a finished
   artifact.
 
 ## Evaluation probes

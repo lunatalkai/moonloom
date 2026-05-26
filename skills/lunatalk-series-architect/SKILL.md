@@ -27,6 +27,9 @@ route memory, progression, or return-later loops. Read
 `../../references/play-engine-design.md` when a kept variant is RPG/adventure,
 sandbox, survival, investigation, simulator, or depends on compact state,
 resources, quests, turn protocol, or failure-forward behavior. Read
+`../../references/generator-design.md` when a kept variant is generator/helper/
+creator-assistant, or depends on artifact output, intake defaults, stable output
+schema, revision operations, or artifact memory. Read
 `../../references/token-economy.md` when shared lore or repeated setup would
 bloat several cards. Read `../../references/boundary-design.md` when variants
 have different intensity, rating, refusal, or pacing posture. Read
@@ -141,7 +144,7 @@ Hand the packet to:
   as biography instead of behavior.
 - `lunatalk-relationship-architect`, `lunatalk-opening-director`,
   `lunatalk-play-engineer`, `lunatalk-longplay-architect`,
-  `lunatalk-boundary-designer`, or `lunatalk-token-architect` for the specific
-  weak layer in a kept variant.
+  `lunatalk-generator-architect`, `lunatalk-boundary-designer`, or
+  `lunatalk-token-architect` for the specific weak layer in a kept variant.
 - `lunatalk-card-author` when the series packet is ready and the author wants to
   create or patch real private cards one at a time.
