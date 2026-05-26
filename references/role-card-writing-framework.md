@@ -177,11 +177,21 @@ When `validate_role` returns `qualityDimensions`, repair the card in this order:
    anchors that prevent generic drift.
 3. `consequence`: define what changes when the player acts.
 4. `agency`: make the first reply path obvious.
-5. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
+5. `archetype`: satisfy the chosen card type rather than writing a generic card.
+6. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
 
 Do not treat a single high total score as enough. A card with weak agency or weak
 consequence still needs repair even if it has polished prose.
+
+For `archetype` repairs, match the card type:
+
+- Companion / relationship: add relationship history, emotional pressure,
+  contradiction, boundaries, and trust pacing.
+- Story / scenario: add named locations, stakes, likely branches, and route
+  consequences.
+- Game / RPG / simulator: add rules, stats or resources, failure pressure, and an
+  opening setup/state/choice surface.
 
 ## Archetype recipes
 

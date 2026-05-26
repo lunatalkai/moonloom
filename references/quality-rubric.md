@@ -31,6 +31,10 @@ explicitly chooses a tradeoff:
 - `agency`: make the first user response path obvious.
 - `tokenEfficiency`: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
+- `archetype`: satisfy the card type's contract. Companion needs relationship
+  pressure and emotional boundaries; story needs setting stakes and likely
+  branches; game needs rules, resources, failure pressure, and opening
+  setup/state/choices.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.
