@@ -104,6 +104,19 @@
         "The report does not ask MCP validation to judge long-term writing quality.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "Create a negative regression check for a schema-valid relationship card whose entire character core is \"cold but secretly soft\".",
+      "expected_output": "Treats trope-only character appeal as a Moonloom writing failure, checks character-core packet fields, and recommends character-core repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing appeal promise, desire, contradiction, boundary, player leverage, relationship asymmetry, pressure behavior, and interaction hooks.",
+        "The proposed repair uses lunatalk-character-core or character-core-design.md before blueprint or authoring.",
+        "The report does not ask MCP validation to judge subjective character appeal.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

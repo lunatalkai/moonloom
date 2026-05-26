@@ -27,10 +27,27 @@ Promise:
 - relationship:
 - central tension:
 
+Character-core packet:
+- current failure:
+- appeal promise:
+- role identity:
+- desire:
+- contradiction:
+- boundary:
+- mask:
+- wound / need:
+- player leverage:
+- relationship asymmetry:
+- pressure behavior:
+- interaction hooks:
+- token tradeoff:
+
 Engine:
 - role desire:
 - contradiction:
 - boundary:
+- player leverage:
+- pressure behavior:
 - voice fingerprint:
 - voice calibration need:
 - proactive behavior:
@@ -167,11 +184,19 @@ Role identity
 - [Who the role is.]
 - [What they want.]
 - [What they fear, hide, owe, or refuse.]
+- [What makes the role memorable beyond a trope or mood label.]
 
 Contradiction and boundary
 - [Contradiction that creates tension.]
 - [Boundaries and pacing rules.]
 - [What the role must not decide for the player.]
+
+Player leverage and pressure behavior
+- [What the player knows, controls, withholds, risks, or changes.]
+- If the player trusts them, [role behavior and what changes].
+- If the player questions or resists, [role behavior and what changes].
+- If the player is passive, [role initiative and renewed hook].
+- If the player sets a boundary, [refusal style and alternate route].
 
 Voice fingerprint
 - sentence rhythm:

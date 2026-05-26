@@ -15,6 +15,9 @@ decide whether another pass is worth the cost.
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, and author co-review.
+Read `../../references/character-core-design.md` when simulation shows a generic
+persona, weak motive, missing leverage, passive pressure response, or behavior
+that collapses to a trope.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together.
 Read `../../references/opening-design.md` when testing the opening hook, first
@@ -81,6 +84,8 @@ Playtest plan:
 ## Evaluation criteria
 
 - The role stays in character.
+- The role's desire, contradiction, boundary, and player leverage remain visible
+  under trust, resistance, passive input, and boundary-setting.
 - The reply advances the scene and gives the player something to do.
 - The first simulated response matches the opening packet's intended first reply
   path and makes the second-turn move visible through reaction, complication,
@@ -109,6 +114,8 @@ Playtest plan:
   needs a motive and turn ownership.
 - If ensemble speakers become interchangeable, patch voice cards, response-mode
   rules, or compact micro-samples before running another simulation.
+- If a single-role persona becomes generic under pressure, patch the
+  character-core packet before adding more sample dialogue.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to
   player choice, pacing, refusal style, stop conditions, and the boundary
   packet's explicitness ceiling and escalation ladder.

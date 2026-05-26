@@ -14,6 +14,8 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
+`../../references/character-core-design.md` when benchmarking generic persona,
+trope repair, ensemble identity, or character appeal. Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
@@ -54,6 +56,9 @@ Moonloom self-review, render review, or simulation that:
   stalled player input.
 - a persona-driven card has scene structure but lacks a clear want/need,
   contradiction, or boundary.
+- a schema-valid persona is still trope-only and has no character-core packet,
+  player leverage, relationship asymmetry, pressure behavior, or interaction
+  hooks.
 - the speaking style is only generic tone labels such as natural, gentle, or like
   a real person.
 - the opening is generic despite having a question.

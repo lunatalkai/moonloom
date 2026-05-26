@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core or persona appeal, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -12,6 +12,8 @@ simulation, or publishing.
 
 This is Moonloom's entry router. When an agent is unsure what to use, load this
 skill first, classify the task, and then route to the narrowest matching skill.
+This mirrors the start-with-the-router pattern: if a task might be Moonloom work,
+route first and only then load narrower skills.
 
 ## Router rule
 
@@ -52,9 +54,14 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   behavior, session restart, or choices that do not matter: use
   `lunatalk-longplay-architect` before authoring, simulation, or publish
   readiness.
-- Brainstorming, premise shaping, character core, worldbuilding, relationship
-  design, voice design, opening-scene planning, or turning a vague idea into a
-  card-ready blueprint after source material has been distilled: use
+- Character core, persona appeal, memorable identity, thin or generic roles,
+  trope repair, desire/contradiction/boundary, mask/wound, relationship
+  leverage, asymmetry, emotional hook, or distinctiveness repair: use
+  `lunatalk-character-core` before blueprinting, authoring, voice, opening,
+  longplay, simulation, or publish readiness.
+- Brainstorming, premise shaping, worldbuilding, relationship design, voice
+  design, opening-scene planning, or turning a vague idea into a card-ready
+  blueprint after source material has been distilled: use
   `lunatalk-card-blueprint`.
 - Creating or editing a role card: use `lunatalk-card-author`.
 - Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
@@ -71,6 +78,9 @@ validation, render review, simulation, and publish readiness.
 
 - Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint,
   or auth details matter.
+- Read `../../references/character-core-design.md` when working on character
+  core, persona appeal, trope repair, relationship leverage, pressure behavior,
+  or thin/generic roles.
 - Read `../../references/role-card-writing-framework.md` before writing or deeply
   revising any role card.
 - Read `../../references/card-authoring-templates.md` when producing or checking

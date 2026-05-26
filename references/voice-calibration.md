@@ -3,6 +3,9 @@
 Use this reference when a role card needs stronger character voice, ensemble
 contrast, or long-session consistency. Voice is not decoration. It is how the
 player recognizes a role after several turns, even when the scene changes.
+When the voice problem comes from a weak motive, generic persona, or missing
+player leverage, repair the character core first with `character-core-design.md`;
+voice rules cannot compensate for a role that has no pressure behavior.
 
 ## Core rule
 
@@ -124,6 +127,7 @@ Avoid `talkExample` when:
 Patch voice guidance when review or simulation shows:
 
 - the role replies in generic tone labels rather than behavior
+- the role has a polished voice but no clear desire, boundary, or player leverage
 - the role repeats the same catchphrase without adapting
 - ensemble speakers become interchangeable
 - a quiet role becomes passive and stops initiating

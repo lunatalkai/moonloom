@@ -18,6 +18,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 
 - `skills/using-moonloom` is the router skill. Start here when an agent is unsure
   which Moonloom workflow applies.
+- `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
+  into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
@@ -35,6 +37,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
+- `references/character-core-design.md` defines desire, contradiction, boundary,
+  player leverage, relationship asymmetry, pressure behavior, and appeal repair.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
