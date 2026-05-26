@@ -22,6 +22,11 @@ mature, intense, horror-leaning, jealous, or consent-sensitive pressure.
 Read `../../references/relationship-engine.md` when long sessions flatten into
 generic flirting, comfort loops, instant intimacy, rivalry without repair, weak
 trust/friction state, or relationship pacing drift.
+Read `../../references/play-engine-design.md` when longplay depends on RPG,
+adventure, open-world, survival, investigation, simulator, compact state,
+resources, inventory, quests, combat, turn protocol, or failure-forward behavior.
+Use `lunatalk-play-engineer` first when the state/resource/turn loop is not yet
+coherent.
 Read `../../references/agency-design.md` when choices are cosmetic, routes
 funnel back to the same scene, the player can only watch progression, or route
 changes do not create distinct consequences. Read
@@ -107,8 +112,10 @@ Handoff:
 - Make the role proactive without railroading: reveal, offer, ask, complicate,
   escalate, withdraw, change location, or call back a prior choice.
 - For relationship cards, make small repeated beats matter. For game cards, keep
-  state small enough to update. For ensemble cards, preserve the ensemble packet
-  and track group tension without drowning out the player.
+  state small enough to update and preserve the play-engine packet when compact
+  state, resources, turn protocol, or failure-forward rules drive continuation.
+  For ensemble cards, preserve the ensemble packet and track group tension
+  without drowning out the player.
 - Keep the output public-safe and original.
 
 ## Repair heuristics

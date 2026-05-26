@@ -30,9 +30,10 @@
     {
       "id": 3,
       "prompt": "Create a top-tier LunaTalk RPG card for a mythic academy. It should be replayable, token-efficient, and good enough to compete with the most active public cards.",
-      "expected_output": "Uses the role-card writing framework, defines promise/engine/play/presentation layers, designs choices/state/consequences, uses role_create_private and patch tools, then validates and renders.",
+      "expected_output": "Uses the role-card writing framework and lunatalk-play-engineer before MCP-backed authoring, defines promise/engine/play/presentation layers, designs compact state, resources, turn protocol, failure-forward behavior, choices/state/consequences, uses role_create_private and patch tools, then validates and renders.",
       "files": [],
       "expectations": [
+        "The RPG design creates or preserves a play-engine packet with compact state, resource rules, quest/risk model, turn protocol, failure-forward behavior, and simulation probes.",
         "The RPG design includes rules, resources or stats, failure pressure, rewards, and compact state update behavior.",
         "The first screen exposes setup or choices without becoming a long manual.",
         "The card defines at least 2 route seeds or progression paths with costs or consequences.",

@@ -24,6 +24,9 @@ when the main or daily-life variants are relationship-heavy. Read
 `../../references/opening-design.md` when variant openings need first-screen
 proof. Read `../../references/longplay-design.md` when variants need distinct
 route memory, progression, or return-later loops. Read
+`../../references/play-engine-design.md` when a kept variant is RPG/adventure,
+sandbox, survival, investigation, simulator, or depends on compact state,
+resources, quests, turn protocol, or failure-forward behavior. Read
 `../../references/token-economy.md` when shared lore or repeated setup would
 bloat several cards. Read `../../references/boundary-design.md` when variants
 have different intensity, rating, refusal, or pacing posture. Read
@@ -137,7 +140,8 @@ Hand the packet to:
 - `lunatalk-character-core` when the shared core is weak or copied across cards
   as biography instead of behavior.
 - `lunatalk-relationship-architect`, `lunatalk-opening-director`,
-  `lunatalk-longplay-architect`, `lunatalk-boundary-designer`, or
-  `lunatalk-token-architect` for the specific weak layer in a kept variant.
+  `lunatalk-play-engineer`, `lunatalk-longplay-architect`,
+  `lunatalk-boundary-designer`, or `lunatalk-token-architect` for the specific
+  weak layer in a kept variant.
 - `lunatalk-card-author` when the series packet is ready and the author wants to
   create or patch real private cards one at a time.

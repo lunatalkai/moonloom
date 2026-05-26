@@ -83,9 +83,14 @@ buried under ice. I want choices, risk, supplies, discoveries, and consequences.
 
 Quality checks:
 
+- The workflow creates or preserves a play-engine packet before authoring.
 - The welcome exposes setup or first choices without burying the scene.
 - The detail separates core rules, crew behavior, resources, danger, and rewards.
-- State is compact and designed to update.
+- State is compact and designed to update after every assistant turn.
+- Resources, supplies, risk, discovery, and failure-forward outcomes affect
+  available choices.
+- The turn protocol resolves the player's action, updates state, narrates the
+  result, and renews the next hook.
 - The role does not play the user's actions.
 
 Simulation probes:

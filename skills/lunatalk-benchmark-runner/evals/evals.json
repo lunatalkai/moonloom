@@ -17,9 +17,10 @@
     {
       "id": 2,
       "prompt": "After changing the card author skill, test whether Moonloom still creates token-efficient RPG cards with playable state and consequences.",
-      "expected_output": "Selects the RPG synthetic brief, judges promise/engine/play/presentation quality, checks tokenBudget as a diagnostic signal, and reports render/simulation status plus whether the skill needs another iteration.",
+      "expected_output": "Selects the RPG synthetic brief, checks the play-engine packet before authoring, judges promise/engine/play/presentation quality, checks tokenBudget as a diagnostic signal, and reports render/simulation status plus whether the skill needs another iteration.",
       "files": [],
       "expectations": [
+        "The RPG benchmark checks for a play-engine packet with compact state, resource rules, quest/risk model, turn protocol, failure-forward behavior, and probes.",
         "The RPG benchmark checks rules, resources, risk, rewards, compact state, and player choice pressure.",
         "The report uses tokenBudget as a diagnostic signal rather than a writing-quality gate.",
         "The benchmark checks whether roleWelcome is shorter than or justified relative to the durable engine.",
@@ -234,6 +235,19 @@
         "The proposed workflow uses lunatalk-series-architect before creating one overloaded hybrid card or duplicate related cards.",
         "The check rejects mood-only, costume-only, or duplicate-loop variants unless they become routes inside another card.",
         "The check remains public-safe and uses only synthetic example text."
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Create a negative regression check for a schema-valid RPG/adventure card that has stats, inventory, quests, and combat, but resources never affect choices, failure either ends the story or is ignored, the welcome is a rule manual, and compact state is not updated.",
+      "expected_output": "Treats missing playable game loop as a Moonloom play-engine failure, checks the play-engine packet, and recommends lunatalk-play-engineer before opening repair, longplay, broad authoring, or simulation rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies decorative stats, resources without consequences, missing turn protocol, ignored or dead-end failure, rule-manual opening, and forgotten compact state.",
+        "The proposed repair uses lunatalk-play-engineer or play-engine-design.md before opening, longplay, authoring, or simulation.",
+        "The report requires compact state, resource rules, quest/risk model, turn protocol, failure-forward behavior, opening contract, token plan, and simulation probes.",
+        "The report does not ask MCP validation to judge subjective play-engine quality."
       ]
     }
   ]

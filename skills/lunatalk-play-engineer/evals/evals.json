@@ -1,0 +1,45 @@
+{
+  "skill_name": "lunatalk-play-engineer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a LunaTalk RPG/adventure card set in a cursed port city. The draft has stats, factions, inventory, and quests, but the welcome reads like a manual, resources never change choices, failure either ends the story or does nothing, and the AI forgets compact state. Produce a play-engine packet before authoring.",
+      "expected_output": "Produces a play-engine packet with player position, controls, core loop, compact state, resource rules, quest/risk model, turn protocol, failure-forward behavior, opening contract, token plan, and simulation probes before authoring.",
+      "files": [],
+      "expectations": [
+        "The output routes RPG/adventure mechanics to lunatalk-play-engineer before card authoring, broad worldbuilding, opening repair, or simulation.",
+        "The packet keeps only state fields that affect access, cost, risk, route, relationship, or future choices.",
+        "The resource rules define what spending, saving, losing, or gaining resources changes.",
+        "The turn protocol updates compact state after each assistant turn and does not play the user's next action.",
+        "Failure behavior uses fail-forward consequences instead of ignored failure or automatic dead end.",
+        "The token plan puts durable rules in roleDetailDesc and keeps the welcome as a playable setup or crisis."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Patch an existing survival horror card where hunger, wounds, fear, and ammo are listed, but none of them affect the next choices. Combat takes over the chat and refusal or retreat breaks the story. Focus on the playable rules, not prose polish.",
+      "expected_output": "Uses play-engine repair before broad rewriting, cuts decorative stats, defines resource consequences, failure-forward retreat/refusal behavior, compact state, turn protocol, and probe plan.",
+      "files": [],
+      "expectations": [
+        "The output treats decorative stats and combat sprawl as play-engine failures.",
+        "The repair plan cuts or merges stats that do not change behavior within a few turns.",
+        "Retreat, refusal, injury, and resource loss remain playable through fail-forward outcomes.",
+        "The packet preserves player agency and does not let the system decide bravery, panic, loyalty, or consent.",
+        "The output hands off to token, opening, authoring, or simulation only after the play engine is coherent."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Design a mystery investigation card where I can inspect clues, accuse suspects, spend favors, and choose risky shortcuts. I do not want a clue encyclopedia or a fake choice menu. Build the mechanics packet first.",
+      "expected_output": "Builds an investigation play-engine packet with clue/access state, favor or risk resources, accusation consequences, route costs, turn protocol, opening contract, and probes.",
+      "files": [],
+      "expectations": [
+        "The output classifies investigation mechanics as a play-engine task rather than only a lore or story task.",
+        "The packet defines clue, access, suspicion, risk, or favor state that changes future choices.",
+        "Accusation, shortcut, inspection, bargaining, refusal, and passive input produce distinct consequences.",
+        "The opening contract starts inside one playable case pressure instead of explaining the whole mystery system.",
+        "The simulation probes test resource spend, route change, failure-forward, continuity/state, and passive/minimal input."
+      ]
+    }
+  ]
+}

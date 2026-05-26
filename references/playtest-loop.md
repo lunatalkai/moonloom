@@ -142,7 +142,8 @@ then map the observed problem to a card patch.
 | Reply dumps lore instead of scene movement | token economy, play layer | move lore to modular detail and add current pressure |
 | Reply repeats welcome setup or spends turns on decorative panels | token architecture | use `lunatalk-token-architect`; move durable rules/lore to `roleDetailDesc`, shorten welcome, rerun validation/render |
 | Cast talks over the player | ensemble turn ownership | `lunatalk-ensemble-director`; cast table, spotlight rules, and scene rules |
-| RPG/system loses state | state economy | compact state format and update rules |
+| RPG/system loses state | play engine / state economy | `lunatalk-play-engineer`; compact state format, turn protocol, and update rules |
+| RPG resources or failure do not affect choices | play engine | `lunatalk-play-engineer`; resource rules, quest/risk model, and failure-forward behavior |
 | Assistant card chats but produces no artifact | generator contract | output schema, defaults, and revision commands |
 
 ## Patch loop

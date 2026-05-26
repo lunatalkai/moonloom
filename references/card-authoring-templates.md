@@ -123,6 +123,7 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - play engine:
   - ensemble:
   - agency:
   - voice:
@@ -215,6 +216,27 @@ World-engine packet:
 - exposition policy:
 - token tradeoff:
 
+Play-engine packet:
+- current failure:
+- card shape:
+- play promise:
+- player position:
+- player controls:
+- card must not decide:
+- core loop:
+- compact state model:
+- resource rules:
+- quest / risk model:
+- turn protocol:
+- failure-forward behavior:
+- progression phases:
+- opening contract:
+- state visibility:
+- field allocation:
+- token plan:
+- simulation probes:
+- handoff:
+
 Voice-director packet:
 - current failure:
 - voice promise:
@@ -282,6 +304,11 @@ Engine:
 - pressure behavior:
 - world rule:
 - world state:
+- play-engine need:
+- compact state:
+- resource rules:
+- turn protocol:
+- failure-forward behavior:
 - route seeds:
 - voice fingerprint:
 - voice calibration need:
@@ -505,6 +532,16 @@ World engine
 - resources / clocks / costs:
 - state model:
 - exposition policy:
+
+Play engine
+- player controls:
+- compact state model:
+- resource rules:
+- quest / risk routes:
+- turn protocol:
+- failure-forward behavior:
+- progression phases:
+- state visibility:
 
 Voice fingerprint
 - sentence rhythm:
@@ -730,6 +767,7 @@ Card series: pass | revise because ...
 Anchor: pass | revise because ...
 Card diagnosis: pass | revise because ...
 Relationship engine: pass | revise because ...
+Play engine: pass | revise because ...
 Voice texture: pass | revise because ...
 Voice calibration: pass | revise because ...
 Consequence: pass | revise because ...

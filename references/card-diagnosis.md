@@ -103,6 +103,9 @@ directly to that narrow skill.
 | Polite assistant voice | Voice / weak core | `roleDetailDesc`, `talkExample` | `lunatalk-voice-director` |
 | Relationship becomes comfort/flirting loop | Relationship engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-relationship-architect` |
 | Lore dump during chat | World engine / token economy | `roleDetailDesc`, `roleWelcome` | `lunatalk-world-engineer`, `lunatalk-token-architect` |
+| RPG resources, inventory, quests, or combat do not change choices | Play engine | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer` |
+| Compact state is forgotten or not updated | Play engine / longplay | `roleDetailDesc`, `roleWelcome` | `lunatalk-play-engineer`, `lunatalk-longplay-architect` |
+| Failure ends the story or has no consequence | Play engine / agency | `roleDetailDesc` | `lunatalk-play-engineer`, `lunatalk-agency-designer` |
 | Render is pretty but inert | Opening / agency / token | `roleWelcome`, XMLV3/Theme V3 | `lunatalk-render-review`, `lunatalk-opening-director` |
 | Simulation passes safety but feels generic | Character / voice / longplay | `roleDetailDesc`, `talkExample` | choose by transcript evidence |
 

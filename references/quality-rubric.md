@@ -23,6 +23,10 @@ not a platform metric or MCP validation rule.
 - If the card has a setting, the world rule creates player choices,
   consequences, compact state, route seeds, and relationship or faction pressure
   rather than only lore.
+- If the card is RPG, adventure, open-world, survival, investigation, sandbox, or
+  simulator-like, its play engine has compact state, resource rules, quest/risk
+  routes, turn protocol, failure-forward behavior, and state-update probes rather
+  than decorative stats or a rule manual.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
@@ -52,6 +56,9 @@ A top-card candidate should pass three harder checks:
   message, second-turn move, and visible change.
 - The longplay engine has a continuity spine, compact state model, route costs,
   memory threads, role initiative, and continuation probes.
+- Game-like cards can run one clean turn: resolve the player's action, update
+  compact state, apply cost/risk/reward, and offer the next route without playing
+  the user.
 - The role is recognizable from behavior, not just name or lore. Sentence rhythm,
   choices, refusals, and emotional tells should make the role feel specific.
 - In ensemble cards, core speakers remain distinguishable under pressure. A
@@ -91,6 +98,11 @@ explicitly chooses a tradeoff:
   towns, factions, or histories do not create player action and consequences,
   create a world-engine packet with player position, core world rule, compact
   state, route seeds, exposition policy, and token tradeoff.
+- Play engine: if RPG/adventure/sandbox/survival/investigation mechanics have
+  stats, inventory, quests, combat, resources, or state that do not change player
+  choices, create a play-engine packet with player controls, compact state,
+  resource rules, quest/risk model, turn protocol, failure-forward behavior,
+  opening contract, token plan, and simulation probes before field drafting.
 - Voice texture: replace generic tone labels with sentence rhythm, vocabulary,
   address terms, emotional tells, and what the role avoids saying.
 - Voice calibration: for voice-heavy or ensemble cards, add voice cards,
@@ -190,6 +202,15 @@ explicitly chooses a tradeoff:
 - Lore-heavy world with no engine: rewrite it into a world-engine packet. Every
   faction, location, rule, and resource should change access, behavior, risk,
   route, cost, or relationship pressure.
+- Game-like card with no runnable engine: rewrite it into a play-engine packet.
+  Every stat, resource, item, quest, combat rule, and risk should affect choices,
+  visible state, cost, route, reward, or failure-forward consequence.
+- Forgotten compact state: add a turn protocol that resolves the player's action,
+  updates state after every assistant turn, narrates the next pressure, and
+  offers choices with visible cost or risk.
+- Failure dead-ends or disappears: add failure-forward outcomes such as wound,
+  debt, lost time, faction suspicion, blocked shortcut, damaged item, partial
+  clue, forced bargain, or route delay.
 - Decorative factions or places: cut, merge, or give each node a want, player
   leverage, cost to help, pressure move, and route use.
 - Missing role initiative: add proactive turn rules. The role should know what to

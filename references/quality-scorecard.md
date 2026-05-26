@@ -33,6 +33,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 | Archetype contract | Does one primary card shape drive the experience while overlays support it? |
 | Character appeal | Does the role have desire, contradiction, boundary, player leverage, and pressure behavior? |
 | Relationship / world engine | Does relationship, setting, faction, or system content create choices, costs, state, and routes? |
+| Play engine | For RPG/adventure/sandbox cards, do compact state, resources, quests, turn protocol, and failure-forward behavior produce runnable turns? |
 | Player agency | Can the player accept, question, refuse, redirect, test, or change the route without being overwritten? |
 | Opening | Does the first screen include place/time, role action, pressure, player implication, and reply paths? |
 | Second-turn engine | Can the role's next move react, reveal, complicate, update state, or renew pressure? |
@@ -83,6 +84,7 @@ Quality audit packet:
   - archetype contract:
   - character appeal:
   - relationship / world engine:
+  - play engine:
   - player agency:
   - opening:
   - second-turn engine:
@@ -107,7 +109,7 @@ Choose first repairs by risk and leverage:
 
 1. Critical blockers and player agency.
 2. Archetype contract and promise.
-3. Durable engine: character core, relationship engine, world engine, or system rules.
+3. Durable engine: character core, relationship engine, world engine, play engine, or system rules.
 4. Opening and second-turn engine.
 5. Longplay and state.
 6. Voice calibration.

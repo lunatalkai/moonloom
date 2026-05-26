@@ -25,8 +25,9 @@ Read `../../references/card-authoring-templates.md` when the diagnosis needs a
 handoff-ready field patch packet.
 
 Then load only the narrow reference for the diagnosed weak layer: archetype,
-character core, relationship engine, world engine, ensemble structure, agency,
-opening, longplay, voice, boundary, render, or publish readiness.
+character core, relationship engine, world engine, play engine, ensemble
+structure, agency, opening, longplay, voice, boundary, render, or publish
+readiness.
 
 ## Boundary
 
@@ -128,6 +129,9 @@ Hand the packet to:
 - `lunatalk-ensemble-director` when several speakers, cast keep/merge/cut,
   turn ownership, spotlight rules, group tension, roll-call openings, or
   cast-over-player behavior are the structural failure.
+- `lunatalk-play-engineer` when RPG/adventure mechanics, compact state,
+  resources, inventory, quests, combat, turn protocol, failure-forward behavior,
+  or rule-manual openings are the structural failure.
 - `lunatalk-agency-designer`, `lunatalk-opening-director`, or
   `lunatalk-longplay-architect` when play fails through choices, first screen,
   second turn, or continuation.

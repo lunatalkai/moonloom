@@ -18,8 +18,8 @@ archetype ranges, and token-efficient play loops. Read
 field patches. Read `../../references/theme-v3-rendering.md` when HTML, XMLV3,
 or Theme V3 causes welcome bloat. Read `../../references/material-distillation.md`
 when a source pack or world bible is the cause of bloat. Read the narrow Moonloom
-skill for the weak layer before cutting it: character core, world engine, voice,
-agency, opening, longplay, or boundary.
+skill for the weak layer before cutting it: character core, world engine, play
+engine, voice, agency, opening, longplay, or boundary.
 
 ## Boundary
 
@@ -91,6 +91,9 @@ Hand the packet to:
 
 - `lunatalk-character-core` when compression reveals a thin role engine.
 - `lunatalk-world-engineer` when lore needs to become playable rules.
+- `lunatalk-play-engineer` when stats, inventory, resources, quests, combat,
+  turn protocol, or compact state need to become cheaper runnable rules before
+  cutting.
 - `lunatalk-agency-designer` when choices or reply paths are decorative.
 - `lunatalk-voice-director` when samples or voice rules need cheaper calibration.
 - `lunatalk-opening-director` when the welcome needs to be rebuilt.

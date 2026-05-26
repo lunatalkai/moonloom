@@ -36,7 +36,10 @@ friendship, rivalry, cohabitation, daily-life, slow-burn pacing, generic
 flirting, comfort loops, repair/rupture routes, or relationship state. Read
 `../../references/world-engine-design.md` when benchmarking worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
-repair. Read
+repair. Read `../../references/play-engine-design.md` when benchmarking RPG,
+adventure, open-world, survival, investigation, simulator, stats, resources,
+inventory, quests, combat, turn protocol, compact state updates, or
+failure-forward behavior. Read
 `../../references/material-distillation.md` when benchmarking material-heavy,
 imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
@@ -113,6 +116,12 @@ Moonloom self-review, render review, or simulation that:
   or next-hook difference.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.
+- an RPG/adventure/sandbox card has stats, resources, inventory, quests, or
+  combat but no play-engine packet, compact state update rule, turn protocol,
+  resource consequences, failure-forward behavior, opening contract, or
+  play-engine probes.
+- a game-like opening reads like a rule manual and never proves one runnable turn
+  with state, cost/risk, player action, consequence, and renewed choice.
 - a hybrid card treats all archetypes as equal instead of choosing one primary
   playable contract and secondary overlays.
 - a proposed card set keeps mood-only, costume-only, or seasonal variants that
@@ -173,6 +182,9 @@ or authoring individual cards.
 Use `lunatalk-ensemble-director` for regressions where the weakest layer is cast
 scope, keep/merge/cut decisions, turn ownership, spotlight, group tension,
 roll-call openings, or cast-over-player behavior.
+Use `lunatalk-play-engineer` for regressions where the weakest layer is
+RPG/adventure mechanics, compact state, resource rules, inventory, quests,
+combat, turn protocol, failure-forward behavior, or a rule-manual opening.
 
 ## Pass criteria
 

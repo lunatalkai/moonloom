@@ -287,7 +287,33 @@ Minimum packet:
 If a card starts with calendars, factions, history, species, magic schools, or
 proper nouns, repair the world engine before adding more lore.
 
-### 5. Player agency / insertion space
+### 5. Play engine
+
+Game-like cards need runnable rules, not a rulebook. Use
+`play-engine-design.md` when RPG, adventure, open-world, survival,
+investigation, sandbox, or simulator cards have stats, resources, inventory,
+quests, combat, compact state, turn protocol, or failure behavior that does not
+change play.
+
+Minimum packet:
+
+- play promise: what the player can repeatedly do under pressure
+- player position and controls: what the player can spend, risk, refuse,
+  retreat from, investigate, bargain with, unlock, carry, or change
+- compact state model: only fields that change choices, cost, access, risk,
+  reward, relationship, or route state
+- resource rules: what spending, saving, losing, or gaining each resource changes
+- quest/risk model: triggers, objectives, approaches, costs, rewards, failure
+  outcomes, memory, and renewed hooks
+- turn protocol: resolve player action, update state, narrate result, present
+  next pressure, and offer meaningful paths
+- failure-forward behavior: consequences that keep the session playable
+
+If a card's opening reads like a manual, define the play engine before polishing
+the welcome. Put durable rules in detail; make the welcome prove one runnable
+turn.
+
+### 6. Player agency / insertion space
 
 Agency is not the same as adding choices. The player needs room to decide
 identity, emotion, intention, method, boundary, or route without the role taking
@@ -311,7 +337,7 @@ Minimum packet:
 - card must not decide: feelings, consent, commitments, actions, or route choice
   that belong to the player
 
-### 6. Second-turn engine
+### 7. Second-turn engine
 
 Design the first two turns together:
 
@@ -326,7 +352,7 @@ Before rendering, write one likely first user message and the role's intended
 second-turn move. If the second turn only restates setup, the card needs stronger
 consequence or role initiative.
 
-### 7. State economy
+### 8. State economy
 
 Track only state that changes play. Good state is compact, visible when useful,
 and tied to consequences.
@@ -548,32 +574,35 @@ Repair the card in this order during Moonloom self-review:
    mood-only, passive, or missing player leverage and pressure behavior.
 4. World engine: use a world-engine packet when factions, locations, rules,
    relationship networks, or lore do not yet create player action and consequence.
-5. Voice texture: replace generic tone labels with executable voice behavior.
-6. Consequence: define what changes when the player acts.
-7. Role initiative: add proactive turn rules for passive or stalled player input.
-8. Agency: make the first reply path obvious.
-9. Agency design: when the player can only watch, choices are decorative, routes
+5. Play engine: use a play-engine packet when RPG/adventure/sandbox/survival/
+   investigation mechanics have stats, resources, inventory, quests, combat,
+   compact state, or failure behavior that do not yet produce runnable turns.
+6. Voice texture: replace generic tone labels with executable voice behavior.
+7. Consequence: define what changes when the player acts.
+8. Role initiative: add proactive turn rules for passive or stalled player input.
+9. Agency: make the first reply path obvious.
+10. Agency design: when the player can only watch, choices are decorative, routes
    funnel, or the card narrates player feelings/actions, create or preserve an
    agency packet before opening or longplay repair.
-10. Opening scene: add location, time, sensory detail, role beat, pressure, and
+11. Opening scene: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-11. Opening direction: create or preserve an opening packet with first reply
+12. Opening direction: create or preserve an opening packet with first reply
    paths, expected first user message, second-turn move, and token tradeoff.
-12. Longplay: create or preserve a longplay packet with continuity spine, state,
+13. Longplay: create or preserve a longplay packet with continuity spine, state,
    route seeds, memory, role initiative, and continuation probes.
-13. Player agency: remove rules that decide the player's actions, feelings,
+14. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-14. Language style: rewrite Simplified Chinese terms into Traditional Chinese
+15. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-15. Archetype: satisfy the chosen card type rather than writing a generic card.
-16. Token efficiency: move reusable visual or rule structure out of welcome when
+16. Archetype: satisfy the chosen card type rather than writing a generic card.
+17. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
-17. Material distillation: convert notes, files, or world bibles into a playable
+18. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
-18. Boundary design: convert mature, intense, horror, jealous, or power-
+19. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
-19. Card series: when several related cards are proposed, create a series packet
+20. Card series: when several related cards are proposed, create a series packet
     before blueprinting individual cards; merge or reject variants that do not
     prove a distinct player promise.
 
@@ -586,8 +615,9 @@ For `archetype` repairs, match the card type:
   contradiction, boundaries, and trust pacing.
 - Story / scenario: add named locations, stakes, likely branches, and route
   consequences.
-- Game / RPG / simulator: add rules, stats or resources, failure pressure, and an
-  opening setup/state/choice surface.
+- Game / RPG / simulator: add a play-engine packet with compact state, resource
+  rules, turn protocol, failure-forward behavior, and an opening setup/state/
+  choice surface.
 
 ## Archetype recipes
 
