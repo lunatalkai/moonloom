@@ -38,6 +38,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- Quality audit, scorecard, craft rating, top-tier check, "is this good enough",
+  first-three repairs, or deciding whether a draft, blueprint, packet stack, or
+  role fields should continue to authoring, render review, simulation, or publish
+  readiness: use `lunatalk-quality-auditor` unless the main task is a concrete
+  multi-symptom diagnosis for an existing card.
 - Existing card or draft diagnosis, mixed symptoms, author feedback like boring
   or off, validate/render passing but behavior still weak, simulation symptoms,
   deciding what to fix first, weakest-layer triage, field patch mapping, or
@@ -144,6 +149,10 @@ validation, render review, simulation, and publish readiness.
   playability, route seeds, progression, memory/state, passive/stalled behavior,
   session continuation, or dead third-turn repairs.
 - Read `../../references/quality-rubric.md` when judging content quality.
+- Read `../../references/quality-scorecard.md` when the task involves quality
+  audit, scorecard, craft tier, top-tier check, good-enough review, first-three
+  repairs, or deciding whether to continue to authoring, render, simulation, or
+  publish readiness.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.
 - Read `../../references/agency-design.md` when the task involves player agency,

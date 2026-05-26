@@ -162,6 +162,21 @@ Use `token-economy.md` when the repair needs a field-by-field allocation plan,
 keep / move / cut / rewrite decisions, visual budget, example budget, or a
 compression ladder before render or simulation.
 
+## Quality audit and scorecard
+
+When the author asks whether a draft, blueprint, or packet stack is good enough,
+score before rewriting. Use `quality-scorecard.md` to produce evidence-backed
+scores, critical blockers, a craft tier, strongest and weakest dimensions, and
+the first three repairs.
+
+The scorecard is a public craft review. It should guide Moonloom skill handoff;
+it should not become an MCP validation rule, ranking claim, analytics metric, or
+publishing shortcut.
+
+Use the scorecard when the request is primarily "how strong is this?" Use
+`card-diagnosis.md` when the request is primarily "why is this existing card
+failing and what exact field patch order should we use?"
+
 ## Existing-card diagnosis
 
 When improving an existing card, diagnose before rewriting. A technically valid

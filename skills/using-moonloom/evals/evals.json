@@ -221,6 +221,19 @@
         "The output does not jump straight to broad rewriting or another costed simulation.",
         "The output treats validation/render passing as insufficient proof of writing quality."
       ]
+    },
+    {
+      "id": 18,
+      "prompt": "I am not sure which Moonloom skill to use. I have a draft role card and I want a top-tier quality audit before creating or publishing anything. I need a scorecard, an overall tier, and the first three repairs. This is not a publish or simulation request.",
+      "expected_output": "Uses using-moonloom as the router, routes quality audit, scorecard, craft tier, and first-three repair requests to lunatalk-quality-auditor before authoring, simulation, or publish readiness.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes scorecard, top-tier check, quality audit, and first-three repairs to lunatalk-quality-auditor.",
+        "The route does not jump to publish readiness, simulation, render review, or broad field rewriting.",
+        "The audit focuses on public craft dimensions, critical blockers, tier, strongest and weakest dimensions, and handoff.",
+        "The output treats quality scores as Moonloom guidance, not MCP validation or platform metrics."
+      ]
     }
   ]
 }

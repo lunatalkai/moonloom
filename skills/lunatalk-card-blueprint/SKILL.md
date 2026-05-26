@@ -43,6 +43,11 @@ token planning, field allocation, welcome compression, visual budget, example
 budget, or a keep/move/cut/rewrite plan. Use `lunatalk-token-architect` first
 when token architecture is the primary task. Read
 `../../references/quality-rubric.md` for the self-review checklist. Read
+`../../references/quality-scorecard.md` when the author asks whether a blueprint
+is good enough, top-tier, ready to become a private role, or needs a scorecard
+and first-three repairs. Use `lunatalk-quality-auditor` when the primary task is
+audit rather than ideation.
+Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
 horror-leaning, or boundary-sensitive. Read
 `../../references/boundary-design.md` when the premise involves mature, adult,
@@ -108,6 +113,8 @@ creation, validation, render review, simulation, and publishing workflow.
     drafting final fields.
 14. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
 15. Run Moonloom self-review and repair any weak layer before handing off.
+    If the author asked for a quality audit, preserve or create a
+    `lunatalk-quality-auditor` scorecard before authoring.
 
 ## Blueprint packet
 
@@ -152,6 +159,14 @@ Directions:
 1. ...
 2. ...
 3. ...
+
+Quality audit:
+- overall tier:
+- scorecard:
+- strongest dimensions:
+- weakest dimensions:
+- first three repairs:
+- repair skill order:
 
 Recommended direction:
 - why this is stronger:

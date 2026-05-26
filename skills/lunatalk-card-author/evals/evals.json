@@ -170,6 +170,19 @@
         "The workflow delays another simulate_private_chat run until structural patches are done and cost is accepted.",
         "The output uses validate_role only for technical blockers after patching, not as proof of writing quality."
       ]
+    },
+    {
+      "id": 14,
+      "prompt": "Before creating a private role from this draft, audit whether it is top-tier enough to continue. Give me a scorecard, overall tier, and first three repairs; do not call MCP tools yet.",
+      "expected_output": "Uses lunatalk-quality-auditor before MCP-backed field creation, preserves the quality audit packet, and only hands off to card-author after the craft repairs are clear.",
+      "files": [],
+      "expectations": [
+        "The workflow routes scorecard and top-tier audit requests to lunatalk-quality-auditor before role_create_private or field patches.",
+        "The quality audit packet includes evidence, critical blockers, scorecard, tier, strongest and weakest dimensions, first three repairs, and handoff.",
+        "The repair list maps each weak dimension to narrow Moonloom skills or fields.",
+        "The output does not call validation, render, simulation, or publishing before the audit is complete.",
+        "The output treats scorecard results as writing guidance, not MCP validation or platform metrics."
+      ]
     }
   ]
 }

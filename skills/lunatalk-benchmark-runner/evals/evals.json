@@ -208,6 +208,19 @@
         "The report maps follow-up repairs to narrow Moonloom skills rather than asking MCP validation to judge subjective quality.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 17,
+      "prompt": "Create a negative regression check for a draft that asks for a top-tier quality scorecard before authoring, but the workflow jumps straight to publish readiness, simulation, or broad rewriting.",
+      "expected_output": "Treats missing quality audit routing as a Moonloom regression, checks the quality audit packet, and recommends lunatalk-quality-auditor before authoring, simulation, or publish readiness.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom workflow even if the draft is technically valid.",
+        "The report requires a quality audit packet with public craft dimensions, critical blockers, overall tier, strongest and weakest dimensions, first three repairs, and handoff.",
+        "The proposed workflow uses lunatalk-quality-auditor before publish readiness, simulation, render review, or broad field rewriting.",
+        "The report treats scorecard results as Moonloom writing guidance rather than MCP validation, platform metrics, or ranking claims.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

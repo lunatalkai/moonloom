@@ -6,6 +6,10 @@ iteration, or is ready to submit for public review.
 For writing guidance, read `role-card-writing-framework.md` first. This file is
 the shorter pass/fail rubric.
 
+For scoring, craft tiers, first-three repair lists, and "is this good enough?"
+reviews, use `quality-scorecard.md`. The scorecard is public writing guidance,
+not a platform metric or MCP validation rule.
+
 ## Role card quality
 
 - The role has a clear premise, relationship dynamic, and first playable scene.
@@ -62,6 +66,10 @@ The first publish-grade pass should satisfy these items unless the author
 explicitly chooses a tradeoff:
 
 - Promise: clarify the premise, player relationship, and tension.
+- Quality audit: when the author asks for a scorecard, top-tier check, craft
+  rating, good-enough review, or first-three repairs, create a quality audit
+  packet with evidence-backed scores, blockers, tier, strongest and weakest
+  dimensions, repair order, and handoff before rewriting fields.
 - Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
 - Card diagnosis: if an existing card has several symptoms, author feedback is

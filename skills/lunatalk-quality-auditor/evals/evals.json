@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-quality-auditor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a draft LunaTalk role card with a clear premise and decent first scene. Before creating or publishing anything, give me a top-tier quality scorecard and the first three repairs.",
+      "expected_output": "Produces a quality audit packet with evidence-backed 0-4 scores, overall tier, blockers, strongest and weakest dimensions, first three repairs, skill handoff order, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-quality-auditor rather than publish readiness, simulation, or broad authoring.",
+        "The scorecard covers promise, archetype, engine, agency, opening, second-turn, longplay, voice, boundary, token, presentation, and testability as applicable.",
+        "The audit flags blockers before assigning an overall tier.",
+        "The first three repairs are concrete and map to Moonloom skills or fields.",
+        "The output treats scores as craft guidance, not platform metrics or MCP validation."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Score this companion blueprint before I make it real. It has strong chemistry but I am not sure if it has enough player agency, longplay, and refusal behavior.",
+      "expected_output": "Reviews the blueprint as a craft audit, marks irrelevant dimensions as N/A, scores agency/longplay/boundary carefully, and recommends targeted next skills before card-author.",
+      "files": [],
+      "expectations": [
+        "The output does not call mutating MCP tools for a blueprint audit.",
+        "The scorecard uses N/A for dimensions that do not apply instead of forcing every card into every archetype.",
+        "The audit checks player agency, longplay, and boundary handling before recommending authoring.",
+        "The repairs route to agency, longplay, or boundary skills when those dimensions are weak.",
+        "The output keeps the audit public-safe and original."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This draft looks polished and the XMLV3 is pretty, but I want to know if it is actually a strong card or just a nice first screen. Audit it without simulating.",
+      "expected_output": "Separates presentation quality from playability, scores durable engine, agency, second turn, longplay, token allocation, and recommends structural repairs before render or simulation.",
+      "files": [],
+      "expectations": [
+        "The output says readable or pretty presentation is not proof of playability.",
+        "The audit scores presentation separately from durable engine, agency, second-turn, and longplay.",
+        "The first repairs do not focus only on CSS, Theme V3, or visual polish.",
+        "The output delays simulation when structural repairs are already evident.",
+        "The output does not turn the scorecard into an MCP/server gate."
+      ]
+    }
+  ]
+}
