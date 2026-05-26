@@ -78,6 +78,19 @@
         "The report does not ask MCP validation to judge mature-writing quality.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Create a negative regression check for a schema-valid LunaTalk card whose welcome only says hello and asks what the user wants to do.",
+      "expected_output": "Treats greeting-only welcome as a Moonloom writing failure, checks opening packet, first reply path, and second-turn move, and recommends opening-director repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies greeting-only opening, missing place/time, role action, pressure, player implication, reply paths, and second-turn change.",
+        "The proposed repair uses lunatalk-opening-director or opening-design.md before authoring/render/simulation.",
+        "The report does not ask MCP validation to judge opening craft.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

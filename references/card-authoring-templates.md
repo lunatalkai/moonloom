@@ -42,6 +42,19 @@ Play:
 - expected first user message:
 - expected second-turn move:
 
+Opening packet:
+- current failure:
+- opening promise:
+- place / time:
+- role action already happening:
+- pressure:
+- player implication:
+- reply paths:
+- expected first user message:
+- second-turn move:
+- what changes:
+- token tradeoff:
+
 Presentation:
 - welcome mode: plain | xmlv3 | html
 - Theme V3 need:
@@ -198,6 +211,35 @@ Use for companion, story, daily-life, romance, and ensemble cards.
 
 Do not use choices as a substitute for scene. The scene must already contain
 place, role action, pressure, and player implication.
+
+## Opening repair packet
+
+Use when a current welcome is greeting-only, overloaded, hollow, or unclear.
+
+```text
+Current failure:
+Opening promise:
+Player role:
+Five beats:
+- place / time:
+- role action already happening:
+- pressure:
+- player implication:
+- reply paths:
+Expected first user message:
+Second-turn move:
+What changes:
+Welcome mode:
+Token tradeoff:
+- keep in welcome:
+- move to roleDetailDesc:
+- move to XMLV3/Theme V3:
+- cut:
+Ready for role_patch_welcome: yes | no
+```
+
+Do not repair a flat welcome by adding more exposition. Add a playable scene, a
+first reply path, and a second-turn move.
 
 ## System / RPG welcome template
 

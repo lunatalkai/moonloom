@@ -17,6 +17,8 @@ Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, and author co-review.
 Read `../../references/voice-calibration.md` when simulation shows generic
 dialogue, voice drift, or ensemble speakers blending together.
+Read `../../references/opening-design.md` when testing the opening hook, first
+user reply path, second-turn move, or onboarding clarity.
 Read `../../references/boundary-design.md` when simulation touches mature,
 adult, horror-leaning, consent-sensitive, refusal, pacing, jealousy, power
 imbalance, or safer-version behavior.
@@ -77,6 +79,9 @@ Playtest plan:
 
 - The role stays in character.
 - The reply advances the scene and gives the player something to do.
+- The first simulated response matches the opening packet's intended first reply
+  path and makes the second-turn move visible through reaction, complication,
+  reveal, state change, or renewed pressure.
 - Tone, boundaries, and content rating match the card.
 - The reply uses relevant world details without dumping the whole setting.
 - Player actions produce visible consequence, state change, relationship movement,

@@ -24,6 +24,8 @@ distinctive voice, dialogue examples, long-session consistency, or ensemble cast
 contrast. Read `../../references/boundary-design.md` when the card is mature,
 adult, NSFW, emotionally intense, horror-leaning, consent-sensitive, jealous,
 power-imbalanced, or needs refusal/pacing repair. Read
+`../../references/opening-design.md` when creating or repairing `roleWelcome`,
+first screen playability, first reply paths, or second-turn moves. Read
 `../../references/playtest-loop.md` when designing or interpreting private chat
 simulations. Use `../../examples/synthetic-card-briefs.md` when the task asks for
 benchmark creation, regression checks, or example-driven iteration.
@@ -54,7 +56,9 @@ benchmark creation, regression checks, or example-driven iteration.
 6. If there is no `roleId`, call `role_create_private`.
 7. Patch profile fields with `role_patch_profile`.
 8. Patch stable character and world context with `role_patch_detail`.
-9. Patch the opening scene with `role_patch_welcome`.
+9. Before patching the welcome, use `lunatalk-opening-director` when the current
+   task is welcome/opening repair or the first-action path is unclear. Patch the
+   opening scene with `role_patch_welcome` from the opening packet.
 10. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML or legacy HTML.
 11. Optionally use `theme_bind` and `extension_enable` for Theme V3.
@@ -112,6 +116,9 @@ MCP tools make the card real; Moonloom makes the card good.
   dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
+- Preserve the opening packet when one exists: current failure, opening promise,
+  reply paths, expected first user message, second-turn move, what changes, and
+  token tradeoff.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, proactive turn behavior, and the consequence
   loop.
@@ -150,6 +157,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - Rewrite welcome before render review when it lacks a real opening scene. Add
   location/time or sensory context, a concrete role beat, pressure, and player
   implication before choices or setup fields.
+- If only the welcome is weak, call `lunatalk-opening-director` before rewriting
+  other fields; avoid turning a narrow first-screen repair into an unnecessary
+  full-card rewrite.
 - Remove any rule that decides the player's actions, feelings, consent, or
   commitments. Replace generic openings with a concrete scene and specific reply
   path.

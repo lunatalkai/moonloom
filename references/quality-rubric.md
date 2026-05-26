@@ -32,6 +32,8 @@ A top-card candidate should pass three harder checks:
 - The second turn is better than the first. The card can escalate, reveal,
   complicate, or offer a new route without waiting for the player to write the
   whole plot.
+- The opening has a concrete packet: five beats, reply paths, expected first user
+  message, second-turn move, and visible change.
 - The role is recognizable from behavior, not just name or lore. Sentence rhythm,
   choices, refusals, and emotional tells should make the role feel specific.
 - In ensemble cards, core speakers remain distinguishable under pressure. A
@@ -59,6 +61,9 @@ explicitly chooses a tradeoff:
 - Agency: make the first user response path obvious.
 - Opening scene: add concrete location, time, sensory context, role beat,
   pressure, and player implication before choices.
+- Opening direction: use an opening packet when the welcome is the weak layer;
+  preserve first reply paths, expected first user message, second-turn move, and
+  token tradeoff.
 - Player agency: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
 - Boundary design: clarify rating, pacing, taboo, refusal style, and stop
@@ -105,6 +110,8 @@ explicitly chooses a tradeoff:
   path in the opening scene.
 - Hollow opening: choices alone are not enough. Add a visible place, sensory cue,
   role action or beat, pressure, and a reason the player is implicated now.
+- Missing second-turn move: write one likely first user message and define how
+  the role reacts, complicates, reveals, updates state, or renews pressure.
 - Player agency takeover: the role can pressure or invite, but it must not narrate
   the player's decisions, feelings, or consent.
 - Missing boundary packet: for mature, adult, horror-leaning, jealous, or power-
@@ -133,6 +140,8 @@ Use `tokenBudget` from `validate_role` before render or simulation:
 
 - The welcome creates an immediate interaction opportunity.
 - The player has a clear way to respond in the first turn.
+- The expected second-turn move changes relationship, risk, route, state,
+  information, or practical pressure.
 - The welcome does not dump the full world bible.
 - System/RPG/sandbox cards expose setup fields or choices without burying the first
   action in a long manual.

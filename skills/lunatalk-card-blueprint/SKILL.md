@@ -18,7 +18,9 @@ for draft packets and field templates. Read `../../references/material-distillat
 when the idea comes from files, notes, imported drafts, source fragments, or a
 large world bible. Read `../../references/voice-calibration.md` when the idea
 depends on distinctive dialogue, role consistency, or ensemble cast contrast.
-Read `../../references/quality-rubric.md` for the self-review checklist. Read
+Read `../../references/opening-design.md` when planning `roleWelcome`, first
+screen playability, first reply paths, or second-turn moves. Read
+`../../references/quality-rubric.md` for the self-review checklist. Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
 horror-leaning, or boundary-sensitive. Read
 `../../references/boundary-design.md` when the premise involves mature, adult,
@@ -57,7 +59,9 @@ creation, validation, render review, simulation, and publishing workflow.
    emotional tells, action beats, concealment, refusal style, and avoided
    phrasing. For ensemble cards, define a contrast matrix and at least one
    calibration need per weak core speaker.
-10. Design the first scene and the second-turn engine together.
+10. Design the first scene and the second-turn engine together. If the opening is
+    the core problem, or a welcome already exists and needs repair, use
+    `lunatalk-opening-director` before continuing the blueprint.
 11. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
 12. Run Moonloom self-review and repair any weak layer before handing off.
 
@@ -144,6 +148,15 @@ Second-turn engine:
 - what changes:
 - renewed hook:
 
+Opening packet:
+- current failure:
+- opening promise:
+- reply paths:
+- expected first user message:
+- second-turn move:
+- what changes:
+- token tradeoff:
+
 Field draft:
 - roleName:
 - roleDesc:
@@ -185,6 +198,8 @@ Handoff:
   slow change.
 - Make heavy worlds playable through one immediate problem, not a lore tour.
 - Make ensemble cards start with one focal crisis and clear turn ownership.
+- Preserve any opening packet from `lunatalk-opening-director`; do not summarize
+  away the expected first user message or second-turn move.
 - Make mature or intense cards explicit about rating, pacing, refusal, and player
   agency boundaries. For boundary-sensitive cards, produce or preserve a
   boundary packet with rating intent, explicitness ceiling, escalation ladder,

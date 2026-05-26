@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-opening-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I already have a decent roleDetailDesc, but the welcome is flat: \"Hello, I am your new mentor. What do you want to do?\" Redesign the opening and first two turns so the first screen is immediately playable.",
+      "expected_output": "Produces an opening packet, replaces the greeting with a scene, defines reply paths, expected first user message, second-turn move, state change, token tradeoff, and handoff without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-opening-director or uses opening-design.md.",
+        "The diagnosis identifies greeting-only failure and missing place, role action, pressure, player implication, and reply path.",
+        "The welcome draft includes a concrete scene and clear player actions.",
+        "The second-turn move changes state, risk, relationship, route, or information.",
+        "The output does not call mutating MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My fantasy city card welcome explains all calendar districts for 900 words before the courier can act. Make the first screen playable without losing the core concept.",
+      "expected_output": "Moves lore out of welcome, opens on one delivery problem, exposes state or choices, defines first user message and second-turn consequence.",
+      "files": [],
+      "expectations": [
+        "The output identifies lore-before-action and welcome bloat as the failure.",
+        "The opening keeps only the lore needed for the first action.",
+        "The player role, current pressure, and reply paths are clear.",
+        "The token tradeoff moves reusable rules into roleDetailDesc or Theme V3/XMLV3 state.",
+        "The self-review checks first reply speed and second-turn change."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The ensemble welcome introduces all five crew members one by one and then asks what I do. Fix the opening so I can actually play.",
+      "expected_output": "Chooses one focal crisis, defines turn ownership, delays cast roll call, creates player implication, reply paths, and a second-turn move that changes group tension.",
+      "files": [],
+      "expectations": [
+        "The output identifies ensemble roll call as the failure.",
+        "The opening starts with one focal speaker or crisis instead of every cast member.",
+        "The player can affect group tension through clear reply paths.",
+        "The second-turn move updates trust, risk, route, or cast conflict.",
+        "The handoff says whether authoring or simulation is next."
+      ]
+    }
+  ]
+}

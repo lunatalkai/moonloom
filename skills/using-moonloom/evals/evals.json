@@ -91,6 +91,19 @@
         "The output treats boundary design as Moonloom writing mechanics, not MCP validation.",
         "The output does not call mutating MCP tools before boundary design is complete."
       ]
+    },
+    {
+      "id": 8,
+      "prompt": "The role is already mostly written, but the welcome only says \"Hello, I am your mentor. What do you want to do?\" I only want to fix the opening and first two turns. Which Moonloom workflow should I use?",
+      "expected_output": "Routes to lunatalk-opening-director first, produces an opening packet, and avoids creating or editing a real card until the authoring handoff.",
+      "files": [],
+      "expectations": [
+        "The output routes welcome/opening repair to lunatalk-opening-director rather than full card authoring first.",
+        "The route focuses on opening packet, five beats, reply paths, expected first user message, and second-turn move.",
+        "The output says no mutating MCP tools should run during opening design.",
+        "The workflow can hand off to lunatalk-card-author only when the author wants to patch the private role.",
+        "The output treats opening quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }
