@@ -14,11 +14,13 @@ private role card.
 
 Read `../../references/role-card-writing-framework.md` for the top-card pattern
 stack and archetype recipes. Read `../../references/card-authoring-templates.md`
-for draft packets and field templates. Read `../../references/voice-calibration.md`
-when the idea depends on distinctive dialogue, role consistency, or ensemble
-cast contrast. Read `../../references/quality-rubric.md` for the self-review
-checklist. Read `../../references/safety-and-cost.md` when the premise is mature,
-intense, horror-leaning, or boundary-sensitive.
+for draft packets and field templates. Read `../../references/material-distillation.md`
+when the idea comes from files, notes, imported drafts, source fragments, or a
+large world bible. Read `../../references/voice-calibration.md` when the idea
+depends on distinctive dialogue, role consistency, or ensemble cast contrast.
+Read `../../references/quality-rubric.md` for the self-review checklist. Read
+`../../references/safety-and-cost.md` when the premise is mature, intense,
+horror-leaning, or boundary-sensitive.
 
 ## Boundary
 
@@ -31,6 +33,9 @@ creation, validation, render review, simulation, and publishing workflow.
 1. Restate the author's seed in one sentence.
 2. Identify missing inputs: player role, relationship pressure, card shape,
    content rating intent, language, and success criteria.
+   If the author provided source material or a large world document, use
+   `lunatalk-material-distiller` first unless a source-to-play map already
+   exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.

@@ -16,18 +16,22 @@ revising the card. Read `../../references/quality-rubric.md` when judging whethe
 the card is usable. Read `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/card-authoring-templates.md` when turning an idea into concrete
-field drafts. Read `../../references/theme-v3-rendering.md` if the welcome uses
-HTML, XMLV3, or Theme V3. Read `../../references/voice-calibration.md` when the
-card relies on distinctive voice, dialogue examples, long-session consistency, or
-ensemble cast contrast. Read `../../references/playtest-loop.md` when designing or
-interpreting private chat simulations. Use `../../examples/synthetic-card-briefs.md`
-when the task asks for benchmark creation, regression checks, or example-driven
-iteration.
+field drafts. Read `../../references/material-distillation.md` when the author
+provides files, notes, imported drafts, source fragments, or a large world bible.
+Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
+Theme V3. Read `../../references/voice-calibration.md` when the card relies on
+distinctive voice, dialogue examples, long-session consistency, or ensemble cast
+contrast. Read `../../references/playtest-loop.md` when designing or interpreting
+private chat simulations. Use `../../examples/synthetic-card-briefs.md` when the
+task asks for benchmark creation, regression checks, or example-driven iteration.
 
 ## Workflow
 
 1. Capture the card goal: role premise, relationship dynamic, play loop, tone,
    language, content rating intent, and success criteria.
+   If the author provides large source material, local files, a draft, or a world
+   bible, use `lunatalk-material-distiller` first and author from its
+   source-to-play map instead of pasting the source into role fields.
 2. If the brief is thin, brainstorm 2-3 sharply different playable directions
    with the author before creating the card. Make the options differ by conflict,
    player role, first scene, and long-term loop, not only by mood. Prefer

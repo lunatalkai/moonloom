@@ -267,6 +267,20 @@ Visual design should answer at least one of these:
 If XMLV3/Theme V3 looks good but does not clarify action, state, or atmosphere,
 compress it and spend the saved tokens on the engine.
 
+### 8. Material distillation
+
+When an author provides notes, files, drafts, or a large world bible, do not turn
+the source into a long summary. First create a source-to-play map:
+
+- what fantasy and player role the source supports
+- which facts create choices, costs, routes, state, voice, or consequence
+- what belongs in `roleDetailDesc`
+- what belongs in the first scene
+- what should be delayed, merged, renamed, or cut
+
+Use `material-distillation.md` before blueprinting or authoring if the agent
+would otherwise need to read a large source pack while drafting.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -315,6 +329,8 @@ Repair the card in this order during Moonloom self-review:
 10. Archetype: satisfy the chosen card type rather than writing a generic card.
 11. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
+12. Material distillation: convert notes, files, or world bibles into a playable
+    source-to-play map before drafting fields.
 
 Do not treat a single high total score as enough. A card with weak agency or weak
 consequence still needs repair even if it has polished prose.
@@ -623,6 +639,8 @@ when the card needs stable formatting or style constraints that repeatedly fail.
 - Pretty prose with no player action.
 - Generic "Hello, I am X, what do you want to do?" openings.
 - A long world bible in welcome.
+- Imported or pasted source material copied into the role instead of distilled
+  into playable rules, state, first scene, and route seeds.
 - Generic relationship labels without concrete tension.
 - The AI is instructed to decide the player's actions.
 - State panels that are never updated.

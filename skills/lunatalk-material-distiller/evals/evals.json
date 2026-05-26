@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-material-distiller",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a folder of notes for a coastal fantasy town: calendar rules, three factions, ten locations, and a few NPC sketches. Distill it into something Moonloom can use for a LunaTalk card without turning it into a lore dump.",
+      "expected_output": "Produces a source-to-play map that inventories the material, extracts player role and central tension, keeps only playable rules, delays/cuts excess lore, and hands off to blueprint or authoring.",
+      "files": [],
+      "expectations": [
+        "The output inventories material by function instead of summarizing every fact.",
+        "The output defines playable promise, player role, central tension, and first-scene pressure.",
+        "The source-to-play map separates roleDetailDesc, roleWelcome, state/consequence, route seeds, and XMLV3/Theme V3 opportunities.",
+        "The output explicitly delays or cuts material that does not affect play.",
+        "The handoff identifies the next Moonloom skill and missing author input, if any."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Here is a giant world bible for an academy RPG. It has too many classes, houses, spells, history, and NPCs. Help me compress it before creating a role.",
+      "expected_output": "Compresses the world into modules, chooses one playable slice, defines state and route seeds, and protects the first scene from becoming a manual.",
+      "files": [],
+      "expectations": [
+        "The output chooses one immediate playable problem rather than preserving the full world bible.",
+        "The compression uses modules such as core rule, player position, locations, factions, state, route seeds, and first scene.",
+        "The output keeps only names or mechanics that create actions, obstacles, costs, rewards, or relationship pressure.",
+        "The token plan cuts history and catalogs before agency, consequence, voice, or state.",
+        "The output routes to lunatalk-card-blueprint when more ideation is needed or lunatalk-card-author when fields are ready."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I pasted a character draft with lots of backstory and private-sounding real-life details. Turn it into a public-safe original role card plan.",
+      "expected_output": "Distills the draft into fictional playable character mechanics, omits or fictionalizes irrelevant personal details, and avoids copying long source passages.",
+      "files": [],
+      "expectations": [
+        "The output does not copy long source passages into the card plan.",
+        "The character compression focuses on desire, contradiction, boundary, player leverage, voice, turn behavior, and progression.",
+        "The output omits personal, confidential, or irrelevant details unless fictionalization is explicitly appropriate.",
+        "The plan preserves player agency and avoids deciding the player's feelings, consent, or actions.",
+        "The handoff is public-safe and does not claim special privileged provenance."
+      ]
+    }
+  ]
+}

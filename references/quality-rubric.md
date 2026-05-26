@@ -15,6 +15,9 @@ the shorter pass/fail rubric.
 - `roleDetailDesc` contains stable identity, backstory, personality, constraints,
   speaking style, boundaries, and important world context.
 - The role can respond consistently without relying on hidden assumptions.
+- When the card is derived from source material, it has converted that material
+  into playable rules, state, voice, routes, and first-scene pressure rather than
+  copying or summarizing the source.
 - The author-facing language matches the user's request. Use Traditional Chinese
   when the author writes in Traditional Chinese or asks for it. Do not mix
   Simplified Chinese terms into `zh-Hant` card fields.
@@ -64,6 +67,9 @@ explicitly chooses a tradeoff:
   Chinese while preserving character names, tone, and XMLV3 tags.
 - Token efficiency: reduce welcome bloat or move durable visual structure into
   XMLV3/Theme V3.
+- Material distillation: for files, notes, imported drafts, or world bibles, keep
+  only source material that affects player agency, consequence, voice, state,
+  route seeds, or the first scene.
 - Archetype: satisfy the card type's contract. Companion needs relationship
   pressure and emotional boundaries; story needs setting stakes and likely
   branches; game needs rules, resources, failure pressure, and opening
@@ -85,6 +91,9 @@ explicitly chooses a tradeoff:
   alone to distinguish cast members.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
+- Source dump: if roleDetailDesc reads like a lore digest, rewrite it into a
+  source-to-play map: player role, first-scene pressure, durable rules, compact
+  state, route seeds, and what to delay or cut.
 - Missing role initiative: add proactive turn rules. The role should know what to
   ask, reveal, escalate, or offer next instead of waiting for the player to carry
   every beat.

@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Start here for Moonloom LunaTalk creation workflows, especially when you are unsure which Moonloom skill applies. Use this skill whenever the user mentions LunaTalk MCP, Moonloom, external AI clients creating LunaTalk content, role cards, brainstorming card ideas, Theme V3/XMLV3 card creation, render review, private chat simulation, or publishing a LunaTalk card, even if they do not explicitly say "use Moonloom."
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -9,6 +9,9 @@ Moonloom is the skill framework for LunaTalk creation work. Use it to choose the
 right specialized skill, guide the author through ideation and revision, and call
 the MCP tools only when the card is ready for concrete creation, render review,
 simulation, or publishing.
+
+This is Moonloom's entry router. When an agent is unsure what to use, load this
+skill first, classify the task, and then route to the narrowest matching skill.
 
 ## Router rule
 
@@ -33,9 +36,13 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- Author-provided files, folders, material packs, pasted notes, existing drafts,
+  imported content, large world bibles, or lore that must be compressed before
+  card creation: use `lunatalk-material-distiller`.
 - Brainstorming, premise shaping, character core, worldbuilding, relationship
   design, voice design, opening-scene planning, or turning a vague idea into a
-  card-ready blueprint: use `lunatalk-card-blueprint`.
+  card-ready blueprint after source material has been distilled: use
+  `lunatalk-card-blueprint`.
 - Creating or editing a role card: use `lunatalk-card-author`.
 - Checking HTML/XMLV3/Theme V3 rendering: use `lunatalk-render-review`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
@@ -56,6 +63,8 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.
+- Read `../../references/material-distillation.md` when working from local files,
+  notes, material packs, imported drafts, source fragments, or large world bibles.
 - Read `../../references/quality-rubric.md` when judging content quality.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.

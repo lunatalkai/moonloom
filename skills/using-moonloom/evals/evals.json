@@ -65,6 +65,19 @@
         "The output routes visual checks to lunatalk-render-review and behavior checks to lunatalk-chat-simulation only when those stages are actually relevant.",
         "The output mentions that simulation uses normal billing or should be skipped until the author accepts the cost."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "I have a local folder full of worldbuilding notes and character drafts. Which Moonloom workflow should I start with before creating a LunaTalk role?",
+      "expected_output": "Routes to lunatalk-material-distiller first, explains source-to-play mapping, then hands off to blueprint or authoring after the material is compressed.",
+      "files": [],
+      "expectations": [
+        "The output routes material packs, local files, notes, drafts, and world bibles to lunatalk-material-distiller.",
+        "The output says to create a source-to-play map before blueprinting or authoring.",
+        "The output avoids copying source material into role fields.",
+        "The output identifies keep, delay, cut, merge, and token plan as part of the workflow.",
+        "The output does not call mutating MCP tools before the material is distilled."
+      ]
     }
   ]
 }
