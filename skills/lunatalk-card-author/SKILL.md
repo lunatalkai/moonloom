@@ -14,7 +14,9 @@ Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 `../../references/role-card-writing-framework.md` before writing or deeply
 revising the card. Read `../../references/quality-rubric.md` when judging whether
 the card is usable. Read `../../references/theme-v3-rendering.md` if the welcome
-uses HTML, XMLV3, or Theme V3.
+uses HTML, XMLV3, or Theme V3. Use `../../examples/synthetic-card-briefs.md` when
+the task asks for benchmark creation, regression checks, or example-driven
+iteration.
 
 ## Workflow
 
@@ -42,7 +44,7 @@ uses HTML, XMLV3, or Theme V3.
 
 - Keep the author in the loop through conversation. The author feedback surface is
   the agent chat, not an in-app comment system.
-- Do not create extra databases, review sessions, or side ledgers in the skill.
+- Do not create extra storage, review sessions, or side ledgers in the skill.
   The role card is the source of truth.
 - Use Traditional Chinese for user-facing LunaTalk card content when the author
   writes in Traditional Chinese or asks for it.

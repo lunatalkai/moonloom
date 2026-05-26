@@ -18,7 +18,7 @@ confirms submission in the agent conversation.
 credits under normal rules. Before running it, make sure the author asked for a
 simulation or understands that this check costs real account resources.
 
-## Data handling
+## Credentials
 
 Do not ask the author to paste secrets. Use environment variables or the AI
 client's configured auth integration for account tokens.

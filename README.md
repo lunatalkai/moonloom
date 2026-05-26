@@ -16,15 +16,15 @@ and creator workflow automation.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
-- `references/role-card-writing-framework.md` defines the evidence-informed
-  framework for writing high-playability cards.
-- `scripts/analyze-role-cards.sql` can be re-run against LunaTalk data to update
-  the framework with fresh cohort observations.
+- `references/role-card-writing-framework.md` defines the practical framework for
+  writing high-playability cards.
+- `examples/synthetic-card-briefs.md` provides fictional benchmark prompts for
+  testing authoring, render review, and simulation loops.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## MCP endpoint
 
-The current production-facing MCP surface is expected to be:
+The hosted MCP surface is expected to be:
 
 ```text
 https://api.lunatalk.ai/mcp/card-writer
