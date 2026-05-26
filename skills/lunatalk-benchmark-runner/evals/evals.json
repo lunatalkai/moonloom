@@ -8,7 +8,7 @@
       "files": [],
       "expectations": [
         "The run uses only synthetic benchmark briefs and does not reference unprovided source material.",
-        "The benchmark scores Moonloom writing dimensions before validate_role.",
+        "The benchmark checks Moonloom writing dimensions before validate_role.",
         "The report separates MCP technical blockers from Moonloom writing failures.",
         "The companion card check includes relationship pressure, contradiction, boundary, voice, first-scene action, and second-turn engine.",
         "The report lists weakest dimensions and concrete skill or prompt improvements."
@@ -155,6 +155,19 @@
         "The proposed repair uses lunatalk-agency-designer or agency-design.md before blueprint, authoring, opening, longplay, or simulation.",
         "The report does not ask MCP validation to judge subjective interaction design.",
         "The check remains public-safe and uses only synthetic example text."
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Create a negative regression check for a schema-valid card whose roleWelcome is 9000 chars, roleDetailDesc is thin, welcomeToDetailRatio is above 6, and HTML/XMLV3 panels repeat lore.",
+      "expected_output": "Treats the card as a Moonloom token architecture failure, checks field allocation and welcome bloat, recommends lunatalk-token-architect repairs, and does not add server hard gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies overlong welcome, thin durable engine, duplicated lore, visual bloat, misplaced rules, or risky compression.",
+        "The proposed repair uses lunatalk-token-architect or token-economy before render or simulation.",
+        "The repair includes token architecture packet, field triage, target allocation, keep/move/cut/rewrite, compression ladder, and patch order.",
+        "The report does not ask MCP validation to judge subjective token architecture beyond technical diagnostics."
       ]
     }
   ]

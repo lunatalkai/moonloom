@@ -19,6 +19,9 @@ worldbuilding, decorative factions/locations, unclear player position, or weak
 world-state consequences.
 Read `../../references/role-card-writing-framework.md` if the card has not already
 been checked for playable loop, anchors, consequences, and token efficiency.
+Read `../../references/token-economy.md` when `validate_role.tokenBudget`,
+`welcomeToDetailRatio`, overlong welcome, thin detail, duplicated lore, visual
+bloat, or field allocation is part of the readiness risk.
 Read `../../references/safety-and-cost.md` for public action constraints. Read
 `../../references/boundary-design.md` when a mature, adult, horror-leaning,
 jealous, power-imbalanced, or consent-sensitive card needs boundary readiness.
@@ -56,6 +59,10 @@ matter, or the card decides the player's feelings/actions.
    If the player can only watch, choices are decorative, routes funnel, refusal
    does not matter, or the card narrates player feelings/actions, repair it with
    `lunatalk-agency-designer` before treating the card as ready.
+   If `tokenBudget` shows high `welcomeToDetailRatio`, the welcome carries
+   durable rules or repeated lore, `roleDetailDesc` is too thin, visual panels
+   consume the first screen, or compression could delete the playable engine,
+   repair it with `lunatalk-token-architect` before treating the card as ready.
    For boundary-sensitive cards, confirm rating intent, explicitness ceiling,
    player agency contract, escalation ladder, refusal route, stop conditions, and
    safer fallback are encoded in the card.

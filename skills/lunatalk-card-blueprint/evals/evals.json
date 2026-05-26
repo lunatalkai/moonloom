@@ -78,6 +78,19 @@
         "The blueprint states what the card must not decide for the player.",
         "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Before creating anything, plan a high-setting card whose draft keeps putting 80% of the text into the welcome. I need token allocation, field targets, and a keep/move/cut/rewrite plan in the blueprint.",
+      "expected_output": "Uses lunatalk-token-architect or token-economy before field drafting, then produces a blueprint with token architecture packet, target allocation, field triage, and handoff readiness without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes token allocation and overlong welcome repair to lunatalk-token-architect or token-economy.md before broad authoring.",
+        "The token architecture packet defines target allocation, field triage, keep/move/cut/rewrite, compression ladder, visual budget, and rerun checks.",
+        "The plan moves durable world rules and character engine into roleDetailDesc instead of welcome.",
+        "The welcome concept stays playable and compact for the archetype.",
+        "The output does not call or instruct immediate mutating MCP tool use before the blueprint is ready."
+      ]
     }
   ]
 }

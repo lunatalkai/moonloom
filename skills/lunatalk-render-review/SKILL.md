@@ -14,6 +14,8 @@ Read `../../references/card-writer-mcp.md` for `validate_role` and
 HTML, and Theme V3 decisions. Read `../../references/quality-rubric.md` for the
 visual quality rubric. Read `../../references/role-card-writing-framework.md` when
 render issues affect playability, token cost, or first-scene clarity. Read
+`../../references/token-economy.md` when visual panels, repeated lore, HTML/XMLV3
+bulk, or welcome-first layout creates token allocation risk. Read
 `../../references/opening-design.md` when visual warnings affect first action
 visibility, opening clarity, or second-turn setup.
 
@@ -43,6 +45,9 @@ visibility, opening clarity, or second-turn setup.
   screen is a card quality problem, not only a visual problem.
 - If the first screen is visually valid but inert, patch the opening packet or
   welcome scene before tuning only CSS or Theme V3.
+- If the first screen is visually elaborate because durable rules, repeated lore,
+  duplicated monologues, or large visual panels live in `roleWelcome`, use
+  `lunatalk-token-architect` before more visual polish.
 - Treat `evaluation.qualityDimensions` as the structured review map:
   `captureReadiness`, `semanticStructure`, `readability`, and
   `actionVisibility`.

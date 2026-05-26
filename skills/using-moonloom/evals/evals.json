@@ -169,6 +169,19 @@
         "The output says no mutating MCP tools should run during agency design.",
         "The output treats agency quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 14,
+      "prompt": "I am not sure which Moonloom skill to use. validate_role returned roleDescChars 520, roleDetailDescChars 1450, roleWelcomeChars 9200, estimatedTokens 4200, and welcomeToDetailRatio 6.3. The welcome has duplicated lore, long visual panels, decorative XMLV3 choices, and durable rules hidden in the first screen. I need a keep/move/cut/rewrite token plan before render or simulation.",
+      "expected_output": "Uses using-moonloom as the router, routes tokenBudget and field allocation repair to lunatalk-token-architect first, then hands off to authoring or narrower writing skills after the token architecture packet is ready.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes tokenBudget, welcomeToDetailRatio, overlong welcome, and field allocation repair to lunatalk-token-architect before render or simulation.",
+        "The route focuses on target allocation, field triage, keep/move/cut/rewrite, compression ladder, visual budget, patch order, and rerun checks.",
+        "The output says no mutating MCP tools should run during token architecture design.",
+        "The output treats tokenBudget as a structural diagnostic, not as a writing-quality gate or billing statement."
+      ]
     }
   ]
 }

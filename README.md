@@ -26,6 +26,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
 - `skills/lunatalk-agency-designer` turns spectator openings, decorative choices,
   route funneling, and player-agency takeover into agency packets.
+- `skills/lunatalk-token-architect` turns tokenBudget warnings, overlong
+  welcomes, misplaced rules, and visual bloat into token architecture packets.
 - `skills/lunatalk-card-blueprint` turns vague ideas, tropes, settings, and
   relationship seeds into card-ready blueprints before MCP creation.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
@@ -71,6 +73,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   character voice.
 - `references/agency-design.md` defines player insertion space, reply-path
   matrices, agency guardrails, consequence checks, and interaction hooks.
+- `references/token-economy.md` defines token budget diagnostics, field
+  allocation, compression ladders, and keep / move / cut / rewrite plans.
 - `references/quality-rubric.md` defines the public checklist for judging whether
   a card is playable, anchored, consequential, token-efficient, visually readable,
   and ready for simulation or submission.
@@ -90,21 +94,13 @@ root, the same file is available as `references/voice-calibration.md`.
 
 ## MCP endpoint
 
-The hosted MCP surface is expected to be:
+Configure the Card Writer MCP endpoint and authentication through the AI client's
+normal MCP settings. Moonloom does not publish environment-specific URLs or
+credentials in this repository.
 
-```text
-https://api.lunatalk.ai/mcp/card-writer
-```
-
-Local development usually proxies through:
-
-```text
-http://localhost:8888/mcp/card-writer
-```
-
-Use an authenticated LunaTalk account token. Moonloom does not introduce separate
-MCP-specific scopes; the server applies normal login identity, account ownership,
-quota, moderation, publishing, and billing rules.
+Moonloom does not introduce separate MCP-specific scopes; the server applies
+normal login identity, account ownership, quota, moderation, publishing, and
+billing rules.
 
 ## Status
 

@@ -103,6 +103,21 @@ Agency packet:
 - field patch targets:
 - token tradeoff:
 
+Token architecture packet:
+- current failure:
+- archetype:
+- token budget signal:
+- target allocation:
+- field triage:
+- keep / move / cut / rewrite:
+- compression ladder:
+- visual budget:
+- state budget:
+- example budget:
+- patch order:
+- rerun checks:
+- handoff:
+
 Engine:
 - role desire:
 - contradiction:

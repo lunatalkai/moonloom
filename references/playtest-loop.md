@@ -126,8 +126,8 @@ Heavy-setting / ensemble:
 
 ## Transcript triage
 
-Read the transcript before trusting the score. Use the structured evaluation as
-triage, then map the observed problem to a card patch.
+Read the transcript before trusting the structured evaluation. Use it as triage,
+then map the observed problem to a card patch.
 
 | Symptom | Likely missing card layer | Patch target |
 |---|---|---|
@@ -140,6 +140,7 @@ triage, then map the observed problem to a card patch.
 | Reply escalates sensitive content too fast | boundary design | explicitness ceiling, escalation ladder, pacing, refusal style, stop conditions |
 | Reply treats refusal as the end of play | boundary design | refusal route and safer fallback |
 | Reply dumps lore instead of scene movement | token economy, play layer | move lore to modular detail and add current pressure |
+| Reply repeats welcome setup or spends turns on decorative panels | token architecture | use `lunatalk-token-architect`; move durable rules/lore to `roleDetailDesc`, shorten welcome, rerun validation/render |
 | Cast talks over the player | ensemble turn ownership | cast table and scene rules |
 | RPG/system loses state | state economy | compact state format and update rules |
 | Assistant card chats but produces no artifact | generator contract | output schema, defaults, and revision commands |

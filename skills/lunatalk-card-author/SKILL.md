@@ -24,7 +24,11 @@ rating, sensitive themes, simulation cost, publishing, or credentials matter. Re
 field drafts. Read `../../references/material-distillation.md` when the author
 provides files, notes, imported drafts, source fragments, or a large world bible.
 Read `../../references/theme-v3-rendering.md` if the welcome uses HTML, XMLV3, or
-Theme V3. Read `../../references/voice-calibration.md` when the card relies on
+Theme V3. Read `../../references/token-economy.md` when `validate_role`
+returns tokenBudget warnings, when `roleWelcome` is much longer than
+`roleDetailDesc`, when durable rules are hidden in welcome, or when the task asks
+for compression, keep/move/cut/rewrite, or field allocation repair. Read
+`../../references/voice-calibration.md` when the card relies on
 distinctive voice, dialogue examples, long-session consistency, or ensemble cast
 contrast. Use `lunatalk-voice-director` first when voice repair is the primary
 task. Read `../../references/boundary-design.md` when the card is mature,
@@ -66,7 +70,10 @@ benchmark creation, regression checks, or example-driven iteration.
    catchphrase discipline, refusal style, talkExample need, blind-line tests, or
    ensemble voice contrast. Prefer `lunatalk-agency-designer` when the author
    primarily asks for player agency, user insertion space, interaction hooks,
-   decorative choices, route funneling, or player-agency takeover.
+   decorative choices, route funneling, or player-agency takeover. Prefer
+   `lunatalk-token-architect` when the author primarily asks about tokenBudget,
+   welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
+   preserving playability while reducing token cost.
 3. Choose the archetype or pressure shape: companion/relationship,
    story/scenario, system/simulator, RPG/open-world, generator/assistant,
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
@@ -76,7 +83,11 @@ benchmark creation, regression checks, or example-driven iteration.
 5. Run Moonloom self-review before calling mutating tools.
 6. If there is no `roleId`, call `role_create_private`.
 7. Patch profile fields with `role_patch_profile`.
-8. Before patching stable character and world context with `role_patch_detail`,
+8. If the current card or draft has an overlong `roleDesc`, thin
+   `roleDetailDesc`, overlong `roleWelcome`, high `welcomeToDetailRatio`,
+   duplicated lore, visual bloat, or misplaced durable rules, use or preserve
+   `lunatalk-token-architect` before patching fields.
+9. Before patching stable character and world context with `role_patch_detail`,
    use `lunatalk-longplay-architect` when the current task is long-term
    playability, memory/state, route seeds, progression, or a dead third-turn
    loop. Use or preserve `lunatalk-voice-director` when the current patch changes
@@ -84,22 +95,24 @@ benchmark creation, regression checks, or example-driven iteration.
    Use or preserve `lunatalk-agency-designer` when the patch changes player
    insertion space, reply paths, route consequences, passive-player behavior, or
    agency guardrails.
-9. Before patching the welcome, use `lunatalk-opening-director` when the current
+10. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
-10. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
+11. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML or legacy HTML.
-11. Optionally use `theme_bind` and `extension_enable` for Theme V3.
-12. Call `validate_role`.
-13. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
+12. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+13. Call `validate_role`.
+14. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
     `role-card-writing-framework.md` and `quality-rubric.md`.
-14. Call `render_preview` and review the result with `lunatalk-render-review`.
-15. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
+15. If `validate_role.tokenBudget` shows allocation drift, use
+    `lunatalk-token-architect` before render or simulation.
+16. Call `render_preview` and review the result with `lunatalk-render-review`.
+17. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing. Include a
     playtest plan, transcript triage, and evidence-backed patch decision, not
     only a tool status check.
-16. Summarize the card, validation result, render result, simulation result, and
+18. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 
 ## Collaboration Loop
@@ -164,6 +177,10 @@ MCP tools make the card real; Moonloom makes the card good.
   player insertion space, player controls/refusals/changes, agency guardrails,
   reply-path matrix, compact state, passive-player behavior, boundary handling,
   consequence checks, field patch targets, and token tradeoff.
+- Preserve the token architecture packet when one exists: current failure,
+  archetype, token budget signal, target allocation, field triage,
+  keep/move/cut/rewrite, compression ladder, visual budget, state budget,
+  example budget, patch order, rerun checks, and handoff.
 - Preserve the longplay packet when one exists: continuity spine, progression
   phases, state model, route seeds, memory threads, role initiative, continuation
   probes, and token tradeoff.

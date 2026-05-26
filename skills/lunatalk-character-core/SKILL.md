@@ -101,7 +101,7 @@ Self-review:
 - Do not solve thin characters with more biography. Convert history into present
   pressure.
 - Do not make refusal end the role. Add a playable alternate route.
-- Do not add public provenance, source claims, or copied examples. Keep the
+- Do not add source claims or copied examples. Keep the
   output original and public-safe.
 - Do not push subjective quality checks into MCP validation. Character appeal is
   Moonloom guidance.

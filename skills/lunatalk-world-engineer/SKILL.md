@@ -99,8 +99,8 @@ Self-review:
 - Do not use decorative state. State must change access, behavior, risk, route,
   or cost.
 - Do not hide the first playable action behind a manual.
-- Keep output original and public-safe. Do not make unsupported source,
-  provenance, traffic, or performance claims.
+- Keep output original and public-safe. Do not make unsupported source or
+  performance claims.
 
 ## Repair heuristics
 

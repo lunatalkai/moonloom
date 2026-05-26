@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -38,6 +38,12 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- TokenBudget, estimatedTokens, roleDescChars, roleDetailDescChars,
+  roleWelcomeChars, welcomeToDetailRatio, overlong welcome, field allocation,
+  keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat,
+  misplaced durable rules, or preserving playability while reducing token cost:
+  use `lunatalk-token-architect` before authoring, opening repair, render review,
+  simulation, or publish readiness.
 - Author-provided files, folders, material packs, pasted notes, existing drafts,
   imported content, large world bibles, or lore that must be compressed before
   card creation: use `lunatalk-material-distiller`.
@@ -122,6 +128,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/agency-design.md` when the task involves player agency,
   user insertion space, interaction hooks, decorative choices, route funneling,
   player-agency takeover, or consequence checks.
+- Read `../../references/token-economy.md` when the task involves tokenBudget,
+  token allocation, overlong welcomes, duplicated lore, compression plans, or
+  keep / move / cut / rewrite decisions.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
 - Read `../../references/playtest-loop.md` when designing private chat probes,

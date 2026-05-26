@@ -11,7 +11,7 @@
         "The simulation uses a realistic opening user turn.",
         "The evaluation checks role consistency, scene advancement, player agency, progression, and safety format.",
         "The output recommends concrete roleDetailDesc, roleWelcome, or voice-rule patches when behavior fails.",
-        "The report includes cost or charged score when available."
+        "The report includes cost or charged amount when available."
       ]
     },
     {
