@@ -19,6 +19,12 @@ when turning the packet into `roleDetailDesc` patch targets. Read
 design. Read `../../references/voice-calibration.md` when long sessions cause
 voice drift. Read `../../references/boundary-design.md` when routes involve
 mature, intense, horror-leaning, jealous, or consent-sensitive pressure.
+Read `../../references/daily-life-design.md` when long sessions for a
+daily-life, slice-of-life, neighbor, roommate, cafe, workplace, school, quiet
+routine, shared-object, or tiny-disruption card become pleasant but static. Use
+`lunatalk-daily-life-architect` first when ordinary routine, habit state, small
+playable desire, passive-player behavior, or return-next-time hooks are not yet
+coherent.
 Read `../../references/relationship-engine.md` when long sessions flatten into
 generic flirting, comfort loops, instant intimacy, rivalry without repair, weak
 trust/friction state, or relationship pacing drift.
@@ -48,23 +54,28 @@ Design the longplay engine, then hand off to authoring or simulation.
    session restart.
 2. Preserve any working opening packet. Do not rewrite the welcome unless the
    longplay failure starts on the first screen.
-3. Use or preserve `lunatalk-agency-designer` when the failure is decorative
+3. Use or preserve `lunatalk-daily-life-architect` when the card is daily-life
+   and the longplay failure is static pleasant routine, no small state change,
+   no shared object/place memory, no passive-player behavior, or no
+   return-next-time hook. Preserve the daily-life packet before expanding route
+   seeds.
+4. Use or preserve `lunatalk-agency-designer` when the failure is decorative
    choices, route funneling, spectator progression, missing refusal/redirect
    routes, or consequences that ignore player choice.
-4. Use or preserve `lunatalk-relationship-architect` when the failure is generic
+5. Use or preserve `lunatalk-relationship-architect` when the failure is generic
    flirting, comfort loops, instant intimacy, flat trust/friction state, rivalry
    without repair, or relationship refusal that ends play.
-5. Define the continuity spine: what choice changes what pressure over time.
-6. Build 3-6 progression phases with triggers, role behavior, player leverage,
+6. Define the continuity spine: what choice changes what pressure over time.
+7. Build 3-6 progression phases with triggers, role behavior, player leverage,
    unlocks, and risks.
-7. Design a compact state model that the role can update every 2-3 turns.
-8. Write 2-4 route seeds. Each route needs trigger, role pressure, player
+8. Design a compact state model that the role can update every 2-3 turns.
+9. Write 2-4 route seeds. Each route needs trigger, role pressure, player
    leverage, unlock, cost, memory, and renewal hook.
-9. Write memory threads and return-later behavior.
-10. Write role initiative for accepting, questioning, resisting, passive,
+10. Write memory threads and return-later behavior.
+11. Write role initiative for accepting, questioning, resisting, passive,
    route-changing, and returning-later player messages.
-11. Produce continuation probes and pass/fail triggers.
-12. State token tradeoff and handoff target.
+12. Produce continuation probes and pass/fail triggers.
+13. State token tradeoff and handoff target.
 
 ## Output format
 
@@ -126,6 +137,10 @@ Handoff:
   initiative table.
 - If relationship play flattens into comfort or flirting, preserve or create a
   relationship-engine packet before expanding longplay routes.
+- If daily-life play stays cozy but unchanged, preserve or create a daily-life
+  packet before expanding longplay routes; track habit, object/place memory,
+  small practical pressure, and return-next-time changes instead of adding
+  melodrama.
 - If choices feel cosmetic, add route costs and memory left behind.
 - If every route returns to one scene, build a reply-path matrix and consequence
   checks before adding more route labels.

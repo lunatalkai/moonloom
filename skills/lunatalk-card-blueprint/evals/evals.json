@@ -17,12 +17,15 @@
     {
       "id": 2,
       "prompt": "Make a quiet daily-life card about a neighbor watering rooftop plants before dawn. I want it emotionally observant, not boring.",
-      "expected_output": "Builds a daily-life blueprint with small desire, ordinary pressure, player insertion, sensory first scene, slow progression loop, voice fingerprint, and token-conscious field draft.",
+      "expected_output": "Uses lunatalk-daily-life-architect or daily-life-design before broad field drafting, then builds a daily-life blueprint with a preserved daily-life packet, small desire, ordinary pressure, player insertion, sensory first scene, slow progression loop, voice fingerprint, and token-conscious field draft.",
       "files": [],
       "expectations": [
+        "The blueprint routes daily-life routine structure to lunatalk-daily-life-architect or daily-life-design.md before broad authoring.",
+        "The blueprint includes or preserves a daily-life packet with ordinary routine, tiny disruption, shared object/place, habit state, passive-player behavior, second-turn change, and return-next-time hooks.",
         "The blueprint gives the role a small concrete desire rather than only a mood.",
         "The first scene includes ordinary routine, sensory anchors, role action, pressure, and player implication.",
         "The progression loop uses habit, trust, shared objects, or small disclosures.",
+        "The blueprint states non-forced romance or another boundary posture.",
         "The output avoids sudden melodrama as the only source of tension.",
         "The roleDesc and welcome concept remain compact and scannable."
       ]

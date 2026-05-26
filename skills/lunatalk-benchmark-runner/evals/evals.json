@@ -262,6 +262,19 @@
         "The report rejects false leads that dead-end, punish curiosity, or require the player to guess the intended route.",
         "The report treats scenario quality as Moonloom writing guidance rather than MCP validation, platform metrics, or server gates."
       ]
+    },
+    {
+      "id": 21,
+      "prompt": "Create a negative regression check for a schema-valid quiet daily-life card that has pleasant mood prose and a readable welcome, but no small playable desire, no tiny disruption, no shared object/place state, no passive-player routine behavior, and no second-turn change.",
+      "expected_output": "Treats mood-only daily-life as a Moonloom daily-life-engine failure, checks the daily-life packet, and recommends lunatalk-daily-life-architect before broad blueprinting, relationship repair, opening-only repair, longplay-only repair, or server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role and render_preview would pass.",
+        "The diagnosis identifies missing or weak daily-life packet fields: ordinary routine, small playable desire, tiny disruption, shared object/place, habit state, reply paths, passive-player behavior, boundary/romance posture, second-turn change, and return-next-time hooks.",
+        "The proposed repair uses lunatalk-daily-life-architect or daily-life-design.md before broad blueprinting, relationship repair, opening-only repair, longplay-only repair, or simulation.",
+        "The report does not ask MCP validation or server gates to judge subjective quiet-card quality.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

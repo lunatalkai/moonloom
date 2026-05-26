@@ -52,6 +52,19 @@
         "The output keeps worldbuilding and generator artifacts as overlays unless lore scope or artifact creation is the main loop.",
         "The archetype packet includes scenario in required packets or recommended skill order and does not call mutating MCP tools."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "I want a quiet card about a roommate repairing the kitchen light every Sunday night, with small cohabitation friction and no forced romance. I am not sure if this is daily-life, relationship, light-setting, or longplay. Classify it before fields.",
+      "expected_output": "Classifies daily-life/slice-of-life as the primary contract when ordinary routine and habit progression are primary, routes the routine engine to lunatalk-daily-life-architect, and keeps relationship/longplay as conditional overlays.",
+      "files": [],
+      "expectations": [
+        "The output chooses one primary archetype by what the player repeatedly does.",
+        "The output routes ordinary routine, small playable desire, tiny disruption, shared object/place, habit state, second-turn change, and return-next-time hooks to lunatalk-daily-life-architect or daily-life-design.md.",
+        "The output does not route primarily to relationship-architect unless intimacy pacing, romance, repair/rupture, or relationship state is the main blocker.",
+        "The output does not route primarily to world-engineer or longplay-only repair unless setting scope or continuation is the main blocker.",
+        "The archetype packet includes daily-life in required packets or recommended skill order and avoids mutating MCP tools."
+      ]
     }
   ]
 }

@@ -201,6 +201,12 @@ Failure modes:
 - The card waits for the player to invent all intimacy.
 - Progression jumps to melodrama because no small state exists.
 
+Use `daily-life-design.md` when the card needs a daily-life packet for ordinary
+routine, small playable desire, tiny disruption, shared object or place,
+micro-tension, habit state, closeness/distance lanes, passive-player behavior,
+second-turn change, return-next-time hooks, and daily-life probes before
+authoring.
+
 ### Light-setting
 
 Player promise: enter a clean fantasy frame without reading a manual.
@@ -325,6 +331,10 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - daily-life:
+  - scenario:
+  - play engine:
+  - ensemble:
   - agency:
   - voice:
   - opening:

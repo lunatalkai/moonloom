@@ -262,6 +262,26 @@ Minimum packet:
 If a card only gets stronger by adding prettier affection, it has not been
 repaired. Add state, cost, agency, and renewal before adding more prose.
 
+### 3a. Daily-life engine
+
+Quiet cards need a routine engine, not only mood. Use `daily-life-design.md` when
+daily-life, slice-of-life, neighbor, roommate, cohabitation, cafe, workplace, or
+school cards need ordinary routine, small playable desire, tiny disruption,
+shared object/place, habit state, passive-player behavior, second-turn change,
+or return-next-time hooks before field drafting.
+
+Minimum packet:
+
+- ordinary routine: the repeated action that can return changed
+- small playable desire: what the role wants enough to act
+- tiny disruption: what makes this specific moment start now
+- shared object/place: what can be altered, borrowed, fixed, returned, or missed
+- habit state: what changes the next routine
+- reply paths: help, ask, refuse, tease, notice, leave, stay silent, set terms
+- romance posture: non-romantic, friendship-first, slow-burn optional, or other
+  boundary
+- second-turn change: the first visible alteration caused by player input
+
 ### 4. World engine
 
 Worldbuilding should make choices, not homework. Use `world-engine-design.md`
@@ -618,6 +638,9 @@ For `archetype` repairs, match the card type:
 - Game / RPG / simulator: add a play-engine packet with compact state, resource
   rules, turn protocol, failure-forward behavior, and an opening setup/state/
   choice surface.
+- Daily-life / slice-of-life: add a daily-life packet with ordinary routine,
+  small playable desire, tiny disruption, shared object/place, habit state,
+  passive-player behavior, and second-turn change.
 
 ## Archetype recipes
 
@@ -772,9 +795,14 @@ scene in `roleDetailDesc`.
 
 Goal: make low-stakes scenes emotionally playable instead of flat.
 
+Use `daily-life-design.md` when this recipe is the primary shape.
+
 Use:
 
 - one ordinary routine with a hidden pressure
+- one small playable desire and one tiny disruption
+- one shared object or place that can return changed later
+- compact habit state that affects the next routine
 - a relationship or habit that can change slowly
 - small choices that reveal preference, trust, embarrassment, jealousy, comfort,
   avoidance, or shared history
@@ -786,6 +814,8 @@ Top-card checks:
 - The role wants something small but specific.
 - The first turn gives the player a natural action: help, tease, refuse, ask,
   notice, hide, offer, leave, or change the plan.
+- The second turn shows one small concrete change in habit, object, boundary,
+  next meeting, trust, distance, or routine order.
 - Progression comes from accumulated tiny changes, not sudden melodrama.
 
 ### Light-setting card

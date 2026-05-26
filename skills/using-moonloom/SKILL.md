@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
+description: Use when a task may involve Moonloom, LunaTalk MCP, external AI clients creating LunaTalk content, role cards, field-ready drafts, prepared packet stacks, card series or variants, ensemble or multi-character cards, story/scenario/mystery incidents, daily-life/slice-of-life routines, RPG/adventure play engines, compact state, resources, quests, material packs, character core, persona appeal, character voice, player agency, interaction hooks, worldbuilding, relationship networks, tokenBudget or token compression, opening or welcome repair, long-term playability, mature or boundary-sensitive cards, Theme V3/XMLV3, render review, private chat simulation, or publishing, especially when unsure which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -91,6 +91,14 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   protocol, or game-like mechanics, use `lunatalk-play-engineer`; if it is
   factions, locations, relationship networks, lore compression, or world scope,
   use `lunatalk-world-engineer`.
+- Daily-life, slice-of-life, quiet companion, neighbor, roommate, cohabitation,
+  cafe, workplace, school, ordinary-routine, low-stakes, subtle emotional,
+  flat-comfort, flat small-talk, shared-object, habit-state, tiny-disruption, or
+  return-next-time cards where the primary blocker is making quiet play
+  consequential without melodrama: use `lunatalk-daily-life-architect` before
+  blueprinting, opening repair, longplay repair, relationship repair, authoring,
+  or simulation. If intimacy pacing, romance, repair/rupture, or relationship
+  state is primary, use `lunatalk-relationship-architect`.
 - RPG, adventure, open-world, sandbox, survival, investigation, or simulator
   tasks where playable mechanics are the primary blocker: stats, resources,
   inventory, quests, combat, turn protocol, compact state updates,
@@ -192,6 +200,11 @@ validation, render review, simulation, and publish readiness.
   scenario, mystery, investigation, event, trial, rescue, betrayal, clue/reveal
   pacing, false leads, suspect pressure, route-funnel repair, branch
   consequences, or a focused incident without game-like mechanics.
+- Read `../../references/daily-life-design.md` when the task involves
+  daily-life, slice-of-life, quiet companion, neighbor, roommate, cohabitation,
+  cafe, workplace, school, ordinary routine, small playable desire, tiny
+  disruption, shared object, habit state, passive-player behavior, romance
+  posture, or return-next-time hooks.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.

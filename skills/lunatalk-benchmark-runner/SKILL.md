@@ -1,6 +1,6 @@
 ---
 name: lunatalk-benchmark-runner
-description: Run public-safe Moonloom benchmark checks for LunaTalk card authoring quality. Use this skill when evaluating whether Moonloom can guide MCP-backed creation of strong cards across companion, story, game/RPG, and generator archetypes, or when running regression checks after changing prompts, skills, render review, or simulation behavior.
+description: Run public-safe Moonloom benchmark checks for LunaTalk card authoring quality. Use this skill when evaluating whether Moonloom can guide MCP-backed creation of strong cards across companion, daily-life, story, game/RPG, and generator archetypes, or when running regression checks after changing prompts, skills, render review, or simulation behavior.
 ---
 
 # LunaTalk Benchmark Runner
@@ -34,6 +34,11 @@ trope repair, ensemble identity, or character appeal. Read
 `../../references/relationship-engine.md` when benchmarking companion, romance,
 friendship, rivalry, cohabitation, daily-life, slow-burn pacing, generic
 flirting, comfort loops, repair/rupture routes, or relationship state. Read
+`../../references/daily-life-design.md` when benchmarking daily-life,
+slice-of-life, quiet companion, neighbor, roommate, cohabitation, cafe,
+workplace, school, ordinary routine, low-stakes progression, shared object,
+habit state, tiny disruption, passive-player behavior, second-turn change, or
+return-next-time hooks. Read
 `../../references/world-engine-design.md` when benchmarking worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
 repair. Read `../../references/scenario-design.md` when benchmarking story,
@@ -66,7 +71,8 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
 2. Create a private card with the matching shape: companion, story, game,
    generator, daily-life, heavy-setting, ensemble, or boundary-sensitive romance.
    For story/mystery/event briefs, confirm a scenario packet exists before
-   authoring.
+   authoring. For daily-life/slice-of-life briefs, confirm a daily-life packet
+   exists before authoring.
 3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
@@ -138,7 +144,9 @@ Moonloom self-review, render review, or simulation that:
   same longplay loop.
 - a companion plus heavy-setting or generator card lets lore or assistant mode
   replace the relationship engine.
-- a quiet daily-life card has mood but no small playable desire or progression.
+- a quiet daily-life card has mood but no daily-life packet, small playable
+  desire, tiny disruption, shared object/place, habit state, passive-player
+  behavior, second-turn change, or return-next-time progression.
 - a lore-rich card has many proper nouns but no immediate action surface.
 - a world-heavy card has factions, locations, calendars, systems, or history but
   no world-engine packet, player position, compact state, route costs, or
@@ -167,6 +175,10 @@ Use `lunatalk-relationship-architect` for regressions where the weakest layer is
 relationship dynamics, slow-burn pacing, generic flirting, flat comfort, instant
 intimacy, weak trust/friction state, repair/rupture routes, or relationship
 field allocation.
+Use `lunatalk-daily-life-architect` for regressions where the weakest layer is a
+quiet routine, small playable desire, tiny disruption, shared object/place, habit
+state, passive-player behavior, non-forced romance posture, second-turn change,
+or return-next-time hooks.
 Use `lunatalk-agency-designer` for regressions where the weakest layer is player
 insertion space, decorative choices, route funneling, role-controlled player
 feelings/actions, missing refusal routes, or consequences that ignore player

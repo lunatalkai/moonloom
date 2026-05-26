@@ -52,6 +52,19 @@
         "The state model tracks consequences that change access, relationship, risk, route, or next hook.",
         "The output does not call mutating MCP tools."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "My quiet cafe regular card has a warm first meeting, but every later session repeats the same coffee small talk. Make the long-session loop work without turning it into melodrama.",
+      "expected_output": "Uses or preserves lunatalk-daily-life-architect or daily-life-design before longplay expansion, then designs routine state, shared-object memory, passive-player behavior, return-next-time hooks, and continuation probes.",
+      "files": [],
+      "expectations": [
+        "The output treats static pleasant routine as a daily-life engine failure before generic longplay repair.",
+        "The packet includes habit state, shared object/place memory, small practical pressure, and subtle progression signals.",
+        "The continuation loop renews ordinary scenes through tiny disruptions rather than sudden melodrama.",
+        "Passive-player behavior lets the role act without forcing the player's feelings or choices.",
+        "The output does not call mutating MCP tools."
+      ]
     }
   ]
 }

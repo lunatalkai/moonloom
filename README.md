@@ -35,6 +35,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
   event, trial, rescue, and drama cards through stakes, route branches,
   clue/reveal pacing, false leads, consequence state, and scenario probes before
   blueprinting or authoring.
+- `skills/lunatalk-daily-life-architect` plans daily-life, slice-of-life,
+  neighbor, roommate, cafe, workplace, school, cohabitation, and quiet routine
+  cards through small playable desires, tiny disruptions, shared objects, habit
+  state, and return-next-time probes before blueprinting or authoring.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
 - `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
@@ -96,6 +100,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/scenario-design.md` defines branchable incidents, story spines,
   clue/reveal ladders, false lead handling, suspect pressure networks, compact
   consequence state, and probes for story-first cards.
+- `references/daily-life-design.md` defines quiet routine loops, micro-tension,
+  shared objects, habit state, second-turn changes, romance posture, and probes
+  for daily-life cards.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
   boundary-sensitive prompts, and self-review packets.

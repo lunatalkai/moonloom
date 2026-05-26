@@ -27,6 +27,11 @@ not a platform metric or MCP validation rule.
   rescue, trial, or drama-focused, its scenario engine has stakes, route
   branches, clue/reveal pacing, false-lead handling, compact consequence state,
   and route-funnel guardrails rather than a fixed plot summary.
+- If the card is daily-life, slice-of-life, neighbor, roommate, cohabitation,
+  cafe, workplace, school, or quiet companion, its daily-life engine has an
+  ordinary routine, small playable desire, tiny disruption, shared object/place,
+  habit state, passive-player behavior, second-turn change, and return-next-time
+  hooks rather than mood-only comfort or small talk.
 - If the card is RPG, adventure, open-world, survival, investigation, sandbox, or
   simulator-like, its play engine has compact state, resource rules, quest/risk
   routes, turn protocol, failure-forward behavior, and state-update probes rather
@@ -58,6 +63,9 @@ A top-card candidate should pass three harder checks:
   durable engine in `roleDetailDesc`.
 - Story/scenario cards can reveal one new clue, cost, pressure, or contradiction
   on the second turn without forcing the player's conclusion or route.
+- Daily-life cards can make one small visible change on the second turn: the
+  object, habit order, boundary term, next meeting, trust/distance state, or
+  routine callback shifts because of the player's first move.
 - The opening has a concrete packet: five beats, reply paths, expected first user
   message, second-turn move, and visible change.
 - The longplay engine has a continuity spine, compact state model, route costs,
@@ -100,6 +108,13 @@ explicitly chooses a tradeoff:
   relationship-engine packet with promise, asymmetry, closeness/friction state,
   pacing gates, repair/rupture routes, reply-path matrix, passive-player
   behavior, and field allocation before field drafting.
+- Daily-life engine: if a daily-life, slice-of-life, neighbor, roommate,
+  cohabitation, cafe, workplace, school, or quiet companion card becomes only
+  atmosphere, comfort, small talk, or a repeated routine that never changes,
+  create a daily-life packet with ordinary routine, small playable desire, tiny
+  disruption, shared object/place, habit state, reply paths, passive-player
+  behavior, non-forced romance posture, second-turn change, and return-next-time
+  hooks before field drafting.
 - World engine: if factions, locations, calendars, magic systems, academies,
   towns, factions, or histories do not create player action and consequences,
   create a world-engine packet with player position, core world rule, compact
@@ -158,8 +173,9 @@ explicitly chooses a tradeoff:
 - Archetype: satisfy the card type's contract. Companion needs relationship
   pressure and emotional boundaries; story needs setting stakes and likely
   branches; game needs rules, resources, failure pressure, and opening
-  setup/state/choices; generator needs intake, output schema, revision loop, and
-  quality rubric.
+  setup/state/choices; daily-life needs routine, small desire, tiny disruption,
+  shared object, habit state, and small change; generator needs intake, output
+  schema, revision loop, and quality rubric.
 - Archetype director: when the author is unsure which card type should drive the
   work, or the card mixes companion, story, system, RPG, generator, daily-life,
   light-setting, heavy-setting, or ensemble contracts, create an archetype packet
@@ -200,6 +216,10 @@ explicitly chooses a tradeoff:
   or harmless banter, add relationship asymmetry, closeness/friction states,
   pacing gates, repair and distance routes, and passive-player behavior before
   adding more affectionate prose.
+- Flat daily-life loop: if every reply is pleasant atmosphere or chores without
+  consequence, add a tiny disruption, shared object/place, habit state,
+  non-forced romance posture, reply paths that change the next routine, and a
+  passive-player behavior before adding more mood prose.
 - Dead third turn: define continuity spine, route costs, memory threads, and
   passive-player behavior before adding more lore.
 - Source dump: if roleDetailDesc reads like a lore digest, rewrite it into a

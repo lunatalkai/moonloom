@@ -123,6 +123,7 @@ Archetype packet:
   - scenario:
   - character core:
   - relationship engine:
+  - daily-life:
   - world engine:
   - play engine:
   - ensemble:
@@ -197,6 +198,43 @@ Relationship-engine packet:
   - talkExample:
   - XMLV3 / Theme V3:
 - token tradeoff:
+- simulation probes:
+- handoff:
+
+Daily-life packet:
+- current seed or failure:
+- daily-life promise:
+- card shape:
+- player role:
+- ordinary routine:
+- small playable desire:
+- tiny disruption:
+- shared object / place:
+- sensory anchors:
+- player leverage:
+- routine loop:
+- micro-tension:
+- habit state:
+- reply paths:
+  - [path]:
+    - player move:
+    - role response:
+    - small change:
+    - renewed hook:
+- closeness / distance lanes:
+- passive-player behavior:
+- boundary and romance posture:
+- opening moment:
+- expected first user message:
+- second-turn change:
+- long-session renewal:
+- field allocation:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- token plan:
 - simulation probes:
 - handoff:
 
@@ -403,6 +441,7 @@ Inputs preserved:
 - archetype packet:
 - character-core packet:
 - relationship-engine packet:
+- daily-life packet:
 - world-engine packet:
 - play-engine packet:
 - scenario packet:
@@ -422,7 +461,7 @@ Role fields:
   - core premise:
   - player position:
   - agency and interaction:
-  - relationship / world / play engine:
+  - relationship / daily-life / world / play engine:
   - role identity:
   - contradiction and boundary:
   - voice fingerprint:
@@ -455,6 +494,7 @@ Token allocation:
 Packet preservation checklist:
 - character core preserved:
 - relationship engine preserved:
+- daily-life engine preserved:
 - world / play / scenario engine preserved:
 - player agency preserved:
 - voice preserved:
@@ -632,6 +672,19 @@ Relationship engine
 - passive-player behavior:
 - second-turn relationship move:
 - long-session renewal:
+
+Daily-life engine
+- ordinary routine:
+- small playable desire:
+- tiny disruption:
+- shared object / place:
+- micro-tension:
+- habit state:
+- reply-path matrix:
+- passive-player behavior:
+- boundary and romance posture:
+- second-turn change:
+- return-next-time hook:
 
 Role identity
 - [Who the role is.]
@@ -895,6 +948,7 @@ Card series: pass | revise because ...
 Anchor: pass | revise because ...
 Card diagnosis: pass | revise because ...
 Relationship engine: pass | revise because ...
+Daily-life engine: pass | revise because ...
 Play engine: pass | revise because ...
 Voice texture: pass | revise because ...
 Voice calibration: pass | revise because ...

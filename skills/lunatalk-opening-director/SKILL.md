@@ -17,6 +17,12 @@ the packet into a welcome scaffold. Read `../../references/quality-rubric.md`
 for welcome and self-review checks. Read `../../references/theme-v3-rendering.md`
 when the welcome uses XMLV3 or HTML. Read `../../references/playtest-loop.md`
 when the task includes testing first-turn behavior. Read
+`../../references/daily-life-design.md` when a daily-life, slice-of-life,
+neighbor, roommate, cafe, workplace, school, quiet routine, shared object, or
+tiny-disruption opening is flat because the routine engine is not yet coherent.
+Use `lunatalk-daily-life-architect` first when ordinary routine, habit state,
+small playable desire, shared place/object, or return-next-time behavior is
+unresolved. Read
 `../../references/boundary-design.md` when the opening is mature, intense,
 horror-leaning, or consent-sensitive. Read
 `../../references/agency-design.md` when the opening makes the player watch,
@@ -44,22 +50,26 @@ opening, then hand off to authoring, render review, or simulation.
    action, too-long welcome, or second-turn dead end.
 2. Infer or ask only for missing information that blocks the opening: player
    role, card shape, role desire, current location, pressure, and content rating.
-3. Use or preserve `lunatalk-agency-designer` when the first-screen problem is
+3. Use or preserve `lunatalk-daily-life-architect` when the card is daily-life
+   and the first-screen problem is a flat routine, no small desire, no shared
+   object/place, no habit state, no tiny disruption, or no return-next-time
+   behavior. Preserve the daily-life packet before polishing welcome prose.
+4. Use or preserve `lunatalk-agency-designer` when the first-screen problem is
    spectator play, decorative choices, player-feeling narration, route funneling,
    or missing refusal/redirect paths.
    Use or preserve `lunatalk-play-engineer` when the first-screen problem is a
    game manual, decorative state, unclear resources, missing turn protocol, or
    choices with no risk/cost/state update.
-4. Build the five beats: place/time, role action, pressure, player implication,
+5. Build the five beats: place/time, role action, pressure, player implication,
    and reply paths.
-5. Write one expected first user message.
-6. Write the role's second-turn move and what changes.
-7. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
+6. Write one expected first user message.
+7. Write the role's second-turn move and what changes.
+8. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 when structure,
    choices, or state visibility help the first screen.
-8. State token tradeoff: what stays in welcome, what belongs in detail, and what
+9. State token tradeoff: what stays in welcome, what belongs in detail, and what
    to cut.
-9. Run opening self-review.
-10. Hand off to `lunatalk-card-author` for actual private-card patching, or to
+10. Run opening self-review.
+11. Hand off to `lunatalk-card-author` for actual private-card patching, or to
    `lunatalk-chat-simulation` for first-turn probes after author approval and
    normal billing acceptance.
 
@@ -126,6 +136,9 @@ Handoff:
 - If the opening is too long, move reusable lore and rules to `roleDetailDesc`.
 - If the second turn is generic, add state change, reveal, complication, or route
   offer.
+- If a daily-life opening is just pleasant atmosphere, define the daily-life
+  packet first, then rebuild the welcome around one ordinary action, tiny
+  disruption, shared object/place, and a second-turn habit-state change.
 - If an ensemble opening is a roll call, choose one focal conflict and delay the
   rest of the cast. If speaker entry, spotlight, or turn ownership is unclear,
   use `lunatalk-ensemble-director` before rewriting the welcome.

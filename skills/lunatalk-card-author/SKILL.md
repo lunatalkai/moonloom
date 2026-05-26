@@ -26,6 +26,13 @@ scenario, mystery, investigation, case-file, event, rescue, trial, betrayal, or
 social drama, or when it needs stakes, route branches, clue/reveal pacing, false
 leads, suspect pressure, compact consequence state, or route-funnel repair. Use
 `lunatalk-scenario-architect` first when scenario structure is the primary task.
+Read `../../references/daily-life-design.md` when the card is daily-life,
+slice-of-life, quiet companion, neighbor, roommate, cohabitation, cafe,
+workplace, school, ordinary-routine, low-stakes, habit-state, shared-object,
+comfort-loop, flat small-talk, or when it needs small playable desire, tiny
+disruption, passive-player behavior, second-turn change, or return-next-time
+hooks. Use `lunatalk-daily-life-architect` first when quiet routine structure is
+the primary task.
 Read `../../references/play-engine-design.md` when the card is RPG,
 adventure, open-world, sandbox, survival, investigation, simulator, or has
 stats, resources, inventory, quests, combat, turn protocol, compact state,
@@ -115,6 +122,13 @@ benchmark creation, regression checks, or example-driven iteration.
    second-turn reveal, or scenario probes, use `lunatalk-scenario-architect`
    first unless a scenario packet already exists. Do not create or patch the card
    until the scenario branches, clue ladder, and consequence state are coherent.
+   If the author asks to create or repair a daily-life, slice-of-life, quiet
+   companion, neighbor, roommate, cohabitation, cafe, workplace, school, or
+   ordinary-routine card with small playable desire, tiny disruption, shared
+   object/place, habit state, passive-player behavior, second-turn change, or
+   return-next-time hooks, use `lunatalk-daily-life-architect` first unless a
+   daily-life packet already exists. Do not create or patch the card until the
+   routine loop, habit state, and first two turns are coherent.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -143,6 +157,10 @@ benchmark creation, regression checks, or example-driven iteration.
    `lunatalk-scenario-architect` when the author needs story/scenario stakes,
    route branches, clue/reveal pacing, false leads, suspect pressure, compact
    consequence state, route-funnel repair, or scenario probes. Prefer
+   `lunatalk-daily-life-architect` when the author needs a quiet routine engine,
+   small playable desire, tiny disruption, shared object/place, habit state,
+   passive-player behavior, non-forced romance posture, second-turn change, or
+   return-next-time hooks. Prefer
    `lunatalk-card-blueprint` when the author needs broader ideation,
    relationship design, voice design, or opening-scene planning before a real
    role is created. Prefer `lunatalk-voice-director` when the author primarily
@@ -195,6 +213,10 @@ benchmark creation, regression checks, or example-driven iteration.
    story/scenario stakes, route branches, clue/reveal pacing, suspect pressure,
    false leads, compact consequence state, route-funnel guardrails, opening
    incident, or second-turn reveal.
+   Use or preserve `lunatalk-daily-life-architect` when the current patch changes
+   ordinary routine, small playable desire, tiny disruption, shared object/place,
+   habit state, passive-player behavior, boundary/romance posture, routine reply
+   paths, second-turn change, or return-next-time hooks.
 11. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Patch the
    opening scene with `role_patch_welcome` from the opening packet.
@@ -287,6 +309,12 @@ MCP tools make the card real; Moonloom makes the card good.
   clue/reveal ladder, suspect or pressure network, compact consequence state,
   opening incident, second-turn reveal, passive-player behavior, false-lead
   handling, route-funnel guardrails, token plan, and simulation probes.
+- Preserve the daily-life packet when one exists: daily-life promise, ordinary
+  routine, small playable desire, tiny disruption, shared object/place, sensory
+  anchors, player leverage, routine loop, micro-tension, habit state, reply
+  paths, closeness/distance lanes, passive-player behavior, boundary and romance
+  posture, opening moment, second-turn change, long-session renewal, token plan,
+  and simulation probes.
 - Preserve the voice-director packet when one exists: current failure, voice
   promise, rhythm, vocabulary, emotional tells, refusal style, response-mode
   grid, catchphrase policy, talkExample decision, blind-line test, pressure
@@ -338,6 +366,11 @@ MCP tools make the card real; Moonloom makes the card good.
 - If the card becomes generic flirting, flat comfort, instant intimacy, harmless
   banter, or refusal-ending play, call `lunatalk-relationship-architect` before
   adding more affectionate prose or sample scenes.
+- For daily-life cards, detail should carry the quiet routine engine: ordinary
+  routine, small desire, tiny disruption, shared object/place, habit state,
+  reply paths, passive-player behavior, second-turn change, and return-next-time
+  renewal. If the card is just pleasant atmosphere, comfort, or small talk, call
+  `lunatalk-daily-life-architect` before adding more mood prose.
 - Speaking style must be executable. Replace labels such as natural, gentle,
   witty, or like a real person with sentence rhythm, vocabulary, address terms,
   emotional tells, and what the role avoids saying.
@@ -357,9 +390,9 @@ MCP tools make the card real; Moonloom makes the card good.
   player leverage, voice contrast, token plan, and agency probes. If that packet
   is missing, use `lunatalk-ensemble-director` before patching fields.
 - Run Moonloom self-review before render: promise, anchor, relationship engine,
-  voice texture, voice calibration, consequence, role initiative, agency, opening
-  scene, longplay, player agency, language style, boundary design, archetype,
-  then token efficiency.
+  daily-life engine, voice texture, voice calibration, consequence, role
+  initiative, agency, opening scene, longplay, player agency, language style,
+  boundary design, archetype, then token efficiency.
   When voice calibration is relevant, do not merge it into generic voice texture;
   report the voice cards, micro-sample need, and blind-line risk explicitly.
 - Do not let polished prose hide a weak character engine, generic voice, passive
@@ -399,7 +432,9 @@ MCP tools make the card real; Moonloom makes the card good.
   clue/reveal pacing, false leads, and consequence state;
   game/RPG/system cards need a play-engine packet with compact state, resource
   rules, turn protocol, failure-forward behavior, and opening setup/state/
-  choices; daily-life needs a small playable desire; heavy-setting
+  choices; daily-life needs a routine loop, small playable desire, tiny
+  disruption, shared object/place, habit state, passive-player behavior, and
+  second-turn change; heavy-setting
   needs modular lore that creates action; ensemble needs distinct motives, voices,
   and turn ownership.
 - When making a related card set, author the anchor card first and then only one
