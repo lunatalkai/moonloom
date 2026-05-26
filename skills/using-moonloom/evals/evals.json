@@ -416,6 +416,19 @@
         "The output does not route directly to broad blueprinting, field assembly, MCP tools, render, simulation, or publish readiness.",
         "The output treats generator quality as Moonloom skill guidance, not an MCP/server gate."
       ]
+    },
+    {
+      "id": 33,
+      "prompt": "I am not sure which Moonloom skill to use. The author says the card is close but feels too safe, less intimate than intended, and they want to compare two patch directions before rewriting or paying for another simulation. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes author feedback, taste/preference calibration, draft or patch comparison, and co-review to lunatalk-collaboration-director before card-doctor, card-author, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes author feedback, taste/preference calibration, co-review, and patch comparison to lunatalk-collaboration-director.",
+        "The output asks for or produces a collaboration packet with preserve/change/reject/delay, decision frame, recommended next move, patch target, and next Moonloom skill.",
+        "The output does not route directly to broad rewriting, MCP tools, paid simulation, or publish readiness before the author decision is clear.",
+        "The output treats author feedback as agent-conversation workflow, not comment storage, server validation, or extra MCP scopes."
+      ]
     }
   ]
 }

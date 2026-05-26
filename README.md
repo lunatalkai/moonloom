@@ -18,6 +18,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 
 - `skills/using-moonloom` is the router skill. Start here when an agent is unsure
   which Moonloom workflow applies.
+- `skills/lunatalk-collaboration-director` turns author feedback, co-review,
+  taste/preference calibration, draft comparisons, and revision choices into a
+  decision packet before rewriting, simulating, or publishing.
 - `skills/lunatalk-archetype-director` chooses the primary card contract,
   secondary overlays, field allocation, hybrid risks, and Moonloom skill order
   before blueprinting or authoring mixed card types.
@@ -145,6 +148,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   probes.
 - `references/playtest-loop.md` defines simulation probe design, transcript
   triage, patch mapping, and author co-review for closed-loop card testing.
+- `references/author-collaboration.md` defines conversation-only author
+  feedback, taste-to-behavior translation, decision frames, and collaboration
+  packets for co-review.
 - `references/voice-calibration.md` defines executable voice cards,
   micro-samples, ensemble contrast checks, and blind-line tests for consistent
   character voice.

@@ -177,10 +177,11 @@ benchmark creation, regression checks, or example-driven iteration.
    return-next-time hooks, use `lunatalk-daily-life-architect` first unless a
    daily-life packet already exists. Do not create or patch the card until the
    routine loop, habit state, and first two turns are coherent.
-   If the author is improving an existing card and provides several symptoms,
-   feedback, validation/render output, simulation findings, or asks what to fix
-   first, use `lunatalk-card-doctor` first unless a diagnosis packet already
-   exists.
+   If the author is improving an existing card and provides concrete symptoms,
+   validation/render output, simulation findings, or asks what to fix first, use
+   `lunatalk-card-doctor` first unless a diagnosis packet already exists. If the
+   feedback is taste-level or comparative, use `lunatalk-collaboration-director`
+   first unless a collaboration packet already exists.
    If the author provides large source material, local files, a draft, or a world
    bible, use `lunatalk-material-distiller` first and author from its
    source-to-play map instead of pasting the source into role fields.
@@ -333,10 +334,9 @@ MCP tools make the card real; Moonloom makes the card good.
 
 ## Authoring guidance
 
-- Keep the author in the loop through conversation. The author feedback surface is
-  the agent chat, not an in-app comment system.
-- Do not create extra storage, review sessions, or side ledgers in the skill.
-  The role card is the source of truth.
+- Keep the author in the loop through agent chat, not an in-app comment system.
+- Do not create extra storage, review sessions, or side ledgers. If feedback is
+  ambiguous or comparative, use `lunatalk-collaboration-director` first.
 - When a prepared packet stack already exists, do not brainstorm from scratch.
   Resolve conflicts, preserve the strongest packet signals, and assemble
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,

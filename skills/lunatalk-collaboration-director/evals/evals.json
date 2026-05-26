@@ -1,0 +1,70 @@
+{
+  "skill_name": "lunatalk-collaboration-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The draft is close, but it feels too safe and not intimate enough. I do not want a rewrite yet; help me decide what to change and what to preserve.",
+      "expected_output": "Uses lunatalk-collaboration-director to translate vague taste feedback into a collaboration packet with preserve/change/reject/delay, a decision frame, patch target, and next Moonloom skill without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the author feedback as conversation-only co-review rather than comments, storage, or MCP validation.",
+        "The output translates safe/not intimate enough into observable axes such as pressure, relationship distance, pacing, boundary posture, or voice.",
+        "The output names what to preserve before proposing changes.",
+        "The output gives two or three concrete options and recommends one.",
+        "The output hands off to a narrow Moonloom skill instead of rewriting immediately."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "After simulation, the role answered safely but I was bored. It kept asking what I wanted to do and never created tension. I want to co-review before spending another simulation pass.",
+      "expected_output": "Builds an evidence-backed collaboration packet, summarizes the simulation symptom, translates boredom into missing pressure/initiative/consequence, and recommends a patch path before another costed simulation.",
+      "files": [],
+      "expectations": [
+        "The output summarizes simulation evidence before proposing a patch.",
+        "The output maps boredom to observable card behavior rather than taste alone.",
+        "The output avoids another simulation until a structural patch is accepted.",
+        "The output routes to card-doctor, opening, agency, longplay, or voice repair as appropriate.",
+        "The output keeps cost and author confirmation in the agent conversation."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have two versions: one has a stronger mystery opening, the other has a warmer relationship tone. Do not merge them blindly. Help me choose the direction.",
+      "expected_output": "Frames the decision between mystery pressure and relationship warmth, preserves winning qualities, rejects blind averaging, recommends a primary contract, and hands off to premise/archetype/blueprint.",
+      "files": [],
+      "expectations": [
+        "The output compares the two drafts through a decision frame.",
+        "The output names preserve/change/reject/delay for each direction.",
+        "The output recommends a primary playable contract rather than averaging incompatible goals.",
+        "The output routes to premise-workshop, archetype-director, or card-blueprint before field writing.",
+        "The output does not call MCP tools or produce final role fields prematurely."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The render preview looks good, but the author says the first screen does not feel like the character. We only need to decide whether this is visual, voice, or opening structure.",
+      "expected_output": "Uses collaboration co-review to separate render evidence from author taste, translates the reaction into visual/voice/opening hypotheses, and routes to the narrow next skill.",
+      "files": [],
+      "expectations": [
+        "The output does not treat a good render as proof the card is good.",
+        "The output separates preview evidence from author preference.",
+        "The decision frame distinguishes visual presentation, voice fidelity, and opening structure.",
+        "The output recommends one next skill based on the strongest evidence.",
+        "The output avoids comment storage and server-side taste gates."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Before publishing, I want the author to confirm what changed: less lore in the welcome, more player agency, and a colder voice. What should the agent summarize?",
+      "expected_output": "Produces a concise author-confirmation collaboration packet that lists the accepted changes, preserved constraints, remaining risks, and publish-readiness handoff without creating extra approval storage.",
+      "files": [],
+      "expectations": [
+        "The output summarizes accepted changes and preserved constraints in agent conversation.",
+        "The output names remaining risks and what was not changed.",
+        "The output routes final submission readiness to lunatalk-publish-readiness.",
+        "The output does not invent comment UI, approval database, or extra MCP scopes.",
+        "The output keeps publish confirmation explicit."
+      ]
+    }
+  ]
+}

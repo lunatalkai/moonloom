@@ -184,6 +184,10 @@ proposed card patch, and whether another paid pass is worth running. Ask for
 confirmation before `publish_submit`, and before extra simulation passes when
 cost is not already accepted.
 
+If the author wants to compare patch directions, adjust taste, or decide what to
+preserve before another simulation, hand the evidence to
+`lunatalk-collaboration-director` before spending another paid pass.
+
 ## Reporting
 
 Return:
