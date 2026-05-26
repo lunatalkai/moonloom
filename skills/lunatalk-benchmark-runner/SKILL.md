@@ -42,6 +42,8 @@ Regression should include at least one synthetic fail case. Confirm that
   pressure.
 - the detail defines consequences but lacks proactive turn rules for passive or
   stalled player input.
+- the speaking style is only generic tone labels such as natural, gentle, or like
+  a real person.
 - the opening is generic despite having a question.
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator

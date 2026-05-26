@@ -168,17 +168,20 @@ real private card:
 2. `roleDetailDesc` is long enough to act as an engine, not a label. Include
    identity, desire, contradiction, boundaries, speech style, and progression
    rules.
-3. Speaking style is explicit: sentence length, emotional tells, vocabulary,
-   restraint, and what the role avoids saying.
-4. Progression is explicit: what player choices change, which state can move,
+3. Speaking style is explicit and executable: sentence length, rhythm, vocabulary,
+   address terms, emotional tells, restraint, and what the role avoids saying.
+4. Voice texture is not just a mood label. Avoid stopping at "natural",
+   "gentle", "witty", or "like a real person"; state how that voice appears in
+   actual replies.
+5. Progression is explicit: what player choices change, which state can move,
    and how the next hook renews.
-5. Role initiative is explicit: what the role asks, reveals, escalates, or offers
+6. Role initiative is explicit: what the role asks, reveals, escalates, or offers
    when the player is passive or stalls.
-6. `roleWelcome` gives a clear first action path through choices, a direct
+7. `roleWelcome` gives a clear first action path through choices, a direct
    question, or an explicit "you can..." affordance.
-7. `roleWelcome` is not only a menu. It opens with concrete sensory/location
+8. `roleWelcome` is not only a menu. It opens with concrete sensory/location
    context, a role beat, pressure, and a reason the player is implicated.
-8. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+9. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
    detail, welcome, and examples.
 
 Validation warnings usually mean the card is still below publish-grade quality.
@@ -191,17 +194,18 @@ When `validate_role` returns `qualityDimensions`, repair the card in this order:
 1. `promise`: make the premise readable in three seconds.
 2. `anchor`: add the durable identity, desire, contradiction, boundary, and voice
    anchors that prevent generic drift.
-3. `consequence`: define what changes when the player acts.
-4. `roleInitiative`: add proactive turn rules for passive or stalled player input.
-5. `agency`: make the first reply path obvious.
-6. `openingScene`: add location, time, sensory detail, role beat, pressure, and
+3. `voiceTexture`: replace generic tone labels with executable voice behavior.
+4. `consequence`: define what changes when the player acts.
+5. `roleInitiative`: add proactive turn rules for passive or stalled player input.
+6. `agency`: make the first reply path obvious.
+7. `openingScene`: add location, time, sensory detail, role beat, pressure, and
    player implication before choices.
-7. `playerAgency`: remove rules that decide the player's actions, feelings,
+8. `playerAgency`: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-8. `languageStyle`: rewrite Simplified Chinese terms into Traditional Chinese
+9. `languageStyle`: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-9. `archetype`: satisfy the chosen card type rather than writing a generic card.
-10. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
+10. `archetype`: satisfy the chosen card type rather than writing a generic card.
+11. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
 
 Do not treat a single high total score as enough. A card with weak agency or weak

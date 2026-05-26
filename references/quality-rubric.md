@@ -28,6 +28,8 @@ explicitly chooses a tradeoff:
 - `promise`: clarify the premise, player relationship, and tension.
 - `anchor`: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
+- `voiceTexture`: replace generic tone labels with sentence rhythm, vocabulary,
+  address terms, emotional tells, and what the role avoids saying.
 - `consequence`: define what player choices change and how the next hook renews.
 - `roleInitiative`: define what the role asks, reveals, escalates, or offers when
   the player is passive or stalls.
@@ -53,6 +55,9 @@ explicitly chooses a tradeoff:
   style, and progression loop.
 - Missing speaking style: specify sentence length, emotional tells, vocabulary,
   and what the role avoids saying.
+- Generic speaking style: "natural", "gentle", or "like a real person" is not
+  enough. Add executable voice texture: rhythm, vocabulary, address terms,
+  emotional tells, and forbidden phrasing.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
 - Missing role initiative: add proactive turn rules. The role should know what to
