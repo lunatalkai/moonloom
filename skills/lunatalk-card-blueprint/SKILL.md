@@ -202,17 +202,17 @@ creation, validation, render review, simulation, and publishing workflow.
 
 ## Blueprint packet
 
-Return this structure:
+Return a blueprint packet by using the relevant sections of
+`../../references/card-authoring-templates.md`, especially the universal draft
+packet. Do not paste every optional packet when it does not apply. Include only
+the packets that are present, required, or intentionally delayed.
 
 ```text
 Seed:
 
 Premise workshop packet:
-- current seed:
-- author taste signals:
 - selected direction:
 - involvement ladder:
-- recommendation:
 - risk flags:
 - next decisions:
 - handoff:
@@ -228,36 +228,10 @@ Archetype packet:
 - core loop:
 - first-screen proof:
 - field allocation:
-  - roleDesc:
-  - roleDetailDesc:
-  - roleWelcome:
-  - talkExample:
-  - XMLV3 / Theme V3:
 - required packets:
-  - character core:
-  - relationship engine:
-  - world engine:
-  - ensemble:
-  - play engine:
-  - generator:
-  - scenario:
-  - daily-life:
-  - agency:
-  - voice:
-  - opening:
-  - longplay:
-  - boundary:
-  - token:
 - recommended Moonloom skill order:
 - hybrid failure modes:
-- repair rules:
-- self-review probes:
 - handoff:
-
-Directions:
-1. ...
-2. ...
-3. ...
 
 Quality audit:
 - overall tier:
@@ -266,40 +240,6 @@ Quality audit:
 - weakest dimensions:
 - first three repairs:
 - repair skill order:
-
-Card-series packet:
-- current seed:
-- series goal:
-- shared core:
-- variant map:
-  - keep:
-  - merge:
-  - reject:
-- variant contracts:
-- overlap risks:
-- authoring order:
-- validation / render / simulation plan:
-- handoff:
-
-Ensemble packet:
-- current seed or failure:
-- card shape:
-- ensemble promise:
-- cast scope:
-- player role:
-- player leverage:
-- cast decision matrix:
-- conflict network:
-- turn ownership:
-- spotlight rules:
-- group tension state:
-- opening focus:
-- voice contrast plan:
-- talkExample decision:
-- token plan:
-- agency and simulation probes:
-- field allocation:
-- handoff:
 
 Recommended direction:
 - why this is stronger:
@@ -326,24 +266,7 @@ Character core:
 - what changes through play:
 
 Relationship engine:
-- current failure:
-- relationship promise:
-- relationship shape:
-- relationship asymmetry:
-- emotional contract:
-- intimacy / closeness states:
-- friction states:
-- pacing gates:
-- repair routes:
-- rupture / distance routes:
-- player agency boundaries:
-- reply-path matrix:
-- compact relationship state:
-- passive-player behavior:
-- second-turn relationship move:
-- long-session renewal:
-- field allocation:
-- token tradeoff:
+- preserve or create the relationship-engine packet when applicable
 
 Player insertion:
 - player role:
@@ -357,143 +280,25 @@ Player insertion:
 - consequence checks:
 
 Agency packet:
-- current failure:
-- agency promise:
-- prerequisite repair:
-- player role:
-- player insertion space:
-- player controls:
-- player can refuse:
-- player can change:
-- card must not decide:
-- interaction hooks:
-- agency guardrails:
-- reply-path matrix:
-- compact state:
-- passive-player behavior:
-- boundary handling:
-- consequence checks:
-- field patch targets:
-- token tradeoff:
+- preserve or create the agency packet when applicable
 
 Boundary packet:
-- rating intent:
-- explicitness ceiling:
-- premise risk:
-- allowed pressure tools:
-- disallowed moves:
-- escalation ladder:
-- refusal / slowdown behavior:
-- stop conditions:
-- safer fallback:
+- preserve or create the boundary packet when applicable
 
 World engine:
-- core rule:
-- world promise:
-- player position:
-- scope:
-- playable slice:
-- active pressure:
-- relationship / faction network:
-- locations:
-- resources / clocks / costs:
-- state model:
-- route seeds:
-- exposition policy:
-- consequence loop:
+- preserve or create the world-engine packet when applicable
 
 Play-engine packet:
-- current failure:
-- card shape:
-- play promise:
-- player position:
-- player controls:
-- card must not decide:
-- core loop:
-- compact state model:
-- resource rules:
-- quest / risk model:
-- turn protocol:
-- failure-forward behavior:
-- progression phases:
-- opening contract:
-- state visibility:
-- field allocation:
-- token plan:
-- simulation probes:
-- handoff:
+- preserve or create the play-engine packet when applicable
 
 Generator packet:
-- current seed or failure:
-- generator promise:
-- card shape:
-- artifact type:
-- player role:
-- creator persona:
-- artifact contract:
-- intake surface:
-- output schema:
-- revision operations:
-- quality rubric:
-- artifact memory:
-- refusal / constraint handling:
-- diegetic mode:
-- opening contract:
-- field allocation:
-- token plan:
-- simulation probes:
-- handoff:
+- preserve or create the generator packet when applicable
 
 Scenario packet:
-- current seed or failure:
-- scenario promise:
-- card shape:
-- player role:
-- ongoing incident:
-- stakes:
-- core question:
-- story spine:
-- route branches:
-- clue / reveal ladder:
-- suspect / pressure network:
-- compact consequence state:
-- opening incident:
-- expected first user message:
-- second-turn reveal:
-- passive-player behavior:
-- false-lead handling:
-- route-funnel guardrails:
-- field allocation:
-- token plan:
-- simulation probes:
-- handoff:
+- preserve or create the scenario packet when applicable
 
 Daily-life packet:
-- current seed or failure:
-- daily-life promise:
-- card shape:
-- player role:
-- ordinary routine:
-- small playable desire:
-- tiny disruption:
-- shared object / place:
-- sensory anchors:
-- player leverage:
-- routine loop:
-- micro-tension:
-- habit state:
-- reply paths:
-- closeness / distance lanes:
-- passive-player behavior:
-- boundary and romance posture:
-- opening moment:
-- expected first user message:
-- second-turn change:
-- long-session renewal:
-- field allocation:
-- token plan:
-- simulation probes:
-- handoff:
+- preserve or create the daily-life packet when applicable
 
 Voice fingerprint:
 - rhythm:
@@ -512,16 +317,7 @@ Voice calibration:
 - blind-line risk:
 
 Voice-director packet:
-- current failure:
-- voice promise:
-- prerequisite core repair:
-- catchphrase policy:
-- response-mode grid:
-- talkExample decision:
-- blind-line test:
-- pressure probes:
-- field patch targets:
-- token tradeoff:
+- preserve or create the voice-director packet when applicable
 
 First scene:
 - place/time:
@@ -537,26 +333,10 @@ Second-turn engine:
 - renewed hook:
 
 Opening packet:
-- current failure:
-- opening promise:
-- reply paths:
-- expected first user message:
-- second-turn move:
-- what changes:
-- token tradeoff:
+- preserve or create the opening packet when applicable
 
 Longplay packet:
-- continuity spine:
-- progression phases:
-- state model:
-- route seeds:
-- memory threads:
-- role initiative:
-- passive / stalled player behavior:
-- scene renewal rules:
-- continuation probes:
-- detail patch targets:
-- token tradeoff:
+- preserve or create the longplay packet when applicable
 
 Field draft:
 - roleName:
@@ -571,37 +351,22 @@ Token plan:
 - what to cut first:
 
 Token architecture packet:
-- current failure:
-- token budget signal:
-- target allocation:
-- field triage:
-- keep / move / cut / rewrite:
-- compression ladder:
-- visual budget:
-- state budget:
-- example budget:
-- patch order:
-- rerun checks:
+- preserve or create the token architecture packet when applicable
 
 Self-review:
-- promise:
-- anchor:
-- relationship engine:
-- voice texture:
-- voice calibration:
-- consequence:
-- role initiative:
-- agency:
-- opening scene:
-- player agency:
-- boundary design:
-- archetype fit:
-- token efficiency:
+- strongest dimensions:
+- weakest dimensions:
+- required repair before authoring:
 
 Handoff:
 - ready for lunatalk-card-author: yes | no
 - what to clarify first:
 ```
+
+If a sub-packet is needed but missing, route to its narrow Moonloom skill instead
+of filling the full template with weak placeholders. The blueprint should be
+compact enough for `lunatalk-card-author` to preserve without re-reading the
+whole design conversation.
 
 ## Quality rules
 
