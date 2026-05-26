@@ -148,6 +148,26 @@ Check:
   used in play.
 - Use compact state blocks only when the state will actually be updated.
 
+## Validation-facing minimums
+
+Moonloom should aim above these minimums, but never ignore them when authoring a
+real private card:
+
+1. `roleDesc` sells the premise in one compact sentence: who, relationship, and
+   tension.
+2. `roleDetailDesc` is long enough to act as an engine, not a label. Include
+   identity, desire, contradiction, boundaries, speech style, and progression
+   rules.
+3. Speaking style is explicit: sentence length, emotional tells, vocabulary,
+   restraint, and what the role avoids saying.
+4. Progression is explicit: what player choices change, which state can move,
+   and how the next hook renews.
+5. `roleWelcome` gives a clear first action path through choices, a direct
+   question, or an explicit "you can..." affordance.
+
+Validation warnings usually mean the card is still below publish-grade quality.
+Patch the card, then re-run validation before render or simulation.
+
 ## Archetype recipes
 
 ### Companion / relationship card

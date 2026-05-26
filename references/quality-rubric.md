@@ -18,6 +18,22 @@ the shorter pass/fail rubric.
 - The author-facing language matches the user's request. Use Traditional Chinese
   when the author writes in Traditional Chinese or asks for it.
 
+## MCP quality warnings
+
+Treat quality warnings from `validate_role` as work items, not decorative lint.
+The first publish-grade pass should clear these warnings unless the author
+explicitly chooses a tradeoff:
+
+- Thin `roleDesc`: rewrite it as premise + player relationship + tension.
+- Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
+  style, and progression loop.
+- Missing speaking style: specify sentence length, emotional tells, vocabulary,
+  and what the role avoids saying.
+- Missing progression/consequence/state: define how player choices change trust,
+  risk, location, resources, routes, or relationship state.
+- Weak first action path: add choices, a direct question, or an explicit response
+  path in the opening scene.
+
 ## Welcome quality
 
 - The welcome creates an immediate interaction opportunity.
