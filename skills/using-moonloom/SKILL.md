@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile packaging, language style, variants, ensemble/story/daily-life/RPG/generator/material workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile packaging, language style, variants, ensemble/story/daily-life/RPG/generator/material workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, benchmark handoff reports, Benchmark report packets, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -258,8 +258,11 @@ bottleneck and list delayed routes under `do not do yet`.
   before authoring/rendering, use `lunatalk-presentation-director`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
 - Preparing public submission: use `lunatalk-publish-readiness`.
-- Running regression checks or comparing Moonloom quality across archetypes: use
-  `lunatalk-benchmark-runner`.
+- Running regression checks, comparing Moonloom quality across archetypes, or
+  summarizing an already-run benchmark: use `lunatalk-benchmark-runner`. If the
+  author asks for a benchmark handoff report, return a `Benchmark report packet`
+  rather than loose notes, and keep subjective writing failures inside Moonloom
+  skill repairs rather than MCP gates.
 
 If the author asks for an end-to-end creation flow, start with `lunatalk-card-author`
 and let it use `lunatalk-card-blueprint` for thin or generic ideas before
@@ -368,7 +371,8 @@ validation, render review, simulation, and publish readiness.
   reading simulation transcripts, or deciding how to patch behavior failures.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or
-  regression checks.
+  regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet`
+  when reporting benchmark results or handing failures to the next skill.
 
 ## Operating principles
 

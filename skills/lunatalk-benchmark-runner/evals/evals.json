@@ -329,6 +329,19 @@
         "The report keeps generator quality inside Moonloom guidance and does not add MCP/server hard gates.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 26,
+      "prompt": "I ran a public-safe Moonloom benchmark with one companion brief, one RPG brief, and one negative generator case. Validation passed for two cards, render warned on one mobile preview, simulation was skipped for cost, and the generator case failed because it asked more questions instead of producing an artifact. Return only the benchmark handoff report.",
+      "expected_output": "Returns a Benchmark report packet with positive cases, negative cases, Moonloom self-review result, MCP technical status, render status, simulation status, tokenBudget findings, weakest Moonloom dimensions, cost stance, regression classification, next Moonloom skill repairs, prompt or skill changes needed, and do not turn into MCP gates.",
+      "files": [],
+      "expectations": [
+        "The output includes a Benchmark report packet rather than loose notes.",
+        "The packet separates positive cases from negative cases.",
+        "The packet records MCP technical status, render status, simulation status, tokenBudget findings, and cost stance.",
+        "The packet maps the failed generator case to next Moonloom skill repairs and prompt or skill changes needed.",
+        "The packet includes do not turn into MCP gates and keeps subjective writing failures in Moonloom skills."
+      ]
     }
   ]
 }
