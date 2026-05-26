@@ -33,7 +33,8 @@ iteration.
 8. Optionally use `theme_bind` and `extension_enable` for Theme V3.
 9. Call `validate_role`.
 10. Fix blockers before moving on. Treat warnings as work items unless the author
-   explicitly accepts the tradeoff.
+   explicitly accepts the tradeoff. Use `qualityDimensions` to repair the weakest
+   dimension first.
 11. Call `render_preview` and review the result with `lunatalk-render-review`.
 12. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing.
@@ -54,6 +55,9 @@ iteration.
   style, boundaries, world facts, and the consequence loop.
 - Clear `validate_role` quality warnings by strengthening the premise, role
   engine, speaking style, progression rules, or first action path.
+- If `qualityDimensions` is present, repair in this order: `promise`, `anchor`,
+  `consequence`, `agency`, then `tokenEfficiency`. Do not let polished prose hide
+  a weak first-turn action or a missing consequence loop.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for

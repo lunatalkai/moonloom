@@ -168,6 +168,21 @@ real private card:
 Validation warnings usually mean the card is still below publish-grade quality.
 Patch the card, then re-run validation before render or simulation.
 
+## Agent repair dimensions
+
+When `validate_role` returns `qualityDimensions`, repair the card in this order:
+
+1. `promise`: make the premise readable in three seconds.
+2. `anchor`: add the durable identity, desire, contradiction, boundary, and voice
+   anchors that prevent generic drift.
+3. `consequence`: define what changes when the player acts.
+4. `agency`: make the first reply path obvious.
+5. `tokenEfficiency`: move reusable visual or rule structure out of welcome when
+   it costs more tokens than it adds play value.
+
+Do not treat a single high total score as enough. A card with weak agency or weak
+consequence still needs repair even if it has polished prose.
+
 ## Archetype recipes
 
 ### Companion / relationship card

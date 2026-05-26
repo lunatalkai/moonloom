@@ -24,6 +24,13 @@ Treat quality warnings from `validate_role` as work items, not decorative lint.
 The first publish-grade pass should clear these warnings unless the author
 explicitly chooses a tradeoff:
 
+- `promise`: clarify the premise, player relationship, and tension.
+- `anchor`: strengthen durable identity, desire, contradiction, boundaries,
+  speaking style, and behavioral tells.
+- `consequence`: define what player choices change and how the next hook renews.
+- `agency`: make the first user response path obvious.
+- `tokenEfficiency`: reduce welcome bloat or move durable visual structure into
+  XMLV3/Theme V3.
 - Thin `roleDesc`: rewrite it as premise + player relationship + tension.
 - Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
   style, and progression loop.

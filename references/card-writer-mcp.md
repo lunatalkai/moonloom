@@ -152,10 +152,22 @@ Toggle a Theme V3 extension pack.
 
 ### `validate_role`
 
-Return blockers, warnings, suggested fixes, score, and next tools. Treat `blocker`
-as a hard stop before publish. Treat quality warnings as normal iteration work:
-thin premise, thin detail, missing speaking style, missing progression/state, or
-weak first action path should be patched before render review unless the author
+Return blockers, warnings, suggested fixes, quality dimensions, score, and next
+tools. Treat `blocker` as a hard stop before publish.
+
+Use `qualityDimensions` as the agent repair map:
+
+- `promise`: the premise, player relationship, and tension are clear.
+- `anchor`: the durable identity, behavior, and voice are strong enough.
+- `consequence`: player choices can change state, relationship, route, risk, or
+  other meaningful variables.
+- `agency`: the first user action path is obvious.
+- `tokenEfficiency`: welcome/detail/render structure spends tokens where they
+  improve play.
+
+Treat quality warnings as normal iteration work: thin premise, thin detail,
+missing speaking style, missing progression/state, weak first action path, or
+token-heavy welcome should be patched before render review unless the author
 explicitly accepts the tradeoff.
 
 ### `render_preview`
