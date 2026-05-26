@@ -39,6 +39,19 @@
         "The workflow includes synthetic regression tests and simulation probes.",
         "The output preserves the boundary that MCP does not judge subjective writing quality."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I only have a vague card idea and want Moonloom to help me open it up before creating anything.",
+      "expected_output": "Routes to lunatalk-card-blueprint first, produces a blueprint packet without mutating MCP tools, then hands off to lunatalk-card-author only when the blueprint is ready.",
+      "files": [],
+      "expectations": [
+        "The output routes vague ideation to lunatalk-card-blueprint before lunatalk-card-author.",
+        "The workflow says no mutating MCP tools should run during blueprinting.",
+        "The blueprint step includes directions, tension triangle, character core, player insertion, first scene, second-turn engine, token plan, and self-review.",
+        "The handoff preserves concrete details instead of summarizing them away.",
+        "The output keeps MCP validation as a later technical step after authoring."
+      ]
     }
   ]
 }
