@@ -52,6 +52,8 @@ iteration.
   path is unclear, the card is not ready.
 - `roleDetailDesc` should carry durable identity, backstory, constraints, speech
   style, boundaries, world facts, and the consequence loop.
+- Clear `validate_role` quality warnings by strengthening the premise, role
+  engine, speaking style, progression rules, or first action path.
 - Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
   into Theme V3 where possible.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for

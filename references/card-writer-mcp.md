@@ -153,7 +153,10 @@ Toggle a Theme V3 extension pack.
 ### `validate_role`
 
 Return blockers, warnings, suggested fixes, score, and next tools. Treat `blocker`
-as a hard stop before publish.
+as a hard stop before publish. Treat quality warnings as normal iteration work:
+thin premise, thin detail, missing speaking style, missing progression/state, or
+weak first action path should be patched before render review unless the author
+explicitly accepts the tradeoff.
 
 ### `render_preview`
 
