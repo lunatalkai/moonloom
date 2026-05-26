@@ -30,6 +30,8 @@ explicitly chooses a tradeoff:
   speaking style, and behavioral tells.
 - `consequence`: define what player choices change and how the next hook renews.
 - `agency`: make the first user response path obvious.
+- `openingScene`: add concrete location, time, sensory context, role beat,
+  pressure, and player implication before choices.
 - `playerAgency`: remove instructions that decide the player's actions, feelings,
   consent, or commitments; replace generic openings with a concrete scene.
 - `languageStyle`: rewrite mixed Simplified Chinese terms into Traditional
@@ -53,6 +55,8 @@ explicitly chooses a tradeoff:
   risk, location, resources, routes, or relationship state.
 - Weak first action path: add choices, a direct question, or an explicit response
   path in the opening scene.
+- Hollow opening: choices alone are not enough. Add a visible place, sensory cue,
+  role action or beat, pressure, and a reason the player is implicated now.
 - Player agency takeover: the role can pressure or invite, but it must not narrate
   the player's decisions, feelings, or consent.
 - Generic opening: replace "Hello, I am X, what do you want to do?" with location,

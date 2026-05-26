@@ -162,6 +162,9 @@ Use `qualityDimensions` as the agent repair map:
 - `consequence`: player choices can change state, relationship, route, risk, or
   other meaningful variables.
 - `agency`: the first user action path is obvious.
+- `openingScene`: the welcome has a concrete first scene, not only choices or a
+  menu. It should expose location/time/sensory context, a role beat, pressure, and
+  player implication.
 - `playerAgency`: the card does not decide the player's actions, feelings,
   consent, or commitments. It also catches generic openings such as "Hello, I am
   X, what do you want to do?"
@@ -177,8 +180,9 @@ Use `qualityDimensions` as the agent repair map:
 
 Treat quality warnings as normal iteration work: thin premise, thin detail,
 missing speaking style, missing progression/state, weak first action path, player
-agency takeover, generic opening, language mismatch, or token-heavy welcome should
-be patched before render review unless the author explicitly accepts the tradeoff.
+agency takeover, hollow opening, generic opening, language mismatch, or token-heavy
+welcome should be patched before render review unless the author explicitly
+accepts the tradeoff.
 
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:
@@ -197,6 +201,8 @@ repair surface:
 - `role_patch_detail` for anchor, voice, progression, and consequence issues.
 - `role_patch_welcome` for first-turn agency, HTML/XMLV3, and token-heavy welcome
   issues.
+- `role_patch_welcome` for `openingScene` issues: add sensory/location context
+  and a concrete first beat before the choices.
 - `role_patch_profile`, `role_patch_detail`, and `role_patch_welcome` together
   for `languageStyle` issues, because mixed language can appear in any card field.
 - `role_patch_detail` plus sometimes `role_patch_welcome` for `archetype` issues,
