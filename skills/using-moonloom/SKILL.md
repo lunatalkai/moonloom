@@ -43,6 +43,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- MCP readiness, external client setup, Card Writer tool availability, auth
+  posture, idempotency planning, client configuration triage, or stage-gating
+  before role creation, render, simulation, or publish actions: use
+  `lunatalk-mcp-operator`. If the task is draft-only writing, do not block on MCP
+  readiness; route to the narrow writing skill instead.
 - Author feedback, co-review, taste/preference calibration, draft comparison,
   "almost right but off", choosing between patch options, or deciding what to
   preserve/change/reject/delay before rewriting, simulation, or publishing: use
@@ -236,6 +241,9 @@ validation, render review, simulation, and publish readiness.
 
 - Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint,
   or auth details matter.
+- Read `../../references/mcp-client-workflow.md` when the task involves MCP
+  readiness, external AI client setup, tool availability, auth status,
+  idempotency planning, or stage gates before Card Writer MCP actions.
 - Read `../../references/author-collaboration.md` when the task involves author
   feedback, co-review, taste/preference calibration, draft comparison, revision
   choices, or deciding what to preserve/change/reject/delay.

@@ -1,0 +1,107 @@
+# Moonloom MCP Client Workflow
+
+Use this reference when an external AI client needs to check whether Moonloom can
+reach the LunaTalk Card Writer MCP before creating, patching, rendering,
+simulating, or submitting a role card.
+
+This is an operational readiness workflow. It does not judge writing quality and
+does not replace Moonloom authoring skills.
+
+## Readiness order
+
+```text
+client config -> auth presence -> tool availability -> stage gate -> operation plan
+```
+
+1. Confirm the AI client has a configured Card Writer MCP server.
+2. Confirm authentication is present through the client integration.
+3. Inspect the MCP tool list if the client exposes one.
+4. Compare available tools against the intended stage.
+5. Prepare schema version, idempotency keys, and rollback/patch order.
+6. Hand off to the narrow Moonloom authoring or review skill.
+
+## Credential rules
+
+Do not print tokens, cookies, authorization headers, secrets, or full credential
+values. Say whether auth appears configured, missing, or unverified.
+
+Do not hard-code environment-specific URLs in skills or public examples. Use the
+client's configured MCP server entry and environment placeholders.
+
+## Tool availability
+
+Expected Card Writer tools:
+
+- `role_create_private`
+- `role_get`
+- `role_patch_profile`
+- `role_patch_detail`
+- `role_patch_welcome`
+- optional `role_patch_jailbreak`
+- optional `theme_bind`
+- optional `extension_enable`
+- `validate_role`
+- `render_preview`
+- `simulate_private_chat`
+- `publish_submit`
+
+If a tool is missing, do not invent a substitute. Either choose a workflow that
+does not need it yet or ask the author to fix the client configuration.
+
+## Stage gates
+
+| Stage | Required tools | Do not do yet |
+|---|---|---|
+| Draft-only design | none | create private role, render, simulate, publish |
+| Private creation | `role_create_private`, profile/detail/welcome patch tools | render or simulate before validation |
+| Technical validation | `validate_role` | render/simulate if blockers remain |
+| Visual review | `render_preview` | treat render as writing-quality proof |
+| Behavior simulation | `simulate_private_chat` | spend cost before validation and author acceptance |
+| Public submission | `publish_submit` | submit without explicit author confirmation |
+
+## Operation packet
+
+```text
+MCP operation packet:
+- client:
+- configured server:
+- auth status:
+- tool availability:
+- intended stage:
+- required tools:
+- missing tools:
+- schemaVersion:
+- idempotency plan:
+- cost / public-action warnings:
+- safe next operation:
+- Moonloom handoff:
+```
+
+Use `schemaVersion: 2026-05-26.m1` for Card Writer tool calls. Mutating tool
+calls need an `idempotencyKey` with at least 8 characters. Reuse the same key
+only when retrying the same intended operation.
+
+## Failure triage
+
+| Symptom | Likely cause | Next move |
+|---|---|---|
+| No Card Writer tools visible | MCP server not configured or client not reloaded | fix client config |
+| Auth error | token/cookie/session missing or expired | re-auth through client, do not print token |
+| Tool exists but role not found | wrong `roleId` or role not owned by account | use owned private role |
+| Validation blocker | technical role field or render safety issue | patch field, rerun `validate_role` |
+| Render unavailable | preview tool missing or validation still blocked | fix tool/config or validation first |
+| Simulation unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |
+| Publish blocked | missing confirmation or readiness failure | use publish readiness / author confirmation |
+
+## Handoff
+
+- Use `lunatalk-card-author` for private role creation or field patching.
+- Use `lunatalk-render-review` after `validate_role` passes and preview exists.
+- Use `lunatalk-chat-simulation` after validation passes and the author accepts
+  normal simulation cost.
+- Use `lunatalk-publish-readiness` before public submission.
+- Use `lunatalk-collaboration-director` when the next move is a choice rather
+  than a tool call.
+
+Keep the report concise. The goal is to unblock the authoring loop, not to expose
+client internals.
