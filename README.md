@@ -28,6 +28,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   authoring, simulation, or publish readiness.
 - `skills/lunatalk-opening-director` turns greeting-only, hollow, or overloaded
   welcomes into opening packets with first reply paths and second-turn moves.
+- `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
+  weak memory, and flat routes into longplay packets for sustained sessions.
 - `skills/lunatalk-card-author` guides end-to-end private role card creation.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
@@ -47,6 +49,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/opening-design.md` defines five-beat opening design, opening
   packets, first reply paths, second-turn moves, XMLV3 scaffolds, and opening
   failure repairs.
+- `references/longplay-design.md` defines continuity spines, progression phases,
+  state economy, route seeds, memory threads, role initiative, and continuation
+  probes.
 - `references/playtest-loop.md` defines simulation probe design, transcript
   triage, patch mapping, and author co-review for closed-loop card testing.
 - `references/voice-calibration.md` defines executable voice cards,

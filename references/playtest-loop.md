@@ -59,6 +59,25 @@ If the role only repeats the welcome, asks another generic question, or fails to
 change state, relationship, route, risk, or information, patch the opening packet
 or `roleWelcome` before spending more simulation cost.
 
+## Longplay probe
+
+Use when the goal is to test whether the card can sustain play after the first
+scene.
+
+```text
+Longplay probe:
+- target memory thread:
+- expected route pressure:
+- expected state change:
+- expected renewed hook:
+- failure trigger:
+```
+
+The probe should be short enough that the role must carry part of the scene. If
+the role waits, restarts the premise, ignores the chosen route, or fails to
+change state, patch the longplay packet or `roleDetailDesc` before spending more
+simulation cost.
+
 ## Probe recipes by card type
 
 Companion / relationship:
@@ -116,6 +135,7 @@ triage, then map the observed problem to a card patch.
 | Reply gives no next action | agency, opening affordance | `roleWelcome` reply path and role initiative |
 | Reply restates welcome or asks another generic question | opening direction, second-turn engine | opening packet and `roleWelcome` second-turn move |
 | Reply ignores player choice | consequence loop | `roleDetailDesc` state and route rules |
+| Reply forgets route or restarts premise after a few turns | longplay engine | continuity spine, memory threads, return-later behavior |
 | Reply decides the player's feelings/actions | player agency boundary | `roleDetailDesc` do/avoid and welcome phrasing |
 | Reply escalates sensitive content too fast | boundary design | explicitness ceiling, escalation ladder, pacing, refusal style, stop conditions |
 | Reply treats refusal as the end of play | boundary design | refusal route and safer fallback |

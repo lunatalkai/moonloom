@@ -104,6 +104,19 @@
         "The workflow can hand off to lunatalk-card-author only when the author wants to patch the private role.",
         "The output treats opening quality as Moonloom skill guidance, not as MCP hard validation."
       ]
+    },
+    {
+      "id": 9,
+      "prompt": "The opening is good, but the card gets repetitive after three turns and forgets what choices mattered. Which Moonloom workflow should I use to fix long-term routes, state, and progression?",
+      "expected_output": "Routes to lunatalk-longplay-architect first, produces a longplay packet, and avoids MCP tools until authoring or simulation handoff.",
+      "files": [],
+      "expectations": [
+        "The output routes long-term playability, repetitive loops, memory/state, and progression repair to lunatalk-longplay-architect.",
+        "The route focuses on continuity spine, state model, route seeds, memory threads, role initiative, and continuation probes.",
+        "The output says no mutating MCP tools should run during longplay design.",
+        "The workflow can hand off to lunatalk-card-author only when the author wants to patch the private role.",
+        "The output treats longplay quality as Moonloom skill guidance, not as MCP hard validation."
+      ]
     }
   ]
 }

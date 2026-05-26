@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-longplay-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk card has a good opening scene, but after three turns it becomes repetitive and the role waits for me to invent everything. Redesign the long-term play loop, route seeds, memory/state, and progression.",
+      "expected_output": "Produces a longplay packet with continuity spine, compact state model, route seeds, role initiative, continuation probes, token tradeoff, and handoff without MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-longplay-architect or uses longplay-design.md.",
+        "The diagnosis identifies dead third turn, missing state/memory, passive role behavior, or route seeds without consequences.",
+        "The packet includes continuity spine, progression phases, state model, route seeds, memory threads, and role initiative.",
+        "Continuation probes include passive, route-change, continuity, and renewal checks.",
+        "The output does not call mutating MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My relationship card has a strong first meeting, but every later session feels like it restarts from zero. Make it remember choices without taking over the user's feelings.",
+      "expected_output": "Designs relationship longplay with memory threads, trust/friction/debt state, return-later behavior, route costs, and player-agency guardrails.",
+      "files": [],
+      "expectations": [
+        "The output identifies session reset and flat relationship progression as the failure.",
+        "The state model tracks playable relationship state such as trust, friction, debt, routine, promise, or boundary.",
+        "Memory threads preserve choices, promises, refusals, and unresolved hooks without deciding user feelings or consent.",
+        "Route seeds include closer, conflict, repair, distance, or alliance paths with costs.",
+        "The token tradeoff keeps memory rules compact in roleDetailDesc."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My RPG card has twenty stats and a huge world, but the AI loses track after a few turns. Make the long-session state playable and easier to update.",
+      "expected_output": "Compresses RPG state into behavior-changing fields, defines update rules, route/resource costs, and continuation probes.",
+      "files": [],
+      "expectations": [
+        "The output identifies oversized decorative state as the failure.",
+        "The state model keeps only fields that change choices, role behavior, risk, location, resources, route, or faction stance.",
+        "The packet includes compact update rules and a visible state strategy.",
+        "Route seeds include travel, negotiate, fight, retreat, craft, recruit, or sacrifice style choices with costs.",
+        "The repair cuts lore or stats before cutting agency, consequence, route, or role initiative."
+      ]
+    }
+  ]
+}

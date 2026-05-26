@@ -20,6 +20,8 @@ large world bible. Read `../../references/voice-calibration.md` when the idea
 depends on distinctive dialogue, role consistency, or ensemble cast contrast.
 Read `../../references/opening-design.md` when planning `roleWelcome`, first
 screen playability, first reply paths, or second-turn moves. Read
+`../../references/longplay-design.md` when planning replayability, route seeds,
+memory/state, progression, long-session behavior, or dead third-turn repair. Read
 `../../references/quality-rubric.md` for the self-review checklist. Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
 horror-leaning, or boundary-sensitive. Read
@@ -62,8 +64,11 @@ creation, validation, render review, simulation, and publishing workflow.
 10. Design the first scene and the second-turn engine together. If the opening is
     the core problem, or a welcome already exists and needs repair, use
     `lunatalk-opening-director` before continuing the blueprint.
-11. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-12. Run Moonloom self-review and repair any weak layer before handing off.
+11. If long-term playability, memory/state, route seeds, progression, or a dead
+    third turn is the core problem, use `lunatalk-longplay-architect` before
+    drafting final fields.
+12. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+13. Run Moonloom self-review and repair any weak layer before handing off.
 
 ## Blueprint packet
 
@@ -157,6 +162,19 @@ Opening packet:
 - what changes:
 - token tradeoff:
 
+Longplay packet:
+- continuity spine:
+- progression phases:
+- state model:
+- route seeds:
+- memory threads:
+- role initiative:
+- passive / stalled player behavior:
+- scene renewal rules:
+- continuation probes:
+- detail patch targets:
+- token tradeoff:
+
 Field draft:
 - roleName:
 - roleDesc:
@@ -200,6 +218,9 @@ Handoff:
 - Make ensemble cards start with one focal crisis and clear turn ownership.
 - Preserve any opening packet from `lunatalk-opening-director`; do not summarize
   away the expected first user message or second-turn move.
+- Preserve any longplay packet from `lunatalk-longplay-architect`; do not
+  summarize away state, memory, route costs, role initiative, or continuation
+  probes.
 - Make mature or intense cards explicit about rating, pacing, refusal, and player
   agency boundaries. For boundary-sensitive cards, produce or preserve a
   boundary packet with rating intent, explicitness ceiling, escalation ladder,

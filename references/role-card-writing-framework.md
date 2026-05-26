@@ -316,6 +316,25 @@ no scene, an ensemble roll call, or a pretty first screen with no next move.
 The repair should make the first screen playable and the second turn stronger;
 it should not add more exposition to a weak greeting.
 
+### 11. Longplay design
+
+When the opening works but the card dies after a few turns, treat it as a
+longplay problem before adding more lore or sample dialogue. Use a longplay
+packet:
+
+- continuity spine
+- progression phases
+- compact state model
+- route seeds with trigger, cost, unlock, memory, and renewal hook
+- memory threads
+- role initiative for passive, resistant, route-changing, and returning players
+- continuation probes
+- token tradeoff
+
+Use `longplay-design.md` when a card repeats setup, waits for the player to invent
+every beat, forgets choices, has decorative state, restarts every session, or
+cannot name what changes after the opening.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -342,8 +361,10 @@ a real private card:
 9. Before render or simulation, the author can name one likely first user reply
    and one second-turn move that changes state, relationship, risk, route, or
    information.
-10. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
-   detail, welcome, and examples.
+10. Long-session cards can name a continuity spine, compact state model, route
+    seeds, memory threads, and return-later behavior.
+11. `zh-Hant` / `zh-TW` cards use Traditional Chinese consistently in profile,
+    detail, welcome, and examples.
 
 These are writing checks. Do not wait for `validate_role` to enforce them.
 
@@ -362,16 +383,18 @@ Repair the card in this order during Moonloom self-review:
    player implication before choices.
 8. Opening direction: create or preserve an opening packet with first reply
    paths, expected first user message, second-turn move, and token tradeoff.
-9. Player agency: remove rules that decide the player's actions, feelings,
+9. Longplay: create or preserve a longplay packet with continuity spine, state,
+   route seeds, memory, role initiative, and continuation probes.
+10. Player agency: remove rules that decide the player's actions, feelings,
    consent, or commitments.
-10. Language style: rewrite Simplified Chinese terms into Traditional Chinese
+11. Language style: rewrite Simplified Chinese terms into Traditional Chinese
    while preserving names, tone, and XMLV3 tags.
-11. Archetype: satisfy the chosen card type rather than writing a generic card.
-12. Token efficiency: move reusable visual or rule structure out of welcome when
+12. Archetype: satisfy the chosen card type rather than writing a generic card.
+13. Token efficiency: move reusable visual or rule structure out of welcome when
    it costs more tokens than it adds play value.
-13. Material distillation: convert notes, files, or world bibles into a playable
+14. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
-14. Boundary design: convert mature, intense, horror, jealous, or power-
+15. Boundary design: convert mature, intense, horror, jealous, or power-
     imbalanced pressure into rating, explicitness, agency, escalation, refusal,
     fallback, and probe mechanics.
 

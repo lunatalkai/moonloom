@@ -19,6 +19,9 @@ imported, or large-world workflows. Read `../../references/voice-calibration.md`
 when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
 `../../references/opening-design.md` when benchmarking welcome repair, first
 screen playability, or second-turn behavior. Read
+`../../references/longplay-design.md` when benchmarking long-term playability,
+route seeds, memory/state, progression, passive/stalled behavior, or session
+continuation. Read
 `../../references/boundary-design.md` when benchmarking mature, adult, horror,
 jealous, consent-sensitive, or boundary-sensitive cards. Read
 `../../references/playtest-loop.md` for probe design and transcript-to-patch
@@ -56,6 +59,8 @@ Moonloom self-review, render review, or simulation that:
 - the opening is generic despite having a question.
 - a schema-valid welcome is only a greeting or hollow question and has no opening
   packet, expected first user message, or second-turn move.
+- a card has a strong opening but no continuity spine, route costs, memory
+  threads, role initiative, or continuation probes.
 - the card controls the player's actions, feelings, consent, or commitments.
 - an archetype is missing its contract, such as game rules/resources or generator
   intake/output/revision loop.

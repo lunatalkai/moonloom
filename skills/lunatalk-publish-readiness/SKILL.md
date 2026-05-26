@@ -19,6 +19,9 @@ Read `../../references/safety-and-cost.md` for public action constraints. Read
 jealous, power-imbalanced, or consent-sensitive card needs boundary readiness.
 Read `../../references/opening-design.md` when the welcome is greeting-only,
 hollow, overloaded, or unclear about the first user action.
+Read `../../references/longplay-design.md` when the card has repetitive loops,
+weak memory/state, missing route costs, dead third turns, or no continuation
+plan.
 
 ## Readiness checklist
 
@@ -29,6 +32,9 @@ hollow, overloaded, or unclear about the first user action.
 5. Check the card against PACT: playable, anchored, consequential, token-efficient.
    If the welcome is greeting-only, hollow, or a long setup with no first action,
    repair it with `lunatalk-opening-director` before treating the card as ready.
+   If the card repeats after the first scene or cannot name route/state/memory
+   changes, repair it with `lunatalk-longplay-architect` before treating the card
+   as ready.
    For boundary-sensitive cards, confirm rating intent, explicitness ceiling,
    player agency contract, escalation ladder, refusal route, stop conditions, and
    safer fallback are encoded in the card.
