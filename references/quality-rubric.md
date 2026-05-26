@@ -13,6 +13,9 @@ the shorter pass/fail rubric.
   the player promise instead of competing with it.
 - The role has a memorable character core: desire, contradiction, boundary,
   player leverage, and pressure behavior that are visible in play.
+- Relationship-heavy cards have a relationship engine: promise, asymmetry,
+  closeness/friction state, pacing gates, repair/rupture routes, and player
+  agency boundaries that change play without forcing intimacy.
 - If the card has a setting, the world rule creates player choices,
   consequences, compact state, route seeds, and relationship or faction pressure
   rather than only lore.
@@ -65,6 +68,12 @@ explicitly chooses a tradeoff:
   create a character-core packet with appeal promise, player leverage,
   relationship asymmetry, pressure behavior, and interaction hooks before field
   drafting.
+- Relationship engine: if a companion, romance, friendship, rivalry,
+  cohabitation, or daily-life card becomes generic flirting, flat comfort,
+  instant intimacy, harmless banter, or refusal-ending play, create a
+  relationship-engine packet with promise, asymmetry, closeness/friction state,
+  pacing gates, repair/rupture routes, reply-path matrix, passive-player
+  behavior, and field allocation before field drafting.
 - World engine: if factions, locations, calendars, magic systems, academies,
   towns, factions, or histories do not create player action and consequences,
   create a world-engine packet with player position, core world rule, compact
@@ -149,6 +158,10 @@ explicitly chooses a tradeoff:
   alone to distinguish cast members.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
+- Generic relationship loop: if every reply becomes flirting, comfort, apology,
+  or harmless banter, add relationship asymmetry, closeness/friction states,
+  pacing gates, repair and distance routes, and passive-player behavior before
+  adding more affectionate prose.
 - Dead third turn: define continuity spine, route costs, memory threads, and
   passive-player behavior before adding more lore.
 - Source dump: if roleDetailDesc reads like a lore digest, rewrite it into a

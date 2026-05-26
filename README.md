@@ -23,6 +23,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   before blueprinting or authoring mixed card types.
 - `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
   into memorable character-core packets before blueprinting or authoring.
+- `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
+  generic flirting, comfort loops, instant intimacy, and weak repair/rupture
+  routes into relationship-engine packets.
 - `skills/lunatalk-world-engineer` turns world seeds, relationship networks,
   factions, locations, and lore-heavy settings into playable world-engine packets.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
@@ -50,6 +53,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks.
 - `references/character-core-design.md` defines desire, contradiction, boundary,
   player leverage, relationship asymmetry, pressure behavior, and appeal repair.
+- `references/relationship-engine.md` defines relationship promise, asymmetry,
+  closeness/friction state, pacing gates, repair/rupture routes, passive-player
+  behavior, and field allocation for relationship-heavy cards.
 - `references/world-engine-design.md` defines playable world rules, relationship
   networks, location functions, compact state, route seeds, and lore compression.
 - `references/role-card-writing-framework.md` defines the practical framework for

@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-relationship-architect",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk companion card has a good character core and a playable opening, but every draft becomes generic flirting or comfort. It is a slow-burn ex-rival cohabitation setup after a failed contest. Build the relationship engine before fields.",
+      "expected_output": "Produces a relationship-engine packet with relationship promise, asymmetry, intimacy/friction states, pacing gates, repair and rupture routes, agency boundaries, passive behavior, second-turn and long-session moves, talkExample decision, field allocation, probes, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output treats generic flirting or comfort loops as a relationship-engine failure rather than only a character-core or voice issue.",
+        "The packet defines relationship promise, shape, asymmetry, intimacy states, friction states, pacing gates, repair routes, and rupture or distance routes.",
+        "The player controls attraction, forgiveness, intimacy pace, route, boundaries, and whether repair happens.",
+        "The second-turn and long-session rules change trust, friction, boundary terms, route, or shared routine instead of restating the premise.",
+        "The output gives field allocation and does not call mutating MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design relationship dynamics for a quiet daily-life neighbor card. I want warmth and small routines, but not a flat comfort loop or instant romance.",
+      "expected_output": "Builds a relationship packet for daily-life with small desire, routine/object hooks, slow state changes, pacing gates, friendship/romance separation, passive-player behavior, and token-conscious field allocation.",
+      "files": [],
+      "expectations": [
+        "The relationship shape is daily-life or slow-burn and includes small routine, object, habit, or favor hooks.",
+        "The packet prevents flat comfort by adding relationship state, practical pressure, and renewed hooks.",
+        "The guidance separates friendship, closeness, and optional romance without forcing player feelings.",
+        "The output includes passive-player behavior and repair or distance routes appropriate to low-stakes play.",
+        "The output keeps long relationship rules in roleDetailDesc and the welcome as one playable moment."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My tense jealous romance card keeps making jealousy into ownership, and if the player says no the scene dies. Design relationship routes before authoring.",
+      "expected_output": "Routes boundary-sensitive pressure to boundary design when needed, then produces a relationship packet that recasts jealousy as vulnerability or stakes, preserves refusal, adds distance/repair routes, pacing gates, and simulation probes.",
+      "files": [],
+      "expectations": [
+        "The output identifies jealousy, ownership, refusal, and pacing as boundary-sensitive relationship issues.",
+        "The relationship engine preserves player agency and defines what the card must not decide.",
+        "Refusal shifts to distance, practical stakes, negotiation, friendship-only, or delayed repair rather than ending the card.",
+        "The packet includes pacing gates, slowdown triggers, repair routes, rupture/distance routes, and boundary simulation probes.",
+        "The output treats relationship quality as Moonloom guidance rather than MCP validation."
+      ]
+    }
+  ]
+}

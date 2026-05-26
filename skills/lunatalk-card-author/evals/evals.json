@@ -144,6 +144,19 @@
         "The workflow preserves the packet through card blueprinting or authoring instead of flattening it into a generic idea.",
         "The output treats archetype design as Moonloom guidance and uses MCP validation only for technical blockers after drafting."
       ]
+    },
+    {
+      "id": 12,
+      "prompt": "Patch an existing private companion role whose profile and opening are strong, but the chat becomes generic flirting and comfort after two turns. Focus on relationship dynamics before changing other fields.",
+      "expected_output": "Uses lunatalk-relationship-architect before field patches, preserves the relationship-engine packet, patches roleDetailDesc and roleWelcome relationship behavior, validates after structural changes, and avoids treating relationship quality as an MCP gate.",
+      "files": [],
+      "expectations": [
+        "The workflow routes the relationship-specific repair to lunatalk-relationship-architect before broad blueprinting or unrelated rewrites.",
+        "The relationship packet includes promise, asymmetry, closeness/friction state, pacing gates, repair/rupture routes, reply-path matrix, passive-player behavior, second-turn move, and field allocation.",
+        "The patch targets roleDetailDesc, roleWelcome, or talkExample only as needed for reusable relationship behavior.",
+        "The output runs validate_role only for technical blockers after structural patches.",
+        "The output does not ask MCP validation to judge subjective relationship craft."
+      ]
     }
   ]
 }

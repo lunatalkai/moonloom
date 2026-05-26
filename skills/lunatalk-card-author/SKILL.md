@@ -13,6 +13,10 @@ into a private LunaTalk role card using the Card Writer MCP.
 Read `../../references/card-writer-mcp.md` before making MCP calls. Read
 `../../references/character-core-design.md` when the role idea is thin,
 trope-only, generic, or needs persona appeal repair. Read
+`../../references/relationship-engine.md` when the card is relationship-heavy,
+slow-burn, companion, romance, friendship, rivalry, cohabitation, or when drafts
+collapse into generic flirting, comfort loops, instant intimacy, flat warmth,
+weak repair, or weak rupture routes. Read
 `../../references/world-engine-design.md` when the card needs worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
 repair. Read
@@ -68,7 +72,10 @@ benchmark creation, regression checks, or example-driven iteration.
    player role, first scene, and long-term loop, not only by mood. Prefer
    `lunatalk-character-core` when the author needs persona appeal, memorable
    identity, trope repair, relationship leverage, or desire/contradiction/
-   boundary design before fields. Prefer `lunatalk-world-engineer` when the
+   boundary design before fields. Prefer `lunatalk-relationship-architect` when
+   the author needs relationship dynamics, slow-burn pacing, trust/friction
+   state, generic flirting or comfort-loop repair, repair/rupture routes, or
+   relationship field allocation. Prefer `lunatalk-world-engineer` when the
    author needs worldbuilding, relationship networks, factions, locations, lore
    compression, or a world rule that creates play. Prefer
    `lunatalk-card-blueprint` when the author needs broader ideation,
@@ -100,6 +107,10 @@ benchmark creation, regression checks, or example-driven iteration.
    playability, memory/state, route seeds, progression, or a dead third-turn
    loop. Use or preserve `lunatalk-voice-director` when the current patch changes
    speech style, voice cards, talkExample, refusal voice, or ensemble contrast.
+   Use or preserve `lunatalk-relationship-architect` when the current patch
+   changes relationship promise, asymmetry, trust/friction state, pacing gates,
+   repair/rupture routes, passive-player relationship behavior, or relationship
+   field allocation.
    Use or preserve `lunatalk-agency-designer` when the patch changes player
    insertion space, reply paths, route consequences, passive-player behavior, or
    agency guardrails.
@@ -174,6 +185,10 @@ MCP tools make the card real; Moonloom makes the card good.
 - Preserve the character-core packet when one exists: appeal promise, desire,
   contradiction, boundary, mask/wound, player leverage, relationship asymmetry,
   pressure behavior, interaction hooks, and token tradeoff.
+- Preserve the relationship-engine packet when one exists: relationship promise,
+  shape, asymmetry, closeness/friction state, pacing gates, repair/rupture
+  routes, player agency boundaries, reply-path matrix, passive-player behavior,
+  second-turn move, long-session renewal, field allocation, and token tradeoff.
 - Preserve the world-engine packet when one exists: world promise, player
   position, core world rule, faction/location play functions, state model, route
   seeds, exposition policy, and token tradeoff.
@@ -208,6 +223,13 @@ MCP tools make the card real; Moonloom makes the card good.
   changes when the player pushes closer or pulls away.
 - If the role feels like a trope, mood, or biography rather than a person who can
   act under pressure, call `lunatalk-character-core` before patching fields.
+- For relationship-heavy cards, detail should carry the relationship engine:
+  promise, asymmetry, closeness/friction states, pacing gates, repair/rupture
+  routes, passive-player behavior, and what the role does when the player
+  accepts, questions, refuses, slows down, or reopens an old wound.
+- If the card becomes generic flirting, flat comfort, instant intimacy, harmless
+  banter, or refusal-ending play, call `lunatalk-relationship-architect` before
+  adding more affectionate prose or sample scenes.
 - Speaking style must be executable. Replace labels such as natural, gentle,
   witty, or like a real person with sentence rhythm, vocabulary, address terms,
   emotional tells, and what the role avoids saying.
@@ -222,10 +244,10 @@ MCP tools make the card real; Moonloom makes the card good.
   If the cast has three or more active speakers, add compact micro-samples for
   weak or easily blurred voices instead of one long sample for the strongest
   speaker.
-- Run Moonloom self-review before render: promise, anchor, voice texture,
-  voice calibration, consequence, role initiative, agency, opening scene,
-  longplay, player agency, language style, boundary design, archetype, then token
-  efficiency.
+- Run Moonloom self-review before render: promise, anchor, relationship engine,
+  voice texture, voice calibration, consequence, role initiative, agency, opening
+  scene, longplay, player agency, language style, boundary design, archetype,
+  then token efficiency.
   When voice calibration is relevant, do not merge it into generic voice texture;
   report the voice cards, micro-sample need, and blind-line risk explicitly.
 - Do not let polished prose hide a weak character engine, generic voice, passive

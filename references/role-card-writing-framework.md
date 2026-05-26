@@ -202,7 +202,31 @@ Minimum packet:
 If the idea is "cold but soft", "quiet but secretly likes the player", or "a
 powerful X", repair the core before writing longer prose.
 
-### 3. World engine
+### 3. Relationship engine
+
+Relationship-heavy cards need more than chemistry. Use
+`relationship-engine.md` when companion, romance, friendship, rivalry,
+cohabitation, daily-life, or slow-burn cards collapse into generic flirting,
+flat comfort, harmless banter, instant intimacy, or refusal-ending scenes.
+
+Minimum packet:
+
+- relationship promise: what repeated emotional play the card offers
+- relationship asymmetry: who knows, needs, owes, hides, risks, or controls what
+- closeness and friction state: what changes after acceptance, refusal,
+  questioning, repair, passivity, or boundary-setting
+- pacing gates: what earns closeness and what slows or redirects it
+- repair and rupture routes: how the relationship can recover, distance, or
+  change shape without ending play
+- reply-path matrix: accept, question, refuse, reopen old wound, help
+  practically, tease, or stay passive, each with a distinct state change
+- passive-player behavior: the role restarts relationship play through concrete
+  action, not waiting forever
+
+If a card only gets stronger by adding prettier affection, it has not been
+repaired. Add state, cost, agency, and renewal before adding more prose.
+
+### 4. World engine
 
 Worldbuilding should make choices, not homework. Use `world-engine-design.md`
 when the weak layer is setting rules, relationship networks, factions, locations,
@@ -227,7 +251,7 @@ Minimum packet:
 If a card starts with calendars, factions, history, species, magic schools, or
 proper nouns, repair the world engine before adding more lore.
 
-### 4. Player agency / insertion space
+### 5. Player agency / insertion space
 
 Agency is not the same as adding choices. The player needs room to decide
 identity, emotion, intention, method, boundary, or route without the role taking
@@ -251,7 +275,7 @@ Minimum packet:
 - card must not decide: feelings, consent, commitments, actions, or route choice
   that belong to the player
 
-### 5. Second-turn engine
+### 6. Second-turn engine
 
 Design the first two turns together:
 
@@ -266,7 +290,7 @@ Before rendering, write one likely first user message and the role's intended
 second-turn move. If the second turn only restates setup, the card needs stronger
 consequence or role initiative.
 
-### 6. State economy
+### 7. State economy
 
 Track only state that changes play. Good state is compact, visible when useful,
 and tied to consequences.
@@ -281,7 +305,7 @@ Useful state types:
 Avoid decorative state that never updates. A state panel that does not affect
 future turns wastes tokens and attention.
 
-### 7. Voice fingerprint
+### 8. Voice fingerprint
 
 Voice should be executable without relying on vague adjectives. Define:
 
@@ -307,7 +331,7 @@ voice promise, rhythm, vocabulary, emotional tells, refusal style, catchphrase
 policy, response-mode grid, talkExample decision, blind-line test, pressure
 probes, field patch targets, and token tradeoff.
 
-### 8. Route seeds
+### 9. Route seeds
 
 Give the card enough branches to stay replayable without writing a full novel.
 Most cards need 2-4 route seeds:
@@ -320,7 +344,7 @@ Most cards need 2-4 route seeds:
 Each route seed should have a cost or tradeoff. Choices without cost feel like a
 menu; choices with cost create memory.
 
-### 9. Token tradeoff ladder
+### 10. Token tradeoff ladder
 
 Spend tokens in this order:
 
@@ -341,7 +365,7 @@ before further writing. The packet should name target allocation, field triage,
 keep/move/cut/rewrite decisions, visual budget, state budget, example budget, and
 rerun checks.
 
-### 10. Visual affordance
+### 11. Visual affordance
 
 Visual design should answer at least one of these:
 
@@ -353,7 +377,7 @@ Visual design should answer at least one of these:
 If XMLV3/Theme V3 looks good but does not clarify action, state, or atmosphere,
 compress it and spend the saved tokens on the engine.
 
-### 11. Material distillation
+### 12. Material distillation
 
 When an author provides notes, files, drafts, or a large world bible, do not turn
 the source into a long summary. First create a source-to-play map:
@@ -367,7 +391,7 @@ the source into a long summary. First create a source-to-play map:
 Use `material-distillation.md` before blueprinting or authoring if the agent
 would otherwise need to read a large source pack while drafting.
 
-### 12. Boundary design
+### 13. Boundary design
 
 When a card is mature, adult, emotionally intense, horror-leaning, jealous,
 power-imbalanced, or consent-sensitive, create a boundary packet before writing
@@ -383,7 +407,7 @@ the provocative parts:
 Use `boundary-design.md` before blueprinting or authoring when intensity could
 otherwise become player-agency takeover or vague disclaimers.
 
-### 13. Opening direction
+### 14. Opening direction
 
 When the current task is mostly about `roleWelcome`, treat it as a first-turn
 design problem before rewriting the whole card. Use an opening packet:
@@ -402,7 +426,7 @@ no scene, an ensemble roll call, or a pretty first screen with no next move.
 The repair should make the first screen playable and the second turn stronger;
 it should not add more exposition to a weak greeting.
 
-### 14. Longplay design
+### 15. Longplay design
 
 When the opening works but the card dies after a few turns, treat it as a
 longplay problem before adding more lore or sample dialogue. Use a longplay

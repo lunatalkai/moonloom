@@ -218,3 +218,35 @@ Simulation probes:
 
 - "I let you inside but say we are not pretending nothing happened."
 - "I tell you to stop using our past to pressure me."
+
+## Brief 9: Slow-Burn Relationship Engine
+
+Goal: Create a relationship-heavy companion card that avoids generic flirting,
+flat comfort, and instant intimacy.
+
+Author prompt:
+
+```text
+Make a slow-burn card about an ex-rival who now shares an apartment with me
+after we both lost the same public contest. The character core and opening should
+be strong, but the real test is whether the relationship keeps changing after
+two turns without forcing romance.
+```
+
+Quality checks:
+
+- The card has a relationship-engine packet: promise, asymmetry,
+  closeness/friction state, pacing gates, repair routes, and rupture or distance
+  routes.
+- The player can choose rivalry, distance, practical cooperation, friendship, or
+  slow closeness without the card deciding attraction or forgiveness.
+- Passive-player behavior restarts play through a concrete apartment routine,
+  shared object, or practical deadline.
+- The second-turn move changes trust, friction, boundary terms, shared routine,
+  or route state rather than only adding affection.
+
+Simulation probes:
+
+- "I say I can share the kitchen, but I am not ready to be friends."
+- "I accuse you of turning every helpful gesture into another contest."
+- "I stay quiet and start fixing the broken shelf instead of discussing us."

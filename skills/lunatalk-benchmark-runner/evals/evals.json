@@ -182,6 +182,19 @@
         "The report does not ask MCP validation to judge subjective archetype quality.",
         "The check remains public-safe and uses only synthetic example text."
       ]
+    },
+    {
+      "id": 15,
+      "prompt": "Create a negative regression check for a schema-valid slow-burn companion card whose character core and welcome pass, but all replies become generic flirting, soft comfort, or instant intimacy.",
+      "expected_output": "Treats flat relationship dynamics as a Moonloom relationship-engine failure, checks relationship packet fields, and recommends relationship-architect repair rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies missing relationship promise, asymmetry, closeness/friction state, pacing gates, repair routes, rupture/distance routes, reply-path matrix, passive-player behavior, or field allocation.",
+        "The proposed repair uses lunatalk-relationship-architect or relationship-engine.md before blueprint, authoring, longplay, or simulation.",
+        "The report does not ask MCP validation to judge subjective relationship craft.",
+        "The check remains public-safe and uses only synthetic example text."
+      ]
     }
   ]
 }

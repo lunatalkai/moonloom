@@ -69,6 +69,11 @@ Moonloom skill fits, say so and proceed with the closest general workflow.
   leverage, asymmetry, emotional hook, or distinctiveness repair: use
   `lunatalk-character-core` before blueprinting, authoring, voice, opening,
   longplay, simulation, or publish readiness.
+- Relationship dynamics, companion/romance/friendship/rivalry/cohabitation,
+  slow-burn pacing, trust/friction state, generic flirting, comfort loops,
+  instant intimacy, repair/rupture routes, relationship refusal routes, or
+  relationship field allocation: use `lunatalk-relationship-architect` before
+  blueprinting, authoring, longplay, simulation, or publish readiness.
 - Character voice, speaking style, generic dialogue, catchphrase or repeated
   phrasing problems, emotional tells, refusal style, talkExample need,
   blind-line checks, voice drift, or ensemble speakers blending together: use
@@ -107,6 +112,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/character-core-design.md` when working on character
   core, persona appeal, trope repair, relationship leverage, pressure behavior,
   or thin/generic roles.
+- Read `../../references/relationship-engine.md` when working on companion,
+  romance, friendship, rivalry, cohabitation, slow-burn, daily-life, repair,
+  rupture, trust/friction, or relationship pacing design.
 - Read `../../references/world-engine-design.md` when working on worldbuilding,
   relationship networks, factions, locations, playable world rules, lore-heavy
   settings, compact state, route seeds, or lore-dump repair.

@@ -25,6 +25,9 @@ matching packet:
 
 - `lunatalk-character-core` for trope-only persona, weak desire, weak
   contradiction, or missing player leverage.
+- `lunatalk-relationship-architect` for relationship-heavy cards with generic
+  flirting, comfort loops, instant intimacy, weak pacing, flat trust/friction,
+  or missing repair/rupture routes.
 - `lunatalk-world-engineer` for lore-heavy, faction, location, relationship
   network, light-setting, heavy-setting, RPG, or lore-dump problems.
 - `lunatalk-agency-designer` for spectator play, route funneling, decorative
@@ -86,6 +89,7 @@ Archetype packet:
   - XMLV3 / Theme V3:
 - required packets:
   - character core:
+  - relationship engine:
   - world engine:
   - agency:
   - voice:

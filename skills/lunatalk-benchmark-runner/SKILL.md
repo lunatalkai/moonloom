@@ -18,6 +18,9 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 hybrid cards, archetype contracts, or field allocation by card shape. Read
 `../../references/character-core-design.md` when benchmarking generic persona,
 trope repair, ensemble identity, or character appeal. Read
+`../../references/relationship-engine.md` when benchmarking companion, romance,
+friendship, rivalry, cohabitation, daily-life, slow-burn pacing, generic
+flirting, comfort loops, repair/rupture routes, or relationship state. Read
 `../../references/world-engine-design.md` when benchmarking worldbuilding,
 relationship networks, factions, locations, lore-heavy settings, or lore-dump
 repair. Read
@@ -68,6 +71,10 @@ Moonloom self-review, render review, or simulation that:
 - a schema-valid persona is still trope-only and has no character-core packet,
   player leverage, relationship asymmetry, pressure behavior, or interaction
   hooks.
+- a relationship-heavy card has a good profile and opening but collapses into
+  generic flirting, comfort, instant intimacy, harmless banter, or refusal-ending
+  play with no relationship-engine packet, pacing gates, repair/rupture routes,
+  or reply-path state changes.
 - the speaking style is only generic tone labels such as natural, gentle, or like
   a real person.
 - the card repeats a catchphrase as the whole voice instead of defining rhythm,
@@ -110,6 +117,10 @@ a technical safety, format, ownership, billing, or publish-control issue.
 Use `lunatalk-voice-director` for regressions where the weakest layer is generic
 dialogue, repeated phrasing, catchphrase overuse, refusal voice, blind-line
 failure, or ensemble voice blur.
+Use `lunatalk-relationship-architect` for regressions where the weakest layer is
+relationship dynamics, slow-burn pacing, generic flirting, flat comfort, instant
+intimacy, weak trust/friction state, repair/rupture routes, or relationship
+field allocation.
 Use `lunatalk-agency-designer` for regressions where the weakest layer is player
 insertion space, decorative choices, route funneling, role-controlled player
 feelings/actions, missing refusal routes, or consequences that ignore player
