@@ -389,3 +389,12 @@ Use these during simulation:
 
 Patch the card when simulation exposes a missing anchor, unclear player role, weak
 consequence loop, or excessive token repetition.
+
+Use `simulate_private_chat.evaluation` to triage failures:
+
+- `responsePresence`: the reply is empty, too short, or too generic.
+- `agency`: the reply does not give the player a concrete next move.
+- `progression`: the reply does not change scene, relationship, route, risk, or
+  state.
+- `safetyFormat`: the reply leaks system/model artifacts or breaks the in-world
+  frame.

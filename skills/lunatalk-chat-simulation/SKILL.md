@@ -27,7 +27,8 @@ costs normal chat resources before calling the tool.
 2. Choose 1 to 5 realistic user messages. Cover the opening hook and at least one
    likely edge case if the author has concerns.
 3. Call `simulate_private_chat`.
-4. Read every simulated turn. Evaluate behavior, not just whether the tool ran.
+4. Read every simulated turn and the returned `evaluation`. Evaluate behavior,
+   not just whether the tool ran.
 5. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem.
 6. Re-run simulation when the patch changes core behavior.
@@ -42,6 +43,10 @@ costs normal chat resources before calling the tool.
   or a new hook.
 - The transcript has no obvious safety, formatting, or system-leak issue.
 - The billing summary or charged score is included when available.
+- Treat `evaluation.qualityDimensions` as the first triage map:
+  `responsePresence`, `agency`, `progression`, and `safetyFormat`.
+- If `evaluation.status` is `warning`, follow `nextRecommendedTools`. There is no
+  separate `simulation_evaluate` tool.
 
 ## Reporting
 
