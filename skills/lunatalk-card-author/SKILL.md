@@ -31,6 +31,11 @@ author wants multiple related cards, alternate versions, seasonal/event
 variants, daily-life variants, RPG/system variants, generator/helper variants,
 or a keep/merge/reject plan before real card creation. Use
 `lunatalk-series-architect` first when series planning is the primary task. Read
+`../../references/ensemble-card-design.md` when the card has multiple active
+speakers, ensemble cast structure, cast keep/merge/cut decisions, turn ownership,
+spotlight rules, group tension, roll-call openings, or cast-over-player risk.
+Use `lunatalk-ensemble-director` first when ensemble structure is the primary
+task. Read
 `../../references/safety-and-cost.md` when content
 rating, sensitive themes, simulation cost, publishing, or credentials matter. Read
 `../../references/archetype-contracts.md` when the author is unsure which card
@@ -79,6 +84,11 @@ benchmark creation, regression checks, or example-driven iteration.
    author first, use `lunatalk-series-architect` first unless a card-series
    packet already exists. Create real private cards one at a time after the
    series packet is coherent.
+   If the author asks to create or repair an ensemble / multi-character card,
+   several active speakers, cast size, keep/merge/cut decisions, turn ownership,
+   spotlight rules, or group tension, use `lunatalk-ensemble-director` first
+   unless an ensemble packet already exists. Do not create or patch the card
+   until the cast structure, player leverage, and turn ownership are coherent.
    If the author is improving an existing card and provides several symptoms,
    feedback, validation/render output, simulation findings, or asks what to fix
    first, use `lunatalk-card-doctor` first unless a diagnosis packet already
@@ -283,6 +293,10 @@ MCP tools make the card real; Moonloom makes the card good.
   If the cast has three or more active speakers, add compact micro-samples for
   weak or easily blurred voices instead of one long sample for the strongest
   speaker.
+- For ensemble cards, preserve the ensemble packet before field work: cast
+  keep/merge/cut decisions, turn ownership, spotlight rules, group tension,
+  player leverage, voice contrast, token plan, and agency probes. If that packet
+  is missing, use `lunatalk-ensemble-director` before patching fields.
 - Run Moonloom self-review before render: promise, anchor, relationship engine,
   voice texture, voice calibration, consequence, role initiative, agency, opening
   scene, longplay, player agency, language style, boundary design, archetype,
@@ -333,6 +347,9 @@ MCP tools make the card real; Moonloom makes the card good.
   accepted.
 - If a heavy-setting, RPG, scenario, or light-setting card starts to read like a
   lore digest, call `lunatalk-world-engineer` before adding more names or history.
+- If an ensemble card starts to read like a roll call, banter transcript, or
+  group conversation that ignores the player, call `lunatalk-ensemble-director`
+  before opening, voice, token, or authoring patches.
 - For mature, intense, or sensitive premises, make the intended rating, pacing,
   taboo, refusal style, player agency boundary, and stop conditions explicit in
   the card design before writing a provocative welcome. Preserve the boundary

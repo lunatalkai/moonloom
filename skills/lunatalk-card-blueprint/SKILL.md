@@ -30,6 +30,11 @@ wants a related card set, alternate version, seasonal/event variant, daily-life
 variant, RPG/system variant, generator/helper variant, or keep/merge/reject
 decision before individual blueprints. Use `lunatalk-series-architect` first
 when series or variant planning is the primary task. Read
+`../../references/ensemble-card-design.md` when the author wants an ensemble or
+multi-character card, several active speakers, cast keep/merge/cut decisions,
+turn ownership, spotlight rules, group tension, roll-call opening repair, or
+cast-over-player repair. Use `lunatalk-ensemble-director` first when ensemble
+structure is the primary task. Read
 `../../references/card-authoring-templates.md` for
 draft packets and field templates. Read `../../references/material-distillation.md`
 when the idea comes from files, notes, imported drafts, source fragments, or a
@@ -81,6 +86,10 @@ creation, validation, render review, simulation, and publishing workflow.
    If the author wants several related cards, alternate versions, variants, a
    card set, or a keep/merge/reject decision, use `lunatalk-series-architect`
    first unless a card-series packet already exists.
+   If the author wants an ensemble card, multiple active speakers, cast
+   keep/merge/cut decisions, turn ownership, spotlight rules, group tension, or
+   a fix for cast-over-player behavior, use `lunatalk-ensemble-director` first
+   unless an ensemble packet already exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -151,6 +160,7 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - ensemble:
   - agency:
   - voice:
   - opening:
@@ -188,6 +198,26 @@ Card-series packet:
 - overlap risks:
 - authoring order:
 - validation / render / simulation plan:
+- handoff:
+
+Ensemble packet:
+- current seed or failure:
+- card shape:
+- ensemble promise:
+- cast scope:
+- player role:
+- player leverage:
+- cast decision matrix:
+- conflict network:
+- turn ownership:
+- spotlight rules:
+- group tension state:
+- opening focus:
+- voice contrast plan:
+- talkExample decision:
+- token plan:
+- agency and simulation probes:
+- field allocation:
 - handoff:
 
 Recommended direction:
@@ -408,6 +438,9 @@ Handoff:
 - Make ordinary premises playable through small desire, habit, pressure, and
   slow change.
 - Make heavy worlds playable through one immediate problem, not a lore tour.
+- Preserve any ensemble packet from `lunatalk-ensemble-director`; do not
+  summarize away cast decisions, turn ownership, spotlight rules, group tension
+  state, player leverage, voice contrast, token plan, or agency probes.
 - Make ensemble cards start with one focal crisis and clear turn ownership.
 - Preserve any opening packet from `lunatalk-opening-director`; do not summarize
   away the expected first user message or second-turn move.

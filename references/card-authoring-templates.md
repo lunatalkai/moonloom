@@ -58,6 +58,34 @@ Card-series packet:
 - authoring order:
 - validation / render / simulation plan:
 - handoff:
+Ensemble packet:
+- current seed or failure:
+- card shape:
+- ensemble promise:
+- cast scope:
+- player role:
+- player leverage:
+- cast decision matrix:
+  - [speaker]: function, want, fear/cost, speech cue, pressure move,
+    player leverage, keep / merge / cut
+- conflict network:
+- turn ownership:
+  - opening focus:
+  - first speaker:
+  - interrupter:
+  - holder-back:
+  - secondary entry rules:
+  - max active speakers per turn:
+  - when the player must be addressed:
+- spotlight rules:
+- group tension state:
+- opening focus:
+- voice contrast plan:
+- talkExample decision:
+- token plan:
+- agency and simulation probes:
+- field allocation:
+- handoff:
 Card diagnosis packet:
 - current request:
 - available evidence:
@@ -95,6 +123,7 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - ensemble:
   - agency:
   - voice:
   - opening:

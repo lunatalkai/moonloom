@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-ensemble-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a LunaTalk ensemble mystery card with four core speakers. The current draft either introduces everyone like a roll call or lets the cast talk over the player. Plan it before authoring.",
+      "expected_output": "Produces an ensemble packet with cast keep/merge/cut decisions, player role and leverage, turn ownership, spotlight rules, group tension state, opening focus, voice contrast, talkExample decision, token plan, agency probes, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output produces an ensemble packet rather than full role fields.",
+        "The cast decision matrix keeps, merges, or cuts speakers based on play function and player leverage.",
+        "Turn ownership names opening focus, first speaker, interrupter, holder-back, entry rules, max active speakers, and when the player is addressed.",
+        "The opening starts from one focal crisis instead of a full-cast roll call.",
+        "The output does not call MCP tools or treat ensemble quality as an MCP/server gate."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My group card has five friends, but two of them have the same motive and every scene becomes banter. Decide who to merge or demote and how to keep the player from becoming an audience.",
+      "expected_output": "Diagnoses duplicate cast functions, merges or demotes redundant speakers, defines player insertion and group-tension consequences, and routes remaining voice or opening work to narrow Moonloom skills.",
+      "files": [],
+      "expectations": [
+        "The output does not preserve all five speakers by default.",
+        "The merge/cut decision uses function, want, pressure move, speech cue, and player leverage.",
+        "The plan states how speaker-to-speaker conflict returns pressure to the player.",
+        "The agency probes include refusal, passivity, siding with a speaker, and redirecting the scene.",
+        "The handoff chooses opening, voice, agency, longplay, blueprint, or authoring only after ensemble structure is clear."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I am making a fantasy expedition party card with a guide, rival, healer, and cursed map voice. It needs group state, routes, and distinct speakers without turning into a world bible.",
+      "expected_output": "Builds an ensemble plan for a party card with compact cast functions, conflict network, group tension state, route memory, token discipline, voice contrast, and field allocation.",
+      "files": [],
+      "expectations": [
+        "The output treats ensemble structure as more than voice contrast or lore.",
+        "The plan includes compact group state that changes routes or speaker behavior.",
+        "World facts are limited to play functions rather than a long setting bible.",
+        "The token plan protects cast rules, turn ownership, and group state while cutting decorative lore or banter.",
+        "The test plan checks that the cast does not ignore the player."
+      ]
+    }
+  ]
+}

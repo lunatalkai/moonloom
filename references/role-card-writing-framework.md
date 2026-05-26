@@ -812,6 +812,12 @@ Use:
 - one compact voice card or micro-sample for each core speaker when voices may
   blur together
 
+For complex ensemble cards, create an ensemble packet before writing fields. It
+should decide cast keep/merge/cut, player leverage, conflict network, spotlight
+rules, group tension state, opening focus, voice contrast, token plan, and agency
+probes. Use `lunatalk-ensemble-director` when these decisions are not already
+clear.
+
 Top-card checks:
 
 - Each core role has a distinct desire and speech fingerprint.

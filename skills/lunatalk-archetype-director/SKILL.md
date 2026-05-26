@@ -18,6 +18,10 @@ Read `../../references/archetype-contracts.md` first. Read
 `../../references/role-card-writing-framework.md` for PACT, field allocation, and
 archetype recipes. Read `../../references/card-authoring-templates.md` when the
 packet must be handed to blueprinting or authoring. Read
+`../../references/ensemble-card-design.md` when card-shape decisions involve
+ensemble as a primary contract or overlay, cast scope, turn ownership, spotlight,
+or group tension. Use `lunatalk-ensemble-director` first when the main problem is
+multi-character structure rather than choosing the primary archetype. Read
 `../../references/card-series-design.md` when the author is choosing archetypes
 across several related cards or variants. Use `lunatalk-series-architect` first
 when the primary task is deciding which variants to keep, merge, reject, author,
@@ -34,6 +38,9 @@ matching packet:
   or missing repair/rupture routes.
 - `lunatalk-world-engineer` for lore-heavy, faction, location, relationship
   network, light-setting, heavy-setting, RPG, or lore-dump problems.
+- `lunatalk-ensemble-director` for cast scope, keep/merge/cut decisions, turn
+  ownership, spotlight, group tension, roll-call openings, or cast crowding the
+  player.
 - `lunatalk-agency-designer` for spectator play, route funneling, decorative
   choices, or player-agency takeover.
 - `lunatalk-voice-director` for generic dialogue, ensemble voice blur, or
@@ -98,6 +105,7 @@ Archetype packet:
   - character core:
   - relationship engine:
   - world engine:
+  - ensemble:
   - agency:
   - voice:
   - opening:
@@ -122,8 +130,9 @@ Archetype packet:
   pressure before preserving names or history.
 - For generator hybrids, keep the generator artifact concrete. It should produce
   a usable artifact, preferably with schema and revision operations.
-- For ensemble cards, define turn ownership and voice contrast before adding
-  more cast.
+- For ensemble cards, define cast scope, turn ownership, spotlight, group
+  tension, player leverage, and voice contrast before adding more cast. Use
+  `lunatalk-ensemble-director` when those decisions are not already explicit.
 - For quiet daily-life cards, add a small specific desire and progression path;
   do not repair quietness with sudden melodrama.
 - For RPG/system cards, include state and defaults. The card should proceed when
@@ -144,6 +153,8 @@ Hand the packet to:
   the archetype contract is clear.
 - `lunatalk-series-architect` when several related cards need keep/merge/reject
   decisions before individual archetype packets.
+- `lunatalk-ensemble-director` when the card shape is ensemble but cast
+  structure, spotlight, turn ownership, or group tension is not yet playable.
 - A narrow Moonloom skill first when the packet identifies one weak layer as the
   blocker.
 - `lunatalk-benchmark-runner` when changing archetype guidance and testing

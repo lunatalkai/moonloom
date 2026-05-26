@@ -247,6 +247,19 @@
         "The output does not jump straight to one overloaded hybrid card or multiple duplicate MCP-backed cards.",
         "The output treats series quality as Moonloom guidance, not MCP hard validation."
       ]
+    },
+    {
+      "id": 20,
+      "prompt": "I am not sure which Moonloom skill to use. I want an ensemble mystery card with four active speakers, but the draft either introduces everyone like a roll call or lets the cast talk over me. I need cast keep/merge/cut, turn ownership, spotlight rules, group tension, voice contrast, token plan, and agency probes before fields.",
+      "expected_output": "Uses using-moonloom as the router, routes ensemble and multi-character structure to lunatalk-ensemble-director before blueprinting, opening repair, voice calibration, authoring, or simulation.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes ensemble cards, multiple active speakers, roll-call openings, and cast-over-player behavior to lunatalk-ensemble-director.",
+        "The route focuses on cast keep/merge/cut, player leverage, turn ownership, spotlight rules, group tension state, opening focus, voice contrast, token plan, and agency probes.",
+        "The output does not jump straight to voice-only repair, opening-only repair, broad authoring, or mutating MCP tools.",
+        "The output treats ensemble quality as Moonloom guidance, not MCP hard validation."
+      ]
     }
   ]
 }
