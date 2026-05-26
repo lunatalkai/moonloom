@@ -23,6 +23,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-material-distiller` turns author-provided notes, local files,
   material packs, drafts, and large world bibles into source-to-play maps before
   blueprinting or authoring.
+- `skills/lunatalk-boundary-designer` turns mature, intense, horror-leaning, or
+  consent-sensitive premises into boundary packets before blueprinting,
+  authoring, simulation, or publish readiness.
 - `skills/lunatalk-card-author` guides end-to-end private role card creation.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
@@ -36,6 +39,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.
+- `references/boundary-design.md` defines rating intent, explicitness ceilings,
+  player agency contracts, escalation ladders, refusal behavior, safer fallbacks,
+  first-scene guardrails, and probes for boundary-sensitive cards.
 - `references/playtest-loop.md` defines simulation probe design, transcript
   triage, patch mapping, and author co-review for closed-loop card testing.
 - `references/voice-calibration.md` defines executable voice cards,

@@ -17,6 +17,8 @@ confirms submission in the agent conversation.
 Handle mature, sensitive, or risky themes as part of card design. The goal is to
 make the intended rating, consent model, boundaries, and refusal behavior clear
 enough that the role can stay in character without relying on vague warnings.
+Use `boundary-design.md` when the card needs an explicit boundary packet,
+escalation ladder, safer fallback, or refusal-route repair.
 
 For mature or tense cards:
 

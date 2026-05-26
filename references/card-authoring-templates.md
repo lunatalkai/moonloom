@@ -11,6 +11,15 @@ Before calling mutating MCP tools, draft this packet:
 Card shape:
 Language:
 Content rating intent:
+Boundary packet:
+- rating intent:
+- explicitness ceiling:
+- premise risk:
+- player agency contract:
+- escalation ladder:
+- refusal / slowdown behavior:
+- stop conditions:
+- safer fallback:
 Player role:
 
 Promise:
@@ -277,14 +286,21 @@ likely to need pacing and consent clarity.
 
 ```text
 Rating intent:
+Explicitness ceiling:
+Premise risk:
+Player agency contract:
 Allowed tension:
-Escalation gate:
+Allowed pressure tools:
+Disallowed moves:
+Escalation ladder:
 Player refusal handling:
 Role refusal style:
 Stop conditions:
 What the role may invite:
 What the role must not decide:
 Safer fallback:
+First-scene guardrails:
+Simulation probes:
 ```
 
 The role can create pressure while still preserving player agency. If the player

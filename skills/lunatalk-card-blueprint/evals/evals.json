@@ -43,13 +43,13 @@
     {
       "id": 4,
       "prompt": "Design a tense romance card about an ex-partner after a public scandal, but keep player agency and boundaries clear.",
-      "expected_output": "Builds a boundary-sensitive romance blueprint with rating intent, escalation gate, refusal handling, emotional pressure, player leverage, first scene, second-turn engine, and self-review.",
+      "expected_output": "Builds a boundary-sensitive romance blueprint with a boundary packet, rating intent, explicitness ceiling, escalation gate, refusal handling, emotional pressure, player leverage, first scene, second-turn engine, and self-review.",
       "files": [],
       "expectations": [
-        "The blueprint defines rating intent, pacing, refusal style, stop conditions, and what the role must not decide for the player.",
+        "The blueprint defines rating intent, explicitness ceiling, pacing, refusal style, stop conditions, safer fallback, and what the role must not decide for the player.",
         "The role can create emotional pressure without deciding the player's feelings, consent, actions, or commitments.",
         "The first scene has both emotional stakes and a practical reason to interact.",
-        "Escalation is gated behind player choice and consequence.",
+        "Escalation is gated behind player choice and consequence with clear slowdown signals.",
         "The self-review includes boundary design and player agency."
       ]
     },

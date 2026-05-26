@@ -20,7 +20,10 @@ large world bible. Read `../../references/voice-calibration.md` when the idea
 depends on distinctive dialogue, role consistency, or ensemble cast contrast.
 Read `../../references/quality-rubric.md` for the self-review checklist. Read
 `../../references/safety-and-cost.md` when the premise is mature, intense,
-horror-leaning, or boundary-sensitive.
+horror-leaning, or boundary-sensitive. Read
+`../../references/boundary-design.md` when the premise involves mature, adult,
+NSFW, consent-sensitive, refusal, pacing, jealousy, horror, power imbalance, or a
+safer-version request.
 
 ## Boundary
 
@@ -36,6 +39,9 @@ creation, validation, render review, simulation, and publishing workflow.
    If the author provided source material or a large world document, use
    `lunatalk-material-distiller` first unless a source-to-play map already
    exists.
+   If the premise is mature, intense, horror-leaning, consent-sensitive, or
+   boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
+   packet already exists.
 3. If the seed is vague or trope-heavy, propose 2-3 sharply different directions.
    Make them differ by player role, conflict, first scene, route loop, and
    long-term consequence.
@@ -91,6 +97,17 @@ Player insertion:
 - player controls:
 - player can refuse:
 - the card must not decide:
+
+Boundary packet:
+- rating intent:
+- explicitness ceiling:
+- premise risk:
+- allowed pressure tools:
+- disallowed moves:
+- escalation ladder:
+- refusal / slowdown behavior:
+- stop conditions:
+- safer fallback:
 
 World / relationship engine:
 - core rule:
@@ -169,7 +186,9 @@ Handoff:
 - Make heavy worlds playable through one immediate problem, not a lore tour.
 - Make ensemble cards start with one focal crisis and clear turn ownership.
 - Make mature or intense cards explicit about rating, pacing, refusal, and player
-  agency boundaries.
+  agency boundaries. For boundary-sensitive cards, produce or preserve a
+  boundary packet with rating intent, explicitness ceiling, escalation ladder,
+  refusal behavior, stop conditions, and safer fallback.
 - Keep the output original and public-safe. Do not copy unprovided source text or
   make unsupported provenance claims.
 - Prefer compact, executable rules over ornamental prose.

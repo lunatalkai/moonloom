@@ -78,6 +78,19 @@
         "The output identifies keep, delay, cut, merge, and token plan as part of the workflow.",
         "The output does not call mutating MCP tools before the material is distilled."
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "I want a mature jealous romance card, but I mostly need help designing consent, refusal, pacing, and how the role should react when I say slow down. Which Moonloom workflow should I use?",
+      "expected_output": "Routes to lunatalk-boundary-designer first, produces a boundary packet, then hands off to blueprint or authoring after rating and player agency mechanics are clear.",
+      "files": [],
+      "expectations": [
+        "The output routes mature, jealous, consent-sensitive, refusal, and pacing work to lunatalk-boundary-designer.",
+        "The workflow creates a boundary packet before blueprinting or authoring.",
+        "The packet includes rating intent, explicitness ceiling, player agency contract, escalation ladder, refusal behavior, stop conditions, and safer fallback.",
+        "The output treats boundary design as Moonloom writing mechanics, not MCP validation.",
+        "The output does not call mutating MCP tools before boundary design is complete."
+      ]
     }
   ]
 }

@@ -14,7 +14,9 @@ Read `../../references/card-writer-mcp.md` for `publish_submit` details.
 Read `../../references/quality-rubric.md` for readiness criteria.
 Read `../../references/role-card-writing-framework.md` if the card has not already
 been checked for playable loop, anchors, consequences, and token efficiency.
-Read `../../references/safety-and-cost.md` for public action constraints.
+Read `../../references/safety-and-cost.md` for public action constraints. Read
+`../../references/boundary-design.md` when a mature, adult, horror-leaning,
+jealous, power-imbalanced, or consent-sensitive card needs boundary readiness.
 
 ## Readiness checklist
 
@@ -23,6 +25,9 @@ Read `../../references/safety-and-cost.md` for public action constraints.
 3. Call `validate_role`.
 4. Resolve all blockers.
 5. Check the card against PACT: playable, anchored, consequential, token-efficient.
+   For boundary-sensitive cards, confirm rating intent, explicitness ceiling,
+   player agency contract, escalation ladder, refusal route, stop conditions, and
+   safer fallback are encoded in the card.
 6. Review `render_preview`, or record that the author explicitly accepted the risk.
 7. Run `simulate_private_chat`, or record that the author explicitly skipped the
    real behavior check after understanding normal billing.

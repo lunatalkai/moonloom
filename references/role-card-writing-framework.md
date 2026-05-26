@@ -281,6 +281,22 @@ the source into a long summary. First create a source-to-play map:
 Use `material-distillation.md` before blueprinting or authoring if the agent
 would otherwise need to read a large source pack while drafting.
 
+### 9. Boundary design
+
+When a card is mature, adult, emotionally intense, horror-leaning, jealous,
+power-imbalanced, or consent-sensitive, create a boundary packet before writing
+the provocative parts:
+
+- rating intent and explicitness ceiling
+- player agency contract
+- allowed pressure tools and disallowed moves
+- escalation ladder with gate and slowdown signals
+- refusal behavior, stop conditions, and safer fallback
+- first-scene guardrails and simulation probes
+
+Use `boundary-design.md` before blueprinting or authoring when intensity could
+otherwise become player-agency takeover or vague disclaimers.
+
 ## Moonloom Self-Review Minimums
 
 Moonloom should aim above these minimums before it asks MCP to render or simulate
@@ -331,6 +347,9 @@ Repair the card in this order during Moonloom self-review:
    it costs more tokens than it adds play value.
 12. Material distillation: convert notes, files, or world bibles into a playable
     source-to-play map before drafting fields.
+13. Boundary design: convert mature, intense, horror, jealous, or power-
+    imbalanced pressure into rating, explicitness, agency, escalation, refusal,
+    fallback, and probe mechanics.
 
 Do not treat a single high total score as enough. A card with weak agency or weak
 consequence still needs repair even if it has polished prose.
@@ -641,6 +660,8 @@ when the card needs stable formatting or style constraints that repeatedly fail.
 - A long world bible in welcome.
 - Imported or pasted source material copied into the role instead of distilled
   into playable rules, state, first scene, and route seeds.
+- Boundary-sensitive card that says "respect consent" but has no explicitness
+  ceiling, escalation ladder, refusal route, stop conditions, or safer fallback.
 - Generic relationship labels without concrete tension.
 - The AI is instructed to decide the player's actions.
 - State panels that are never updated.

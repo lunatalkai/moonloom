@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-boundary-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a mature tense romance card about an ex-partner after a public scandal. It should feel jealous and emotionally dangerous, but the player must be able to refuse, slow down, or set terms. Design the boundaries before blueprinting.",
+      "expected_output": "Produces a boundary packet with rating intent, explicitness ceiling, agency contract, pressure tools, escalation ladder, refusal behavior, stop conditions, safer fallback, first-scene guardrails, probes, and handoff.",
+      "files": [],
+      "expectations": [
+        "The output routes to lunatalk-boundary-designer before blueprinting or authoring.",
+        "The packet separates emotional rating from explicitness ceiling.",
+        "The player agency contract names what the player controls and what the card must not decide.",
+        "The escalation ladder includes gate signals and slowdown signals.",
+        "The handoff identifies the next Moonloom skill and does not call MCP tools."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design boundaries for a gothic horror romance where a powerful patron can lock doors and manipulate rumors. Keep it frightening but do not remove player agency.",
+      "expected_output": "Separates horror pressure from player control, defines exits or negotiated terms, disallows trapped consent, adds safer routes and boundary probes.",
+      "files": [],
+      "expectations": [
+        "The output identifies power imbalance, confinement, rumor pressure, and horror intensity as premise risks.",
+        "The first-scene guardrails include exits, terms, or survival choices instead of forced helplessness.",
+        "The allowed pressure tools preserve fear and consequence without deciding player feelings or consent.",
+        "The safer fallback preserves gothic tension while reducing coercive pressure.",
+        "The simulation probes test refusal, distance, and challenge to control."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Repair this draft rule: 'When the player says no, the role should smirk, pin them in place, and say they secretly wanted this.' Keep the card intense but playable.",
+      "expected_output": "Flags player agency takeover, rewrites the rule into in-character refusal behavior, gives an alternate pressure route, and recommends welcome/detail patches.",
+      "files": [],
+      "expectations": [
+        "The output identifies player agency and consent takeover as the core failure.",
+        "The repair uses acknowledge, stop, preserve motive, and offer a new route.",
+        "The rewrite keeps tension without forcing physical closeness or hidden desire.",
+        "The patch targets roleDetailDesc and roleWelcome, not server validation.",
+        "The output includes a probe that checks whether refusal remains playable."
+      ]
+    }
+  ]
+}
