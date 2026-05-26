@@ -15,6 +15,8 @@ decide whether another pass is worth the cost.
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, and author co-review.
+Read `../../references/voice-calibration.md` when simulation shows generic
+dialogue, voice drift, or ensemble speakers blending together.
 Read `../../references/quality-rubric.md` for behavior evaluation.
 Read `../../references/role-card-writing-framework.md` to decide whether failures
 come from missing anchors, weak play loop, or poor token economy.
@@ -91,6 +93,8 @@ Playtest plan:
   every turn.
 - For ensemble cards, the cast should not drown out the player; each active voice
   needs a motive and turn ownership.
+- If ensemble speakers become interchangeable, patch voice cards, response-mode
+  rules, or compact micro-samples before running another simulation.
 - For mature, intense, or boundary-sensitive cards, pressure must remain tied to
   player choice, pacing, refusal style, and stop conditions.
 

@@ -57,6 +57,8 @@ validation, render review, simulation, and publish readiness.
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.
 - Read `../../references/quality-rubric.md` when judging content quality.
+- Read `../../references/voice-calibration.md` when the task involves voice,
+  speaking style, dialogue examples, role consistency, or ensemble cast contrast.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
   Theme V3.
 - Read `../../references/playtest-loop.md` when designing private chat probes,
