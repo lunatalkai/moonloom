@@ -52,6 +52,19 @@
         "The proposed repair updates Moonloom voice guidance, roleDetailDesc, or talkExample calibration rather than MCP validation logic.",
         "The check remains public-safe and does not use private card text."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Create a negative regression check for a material-heavy fantasy card that copies a world bible into roleDetailDesc but still has a valid schema.",
+      "expected_output": "Treats source dumping as a Moonloom writing failure, checks source-to-play mapping, token budget, first-scene action surface, and recommends material distillation rather than server gates.",
+      "files": [],
+      "expectations": [
+        "The negative check can fail Moonloom self-review even if validate_role would pass.",
+        "The diagnosis identifies source dumping, missing player role, weak first-scene pressure, missing state/consequence, or excessive proper nouns.",
+        "The proposed repair uses material distillation: keep, delay, cut, merge, source-to-play map, and token plan.",
+        "The report does not ask MCP validation to judge lore quality.",
+        "The check remains public-safe and does not use private card text."
+      ]
     }
   ]
 }

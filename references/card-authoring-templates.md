@@ -45,6 +45,48 @@ Token plan:
 - what to cut first:
 ```
 
+## Source-to-play handoff packet
+
+Use after `lunatalk-material-distiller` has processed notes, files, drafts, or a
+large world bible.
+
+```text
+Material inventory:
+- [source name/type]: [play function]
+
+Playable promise:
+- fantasy:
+- player role:
+- central tension:
+
+Kept modules:
+- durable rule:
+- character/relationship engine:
+- state or consequence:
+- voice anchor:
+
+Opening slice:
+- location:
+- immediate pressure:
+- role action:
+- player implication:
+
+Delayed / cut:
+- delay:
+- cut:
+
+Token plan:
+- roleDesc:
+- roleDetailDesc:
+- roleWelcome:
+- talkExample:
+- cut first:
+
+Ready for:
+- blueprint: yes | no
+- authoring: yes | no
+```
+
 ## `roleDesc` patterns
 
 Use one compact sentence. It should make the player understand the card in three

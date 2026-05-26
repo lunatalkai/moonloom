@@ -14,10 +14,11 @@ renderable, simulatable cards across major archetypes and pressure shapes.
 Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
-`../../references/voice-calibration.md` when the benchmark touches dialogue,
-persona consistency, or ensemble cards. Read `../../references/playtest-loop.md`
-for probe design and transcript-to-patch triage. Read
-`../../references/safety-and-cost.md` before simulation.
+`../../references/material-distillation.md` when benchmarking material-heavy,
+imported, or large-world workflows. Read `../../references/voice-calibration.md`
+when the benchmark touches dialogue, persona consistency, or ensemble cards. Read
+`../../references/playtest-loop.md` for probe design and transcript-to-patch
+triage. Read `../../references/safety-and-cost.md` before simulation.
 
 ## Workflow
 
@@ -54,6 +55,8 @@ Moonloom self-review, render review, or simulation that:
   intake/output/revision loop.
 - a quiet daily-life card has mood but no small playable desire or progression.
 - a lore-rich card has many proper nouns but no immediate action surface.
+- a material-heavy card copies or summarizes source material without converting it
+  into player role, first scene, state, consequence, and route seeds.
 - an ensemble card introduces cast members without distinct motives, voice, or
   turn ownership.
 - an ensemble card gives one strong sample but lets the other core speakers share
