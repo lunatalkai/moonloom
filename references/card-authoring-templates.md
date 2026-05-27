@@ -549,6 +549,38 @@ Voice-director packet:
 - pressure probes:
 - field patch targets:
 - token tradeoff:
+TalkExample packet:
+- current request:
+- prerequisite packets:
+  - voice-director:
+  - relationship / world / play / generator / ensemble:
+  - language-style:
+  - token architecture:
+- decision: omit | micro-samples | full examples
+- reason:
+- sample jobs:
+  - job:
+  - behavior taught:
+  - field risk reduced:
+- samples to write:
+  - player line:
+  - role / system response:
+  - what it teaches:
+  - what it must not decide for player:
+- token payment:
+  - cut:
+  - move:
+  - compress:
+- field placement:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+- verification:
+  - voice / format preserved:
+  - no welcome repetition:
+  - player agency preserved:
+  - token cost justified:
+- handoff:
 
 Agency packet:
 - current failure:
@@ -756,6 +788,7 @@ Inputs preserved:
 - ensemble packet:
 - agency packet:
 - voice-director packet:
+- TalkExample packet:
 - opening packet:
 - longplay packet:
 - boundary packet:
@@ -823,6 +856,7 @@ Packet preservation checklist:
 - generator artifact loop preserved:
 - player agency preserved:
 - voice preserved:
+- TalkExample preserved:
 - opening and longplay preserved:
 - boundary posture preserved:
 - token architecture preserved:

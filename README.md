@@ -63,6 +63,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   factions, locations, and lore-heavy settings into playable world-engine packets.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
+- `skills/lunatalk-talk-example-curator` decides when to omit `talkExample`, add
+  compact micro-samples, or use full examples for voice, format, and turn protocol.
 - `skills/lunatalk-agency-designer` turns spectator openings, decorative choices,
   route funneling, and player-agency takeover into agency packets.
 - `skills/lunatalk-token-architect` turns tokenBudget warnings, overlong
@@ -181,6 +183,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/voice-calibration.md` defines executable voice cards,
   micro-samples, ensemble contrast checks, and blind-line tests for consistent
   character voice.
+- `references/talk-example-design.md` defines `talkExample` decisions, sample
+  jobs, token payment, player-agency checks, and compact example packets.
 - `references/agency-design.md` defines player insertion space, reply-path
   matrices, agency guardrails, consequence checks, and interaction hooks.
 - `references/token-economy.md` defines token budget diagnostics, field
@@ -216,6 +220,10 @@ skill can reuse the same public guidance without duplicating it. Inside a skill,
 link to these files relative to the skill directory, for example
 `../../references/voice-calibration.md`. When an agent runs from the repository
 root, the same file is available as `references/voice-calibration.md`.
+
+References are not loaded automatically by the plugin manifest. The active skill
+should name the specific references it needs, and the agent should load only
+those files for the current workflow.
 
 ## Local validation
 

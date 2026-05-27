@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-talk-example-curator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a coherent voice-director packet and opening, but I am not sure whether to fill talkExample. The role has an unusual indirect voice, and I want one compact example without bloating tokens.",
+      "expected_output": "Uses lunatalk-talk-example-curator and returns a TalkExample packet with decision, sample job, minimal micro-sample shape, token payment, field placement, and no MCP calls.",
+      "files": [],
+      "expectations": [
+        "The output chooses omit, micro-samples, or full examples with a concrete reason.",
+        "The sample job explains what behavior the example teaches and what field risk it reduces.",
+        "The output includes token payment by naming what to cut, move, or compress.",
+        "The output does not repeat the welcome or add a long decorative scene.",
+        "The output preserves player agency and does not decide the player's feelings or actions."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My generator card already has a generator packet and output schema, but the model keeps changing the artifact format. I need a full talkExample that shows one complete output and one revision operation.",
+      "expected_output": "Uses lunatalk-talk-example-curator, justifies full examples for generator output format, defines sample jobs for artifact schema and revision behavior, and requires token payment before field assembly.",
+      "files": [],
+      "expectations": [
+        "The output allows full examples only because the generator/helper format needs a complete artifact or revision example.",
+        "The TalkExample packet separates schema example and revision behavior.",
+        "The output preserves defaults and constraints from the generator packet instead of inventing a new engine.",
+        "The output includes token payment.",
+        "The output does not call MCP tools, render, simulate, or publish."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to add a long romantic sample scene because it sounds pretty. It repeats the welcome and writes that the player feels guilty and reaches for the role's hand.",
+      "expected_output": "Routes to lunatalk-talk-example-curator, rejects the long decorative sample, says not to repeat the welcome, preserves player agency, and either omits talkExample or replaces it with a compact micro-sample plus token payment.",
+      "files": [],
+      "expectations": [
+        "The output identifies welcome repetition and player-agency takeover as blockers.",
+        "The output includes the rule not to decide the player's feelings or actions.",
+        "The output replaces decorative prose with a minimal sample job or chooses omit.",
+        "The output requires token payment if any sample remains.",
+        "The output does not use MCP tools or final field patching."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I am not sure which example to write for an ensemble card with four speakers. Cast structure and voice cards are already done, but two speakers still blur in blind-line tests.",
+      "expected_output": "Uses lunatalk-talk-example-curator to propose micro-samples for the blurred speakers only, preserving ensemble and voice packets, with token payment and blind-line verification.",
+      "files": [],
+      "expectations": [
+        "The output does not add a long cast dialogue for all speakers.",
+        "The micro-samples target only the blurred speakers or turn-style risk.",
+        "The samples teach pressure move, speech cue, and player leverage.",
+        "The output includes blind-line or voice/format verification.",
+        "The output requires token payment."
+      ]
+    }
+  ]
+}
