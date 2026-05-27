@@ -120,6 +120,11 @@ not call the tool.
    under review instead of loading an oversized history page. Read the
    returned conversation history, AI messages, `evaluation`, and per-message
    metadata. Evaluate behavior, not just whether the tool ran.
+   Apply per-turn action-path closure as an acceptance gate: if any selected AI
+   turn lacks a concrete next action path, decision, question, visible affordance,
+   or meaningful consequence, do not accept the conversation just because later
+   turns pass. Patch `roleDetailDesc` and `roleWelcome` so first replies and
+   route replies close with a playable next move.
 8. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
    selected AI messages. If `previewUrl` is absent but the result includes
    `conversationId`, `chatId`, and `roleId`, build the dedicated preview harness URL:
@@ -219,6 +224,9 @@ world, relationship, daily-life, ensemble, or character core.
 - The role's desire, contradiction, boundary, and player leverage remain visible
   under trust, resistance, passive input, and boundary-setting.
 - The reply advances the scene and gives the player something to do.
+- Per-turn action-path closure is required: any selected AI turn without a
+  concrete player-facing next move fails the acceptance run, even when later
+  turns pass. Patch `roleDetailDesc` and `roleWelcome` before another paid pass.
 - The first simulated response matches the opening packet's intended first reply
   path and makes the second-turn move visible through reaction, complication,
   reveal, state change, or renewed pressure.
