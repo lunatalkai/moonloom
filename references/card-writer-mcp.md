@@ -285,6 +285,20 @@ multimodal access, open `previewUrl` and inspect it visually. If
 `evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
 `roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 
+When the preview page exposes `window.__LUNATALK_MCP_PREVIEW__`, read its
+`capturePlan` before judging the screenshot:
+
+- Treat `contentWidth`, `contentHeight`, `clientWidth`, and `clientHeight` as the
+  clean preview surface dimensions, not the normal app chrome.
+- For desktop, do not split the card into left/right screenshots. If
+  `requiresViewportResize` is true, resize the browser/capture viewport to
+  `requiredCaptureWidth` and keep `horizontalScrolls: [0]`.
+- For long HTML/XMLV3 output, capture every listed vertical segment before
+  judging layout. Use `__LUNATALK_MCP_APPLY_CAPTURE_SEGMENT__(index)` when the
+  client can run page JavaScript, or manually scroll to each `segments[].y`.
+- Do not shorten a welcome or AI reply only to fit one screenshot. Long replies
+  are normal; incomplete screenshots are a review failure.
+
 ### `conversation_create`
 
 Create a new MCP-operated private conversation for an owned role. Use this when
@@ -479,6 +493,10 @@ state/status outside the bubble when state exists. Hidden `<state>` data should
 not appear as inline message prose, but the preview must still expose its effect
 as an out-of-bubble status/state surface so desktop and mobile screenshots can
 confirm the conversation state is readable.
+
+For long conversation replies, use the same `capturePlan` contract as
+`render_preview`: desktop capture is full-width with no horizontal split, while
+vertical overflow must be reviewed through every listed scroll segment.
 
 After every accepted behavior-test message, call `conversation_inspect` before
 claiming the role behavior is stable. Use the returned `messages[].chatMessage`

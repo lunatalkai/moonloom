@@ -38,11 +38,14 @@ visibility, opening clarity, or second-turn setup.
 4. If a specific issue is being debugged, use `mode: "xmlv3"` or `mode: "html"`.
 5. If the AI client can open a browser or inspect images, open `previewUrl` and
    visually inspect desktop and mobile.
-6. Use `evaluation` first, then `structuredReport`, DOM summary, console errors,
+6. Read the preview page `capturePlan` when available. If it is segmented,
+   capture every vertical segment before judging. For desktop, resize to
+   `requiredCaptureWidth` when requested; do not split screenshots horizontally.
+7. Use `evaluation` first, then `structuredReport`, DOM summary, console errors,
    blocked requests, overflow, contrast, and XML tag lists.
-7. Produce a render repair packet before patching the role/theme or running
+8. Produce a render repair packet before patching the role/theme or running
    another render pass.
-8. Patch the role or theme, then re-run validation and preview.
+9. Patch the role or theme, then re-run validation and preview.
 
 ## Render repair packet
 
@@ -84,6 +87,10 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   judge the assistant message bubble, ignore avatar, byline, sidebar, composer,
   and other normal chat page chrome, and verify XMLV3 state outside the bubble
   as a status surface when state exists.
+- For long card output or long AI replies, use the preview `capturePlan`. Review
+  all listed vertical `segments`; desktop screenshots must remain full-width and
+  must not be split into left/right halves. A partial top-only screenshot is
+  incomplete evidence, not a reason to shorten content.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.

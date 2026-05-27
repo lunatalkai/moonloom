@@ -16,3 +16,17 @@ test('Moonloom treats MCP chat preview as a clean AI-output surface', async () =
     assert.match(source, /desktop.*mobile|mobile.*desktop/i);
   }
 });
+
+test('Moonloom requires capturePlan-driven vertical review without desktop horizontal splits', async () => {
+  const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const renderReview = await readFile('skills/lunatalk-render-review/SKILL.md', 'utf8');
+
+  for (const source of [cardWriter, themeRendering, renderReview]) {
+    assert.match(source, /capturePlan/);
+    assert.match(source, /vertical segment|vertical `segments`|listed vertical|vertical overflow/i);
+    assert.match(source, /requiredCaptureWidth|full content width|full-width/i);
+    assert.match(source, /horizontal split|left\/right|left and right/i);
+    assert.match(source, /Do not shorten|not proof.*shortened|not a reason to shorten/i);
+  }
+});
