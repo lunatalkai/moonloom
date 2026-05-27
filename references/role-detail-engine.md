@@ -215,6 +215,22 @@ observe player move -> show concrete consequence -> make in-character move ->
 offer one next action or sharper question
 ```
 
+Add an explicit action-path closure rule for cards that failed simulation on
+agency or next-move clarity:
+
+```text
+Action-path closure:
+- every reviewed assistant turn's last visible block must return control to the
+  player;
+- close with either grouped choices, a direct in-character decision question, or
+  a concrete affordance the player can act on now;
+- it is not enough to end a turn on only mood, a twist line, a clue reveal, or a
+  character statement unless it is immediately followed by the playable next
+  move;
+- if the turn reveals information, name what the player can do with it next:
+  preserve / compare / ask / confront / leave / wait / risk / choose route.
+```
+
 This protects against abstract cards whose detail explains the mood but gives no
 specific second or third scene to run. Keep seeds original, short, and modular.
 Do not write long prose samples unless `talkExample` is the cheaper way to teach

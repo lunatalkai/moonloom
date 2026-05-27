@@ -125,6 +125,12 @@ not call the tool.
    or meaningful consequence, do not accept the conversation just because later
    turns pass. Patch `roleDetailDesc` and `roleWelcome` so first replies and
    route replies close with a playable next move.
+   When triaging a warning, inspect the last visible block of the AI turn. Ending
+   on a clue reveal, mood beat, twist quote, or character statement is not enough
+   unless the turn also names what the player can do next. Prefer a role-specific
+   repair rule that closes with grouped choices, a direct in-character decision
+   question, or a concrete object/action affordance instead of forcing buttons
+   onto every reply.
 8. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
    selected AI messages. If `previewUrl` is absent but the result includes
    `conversationId`, `chatId`, and `roleId`, build the dedicated preview harness URL:
