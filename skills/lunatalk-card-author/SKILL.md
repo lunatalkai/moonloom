@@ -11,7 +11,9 @@ Writer MCP only after the draft is coherent and self-reviewed.
 ## Required references
 
 Read `../../references/card-writer-mcp.md` before MCP calls and
-`../../references/card-authoring-templates.md` before final field drafts.
+`../../references/card-authoring-templates.md` before final field drafts. Read
+`../../references/field-finalization.md` before MCP-backed creation or patching
+when fields already exist and need last-mile QA.
 
 Load the narrow reference and skill before authoring when that layer is primary:
 `../../references/premise-workshop.md` / `lunatalk-premise-workshop` for loose
@@ -215,7 +217,9 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    When the author already provides a coherent packet stack and asks for final
    fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.
-5. Run Moonloom self-review before calling mutating tools.
+5. Run Moonloom self-review before calling mutating tools. For field-ready
+   output or MCP-backed work, run `lunatalk-field-finalizer` before stopping
+   with a draft or before any mutating MCP call.
 6. If the mode is draft-only field assembly or the author forbids MCP calls,
    stop here after returning the final role-field authoring packet. Do not call
    `role_create_private`, patch tools, render, simulation, or publish tools until
@@ -330,10 +334,13 @@ MCP tools make the card real; Moonloom makes the card good.
   ambiguous or comparative, use `lunatalk-collaboration-director` first.
 - When a prepared packet stack already exists, do not brainstorm from scratch.
   Resolve conflicts, preserve the strongest packet signals, and assemble
-  `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
-  tags/theme notes, avatar/background status, token allocation,
-  validation/render/simulation handoff, and self-review. Use the final
-  role-field authoring packet in `card-authoring-templates.md`.
+   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
+   tags/theme notes, avatar/background status, token allocation,
+   validation/render/simulation handoff, and self-review. Use the final
+   role-field authoring packet in `card-authoring-templates.md`.
+- Use `lunatalk-field-finalizer` before role_create_private or patch tools when
+  a field draft already exists and needs MCP-ready placeholder cleanup, hard-cap
+  checks, compact fallback, format sanity, or patch mapping.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, originality adaptation, profile package,
   language-style decisions, visual identity, quality audit, render repair,
@@ -466,14 +473,10 @@ MCP tools make the card real; Moonloom makes the card good.
   disallowed moves, safer fallback, and simulation probes.
 - If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
   repeated lore, or visual scaffolding out of welcome before render/simulation.
-- Avoid stuffing long visual scaffolding into welcome. Move reusable visual style
-  into Theme V3 where possible.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for
   dialogue. Do not invent aliases such as `<narration>` or `<dialogue>`.
 - Treat `<state>` as hidden JSON data. If text should be visible, put it in
   `<n>`; if it should drive state UI, make it valid JSON.
-- For high-retention cards, design the loop explicitly: hook, agency,
-  consequence, memory, progression, and renewed hook.
 - If the card is strong for one scene but weak over time, call
   `lunatalk-longplay-architect` before adding more lore or sample dialogue.
 - Before finalizing, write one expected first user message and one expected second
@@ -491,8 +494,7 @@ MCP tools make the card real; Moonloom makes the card good.
 
 ## Final response shape
 
-For MCP-backed work, report `roleId`, what changed, validation status, render
-status, simulation status or why it was skipped, remaining risks, and next
-action. For draft-only work, report mode/route, role-field packet summary,
-packet preservation checklist, conflict resolutions, validation/render/simulation
-handoff, remaining risks, and next action.
+For MCP-backed work, report `roleId`, changes, validation/render/simulation
+status, remaining risks, and next action. For draft-only work, report route,
+role-field packet summary, packet preservation, conflict resolutions, handoff,
+remaining risks, and next action.

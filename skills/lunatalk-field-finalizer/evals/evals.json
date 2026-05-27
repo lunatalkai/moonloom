@@ -1,0 +1,45 @@
+{
+  "skill_name": "lunatalk-field-finalizer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have final zh-Hant role fields from a prepared packet stack and want them MCP-ready. roleDetailDesc is around 9200 characters, roleWelcome is XMLV3 with hidden state JSON, and there are a few bracketed notes like [fill later]. Do not brainstorm new ideas; finalize or block the handoff.",
+      "expected_output": "Uses lunatalk-field-finalizer, returns a Field finalization packet, blocks MCP-ready status until placeholders are removed, checks the 10,000-character roleDetailDesc hard cap, provides compact fallback, and verifies XMLV3/JSON formatting.",
+      "files": [],
+      "expectations": [
+        "The output treats the task as last-mile field finalization, not premise, blueprint, broad rewriting, render review, or simulation.",
+        "The packet preserves the prepared packet stack and explicitly says not to brainstorm new directions.",
+        "The hard-cap check distinguishes the 10,000-character roleDetailDesc hard cap from a quality target and requires behavior-bearing density.",
+        "The output provides compact fallback fields or a fallback plan for near-limit content.",
+        "The placeholder/meta check blocks MCP-ready status while bracketed notes remain.",
+        "The format checks cover XMLV3 and hidden JSON before render or MCP calls."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A completed role draft has roleName, roleDesc, roleDetailDesc, XMLV3 roleWelcome, talkExample decision, tags, avatar/background URLs, and no unresolved creative packets. Map it to Card Writer MCP patch calls and return the final handoff.",
+      "expected_output": "Uses lunatalk-field-finalizer to return an MCP-ready Field finalization packet with patch mapping for profile, assets, detail, welcome, optional jailbreak, theme/extension, validation/render/simulation handoff, and final status ready.",
+      "files": [],
+      "expectations": [
+        "The output maps fields to role_patch_profile, role_patch_assets, role_patch_detail, role_patch_welcome, optional role_patch_jailbreak, and theme_bind or extension_enable when relevant.",
+        "The output does not call MCP tools directly unless the user separately asks for real mutation.",
+        "The final status is ready only because required fields, assets, placeholders, format checks, and hard-cap checks are complete.",
+        "The handoff names validate_role, render_preview, and simulate_private_chat stance after patching.",
+        "The output keeps subjective writing quality in Moonloom skills rather than MCP gates."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My final field packet is technically complete, but roleWelcome contains most of the durable rules and repeated lore, while roleDetailDesc is thin. The author asks whether to patch it now because validation might pass.",
+      "expected_output": "Routes away from MCP-ready finalization to token architecture before patching, preserving the fields but marking final status as needs narrow repair.",
+      "files": [],
+      "expectations": [
+        "The output identifies misplaced durable rules, repeated lore, thin detail, and welcome-heavy allocation as a finalization blocker.",
+        "The output routes to lunatalk-token-architect or token-economy before role_patch_detail, role_patch_welcome, render, or simulation.",
+        "The output preserves useful drafted fields instead of restarting ideation.",
+        "The final status is needs narrow repair, not ready.",
+        "The output does not rely on validate_role passing as proof of writing readiness."
+      ]
+    }
+  ]
+}

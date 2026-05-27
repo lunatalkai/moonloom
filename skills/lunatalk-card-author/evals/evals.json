@@ -356,6 +356,19 @@
         "If only prompts are available, the output stops with the missing asset action instead of saying the private card is complete.",
         "The output reruns validate_role after patching assets and keeps publish_submit gated on explicit author confirmation."
       ]
+    },
+    {
+      "id": 28,
+      "prompt": "I have final field drafts and explicitly want to create a private role next. Before any role_create_private or patch tools, make sure the fields are MCP-ready: no placeholders, detail under hard cap, compact fallback exists, XMLV3/JSON format is stable, and every field maps to the right Card Writer tool.",
+      "expected_output": "Uses lunatalk-field-finalizer before role_create_private or patch tools, preserves the final field draft, returns a Field finalization packet, and only proceeds to MCP-backed creation if final status is ready.",
+      "files": [],
+      "expectations": [
+        "The workflow routes final field QA to lunatalk-field-finalizer before mutating MCP tools.",
+        "The Field finalization packet checks placeholder/meta text, hard caps, compact fallback, XMLV3/JSON/Markdown/YAML-style format, and patch mapping.",
+        "The output does not call role_create_private, role_patch_profile, role_patch_detail, or role_patch_welcome until final status is ready.",
+        "The workflow preserves coherent final fields instead of restarting ideation.",
+        "The output treats hard-cap and format readiness as Moonloom last-mile QA, not subjective server validation."
+      ]
     }
   ]
 }
