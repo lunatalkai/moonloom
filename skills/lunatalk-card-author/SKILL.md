@@ -40,7 +40,7 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    exists:
    - loose mood/trope/aesthetic directions: `lunatalk-premise-workshop`
    - examples, golden samples, sample output packets, benchmark shapes, copy-risk review: `lunatalk-sample-calibrator`
-   - top-card calibration from anonymized benchmark evidence, aggregate plus deep-reading comparison, detail density repair, or public-safe method updates: read `top-card-method-calibration.md` before fields
+   - top-card calibration from anonymized benchmark evidence, multi-signal selection, aggregate plus deep-reading comparison, detail density repair, or public-safe method updates: read `top-card-method-calibration.md` before fields
    - canon/IP, fan premise, copied draft, derivative, "like X but original": `lunatalk-originality-adapter`
    - `roleName`, `roleDesc`, tags, title, tagline, public-facing first impression: `lunatalk-profile-packager`
    - avatar, cover, thumbnail, key art, image prompt, art brief, visual identity before profile/presentation: `lunatalk-visual-identity-director`
@@ -120,10 +120,10 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    Preserve any `lunatalk-presentation-director` packet when assembling fields.
    For MCP-backed creation, preserve or create a visual identity packet before
    final fields; the finished handoff needs actual avatar/background URLs.
-   If the work includes top-card calibration, preserve the aggregate plus deep-reading
-   method packet before detail expansion. Use it to repair field allocation,
-   opening proof, longplay, and XMLV3 presentation; do not copy source wording,
-   markup, names, or provenance into the role.
+   If the work includes top-card calibration, preserve the multi-signal,
+   aggregate plus deep-reading method packet before detail expansion. Use it to
+   repair field allocation, opening proof, longplay, and XMLV3 presentation; do
+   not copy source wording, markup, names, or provenance into the role.
    When the author already provides a coherent packet stack and asks for final
    fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.
