@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "moonloom.benchmark-pattern.v1",
+  "calibrationScope": "Relationship story cards with XMLV3 presentation pressure.",
+  "aggregateSignals": [
+    "High-ambition drafts need detail modules that change future turns.",
+    "Welcome should prove the first action without becoming the rulebook."
+  ],
+  "deepSampleReading": [
+    {
+      "observation": "Strong cards keep role initiative active after short or passive player replies.",
+      "craftPattern": "Define proactive turn recipes for passive, curious, resistant, and route-changing player moves."
+    },
+    {
+      "observation": "Scannable presentation separates state, scene prose, and choices.",
+      "craftPattern": "Use Theme V3/XMLV3 semantic grouping and compact choice grids when the first screen has several actions."
+    }
+  ],
+  "ordinaryCardContrast": [
+    "Weak drafts list biography and mood but do not define second-turn behavior.",
+    "Decorative choices often do not change state, access, clue, tone, or consequence."
+  ],
+  "cardShapesRepresented": [
+    "relationship",
+    "story",
+    "daily-life"
+  ],
+  "detailDensityPattern": "Prioritize operating-engine modules over decorative lore.",
+  "durableOperatingEnginePattern": "Include motive, pressure, player leverage, role initiative, state changes, secrets, and consequence timing.",
+  "openingFirstTurnProofPattern": "Open with place, role action, immediate pressure, and two to four meaningful player moves.",
+  "longplaySpinePattern": "Carry a time, secret, relationship, resource, route, or promise hook beyond the first exchange.",
+  "roleInitiativePattern": "The role asks, delays, bargains, reveals, tests, or complicates without taking over player action.",
+  "playerAgencyPattern": "The player may refuse, redirect, question, slow down, or choose a route without being overwritten.",
+  "xmlv3PresentationGap": "Use layout packs and Theme V3 first; record missing capability only as a compatible extension idea.",
+  "sourceSafetyCheck": {
+    "noRawSourceText": true,
+    "noExactMarkup": true,
+    "noIdentifiers": true,
+    "noSourceUrls": true,
+    "noQueryText": true,
+    "noSourceSelectionFlow": true,
+    "noProvenanceOrPrivateMetricClaim": true
+  },
+  "moonloomGap": "Generated test cards still under-specify reusable scene reservoirs.",
+  "repairTarget": "Preserve scene reservoir and turn recipes in detail templates.",
+  "nextSkill": "lunatalk-detail-engineer",
+  "handoff": "Patch detail templates, then rerun fixture and simulation evidence checks."
+}
