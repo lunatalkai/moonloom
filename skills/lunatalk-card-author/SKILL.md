@@ -14,7 +14,7 @@ before final field drafts, and `../../references/field-finalization.md` before M
 
 Load the narrow reference and skill before authoring when that layer is primary:
 `premise-workshop.md`, `sample-driven-calibration.md` plus `../../examples/sample-card-packets.md`,
-`top-card-method-calibration.md`, `originality-adaptation.md`, `profile-packaging.md`, `visual-identity.md`,
+`benchmark-pattern-calibration.md`, `originality-adaptation.md`, `profile-packaging.md`, `visual-identity.md`,
 `language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
 `ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
 `tension-triangle.md`, `state-economy-design.md`, `presentation-design.md`,
@@ -40,7 +40,7 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    exists:
    - loose mood/trope/aesthetic directions: `lunatalk-premise-workshop`
    - examples, golden samples, sample output packets, benchmark shapes, copy-risk review: `lunatalk-sample-calibrator`
-   - top-card calibration from anonymized benchmark evidence, aggregate plus deep-reading comparison, detail density repair, or public-safe method updates: read `top-card-method-calibration.md` before fields
+   - provided benchmark pattern packets, anonymized aggregate/deep-reading gaps, detail density repair, or public-safe method updates: read `benchmark-pattern-calibration.md` before fields; do no source selection in Moonloom
    - canon/IP, fan premise, copied draft, derivative, "like X but original": `lunatalk-originality-adapter`
    - `roleName`, `roleDesc`, tags, title, tagline, public-facing first impression: `lunatalk-profile-packager`
    - avatar, cover, thumbnail, key art, image prompt, art brief, visual identity before profile/presentation: `lunatalk-visual-identity-director`
@@ -120,10 +120,10 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    Preserve any `lunatalk-presentation-director` packet when assembling fields.
    For MCP-backed creation, preserve or create a visual identity packet before
    final fields; the finished handoff needs actual avatar/background URLs.
-   If the work includes top-card calibration, preserve the aggregate plus deep-reading
-   method packet before detail expansion. Use it to repair field allocation,
-   opening proof, longplay, and XMLV3 presentation; do not copy source wording,
-   markup, names, or provenance into the role.
+   If the work includes a provided benchmark pattern packet, preserve the packet
+   before detail expansion. Use it to repair field allocation, opening proof,
+   longplay, and XMLV3 presentation; do not perform source selection in Moonloom
+   and do not copy source wording, markup, names, or provenance into the role.
    When the author already provides a coherent packet stack and asks for final
    fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.

@@ -1,38 +1,43 @@
 # Moonloom Benchmark Pattern Calibration
 
-Use this reference when a Moonloom iteration has permission to compare a draft or
-trial card against a source-restricted benchmark set, and the result must be
-reduced into public-safe craft guidance before it enters any Moonloom skill,
-template, or prompt.
+Use this reference when a Moonloom iteration receives an already-anonymized
+benchmark pattern packet and must turn that packet into public-safe craft
+guidance before it enters any Moonloom skill, template, or prompt.
 
 Benchmark pattern calibration is not sample copying and not market prediction.
-It converts source-restricted reading into an anonymous structure packet:
+It consumes an anonymous structure packet:
 
 ```text
 aggregate signals -> deep sample reading -> ordinary-card contrast ->
 anonymized pattern gap -> original Moonloom repair
 ```
 
+Moonloom does not define how to select source cards, does not fetch platform
+score data, and does not expose source collection or evaluation workflows. Any
+source selection flow must stay outside public Moonloom. Public Moonloom only
+accepts the reduced packet described below.
+
 ## Source Posture
 
-Prefer public synthetic samples for normal authoring. Use source-restricted
-benchmark reading only when the workflow explicitly has permission and a clear
-repair hypothesis.
+Prefer public synthetic samples for normal authoring. Use benchmark pattern
+calibration only when a provided packet is already anonymized, generalized, and
+free of source-selection details.
 
 Do not store raw source text, names, identifiers, author information, exact
-phrasing, exact markup, source URLs, query text, provenance, private tool output,
-traffic numbers, or any claim that a public artifact came from a restricted
-source. Store only generalized structure, anonymized craft patterns, and repair
-targets.
+phrasing, exact markup, source URLs, query text, provenance, raw operational
+output, private metric values, source-selection rules, platform score criteria,
+or any claim that a public artifact came from a restricted source. Store only
+generalized structure, anonymized craft patterns, and repair targets.
 
-If a reference note would reveal where a pattern came from, keep it outside
-Moonloom or rewrite it as a generic design rule before committing.
+If a reference note would reveal where a pattern came from or how sources were
+selected, keep it outside Moonloom or rewrite it as a generic design rule before
+committing.
 
 ## What To Read For
 
-Read enough complete samples to understand how the card runs after the first
-screen. Do not stop at length statistics. For each source-restricted sample,
-extract only abstract craft observations:
+Use the provided packet to understand how the compared card shape runs after the
+first screen. Do not rely on length statistics alone. Each packet should reduce
+source observations into abstract craft signals:
 
 | Dimension | What to notice |
 |---|---|
@@ -132,7 +137,8 @@ Anonymized benchmark pattern packet:
   - no identifiers:
   - no source URLs:
   - no query text:
-  - no provenance or traffic claim:
+  - no source selection flow:
+  - no provenance or private metric claim:
 - Moonloom gap:
 - repair target:
 - next skill:

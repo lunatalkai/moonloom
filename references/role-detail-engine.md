@@ -60,12 +60,13 @@ validation rule.
 A long detail is only justified when modules change future turns. A short detail
 is acceptable only when it can still pass the engine coverage check below.
 
-## Top-Card Method Calibration
+## Benchmark Pattern Calibration
 
-When a task includes anonymized benchmark evidence, read
-`top-card-method-calibration.md` before expanding detail. Use top-card method
+When a task includes a provided benchmark pattern packet, read
+`benchmark-pattern-calibration.md` before expanding detail. Use benchmark pattern
 calibration to translate aggregate plus deep-reading evidence into safe craft
-targets:
+targets. Moonloom does not define how to select source cards, fetch platform
+score data, or reproduce a source-selection workflow:
 
 - ordinary-card contrast: identify whether the weaker draft stops at biography,
   ability lists, mood, or a setup form instead of a runnable engine.
