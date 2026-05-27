@@ -269,6 +269,11 @@ repair, token budgeting, render review, simulation, and publish readiness.
   benchmark pattern packet shape for carrying aggregate signals, deep-reading
   craft patterns, ordinary-card contrast, source-safety flags, and one repair
   target without source-selection details.
+- `examples/iteration-summary.fixture.json` provides a public-safe iteration
+  summary shape for recording the test-card type, MCP visual result, chat
+  playtest result, validated benchmark pattern gap, repair target, rerun result,
+  and next TODO without full field text, transcripts, IDs, queries, or source
+  selection details.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## Skill references
@@ -299,7 +304,11 @@ preview evidence support the claimed completion status. Use
 `npm run validate:benchmark-pattern` before committing any benchmark-derived
 method update; it accepts only anonymized pattern packets and rejects raw source,
 exact markup, identifiers, query text, source-selection workflow, and protected
-source claims.
+source claims. Use `npm run validate:iteration-summary` before committing a
+closed-loop Moonloom improvement; it verifies that the saved iteration summary
+has field review, MCP visual validation, chat playtest, per-message preview,
+validated benchmark pattern evidence, one repair target, rerun result, and a
+public-safe next TODO.
 
 ## MCP endpoint
 

@@ -118,6 +118,19 @@ Iteration packet:
 - handoff:
 ```
 
+## Iteration Summary Evidence
+
+After a real writing loop changes Moonloom, save only a public-safe iteration
+summary. The summary records the card shape, language, test-card summaries,
+field review, MCP visual validation, chat playtest, validated benchmark pattern
+gap, one repair target, rerun result, and next TODO. It must not store raw role
+fields, raw transcripts, role/chat identifiers, source-selection flows, query
+text, URLs, private metrics, or exact XML/HTML.
+
+Validate the JSON summary with `npm run validate:iteration-summary` before using
+it as evidence for a public skill, reference, template, prompt, or XMLV3 method
+change. Use `examples/iteration-summary.fixture.json` as the public-safe shape.
+
 ## Stop criteria
 
 Stop patching when:
