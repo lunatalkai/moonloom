@@ -115,7 +115,9 @@ writing quality into MCP server gates.
 
 ## Anonymized Benchmark Pattern Packet
 
-Return this packet after reading and before changing Moonloom:
+Return this packet after reading and before changing Moonloom. Validate the JSON
+packet with `npm run validate:benchmark-pattern` before using it to change a
+skill, reference, template, fixture, or prompt framework.
 
 ```text
 Anonymized benchmark pattern packet:
@@ -144,6 +146,12 @@ Anonymized benchmark pattern packet:
 - next skill:
 - handoff:
 ```
+
+The validator expects the JSON form to include the Moonloom benchmark packet
+version value and these same concepts as camelCase fields, for example
+`aggregateSignals`, `deepSampleReading`, `ordinaryCardContrast`,
+`sourceSafetyCheck`, `moonloomGap`, `repairTarget`, `nextSkill`, and `handoff`.
+Use `examples/benchmark-pattern.fixture.json` as the public-safe shape example.
 
 ## Applying The Packet
 

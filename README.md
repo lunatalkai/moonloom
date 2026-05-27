@@ -265,6 +265,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/end-to-end-acceptance.fixture.json` provides a public-safe
   end-to-end acceptance evidence packet shape covering skill route, assets,
   validation, render, app visual checks, simulation, and per-message previews.
+- `examples/benchmark-pattern.fixture.json` provides a public-safe anonymized
+  benchmark pattern packet shape for carrying aggregate signals, deep-reading
+  craft patterns, ordinary-card contrast, source-safety flags, and one repair
+  target without source-selection details.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## Skill references
@@ -291,7 +295,11 @@ MCP simulation evidence to check required probes, per-message preview coverage,
 repair-packet requirements, and public-safe evidence shape. Use
 `npm run validate:acceptance` after a full trial-card run to check that assets,
 validation, render, app visual proof, accepted simulation, and per-message
-preview evidence support the claimed completion status.
+preview evidence support the claimed completion status. Use
+`npm run validate:benchmark-pattern` before committing any benchmark-derived
+method update; it accepts only anonymized pattern packets and rejects raw source,
+exact markup, identifiers, query text, source-selection workflow, and protected
+source claims.
 
 ## MCP endpoint
 
