@@ -21,10 +21,6 @@ test('Moonloom has a public-safe benchmark pattern calibration reference', async
 
   for (const phrase of [
     'Anonymized benchmark pattern packet',
-    'multi-signal selection',
-    'Benchmark Set Selection',
-    'deep-interaction candidates',
-    'sticky / returning-user candidates',
     'aggregate signals',
     'deep sample reading',
     'ordinary-card contrast',

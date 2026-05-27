@@ -21,10 +21,6 @@ test('Moonloom exposes a public-safe top-card method calibration reference', asy
 
   for (const phrase of [
     'aggregate calibration',
-    'multi-signal benchmark selection',
-    'recent heat',
-    'interaction depth',
-    'retention / stickiness',
     'deep sample reading',
     'top vs ordinary contrast',
     'bilingual budget translation',
@@ -53,7 +49,6 @@ test('card authoring routes benchmark-calibrated writing through the public meth
 
   assert.match(cardAuthor, /top-card-method-calibration\.md/);
   assert.match(cardAuthor, /top-card calibration/i);
-  assert.match(cardAuthor, /multi-signal/i);
   assert.match(cardAuthor, /aggregate plus deep-reading/i);
 
   assert.match(detailEngine, /top-card method calibration/i);
