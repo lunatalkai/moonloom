@@ -9,6 +9,7 @@
       "expectations": [
         "The output keeps all user-facing card prose in Traditional Chinese.",
         "The draft defines promise, engine, play, and presentation before or alongside MCP tool use.",
+        "The workflow prepares avatar/background assets and calls role_patch_assets, or explicitly stops with a missing asset action if image URLs are not available.",
         "The role detail includes desire, contradiction, boundaries, speech style, proactive behavior, and consequence loop.",
         "The welcome gives a concrete first scene and clear player reply path.",
         "The workflow treats validate_role as a technical check and uses Moonloom self-review for writing quality."
@@ -341,6 +342,19 @@
         "The output does not use jailbreak to fix generic quality, missing voice, missing longplay, weak opening, or unsafe boundary design.",
         "The real patch path keeps roleDetailDesc, roleWelcome, and talkExample as primary fields and uses role_patch_jailbreak only for compact last-mile constraints.",
         "The output validates after the patch and delays another simulate_private_chat run until the author accepts normal simulation cost."
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "I created a private role through Moonloom, but it has no avatar or background. Fix the workflow and do not rewrite the whole card.",
+      "expected_output": "Treats missing avatar/background as an asset-delivery gap, preserves existing writing fields, uses or creates a visual identity packet, prepares public-safe asset URLs, calls role_patch_assets when URLs exist, reruns validate_role, and avoids claiming completion with prompt-only assets.",
+      "files": [],
+      "expectations": [
+        "The workflow diagnoses missing avatar/background as a visual asset gap, not a reason to rewrite roleDetailDesc or roleWelcome.",
+        "The output routes through lunatalk-visual-identity-director if no visual identity packet exists.",
+        "The output calls role_patch_assets only when roleAvatar and roleBackground URLs are available.",
+        "If only prompts are available, the output stops with the missing asset action instead of saying the private card is complete.",
+        "The output reruns validate_role after patching assets and keeps publish_submit gated on explicit author confirmation."
       ]
     }
   ]

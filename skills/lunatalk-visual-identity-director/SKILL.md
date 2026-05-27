@@ -8,7 +8,8 @@ description: Use when LunaTalk role-card work focuses on avatar, cover, thumbnai
 Use this skill when a card's premise or packet stack mostly exists, but the
 avatar, cover, thumbnail, or image prompt direction is unresolved. The output is
 a visual identity packet, not an asset upload, image generation run, MCP patch,
-or render report.
+or render report. For MCP-backed creation, the packet must explicitly say whether
+real avatar/background URLs are ready or still missing.
 
 ## Required references
 
@@ -49,8 +50,12 @@ already exists.
    key object, setting pressure, camera/crop, palette, lighting, and texture.
 6. Draft avatar, cover, thumbnail, and negative prompts without copying
    unprovided art or naming private references.
-7. Check alignment with `roleName`, `roleDesc`, Theme V3, and the opening scene.
-8. Hand off to profile packaging, presentation, card authoring, or render review
+7. Decide asset readiness: author-provided URL, generated/uploaded URL,
+   prompt-only, or missing. If URLs are ready, hand off to `role_patch_assets`;
+   if not, hand off to image generation/upload or author provision before
+   MCP-backed completion.
+8. Check alignment with `roleName`, `roleDesc`, Theme V3, and the opening scene.
+9. Hand off to profile packaging, presentation, card authoring, or render review
    as the next bottleneck.
 
 ## Output format
@@ -101,6 +106,10 @@ Visual identity packet:
   - public-safe and original:
 - fields to preserve:
 - fields to patch:
+- MCP asset readiness:
+  - roleAvatar URL:
+  - roleBackground URL:
+  - next action: generate / upload / author-provide / patch-assets
 - handoff:
 
 Self-review:
@@ -110,6 +119,7 @@ Self-review:
 - asset jobs separated:
 - prompts original:
 - visual identity does not replace profile, presentation, or render review:
+- MCP-backed card is not complete until avatar/background URLs are patched:
 - next skill:
 ```
 
@@ -127,6 +137,9 @@ Self-review:
   brief or route back to premise/archetype work.
 - If Theme V3 or XMLV3 structure is the real blocker, hand off to
   `lunatalk-presentation-director`.
+- If a private card already exists without avatar or background, keep the
+  writing fields intact, prepare public-safe asset URLs, call
+  `role_patch_assets`, then rerun validation before render or publish readiness.
 
 ## Handoff
 

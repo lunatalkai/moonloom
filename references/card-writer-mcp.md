@@ -29,13 +29,14 @@ same key.
 
 1. `role_create_private` or `role_get`
 2. `role_patch_profile`
-3. `role_patch_detail`
-4. `role_patch_welcome`
-5. Optional `theme_bind` and `extension_enable`
-6. `validate_role`
-7. `render_preview`
-8. `simulate_private_chat`
-9. `publish_submit` only after explicit author confirmation
+3. `role_patch_assets`
+4. `role_patch_detail`
+5. `role_patch_welcome`
+6. Optional `theme_bind` and `extension_enable`
+7. `validate_role`
+8. `render_preview`
+9. `simulate_private_chat`
+10. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -86,6 +87,29 @@ Update profile fields.
   }
 }
 ```
+
+### `role_patch_assets`
+
+Update the role avatar and background image URLs. Use this after a visual
+identity packet exists and after the AI client, author, or app asset pipeline has
+prepared public-safe image URLs. A prompt or art brief alone is not enough to
+claim MCP-backed creation is complete.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "assets-...",
+  "roleId": "...",
+  "patch": {
+    "roleAvatar": "https://...",
+    "roleBackground": "https://..."
+  }
+}
+```
+
+If asset URLs are not available, stop before final validation/render handoff and
+return the visual identity packet, image prompts, and the missing asset action.
+Do not silently finish a "complete private card" without avatar and background.
 
 ### `role_patch_detail`
 
@@ -164,6 +188,7 @@ When validation is not `pass`, `nextRecommendedTools` usually points to the
 technical repair surface:
 
 - `role_patch_profile` when required profile fields are missing.
+- `role_patch_assets` when avatar or background image URLs are missing.
 - `role_patch_detail` when required detail fields are missing.
 - `role_patch_welcome` for required welcome content, unsafe HTML, invalid XMLV3,
   or unsupported render tags.
