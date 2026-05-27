@@ -48,6 +48,41 @@ Treat numbers as guardrails. A long field is not strong by itself; a short field
 is only acceptable when it still contains the complete operating engine for that
 card shape.
 
+## Multi-Signal Benchmark Selection
+
+Do not build the benchmark set from one popularity lens. Use several anonymous
+benchmark rails so the method learns different kinds of user preference without
+turning any one score into a writing rule.
+
+Use a balanced packet:
+
+- recent heat: finds promises, openings, and first actions that start quickly
+- sustained heat: finds durable engines, repeat loops, and broad appeal
+- new-card quality: finds early cards whose structure survives small-sample noise
+- interaction depth: finds cards that make users keep replying after the hook
+- retention / stickiness: finds cards with return paths, memory, and role
+  initiative beyond one scene
+- author-level consistency: finds repeatable craft systems across several cards,
+  not a single lucky premise
+- freshness / latest: useful for current surface tastes, but never quality proof
+  by itself
+
+Read across rails before drawing a pattern:
+
+- If the same card shape appears in both heat and retention rails, inspect the
+  durable engine and opening proof first.
+- If a shape has heat but weak stickiness, treat it as a hook lesson, not a
+  longplay lesson.
+- If a shape has stickiness but weaker heat, inspect its engine and then repair
+  profile packaging or first-screen clarity separately.
+- If author-level consistency is high, look for field allocation, modular prompt
+  structure, and presentation habits that can be generalized.
+
+Keep the packet anonymous. Do not store exact rail names, endpoints, queries,
+rank positions, scores, identifiers, author names, or source wording in
+Moonloom. Convert the evidence into craft dimensions such as "strong first-turn
+contract", "deep interaction loop", "return hook", or "profile promise gap".
+
 ## Deep Sample Reading
 
 Do not stop at length statistics. Read complete high-quality samples and extract
@@ -191,7 +226,7 @@ Use this XMLV3 method:
 Use this operating sequence for benchmark-calibrated creation:
 
 1. Build an anonymized benchmark pattern packet from aggregate calibration, deep
-   sample reading, and ordinary-card contrast.
+   sample reading, multi-signal benchmark selection, and ordinary-card contrast.
 2. Pass the premise legibility gate or route back to premise workshop.
 3. Choose the card shape and language budget target.
 4. Draft the detail operating engine before writing final prose.
