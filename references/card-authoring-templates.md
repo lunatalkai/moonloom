@@ -201,6 +201,35 @@ Tension packet:
   - pressure renews after first reply:
   - no player-agency takeover:
 - handoff:
+State economy packet:
+- current request:
+- card shape:
+- state need:
+- candidate fields:
+  - field:
+  - keep | omit:
+  - reason:
+- state fields:
+  - key:
+  - visibility: visible | hidden | detail-only
+  - owner:
+  - allowed values:
+  - update trigger:
+  - update cadence:
+  - role behavior changed:
+  - player options changed:
+  - token cost:
+- omitted state:
+  - candidate:
+  - reason:
+- field placement:
+  - roleDetailDesc:
+  - roleWelcome / XMLV3:
+  - Theme V3:
+  - hidden JSON:
+- agency guardrails:
+- verification probes:
+- handoff:
 Render repair packet:
 - roleId:
 - render mode:

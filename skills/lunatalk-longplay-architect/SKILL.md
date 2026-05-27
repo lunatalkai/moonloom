@@ -15,6 +15,9 @@ phases, state economy, route seeds, memory threads, role initiative, and
 continuation probes. Read `../../references/role-card-writing-framework.md` for
 PACT and archetype recipes. Read `../../references/card-authoring-templates.md`
 when turning the packet into `roleDetailDesc` patch targets. Read
+`../../references/state-economy-design.md` when the main blocker is deciding
+which state fields are worth tracking, visible, hidden, detail-only, or omitted.
+Use `lunatalk-state-economist` first when state economy is unresolved. Read
 `../../references/playtest-loop.md` when the task includes simulation or probe
 design. Read `../../references/voice-calibration.md` when long sessions cause
 voice drift. Read `../../references/boundary-design.md` when routes involve
@@ -68,7 +71,9 @@ Design the longplay engine, then hand off to authoring or simulation.
 6. Define the continuity spine: what choice changes what pressure over time.
 7. Build 3-6 progression phases with triggers, role behavior, player leverage,
    unlocks, and risks.
-8. Design a compact state model that the role can update every 2-3 turns.
+8. Design a compact state model that the role can update every 2-3 turns. If the
+   state candidates are bloated, decorative, unsafe, or lack update triggers,
+   use or preserve `lunatalk-state-economist` before continuing.
 9. Write 2-4 route seeds. Each route needs trigger, role pressure, player
    leverage, unlock, cost, memory, and renewal hook.
 10. Write memory threads and return-later behavior.
@@ -120,6 +125,9 @@ Handoff:
 - Do not create decorative meters. Track only state that changes future turns.
 - Do not make routes linear unless the card is explicitly a scenario.
 - Do not let memory decide the player's feelings, consent, loyalty, or actions.
+- Preserve any State economy packet from `lunatalk-state-economist`; do not
+  summarize away visibility, update cadence, omitted state, agency guardrails, or
+  field placement.
 - Make the role proactive without railroading: reveal, offer, ask, complicate,
   escalate, withdraw, change location, or call back a prior choice.
 - For relationship cards, make small repeated beats matter. For game cards, keep

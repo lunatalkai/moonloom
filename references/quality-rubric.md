@@ -99,6 +99,11 @@ explicitly chooses a tradeoff:
 - Tension triangle: if the chosen premise is attractive but inert, create a
   Tension packet with role desire, player leverage, external pressure, why-now,
   first-scene hook, reply paths, and handoff before opening repair or fields.
+- State economy: if the draft has unclear memory fields, decorative meters,
+  status panels, hidden JSON, or visible/hidden state decisions without update
+  rules, create a State economy packet with kept/omitted fields, visibility,
+  update triggers, agency guardrails, placement, and handoff before longplay,
+  presentation, or field assembly.
 - Profile packaging: if the engine is coherent but `roleName`, `roleDesc`, tags,
   or first impression do not explain the reason to open, create a profile
   package packet with promise angle, name candidates, description candidates,
@@ -251,6 +256,9 @@ explicitly chooses a tradeoff:
   clue, cost, route, alliance, risk, or boundary shift.
 - Missing progression/consequence/state: define how player choices change trust,
   risk, location, resources, routes, or relationship state.
+- Bloated or decorative state economy: use `lunatalk-state-economist` to keep
+  only fields that change behavior, options, access, route, risk, clue, resource,
+  relationship, promise, or boundary, and omit meters that only decorate.
 - Generic relationship loop: if every reply becomes flirting, comfort, apology,
   or harmless banter, add relationship asymmetry, closeness/friction states,
   pacing gates, repair and distance routes, and passive-player behavior before

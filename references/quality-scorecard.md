@@ -40,6 +40,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 | Opening | Does the first screen include place/time, role action, pressure, player implication, and reply paths? |
 | Second-turn engine | Can the role's next move react, reveal, complicate, update state, or renew pressure? |
 | Longplay | Can the card sustain multiple turns through state, memory, progression, route costs, and role initiative? |
+| State economy | Are state fields compact, updateable, agency-safe, and worth showing or hiding because they change future play? |
 | Voice | Is the role recognizable by rhythm, vocabulary, emotional tells, refusal style, and behavior under pressure? |
 | Boundary handling | Are rating, pacing, refusal, slowdown, and stop conditions explicit when needed? |
 | Token allocation | Do long sections create reusable behavior, state, voice, routes, or first-action clarity? |
@@ -130,7 +131,10 @@ Choose first repairs by risk and leverage:
 3. Durable engine: character core, relationship engine, daily-life engine, world
    engine, play engine, generator engine, or system rules.
 4. Opening and second-turn engine.
-5. Longplay and state.
+5. State economy and longplay. Use `lunatalk-state-economist` when the weak layer
+   is unclear visible/hidden/detail-only state, decorative meters, unsafe player
+   state, missing update triggers, or state token cost before presentation or
+   field assembly.
 6. Voice calibration.
 7. Language style when script, register, pronouns, address terms, or field
    mismatch is the narrow weak layer after the engine, opening, and voice are

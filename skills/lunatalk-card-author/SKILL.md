@@ -24,7 +24,8 @@ similar-card, copied-draft, derivative, or "like X but original" work before
 fields; `profile-packaging.md`, `visual-identity.md`, `language-style.md`,
 `quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`,
 `archetype-contracts.md`, `card-diagnosis.md`,
-`tension-triangle.md`, `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
+`tension-triangle.md`, `state-economy-design.md`, `presentation-design.md`,
+`token-economy.md`, `voice-calibration.md`,
 `talk-example-design.md`, `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
 `agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
 matching focused tasks.
@@ -74,6 +75,11 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    leverage, external pressure, why-now, first-scene pressure, or says the chosen
    idea is attractive but passive, use `lunatalk-tension-weaver` before field
    assembly unless a Tension packet already exists.
+   If the author asks which state fields should exist, what should be visible vs
+   hidden vs detail-only, how memory/state updates, whether status meters are
+   decorative, or how to keep state player-agency-safe, use
+   `lunatalk-state-economist` before field assembly unless a State economy
+   packet already exists.
    If the author asks for language consistency, zh-Hant / zh-TW cleanup,
    Traditional/Simplified mixing, translated-sounding prose, register alignment,
    pronouns, address terms, punctuation, mixed-language tags, or mismatch between
@@ -190,6 +196,9 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    `lunatalk-token-architect` when the author primarily asks about tokenBudget,
    welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
    preserving playability while reducing token cost. Prefer
+   `lunatalk-state-economist` when the author primarily asks which memory/state
+   fields to keep, omit, show, hide, or update before longplay or presentation.
+   Prefer
    `lunatalk-presentation-director` when the author primarily asks how to present
    a coherent card through XMLV3, Theme V3, HTML, visible state, hidden state, or
    first-screen hierarchy before final fields or render review.
@@ -198,9 +207,11 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    canon/IP adaptation, daily-life, light-setting, heavy-setting, or ensemble.
 4. Draft the card in Moonloom first: promise, engine, play, and presentation. Use
    the universal draft packet from `card-authoring-templates.md` for thin or
-   high-stakes briefs. Preserve any `lunatalk-presentation-director` packet when
-   assembling fields. When the author already provides a coherent packet stack
-   and asks for final fields, produce the final role-field authoring packet from
+   high-stakes briefs. Preserve any `lunatalk-state-economist` packet before
+   turning state into detail rules, welcome status, XMLV3, or hidden JSON.
+   Preserve any `lunatalk-presentation-director` packet when assembling fields.
+   When the author already provides a coherent packet stack and asks for final
+   fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.
 5. Run Moonloom self-review before calling mutating tools.
 6. If the mode is draft-only field assembly or the author forbids MCP calls,
@@ -219,7 +230,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    turn protocol, failure-forward behavior, or visible state updates.
    Use `lunatalk-longplay-architect` when the current task is long-term
    playability, memory/state, route seeds, progression, or a dead third-turn
-   loop. Use or preserve `lunatalk-voice-director` when the current patch changes
+   loop. Use or preserve `lunatalk-state-economist` when the current patch
+   decides state fields, visibility, hidden JSON, update cadence, decorative
+   meter removal, or state token cost. Use or preserve
+   `lunatalk-voice-director` when the current patch changes
    speech style, voice cards, talkExample, refusal voice, or ensemble contrast.
    Use or preserve `lunatalk-relationship-architect` when the current patch
    changes relationship promise, asymmetry, trust/friction state, pacing gates,
@@ -243,9 +257,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    task is welcome/opening repair or the first-action path is unclear. Use or
    preserve `lunatalk-presentation-director` when the opening is coherent but the
    unresolved layer is welcome mode, XMLV3 structure, Theme V3 split, hidden
-   state, visible status, visual affordances, or first-screen hierarchy. Patch
-   the opening scene with `role_patch_welcome` from the opening and presentation
-   packets.
+   state, visible status, visual affordances, or first-screen hierarchy. If the
+   visible/hidden state fields themselves are not settled, use or preserve
+   `lunatalk-state-economist` before presentation. Patch the opening scene with
+   `role_patch_welcome` from the opening and presentation packets.
 12. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
    a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot

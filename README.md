@@ -63,6 +63,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   factions, locations, and lore-heavy settings into playable world-engine packets.
 - `skills/lunatalk-tension-weaver` turns inert or pretty-but-passive premises into
   role desire, player leverage, external pressure, why-now, and first-scene hooks.
+- `skills/lunatalk-state-economist` decides which state fields deserve token
+  budget, which are visible/hidden/detail-only, which decorative meters to omit,
+  and how state updates before authoring, longplay, or presentation.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
 - `skills/lunatalk-talk-example-curator` decides when to omit `talkExample`, add
@@ -122,6 +125,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   networks, location functions, compact state, route seeds, and lore compression.
 - `references/tension-triangle.md` defines role desire, player leverage, external
   pressure, why-now checks, and tension packets for inert premise repair.
+- `references/state-economy-design.md` defines visible/hidden/detail-only state
+  decisions, update rules, decorative meter removal, agency-safe state, and State
+  economy packets.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `references/archetype-contracts.md` defines primary card contracts, hybrid

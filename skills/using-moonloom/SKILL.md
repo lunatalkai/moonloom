@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, premise/tension, sample calibration, originality, canon/IP inspiration, profile, visual identity, language, talkExample, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom/LunaTalk creation work involving role cards, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
 ---
 
 # Using Moonloom
@@ -140,6 +140,13 @@ bottleneck and list delayed routes under `do not do yet`.
   render review, or simulation. If no direction exists yet, route to
   `lunatalk-premise-workshop`; if only character core, player agency, or opening
   execution is missing, route to that narrower skill first.
+- State economy, compact memory fields, visible vs hidden vs detail-only state,
+  update rules, decorative meters, status panels that may be ornamental, state
+  token cost, or player-agency-safe state decisions before longplay, play-engine,
+  presentation, authoring, render, or simulation: use
+  `lunatalk-state-economist`. If the full continuation loop is missing, hand off
+  afterward to `lunatalk-longplay-architect`; if the remaining issue is XMLV3 /
+  Theme V3 placement, hand off afterward to `lunatalk-presentation-director`.
 - Existing card or draft diagnosis, mixed symptoms, author feedback like boring
   or off, validate/render passing but behavior still weak, simulation symptoms,
   deciding what to fix first, weakest-layer triage, field patch mapping, or
@@ -162,9 +169,10 @@ bottleneck and list delayed routes under `do not do yet`.
   `lunatalk-presentation-director` before authoring, render review, simulation,
   or publish readiness. If a preview URL, screenshot, render report, validation
   report, DOM summary, contrast report, overflow report, blocked request list,
-  or console error list already exists, use `lunatalk-render-review`; if opening
-  beats or player agency are missing, use `lunatalk-opening-director` or
-  `lunatalk-agency-designer` first.
+  or console error list already exists, use `lunatalk-render-review`; if state
+  fields or update rules are unresolved, use `lunatalk-state-economist` first;
+  if opening beats or player agency are missing, use `lunatalk-opening-director`
+  or `lunatalk-agency-designer` first.
 - Instruction-layer repairs, system behavior requests, jailbreak text,
   `role_patch_jailbreak`, repeated out-of-character assistant framing, output
   schema drift, state protocol drift, or transcript-backed format/style
@@ -247,7 +255,9 @@ bottleneck and list delayed routes under `do not do yet`.
   progression, memory/state, dead third turns, repetitive loops, passive role
   behavior, session restart, or choices that do not matter: use
   `lunatalk-longplay-architect` before authoring, simulation, or publish
-  readiness.
+  readiness. If the immediate blocker is deciding which state fields are worth
+  tracking, visible, hidden, detail-only, or omitted, use
+  `lunatalk-state-economist` first.
 - Character core, persona appeal, memorable identity, thin or generic roles,
   trope repair, desire/contradiction/boundary, mask/wound, relationship
   leverage, asymmetry, emotional hook, or distinctiveness repair: use
@@ -339,6 +349,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/tension-triangle.md` when the task involves tension
   triangle, role desire, player leverage, external pressure, why-now, stakes,
   hook, inert premises, or pretty-but-passive idea repair.
+- Read `../../references/state-economy-design.md` when the task involves state
+  economy, compact memory fields, visible/hidden/detail-only state, update
+  rules, decorative meters, status panels, hidden JSON, or agency-safe state.
 - Read `../../references/role-card-writing-framework.md` before writing or deeply
   revising any role card.
 - Read `../../references/archetype-contracts.md` when the task involves card

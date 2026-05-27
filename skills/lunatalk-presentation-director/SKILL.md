@@ -15,6 +15,9 @@ Read `../../references/presentation-design.md` first. Read
 `../../references/theme-v3-rendering.md` for XMLV3, Theme V3, and HTML syntax
 boundaries. Read `../../references/card-authoring-templates.md` when a
 presentation packet must be preserved into field assembly. Read
+`../../references/state-economy-design.md` when visible status, hidden JSON, or
+status panels require unsettled state-field decisions. Use
+`lunatalk-state-economist` first when state economy is unresolved. Read
 `../../references/opening-design.md` when first-screen beats or second-turn
 change are incomplete. Read `../../references/token-economy.md` when visual
 structure may become welcome bloat. Read `../../references/agency-design.md`
@@ -39,6 +42,9 @@ Use `lunatalk-opening-director` first when the first screen lacks place/time,
 role action, pressure, player implication, reply paths, or second-turn change.
 Use `lunatalk-agency-designer` first when visual choices decide the player's
 feelings/actions or funnel every route.
+Use `lunatalk-state-economist` first when the task has not decided which state
+fields exist, how they update, which are visible vs hidden vs detail-only, or
+which meters are decorative and should be omitted.
 
 ## Workflow
 
@@ -46,6 +52,8 @@ feelings/actions or funnel every route.
    repair plan.
 2. Check prerequisites. If opening beats, agency, or token evidence are the real
    blocker, route to the narrower skill before presentation polish.
+   If state fields, update rules, or visible/hidden classification are unresolved,
+   route to `lunatalk-state-economist` before designing the presentation layer.
 3. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 plus Theme V3 for new
    structured welcomes.
 4. Separate visible content, hidden JSON state, Theme V3 responsibilities, and
