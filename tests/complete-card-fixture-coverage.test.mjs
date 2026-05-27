@@ -56,7 +56,9 @@ test('complete fixture demonstrates field-ready role content and fallback', asyn
   }
 
   assert.match(fixture, /Core premise[\s\S]*Player position[\s\S]*Agency and interaction/);
-  assert.match(fixture, /Voice fingerprint[\s\S]*Longplay engine[\s\S]*Do \/ Avoid/);
+  assert.match(fixture, /Voice fingerprint[\s\S]*Longplay engine[\s\S]*Scene reservoir \/ turn recipes[\s\S]*Do \/ Avoid/);
+  assert.match(fixture, /Scene seed:[\s\S]*trigger:[\s\S]*role move:[\s\S]*renewed hook:/i);
+  assert.match(fixture, /Turn recipe:/i);
   assert.match(fixture, /<scene>[\s\S]*<state>\{[\s\S]*<\/state>[\s\S]*<choice>/);
 });
 

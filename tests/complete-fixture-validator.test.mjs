@@ -104,6 +104,9 @@ test('complete fixture validator rejects thin roleDetailDesc engines', async () 
     'Longplay engine',
     '- thin.',
     '',
+    'Scene reservoir / turn recipes',
+    '- thin.',
+    '',
     'Do / Avoid',
     '- thin.',
   ].join('\n');
@@ -147,10 +150,23 @@ test('complete fixture validator rejects under-target high-ambition detail lengt
       'Longplay engine',
       '- Later sessions preserve memory, unlock routes, and renew pressure.',
       '',
+      'Scene reservoir / turn recipes',
+      '- Scene seeds and turn recipes give later replies concrete material.',
+      '',
       'Do / Avoid',
     ].join('\n'),
   );
   const result = validateCompleteFixture(shortened, { filePath: fixturePath });
 
   assert.ok(issueCodes(result).includes('fixture.detail.too_short'));
+});
+
+test('complete fixture validator rejects missing scene reservoir', async () => {
+  const fixture = (await readFixture()).replace(
+    /Scene reservoir \/ turn recipes[\s\S]*?(?=\nDo \/ Avoid)/,
+    '',
+  );
+  const result = validateCompleteFixture(fixture, { filePath: fixturePath });
+
+  assert.ok(issueCodes(result).includes('fixture.detail_section.missing'));
 });
