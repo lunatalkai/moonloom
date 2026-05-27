@@ -89,6 +89,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   before blueprinting or authoring.
 - `skills/lunatalk-profile-packager` sharpens `roleName`, `roleDesc`, tags, and
   first-impression promise when the card engine exists but the public profile is weak.
+- `skills/lunatalk-visual-identity-director` plans avatar, cover, thumbnail,
+  image prompts, and first-impression visual proof without replacing profile,
+  presentation, or render review.
 - `skills/lunatalk-language-stylist` cleans language consistency, zh-Hant /
   zh-TW style, register, pronouns, address terms, and field-to-field wording
   without changing the card engine.
@@ -150,6 +153,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   packets.
 - `references/profile-packaging.md` defines role profile packaging, promise
   compression, scannable `roleDesc` patterns, tag sets, and first-impression checks.
+- `references/visual-identity.md` defines avatar, cover, thumbnail, image prompt,
+  visual proof, public-safe art direction, and visual identity packets.
 - `references/language-style.md` defines language-style packets, Traditional
   Chinese consistency, register alignment, pronoun/address matrices, and
   field-level localization passes.

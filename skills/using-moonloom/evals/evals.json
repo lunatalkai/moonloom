@@ -494,6 +494,19 @@
         "The output says not to use jailbreak for boring, generic, passive, or missing-engine cards.",
         "The output delays any role_patch_jailbreak call and another costed simulation until the guardrail packet and author confirmation are ready."
       ]
+    },
+    {
+      "id": 39,
+      "prompt": "I am not sure which Moonloom skill to use. The premise, player role, opening, and profile fields are coherent, but I need avatar, cover, thumbnail, and image prompt direction that proves the card promise before Theme V3 work. Do not generate images or call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes avatar, cover, thumbnail, image prompt, and first-impression visual direction to lunatalk-visual-identity-director before presentation, render review, or card authoring.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes avatar, cover, thumbnail, image prompt, and visual identity work to lunatalk-visual-identity-director.",
+        "The route focuses on a Visual identity packet with promise proof, asset plan, art direction, prompts, consistency checks, and handoff.",
+        "The output distinguishes visual identity from Theme V3/XMLV3 presentation and actual render review.",
+        "The output avoids MCP calls, image generation, asset upload, simulation, and publishing during visual identity planning."
+      ]
     }
   ]
 }

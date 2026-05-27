@@ -43,6 +43,12 @@ generic `roleName`, overlong `roleDesc`, vague tags, or a first impression that
 does not explain why the player should open the card. Profile packaging should
 preserve the engine and patch the promise surface, not reopen broad ideation.
 
+Use `visual-identity.md` when the avatar, cover, thumbnail, or image prompt is
+the weak first-impression layer. Visual identity must prove the promise, player
+role, and tension in one glance. It should preserve the engine, stay original,
+and hand off to profile packaging, presentation planning, or render review
+instead of replacing those workflows.
+
 Use `language-style.md` when the engine, opening, and voice card already work but
 the language layer is weak: mixed Traditional/Simplified Chinese, translated-
 sounding prose, pronoun/address drift, mixed-language tags, punctuation mismatch,
@@ -108,6 +114,10 @@ This is how the card feels visually without corrupting the story logic.
 Prefer XMLV3 plus Theme V3 for new visual cards. Use HTML only for a specific
 custom layout or legacy import. Visual styling should reveal state, mood, or
 choice structure; it should not hide critical instructions inside decoration.
+
+Visual identity and presentation are adjacent but different. Avatar, cover,
+thumbnail, and image prompts define visual proof; Theme V3/XMLV3/HTML define how
+the opening renders. A strong card can need both packets before render review.
 
 ## The PACT quality loop
 
