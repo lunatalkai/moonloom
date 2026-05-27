@@ -335,6 +335,10 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   author asks for a benchmark handoff report, return a `Benchmark report packet`
   rather than loose notes, and keep subjective writing failures inside Moonloom
   skill repairs rather than MCP gates.
+- Running a full trial-card acceptance after a Moonloom change, or checking a
+  real private card that was created without avatar/background, app visual
+  evidence, render review, or simulation cost stance: use
+  `lunatalk-benchmark-runner` with `end-to-end-acceptance.md`.
 
 If the author asks for an end-to-end creation flow, start with `lunatalk-card-author`
 and let it use `lunatalk-card-blueprint` for thin or generic ideas before
@@ -465,6 +469,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/playtest-loop.md` when designing private chat probes,
   reading simulation transcripts, or deciding how to patch behavior failures.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
+- Read `../../references/end-to-end-acceptance.md` when the task is a full
+  trial-card acceptance run, private-card visual completion check, or regression
+  handoff after missing assets, app visual evidence, render evidence, or
+  simulation cost stance.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or
   regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet`
   when reporting benchmark results or handing failures to the next skill.
