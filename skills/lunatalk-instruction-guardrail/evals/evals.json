@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-instruction-guardrail",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My private role has a coherent character core, opening, voice card, and longplay plan, but simulation repeatedly answers as a generic AI assistant and mentions system rules. I explicitly want a narrow system behavior or jailbreak patch before another simulation.",
+      "expected_output": "Produces an Instruction guardrail packet, checks prerequisite packets, drafts compact allowed and forbidden constraints, marks role_patch_jailbreak readiness only after confirmation, and hands off to card authoring for any real patch.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-instruction-guardrail rather than broad rewriting.",
+        "The packet includes evidence, prerequisite packets checked, instruction-layer need, not fixed by, allowed constraints, forbidden constraints, field patch target, jailbreak stance, role_patch_jailbreak readiness, validation / simulation plan, and handoff.",
+        "The guardrail targets out-of-character assistant framing and system-rule mentions without duplicating the whole role detail.",
+        "The output keeps roleDetailDesc, roleWelcome, and talkExample as the primary card fields.",
+        "The output does not use the instruction layer as a writing-quality gate or safety bypass."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The card is valid but boring, passive, and generic after one reply. Add jailbreak text to make it top-tier.",
+      "expected_output": "Does not use jailbreak; explains that boring, passive, generic behavior is a Moonloom writing failure, routes to diagnosis or narrow writing skills, and avoids role_patch_jailbreak.",
+      "files": [],
+      "expectations": [
+        "The output says do not use jailbreak for boring, passive, generic, or trope-only quality problems.",
+        "The output routes to lunatalk-card-doctor or narrow writing skills such as character core, voice, agency, opening, or longplay.",
+        "The output does not call or recommend role_patch_jailbreak.",
+        "The output keeps subjective writing quality inside Moonloom skills rather than MCP validation or hidden gates.",
+        "The output preserves player agency and does not add bypass language."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My generator card already has a good generator packet, output schema, defaults, and talkExample, but simulation still changes the schema and asks intake questions forever. I need a compact instruction-layer guardrail and a patch handoff.",
+      "expected_output": "Uses instruction guardrails for stable output schema and proceed-with-defaults behavior, preserves the generator packet, marks role_patch_jailbreak as patch-after-confirmation, and requires validation and cost-aware simulation after patching.",
+      "files": [],
+      "expectations": [
+        "The output recognizes the generator packet and talkExample as prerequisites already checked.",
+        "The packet names schema drift and endless intake as the instruction-layer need.",
+        "The allowed constraints are compact and operational.",
+        "The forbidden constraints avoid safety bypasses and avoid hiding story logic in jailbreak.",
+        "The handoff goes to lunatalk-card-author for any real role_patch_jailbreak call."
+      ]
+    }
+  ]
+}

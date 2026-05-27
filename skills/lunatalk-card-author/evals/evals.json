@@ -329,6 +329,19 @@
         "The output routes an RPG rule-manual weakness to lunatalk-play-engineer or opening repair before card-author if the play engine is missing.",
         "The output does not call role_create_private, patch tools, validate_role, render_preview, simulation, or publish tools during sample calibration."
       ]
+    },
+    {
+      "id": 26,
+      "prompt": "Patch an existing private role where the character core, welcome, voice card, boundary packet, and generator schema are coherent, but simulation repeatedly answers as a generic AI assistant and breaks the output schema. The author explicitly asks for a jailbreak/system behavior patch before another simulation.",
+      "expected_output": "Uses lunatalk-instruction-guardrail before any role_patch_jailbreak call, preserves the guardrail packet, patches jailbreak only after author confirmation, validates after patching, and reruns simulation only with accepted cost.",
+      "files": [],
+      "expectations": [
+        "The workflow routes instruction-layer and jailbreak/system behavior repair to lunatalk-instruction-guardrail before role_patch_jailbreak.",
+        "The instruction guardrail packet includes evidence, prerequisite packets checked, instruction-layer need, allowed constraints, forbidden constraints, jailbreak stance, role_patch_jailbreak readiness, validation / simulation plan, and handoff.",
+        "The output does not use jailbreak to fix generic quality, missing voice, missing longplay, weak opening, or unsafe boundary design.",
+        "The real patch path keeps roleDetailDesc, roleWelcome, and talkExample as primary fields and uses role_patch_jailbreak only for compact last-mile constraints.",
+        "The output validates after the patch and delays another simulate_private_chat run until the author accepts normal simulation cost."
+      ]
     }
   ]
 }

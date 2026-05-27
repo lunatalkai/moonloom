@@ -67,6 +67,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-presentation-director` plans pre-render XMLV3, Theme V3,
   HTML, visible state, hidden state, visual affordances, and first-screen
   hierarchy before authoring or render review.
+- `skills/lunatalk-instruction-guardrail` designs narrow instruction-layer
+  guardrails and `role_patch_jailbreak` handoffs only when normal fields are
+  coherent but behavior or format still drifts.
 - `skills/lunatalk-quality-auditor` reviews drafts, blueprints, packet stacks,
   and role fields with a public craft scorecard before authoring, simulation, or
   publishing.
@@ -174,6 +177,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/presentation-design.md` defines pre-render presentation decisions
   for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
   hierarchy.
+- `references/instruction-guardrails.md` defines when a narrow instruction layer
+  is justified, how to avoid jailbreak misuse, and how to hand off optional
+  `role_patch_jailbreak` patches.
 - `references/quality-scorecard.md` defines the public craft score scale,
   dimensions, blockers, tiers, and quality audit packet for "is this good
   enough?" reviews.

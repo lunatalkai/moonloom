@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile packaging, language style, variants, ensemble/story/daily-life/RPG/generator/material workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, benchmark handoff reports, Benchmark report packets, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile/language/variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -136,6 +136,13 @@ bottleneck and list delayed routes under `do not do yet`.
   or console error list already exists, use `lunatalk-render-review`; if opening
   beats or player agency are missing, use `lunatalk-opening-director` or
   `lunatalk-agency-designer` first.
+- Instruction-layer repairs, system behavior requests, jailbreak text,
+  `role_patch_jailbreak`, repeated out-of-character assistant framing, output
+  schema drift, state protocol drift, or transcript-backed format/style
+  constraints after normal fields are coherent: use
+  `lunatalk-instruction-guardrail`. Do not use jailbreak for boring, generic,
+  passive, trope-only, or missing-engine cards; route those to the narrow writing
+  skill instead.
 - Author-provided files, folders, material packs, pasted notes, existing drafts,
   imported content, large world bibles, or lore that must be compressed before
   card creation: use `lunatalk-material-distiller`.
@@ -362,6 +369,10 @@ validation, render review, simulation, and publish readiness.
   HTML, Theme V3 vs welcome content, visible state vs hidden JSON state,
   first-screen hierarchy, visual affordances, or presentation packets before
   authoring/rendering.
+- Read `../../references/instruction-guardrails.md` when the task involves
+  instruction-layer repair, system behavior, jailbreak text,
+  `role_patch_jailbreak`, out-of-character assistant framing, format drift, or
+  schema/state protocol drift after normal fields are coherent.
 - Read `../../references/card-diagnosis.md` when the task involves existing-card
   diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer
   triage, repair order, or field patch mapping before rewriting.

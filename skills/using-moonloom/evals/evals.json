@@ -481,6 +481,19 @@
         "The packet maps the failed generator case to next Moonloom skill repairs.",
         "The output includes do not turn into MCP gates for subjective writing failures."
       ]
+    },
+    {
+      "id": 38,
+      "prompt": "I am not sure which Moonloom skill to use. My private role has coherent detail, welcome, voice, and boundary packets, but simulation keeps answering as a generic AI assistant and breaks the agreed output schema. The author explicitly asks whether to patch jailbreak/system behavior before another simulation.",
+      "expected_output": "Uses using-moonloom as the router and routes instruction-layer repair, jailbreak/system behavior, role_patch_jailbreak readiness, assistant framing, and schema drift to lunatalk-instruction-guardrail before card-author or another simulation.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes instruction-layer repair, jailbreak/system behavior, role_patch_jailbreak readiness, out-of-character assistant framing, and schema drift to lunatalk-instruction-guardrail.",
+        "The route focuses on an Instruction guardrail packet with evidence, prerequisite packets checked, allowed constraints, forbidden constraints, jailbreak stance, validation / simulation plan, and handoff.",
+        "The output says not to use jailbreak for boring, generic, passive, or missing-engine cards.",
+        "The output delays any role_patch_jailbreak call and another costed simulation until the guardrail packet and author confirmation are ready."
+      ]
     }
   ]
 }
