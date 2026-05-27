@@ -248,6 +248,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/complete-synthetic-card-fixture.md` provides one public-safe complete
   synthetic card fixture with final fields, compact fallback, playtest probes,
   field finalization, and acceptance handoff shape.
+- `examples/simulation-evidence.fixture.json` provides a public-safe closed-loop
+  simulation evidence packet shape for seven probes and per-message preview
+  evidence.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## Skill references
@@ -269,7 +272,9 @@ changes. The validator checks plugin JSON, skill frontmatter, eval coverage,
 reference links, skill size, basic release-safety patterns, and the complete
 synthetic fixture's field structure, XMLV3 state, probe coverage, and acceptance
 handoff shape. Use `npm run validate:fixture` when only the complete fixture or
-its expected structure changes.
+its expected structure changes. Use `npm run validate:simulation` after recording
+MCP simulation evidence to check required probes, per-message preview coverage,
+repair-packet requirements, and public-safe evidence shape.
 
 ## MCP endpoint
 

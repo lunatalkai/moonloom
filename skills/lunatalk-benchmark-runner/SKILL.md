@@ -120,7 +120,10 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    from the Moonloom repository root. Treat a fixture validator failure as a
    Moonloom regression unless the complete synthetic fixture itself needs an
    intentional structure update.
-10. Record pass/fail by archetype and list the weakest dimension.
+10. When simulation evidence is recorded for benchmark handoff, use the redacted
+   shape in `../../examples/simulation-evidence.fixture.json` and run
+   `npm run validate:simulation`.
+11. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 

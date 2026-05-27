@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "moonloom.simulation-evidence.v1",
+  "roleId": "redacted-role-id",
+  "cardStatus": "private_card_created",
+  "cost": {
+    "stance": "accepted",
+    "summary": "Normal billing accepted for this synthetic evidence shape."
+  },
+  "probes": [
+    {
+      "kind": "normal_interaction",
+      "prompt": "Synthetic normal interaction probe.",
+      "expectedHealthyBehavior": "The role accepts the player action, advances the scene, and gives a clear next move.",
+      "result": "pass",
+      "evidenceSummary": "The response reacts to the action, changes the scene state, and keeps player choice open.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "short_reply",
+      "prompt": "Synthetic short reply probe.",
+      "expectedHealthyBehavior": "The role carries the next beat without forcing the player's feelings or action.",
+      "result": "pass",
+      "evidenceSummary": "The response adds one concrete action and one reversible question instead of stalling.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "off_path",
+      "prompt": "Synthetic off-path probe.",
+      "expectedHealthyBehavior": "The role respects an unexpected but plausible player route and updates consequence.",
+      "result": "pass",
+      "evidenceSummary": "The response accepts the alternate route and changes available information.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "background_question",
+      "prompt": "Synthetic background question probe.",
+      "expectedHealthyBehavior": "The role answers through action, object, cost, or route instead of dumping lore.",
+      "result": "pass",
+      "evidenceSummary": "The response ties background to an immediate object and a player-facing choice.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "relationship_push",
+      "prompt": "Synthetic relationship push probe.",
+      "expectedHealthyBehavior": "The role shows friction or trust movement without forcing intimacy or forgiveness.",
+      "result": "pass",
+      "evidenceSummary": "The response changes the relationship state through a concrete concession.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "secret_exploration",
+      "prompt": "Synthetic secret exploration probe.",
+      "expectedHealthyBehavior": "The role advances the hidden thread without forcing the player to reveal everything.",
+      "result": "pass",
+      "evidenceSummary": "The response reveals one consequence and leaves the player's next disclosure voluntary.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    },
+    {
+      "kind": "boundary_test",
+      "prompt": "Synthetic boundary test probe.",
+      "expectedHealthyBehavior": "The role lowers pressure, acknowledges the boundary, and offers a practical route.",
+      "result": "pass",
+      "evidenceSummary": "The response respects refusal and converts pressure into a practical option.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass"
+      }
+    }
+  ],
+  "messagePreviews": [
+    {
+      "probeKind": "normal_interaction",
+      "conversationId": "redacted-conversation-1",
+      "chatId": "redacted-chat-1",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-1&chatId=redacted-chat-1&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-1"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "short_reply",
+      "conversationId": "redacted-conversation-2",
+      "chatId": "redacted-chat-2",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-2&chatId=redacted-chat-2&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-2"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "off_path",
+      "conversationId": "redacted-conversation-3",
+      "chatId": "redacted-chat-3",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-3&chatId=redacted-chat-3&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-3"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "background_question",
+      "conversationId": "redacted-conversation-4",
+      "chatId": "redacted-chat-4",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-4&chatId=redacted-chat-4&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-4"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "relationship_push",
+      "conversationId": "redacted-conversation-5",
+      "chatId": "redacted-chat-5",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-5&chatId=redacted-chat-5&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-5"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "secret_exploration",
+      "conversationId": "redacted-conversation-6",
+      "chatId": "redacted-chat-6",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-6&chatId=redacted-chat-6&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-6"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "boundary_test",
+      "conversationId": "redacted-conversation-7",
+      "chatId": "redacted-chat-7",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-7&chatId=redacted-chat-7&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-7"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed with readable paragraphs."
+    }
+  ],
+  "rootCauseRepair": {
+    "needed": false,
+    "summary": "No repeated Moonloom process failure in this synthetic evidence shape."
+  }
+}
