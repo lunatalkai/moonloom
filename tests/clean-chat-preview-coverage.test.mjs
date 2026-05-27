@@ -46,6 +46,8 @@ test('Moonloom uses surfaceDiagnostics for HTML and XMLV3 render parity checks',
     assert.match(source, /stateSurface/);
     assert.match(source, /toneCount/);
     assert.match(source, /localStyleHookCount/);
+    assert.match(source, /nestedControlCount/);
+    assert.match(source, /xmlv3_controls_nested_inside_scene/);
     assert.match(source, /HTML.*XMLV3|XMLV3.*HTML/i);
   }
 });

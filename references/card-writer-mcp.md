@@ -301,8 +301,14 @@ renderer-structure map, not a replacement for screenshot review:
   the browser preview payload when a status/state surface is actually rendered.
 - `toneCount` and `localStyleHookCount`: whether visual distinction comes from
   Theme V3 tones / HTML style hooks.
+- `nestedControlCount`: XMLV3 controls placed inside `<scene>` instead of as
+  sibling blocks. A nonzero value usually means the output will look compressed
+  into one scene card; move `choices`, `form`, `bar`, `collapse`, `panel`,
+  `grid`, and similar controls outside the scene.
 - `warnings`: parity risks such as dense XMLV3 without section panels or several
-  actions without an explicit `<choices>` group.
+  actions without an explicit `<choices>` group. Treat
+  `xmlv3_controls_nested_inside_scene` as a visual-structure repair before
+  touching writing logic.
 
 Use these fields to compare rich HTML behavior with XMLV3 behavior before
 changing writing logic. If XMLV3 cannot show sectioning, action density, form

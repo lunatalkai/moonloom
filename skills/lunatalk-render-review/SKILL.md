@@ -95,9 +95,14 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Read `structuredReport.surfaceDiagnostics` and, when available, the browser
   preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
   `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
-  `formControlCount`, `stateSurface`, `toneCount`, and `localStyleHookCount`.
+  `formControlCount`, `stateSurface`, `toneCount`, `localStyleHookCount`, and
+  `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
+- Treat `xmlv3_controls_nested_inside_scene` as a structural blocker for rich
+  XMLV3: close `<scene>` after the prose beat, then render `choices`, `form`,
+  `bar`, `collapse`, `panel`, `grid`, and similar controls as sibling blocks so
+  the preview does not collapse everything into one scene card.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.
