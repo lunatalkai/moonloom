@@ -115,7 +115,12 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    dedicated per-message preview harness for selected AI turns and record
    message preview status. Do not parse the normal chat page UI to judge message
    formatting.
-9. Record pass/fail by archetype and list the weakest dimension.
+9. When the benchmark changes field assembly, finalization, render review,
+   simulation, or end-to-end acceptance guidance, run `npm run validate:fixture`
+   from the Moonloom repository root. Treat a fixture validator failure as a
+   Moonloom regression unless the complete synthetic fixture itself needs an
+   intentional structure update.
+10. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 
