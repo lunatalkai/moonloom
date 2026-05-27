@@ -46,7 +46,12 @@ production behavior.
     chat page is only for card-surface asset evidence in step 7.
 11. If `simulate_private_chat` does not return message identifiers, record
     "message preview unavailable" and do not claim per-turn visual completion.
-12. When any layer fails, patch the narrow root cause in a Moonloom skill,
+12. For benchmark or repository handoff, convert simulation results into a
+    redacted simulation evidence packet shaped like
+    `examples/simulation-evidence.fixture.json`, then run
+    `npm run validate:simulation`. Do not store raw transcripts in public
+    Moonloom files.
+13. When any layer fails, patch the narrow root cause in a Moonloom skill,
     reference, template, or card field. Re-run the affected layer instead of
     declaring a one-off card fix complete.
 
@@ -71,6 +76,7 @@ Collect concrete evidence instead of vibes:
 - simulation cost accepted:
 - simulation probes:
 - simulation result:
+- simulation evidence validator:
 - message preview evidence:
 - per-message preview URLs or unavailable reason:
 - root-cause patch made:

@@ -63,6 +63,27 @@ If the simulation result does not include message identifiers, record
 "message preview unavailable" in the repair or acceptance packet and keep the
 visual claim narrower.
 
+## Simulation evidence packet
+
+After a real MCP-backed simulation run, record a compact simulation evidence
+packet instead of storing full transcripts in the public repository. Use
+`examples/simulation-evidence.fixture.json` as the public-safe shape and run
+`npm run validate:simulation` from the Moonloom repository root.
+
+The evidence packet should cover:
+
+- seven probe kinds: normal interaction, short reply, off-path reply, background
+  question, relationship push, secret exploration, and boundary test
+- one public-safe paraphrased `evidenceSummary` per probe
+- checks for character consistency, voice consistency, interaction tension, user
+  agency, format stability, reasonable length, and safety boundary
+- one per-message preview entry per probe when message identifiers are available
+- a repair packet when any probe or check is warning/fail
+
+Do not put raw transcripts, account material, private notes, internal URLs, or
+credential-shaped text into public fixtures. Keep real evidence local or
+redacted before it enters Moonloom.
+
 ## Opening probe
 
 Use when the goal is to test whether the first screen works.

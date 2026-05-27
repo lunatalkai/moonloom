@@ -15,6 +15,8 @@ decide whether another pass is worth the cost.
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, per-message preview, and author co-review.
+Use `npm run validate:simulation` when a run produces a redacted simulation
+evidence packet for repository or benchmark handoff.
 Read `../../references/card-diagnosis.md` when the transcript has multiple
 symptoms and the weakest layer or repair order is unclear. Use
 `lunatalk-card-doctor` before another simulation when validation/render passed
@@ -95,16 +97,20 @@ When the author asks only for a test plan, do not call the tool.
    Do not parse the normal chat page UI for transcript formatting.
 7. If message identifiers are missing, record "message preview unavailable" and
    keep the visual claim narrower.
-8. Map each failure to a Moonloom patch target using `playtest-loop.md`.
+8. When preparing benchmark or repository handoff evidence, write a redacted
+   simulation evidence packet shaped like
+   `../../examples/simulation-evidence.fixture.json` and run
+   `npm run validate:simulation`. Do not store raw transcripts in Moonloom.
+9. Map each failure to a Moonloom patch target using `playtest-loop.md`.
    If the transcript shows several failures at once, create or preserve a
    `lunatalk-card-doctor` diagnosis packet before choosing field patches.
-9. Produce a simulation repair packet before patching fields or paying for
+10. Produce a simulation repair packet before patching fields or paying for
    another simulation pass.
-10. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
+11. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
-11. Run `validate_role` after structural patches.
-12. Re-run simulation when the patch changes core behavior, boundary handling,
+12. Run `validate_role` after structural patches.
+13. Re-run simulation when the patch changes core behavior, boundary handling,
    state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
