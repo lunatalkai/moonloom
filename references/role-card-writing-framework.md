@@ -411,6 +411,12 @@ consequence or role initiative.
 Track only state that changes play. Good state is compact, visible when useful,
 and tied to consequences.
 
+When state itself is the blocker, use `state-economy-design.md` and create a
+State economy packet with candidate fields, visible/hidden/detail-only decisions,
+update triggers, omitted decorative meters, agency guardrails, placement, and
+handoff. Use `lunatalk-state-economist` before longplay, presentation, or final
+fields when the card has unclear state rules or bloated status panels.
+
 Useful state types:
 
 - relationship: trust, suspicion, intimacy, debt, rivalry, loyalty
@@ -419,7 +425,8 @@ Useful state types:
 - promise: secret fragments, vows, taboos, unresolved choices
 
 Avoid decorative state that never updates. A state panel that does not affect
-future turns wastes tokens and attention.
+future turns wastes tokens and attention. Do not store player feelings, consent,
+loyalty, actions, guilt, confession, desire, or final route choice as state.
 
 ### 8. Voice fingerprint
 

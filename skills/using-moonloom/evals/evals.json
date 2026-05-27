@@ -546,6 +546,19 @@
         "The output does not route to premise-workshop because the premise is already chosen, and does not jump directly to opening repair or final field assembly.",
         "The output avoids MCP calls, render, simulation, publishing, lore dumping, prettier-prose-only repair, and player-agency takeover."
       ]
+    },
+    {
+      "id": 43,
+      "prompt": "I am not sure which Moonloom skill to use. The card already has a coherent premise, opening, longplay direction, and voice, but before final fields I need to decide which memory/state fields should exist, which are visible or hidden, how they update, and which status meters are decorative and should be omitted before Theme V3. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes state economy, visible/hidden/detail-only decisions, update rules, decorative meter removal, and agency-safe state to lunatalk-state-economist before presentation or field assembly.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes state economy, memory fields, visible/hidden/detail-only state, update rules, and decorative meters to lunatalk-state-economist.",
+        "The route focuses on a State economy packet with candidate fields, kept/omitted state, visibility, update triggers, agency guardrails, placement, verification probes, and handoff.",
+        "The output does not route primarily to presentation-director because the state fields and update rules are unresolved.",
+        "The output avoids MCP calls, render, simulation, final field assembly, decorative status panels, and storing player feelings or actions as state."
+      ]
     }
   ]
 }

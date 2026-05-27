@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-state-economist",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk card has a beautiful XMLV3 status panel with trust, danger, mood, debt, clue progress, and route labels, but I do not know which state fields should actually exist. Decide visible vs hidden vs detail-only, remove decorative meters, and define update rules before Theme V3 or final fields. Do not call MCP tools.",
+      "expected_output": "Produces a State economy packet with candidate fields, visibility decisions, kept fields, omitted decorative meters, placement, agency guardrails, verification probes, and handoff without MCP calls or final fields.",
+      "files": [],
+      "expectations": [
+        "The output selects lunatalk-state-economist and returns a State economy packet.",
+        "The packet classifies candidates as visible, hidden, detail-only, or omit.",
+        "The packet keeps only fields that change behavior, player options, access, route, risk, clue, resource, relationship, promise, or boundary.",
+        "The packet explicitly removes or converts decorative meters.",
+        "The output avoids MCP calls, final role fields, and storing the player's feelings, consent, loyalty, actions, or route choice."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The opening and longplay direction are already coherent, but the agent keeps adding hidden JSON for player affection, obedience, guilt, and chosen route. I need a player-agency-safe state model before authoring.",
+      "expected_output": "Rejects unsafe player-inner-state fields, replaces them with observable facts or negotiable consequences, and hands off after a compact state economy packet.",
+      "files": [],
+      "expectations": [
+        "The output treats player feelings, consent, loyalty, guilt, obedience, actions, and final route as forbidden state.",
+        "The packet tracks observable role knowledge, promises, risks, access, resources, clues, or relationship pressure instead.",
+        "The output defines allowed values and update triggers for each kept field.",
+        "The output includes agency guardrails and verification probes.",
+        "The output does not route primarily to presentation or render review because the state model itself is unresolved."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I already have a compact state model and update triggers. Now I only need to decide how to show one public status line in XMLV3 and what belongs in Theme V3. Should state-economist continue?",
+      "expected_output": "Routes away from state economy to presentation director because the state model is coherent and the remaining blocker is visual placement.",
+      "files": [],
+      "expectations": [
+        "The output says state economy is not the primary blocker because fields and update triggers already exist.",
+        "The output routes to lunatalk-presentation-director for XMLV3, visible status, hidden JSON placement, and Theme V3 split.",
+        "The output preserves the existing compact state model instead of redesigning it.",
+        "The output avoids MCP tools, render review, simulation, and final field assembly.",
+        "The output may mention that state-economist should return only if decorative or unsafe fields reappear."
+      ]
+    }
+  ]
+}

@@ -50,6 +50,9 @@ and archetype recipes. Read `../../references/tension-triangle.md` when a chosen
 direction is attractive but lacks role desire, player leverage, external
 pressure, why-now, stakes, or a first-scene hook. Use `lunatalk-tension-weaver`
 first when tension triangle repair is the primary task. Read
+`../../references/state-economy-design.md` when the blueprint needs to decide
+which state fields are worth tracking, visible, hidden, detail-only, or omitted.
+Use `lunatalk-state-economist` first when state economy is the primary task. Read
 `../../references/archetype-contracts.md` when the
 author is unsure whether the card is companion, story, system, RPG, generator,
 daily-life, light-setting, heavy-setting, ensemble, or a hybrid. Use
@@ -203,8 +206,11 @@ creation, validation, render review, simulation, and publishing workflow.
 17. If long-term playability, memory/state, route seeds, progression, or a dead
     third turn is the core problem, use `lunatalk-longplay-architect` before
     drafting final fields.
-18. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
-19. Run Moonloom self-review and repair any weak layer before handing off.
+18. If the current blocker is which memory/state fields to keep, show, hide,
+    place in detail, or omit as decorative, use `lunatalk-state-economist`
+    before drafting final fields.
+19. Draft a compact roleDesc, roleDetailDesc outline, and roleWelcome concept.
+20. Run Moonloom self-review and repair any weak layer before handing off.
     If the author asked for a quality audit, preserve or create a
     `lunatalk-quality-auditor` scorecard before authoring.
 
@@ -353,6 +359,9 @@ Opening packet:
 Longplay packet:
 - preserve or create the longplay packet when applicable
 
+State economy packet:
+- preserve or create the State economy packet when applicable
+
 Field draft:
 - roleName:
 - roleDesc:
@@ -427,6 +436,9 @@ whole design conversation.
 - Preserve any longplay packet from `lunatalk-longplay-architect`; do not
   summarize away state, memory, route costs, role initiative, or continuation
   probes.
+- Preserve any State economy packet from `lunatalk-state-economist`; do not
+  summarize away kept/omitted fields, visibility, update triggers, agency
+  guardrails, field placement, or decorative meter removals.
 - Preserve any card-series packet from `lunatalk-series-architect`; do not
   summarize away shared core, keep/merge/reject decisions, variant contracts,
   overlap risks, authoring order, or validation/render/simulation plan.
