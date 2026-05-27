@@ -86,6 +86,9 @@ which meters are decorative and should be omitted.
 8. Define first-screen hierarchy and mobile/readability risks.
 9. State the token stance without inventing tokenBudget numbers.
 10. Provide a compact XMLV3 scaffold only when it clarifies structure.
+    If the scaffold changes the XMLV3 welcome structure, include
+    `npm run validate:xmlv3-presentation` in the handoff before field
+    finalization or render review.
 11. Hand off to `lunatalk-card-author`, `lunatalk-opening-director`,
    `lunatalk-token-architect`, or `lunatalk-render-review` as the next step.
 
@@ -147,6 +150,9 @@ Self-review:
 - Do not leave several short action buttons as a left-heavy vertical pile. Use
   `<choices>` for button-grid intent, with semantic `tone` hooks on each child
   `<choice>` when the theme needs visual distinction.
+- Do not mark XMLV3 scaffold structure ready until the handoff names
+  `validate:xmlv3-presentation` for grouped choices, preview-compatible state,
+  scene/control separation, and no raw style/class hooks.
 - Do not duplicate the platform XMLV3 server guide inside role detail. Detail
   gets the role-specific format contract: state update rules, choice rules,
   visible status meaning, pack usage, and player-agency boundaries.

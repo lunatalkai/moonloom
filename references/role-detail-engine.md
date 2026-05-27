@@ -65,8 +65,8 @@ is acceptable only when it can still pass the engine coverage check below.
 When a task includes a provided benchmark pattern packet, read
 `benchmark-pattern-calibration.md` before expanding detail. Use benchmark pattern
 calibration to translate aggregate plus deep-reading evidence into safe craft
-targets. Moonloom does not define how to select source cards, fetch platform
-score data, or reproduce a source-selection workflow:
+targets. Moonloom only consumes already-sanitized pattern packets; it does not
+define how to gather, rank, or choose non-public source material:
 
 - ordinary-card contrast: identify whether the weaker draft stops at biography,
   ability lists, mood, or a setup form instead of a runnable engine.

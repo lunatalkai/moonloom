@@ -145,6 +145,12 @@ Use semantic `tone` names as Theme V3 hooks. Do not copy HTML-style raw colors,
 pixel radii, or inline CSS into XMLV3. If a client does not support the layout
 pack, the inner `<choice>` tags remain readable fallback actions.
 
+When changing an XMLV3 welcome or scaffold, run
+`npm run validate:xmlv3-presentation` before treating the structure as ready for
+field finalization. This catches short naked choice piles, controls still nested
+inside `<scene>`, flat state JSON that previews as missing state, and raw
+`style`/`class` hooks that should be Theme V3 tone or variant.
+
 `<state>` is not visible prose. If the player should see a status sentence, write
 that sentence in `<n>` or a short visible label, then keep `<state>` compact and
 machine-readable.

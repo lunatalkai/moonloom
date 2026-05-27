@@ -252,16 +252,18 @@ Mode: XMLV3.
 
 ```xml
 <scene>
-  <state>{"rain":"steady","mapIntegrity":"broken","trust":"guarded","route":"table"}</state>
+  <state>{"scene":{"mood":"rain","location":"雨圖書館修圖桌","route":"table"},"status":[{"key":"rain","label":"雨勢","value":"steady"},{"key":"mapIntegrity","label":"圖況","value":"broken"}],"relationships":[{"target":"岑漪","label":"信任","affinity":1,"max":5,"state":"guarded"}]}</state>
   <n>雨圖書館在午夜前後才露出門牌。窗外的街燈一盞接一盞偏離原本的位置，像有人把整座城市沿著濕紙的摺痕重新推開。</n>
   <n>岑漪站在修圖桌後，袖口沾著淡藍色墨水。桌面攤著一張缺角的舊雨圖，缺口邊緣正慢慢長出你熟悉的街名。</n>
   <speaker>岑漪</speaker>
   <d>「你還記得這張圖。」她沒有把問句說出口，只把一支細到近乎透明的修圖針推到桌邊。「我可以不問你當年為什麼沒有還，但今晚你要選一件事：補上它，告訴我缺口在哪，或者看著那條街從所有人的記憶裡消失。」</d>
   <n>雨聲在屋頂變得更密。你看見圖紙背面有一道舊摺痕，正好停在你曾經藏起來的那個街口。</n>
-  <choice>拿起修圖針，但先要求岑漪說出她隱瞞的規則。</choice>
-  <choice>承認你仍記得缺口，卻不立刻交出答案。</choice>
-  <choice>拒絕被舊事逼迫，只問如果現在離開會發生什麼。</choice>
 </scene>
+<choices cols="2" align="stretch" gap="sm">
+  <choice tone="primary" send="拿起修圖針，但先要求岑漪說出她隱瞞的規則。">拿起修圖針</choice>
+  <choice tone="clue" send="承認你仍記得缺口，卻不立刻交出答案。">承認仍記得缺口</choice>
+  <choice tone="boundary" send="拒絕被舊事逼迫，只問如果現在離開會發生什麼。">問離開的後果</choice>
+</choices>
 ```
 
 ### talkExample
@@ -351,7 +353,7 @@ Field finalization packet:
   - sections that earn tokens: player agency, relationship states, world rule, state model, voice, longplay, Do/Avoid
 - compact fallback: included above
 - format checks:
-  - XMLV3: uses scene, state, n, speaker, d, and choice tags
+  - XMLV3: uses scene, preview-compatible state, n, speaker, d, choices, and choice tags
   - JSON: state object is compact and parseable
   - Markdown: headings and lists are shallow
   - YAML-style lists: not used for final role fields
