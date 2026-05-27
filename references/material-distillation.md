@@ -31,8 +31,9 @@ use it.
 - Preserve public attribution only when the author requests it and it belongs in
   the card. Most role cards do not need source claims in player-facing text.
 - When adapting copyrighted or canon-like material, keep only the requested
-  playable fantasy, relationship shape, tone, and scene mechanics unless the
-  author has rights or explicitly wants a fan/canon card.
+  playable fantasy, relationship shape, tone, and scene mechanics, then use
+  `originality-adaptation.md` before blueprinting unless the author explicitly
+  wants a canon/fan card with allowed use.
 
 ## Distillation passes
 

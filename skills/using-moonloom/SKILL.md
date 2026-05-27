@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile, visual identity, avatar, cover, language, variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, originality, canon/IP inspiration, profile, visual identity, avatar, cover, language, variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -83,6 +83,15 @@ bottleneck and list delayed routes under `do not do yet`.
   use `lunatalk-sample-calibrator`. Treat samples as public synthetic structure
   fixtures only; do not copy sample text, names, tags, scenes, resources, or
   artifact schemas into a real card.
+- Canon/IP, fan premises, recognizable inspiration, another role card, copied
+  drafts, derivative concepts, "like X but original", "make this original",
+  "avoid copying", or renamed-copy risk before blueprinting or authoring: use
+  `lunatalk-originality-adapter`. Preserve transferable fantasy, relationship
+  shape, player leverage, tension, and interaction loop while changing names,
+  scene setup, lore terms, voice surface, visual motifs, state labels, and
+  opening proof. If the task is only a large original source pack, use
+  `lunatalk-material-distiller`; if it only compares synthetic sample shape, use
+  `lunatalk-sample-calibrator`.
 - Public-facing role profile work, including `roleName`, `roleDesc`, tags,
   title, tagline, short pitch, first impression, discovery surface, reason to
   open, promise compression, or making the profile feel more top-tier/popular
@@ -297,6 +306,9 @@ validation, render review, simulation, and publish readiness.
   `../../examples/sample-card-packets.md` when the task involves examples,
   golden samples, sample output packets, benchmark expected-output shapes,
   draft-to-sample comparison, or copy-risk review.
+- Read `../../references/originality-adaptation.md` when the task involves
+  canon/IP, fan premises, recognizable inspirations, another role card, copied
+  drafts, derivative concepts, original transformation, or renamed-copy risk.
 - Read `../../references/character-core-design.md` when working on character
   core, persona appeal, trope repair, relationship leverage, pressure behavior,
   or thin/generic roles.

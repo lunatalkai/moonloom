@@ -40,7 +40,8 @@ teaching fixtures.
 4. State exactly what structure may be borrowed and what text/details must not be
    reused.
 5. Name the missing Moonloom layer and repair skill order.
-6. Return a sample calibration packet and handoff target.
+6. Return a sample calibration packet and handoff target. Use
+   `lunatalk-originality-adapter` when the draft still looks like a renamed copy.
 
 ## Output format
 
@@ -86,6 +87,7 @@ Self-review:
 - Card type unclear: route to `lunatalk-archetype-director`.
 - Missing structure before fields: route to `lunatalk-card-blueprint` or the
   narrow archetype skill.
+- Renamed-copy risk after calibration: route to `lunatalk-originality-adapter`.
 - Ready for draft-only field assembly: route to `lunatalk-card-author`.
 - Needs a score, tier, or first-three repairs: route to
   `lunatalk-quality-auditor`.

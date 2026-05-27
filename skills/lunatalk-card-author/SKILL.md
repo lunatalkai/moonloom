@@ -18,9 +18,12 @@ Load the narrow reference and skill before authoring when that layer is primary:
 ideas; `../../references/sample-driven-calibration.md` plus
 `../../examples/sample-card-packets.md` / `lunatalk-sample-calibrator` for
 examples, golden samples, sample output packets, benchmark expected-output
-shapes, draft-to-sample comparison, or copy-risk review; `profile-packaging.md`,
-`visual-identity.md`, `language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
-`ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
+shapes, draft-to-sample comparison, or copy-risk review;
+`originality-adaptation.md` / `lunatalk-originality-adapter` for canon/IP,
+similar-card, copied-draft, derivative, or "like X but original" work before
+fields; `profile-packaging.md`, `visual-identity.md`, `language-style.md`,
+`quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`,
+`archetype-contracts.md`, `card-diagnosis.md`,
 `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
 `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
 `agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
@@ -52,6 +55,11 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    `lunatalk-sample-calibrator` first unless a sample calibration packet already
    exists. Treat samples as structure-only calibration, not final prose and not
    a reason to call MCP tools.
+   If the author asks for canon/IP, fan premises, another role card, recognizable
+   inspiration, copied drafts, derivative concepts, "like X but original",
+   original transformation, or renamed-copy repair, use
+   `lunatalk-originality-adapter` before field assembly unless an originality
+   adaptation packet already exists. Do not solve copy risk by swapping names.
    If the author asks for `roleName`, `roleDesc`, tags, title, tagline, short
    pitch, public-facing package, first impression, discovery surface, or why a
    player should open the card, use `lunatalk-profile-packager` first unless a
@@ -298,8 +306,9 @@ MCP tools make the card real; Moonloom makes the card good.
   `card-authoring-templates.md`; do not copy every optional packet into the
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
-  premise, sample calibration, profile package, language-style decisions,
-  visual identity, quality audit, render repair, simulation repair, instruction guardrail,
+  premise, sample calibration, originality adaptation, profile package,
+  language-style decisions, visual identity, quality audit, render repair,
+  simulation repair, instruction guardrail,
   archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
   agency, voice, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.
