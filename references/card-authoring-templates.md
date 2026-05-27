@@ -270,6 +270,7 @@ Detail engine packet:
   - voice and action logic:
   - emotional reactions:
   - longplay hooks:
+  - scene reservoir / turn recipes:
   - time and consequence:
   - secret and reveal plan:
   - player insertion space:
@@ -940,6 +941,7 @@ Role fields:
   - voice fingerprint:
   - proactive behavior:
   - progression and consequence:
+  - scene reservoir / turn recipes:
 - roleWelcome:
   - mode: plain | xmlv3 | html
   - first-screen promise:
@@ -1312,6 +1314,20 @@ Longplay engine
 - memory threads:
 - role initiative:
 - scene renewal rule:
+
+Scene reservoir / turn recipes
+- scene seed:
+  - trigger:
+  - place / object:
+  - role move:
+  - player leverage:
+  - state or relationship change:
+  - renewed hook:
+- turn recipe:
+  - observe player move:
+  - show concrete consequence:
+  - make in-character move:
+  - offer next action:
 
 Do / Avoid
 - Do:

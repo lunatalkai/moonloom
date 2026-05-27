@@ -69,6 +69,7 @@ test('router, authoring templates, framework, and quality docs expose detail eng
   assert.match(router, /detail engine|thin biography|roleDetailDesc/i);
   assert.match(cardAuthor, /lunatalk-detail-engineer/);
   assert.match(templates, /Detail engine packet:/);
+  assert.match(templates, /scene reservoir \/ turn recipes/i);
   assert.match(framework, /role-detail-engine\.md/);
   assert.match(quality, /detail engine/i);
   assert.match(readme, /lunatalk-detail-engineer/);
