@@ -36,7 +36,17 @@ production behavior.
 9. If simulation runs, use probes for normal interaction, short reply, off-path
    reply, background question, relationship or trust push, secret/progression
    exploration, passive input, and boundary handling.
-10. When any layer fails, patch the narrow root cause in a Moonloom skill,
+10. After simulation returns a `conversationId` and message-level `chatId`
+    values, preview the AI turns through the dedicated per-message preview
+    harness:
+    `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>`.
+    Record Ready status, renderer mode, DOM summary, text overflow, relevant
+    console errors, and screenshot or visual notes for the selected message.
+    Do not parse the normal chat page UI for transcript formatting. The normal
+    chat page is only for card-surface asset evidence in step 7.
+11. If `simulate_private_chat` does not return message identifiers, record
+    "message preview unavailable" and do not claim per-turn visual completion.
+12. When any layer fails, patch the narrow root cause in a Moonloom skill,
     reference, template, or card field. Re-run the affected layer instead of
     declaring a one-off card fix complete.
 
@@ -61,6 +71,8 @@ Collect concrete evidence instead of vibes:
 - simulation cost accepted:
 - simulation probes:
 - simulation result:
+- message preview evidence:
+- per-message preview URLs or unavailable reason:
 - root-cause patch made:
 - rerun result:
 
@@ -79,10 +91,15 @@ Use precise status:
   passes, and app surfaces show the assets.
 - `behavior checked`: simulation ran with accepted cost and passed the planned
   probes.
+- `per-turn visual checked`: simulation ran and each selected AI turn with
+  available `conversationId`/`chatId` was inspected through the dedicated
+  per-message preview harness.
 - `cost-gated`: simulation was skipped because billing was not accepted.
 
 Do not say "complete private card" if avatar or background is missing. Do not
-say "behavior checked" when simulation was skipped.
+say "behavior checked" when simulation was skipped. Do not say
+"per-turn visual checked" when message identifiers were missing or the selected
+turns were not opened in the preview harness.
 
 ## End-to-end acceptance packet
 
@@ -110,6 +127,10 @@ End-to-end acceptance packet:
   - cost stance:
   - probes:
   - result:
+- message previews:
+  - status:
+  - checked chatIds:
+  - evidence:
 - failures:
 - root-cause repair:
 - rerun evidence:

@@ -42,6 +42,27 @@ Before running the probes, state the patch triggers: what transcript evidence
 would cause a `roleDetailDesc`, `roleWelcome`, profile, or jailbreak change. This
 keeps the simulation from becoming a vague taste check.
 
+## Per-message visual check
+
+When `simulate_private_chat` returns a `conversationId`, `chatId`, and `roleId`
+for simulated AI turns, inspect those turns through the dedicated per-message preview
+harness before claiming the transcript is visually stable. Use:
+
+```text
+/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>
+```
+
+Check the selected message's Ready status, renderer mode, DOM summary, text
+overflow, relevant console errors, and screenshot or visual notes. This is the
+right surface for XMLV3, HTML, Markdown, paragraph spacing, action prose, and
+long-message display after simulation. Do not parse the normal chat page UI for
+message formatting; use the normal chat page only when the acceptance run needs
+to prove the card background or full app surface loads.
+
+If the simulation result does not include message identifiers, record
+"message preview unavailable" in the repair or acceptance packet and keep the
+visual claim narrower.
+
 ## Opening probe
 
 Use when the goal is to test whether the first screen works.
@@ -169,6 +190,7 @@ Simulation repair packet:
 - probes run:
 - transcript-backed failures:
 - evaluation signals:
+- message preview evidence:
 - weakest Moonloom dimension:
 - patch target:
 - next Moonloom skill:

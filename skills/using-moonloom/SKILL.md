@@ -337,7 +337,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   skill repairs rather than MCP gates.
 - Running a full trial-card acceptance after a Moonloom change, or checking a
   real private card that was created without avatar/background, app visual
-  evidence, render review, or simulation cost stance: use
+  evidence, render review, per-message preview evidence, or simulation cost stance: use
   `lunatalk-benchmark-runner` with `end-to-end-acceptance.md`.
 
 If the author asks for an end-to-end creation flow, start with `lunatalk-card-author`
@@ -472,7 +472,8 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/end-to-end-acceptance.md` when the task is a full
   trial-card acceptance run, private-card visual completion check, or regression
   handoff after missing assets, app visual evidence, render evidence, or
-  simulation cost stance.
+  simulation cost stance, including per-message preview evidence after simulated
+  AI turns.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or
   regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet`
   when reporting benchmark results or handing failures to the next skill.

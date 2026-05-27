@@ -168,7 +168,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   completion checks for external AI clients.
 - `references/end-to-end-acceptance.md` defines trial-card acceptance evidence:
   skill route, MCP private card, avatar/background patching, validation, render,
-  app visual checks, simulation cost gate, and root-cause reruns.
+  app visual checks, simulation cost gate, per-message preview checks, and
+  root-cause reruns.
 - `references/mcp-client-workflow.md` defines external AI client readiness,
   tool availability checks, auth handling, idempotency, and stage gates for MCP
   operations.
