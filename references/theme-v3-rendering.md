@@ -90,6 +90,13 @@ judge avatar, byline, sidebar, composer, or other normal chat page chrome as
 part of the card render. Open both desktop and mobile preview URLs when the
 state surface, choice buttons, or layout density may change with viewport.
 
+Use the preview page capture plan before deciding a visual pass/fail. Desktop
+output must be captured at full content width in one horizontal view; do not
+review left and right halves separately. Vertical overflow is expected for dense
+HTML/XMLV3 cards and long AI turns: capture or scroll through every listed
+vertical segment, then judge the full sequence. If only the top of the card is
+visible, the review is incomplete, not proof that the card should be shortened.
+
 `<action>` belongs to the battle extension pack. For prose actions, use `<n>`.
 Only use `<action>` for battle markers with attributes such as `type`, `by`,
 `target`, or `skill`.
@@ -164,12 +171,14 @@ handlers, or external URLs. Treat any validation blocker as mandatory to fix.
 3. Call `render_preview` with `mode: "full-card"` unless inspecting a specific
    `html` or `xmlv3` issue.
 4. Open the `previewUrl` when the client has browser or multimodal access.
-5. Read `evaluation` for capture readiness, semantic structure, readability, and
+5. Read `capturePlan` and capture every required vertical segment before visual
+   judgment.
+6. Read `evaluation` for capture readiness, semantic structure, readability, and
    first-screen action visibility.
-6. Check both desktop and mobile if available.
-7. Produce a render repair packet before patching.
-8. Patch the card or theme.
-9. Re-run validation and render preview until blockers are gone.
+7. Check both desktop and mobile if available.
+8. Produce a render repair packet before patching.
+9. Patch the card or theme.
+10. Re-run validation and render preview until blockers are gone.
 
 ## Render repair packet
 
