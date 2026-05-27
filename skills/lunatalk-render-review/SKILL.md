@@ -95,10 +95,14 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Read `structuredReport.surfaceDiagnostics` and, when available, the browser
   preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
   `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
-  `formControlCount`, `stateSurface`, `toneCount`, `localStyleHookCount`, and
+  `formControlCount`, `stateSurface`, `toneCount`, `localStyleHookCount`,
+  `themeStyleHookCount`, `customToneCount`, `unresolvedToneCount`, and
   `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
+- Treat `xmlv3_custom_tones_without_theme_hooks` as a Theme V3 blocker: either
+  bind Theme CSS that targets the custom `tone` values, or replace the custom
+  tones with supported baseline tones. Do this before changing writing logic.
 - Treat `xmlv3_controls_nested_inside_scene` as a structural blocker for rich
   XMLV3: close `<scene>` after the prose beat, then render `choices`, `form`,
   `bar`, `collapse`, `panel`, `grid`, and similar controls as sibling blocks so
