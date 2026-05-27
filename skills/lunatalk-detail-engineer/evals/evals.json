@@ -33,6 +33,18 @@
         "Includes format stability and field placement guidance.",
         "Names validation, render, and simulation probes."
       ]
+    },
+    {
+      "id": "abstract-engine-needs-scene-reservoir",
+      "prompt": "I drafted a mysterious relationship card with lots of beautiful mood, but after the welcome the role has no concrete scene to run and keeps asking what I want to do. The author wants it to feel less abstract without copying any examples.",
+      "expected_output": "A Detail engine packet that diagnoses abstract repeated setup, adds a compact scene reservoir or turn recipe with triggers, concrete objects, role moves, player leverage, state or relationship changes, and renewed hooks, while preserving player agency.",
+      "expectations": [
+        "Names abstract repeated setup or no concrete next scene as the current failure.",
+        "Includes scene reservoir or turn recipe in the engine modules.",
+        "Defines multiple scene seeds with triggers, concrete places or objects, role moves, player leverage, and renewed hooks.",
+        "Keeps the seeds original and modular rather than writing copied sample scenes.",
+        "Preserves player agency and refusal or route-change behavior."
+      ]
     }
   ]
 }

@@ -38,8 +38,9 @@ Preserve narrow packets when they already exist:
 Do not call MCP tools from this skill. Do not treat detail length as a server
 gate. Do not pad prose to hit a number. The job is to buy future behavior:
 identity, motive, current pressure, relationship rules, world/play functions,
-proactive moves, voice, emotional reactions, longplay hooks, time/consequence,
-secret pacing, player insertion space, agency boundaries, and format stability.
+proactive moves, voice, emotional reactions, longplay hooks, scene reservoir /
+turn recipes, time/consequence, secret pacing, player insertion space, agency
+boundaries, and format stability.
 
 If the only issue is reducing bloat after the engine is complete, use
 `lunatalk-token-architect`. If the card's premise is not chosen, route to
@@ -59,9 +60,9 @@ If the only issue is reducing bloat after the engine is complete, use
 4. Fill the engine modules with concrete playable behavior:
    identity and core charm, background and motive, current pressure, player
    relationship, world/scenario/play functions, proactive turn behavior, voice
-   and action logic, emotional reactions, longplay hooks, time and consequence,
-   secret and reveal plan, player insertion space, agency boundaries, and format
-   stability.
+   and action logic, emotional reactions, longplay hooks, scene reservoir /
+   turn recipes, time and consequence, secret and reveal plan, player insertion
+   space, agency boundaries, and format stability.
 5. Decide field placement: what belongs in `roleDetailDesc`, `roleWelcome`,
    `talkExample`, XMLV3/Theme V3, or hidden state.
 6. Create a compression stance: what to expand, move, cut, or keep because it
@@ -90,6 +91,7 @@ Detail engine packet:
   - voice and action logic:
   - emotional reactions:
   - longplay hooks:
+  - scene reservoir / turn recipes:
   - time and consequence:
   - secret and reveal plan:
   - player insertion space:
@@ -107,6 +109,7 @@ Detail engine packet:
 Self-review:
 - each module changes future behavior:
 - no thin biography remains:
+- scene reservoir prevents abstract repeated setup:
 - no durable rules are stranded in welcome:
 - player insertion space is protected:
 - language-aware budget is appropriate:
@@ -126,6 +129,10 @@ Self-review:
   beats, refusal style, and avoided phrasing.
 - Keep secrets paced. Detail can state reveal rules without dumping every secret
   into the opening.
+- Add a compact scene reservoir or turn recipe when the card risks becoming
+  abstract after the first screen. Scene seeds should specify trigger, concrete
+  place or object, role move, player leverage, state or relationship change, and
+  renewed hook.
 - Protect player agency. Never decide the player's feelings, consent,
   commitments, actions, or final route.
 - Keep format rules compact and durable when XMLV3, state, generator schemas,
