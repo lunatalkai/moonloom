@@ -9,7 +9,7 @@ Benchmark pattern calibration is not sample copying and not market prediction.
 It converts source-restricted reading into an anonymous structure packet:
 
 ```text
-multi-signal selection -> aggregate signals -> deep sample reading -> ordinary-card contrast ->
+aggregate signals -> deep sample reading -> ordinary-card contrast ->
 anonymized pattern gap -> original Moonloom repair
 ```
 
@@ -27,30 +27,6 @@ targets.
 
 If a reference note would reveal where a pattern came from, keep it outside
 Moonloom or rewrite it as a generic design rule before committing.
-
-## Benchmark Set Selection
-
-Choose samples across multiple anonymous signal families before reading deeply.
-One rail can overteach a narrow behavior, so balance the packet:
-
-- fast-starting cards that prove a promise in the first screen
-- sustained cards that keep attention beyond the first curiosity spike
-- new-card quality candidates that show a complete engine early
-- deep-interaction candidates that keep users making meaningful replies
-- sticky / returning-user candidates that renew play across sessions
-- consistent-author candidates that reveal repeatable structure
-- freshness candidates for current taste, treated as surface context only
-
-Use cross-signal contrast:
-
-- Heat plus stickiness usually deserves deep reading.
-- Heat without stickiness may only teach profile hook or novelty.
-- Stickiness without heat may teach engine depth while still needing profile or
-  opening repair.
-- Freshness without behavioral evidence should not become a Moonloom rule.
-
-The packet should name signal families, not exact source rails, ranks, scores,
-queries, or identifiers.
 
 ## What To Read For
 
@@ -139,7 +115,6 @@ Return this packet after reading and before changing Moonloom:
 ```text
 Anonymized benchmark pattern packet:
 - calibration scope:
-- multi-signal selection:
 - aggregate signals:
 - deep sample reading:
 - ordinary-card contrast:
