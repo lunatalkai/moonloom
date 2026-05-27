@@ -295,6 +295,9 @@ renderer-structure map, not a replacement for screenshot review:
   layout-pack sectioning instead of one undifferentiated scene.
 - `actionCount`, `groupedActionCount`, and `fallbackActionGroupCount`: whether
   choices are balanced action groups or fallback / ungrouped buttons.
+- `actionLayoutMaxColumns`: the widest rendered or inferred row of action
+  buttons. `1` with three or more actions usually means the UI is a left-heavy
+  vertical button stack instead of a useful action grid.
 - `formControlCount`: whether setup inputs/radios/checkboxes actually rendered
   as controls.
 - `stateSurface`: `expected` from server-side static analysis, `visible` from
@@ -312,6 +315,7 @@ renderer-structure map, not a replacement for screenshot review:
   `grid`, and similar controls outside the scene.
 - `warnings`: parity risks such as dense XMLV3 without section panels or several
   actions without an explicit `<choices>` group. Treat
+  `xmlv3_actions_render_single_column`,
   `xmlv3_custom_tones_without_theme_hooks` and
   `xmlv3_controls_nested_inside_scene` as visual-structure repairs before
   touching writing logic.

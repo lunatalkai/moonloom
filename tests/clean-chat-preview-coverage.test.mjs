@@ -42,6 +42,8 @@ test('Moonloom uses surfaceDiagnostics for HTML and XMLV3 render parity checks',
     assert.match(source, /actionCount/);
     assert.match(source, /groupedActionCount/);
     assert.match(source, /fallbackActionGroupCount/);
+    assert.match(source, /actionLayoutMaxColumns/);
+    assert.match(source, /xmlv3_actions_render_single_column/);
     assert.match(source, /formControlCount/);
     assert.match(source, /stateSurface/);
     assert.match(source, /toneCount/);
