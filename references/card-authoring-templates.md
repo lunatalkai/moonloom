@@ -764,6 +764,13 @@ Presentation:
 Token plan:
 - roleDesc target:
 - roleDetailDesc target:
+- detail budget plan:
+  - language / locale: zh-Hant | zh-Hans | English | other
+  - useful upper room:
+  - current detail depth: empty budget | thin detail | balanced | full-detail candidate
+  - sections that earn budget:
+  - sections still missing:
+  - why extra detail improves later turns:
 - roleWelcome target:
 - what to cut first:
 ```
@@ -906,6 +913,13 @@ Role fields:
 Token allocation:
 - roleDesc target:
 - roleDetailDesc target:
+- detail budget plan:
+  - language / locale: zh-Hant | zh-Hans | English | other
+  - client-facing upper room:
+  - target depth: thin detail | balanced | full-detail candidate
+  - engine sections included:
+  - expansion still justified:
+  - empty budget / thin detail risk:
 - roleWelcome target:
 - talkExample target:
 - Theme / visual budget:
@@ -978,7 +992,12 @@ Field finalization packet:
 - hard-cap and density check:
   - roleDesc estimate:
   - roleDetailDesc estimate:
-  - 10,000-character `roleDetailDesc` hard cap stance:
+  - detail budget plan:
+    - language / locale: zh-Hant | zh-Hans | English | other
+    - hard cap stance:
+    - full-detail candidate: yes | no
+    - empty budget / thin detail risk:
+    - missing engine sections:
   - roleWelcome estimate:
   - talkExample estimate:
   - sections that earn tokens:

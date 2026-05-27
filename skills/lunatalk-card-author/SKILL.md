@@ -4,16 +4,13 @@ description: Use when the user wants an AI client to write, improve, import, res
 ---
 
 # LunaTalk Card Author
-Use this skill to turn an author's idea, draft, world notes, imported material,
-or Moonloom packet stack into field-ready LunaTalk role content. Use the Card
-Writer MCP only after the draft is coherent and self-reviewed.
+Use this skill to turn an author's idea, draft, world notes, imported material, or
+Moonloom packet stack into field-ready LunaTalk role content. Use the Card Writer MCP only after self-review.
 
 ## Required references
 
-Read `../../references/card-writer-mcp.md` before MCP calls and
-`../../references/card-authoring-templates.md` before final field drafts. Read
-`../../references/field-finalization.md` before MCP-backed creation or patching
-when fields already exist and need last-mile QA.
+Read `../../references/card-writer-mcp.md` before MCP calls, `../../references/card-authoring-templates.md`
+before final field drafts, and `../../references/field-finalization.md` before MCP-backed creation or patching.
 
 Load the narrow reference and skill before authoring when that layer is primary:
 `../../references/premise-workshop.md` / `lunatalk-premise-workshop` for loose
@@ -361,6 +358,9 @@ MCP tools make the card real; Moonloom makes the card good.
   dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
+- Build a language-aware detail budget before MCP creation or patching; if
+  `roleDetailDesc` is thin for its language and ambition, it is not ready for MCP patching.
+  Expand durable engine first; token economy removes empty prose and duplicate rules, not playable core.
 - If the player can only watch, choices are decorative, or the card narrates the
   player's feelings/actions, use `lunatalk-agency-designer` before patching
   fields.

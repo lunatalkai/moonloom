@@ -71,13 +71,23 @@ Include:
 
 Practical length targets:
 
-- Companion or relationship card: 800-2,200 characters
-- Scenario/story card: 1,500-4,000 characters
-- System, RPG, sandbox, generator: 4,500-10,000 characters
-- Ultra-large world: allowed above 10,000 only when structured into modules
+- Companion or relationship card: 2,000-5,000 non-English characters, or
+  6,000-15,000 English characters when the relationship engine is deep.
+- Scenario/story card: 4,000-8,000 non-English characters, or 10,000-25,000
+  English characters when the card needs routes, clues, factions, or secrets.
+- System, RPG, sandbox, generator: 7,000-10,000 non-English characters, or
+  18,000-50,000 English characters when rules are modular and playable.
+- Ultra-large world: only use the high end when modules are structured by play
+  function, not encyclopedia order.
 
 Do not pad. A short, sharp relationship card can work; a long vague card still
 fails.
+
+Language-aware detail budget matters. A Chinese card near the 10,000-character
+ceiling and an English card with far more characters can represent similar
+engine depth because their information density differs. Use character counts as
+a client-limit signal and use word/token proxy plus behavior coverage as the
+quality signal.
 
 ### 3. Play layer
 
@@ -171,8 +181,13 @@ Check:
 When `validate_role` returns `tokenBudget`, use it as a structural check:
 
 - `roleDetailDescChars` should usually carry the durable engine.
-- A 10,000-character `roleDetailDesc` limit is a hard cap, not a target. Add
-  detail only while it creates reusable behavior, route costs, state updates,
+- A language-aware detail budget is required before field assembly. Treat a thin
+  `roleDetailDesc` as not ready for MCP patching if it lacks identity, motive,
+  current situation, relationship rules, world/play functions, proactive moves,
+  voice, emotional reactions, longplay hooks, time/consequence logic, secrets,
+  player insertion space, agency boundaries, or format stability.
+- A full-detail candidate uses most of the useful budget for the card type, but
+  only while each section creates reusable behavior, route costs, state updates,
   voice control, boundary handling, or return-later memory.
 - `roleWelcomeChars` should usually stay below `roleDetailDescChars`; an
   interactive setup can be longer, but it must add immediate agency.

@@ -56,20 +56,44 @@ judgment.
 
 These ranges are starting points. Preserve playability before hitting a number.
 
-Field limits are hard caps, not quality targets. When a client exposes a
-10,000-character `roleDetailDesc` limit for a Chinese role card, treat that as
-room for unusually modular engines, not as a target to fill. Most cards should
-stop once added detail no longer changes future behavior, route cost, state,
-voice, boundary handling, or return-later memory.
+### Language-aware detail budget
+
+Field limits are ceilings, but high-quality cards should not leave the engine
+empty. A draft is an empty budget or thin detail candidate when it spends less
+than roughly one third of the useful `roleDetailDesc` room while still missing
+durable behavior, route cost, state, voice, boundary handling, or return-later
+memory.
+
+Use language-aware limits:
+
+- 10,000-character non-English `roleDetailDesc` limit: mature Chinese, Japanese,
+  Korean, or mixed-locale role cards can often justify 5,000-10,000 characters
+  when the detail is a modular role engine.
+- 50,000-character English `roleDetailDesc` limit: English carries less
+  information per character, so do not judge an English card by Chinese
+  character counts. Use word/token proxy and require enough English detail to
+  preserve the same engine depth.
+- 3,000-character non-English `roleWelcome` limit and 10,000-character English
+  `roleWelcome` limit: welcome can be longer for setup UI, but it should not
+  steal reusable rules from detail.
+
+A full-detail candidate is not padded prose. It is a card whose detail budget is
+actively buying future behavior: identity, motive, current pressure, relationship
+rules, world functions, proactive moves, voice, emotional reactions, longplay
+hooks, time/consequence logic, secrets, player insertion space, agency
+boundaries, and output format stability.
+
+Do not pad. Fill detail until the next section would no longer improve later
+turns. Then stop.
 
 | Archetype | roleDesc | roleDetailDesc | roleWelcome |
 |---|---:|---:|---:|
-| Companion / relationship | 80-260 | 1,200-2,200 | 250-700 |
-| Daily-life | 80-220 | 800-1,800 | 200-600 |
-| Story / mystery / scenario | 120-260 | 1,500-4,000 | 600-1,200 |
-| Ensemble | 140-300 | 2,500-5,000 | 700-1,400 |
-| System / RPG / sandbox | 180-500 | 4,500-10,000 | 900-2,000 |
-| Generator / assistant | 180-500 | 3,000-7,000 | 700-1,600 |
+| Companion / relationship | 80-260 | 2,000-5,000 non-English; 6,000-15,000 English | 250-700 |
+| Daily-life | 80-220 | 1,800-4,500 non-English; 5,000-12,000 English | 200-600 |
+| Story / mystery / scenario | 120-260 | 4,000-8,000 non-English; 10,000-25,000 English | 600-1,200 |
+| Ensemble | 140-300 | 5,000-10,000 non-English; 12,000-30,000 English | 700-1,400 |
+| System / RPG / sandbox | 180-500 | 7,000-10,000 non-English; 18,000-50,000 English | 900-2,000 |
+| Generator / assistant | 180-500 | 5,000-10,000 non-English; 12,000-35,000 English | 700-1,600 |
 
 When unsure, keep `roleWelcome` below `roleDetailDesc` unless the welcome is a
 true setup UI with forms, default paths, and immediate player control.
