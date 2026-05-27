@@ -10,6 +10,7 @@
         "The output treats the task as visual identity / art brief work, not asset upload, render review, or field patching.",
         "The Visual identity packet preserves the premise and extracts player role, role/system anchor, central tension, first-scene proof, and non-generic visual detail.",
         "The asset plan gives separate jobs for avatar, cover, and thumbnail.",
+        "The packet states MCP asset readiness, including whether roleAvatar and roleBackground URLs are ready or still missing.",
         "The image prompts are original, public-safe, and include a concrete negative prompt.",
         "The output says visual identity does not replace profile, presentation, or render review."
       ]
@@ -51,6 +52,19 @@
         "The output preserves the visual identity packet as input rather than replacing it.",
         "The output does not call MCP tools, render, simulate, publish, generate images, or upload assets.",
         "The output keeps visual identity and presentation as adjacent but distinct workflows."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "A private card already exists and the writing fields are fine, but roleAvatar and roleBackground are blank. Plan the visual fix without rewriting the card.",
+      "expected_output": "Uses lunatalk-visual-identity-director to produce or preserve the visual identity packet, identifies missing roleAvatar/roleBackground URLs, handoffs to asset generation/upload or role_patch_assets, and avoids rewriting core fields.",
+      "files": [],
+      "expectations": [
+        "The output treats missing roleAvatar and roleBackground as asset readiness work.",
+        "The output preserves existing roleName, roleDesc, roleDetailDesc, roleWelcome, and talkExample unless a visual contradiction is found.",
+        "The packet includes avatar/background prompts plus MCP asset readiness.",
+        "The output does not call MCP tools unless real image URLs are already available.",
+        "The output says validation should rerun after role_patch_assets."
       ]
     }
   ]

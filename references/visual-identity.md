@@ -12,6 +12,11 @@ card promise -> visual proof -> avatar / cover / thumbnail brief -> prompt set -
 Avatar, cover, and thumbnail must prove the promise, player role, and tension in
 one glance. If the image could fit any nearby trope, it is too generic.
 
+For MCP-backed creation, visual direction is only the planning layer. The final
+private-card handoff still needs real `roleAvatar` and `roleBackground` image
+URLs patched through `role_patch_assets`. If the agent has only prompts or an art
+brief, report the asset gap instead of calling the card complete.
+
 ## When to use
 
 Use visual identity when the author asks for:
@@ -54,7 +59,7 @@ of unrelated mood markers.
 | Asset | Job | Avoid |
 |---|---|---|
 | Avatar | make the role or system recognizable at small size | full-body scene with no readable face/object/silhouette |
-| Cover | prove the playable tension and player relation | poster-only atmosphere with no action or pressure |
+| Background / cover | prove the playable tension and player relation | poster-only atmosphere with no action or pressure |
 | Thumbnail | stay legible in discovery surfaces | tiny text, busy lore objects, low-contrast dark scenes |
 | Image prompt | give an art model a clear target | copying unprovided art, named living artists, or vague style stacks |
 | Negative prompt | reduce failure modes | banning the actual mood or important card signal |
@@ -130,6 +135,10 @@ Visual identity packet:
   - public-safe and original:
 - fields to preserve:
 - fields to patch:
+- MCP asset readiness:
+  - roleAvatar URL:
+  - roleBackground URL:
+  - next action: generate / upload / author-provide / patch-assets
 - handoff:
 ```
 
@@ -143,6 +152,7 @@ Visual identity packet:
 | Prompt copies a reference | replace with original traits and composition goals |
 | Visual idea changes the card | route back to premise or archetype instead of patching assets |
 | Theme and cover clash | hand off to presentation after visual identity is stable |
+| MCP card created without images | prepare URLs, call `role_patch_assets`, rerun validation before render/publish |
 
 ## Self-review
 

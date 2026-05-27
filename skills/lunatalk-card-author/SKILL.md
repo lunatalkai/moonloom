@@ -210,6 +210,8 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    high-stakes briefs. Preserve any `lunatalk-state-economist` packet before
    turning state into detail rules, welcome status, XMLV3, or hidden JSON.
    Preserve any `lunatalk-presentation-director` packet when assembling fields.
+   For MCP-backed creation, preserve or create a visual identity packet before
+   final fields; the finished handoff needs actual avatar/background URLs.
    When the author already provides a coherent packet stack and asks for final
    fields, produce the final role-field authoring packet from
    `card-authoring-templates.md`.
@@ -220,6 +222,9 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    the author asks to create or patch a real private role.
 7. If there is no `roleId`, call `role_create_private`.
 8. Patch profile fields with `role_patch_profile`.
+   Patch avatar/background URLs with `role_patch_assets` once public-safe image
+   URLs exist. If only prompts exist, stop with the missing asset action; do not
+   claim completion while `roleAvatar` or `roleBackground` is blank.
 9. If the current card or draft has an overlong `roleDesc`, thin
    `roleDetailDesc`, overlong `roleWelcome`, high `welcomeToDetailRatio`,
    duplicated lore, visual bloat, or misplaced durable rules, use or preserve
@@ -275,6 +280,8 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
 16. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
     `role-card-writing-framework.md` and `quality-rubric.md`.
+    If validation reports missing avatar/background, call `role_patch_assets`
+    after assets are available, then rerun validation before render or publish.
 17. If `validate_role.tokenBudget` shows allocation drift, use
     `lunatalk-token-architect` before render or simulation.
 18. Call `render_preview` and review the result with `lunatalk-render-review`.
@@ -324,10 +331,9 @@ MCP tools make the card real; Moonloom makes the card good.
 - When a prepared packet stack already exists, do not brainstorm from scratch.
   Resolve conflicts, preserve the strongest packet signals, and assemble
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
-  tags/theme notes, token allocation, validation/render/simulation handoff, and
-  self-review. Use the final role-field authoring packet in
-  `card-authoring-templates.md`; do not copy every optional packet into the
-  response unless it is present or required.
+  tags/theme notes, avatar/background status, token allocation,
+  validation/render/simulation handoff, and self-review. Use the final
+  role-field authoring packet in `card-authoring-templates.md`.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, originality adaptation, profile package,
   language-style decisions, visual identity, quality audit, render repair,

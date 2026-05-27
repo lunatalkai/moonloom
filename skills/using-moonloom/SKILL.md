@@ -116,8 +116,9 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   route for profile fields; translate popularity language into public craft
   goals inside `lunatalk-profile-packager`.
 - Avatar, cover, thumbnail, profile image, key art, image prompt, art brief,
-  first-impression visual direction, or aligning card visuals with `roleName`,
-  `roleDesc`, Theme V3, and the opening after the card promise mostly exists:
+  missing `roleAvatar` / `roleBackground`, first-impression visual direction, or
+  aligning card visuals with `roleName`, `roleDesc`, Theme V3, and the opening
+  after the card promise mostly exists:
   use `lunatalk-visual-identity-director`. If the premise, player role, or
   tension is missing, route to the missing writing skill first; if the unresolved
   layer is XMLV3, HTML, visible state, or Theme V3 structure, route to

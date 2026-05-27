@@ -38,9 +38,12 @@ test('visual identity defines a packet for avatar, cover, and image prompt work'
   assert.match(reference, /Visual identity packet:/);
   assert.match(reference, /avatar.*cover.*thumbnail/i);
   assert.match(reference, /must prove.*promise.*player role.*tension/i);
+  assert.match(reference, /role_patch_assets/);
+  assert.match(reference, /roleAvatar.*roleBackground/s);
   assert.match(reference, /Do not copy unprovided art/i);
   assert.match(reference, /does not replace.*profile.*presentation.*render review/i);
   assert.match(evals, /Visual identity packet/);
+  assert.match(evals, /MCP asset readiness/);
   assert.match(evals, /Do not copy unprovided art/i);
 });
 
@@ -52,10 +55,12 @@ test('router, card author, and templates expose visual identity as a narrow work
   const readme = await readFile('README.md', 'utf8');
 
   assert.match(router, /lunatalk-visual-identity-director/);
-  assert.match(router, /avatar|cover|thumbnail|image prompt/i);
+  assert.match(router, /avatar|cover|thumbnail|image prompt|roleAvatar|roleBackground/i);
   assert.match(cardAuthor, /lunatalk-visual-identity-director/);
   assert.match(cardAuthor, /before.*profile|profile.*before/i);
+  assert.match(cardAuthor, /role_patch_assets/);
   assert.match(templates, /Visual identity packet:/);
+  assert.match(templates, /visual assets:/);
   assert.match(framework, /visual identity/i);
   assert.match(readme, /lunatalk-visual-identity-director/);
 });

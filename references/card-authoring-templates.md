@@ -857,6 +857,12 @@ Inputs preserved:
 Role fields:
 - roleName:
 - roleDesc:
+- visual assets:
+  - roleAvatar URL:
+  - roleBackground URL:
+  - asset status: ready | prompt-only | missing | author-provided
+  - `role_patch_assets` stance:
+  - visual identity packet preserved:
 - language style:
   - target language / locale:
   - pronoun / address matrix:
