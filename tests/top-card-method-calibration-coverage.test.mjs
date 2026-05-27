@@ -40,6 +40,7 @@ test('Moonloom exposes a public-safe top-card method calibration reference', asy
   assert.doesNotMatch(reference, /\bSELECT\b[\s\S]{0,160}\bFROM\b/i);
   assert.doesNotMatch(reference, /\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b/i);
   assert.doesNotMatch(reference, /production data|trained on|training data|traffic|view count|author id|schema/i);
+  assert.doesNotMatch(reference, /leaderboard|ranking rail|internal ranking|endpoint|api route|V2 ranking|榜單/i);
 });
 
 test('card authoring routes benchmark-calibrated writing through the public method', async () => {
