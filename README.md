@@ -24,6 +24,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-collaboration-director` turns author feedback, co-review,
   taste/preference calibration, draft comparisons, and revision choices into a
   decision packet before rewriting, simulating, or publishing.
+- `skills/lunatalk-iteration-director` turns self-review, validation,
+  tokenBudget, render, simulation, benchmark, previous-patch, and author
+  feedback evidence into a closed-loop next iteration decision with one repair,
+  stop / continue criteria, cost stance, and handoff.
 - `skills/lunatalk-sample-calibrator` compares drafts against public synthetic
   sample packet shapes, flags copy risk, and turns example requests into
   structure-only calibration before blueprinting or authoring.
@@ -184,6 +188,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/author-collaboration.md` defines conversation-only author
   feedback, taste-to-behavior translation, decision frames, and collaboration
   packets for co-review.
+- `references/iteration-loop.md` defines evidence stacks, decision ladders, patch
+  budgets, 10,000-character detail hard-cap vs target guidance, stop criteria,
+  and iteration packets for closed-loop card improvement.
 - `references/sample-driven-calibration.md` defines how to use public synthetic
   samples as output-shape fixtures without copying sample text or implying
   non-public origin claims.

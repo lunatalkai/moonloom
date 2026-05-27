@@ -171,6 +171,9 @@ Check:
 When `validate_role` returns `tokenBudget`, use it as a structural check:
 
 - `roleDetailDescChars` should usually carry the durable engine.
+- A 10,000-character `roleDetailDesc` limit is a hard cap, not a target. Add
+  detail only while it creates reusable behavior, route costs, state updates,
+  voice control, boundary handling, or return-later memory.
 - `roleWelcomeChars` should usually stay below `roleDetailDescChars`; an
   interactive setup can be longer, but it must add immediate agency.
 - `welcomeToDetailRatio > 2` usually means lore, rules, or visual scaffolding
