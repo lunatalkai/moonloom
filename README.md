@@ -245,6 +245,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/sample-card-packets.md` provides fictional sample output packets for
   relationship, daily-life, story/scenario, RPG/play-engine, and generator/helper
   card shapes.
+- `examples/complete-synthetic-card-fixture.md` provides one public-safe complete
+  synthetic card fixture with final fields, compact fallback, playtest probes,
+  field finalization, and acceptance handoff shape.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## Skill references
