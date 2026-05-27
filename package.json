@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "validate": "node scripts/validate-moonloom.mjs && node scripts/validate-complete-fixture.mjs && node scripts/validate-simulation-evidence.mjs && node scripts/validate-acceptance-evidence.mjs && node scripts/validate-benchmark-pattern.mjs && node scripts/validate-iteration-summary.mjs",
+    "validate": "node scripts/validate-moonloom.mjs && node scripts/validate-complete-fixture.mjs && node scripts/validate-xmlv3-presentation.mjs && node scripts/validate-simulation-evidence.mjs && node scripts/validate-acceptance-evidence.mjs && node scripts/validate-benchmark-pattern.mjs && node scripts/validate-iteration-summary.mjs",
     "validate:fixture": "node scripts/validate-complete-fixture.mjs",
+    "validate:xmlv3-presentation": "node scripts/validate-xmlv3-presentation.mjs",
     "validate:simulation": "node scripts/validate-simulation-evidence.mjs",
     "validate:acceptance": "node scripts/validate-acceptance-evidence.mjs",
     "validate:benchmark-pattern": "node scripts/validate-benchmark-pattern.mjs",

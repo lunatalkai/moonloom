@@ -295,7 +295,10 @@ changes. The validator checks plugin JSON, skill frontmatter, eval coverage,
 reference links, skill size, basic release-safety patterns, and the complete
 synthetic fixture's field structure, XMLV3 state, probe coverage, and acceptance
 handoff shape. Use `npm run validate:fixture` when only the complete fixture or
-its expected structure changes. Use `npm run validate:simulation` after recording
+its expected structure changes. Use `npm run validate:xmlv3-presentation` when
+an XMLV3 welcome, scaffold, or fixture changes; it rejects left-heavy naked
+choice piles, controls nested inside `<scene>`, flat state JSON, and raw
+style/class hooks. Use `npm run validate:simulation` after recording
 MCP simulation evidence to check required probes, per-message preview coverage,
 repair-packet requirements, and public-safe evidence shape. Use
 `npm run validate:acceptance` after a full trial-card run to check that assets,
@@ -303,8 +306,8 @@ validation, render, app visual proof, accepted simulation, and per-message
 preview evidence support the claimed completion status. Use
 `npm run validate:benchmark-pattern` before committing any benchmark-derived
 method update; it accepts only anonymized pattern packets and rejects raw source,
-exact markup, identifiers, query text, source-selection workflow, and protected
-source claims. Use `npm run validate:iteration-summary` before committing a
+exact markup, identifiers, query text, non-public provenance mechanics, and
+protected source claims. Use `npm run validate:iteration-summary` before committing a
 closed-loop Moonloom improvement; it verifies that the saved iteration summary
 has field review, MCP visual validation, chat playtest, per-message preview,
 validated benchmark pattern evidence, one repair target, rerun result, and a
