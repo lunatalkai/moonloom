@@ -145,6 +145,14 @@ Use semantic `tone` names as Theme V3 hooks. Do not copy HTML-style raw colors,
 pixel radii, or inline CSS into XMLV3. If a client does not support the layout
 pack, the inner `<choice>` tags remain readable fallback actions.
 
+Theme V3 should carry the visual variables that HTML cards used to place in
+`div` style attributes. For layout-heavy XMLV3, plan tone CSS around:
+`--lt-panel-bg`, `--lt-panel-border`, `--lt-panel-title-color`,
+`--lt-choice-bg`, `--lt-choice-border-color`, `--lt-choice-color`,
+`--lt-form-bg`, `--lt-form-field-bg`, `--lt-form-option-bg`,
+`--lt-form-option-active-bg`, `--lt-form-control-accent`,
+`--lt-form-submit-bg`, `--lt-collapse-bg`, and `--lt-bar-track-bg`.
+
 When changing an XMLV3 welcome or scaffold, run
 `npm run validate:xmlv3-presentation` before treating the structure as ready for
 field finalization. This catches short naked choice piles, controls still nested

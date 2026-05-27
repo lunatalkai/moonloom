@@ -46,3 +46,19 @@ test('Moonloom rejects arbitrary XML style/class while allowing theme-bound layo
     assert.match(source, /fallback|readable XMLV3 prose|可讀/i);
   }
 });
+
+test('Moonloom documents Theme V3 CSS variable hooks for XMLV3 layout controls', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+  const cardWriterMcp = await readFile('references/card-writer-mcp.md', 'utf8');
+  const presentationSkill = await readFile('skills/lunatalk-presentation-director/SKILL.md', 'utf8');
+  const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
+
+  for (const source of [themeRendering, presentation, cardWriterMcp, presentationSkill, cardAuthor]) {
+    assert.match(source, /--lt-panel-bg/);
+    assert.match(source, /--lt-choice-border-color/);
+    assert.match(source, /--lt-form-submit-bg|--lt-form-field-bg/);
+    assert.match(source, /--lt-collapse-bg/);
+    assert.match(source, /--lt-bar-track-bg/);
+  }
+});
