@@ -86,6 +86,10 @@ Visual identity packet:
   - public-safe and original:
 - fields to preserve:
 - fields to patch:
+- MCP asset readiness:
+  - roleAvatar URL:
+  - roleBackground URL:
+  - next action: generate / upload / author-provide / patch-assets
 - handoff:
 Language-style packet:
 - current request:
