@@ -26,7 +26,7 @@ test('complete fixture validator accepts the committed synthetic card fixture', 
   assert.equal(result.summary.playtestProbes, 7);
   assert.equal(result.summary.stateKeys, 4);
   assert.equal(result.summary.visualAssetBriefs, 2);
-  assert.ok(result.summary.detailChars >= 5000);
+  assert.ok(result.summary.detailChars >= 7000);
 });
 
 test('complete fixture validator rejects missing playtest coverage', async () => {

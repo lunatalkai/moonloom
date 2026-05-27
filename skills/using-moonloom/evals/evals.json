@@ -562,14 +562,14 @@
     },
     {
       "id": 44,
-      "prompt": "I am not sure which Moonloom skill to use. A private story card has a Moonloom self-review, validate_role pass, render_preview pass, tokenBudget detail in range, welcome near target, no simulation yet, and author feedback asks whether filling the 10,000-character roleDetailDesc hard cap would make it richer. Decide the next step before any patch or MCP call.",
-      "expected_output": "Uses using-moonloom as the router and routes closed-loop evidence, tokenBudget, author feedback, stop/continue criteria, and the 10,000-character detail hard-cap decision to lunatalk-iteration-director before patching, rerendering, simulation, or publish readiness.",
+      "prompt": "I am not sure which Moonloom skill to use. A private story card has a Moonloom self-review, validate_role pass, render_preview pass, tokenBudget detail in range, welcome near target, no simulation yet, and author feedback asks whether filling the language-aware roleDetailDesc hard cap would make it richer. Decide the next step before any patch or MCP call.",
+      "expected_output": "Uses using-moonloom as the router and routes closed-loop evidence, tokenBudget, author feedback, stop/continue criteria, and the language-aware detail hard-cap decision to lunatalk-iteration-director before patching, rerendering, simulation, or publish readiness.",
       "files": [],
       "expectations": [
         "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
         "The output routes self-review, validation, render, tokenBudget, previous evidence, and author feedback to lunatalk-iteration-director.",
         "The route focuses on an Iteration packet with evidence stack, decision, rejected next moves, next single repair, token stance, cost stance, stop / continue criteria, next skill, and handoff.",
-        "The token stance distinguishes a 10,000-character roleDetailDesc hard cap from a quality target and rejects max-length padding.",
+        "The token stance distinguishes language-aware roleDetailDesc hard caps from quality targets and rejects max-length padding.",
         "The output avoids MCP calls, field mutation, rerender, paid simulation, and publishing until the iteration decision is made."
       ]
     },

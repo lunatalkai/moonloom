@@ -3,12 +3,12 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "We have a private role that passed validate_role and render_preview. tokenBudget says detail is in range and welcome is near the upper target. The author points out that the Chinese-card roleDetailDesc hard cap is 10,000 chars and asks whether filling that limit would make it richer. Decide the next iteration step before any patch.",
-      "expected_output": "Produces an iteration packet that distinguishes the 10,000-character hard cap from a quality target, rejects max-length padding, preserves the working welcome/render, recommends only behavior-bearing detail if needed, and hands off to token or card-author only with a clear hypothesis.",
+      "prompt": "We have a private role that passed validate_role and render_preview. tokenBudget says detail is in range and welcome is near the upper target. The author points out the language-aware hard cap, including 10,000-character non-English roleDetailDesc and 50,000-character English roleDetailDesc, and asks whether filling the applicable limit would make it richer. Decide the next iteration step before any patch.",
+      "expected_output": "Produces an iteration packet that distinguishes language-aware hard caps from quality targets, rejects max-length padding, preserves the working welcome/render, recommends only behavior-bearing detail if needed, and hands off to token or card-author only with a clear hypothesis.",
       "files": [],
       "expectations": [
         "The output uses lunatalk-iteration-director because there is loop evidence and a next-iteration decision.",
-        "The token stance says the 10,000-character detail cap is a hard limit, not a target to fill for richness.",
+        "The token stance says language-aware hard caps are limits, not targets to fill for richness.",
         "The next single repair is narrow and tied to reusable behavior, route costs, state updates, voice control, boundaries, or memory.",
         "The output does not call MCP tools or mutate the private card.",
         "The output separates craft evidence from author taste tradeoff."

@@ -38,7 +38,9 @@ test('iteration director defines evidence stack and one-repair iteration packet'
   assert.match(skill, /stop \/ continue criteria/i);
   assert.match(skill, /Do not call MCP tools/i);
   assert.match(reference, /Decision ladder/);
-  assert.match(reference, /10,000-character\s+`roleDetailDesc` limit is a hard cap/i);
+  assert.match(reference, /language-aware hard caps/i);
+  assert.match(reference, /50,000-character English `roleDetailDesc`/i);
+  assert.match(reference, /10,000-character non-English `roleDetailDesc`/i);
 });
 
 test('router and README expose closed-loop iteration as first-class workflow', async () => {
@@ -54,7 +56,7 @@ test('router and README expose closed-loop iteration as first-class workflow', a
 test('iteration director evals cover token padding, render action visibility, and failed repair loops', async () => {
   const evals = await readFile('skills/lunatalk-iteration-director/evals/evals.json', 'utf8');
 
-  assert.match(evals, /10,000 chars|10,000-character/i);
+  assert.match(evals, /language-aware hard cap|50,000-character English|10,000-character non-English/i);
   assert.match(evals, /action visibility/i);
   assert.match(evals, /two simulation repair passes|two failed loops/i);
   assert.match(evals, /paid simulation/i);

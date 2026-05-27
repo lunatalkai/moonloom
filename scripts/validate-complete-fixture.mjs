@@ -40,7 +40,9 @@ const REQUIRED_DETAIL_SECTIONS = [
 ];
 
 const REQUIRED_FINALIZATION_MARKERS = [
-  '10,000-character `roleDetailDesc` hard cap stance',
+  'language-aware hard cap stance',
+  '10,000-character non-English `roleDetailDesc`',
+  '3,000-character non-English `roleWelcome`',
   'compact fallback',
   'final status',
   'MCP patch mapping',
@@ -74,7 +76,7 @@ const REQUIRED_PROBES = [
 
 const REQUIRED_XML_TAGS = ['scene', 'state', 'n', 'speaker', 'd', 'choice'];
 const ALLOWED_XML_TAGS = new Set(REQUIRED_XML_TAGS);
-const MIN_DETAIL_CHARS = 5000;
+const MIN_DETAIL_CHARS = 7000;
 const MIN_DETAIL_SECTION_CHARS = 80;
 
 const PLACEHOLDER_PATTERNS = [
