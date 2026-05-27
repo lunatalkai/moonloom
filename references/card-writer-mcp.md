@@ -243,6 +243,17 @@ The response includes `evaluation`:
   risk, state, or a renewed hook.
 - `safetyFormat`: catches obvious system/model artifacts.
 
+When the response includes `conversationId` and per-turn `chatId` values, use the
+dedicated app preview harness to inspect selected AI messages:
+
+```text
+/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>
+```
+
+This preview is for message rendering evidence: XMLV3/HTML/Markdown mode, DOM
+summary, paragraph spacing, overflow, relevant console errors, and screenshots.
+Do not parse the normal chat page UI for transcript formatting.
+
 If `evaluation.status` is `warning`, follow `nextRecommendedTools`: patch
 `roleDetailDesc` and/or `roleWelcome`, run `validate_role`, then rerun
 `simulate_private_chat`. There is no separate `simulation_evaluate` tool.

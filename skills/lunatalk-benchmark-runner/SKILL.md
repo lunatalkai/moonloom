@@ -18,7 +18,7 @@ public synthetic expected-output shape, sample comparison, or copy-risk review.
 Read `../../references/end-to-end-acceptance.md` when a benchmark needs to prove
 the whole loop from skill routing through private card creation, avatar/background
 asset patching, render preview, app visual inspection, simulation cost gate, and
-root-cause repair after a failed trial card.
+per-message preview evidence, and root-cause repair after a failed trial card.
 Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
@@ -108,7 +108,11 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    prompt-only art brief or missing asset URL is a regression, not completion.
 7. Run `simulate_private_chat` with the listed probes or a playtest plan from
    `playtest-loop.md` only when normal billing is acceptable.
-8. Record pass/fail by archetype and list the weakest dimension.
+8. If simulation returns `conversationId` and `chatId` values, open the
+   dedicated per-message preview harness for selected AI turns and record
+   message preview status. Do not parse the normal chat page UI to judge message
+   formatting.
+9. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 
@@ -274,6 +278,9 @@ intake.
   image requests loading successfully.
 - `simulate_private_chat.evaluation.status` is `pass`, or simulation was skipped
   with an explicit cost-aware reason.
+- If simulation ran and message identifiers were available, per-message preview
+  evidence exists for the selected AI turns. If identifiers were unavailable,
+  the report says so and does not claim per-turn visual completion.
 - `tokenBudget` is reasonable for the archetype.
 - The card does not copy benchmark text verbatim; it is a fresh original card.
 - The card does not copy sample packet names, scene text, tag strings, resource
@@ -296,6 +303,7 @@ Benchmark report packet:
 - MCP technical status:
 - render status:
 - app visual status:
+- message preview status:
 - asset status:
 - simulation status:
 - tokenBudget findings:
@@ -313,11 +321,14 @@ Use `positive cases` for cards or workflows that passed the craft and technical
 checks. Use `negative cases` for schema-valid but weak behavior, routing errors,
 or cost/render/simulation failures. `app visual status` should state whether the
 normal role detail and chat surfaces were inspected and whether avatar/background
-requests succeeded. `asset status` should state ready, prompt-only, missing, or
-partial. `regression classification` should separate Moonloom writing guidance,
-visual asset workflow, render/theme guidance, simulation behavior, and MCP
-technical flow. `do not turn into MCP gates` should name any subjective writing
-failures that must stay in skills rather than server validation.
+requests succeeded. `message preview status` should state whether simulation
+returned message identifiers, which `chatId` values were opened in the dedicated
+per-message preview harness, and whether any renderer, overflow, or relevant
+console issue was seen. `asset status` should state ready, prompt-only, missing,
+or partial. `regression classification` should separate Moonloom writing
+guidance, visual asset workflow, render/theme guidance, simulation behavior, and
+MCP technical flow. `do not turn into MCP gates` should name any subjective
+writing failures that must stay in skills rather than server validation.
 
 When the benchmark is specifically an end-to-end trial-card acceptance run,
 return the `End-to-end acceptance packet` from

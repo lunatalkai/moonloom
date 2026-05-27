@@ -53,3 +53,29 @@ test('router and README expose end-to-end acceptance as a first-class workflow',
   assert.match(readme, /avatar\/background patching/);
   assert.match(readme, /simulation cost gate/);
 });
+
+test('end-to-end acceptance requires dedicated per-message preview evidence after simulation', async () => {
+  const reference = await readFile('references/end-to-end-acceptance.md', 'utf8');
+  const playtest = await readFile('references/playtest-loop.md', 'utf8');
+  const chatSimulation = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
+  const benchmark = await readFile('skills/lunatalk-benchmark-runner/SKILL.md', 'utf8');
+  const evals = await readFile('skills/lunatalk-benchmark-runner/evals/evals.json', 'utf8');
+
+  assert.match(reference, /\/pages\/mcp\/rolePreview\?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>/);
+  assert.match(reference, /per-message preview/i);
+  assert.match(reference, /Do not parse the normal chat page UI/i);
+  assert.match(reference, /message preview evidence:/);
+  assert.match(reference, /message previews:/);
+
+  assert.match(playtest, /per-message preview/i);
+  assert.match(playtest, /conversationId[\s\S]*chatId[\s\S]*roleId/);
+
+  assert.match(chatSimulation, /message preview evidence/);
+  assert.match(chatSimulation, /\/pages\/mcp\/rolePreview/);
+  assert.match(chatSimulation, /Do not parse the normal chat page UI/i);
+
+  assert.match(benchmark, /per-message preview/i);
+  assert.match(benchmark, /message preview status:/);
+  assert.match(evals, /preview each returned chatId/i);
+  assert.match(evals, /normal chat UI/i);
+});

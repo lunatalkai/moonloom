@@ -14,7 +14,7 @@ decide whether another pass is worth the cost.
 
 Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
-patch mapping, and author co-review.
+patch mapping, per-message preview, and author co-review.
 Read `../../references/card-diagnosis.md` when the transcript has multiple
 symptoms and the weakest layer or repair order is unclear. Use
 `lunatalk-card-doctor` before another simulation when validation/render passed
@@ -87,16 +87,24 @@ When the author asks only for a test plan, do not call the tool.
 4. Call `simulate_private_chat` only after cost is accepted.
 5. Read every simulated turn and the returned `evaluation`. Evaluate behavior,
    not just whether the tool ran.
-6. Map each failure to a Moonloom patch target using `playtest-loop.md`.
+6. If the result includes `conversationId`, `chatId`, and `roleId` for AI turns,
+   open the dedicated preview harness for each selected message:
+   `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>`.
+   Record Ready status, renderer mode, DOM summary, text overflow, relevant
+   console errors, and screenshot or visual notes as message preview evidence.
+   Do not parse the normal chat page UI for transcript formatting.
+7. If message identifiers are missing, record "message preview unavailable" and
+   keep the visual claim narrower.
+8. Map each failure to a Moonloom patch target using `playtest-loop.md`.
    If the transcript shows several failures at once, create or preserve a
    `lunatalk-card-doctor` diagnosis packet before choosing field patches.
-7. Produce a simulation repair packet before patching fields or paying for
+9. Produce a simulation repair packet before patching fields or paying for
    another simulation pass.
-8. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
+10. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
-9. Run `validate_role` after structural patches.
-10. Re-run simulation when the patch changes core behavior, boundary handling,
+11. Run `validate_role` after structural patches.
+12. Re-run simulation when the patch changes core behavior, boundary handling,
    state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
@@ -126,6 +134,7 @@ Simulation repair packet:
 - probes run:
 - transcript-backed failures:
 - evaluation signals:
+- message preview evidence:
 - weakest Moonloom dimension:
 - patch target:
 - next Moonloom skill:
@@ -223,6 +232,7 @@ Return:
 
 - prompts used
 - transcript summary
+- message preview evidence or unavailable reason
 - behavior issues found
 - suggested card patches with target field
 - billing/cost summary when available
