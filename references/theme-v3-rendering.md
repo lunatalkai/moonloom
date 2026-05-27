@@ -118,14 +118,16 @@ color should come from the bound Theme V3 snapshot so clients can keep contrast
 and fallback behavior consistent.
 
 Use `<choices cols="2" align="stretch" gap="sm">` for 2-4 short action buttons
-that should share horizontal space. Avoid naked stacks of several `<choice>`
-tags unless the choices are intentionally long prose actions; naked stacks tend
-to become a left-heavy vertical stack in preview. `choices` may carry
-`cols="1|2|3|auto"`, `align="start|center|end|stretch"`, `gap`, and `variant`;
-each child `<choice>` may carry semantic `tone`, `variant`, `width`, or `align`
-hooks. Use these as Theme V3 hooks, not arbitrary inline styling.
-If a client lacks the layout pack, the child `<choice>` tags still remain
-readable and clickable as fallback.
+that should share horizontal space. Consecutive naked `<choice>` tags may still
+render as a usable fallback grid, including a full-width odd final item, but this
+is a fallback path: the report should show `fallbackActionGroups`, and the author
+has not declared grouping, density, or tone strategy. Use explicit `choices` for
+short actions unless every option is intentionally long prose. `choices` may
+carry `cols="1|2|3|auto"`, `align="start|center|end|stretch"`, `gap`, and
+`variant`; each child `<choice>` may carry semantic `tone`, `variant`, `width`,
+or `align` hooks. Use these as Theme V3 hooks, not arbitrary inline styling. If a
+client lacks the layout pack, the child `<choice>` tags still remain readable and
+clickable as fallback.
 
 When XMLV3 is replacing a rich HTML card, run an HTML parity checklist before
 writing more prose. The goal is not pixel parity with arbitrary HTML, but the
@@ -152,6 +154,22 @@ same play value:
 If XMLV3 fails this checklist, patch the presentation packet or Theme V3 before
 improving the writing logic. A weak renderer makes even a strong role engine
 look worse than it is.
+
+Read the render report as a parity map before making prose changes:
+
+- `actionColumns` should be at least 2 when there are 3-4 short actions.
+- `groupedActions` means the author used an explicit layout group; this is
+  preferred for dense action rows.
+- `fallbackActionGroups` means the renderer rescued naked `<choice>` siblings.
+  Accept the visual fallback only as temporary evidence; patch to explicit
+  `<choices>` for durable card design.
+- `nestedControls` means controls were placed inside `<scene>` and should be
+  moved to sibling layout blocks.
+- `themeHooks`, `customTones`, and `unresolvedTones` explain whether XMLV3 has
+  enough Theme V3 backing to replace HTML local color/style blocks.
+- `stateSurface` should become visible in browser preview when state exists.
+  Server-only reports may say `expected`; verify the clean preview status area
+  before accepting the card.
 
 Theme V3 can make XMLV3 feel closer to high-quality HTML cards without putting
 raw style inside XML. Useful CSS variable hooks include:

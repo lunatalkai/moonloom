@@ -18,3 +18,16 @@ test('Moonloom requires HTML parity checks before XMLV3 writing-logic repairs', 
     assert.match(source, /before[\s\S]*writing logic|before changing[\s\S]*writing logic|before improving[\s\S]*writing logic/i);
   }
 });
+
+test('Moonloom render review reads action layout diagnostics before prose repairs', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const renderReview = await readFile('skills/lunatalk-render-review/SKILL.md', 'utf8');
+
+  for (const source of [themeRendering, renderReview]) {
+    assert.match(source, /actionColumns|actionLayoutMaxColumns/);
+    assert.match(source, /fallbackActionGroups|fallbackActionGroupCount/);
+    assert.match(source, /naked[\s\S]*<choice>|consecutive[\s\S]*<choice>/);
+    assert.match(source, /explicit[\s\S]*<choices>/);
+    assert.match(source, /horizontal splitting|left\/right halves|full-width/i);
+  }
+});

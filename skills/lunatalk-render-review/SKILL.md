@@ -103,6 +103,11 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Treat `xmlv3_actions_render_single_column` as an action-layout blocker when
   there are three or more choices: use `<choices cols="2" align="stretch">` or a
   comparable layout pack structure before tuning prose.
+- Treat `fallbackActionGroupCount > 0` as a repair signal even when
+  `actionLayoutMaxColumns >= 2`: the renderer may have recovered naked
+  consecutive `<choice>` tags into a usable 2-column fallback, but high-quality
+  cards should still patch short action sets into explicit `<choices>` so tone,
+  density, and author intent are durable.
 - Treat `xmlv3_custom_tones_without_theme_hooks` as a Theme V3 blocker: either
   bind Theme CSS that targets the custom `tone` values, or replace the custom
   tones with supported baseline tones. Do this before changing writing logic.
@@ -127,6 +132,9 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   form controls, and desktop/mobile density. If the XMLV3 preview cannot carry
   the same play value, patch XMLV3 structure or Theme V3 before changing the
   role's writing logic.
+- When a screenshot tool only returns the current viewport, do not infer that the
+  lower content is missing. Use the preview `capturePlan` and apply each listed
+  vertical segment; horizontal splitting is not part of the review model.
 - Treat `evaluation.qualityDimensions` as the structured review map:
   `captureReadiness`, `semanticStructure`, `readability`, and
   `actionVisibility`.
