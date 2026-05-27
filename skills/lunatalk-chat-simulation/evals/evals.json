@@ -4,10 +4,11 @@
     {
       "id": 1,
       "prompt": "Run a private simulation for roleId abc123 with one opening user turn and tell me if the role stays in character.",
-      "expected_output": "Uses simulate_private_chat, notes normal billing, evaluates the transcript for role consistency, and recommends patches if needed.",
+      "expected_output": "Uses conversation_send_message plus conversation_inspect, notes normal billing, evaluates the transcript for role consistency, and recommends patches if needed.",
       "files": [],
       "expectations": [
-        "The output states that simulate_private_chat uses normal LunaTalk chat billing unless the user already accepted it.",
+        "The output states that conversation_send_message uses normal LunaTalk chat billing unless the user already accepted it.",
+        "The output uses conversation_inspect for transcript history and preview metadata after the accepted send.",
         "The simulation uses a realistic opening user turn.",
         "The evaluation checks role consistency, scene advancement, player agency, progression, and safety format.",
         "The output recommends concrete roleDetailDesc, roleWelcome, or voice-rule patches when behavior fails.",
@@ -43,7 +44,7 @@
     {
       "id": 4,
       "prompt": "Plan a playtest for roleId expedition-42. It is a compact RPG card and I want to know whether choices, supplies, and danger actually work, but do not spend credits until I approve.",
-      "expected_output": "Creates a playtest plan with RPG-specific probes, explains cost stance, and waits for confirmation instead of calling simulate_private_chat.",
+      "expected_output": "Creates a playtest plan with RPG-specific probes, explains cost stance, and waits for confirmation instead of calling conversation_send_message.",
       "files": [],
       "expectations": [
         "The output includes a playtest plan with target risks, 1 to 5 realistic player probes, expected healthy behavior, cost stance, and tool-call decision.",

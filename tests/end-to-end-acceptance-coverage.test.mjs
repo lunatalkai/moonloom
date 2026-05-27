@@ -23,7 +23,8 @@ test('end-to-end acceptance reference exists and defines visual completion gates
   assert.match(reference, /avatar.*background/s);
   assert.match(reference, /role detail.*avatar/s);
   assert.match(reference, /chat.*background/s);
-  assert.match(reference, /simulate_private_chat[\s\S]*billing|billing[\s\S]*simulate_private_chat/i);
+  assert.match(reference, /conversation_send_message[\s\S]*billing|billing[\s\S]*conversation_send_message/i);
+  assert.match(reference, /conversation_inspect[\s\S]*preview|preview[\s\S]*conversation_inspect/i);
   assert.match(reference, /cost-gated/);
   assert.match(reference, /root-cause repair/);
 });

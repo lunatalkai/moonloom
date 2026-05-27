@@ -168,8 +168,8 @@ and whether a routine becomes shared.
 
 ## Simulation probes
 
-Use these before paid simulation, or as the plan for `simulate_private_chat` when
-the author accepts normal billing:
+Use these before paid simulation, or as the plan for `conversation_send_message`
+plus `conversation_inspect` when the author accepts normal billing:
 
 ```text
 Daily-life probes:

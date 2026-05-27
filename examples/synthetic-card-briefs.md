@@ -14,8 +14,9 @@ or the Card Writer MCP:
 3. Run `validate_role`; fix technical blockers.
 4. Run `render_preview`; fix `evaluation` warnings and inspect `previewUrl` when
    browser or multimodal review is available.
-5. Run `simulate_private_chat` with the listed probes if normal billing is
-   acceptable.
+5. Run `conversation_send_message` with the listed probes if normal billing is
+   acceptable, then call `conversation_inspect` for returned history and preview
+   metadata.
 6. A benchmark pass means Moonloom self-review passes, validation has no blockers,
    render evaluation passes, simulation evaluation passes, and the result stays
    within a reasonable token budget for its archetype.

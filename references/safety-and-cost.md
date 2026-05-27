@@ -36,11 +36,13 @@ For mature or tense cards:
 For public submission, unresolved boundary ambiguity is a writing problem even
 when technical validation passes.
 
-## Simulation cost
+## Conversation test cost
 
-`simulate_private_chat` runs the real LunaTalk chat pipeline and deducts points or
-credits under normal rules. Before running it, make sure the author asked for a
-simulation or understands that this check costs real account resources.
+`conversation_send_message` runs the real LunaTalk chat pipeline and deducts
+points or credits under normal rules. Before running it, make sure the author
+asked for a conversation test or understands that this check costs real account
+resources. Use `conversation_inspect` afterward to read the returned history and
+preview metadata.
 
 ## Credentials
 

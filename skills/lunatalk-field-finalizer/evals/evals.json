@@ -24,7 +24,7 @@
         "The output maps fields to role_patch_profile, role_patch_assets, role_patch_detail, role_patch_welcome, optional role_patch_jailbreak, and theme_bind or extension_enable when relevant.",
         "The output does not call MCP tools directly unless the user separately asks for real mutation.",
         "The final status is ready only because required fields, assets, placeholders, format checks, and hard-cap checks are complete.",
-        "The handoff names validate_role, render_preview, and simulate_private_chat stance after patching.",
+        "The handoff names validate_role, render_preview, conversation_send_message stance, and conversation_inspect focus after patching.",
         "The output keeps subjective writing quality in Moonloom skills rather than MCP gates."
       ]
     },

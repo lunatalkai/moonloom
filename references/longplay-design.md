@@ -231,7 +231,8 @@ Keep it compact. Prefer durable behavior rules over long sample scenes.
 ## Continuation probes
 
 Use these before paid simulation, or as the probe plan for
-`simulate_private_chat` when the author accepts normal billing:
+`conversation_send_message` plus `conversation_inspect` when the author accepts
+normal billing:
 
 ```text
 Continuation probes:

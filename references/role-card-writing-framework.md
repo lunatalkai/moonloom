@@ -1060,7 +1060,8 @@ Use these during simulation:
 Patch the card when simulation exposes a missing anchor, unclear player role, weak
 consequence loop, or excessive token repetition.
 
-Use `simulate_private_chat.evaluation` to triage failures:
+Use `conversation_inspect.evaluation` to triage failures after accepted
+conversation sends:
 
 - `responsePresence`: the reply is empty, too short, or too generic.
 - `agency`: the reply does not give the player a concrete next move.

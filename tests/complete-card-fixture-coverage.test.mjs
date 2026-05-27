@@ -75,7 +75,8 @@ test('complete fixture includes playtest and acceptance evidence plan', async ()
 
   assert.match(fixture, /validate_role/i);
   assert.match(fixture, /render_preview/i);
-  assert.match(fixture, /simulate_private_chat/i);
+  assert.match(fixture, /conversation_send_message/i);
+  assert.match(fixture, /conversation_inspect/i);
   assert.match(fixture, /per-message preview/i);
   assert.match(fixture, /End-to-end acceptance packet/);
 });

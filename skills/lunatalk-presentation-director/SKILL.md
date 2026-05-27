@@ -27,8 +27,8 @@ player.
 ## Boundary
 
 Do not call MCP tools from this skill. Do not call `validate_role`,
-`render_preview`, `simulate_private_chat`, or mutating card tools. Do not patch
-real role fields.
+`render_preview`, `conversation_send_message`, `conversation_inspect`, or
+mutating card tools. Do not patch real role fields.
 
 Use `lunatalk-render-review` instead when a preview URL, screenshot, validation
 report, DOM summary, contrast report, overflow report, blocked request list, or

@@ -30,12 +30,12 @@
     {
       "id": 3,
       "prompt": "Before simulation, verify what the agent should require. The card has not run validate_role yet, and simulation costs points.",
-      "expected_output": "Uses MCP stage-gating to require validate_role with no blockers and author cost acceptance before simulate_private_chat, then hands off to chat simulation.",
+      "expected_output": "Uses MCP stage-gating to require validate_role with no blockers and author cost acceptance before conversation_send_message plus conversation_inspect, then hands off to chat simulation.",
       "files": [],
       "expectations": [
         "The output treats simulation as costed and requires author acceptance.",
-        "The output requires validate_role before simulate_private_chat.",
-        "The operation packet names simulate_private_chat as a required tool only for the simulation stage.",
+        "The output requires validate_role before conversation_send_message.",
+        "The operation packet names conversation_send_message and conversation_inspect as required tools only for the simulation stage.",
         "The output routes behavior testing to lunatalk-chat-simulation after prerequisites.",
         "The output does not run simulation from the operator skill."
       ]

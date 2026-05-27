@@ -35,8 +35,9 @@ same key.
 6. Optional `theme_bind` and `extension_enable`
 7. `validate_role`
 8. `render_preview`
-9. `simulate_private_chat`
-10. `publish_submit` only after explicit author confirmation
+9. `conversation_send_message`
+10. `conversation_inspect`
+11. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -194,9 +195,10 @@ technical repair surface:
   or unsupported render tags.
 - `validate_role` after the patch.
 
-Do not call `render_preview` or `simulate_private_chat` just because they are
-available. Use them after `validate_role` has no blockers and after the Moonloom
-self-review says the draft is worth testing visually or behaviorally.
+Do not call `render_preview`, `conversation_send_message`, or
+`conversation_inspect` just because they are available. Use them after
+`validate_role` has no blockers and after the Moonloom self-review says the draft
+is worth testing visually or behaviorally.
 
 ### `render_preview`
 
@@ -217,25 +219,53 @@ multimodal access, open `previewUrl` and inspect it visually. If
 `evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
 `roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 
-### `simulate_private_chat`
+### `conversation_send_message`
 
-Run the real LunaTalk private chat pipeline. It uses normal billing and deducts
-credits or points according to the authenticated account's model and membership.
+Send one real user message through LunaTalk's private chat pipeline. It uses
+normal billing and deducts credits or points according to the authenticated
+account's model and membership. Use this as the primary MCP-backed behavior test
+tool because it returns the AI reply, billing summary, message identifiers, and
+per-message preview URL for the new turn.
 
 Required:
 
 ```json
 {
   "schemaVersion": "2026-05-26.m1",
-  "idempotencyKey": "simulate-...",
+  "idempotencyKey": "conversation-send-...",
   "roleId": "...",
-  "messages": ["..."]
+  "message": "..."
 }
 ```
 
-`messages` must contain 1 to 5 user turns.
+Optional: `conversationId` to continue a prior MCP-operated conversation,
+`model`, and `pageSize`.
 
-The response includes `evaluation`:
+### `conversation_inspect`
+
+Read an owned conversation's history for evaluation. This is the tool AI clients
+should use to get conversation data instead of parsing the normal chat page UI.
+It returns USER and AI messages, AI `chatId` values, `previewUrl`, renderer mode,
+text length, warnings, and a conversation evaluation.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "...",
+  "conversationId": "..."
+}
+```
+
+Optional: `pageNum` and `pageSize`.
+
+After every accepted behavior-test message, call `conversation_inspect` before
+claiming the role behavior is stable. Use the returned `messages[].chatMessage`
+for role-behavior evaluation and the returned AI `messages[].previewUrl` for
+visual/render evidence.
+
+The send and inspect responses include `evaluation`:
 
 - `responsePresence`: catches empty or too-thin replies.
 - `agency`: checks whether the reply gives the player a next action path.
@@ -243,8 +273,10 @@ The response includes `evaluation`:
   risk, state, or a renewed hook.
 - `safetyFormat`: catches obvious system/model artifacts.
 
-When the response includes `conversationId` and per-turn `chatId` values, use the
-dedicated app preview harness to inspect selected AI messages:
+Each simulated AI turn may include a `previewUrl`. Open that URL when available.
+If `previewUrl` is absent but the response includes `conversationId` and
+per-turn `chatId` values, use the dedicated app preview harness to inspect
+selected AI messages:
 
 ```text
 /pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>
@@ -256,7 +288,8 @@ Do not parse the normal chat page UI for transcript formatting.
 
 If `evaluation.status` is `warning`, follow `nextRecommendedTools`: patch
 `roleDetailDesc` and/or `roleWelcome`, run `validate_role`, then rerun
-`simulate_private_chat`. There is no separate `simulation_evaluate` tool.
+`conversation_send_message` and `conversation_inspect`. There is no separate
+`simulation_evaluate` tool.
 
 ### `publish_submit`
 
@@ -271,6 +304,6 @@ Required:
   "idempotencyKey": "publish-...",
   "roleId": "...",
   "userConfirmed": true,
-  "confirmationSummary": "Author confirmed after validation, render review, and simulation."
+  "confirmationSummary": "Author confirmed after validation, render review, and conversation test."
 }
 ```

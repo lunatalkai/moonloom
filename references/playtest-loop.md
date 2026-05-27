@@ -35,8 +35,9 @@ the role has to carry part of the scene.
    role repeats setup instead of moving play forward.
 
 If the probes are meant to be a single short conversation, order them so each
-message follows from the previous one. If they are independent stress tests, run
-separate simulation passes only when the author accepts the extra cost.
+message follows from the previous one and continue the returned
+`conversationId`. If they are independent stress tests, run separate
+conversation sessions only when the author accepts the extra cost.
 
 Before running the probes, state the patch triggers: what transcript evidence
 would cause a `roleDetailDesc`, `roleWelcome`, profile, or jailbreak change. This
@@ -44,9 +45,12 @@ keeps the simulation from becoming a vague taste check.
 
 ## Per-message visual check
 
-When `simulate_private_chat` returns a `conversationId`, `chatId`, and `roleId`
-for simulated AI turns, inspect those turns through the dedicated per-message preview
-harness before claiming the transcript is visually stable. Use:
+After `conversation_send_message`, call `conversation_inspect` to retrieve the
+conversation history, AI replies, evaluation data, and per-message preview URLs.
+Open returned `messages[].previewUrl` values for selected AI turns. If
+`previewUrl` is absent but the result includes a `conversationId`, `chatId`, and
+`roleId`, inspect those turns through the dedicated per-message preview harness
+before claiming the transcript is visually stable. Use:
 
 ```text
 /pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>
@@ -59,7 +63,7 @@ long-message display after simulation. Do not parse the normal chat page UI for
 message formatting; use the normal chat page only when the acceptance run needs
 to prove the card background or full app surface loads.
 
-If the simulation result does not include message identifiers, record
+If the conversation tools do not include message identifiers, record
 "message preview unavailable" in the repair or acceptance packet and keep the
 visual claim narrower.
 

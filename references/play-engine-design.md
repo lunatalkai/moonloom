@@ -237,8 +237,8 @@ ornament that does not change player action.
 
 ## Simulation probes
 
-Use these before paid simulation or as the plan for `simulate_private_chat` when
-normal billing is accepted:
+Use these before paid simulation or as the plan for `conversation_send_message`
+plus `conversation_inspect` when normal billing is accepted:
 
 ```text
 Play-engine probes:

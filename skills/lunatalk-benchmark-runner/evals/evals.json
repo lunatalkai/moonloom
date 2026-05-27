@@ -353,14 +353,14 @@
         "The report treats missing avatar/background as a visual asset workflow regression, not as a reason to rewrite the card text.",
         "The report requires role_patch_assets with real avatar and background URLs before claiming visual completion.",
         "The report requires normal app evidence, including role-detail avatar and chat background image request success, not only validate_role or render_preview.",
-        "The report records simulate_private_chat as cost-gated and does not claim behavior checked when billing was not approved.",
+        "The report records conversation_send_message as cost-gated and does not claim behavior checked when billing was not approved.",
         "The report maps the root-cause repair to Moonloom skills, references, templates, or evals rather than turning subjective writing quality into an MCP hard gate.",
         "The check remains public-safe and uses only synthetic role-card evidence."
       ]
     },
     {
       "id": 28,
-      "prompt": "After an accepted simulate_private_chat run for a synthetic private card, the result includes one conversationId and three AI chatId values. The role renders XMLV3 in its replies. Return the end-to-end acceptance handoff and preview each returned chatId without relying on the normal chat UI.",
+      "prompt": "After accepted conversation_send_message turns and conversation_inspect for a synthetic private card, the result includes one conversationId and three AI chatId values. The role renders XMLV3 in its replies. Return the end-to-end acceptance handoff and preview each returned chatId without relying on the normal chat UI.",
       "expected_output": "Uses the dedicated per-message preview harness for each returned chatId, records message preview status and evidence in the End-to-end acceptance packet, and avoids parsing the normal chat UI for transcript formatting.",
       "files": [],
       "expectations": [

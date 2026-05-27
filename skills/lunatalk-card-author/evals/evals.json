@@ -171,7 +171,7 @@
         "The workflow routes mixed existing-card symptoms to lunatalk-card-doctor before broad field rewriting.",
         "The diagnosis packet includes evidence, primary and secondary failures, repair order, symptom map, field triage, keep/move/cut/rewrite, verification plan, and handoff.",
         "The patch plan preserves working packets and maps each fix to roleDesc, roleDetailDesc, roleWelcome, talkExample, or XMLV3/Theme V3.",
-        "The workflow delays another simulate_private_chat run until structural patches are done and cost is accepted.",
+        "The workflow delays another conversation_send_message plus conversation_inspect pass until structural patches are done and cost is accepted.",
         "The output uses validate_role only for technical blockers after patching, not as proof of writing quality."
       ]
     },
@@ -341,7 +341,7 @@
         "The instruction guardrail packet includes evidence, prerequisite packets checked, instruction-layer need, allowed constraints, forbidden constraints, jailbreak stance, role_patch_jailbreak readiness, validation / simulation plan, and handoff.",
         "The output does not use jailbreak to fix generic quality, missing voice, missing longplay, weak opening, or unsafe boundary design.",
         "The real patch path keeps roleDetailDesc, roleWelcome, and talkExample as primary fields and uses role_patch_jailbreak only for compact last-mile constraints.",
-        "The output validates after the patch and delays another simulate_private_chat run until the author accepts normal simulation cost."
+        "The output validates after the patch and delays another conversation_send_message plus conversation_inspect pass until the author accepts normal simulation cost."
       ]
     },
     {
