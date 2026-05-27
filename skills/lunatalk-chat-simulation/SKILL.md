@@ -14,8 +14,9 @@ decide whether another pass is worth the cost.
 
 Read `../../references/card-writer-mcp.md` for `conversation_send_message` and
 `conversation_turn_status` / `conversation_inspect`, plus
-`conversation_create`, `conversation_list`, and `conversation_load` when the test
-needs a fresh thread, conversation discovery, resume, or rollback.
+`conversation_model_catalog`, `conversation_create`, `conversation_list`, and
+`conversation_load` when the test needs model/cost selection, a fresh thread,
+conversation discovery, resume, or rollback.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, per-message preview, and author co-review.
 Use `npm run validate:simulation` when a run produces a redacted simulation
@@ -101,18 +102,25 @@ not call the tool.
    In raw JSON-RPC responses, unwrap `result.structuredContent.conversation`
    before reading `conversationId`, `latestMessage`, `messages`, `evaluation`,
    or `previewUrl`.
-5. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
+5. Call `conversation_model_catalog` before the first paid probe. Read
+   `recommendedModel`, model status, `costScore`, and `effectiveCostScore`, then
+   pass the chosen value as `model` in `conversation_send_message` when the
+   environment default is unknown or known to be unavailable. Do not hard-code a
+   model when the catalog can provide one.
+6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
    still returns `generationStatus: "waiting_ai"` or `"generating"`, treat it as
    the normal async path and poll with `conversation_turn_status` instead of
    holding the client request open longer. For a multi-turn probe, continue with
-   the returned `conversationId`.
-6. Call `conversation_inspect` after each accepted message once the latest turn
+   the returned `conversationId`, but do not send the next probe until the latest
+   AI message is complete. If the latest message is USER, keep polling or inspect
+   the failed turn before adding more input.
+7. Call `conversation_inspect` after each accepted message once the latest turn
    is complete. For long conversations, pass `chatIds` for the specific messages
    under review instead of loading an oversized history page. Read the
    returned conversation history, AI messages, `evaluation`, and per-message
    metadata. Evaluate behavior, not just whether the tool ran.
-7. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
+8. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
    selected AI messages. If `previewUrl` is absent but the result includes
    `conversationId`, `chatId`, and `roleId`, build the dedicated preview harness URL:
    `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>&viewport=mobile`.
@@ -129,22 +137,22 @@ not call the tool.
    should be `<`, scene text should be wrapped in XMLV3 tags, player affordances
    should use `<choice>`, and state changes should use `<state>` with compact
    JSON. Do not mark XMLV3 visual closure just because `isV3:true` is present.
-8. If message identifiers are missing, record "message preview unavailable" and
+9. If message identifiers are missing, record "message preview unavailable" and
    keep the visual claim narrower.
-9. When preparing benchmark or repository handoff evidence, write a redacted
+10. When preparing benchmark or repository handoff evidence, write a redacted
    simulation evidence packet shaped like
    `../../examples/simulation-evidence.fixture.json` and run
    `npm run validate:simulation`. Do not store raw transcripts in Moonloom.
-10. Map each failure to a Moonloom patch target using `playtest-loop.md`.
+11. Map each failure to a Moonloom patch target using `playtest-loop.md`.
    If the transcript shows several failures at once, create or preserve a
    `lunatalk-card-doctor` diagnosis packet before choosing field patches.
-11. Produce a simulation repair packet before patching fields or paying for
+12. Produce a simulation repair packet before patching fields or paying for
    another simulation pass.
-12. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
+13. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
-13. Run `validate_role` after structural patches.
-14. Re-run the conversation test when the patch changes core behavior, boundary
+14. Run `validate_role` after structural patches.
+15. Re-run the conversation test when the patch changes core behavior, boundary
     handling, state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
@@ -160,8 +168,9 @@ Playtest plan:
   1. ...
 - expected healthy behavior:
 - patch triggers:
+- model/cost stance:
 - cost stance:
-- tool call: conversation_send_message with waitMs: 60000 now | wait for confirmation | skipped
+- tool call: conversation_model_catalog then conversation_send_message with model and waitMs: 60000 now | wait for confirmation | skipped
 ```
 
 Use a narrow spot-check only for a targeted regression, a known weak layer, or a

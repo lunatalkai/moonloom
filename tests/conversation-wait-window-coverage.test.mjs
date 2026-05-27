@@ -16,3 +16,19 @@ test('Moonloom conversation guidance uses a 60 second MCP wait window', async ()
   assert.doesNotMatch(chatSkill, /10\s*seconds/i);
   assert.doesNotMatch(mcpWorkflow, /10\s*seconds/i);
 });
+
+test('Moonloom conversation guidance queries model cost before paid playtests', async () => {
+  const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
+  const mcpWorkflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+
+  assert.match(mcpWorkflow, /conversation_model_catalog/);
+  assert.match(mcpWorkflow, /recommendedModel/);
+  assert.match(mcpWorkflow, /conversation_send_message[\s\S]*model/i);
+  assert.match(mcpWorkflow, /costScore[\s\S]*effectiveCostScore/);
+
+  assert.match(playtestLoop, /conversation_model_catalog/);
+  assert.match(playtestLoop, /recommendedModel/);
+  assert.match(playtestLoop, /Do not send the next probe/i);
+  assert.match(playtestLoop, /waiting_ai[\s\S]*generating/);
+  assert.match(playtestLoop, /latest message[\s\S]*USER/i);
+});
