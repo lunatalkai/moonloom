@@ -25,7 +25,7 @@ fields; `profile-packaging.md`, `visual-identity.md`, `language-style.md`,
 `quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`,
 `archetype-contracts.md`, `card-diagnosis.md`,
 `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
-`boundary-design.md`, `opening-design.md`, `longplay-design.md`,
+`talk-example-design.md`, `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
 `agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
 matching focused tasks.
 
@@ -76,6 +76,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    `roleDesc`, `roleDetailDesc`, `roleWelcome`, and `talkExample`, use
    `lunatalk-language-stylist` first unless a language-style packet already
    exists.
+   If the author asks for `talkExample`, micro-samples, dialogue samples, example
+   turns, generator output examples, RPG/system turn examples, or whether to omit
+   examples, use `lunatalk-talk-example-curator` before field assembly unless a
+   TalkExample packet already exists.
    If the author asks whether a draft, blueprint, packet stack, or role fields
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
@@ -310,7 +314,7 @@ MCP tools make the card real; Moonloom makes the card good.
   language-style decisions, visual identity, quality audit, render repair,
   simulation repair, instruction guardrail,
   archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
-  agency, voice, opening, longplay, boundary, token, presentation, and
+  agency, voice, TalkExample, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.
 - If a packet is missing and the missing layer blocks a good card, route to the
   narrow skill before field assembly. Do not fill missing packets with generic

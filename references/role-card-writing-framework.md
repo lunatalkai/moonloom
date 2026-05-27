@@ -997,6 +997,11 @@ Use only when it teaches voice or format that the detail cannot capture. Do not
 fill it with generic dialogue. For ensemble cards, prefer compact micro-samples
 over a long scene that showcases only the loudest character.
 
+Use `talk-example-design.md` or `lunatalk-talk-example-curator` when the main
+question is whether to omit examples, add micro-samples, or include a full
+format example. Every sample needs a job and token payment; it must not repeat
+the welcome or decide the player's feelings/actions.
+
 ### `jailbreak`
 
 Use sparingly. Prefer explicit behavior rules in detail. Only add jailbreak text

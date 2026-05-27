@@ -9,6 +9,9 @@ voice rules cannot compensate for a role that has no pressure behavior.
 Use `../skills/lunatalk-voice-director/SKILL.md` when the task is primarily
 generic dialogue, speaking-style repair, catchphrase discipline, voice drift,
 blind-line testing, or ensemble voice contrast.
+Use `talk-example-design.md` when voice rules already exist and the unresolved
+question is whether to omit `talkExample`, add micro-samples, or include full
+examples for voice, format, or turn protocol.
 
 ## Core rule
 
@@ -167,8 +170,8 @@ Use this order when repairing voice:
 3. Response-mode grid: trust, question, resistance, passivity, boundary, and
    betrayal when relevant.
 4. Blind-line test: anonymous lines should be identifiable without names.
-5. Micro-sample or talkExample: add only when rules still do not preserve the
-   voice.
+5. Micro-sample or talkExample: use `talk-example-design.md` when rules still do
+   not preserve the voice and the sample needs a token-safe packet.
 6. Simulation probe: use real LunaTalk simulation only after the card is private,
    valid, and the author accepts normal chat billing.
 

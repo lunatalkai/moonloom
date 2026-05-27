@@ -520,6 +520,19 @@
         "The output does not treat the task as only sample calibration, material distillation, broad rewriting, profile packaging, or final field assembly.",
         "The output avoids MCP calls, final fields, render, simulation, publishing, copied names, copied scene text, copied proper nouns, and renamed-copy repair by noun swapping."
       ]
+    },
+    {
+      "id": 41,
+      "prompt": "I am not sure which Moonloom skill to use. The voice card, opening, and token plan are coherent, but I need to decide whether talkExample should be omitted, micro-samples, or full examples. I want one compact dialogue sample only if it teaches reusable voice or format behavior and has a token payment. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes talkExample decisions, micro-sample design, sample jobs, and token payment to lunatalk-talk-example-curator before final field assembly.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes talkExample decisions, micro-samples, dialogue samples, and sample token cost to lunatalk-talk-example-curator.",
+        "The route focuses on a TalkExample packet with decision, sample jobs, samples to write, token payment, field placement, verification, and handoff.",
+        "The output does not route to broad voice repair when voice rules are already coherent, and does not jump directly to final field assembly.",
+        "The output avoids MCP calls, render, simulation, publishing, welcome repetition, long decorative examples, and player-agency takeover."
+      ]
     }
   ]
 }

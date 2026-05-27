@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, originality, canon/IP inspiration, profile, visual identity, avatar, cover, language, variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, originality, canon/IP inspiration, profile, visual identity, language, talkExample, micro-samples, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -14,6 +14,11 @@ This is Moonloom's entry router. When an agent is unsure what to use, load this
 skill first, classify the task, and then route to the narrowest matching skill.
 This mirrors the start-with-the-router pattern: if a task might be Moonloom work,
 route first and only then load narrower skills.
+
+Use this router before any Moonloom-specific answer, clarifying question, MCP
+tool call, field rewrite, render review, simulation, or publish-readiness check.
+The router may decide that no Moonloom skill applies, but that decision should be
+explicit rather than skipped.
 
 ## Router rule
 
@@ -251,6 +256,12 @@ bottleneck and list delayed routes under `do not do yet`.
   blind-line checks, voice drift, or ensemble speakers blending together: use
   `lunatalk-voice-director` before blueprinting, authoring, simulation, or
   publish readiness.
+- `talkExample` decisions, micro-sample design, dialogue samples, example turns,
+  sample token cost, generator output examples, RPG/system turn examples, or
+  deciding whether to omit examples after voice/engine packets already exist:
+  use `lunatalk-talk-example-curator` before final field assembly. If voice,
+  generator, play, relationship, ensemble, language, or token architecture is
+  unresolved, route to that narrow skill first.
 - Player agency, user insertion space, interaction hooks, decorative choices,
   route funneling, spectator openings, role decides the player's feelings or
   actions, player can only watch, player has no meaningful refusal route, or
@@ -382,6 +393,9 @@ validation, render review, simulation, and publish readiness.
   publish readiness.
 - Read `../../references/voice-calibration.md` when the task involves voice,
   speaking style, dialogue examples, role consistency, or ensemble cast contrast.
+- Read `../../references/talk-example-design.md` when the task involves
+  `talkExample` decisions, micro-samples, dialogue samples, example turns,
+  generator output examples, RPG/system turn examples, or sample token cost.
 - Read `../../references/agency-design.md` when the task involves player agency,
   user insertion space, interaction hooks, decorative choices, route funneling,
   player-agency takeover, or consequence checks.
