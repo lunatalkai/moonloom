@@ -102,13 +102,23 @@ result flow can use optional tags such as `collapse`, `bar`, `tag`,
 `result-card`, or `share-text` when that pack is enabled.
 
 Use the layout pack when the author needs HTML div-like container structure:
-`panel`, `stack`, `row`, `grid`, and `divider` create section blocks, grouped
-controls, compact columns, and visual separators without exposing raw
+`panel`, `stack`, `row`, `grid`, `choices`, and `divider` create section blocks, grouped
+controls, compact columns, action groups, and visual separators without exposing raw
 `style`/`class` or arbitrary CSS inside XML. Treat layout as the safe structure
 layer; Theme V3 owns the color layer through theme-bound tone, palette, and
 panel tokens. A panel can carry a semantic `tone` or `variant`, but the actual
 color should come from the bound Theme V3 snapshot so clients can keep contrast
 and fallback behavior consistent.
+
+Use `<choices cols="2" align="stretch" gap="sm">` for 2-4 short action buttons
+that should share horizontal space. Avoid naked stacks of several `<choice>`
+tags unless the choices are intentionally long prose actions; naked stacks tend
+to become a left-heavy vertical stack in preview. `choices` may carry
+`cols="1|2|3|auto"`, `align="start|center|end|stretch"`, `gap`, and `variant`;
+each child `<choice>` may carry semantic `tone`, `variant`, `width`, or `align`
+hooks. Use these as Theme V3 hooks, not arbitrary inline styling.
+If a client lacks the layout pack, the child `<choice>` tags still remain
+readable and clickable as fallback.
 
 Call `extension_enable` with `packId: "layout"` when the presentation packet
 uses layout pack tags. If layout is unavailable, the same content must still be

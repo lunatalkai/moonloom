@@ -191,8 +191,9 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    express.
    If the author needs HTML div-like sectioning, grouped blocks, or local color
    distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,
-   `stack`, `row`, `grid`, and `divider` for container and section block
-   hierarchy, and use Theme V3 tone/color tokens for the actual visual skin.
+   `stack`, `row`, `grid`, `choices`, and `divider` for container, section
+   block, and action-button hierarchy, and use Theme V3 tone/color tokens for
+   the actual visual skin.
    When these tags appear, include `extension_enable` for `layout` in the MCP
    patch sequence; keep the fallback readable if the pack is unsupported.
    Do not paste the platform XMLV3 server guide into `roleDetailDesc`; detail
@@ -202,6 +203,10 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    In XMLV3, close `</scene>` after the prose/dialogue beat and put controls
    such as `bar`, `collapse`, `form`, `result-card`, `share-text`, and `choice`
    as sibling tags. Do not wrap or nest the whole interface inside one scene.
+   For 2-4 short action buttons, wrap child `<choice>` tags in
+   `<choices cols="2" align="stretch" gap="sm">` and use semantic child `tone`
+   hooks. Do not leave short buttons as an uneven left-aligned vertical stack
+   unless each option is intentionally long prose.
 13. Before calling `role_patch_jailbreak`, use or preserve
     `lunatalk-instruction-guardrail`. Only patch jailbreak text when the author
     explicitly asks for a real instruction-layer patch or confirms

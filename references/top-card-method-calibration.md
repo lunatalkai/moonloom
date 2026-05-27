@@ -173,8 +173,10 @@ must notice when XMLV3 lacks a stable equivalent.
 Use this XMLV3 method:
 
 - Put meaning in XMLV3 tags and reusable visual identity in Theme V3.
-- Use layout pack tags such as `panel`, `stack`, `row`, `grid`, and `divider`
-  when the card needs HTML-like grouping.
+- Use layout pack tags such as `panel`, `stack`, `row`, `grid`, `choices`, and
+  `divider` when the card needs HTML-like grouping or action-button layout.
+- Use `<choices cols="2" align="stretch">` for several short buttons instead
+  of a left-heavy vertical stack of naked `<choice>` tags.
 - Use `tone`, `variant`, or other theme-bound attributes for semantic styling;
   let Theme V3 decide actual color and contrast.
 - Use `<state>` for machine-readable state, and visible status prose or panels

@@ -69,11 +69,15 @@ which meters are decorative and should be omitted.
    `result-card`, or `share-text` only when the presentation packet explains the
    play value and the MCP handoff includes `extension_enable`.
    When the missing capability is HTML div-like structure or per-section color,
-   prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`, and
-   `divider` create container and section block hierarchy, while Theme V3 owns
-   theme-bound tone, palette, and panel color. Do not place raw style/class or
-   arbitrary CSS in XML. If this pack is used, the MCP handoff must include
-   `extension_enable` for `layout` plus a readable XMLV3 fallback stance.
+   prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`,
+   `choices`, and `divider` create container, section block, and action-button
+   hierarchy, while Theme V3 owns theme-bound tone, palette, and panel color. Do
+   not place raw style/class or arbitrary CSS in XML. If this pack is used, the
+   MCP handoff must include `extension_enable` for `layout` plus a readable
+   XMLV3 fallback stance.
+   When a screen has 2-4 short action buttons, prefer
+   `<choices cols="2" align="stretch" gap="sm">` over several naked `<choice>`
+   tags so the preview does not collapse into an uneven left-aligned stack.
 6. Keep XMLV3 evolution on the compatible XMLV3 extension target. Do not propose
    XMLV4/XMLV5 for backward-compatible additions; use optional tags,
    attributes, packs, and fallback behavior.
@@ -138,8 +142,11 @@ Self-review:
 - Do not choose HTML just because the card should look good. Use HTML only for a
   layout need XMLV3 and Theme V3 cannot express.
 - Do not use arbitrary XML `style`/`class` as a shortcut for HTML div styling.
-  Use layout pack `panel`, `stack`, `row`, `grid`, and `divider` plus Theme V3
-  tone/variant tokens, then check fallback readability.
+  Use layout pack `panel`, `stack`, `row`, `grid`, `choices`, and `divider`
+  plus Theme V3 tone/variant tokens, then check fallback readability.
+- Do not leave several short action buttons as a left-heavy vertical pile. Use
+  `<choices>` for button-grid intent, with semantic `tone` hooks on each child
+  `<choice>` when the theme needs visual distinction.
 - Do not duplicate the platform XMLV3 server guide inside role detail. Detail
   gets the role-specific format contract: state update rules, choice rules,
   visible status meaning, pack usage, and player-agency boundaries.

@@ -13,7 +13,8 @@ Presentation is not decoration. It should make the card easier to play.
 - Theme V3 carries reusable visual identity: typography, color, panels, speech
   treatments, atmosphere, and extension packs.
 - The layout pack is XMLV3's safe div-like layer. Use `panel`, `stack`, `row`,
-  `grid`, and `divider` for container, section block, grouping, and separation;
+  `grid`, `choices`, and `divider` for container, section block, grouping,
+  action-button layout, and separation;
   use Theme V3 tone and color tokens for the visual identity behind those blocks.
 - HTML is an exception for custom one-off layout or legacy migration.
 - Render review proves the result only after a real validation or preview exists.
@@ -101,9 +102,10 @@ record why and hand off to `extension_enable`; if a client lacks the pack, the
 fallback must remain readable XMLV3 prose.
 
 If the need is "I want HTML div blocks with different local colors", try the
-layout extension first: `panel`, `stack`, `row`, `grid`, and `divider` provide
-the container structure, while Theme V3 provides theme-bound tone, palette, and
-panel color. Do not put raw style/class or arbitrary CSS in XML. Call
+layout extension first: `panel`, `stack`, `row`, `grid`, `choices`, and
+`divider` provide the container structure and action-button grouping, while
+Theme V3 provides theme-bound tone, palette, and panel color. Do not put raw
+style/class or arbitrary CSS in XML. Call
 `extension_enable` for `layout` only when the structure changes play readability,
 state visibility, or action hierarchy; if unsupported, the fallback should still
 read as ordered XMLV3 prose.
@@ -118,14 +120,30 @@ Use core tags first:
 - `<d>` carries dialogue.
 - `<quote>` carries inner thought or emphasis.
 - `<choice>` exposes a player action prompt.
+- `<choices>` from the layout pack groups 2-4 `<choice>` buttons into columns
+  or an auto-wrapping action row. Prefer it when short buttons would otherwise
+  form a left-heavy single-column stack.
 - `<form>`, `<input>`, `<radio>`, and `<checkbox>` collect setup choices.
 - `<state>` stores hidden JSON state.
 
 Avoid nesting the whole interface inside one scene. Close `</scene>` after the
 prose beat, then put controls such as `bar`, `collapse`, `form`, `result-card`,
-`share-text`, and `choice` as sibling XMLV3 tags. This keeps mobile width,
-spacing, and panel hierarchy closer to the real chat UI instead of making every
-control look crammed into the same scene card.
+`share-text`, `choices`, and `choice` as sibling XMLV3 tags. This keeps mobile
+width, spacing, and panel hierarchy closer to the real chat UI instead of making
+every control look crammed into the same scene card.
+
+When a screen has several short action choices, wrap them:
+
+```xml
+<choices cols="2" gap="sm" align="stretch">
+  <choice tone="primary" send="檢查門口攝影機">檢查攝影機</choice>
+  <choice tone="clue" send="詢問她剛才聽見什麼">追問線索</choice>
+</choices>
+```
+
+Use semantic `tone` names as Theme V3 hooks. Do not copy HTML-style raw colors,
+pixel radii, or inline CSS into XMLV3. If a client does not support the layout
+pack, the inner `<choice>` tags remain readable fallback actions.
 
 `<state>` is not visible prose. If the player should see a status sentence, write
 that sentence in `<n>` or a short visible label, then keep `<state>` compact and
@@ -173,6 +191,8 @@ If an element only says "this looks pretty", move it to Theme V3 or cut it.
 - Custom HTML for an ordinary scene that XMLV3 can express.
 - Custom HTML for a collapse, bar, tag, result card, or share affordance before
   checking whether an XMLV3 extension pack can cover it.
+- Several short `<choice>` buttons left as a single uneven left-aligned column
+  when `<choices>` can express the intended action grid.
 - A new XMLV4/XMLV5 label for a backward-compatible XMLV3 extension.
 - Choices before the scene gives them meaning.
 - Visible status blocks that never affect the next role response.
