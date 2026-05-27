@@ -266,7 +266,10 @@ those files for the current workflow.
 
 Run `npm test` for validator unit tests and `npm run validate` before publishing
 changes. The validator checks plugin JSON, skill frontmatter, eval coverage,
-reference links, skill size, and basic release-safety patterns.
+reference links, skill size, basic release-safety patterns, and the complete
+synthetic fixture's field structure, XMLV3 state, probe coverage, and acceptance
+handoff shape. Use `npm run validate:fixture` when only the complete fixture or
+its expected structure changes.
 
 ## MCP endpoint
 
