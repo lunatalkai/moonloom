@@ -53,12 +53,13 @@ the JSON-RPC response.
    `extension_enable` for specific packs
 7. `validate_role`
 8. `render_preview`
-9. `conversation_create` or `conversation_list`
-10. `conversation_send_message`
-11. `conversation_turn_status` when the send result is still pending
-12. `conversation_inspect`
-13. Optional `conversation_load` when the author wants to resume or roll back
-14. `publish_submit` only after explicit author confirmation
+9. `conversation_model_catalog` before paid conversation testing
+10. `conversation_create` or `conversation_list`
+11. `conversation_send_message`
+12. `conversation_turn_status` when the send result is still pending
+13. `conversation_inspect`
+14. Optional `conversation_load` when the author wants to resume or roll back
+15. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -298,6 +299,30 @@ Required:
 Optional: `pageSize` and `viewport`. Use `viewport: "desktop"` to preview the
 PC chat column proportions and `viewport: "mobile"` to preview the mobile chat
 bubble proportions.
+
+### `conversation_model_catalog`
+
+Query available LunaTalk chat models, model values, status, and normal billing
+shape before a paid behavior test. Use this before `conversation_send_message`
+when the client needs to know which model value to pass or what the expected
+cost tier is.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1"
+}
+```
+
+Optional: `query`, `recommendedOnly`, and `includeUnavailable`.
+
+Read `recommendedModel` first. Each model entry may include `costScore`,
+`effectiveCostScore`, `maxScore`, `effectiveMaxScore`, `status`, discount fields,
+and notes. `effectiveCostScore` includes active model discounts; actual billing
+still follows LunaTalk membership, context, MAX, stop, and server-side billing
+rules. If the selected model is not the server default, pass that value as
+`model` in `conversation_send_message`.
 
 ### `conversation_list`
 

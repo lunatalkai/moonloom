@@ -43,6 +43,7 @@ Expected Card Writer tools:
 - optional `extension_enable`
 - `validate_role`
 - `render_preview`
+- `conversation_model_catalog`
 - `conversation_create`
 - `conversation_list`
 - optional `conversation_load`
@@ -70,14 +71,18 @@ those nested payloads, not at the JSON-RPC top level.
 | Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
-| Conversation testing | `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
+| Conversation testing | `conversation_model_catalog`, `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
 | Public submission | `publish_submit` | submit without explicit author confirmation |
 
-For accepted conversation tests, pass `waitMs: 60000` to
-`conversation_send_message`. The server default and cap are 60 seconds; a
-pending `generationStatus` after that window is an async handoff, not a failure.
-Use `conversation_turn_status` and then `conversation_inspect` for completion and
-per-message evidence.
+For accepted conversation tests, call `conversation_model_catalog` first and read
+`recommendedModel`, model status, `costScore`, and `effectiveCostScore`. Pass the
+chosen value as `model` in `conversation_send_message` when the default model is
+unknown, unavailable, or unsuitable for the current client environment. Also pass
+`waitMs: 60000`. The server default and cap are 60 seconds; a pending
+`generationStatus` after that window is an async handoff, not a failure. Use
+`conversation_turn_status` and then `conversation_inspect` for completion and
+per-message evidence. Do not send another probe while the latest message is a
+USER message or the latest turn is `waiting_ai` / `generating`.
 
 ## Operation packet
 
