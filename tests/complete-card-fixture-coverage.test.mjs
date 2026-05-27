@@ -48,7 +48,9 @@ test('complete fixture demonstrates field-ready role content and fallback', asyn
     'XMLV3',
     'Field finalization packet',
     'compact fallback',
-    '10,000-character `roleDetailDesc` hard cap stance',
+    'language-aware hard cap stance',
+    '10,000-character non-English `roleDetailDesc`',
+    '3,000-character non-English `roleWelcome`',
   ]) {
     assert.match(fixture, new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   }

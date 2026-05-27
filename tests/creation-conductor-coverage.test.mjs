@@ -40,7 +40,9 @@ test('creation workflow defines runway packet and stage gates', async () => {
   assert.match(reference, /conversation_send_message[\s\S]*cost/i);
   assert.match(reference, /conversation_inspect[\s\S]*history|history[\s\S]*conversation_inspect/i);
   assert.match(reference, /publish_submit.*explicit/i);
-  assert.match(reference, /10,000.*hard cap/i);
+  assert.match(reference, /language-aware hard caps/i);
+  assert.match(reference, /50,000-character\s+English `roleDetailDesc`/i);
+  assert.match(reference, /10,000-character\s+non-English `roleDetailDesc`/i);
   assert.match(evals, /Creation runway packet/);
   assert.match(evals, /lunatalk-iteration-director/);
 });

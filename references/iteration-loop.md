@@ -61,9 +61,11 @@ Choose exactly one primary next move:
 9. Move to publish readiness only when self-review, technical validation, render,
    and any accepted simulation scope have no unresolved blocker.
 
-Do not fill fields to their maximum length. A 10,000-character
-`roleDetailDesc` limit is a hard cap, not a quality target. Add detail only when
-it creates reusable behavior, route costs, state updates, voice control,
+Do not fill fields to their maximum length. Use language-aware hard caps as
+ceilings, not quality targets: 50,000-character English `roleDetailDesc`,
+10,000-character non-English `roleDetailDesc`, 10,000-character English
+`roleWelcome`, and 3,000-character non-English `roleWelcome`. Add detail only
+when it creates reusable behavior, route costs, state updates, voice control,
 boundaries, or return-later memory. If the card is already coherent, stop before
 extra lore turns into drag.
 

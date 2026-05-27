@@ -109,7 +109,10 @@ creation conductor -> iteration director -> one repair -> validate/render/conver
 
 ## Guardrails
 
-- Treat `roleDetailDesc` 10,000 characters as a hard cap, not a target.
+- Use language-aware hard caps as ceilings, not targets: 50,000-character
+  English `roleDetailDesc`, 10,000-character non-English `roleDetailDesc`,
+  10,000-character English `roleWelcome`, and 3,000-character non-English
+  `roleWelcome`. Expand only behavior-bearing detail.
 - Keep source material as source-to-play maps, not pasted lore.
 - Preserve author feedback in the agent conversation; do not invent comment
   systems or separate review ledgers.
