@@ -28,9 +28,14 @@ Theme V3, hidden state JSON, or visible state.
 3. Inspect final fields for missing content, placeholders, TODOs, bracketed
    instructions, unresolved alternatives, meta commentary, and author-facing
    notes that should not enter the card.
-4. Check hard caps and density. Treat the 10,000-character `roleDetailDesc` hard
-   cap as a ceiling, not a target. Add detail only when it changes future
-   behavior, route, state, voice, boundary handling, or return-later play.
+4. Check language-aware hard caps and density. Use the author's language /
+   locale, card fields, or MCP validation/tokenBudget result when available.
+   English fields use the 50,000-character English `roleDetailDesc` cap and
+   10,000-character English `roleWelcome` cap; non-English fields use the
+   10,000-character non-English `roleDetailDesc` cap and 3,000-character
+   non-English `roleWelcome` cap. Treat caps as ceilings, not targets. Add
+   detail only when it changes future behavior, route, state, voice, boundary
+   handling, or return-later play.
 5. Produce a compact fallback for any field near a limit or any field whose
    purpose could survive in shorter form.
 6. Check format stability for XMLV3, JSON, Markdown, YAML-style lists, and plain
@@ -63,10 +68,16 @@ Field finalization packet:
   - tags:
   - avatar/background:
 - hard-cap and density check:
+  - language / locale:
   - roleDesc estimate:
   - roleDetailDesc estimate:
-  - 10,000-character `roleDetailDesc` hard cap stance:
+  - language-aware hard cap stance:
+    - 50,000-character English `roleDetailDesc`:
+    - 10,000-character non-English `roleDetailDesc`:
   - roleWelcome estimate:
+  - roleWelcome hard cap stance:
+    - 10,000-character English `roleWelcome`:
+    - 3,000-character non-English `roleWelcome`:
   - talkExample estimate:
   - sections that earn tokens:
 - compact fallback:

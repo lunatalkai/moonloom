@@ -21,9 +21,14 @@ Check these gates in order:
 3. No placeholders: remove bracket labels, TODO text, "fill later" notes,
    unresolved choices, meta commentary, and author-facing instructions from
    final role fields.
-4. Hard caps: a 10,000-character `roleDetailDesc` hard cap is a ceiling, not a
-   quality target. Record the intended range, current estimate, and why each long
-   section changes behavior, route, state, voice, boundary, or return-later play.
+4. Language-aware hard caps: use the author's language / locale, field language,
+   or MCP validation/tokenBudget result when available. English fields use the
+   50,000-character English `roleDetailDesc` cap and 10,000-character English
+   `roleWelcome` cap. Non-English fields use the 10,000-character non-English
+   `roleDetailDesc` cap and 3,000-character non-English `roleWelcome` cap.
+   These caps are ceilings, not quality targets. Record the intended range,
+   current estimate, and why each long section changes behavior, route, state,
+   voice, boundary, or return-later play.
 5. Compact fallback: when any field is near a client limit, provide a shorter
    fallback that preserves the role engine before calling MCP tools.
 6. Format sanity: validate XMLV3 tags, JSON blocks, Markdown spacing, YAML-style
@@ -74,10 +79,16 @@ Field finalization packet:
   - tags:
   - avatar/background:
 - hard-cap and density check:
+  - language / locale:
   - roleDesc estimate:
   - roleDetailDesc estimate:
-  - 10,000-character `roleDetailDesc` hard cap stance:
+  - language-aware hard cap stance:
+    - 50,000-character English `roleDetailDesc`:
+    - 10,000-character non-English `roleDetailDesc`:
   - roleWelcome estimate:
+  - roleWelcome hard cap stance:
+    - 10,000-character English `roleWelcome`:
+    - 3,000-character non-English `roleWelcome`:
   - talkExample estimate:
   - sections that earn tokens:
 - compact fallback:
