@@ -42,10 +42,14 @@ to visible text, but Theme V3 styling and validation are less reliable. Use
 
 `<state>` must contain valid JSON and is not rendered inline. If the player
 should see a status sentence, write it in `<n>` and reserve `<state>` for
-machine-readable updates, for example:
+machine-readable updates. For MCP preview evidence, use a top-level
+`scene` / `status` / `relationships` object so the preview summary can detect
+state as present. Do not use flat state objects such as
+`{"location":"...","trust":1}`; those may parse as JSON but still appear as
+`state:none` in preview reports.
 
 ```xml
-<state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"trust","label":"信任","value":"低"}]}</state>
+<state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"小碟","label":"信任","affinity":1,"max":5}]}</state>
 ```
 
 `<action>` belongs to the battle extension pack. For prose actions, use `<n>`.

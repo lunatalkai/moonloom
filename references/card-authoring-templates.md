@@ -1251,7 +1251,7 @@ Use for companion, story, daily-life, romance, and ensemble cards.
 
 ```xml
 <scene>
-  <state>{"location":"[place]","time":"[time]","tension":"[short state]"}</state>
+  <state>{"scene":{"location":"[place]","time":"[time]","mood":"[short mood]"},"status":[{"key":"tension","label":"張力","value":"[short state]"}],"relationships":[{"target":"[role]","label":"信任","affinity":1,"max":5}]}</state>
   <n>[Sensory opening tied to place/time.]</n>
   <n>[Role action already in progress.]</n>
   <speaker>[Role name]</speaker>
@@ -1262,6 +1262,10 @@ Use for companion, story, daily-life, romance, and ensemble cards.
   <choice>[Concrete action option 3]</choice>
 </scene>
 ```
+
+Use the `scene` / `status` / `relationships` shape for every XMLV3 hidden state
+block that needs MCP preview evidence. A flat JSON object can validate as JSON
+but still produce `state:none` in the role preview report.
 
 Do not use choices as a substitute for scene. The scene must already contain
 place, role action, pressure, and player implication.
@@ -1299,7 +1303,7 @@ first reply path, and a second-turn move.
 
 ```xml
 <scene>
-  <state>{"mode":"setup","resources":{"[key]":"[value]"},"risk":"[level]"}</state>
+  <state>{"scene":{"location":"[place]","mood":"setup"},"status":[{"key":"risk","label":"風險","value":"[level]"},{"key":"[resource]","label":"[resource label]","value":"[value]"}],"relationships":[{"target":"[role or faction]","label":"立場","value":"未知"}]}</state>
   <n>[One-sentence premise and immediate situation.]</n>
   <n>[What the player controls and what pressure is active.]</n>
   <form>

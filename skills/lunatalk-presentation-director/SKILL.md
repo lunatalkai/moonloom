@@ -58,6 +58,9 @@ which meters are decorative and should be omitted.
    structured welcomes.
 4. Separate visible content, hidden JSON state, Theme V3 responsibilities, and
    `roleDetailDesc` responsibilities.
+   Hidden `<state>` must be preview-compatible: use top-level `scene`, `status`,
+   and `relationships`. Flat JSON state can render as `state:none` in MCP preview
+   evidence even when it is syntactically valid.
 5. Apply the visual affordance test: every visible element must prove action,
    state, mood, route, risk, clue, resource, boundary, or relationship pressure.
 6. Define first-screen hierarchy and mobile/readability risks.
@@ -99,7 +102,7 @@ Optional XMLV3 scaffold:
 
 Self-review:
 - content is playable, not poster-only:
-- hidden state is JSON, not prose:
+- hidden state uses preview-compatible scene/status/relationships JSON:
 - Theme V3 carries style, not story logic:
 - HTML is justified or rejected:
 - player's next action is visible:
@@ -112,8 +115,9 @@ Self-review:
   it.
 - Do not hide durable role rules, relationship gates, or scenario logic in Theme
   V3.
-- Do not write prose inside `<state>`. Keep hidden state compact JSON and put
-  visible status text in visible tags.
+- Do not write prose or flat key/value dumps inside `<state>`. Keep hidden state
+  compact, use `scene` / `status` / `relationships`, and put visible status text
+  in visible tags.
 - Do not choose HTML just because the card should look good. Use HTML only for a
   layout need XMLV3 and Theme V3 cannot express.
 - Do not overrule a weak opening with visual polish. If the next player action is

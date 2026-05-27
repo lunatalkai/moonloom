@@ -133,7 +133,16 @@ Update the opening welcome. Supported modes are `plain`, `html`, and `xmlv3`.
 Prefer `xmlv3` for new cards unless the author explicitly needs custom HTML.
 For XMLV3, use registered tags such as `<scene>`, `<n>`, `<speaker>`, `<d>`,
 `<quote>`, `<choice>`, `<form>`, and `<state>`. `<state>` must be JSON and is
-hidden from inline rendering.
+hidden from inline rendering. Use the preview-compatible Theme V3 state shape:
+top-level `scene`, `status`, and `relationships`. Flat objects such as
+`{"trust":1,"risk":"low"}` can be valid JSON but still render as `state:none`
+in preview summaries, so do not use flat state for MCP-backed cards.
+
+Preview-compatible state example:
+
+```xml
+<state>{"scene":{"location":"雨夜郵件廳","mood":"tense"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"沈燈","label":"信任","affinity":1,"max":5}]}</state>
+```
 
 ```json
 {
