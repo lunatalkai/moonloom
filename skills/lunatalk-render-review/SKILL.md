@@ -95,11 +95,14 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Read `structuredReport.surfaceDiagnostics` and, when available, the browser
   preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
   `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
-  `formControlCount`, `stateSurface`, `toneCount`, `localStyleHookCount`,
-  `themeStyleHookCount`, `customToneCount`, `unresolvedToneCount`, and
-  `nestedControlCount`.
+  `actionLayoutMaxColumns`, `formControlCount`, `stateSurface`, `toneCount`,
+  `localStyleHookCount`, `themeStyleHookCount`, `customToneCount`,
+  `unresolvedToneCount`, and `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
+- Treat `xmlv3_actions_render_single_column` as an action-layout blocker when
+  there are three or more choices: use `<choices cols="2" align="stretch">` or a
+  comparable layout pack structure before tuning prose.
 - Treat `xmlv3_custom_tones_without_theme_hooks` as a Theme V3 blocker: either
   bind Theme CSS that targets the custom `tone` values, or replace the custom
   tones with supported baseline tones. Do this before changing writing logic.
