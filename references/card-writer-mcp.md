@@ -287,13 +287,34 @@ The response includes `evaluation`:
 - `readability`: overflow, contrast, console warnings, and runtime health.
 - `actionVisibility`: the first screen exposes a player action path.
 
+The response also includes `structuredReport.surfaceDiagnostics`. Treat it as a
+renderer-structure map, not a replacement for screenshot review:
+
+- `renderMode`: `html`, `xmlv3`, or `plain`.
+- `sectionBlocks` / `panelBlocks`: whether the output has div-like or
+  layout-pack sectioning instead of one undifferentiated scene.
+- `actionCount`, `groupedActionCount`, and `fallbackActionGroupCount`: whether
+  choices are balanced action groups or fallback / ungrouped buttons.
+- `formControlCount`: whether setup inputs/radios/checkboxes actually rendered
+  as controls.
+- `stateSurface`: `expected` from server-side static analysis, `visible` from
+  the browser preview payload when a status/state surface is actually rendered.
+- `toneCount` and `localStyleHookCount`: whether visual distinction comes from
+  Theme V3 tones / HTML style hooks.
+- `warnings`: parity risks such as dense XMLV3 without section panels or several
+  actions without an explicit `<choices>` group.
+
+Use these fields to compare rich HTML behavior with XMLV3 behavior before
+changing writing logic. If XMLV3 cannot show sectioning, action density, form
+controls, or a visible state surface, patch XMLV3 layout / Theme V3 first.
+
 The first version uses client-side capture. If the AI client has browser or
 multimodal access, open `previewUrl` and inspect it visually. If
 `evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
 `roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 
 When the preview page exposes `window.__LUNATALK_MCP_PREVIEW__`, read its
-`capturePlan` before judging the screenshot:
+`capturePlan` and `report.surfaceDiagnostics` before judging the screenshot:
 
 - Treat `contentWidth`, `contentHeight`, `clientWidth`, and `clientHeight` as the
   clean preview surface dimensions, not the normal app chrome.

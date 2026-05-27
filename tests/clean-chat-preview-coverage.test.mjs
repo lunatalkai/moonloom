@@ -30,3 +30,22 @@ test('Moonloom requires capturePlan-driven vertical review without desktop horiz
     assert.match(source, /Do not shorten|not proof.*shortened|not a reason to shorten/i);
   }
 });
+
+test('Moonloom uses surfaceDiagnostics for HTML and XMLV3 render parity checks', async () => {
+  const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
+  const renderReview = await readFile('skills/lunatalk-render-review/SKILL.md', 'utf8');
+
+  for (const source of [cardWriter, renderReview]) {
+    assert.match(source, /surfaceDiagnostics/);
+    assert.match(source, /sectionBlocks/);
+    assert.match(source, /panelBlocks/);
+    assert.match(source, /actionCount/);
+    assert.match(source, /groupedActionCount/);
+    assert.match(source, /fallbackActionGroupCount/);
+    assert.match(source, /formControlCount/);
+    assert.match(source, /stateSurface/);
+    assert.match(source, /toneCount/);
+    assert.match(source, /localStyleHookCount/);
+    assert.match(source, /HTML.*XMLV3|XMLV3.*HTML/i);
+  }
+});

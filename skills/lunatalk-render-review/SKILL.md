@@ -41,8 +41,9 @@ visibility, opening clarity, or second-turn setup.
 6. Read the preview page `capturePlan` when available. If it is segmented,
    capture every vertical segment before judging. For desktop, resize to
    `requiredCaptureWidth` when requested; do not split screenshots horizontally.
-7. Use `evaluation` first, then `structuredReport`, DOM summary, console errors,
-   blocked requests, overflow, contrast, and XML tag lists.
+7. Use `evaluation` first, then `structuredReport.surfaceDiagnostics`, DOM
+   summary, console errors, blocked requests, overflow, contrast, and XML tag
+   lists.
 8. Produce a render repair packet before patching the role/theme or running
    another render pass.
 9. Patch the role or theme, then re-run validation and preview.
@@ -91,6 +92,12 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   all listed vertical `segments`; desktop screenshots must remain full-width and
   must not be split into left/right halves. A partial top-only screenshot is
   incomplete evidence, not a reason to shorten content.
+- Read `structuredReport.surfaceDiagnostics` and, when available, the browser
+  preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
+  `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
+  `formControlCount`, `stateSurface`, `toneCount`, and `localStyleHookCount`.
+  Treat `stateSurface: expected` as a prompt to verify the browser preview shows
+  the external state/status surface as `visible`.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.
