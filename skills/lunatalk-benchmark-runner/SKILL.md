@@ -15,6 +15,10 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../examples/sample-card-packets.md` and
 `../../references/sample-driven-calibration.md` when benchmark output needs a
 public synthetic expected-output shape, sample comparison, or copy-risk review.
+Read `../../references/end-to-end-acceptance.md` when a benchmark needs to prove
+the whole loop from skill routing through private card creation, avatar/background
+asset patching, render preview, app visual inspection, simulation cost gate, and
+root-cause repair after a failed trial card.
 Read
 `../../references/card-writer-mcp.md` for tool contracts and
 `../../references/quality-rubric.md` for pass/fail criteria. Read
@@ -97,9 +101,14 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
 4. Run `validate_role` and patch technical blockers only.
 5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
    `previewUrl` when browser or multimodal access is available.
-6. Run `simulate_private_chat` with the listed probes or a playtest plan from
+6. For MCP-backed full-card acceptance, confirm `role_patch_assets` has patched
+   real avatar and background URLs, then open the normal app surface when
+   possible. Role detail should show the avatar, chat should show the background
+   or intended visual container, and both image requests should succeed. A
+   prompt-only art brief or missing asset URL is a regression, not completion.
+7. Run `simulate_private_chat` with the listed probes or a playtest plan from
    `playtest-loop.md` only when normal billing is acceptable.
-7. Record pass/fail by archetype and list the weakest dimension.
+8. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 
@@ -118,6 +127,9 @@ Moonloom self-review, render review, or simulation that:
   broad mood-only tags, or weak first impression, but the workflow jumps to
   broad diagnosis, field assembly, render, simulation, or publish readiness
   instead of producing a profile package packet.
+- an MCP-backed card run creates or patches good text fields but finishes
+  without real avatar/background URLs, without `role_patch_assets`, or without
+  normal app evidence that the avatar and chat background load.
 - a role-card series request asks which variants to keep, merge, reject, author,
   render, or simulate first, but the workflow jumps straight to one overloaded
   hybrid card or several duplicate cards instead of producing a card-series
@@ -257,6 +269,9 @@ intake.
 - `validate_role.status` is `pass` with no technical blockers.
 - `render_preview.evaluation.status` is `pass`, or any remaining visual risk is
   explicitly accepted.
+- MCP-backed full-card runs have real avatar/background URLs patched by
+  `role_patch_assets`, and app visual checks show the avatar and background
+  image requests loading successfully.
 - `simulate_private_chat.evaluation.status` is `pass`, or simulation was skipped
   with an explicit cost-aware reason.
 - `tokenBudget` is reasonable for the archetype.
@@ -280,6 +295,8 @@ Benchmark report packet:
 - Moonloom self-review result:
 - MCP technical status:
 - render status:
+- app visual status:
+- asset status:
 - simulation status:
 - tokenBudget findings:
 - weakest Moonloom dimensions:
@@ -294,7 +311,15 @@ Benchmark report packet:
 
 Use `positive cases` for cards or workflows that passed the craft and technical
 checks. Use `negative cases` for schema-valid but weak behavior, routing errors,
-or cost/render/simulation failures. `regression classification` should separate
-Moonloom writing guidance, render/theme guidance, simulation behavior, and MCP
+or cost/render/simulation failures. `app visual status` should state whether the
+normal role detail and chat surfaces were inspected and whether avatar/background
+requests succeeded. `asset status` should state ready, prompt-only, missing, or
+partial. `regression classification` should separate Moonloom writing guidance,
+visual asset workflow, render/theme guidance, simulation behavior, and MCP
 technical flow. `do not turn into MCP gates` should name any subjective writing
 failures that must stay in skills rather than server validation.
+
+When the benchmark is specifically an end-to-end trial-card acceptance run,
+return the `End-to-end acceptance packet` from
+`../../references/end-to-end-acceptance.md` before the broader benchmark report
+packet, or embed the same fields inside the benchmark report.

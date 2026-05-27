@@ -342,6 +342,21 @@
         "The packet maps the failed generator case to next Moonloom skill repairs and prompt or skill changes needed.",
         "The packet includes do not turn into MCP gates and keeps subjective writing failures in Moonloom skills."
       ]
+    },
+    {
+      "id": 27,
+      "prompt": "After a Moonloom skill change, run the end-to-end acceptance for one synthetic private card. The text fields validate and render, but the card was initially delivered with no avatar or background. Simulation has not been approved because it costs normal chat credits. Return the regression handoff.",
+      "expected_output": "Treats the missing avatar/background as an end-to-end acceptance failure, requires role_patch_assets with real URLs, checks normal app role-detail and chat visual surfaces, keeps simulation cost-gated rather than behavior-complete, and returns an End-to-end acceptance packet plus benchmark repair targets.",
+      "files": [],
+      "expectations": [
+        "The report uses the End-to-end acceptance packet or includes the same fields: assets, validation, render, app visual check, simulation cost stance, failures, root-cause repair, rerun evidence, and remaining non-complete gates.",
+        "The report treats missing avatar/background as a visual asset workflow regression, not as a reason to rewrite the card text.",
+        "The report requires role_patch_assets with real avatar and background URLs before claiming visual completion.",
+        "The report requires normal app evidence, including role-detail avatar and chat background image request success, not only validate_role or render_preview.",
+        "The report records simulate_private_chat as cost-gated and does not claim behavior checked when billing was not approved.",
+        "The report maps the root-cause repair to Moonloom skills, references, templates, or evals rather than turning subjective writing quality into an MCP hard gate.",
+        "The check remains public-safe and uses only synthetic role-card evidence."
+      ]
     }
   ]
 }

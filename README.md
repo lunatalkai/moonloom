@@ -123,7 +123,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks
-  and returns benchmark report packets for the next prompt or skill repair.
+  and returns benchmark report packets or end-to-end acceptance packets for the
+  next prompt or skill repair.
 - `references/character-core-design.md` defines desire, contradiction, boundary,
   player leverage, relationship asymmetry, pressure behavior, and appeal repair.
 - `references/relationship-engine.md` defines relationship promise, asymmetry,
@@ -165,6 +166,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/creation-workflow.md` defines the end-to-end creation runway,
   stage ladder, Creation runway packet, MCP gates, asset gates, cost gates, and
   completion checks for external AI clients.
+- `references/end-to-end-acceptance.md` defines trial-card acceptance evidence:
+  skill route, MCP private card, avatar/background patching, validation, render,
+  app visual checks, simulation cost gate, and root-cause reruns.
 - `references/mcp-client-workflow.md` defines external AI client readiness,
   tool availability checks, auth handling, idempotency, and stage gates for MCP
   operations.
