@@ -15,6 +15,9 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../examples/sample-card-packets.md` and
 `../../references/sample-driven-calibration.md` when benchmark output needs a
 public synthetic expected-output shape, sample comparison, or copy-risk review.
+Read `../../examples/complete-synthetic-card-fixture.md` when a benchmark needs a
+complete synthetic card fixture that shows final fields, compact fallback,
+playtest probes, field finalization, and acceptance handoff shape.
 Read `../../references/end-to-end-acceptance.md` when a benchmark needs to prove
 the whole loop from skill routing through private card creation, avatar/background
 asset patching, render preview, app visual inspection, simulation cost gate, and
