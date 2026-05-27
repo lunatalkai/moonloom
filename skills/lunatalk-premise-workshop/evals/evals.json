@@ -65,6 +65,19 @@
         "The handoff names lunatalk-boundary-designer or boundary-design before blueprinting, authoring, simulation, or publish readiness.",
         "The output does not call MCP tools, render, simulate, publish, or make unsupported origin/performance claims."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "The last draft felt too abstract. I could not tell what kind of story it was, who I was, or what I should do first. I want something with a slightly strange mood, but it still needs to feel like a normal person can understand the hook immediately. Give me directions, not fields.",
+      "expected_output": "Uses premise workshop with benchmark-calibrated anti-abstract repair, proposes three directions that each name an audience-legible pitch, recognizable shelf, concrete player role, human-scale first scene, first action, risk, and narrow handoff without MCP calls or final fields.",
+      "files": [],
+      "expectations": [
+        "The output treats abstractness as a premise legibility blocker, not a styling problem.",
+        "Each direction includes an audience-legible pitch and a recognizable shelf before novelty.",
+        "Each direction names where the player is, who the role is, who the player is, what happened, and what the player can do first.",
+        "The recommendation rejects at least one poetic or abstract idea in favor of the clearest first action and second-turn engine.",
+        "The output does not write final fields, call MCP tools, or cite private benchmark sources."
+      ]
     }
   ]
 }

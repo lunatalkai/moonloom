@@ -69,6 +69,15 @@ test('complete fixture validator rejects missing visual asset briefs', async () 
   assert.ok(issueCodes(result).includes('fixture.visual_asset.missing'));
 });
 
+test('complete fixture validator rejects missing audience legibility markers', async () => {
+  const fixture = (await readFixture())
+    .replace(/- five-second legibility:[^\n]+\n(?:  [^\n]+\n)*/i, '')
+    .replace(/- recognizable shelf before novelty:[^\n]+\n(?:  [^\n]+\n)*/i, '');
+  const result = validateCompleteFixture(fixture, { filePath: fixturePath });
+
+  assert.ok(issueCodes(result).includes('fixture.legibility.missing'));
+});
+
 test('complete fixture validator rejects thin roleDetailDesc engines', async () => {
   const thinDetail = [
     'Core premise',
