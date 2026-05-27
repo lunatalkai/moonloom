@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-originality-adapter",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want a LunaTalk card with the same fantasy as a famous canon mentor/rival dynamic, but it must be original. Keep the emotional tension and player leverage, not names or lore. Do not call MCP tools.",
+      "expected_output": "Routes to lunatalk-originality-adapter and returns an Originality adaptation packet with transferable fantasy, protected surface to avoid, original substitutions, distance check, and handoff before fields.",
+      "files": [],
+      "expectations": [
+        "The output extracts player fantasy, relationship/role shape, central tension, interaction loop, and voice function.",
+        "The output lists names, quotes, scene setup, outfits, lore terms, factions, and unique mechanics as protected surface to avoid.",
+        "The substitutions change role identity, player role, relationship history, pressure source, setting rule, symbolic object, voice strategy, visual motif, state labels, and opening proof.",
+        "The distance check explicitly rejects a renamed copy.",
+        "The output does not call MCP tools, render, simulate, publish, or write final fields yet."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I pasted another role card and asked you to make it original, but the draft just renamed everyone and kept the same opening scene, prop, secret reveal, and tag set. Fix the process before rewriting.",
+      "expected_output": "Uses lunatalk-originality-adapter for copy-distance repair, flags renamed-copy risk, changes multiple substitution axes, and delays card authoring until the distance check passes.",
+      "files": [],
+      "expectations": [
+        "The output names the problem as renamed-copy risk, not only weak wording.",
+        "The output does not copy exact names, opening scene text, prop, secret reveal, or tag strings.",
+        "The output changes first-scene pressure and second-turn move instead of swapping nouns.",
+        "The output can hand off to character, relationship, scenario, visual identity, or card authoring only after the adaptation packet is coherent.",
+        "The output stays public-safe and avoids unsupported source, ranking, traffic, or origin claims."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The author explicitly wants a private fan/canon card and says they are allowed to use the material. They still need the facts compact enough for roleDetailDesc and a playable first scene without relying on trivia.",
+      "expected_output": "Uses lunatalk-originality-adapter to set canon/fan with allowed use stance, keeps only scene-needed facts, avoids brittle trivia dependence, and hands off to material distillation or card authoring.",
+      "files": [],
+      "expectations": [
+        "The output records intended stance as canon/fan with allowed use instead of forcing an original transformation.",
+        "The output keeps only facts needed for this card's scene and play loop.",
+        "The output avoids relying on broad model knowledge or trivia.",
+        "The output still avoids unnecessary copying of long passages or exact quotes.",
+        "The output does not call MCP tools or submit publicly."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I only have a mood: lonely prince, forbidden garden, maybe a curse. There is no specific source or copied draft. I want several original directions.",
+      "expected_output": "Routes away from originality adaptation to lunatalk-premise-workshop because there is no recognizable inspiration or copy-distance issue.",
+      "files": [],
+      "expectations": [
+        "The output does not use originality adaptation when there is no source, inspiration, canon/IP, copied draft, or derivative risk.",
+        "The output routes early mood and direction comparison to lunatalk-premise-workshop.",
+        "The output may mention originality criteria but does not produce a copy-distance packet.",
+        "The output avoids MCP calls and final fields.",
+        "The output keeps the task as public-safe original ideation."
+      ]
+    }
+  ]
+}

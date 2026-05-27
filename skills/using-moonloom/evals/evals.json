@@ -507,6 +507,19 @@
         "The output distinguishes visual identity from Theme V3/XMLV3 presentation and actual render review.",
         "The output avoids MCP calls, image generation, asset upload, simulation, and publishing during visual identity planning."
       ]
+    },
+    {
+      "id": 40,
+      "prompt": "I am not sure which Moonloom skill to use. I have a copied draft and want the same relationship fantasy as a famous canon character, but the public card must be original. The current draft just renames people and keeps the same opening scene, quote rhythm, outfit, lore terms, and secret reveal. Do not call MCP tools.",
+      "expected_output": "Uses using-moonloom as the router and routes canon/IP inspiration, copied drafts, original transformation, and renamed-copy risk to lunatalk-originality-adapter before blueprinting, card-author, render, simulation, or publishing.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes canon/IP inspiration, copied draft, original transformation, and renamed-copy risk to lunatalk-originality-adapter.",
+        "The route focuses on an Originality adaptation packet with transferable fantasy, protected surface to avoid, original substitutions, distance check, packets to create next, and handoff.",
+        "The output does not treat the task as only sample calibration, material distillation, broad rewriting, profile packaging, or final field assembly.",
+        "The output avoids MCP calls, final fields, render, simulation, publishing, copied names, copied scene text, copied proper nouns, and renamed-copy repair by noun swapping."
+      ]
     }
   ]
 }

@@ -27,6 +27,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-sample-calibrator` compares drafts against public synthetic
   sample packet shapes, flags copy risk, and turns example requests into
   structure-only calibration before blueprinting or authoring.
+- `skills/lunatalk-originality-adapter` transforms canon/IP, fan premises,
+  copied drafts, similar cards, and recognizable inspirations into original
+  card engines before blueprinting or authoring.
 - `skills/lunatalk-archetype-director` chooses the primary card contract,
   secondary overlays, field allocation, hybrid risks, and Moonloom skill order
   before blueprinting or authoring mixed card types.
@@ -172,6 +175,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/sample-driven-calibration.md` defines how to use public synthetic
   samples as output-shape fixtures without copying sample text or implying
   non-public origin claims.
+- `references/originality-adaptation.md` defines transferable fantasy,
+  original substitutions, copy-distance checks, and originality adaptation
+  packets for recognizable inspirations.
 - `references/voice-calibration.md` defines executable voice cards,
   micro-samples, ensemble contrast checks, and blind-line tests for consistent
   character voice.

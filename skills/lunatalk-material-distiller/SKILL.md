@@ -18,7 +18,9 @@ archetype recipes. Read `../../references/card-authoring-templates.md` for
 handoff packet shape. Read `../../references/voice-calibration.md` when the
 material includes character dialogue or ensemble cast notes. Read
 `../../references/safety-and-cost.md` when the material touches mature,
-sensitive, personal, or risky content.
+sensitive, personal, or risky content. Read
+`../../references/originality-adaptation.md` when the material is canon-like,
+derivative, or too close to another role card.
 
 ## Boundary
 
@@ -48,9 +50,10 @@ playable shape.
 9. Produce a source-to-play map and token plan.
 10. Hand off to `lunatalk-world-engineer` when the distilled material is still a
     world or relationship network that needs playable rules, state, routes, or
-    lore-dump repair. Hand off to `lunatalk-card-blueprint` when the concept
-    still needs broader ideation, or to `lunatalk-card-author` when the role
-    fields can be drafted directly.
+    lore-dump repair. Hand off to `lunatalk-originality-adapter` when the
+    material is canon-like, derivative, or a renamed-copy risk. Hand off to
+    `lunatalk-card-blueprint` when the concept still needs broader ideation, or
+    to `lunatalk-card-author` when the role fields can be drafted directly.
 
 ## Output format
 

@@ -828,15 +828,25 @@ Top-card checks:
 
 Goal: preserve recognizable fantasy while avoiding brittle trivia dependence.
 
+Use `originality-adaptation.md` or `lunatalk-originality-adapter` before
+blueprinting or authoring when the author wants something like a canon/IP
+character, fan premise, similar card, copied draft, or recognizable inspiration
+but needs an original card. The goal is transferable fantasy, not a renamed copy.
+
 Use:
 
 - canonical premise and relationship
 - stable voice/personality cues
 - flexible scene framing
 - fallback rules when canon is uncertain
+- original substitutions for role identity, player role, pressure source,
+  symbolic object, voice strategy, visual motif, state labels, and opening proof
+- a distance check that proves the card is not the same scene with renamed nouns
 
 Do not rely on the model "knowing everything." Put the facts needed for this card's
-scene in `roleDetailDesc`.
+scene in `roleDetailDesc`. Do not copy exact names, quotes, scene text, outfits,
+proper nouns, faction names, or unique mechanics unless the author explicitly
+wants an allowed canon/fan card and the usage stance is clear.
 
 ### Daily-life / slice-of-life card
 

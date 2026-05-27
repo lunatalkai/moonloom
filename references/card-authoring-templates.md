@@ -137,6 +137,42 @@ Sample calibration packet:
 - opening proof changes:
 - simulation probes to keep:
 - handoff:
+Originality adaptation packet:
+- current request:
+- inspiration type:
+- intended stance: original transformation | canon/fan with allowed use | unclear
+- transferable fantasy:
+  - player fantasy:
+  - relationship / role shape:
+  - central tension:
+  - interaction loop:
+  - voice function:
+- protected surface to avoid:
+  - names / titles:
+  - quotes / catchphrases:
+  - scene setup:
+  - outfits / visual motifs:
+  - lore terms / factions:
+  - unique mechanics:
+- original substitutions:
+  - role identity:
+  - player role:
+  - relationship history:
+  - pressure source:
+  - setting rule:
+  - symbolic object:
+  - voice strategy:
+  - visual motif:
+  - state labels:
+  - opening proof:
+- distance check:
+  - not a renamed copy:
+  - no copied scene text:
+  - no copied proper nouns:
+  - new player leverage:
+  - new second-turn move:
+- packets to create next:
+- handoff:
 Render repair packet:
 - roleId:
 - render mode:
@@ -705,6 +741,7 @@ Route:
 Inputs preserved:
 - premise workshop packet:
 - profile package packet:
+- originality adaptation packet:
 - visual identity packet:
 - language-style packet:
 - quality audit packet:
@@ -779,6 +816,7 @@ Token allocation:
 Packet preservation checklist:
 - character core preserved:
 - relationship engine preserved:
+- originality adaptation preserved:
 - visual identity preserved:
 - daily-life engine preserved:
 - world / play / scenario engine preserved:
