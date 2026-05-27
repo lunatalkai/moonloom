@@ -141,6 +141,27 @@ Sample calibration packet:
 - opening proof changes:
 - simulation probes to keep:
 - handoff:
+Top-card method calibration packet:
+- calibration scope:
+- source safety:
+  - no raw source:
+  - no exact markup:
+  - no identifiers:
+  - no source URLs:
+  - no provenance claim:
+- aggregate calibration:
+- deep sample reading:
+- top vs ordinary contrast:
+- bilingual budget translation:
+- detail operating engine gap:
+- opening first-turn contract gap:
+- longplay hook gap:
+- XMLV3 presentation gap:
+- prompt framework changes:
+- SOP changes:
+- testing method changes:
+- next Moonloom skill:
+- handoff:
 Originality adaptation packet:
 - current request:
 - inspiration type:
