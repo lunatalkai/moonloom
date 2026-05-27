@@ -27,8 +27,8 @@ Do not print tokens, cookies, auth headers, or secret values. Report auth as
 configured, missing, expired, or unverified.
 
 Do not call mutating Card Writer tools from this skill. Creation, patching,
-rendering, simulation, and publishing belong to the downstream Moonloom skill
-after readiness is clear.
+rendering, billed conversation testing, and publishing belong to the downstream
+Moonloom skill after readiness is clear.
 
 Do not invent tools or scopes. Moonloom uses the client-configured MCP server and
 the authenticated LunaTalk account.
@@ -36,7 +36,7 @@ the authenticated LunaTalk account.
 ## Workflow
 
 1. Identify the client and intended stage: setup, draft-only, create private
-   role, patch, validate, render, simulate, or publish.
+   role, patch, validate, render, conversation test, or publish.
 2. Check whether the client has a Card Writer MCP server configured.
 3. If the client can list MCP tools, compare the tool availability with the
    intended stage.
@@ -82,7 +82,8 @@ Self-review:
 - Validation and render evidence: hand off to `lunatalk-render-review` only after
   `validate_role` has no blockers and `render_preview` is available.
 - Behavior testing: hand off to `lunatalk-chat-simulation` only after validation
-  is ready and the author accepts normal simulation cost.
+  is ready and the author accepts normal conversation-test cost. The required
+  tools are `conversation_send_message` and `conversation_inspect`.
 - Public submission: hand off to `lunatalk-publish-readiness`; require explicit
   author confirmation before `publish_submit`.
 

@@ -116,8 +116,9 @@ matter, or the card decides the player's feelings/actions.
    player agency contract, escalation ladder, refusal route, stop conditions, and
    safer fallback are encoded in the card.
 6. Review `render_preview`, or record that the author explicitly accepted the risk.
-7. Run `simulate_private_chat`, or record that the author explicitly skipped the
-   real behavior check after understanding normal billing.
+7. Run `conversation_send_message` and `conversation_inspect`, or record that the
+   author explicitly skipped the real behavior check after understanding normal
+   billing.
 8. Summarize remaining warnings and tradeoffs.
 9. Ask for explicit confirmation if the author has not already given it.
 

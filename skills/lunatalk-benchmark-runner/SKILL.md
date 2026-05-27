@@ -109,12 +109,14 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    possible. Role detail should show the avatar, chat should show the background
    or intended visual container, and both image requests should succeed. A
    prompt-only art brief or missing asset URL is a regression, not completion.
-7. Run `simulate_private_chat` with the listed probes or a playtest plan from
-   `playtest-loop.md` only when normal billing is acceptable.
-8. If simulation returns `conversationId` and `chatId` values, open the
-   dedicated per-message preview harness for selected AI turns and record
-   message preview status. Do not parse the normal chat page UI to judge message
-   formatting.
+7. Run `conversation_send_message` with the listed probes or a playtest plan from
+   `playtest-loop.md` only when normal billing is acceptable. Continue the
+   returned `conversationId` for connected multi-turn probes.
+8. Run `conversation_inspect` after accepted probes. Open returned
+   `messages[].previewUrl` values for selected AI turns and record message
+   preview status. If `previewUrl` is absent but `conversationId` and `chatId`
+   values are present, build the dedicated per-message preview harness URL. Do
+   not parse the normal chat page UI to judge message formatting.
 9. When the benchmark changes field assembly, finalization, render review,
    simulation, or end-to-end acceptance guidance, run `npm run validate:fixture`
    from the Moonloom repository root. Treat a fixture validator failure as a
@@ -287,8 +289,8 @@ intake.
 - MCP-backed full-card runs have real avatar/background URLs patched by
   `role_patch_assets`, and app visual checks show the avatar and background
   image requests loading successfully.
-- `simulate_private_chat.evaluation.status` is `pass`, or simulation was skipped
-  with an explicit cost-aware reason.
+- `conversation_inspect.evaluation.status` is `pass`, or simulation was skipped
+  with an explicit cost-aware reason after the author understood normal billing.
 - If simulation ran and message identifiers were available, per-message preview
   evidence exists for the selected AI turns. If identifiers were unavailable,
   the report says so and does not claim per-turn visual completion.

@@ -176,8 +176,8 @@ If it only explains the setting, the scenario is not ready.
 
 ## Simulation probes
 
-Use these before paid simulation, or as the plan for `simulate_private_chat` when
-the author accepts normal billing:
+Use these before paid simulation, or as the plan for `conversation_send_message`
+plus `conversation_inspect` when the author accepts normal billing:
 
 ```text
 Scenario probes:

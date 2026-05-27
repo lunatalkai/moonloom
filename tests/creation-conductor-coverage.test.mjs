@@ -37,7 +37,8 @@ test('creation workflow defines runway packet and stage gates', async () => {
   assert.match(skill, /Creation runway packet:/);
   assert.match(reference, /Stage Ladder/);
   assert.match(reference, /role_patch_assets/);
-  assert.match(reference, /simulate_private_chat[\s\S]*cost/i);
+  assert.match(reference, /conversation_send_message[\s\S]*cost/i);
+  assert.match(reference, /conversation_inspect[\s\S]*history|history[\s\S]*conversation_inspect/i);
   assert.match(reference, /publish_submit.*explicit/i);
   assert.match(reference, /10,000.*hard cap/i);
   assert.match(evals, /Creation runway packet/);

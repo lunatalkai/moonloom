@@ -40,7 +40,7 @@ paid simulation until validation is ready and the author accepts the cost.
 | Private card | create/patch real private card | Card Writer MCP through `lunatalk-card-author` | role is public or not owned |
 | Validation | check technical blockers and tokenBudget | `validate_role` | blockers remain |
 | Render review | inspect XMLV3/HTML/Theme V3 output | `lunatalk-render-review` | action path or readability fails |
-| Simulation | test behavior through real chat pipeline | `lunatalk-chat-simulation` | author has not accepted normal cost |
+| Conversation test | test behavior through real chat pipeline using MCP conversation tools | `lunatalk-chat-simulation` | author has not accepted normal cost |
 | Iteration | choose exactly one next repair | `lunatalk-iteration-director` | evidence is missing or mixed |
 | Publish | submit only after explicit confirmation | `lunatalk-publish-readiness`, `publish_submit` | author confirmation is missing |
 
@@ -104,7 +104,7 @@ creation conductor -> mcp operator -> card author -> role_create_private
 After evidence exists:
 
 ```text
-creation conductor -> iteration director -> one repair -> validate/render/simulate as needed
+creation conductor -> iteration director -> one repair -> validate/render/conversation test as needed
 ```
 
 ## Guardrails
@@ -115,8 +115,9 @@ creation conductor -> iteration director -> one repair -> validate/render/simula
   systems or separate review ledgers.
 - Use `role_patch_assets` only when real public-safe avatar/background URLs are
   available. Prompt-only assets are a handoff, not completion.
-- Use `simulate_private_chat` only after validation is ready and the author
-  accepts normal chat billing.
+- Use `conversation_send_message` only after validation is ready and the author
+  accepts normal chat billing; use `conversation_inspect` after each accepted
+  message to evaluate history and message previews.
 - Use `publish_submit` only after explicit author confirmation in the agent
   conversation.
 - Do not turn Moonloom craft judgment into hidden MCP or server gates.

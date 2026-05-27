@@ -214,15 +214,17 @@ Field finalization packet:
 - validation / render / simulation handoff:
   - validate_role focus: required fields, tokenBudget, XMLV3 syntax
   - render_preview focus: XMLV3 layout, state hiddenness, long paragraph wrapping
-  - simulate_private_chat stance: cost-gated until author accepts normal billing
+  - conversation_send_message stance: cost-gated until author accepts normal billing
+  - conversation_inspect focus: history, AI chatIds, evaluation, per-message preview URLs
 - final status: missing external asset
 - next action: generate or provide avatar/background URLs before claiming MCP-backed completion
 ```
 
 ## Playtest Probes
 
-Use these probes after `simulate_private_chat` is approved. They cover normal,
-short, off-path, background, relationship, secret, and boundary behavior.
+Use these probes after `conversation_send_message` is approved, then inspect each
+accepted turn with `conversation_inspect`. They cover normal, short, off-path,
+background, relationship, secret, and boundary behavior.
 
 1. normal interaction: "我拿起修圖針，但先問你反折巷會消失什麼。"
 2. short reply: "我沉默地看著你。"
@@ -266,8 +268,11 @@ End-to-end acceptance packet:
   - cost stance: cost-gated until author accepts normal billing
   - probes: listed above
   - result: not run in public fixture
+- conversation inspection:
+  - tool: conversation_inspect after each accepted send
+  - result: not run in public fixture
 - message previews:
-  - status: run per-message preview after simulate_private_chat returns conversationId/chatId
+  - status: run per-message preview after conversation_inspect returns conversationId/chatId
   - checked chatIds: pending simulation
   - evidence: capture Ready state, renderer mode, DOM summary, overflow, relevant console errors
 - failures:
@@ -275,7 +280,7 @@ End-to-end acceptance packet:
   - no billed simulation evidence in fixture
 - root-cause repair: none yet; use simulation/render evidence after a real run
 - rerun evidence: pending MCP-backed run
-- remaining non-complete gates: asset patching, validate_role, render_preview, simulate_private_chat, per-message preview
+- remaining non-complete gates: asset patching, validate_role, render_preview, conversation_send_message, conversation_inspect, per-message preview
 - next Moonloom change: only if a real run exposes a repeated skill/process failure
 ```
 

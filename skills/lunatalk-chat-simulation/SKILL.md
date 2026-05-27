@@ -1,6 +1,6 @@
 ---
 name: lunatalk-chat-simulation
-description: Use when a LunaTalk private role needs chat simulation, realistic probe design, transcript triage, behavior repair, simulation repair handoff, or billed simulate_private_chat readiness after validation.
+description: Use when a LunaTalk private role needs chat simulation, realistic probe design, transcript triage, behavior repair, simulation repair handoff, or billed conversation_send_message / conversation_inspect readiness after validation.
 ---
 
 # LunaTalk Chat Simulation
@@ -12,7 +12,8 @@ decide whether another pass is worth the cost.
 
 ## Required references
 
-Read `../../references/card-writer-mcp.md` for `simulate_private_chat`.
+Read `../../references/card-writer-mcp.md` for `conversation_send_message` and
+`conversation_inspect`.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, per-message preview, and author co-review.
 Use `npm run validate:simulation` when a run produces a redacted simulation
@@ -67,10 +68,11 @@ Read `../../references/safety-and-cost.md` before running a simulation.
 
 ## Cost and consent
 
-`simulate_private_chat` uses normal LunaTalk chat billing and deducts points or
-credits. If the author has not already asked to run a simulation, explain that it
-costs normal chat resources and ask for confirmation before calling the tool.
-When the author asks only for a test plan, do not call the tool.
+`conversation_send_message` uses normal LunaTalk chat billing and deducts points
+or credits. If the author has not already asked to run a conversation test,
+explain that it costs normal chat resources and ask for confirmation before
+calling a billed conversation tool. When the author asks only for a test plan, do
+not call the tool.
 
 ## Workflow
 
@@ -86,11 +88,14 @@ When the author asks only for a test plan, do not call the tool.
    - patch triggers: what transcript evidence would require changes to
      `roleDetailDesc`, `roleWelcome`, profile fields, or jailbreak
    - cost stance: already accepted, needs confirmation, or skipped
-4. Call `simulate_private_chat` only after cost is accepted.
-5. Read every simulated turn and the returned `evaluation`. Evaluate behavior,
-   not just whether the tool ran.
-6. If the result includes `conversationId`, `chatId`, and `roleId` for AI turns,
-   open the dedicated preview harness for each selected message:
+4. Call `conversation_send_message` after cost is accepted. For a multi-turn
+   probe, continue with the returned `conversationId`.
+5. Call `conversation_inspect` after each accepted message. Read the
+   returned conversation history, AI messages, `evaluation`, and per-message
+   metadata. Evaluate behavior, not just whether the tool ran.
+6. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
+   selected AI messages. If `previewUrl` is absent but the result includes
+   `conversationId`, `chatId`, and `roleId`, build the dedicated preview harness URL:
    `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>`.
    Record Ready status, renderer mode, DOM summary, text overflow, relevant
    console errors, and screenshot or visual notes as message preview evidence.
@@ -110,8 +115,8 @@ When the author asks only for a test plan, do not call the tool.
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
 12. Run `validate_role` after structural patches.
-13. Re-run simulation when the patch changes core behavior, boundary handling,
-   state, voice, or first-turn flow and the author accepts the cost.
+13. Re-run the conversation test when the patch changes core behavior, boundary
+    handling, state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
 
@@ -126,7 +131,7 @@ Playtest plan:
 - expected healthy behavior:
 - patch triggers:
 - cost stance:
-- tool call: run now | wait for confirmation | skipped
+- tool call: conversation_send_message now | wait for confirmation | skipped
 ```
 
 ## Simulation repair packet

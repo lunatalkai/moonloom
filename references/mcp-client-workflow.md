@@ -43,7 +43,8 @@ Expected Card Writer tools:
 - optional `extension_enable`
 - `validate_role`
 - `render_preview`
-- `simulate_private_chat`
+- `conversation_send_message`
+- `conversation_inspect`
 - `publish_submit`
 
 If a tool is missing, do not invent a substitute. Either choose a workflow that
@@ -57,7 +58,7 @@ does not need it yet or ask the author to fix the client configuration.
 | Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
-| Behavior simulation | `simulate_private_chat` | spend cost before validation and author acceptance |
+| Conversation testing | `conversation_send_message`, `conversation_inspect` | spend cost before validation and author acceptance; parse the normal chat UI for transcript data |
 | Public submission | `publish_submit` | submit without explicit author confirmation |
 
 ## Operation packet
@@ -91,7 +92,7 @@ only when retrying the same intended operation.
 | Tool exists but role not found | wrong `roleId` or role not owned by account | use owned private role |
 | Validation blocker | technical role field or render safety issue | patch field, rerun `validate_role` |
 | Render unavailable | preview tool missing or validation still blocked | fix tool/config or validation first |
-| Simulation unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |
+| Conversation tools unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |
 | Publish blocked | missing confirmation or readiness failure | use publish readiness / author confirmation |
 
 ## Handoff
@@ -99,7 +100,7 @@ only when retrying the same intended operation.
 - Use `lunatalk-card-author` for private role creation or field patching.
 - Use `lunatalk-render-review` after `validate_role` passes and preview exists.
 - Use `lunatalk-chat-simulation` after validation passes and the author accepts
-  normal simulation cost.
+  normal conversation-test cost.
 - Use `lunatalk-publish-readiness` before public submission.
 - Use `lunatalk-collaboration-director` when the next move is a choice rather
   than a tool call.

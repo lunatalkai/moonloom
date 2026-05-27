@@ -30,21 +30,24 @@ production behavior.
 7. Open the normal app surface when possible, not only the preview harness:
    role detail should show the avatar, and chat should show the background or
    the intended visual container. Image requests for both assets should succeed.
-8. Run `simulate_private_chat` only after the author accepts normal billing.
-   If cost is not accepted, record "simulation skipped by cost gate" and do not
-   claim behavior-complete status.
-9. If simulation runs, use probes for normal interaction, short reply, off-path
-   reply, background question, relationship or trust push, secret/progression
-   exploration, passive input, and boundary handling.
-10. After simulation returns a `conversationId` and message-level `chatId`
-    values, preview the AI turns through the dedicated per-message preview
-    harness:
+8. Run `conversation_send_message` only after the author accepts normal billing.
+   If cost is not accepted, record "conversation test skipped by cost gate" and
+   do not claim behavior-complete status.
+9. If conversation testing runs, use probes for normal interaction, short reply,
+   off-path reply, background question, relationship or trust push,
+   secret/progression exploration, passive input, and boundary handling. Continue
+   the returned `conversationId` when probes are meant to form one conversation.
+10. Run `conversation_inspect` after accepted probes. Use returned
+    `messages[].chatMessage` for behavior evaluation and returned
+    `messages[].previewUrl` values for visual checks. If `previewUrl` is absent
+    but `conversationId` and message-level `chatId` values are present, preview
+    the AI turns through the dedicated per-message preview harness:
     `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>`.
     Record Ready status, renderer mode, DOM summary, text overflow, relevant
     console errors, and screenshot or visual notes for the selected message.
     Do not parse the normal chat page UI for transcript formatting. The normal
     chat page is only for card-surface asset evidence in step 7.
-11. If `simulate_private_chat` does not return message identifiers, record
+11. If the conversation tools do not return message identifiers, record
     "message preview unavailable" and do not claim per-turn visual completion.
 12. For benchmark or repository handoff, convert simulation results into a
     redacted simulation evidence packet shaped like

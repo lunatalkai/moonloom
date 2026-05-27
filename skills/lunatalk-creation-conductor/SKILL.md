@@ -25,9 +25,10 @@ Do not write final card fields, create a private role, render, simulate, or
 publish from this skill alone unless the needed narrow packet and MCP readiness
 already exist. This skill decides the route and stop gates.
 
-Do not call paid or public-action tools automatically. `simulate_private_chat`
-requires author acceptance of normal cost. `publish_submit` requires explicit
-author confirmation in the agent conversation.
+Do not call paid or public-action tools automatically. `conversation_send_message`
+requires author acceptance of normal cost, and `conversation_inspect` belongs
+immediately after accepted sends for history and preview evidence. `publish_submit`
+requires explicit author confirmation in the agent conversation.
 
 ## Workflow
 

@@ -368,9 +368,9 @@ For probe design and transcript-to-patch mapping, use `playtest-loop.md`.
 - The role's tone matches the role card and content rating intent.
 - The simulation does not expose implementation details or moderation artifacts.
 - The cost or charged amount is included in the agent's summary when available.
-- `simulate_private_chat` evaluation passes `responsePresence`, `agency`,
-  `progression`, and `safetyFormat`, or the author explicitly accepts the
-  remaining tradeoff.
+- `conversation_inspect` evaluation passes `responsePresence`, `agency`,
+  `progression`, and `safetyFormat` after accepted sends, or the author
+  explicitly accepts the remaining tradeoff.
 
 ## Publish readiness
 
@@ -378,6 +378,6 @@ Ready means all of these are true:
 
 - `validate_role` has no blockers.
 - `render_preview` has been reviewed, or the author explicitly accepts the risk.
-- `simulate_private_chat` has been run, or the author explicitly skips it knowing
-  it is the closest real behavior check.
+- `conversation_send_message` and `conversation_inspect` have been run, or the
+  author explicitly skips them knowing they are the closest real behavior check.
 - The author explicitly confirms submission in the agent conversation.

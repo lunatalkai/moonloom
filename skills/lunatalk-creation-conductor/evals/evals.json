@@ -10,7 +10,7 @@
         "The output selects lunatalk-creation-conductor and includes a Creation runway packet.",
         "The first bottleneck is premise or playable direction, not MCP readiness.",
         "The immediate next skill is lunatalk-premise-workshop.",
-        "The output lists role_create_private, render_preview, simulate_private_chat, and publish_submit under do not do yet.",
+        "The output lists role_create_private, render_preview, conversation_send_message, conversation_inspect, and publish_submit under do not do yet.",
         "The workflow translates popular/top-tier into public craft goals rather than unsupported performance claims."
       ]
     },
@@ -24,7 +24,7 @@
         "The skill queue includes lunatalk-mcp-operator before mutating MCP tools and lunatalk-card-author for field assembly.",
         "The MCP stance names role_patch_assets or an avatar/background asset requirement.",
         "The workflow validates before render review.",
-        "The output treats simulate_private_chat as optional and cost-gated.",
+        "The output treats conversation_send_message and conversation_inspect as optional and cost-gated.",
         "The output does not include publish_submit without explicit author confirmation."
       ]
     },

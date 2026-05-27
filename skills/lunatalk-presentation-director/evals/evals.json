@@ -11,7 +11,7 @@
         "The output prefers XMLV3 plus Theme V3 unless a concrete HTML layout need is justified.",
         "The packet separates visible content, hidden JSON state, Theme V3 style, and roleDetailDesc responsibilities.",
         "The visual affordance table keeps only elements that prove action, state, mood, route, risk, clue, resource, boundary, or relationship pressure.",
-        "The output does not call validate_role, render_preview, simulate_private_chat, or mutating card tools."
+        "The output does not call validate_role, render_preview, conversation_send_message, conversation_inspect, or mutating card tools."
       ]
     },
     {

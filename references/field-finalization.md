@@ -94,7 +94,8 @@ Field finalization packet:
 - validation / render / simulation handoff:
   - validate_role focus:
   - render_preview focus:
-  - simulate_private_chat stance:
+  - conversation_send_message stance:
+  - conversation_inspect focus:
 - final status: ready | needs narrow repair | missing external asset | cost-gated
 - next action:
 ```

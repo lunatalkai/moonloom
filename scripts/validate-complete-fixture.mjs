@@ -48,7 +48,8 @@ const REQUIRED_FINALIZATION_MARKERS = [
 const REQUIRED_ACCEPTANCE_MARKERS = [
   'validate_role',
   'render_preview',
-  'simulate_private_chat',
+  'conversation_send_message',
+  'conversation_inspect',
   'per-message preview',
   'remaining non-complete gates',
 ];

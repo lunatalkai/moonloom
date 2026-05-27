@@ -291,10 +291,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
 18. Call `render_preview` and review the result with `lunatalk-render-review`.
     If render found visual or first-action failures, preserve render repair
     before patching visual fields or before another render pass.
-19. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
-    needs to be tested and the author accepts normal chat billing. Include a
-    playtest plan, transcript triage, simulation repair packet, and
-    evidence-backed patch decision, not only a tool status check.
+19. Call `conversation_send_message` then `conversation_inspect` with
+    `lunatalk-chat-simulation` when behavior needs testing and the author accepts
+    normal chat billing. Include a playtest plan, transcript triage, simulation
+    repair packet, and evidence-backed patch decision, not only tool status.
     If simulation found behavior failures, preserve simulation repair before
     patching fields or before another simulation pass.
 20. Summarize the card, validation result, render result, simulation result, and
