@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile/language/variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, profile, visual identity, avatar, cover, language, variant workflows, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -93,6 +93,14 @@ bottleneck and list delayed routes under `do not do yet`.
   route to `lunatalk-quality-auditor`. Do not create a separate "copy polish"
   route for profile fields; translate popularity language into public craft
   goals inside `lunatalk-profile-packager`.
+- Avatar, cover, thumbnail, profile image, key art, image prompt, art brief,
+  first-impression visual direction, or aligning card visuals with `roleName`,
+  `roleDesc`, Theme V3, and the opening after the card promise mostly exists:
+  use `lunatalk-visual-identity-director`. If the premise, player role, or
+  tension is missing, route to the missing writing skill first; if the unresolved
+  layer is XMLV3, HTML, visible state, or Theme V3 structure, route to
+  `lunatalk-presentation-director`; if a preview or screenshot already exists,
+  route to `lunatalk-render-review`.
 - Language-style work after the card engine, opening, and voice card are coherent:
   zh-Hant / zh-TW cleanup, Traditional/Simplified mixing, translated-sounding
   prose, register alignment, pronouns, address terms, punctuation,
@@ -342,6 +350,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/profile-packaging.md` when the task involves
   `roleName`, `roleDesc`, tags, card profile, title, tagline, public-facing
   package, first impression, discovery surface, or promise compression.
+- Read `../../references/visual-identity.md` when the task involves avatar,
+  cover, thumbnail, profile image, key art, image prompt, art brief, or aligning
+  visual identity with the card promise, Theme V3, and opening.
 - Read `../../references/language-style.md` when the task involves language
   consistency, zh-Hant / zh-TW cleanup, Traditional/Simplified mixing,
   translated-sounding prose, register alignment, pronouns, address terms,

@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-visual-identity-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a coherent LunaTalk role-card packet stack and need avatar, cover, thumbnail, and image prompt direction before final profile and Theme V3 work. Do not call MCP tools or generate images.",
+      "expected_output": "Routes to lunatalk-visual-identity-director, returns a Visual identity packet with separate avatar, cover, thumbnail, art direction, image prompts, consistency checks, and no MCP/image generation calls.",
+      "files": [],
+      "expectations": [
+        "The output treats the task as visual identity / art brief work, not asset upload, render review, or field patching.",
+        "The Visual identity packet preserves the premise and extracts player role, role/system anchor, central tension, first-scene proof, and non-generic visual detail.",
+        "The asset plan gives separate jobs for avatar, cover, and thumbnail.",
+        "The image prompts are original, public-safe, and include a concrete negative prompt.",
+        "The output says visual identity does not replace profile, presentation, or render review."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The card profile is clear, but the cover prompt just says 'beautiful dark fantasy girl, cinematic'. Make it prove the player relation and tension without copying any specific artwork. Do not call MCP tools.",
+      "expected_output": "Uses lunatalk-visual-identity-director to repair the generic cover into a public-safe visual identity packet that proves promise, player role, and tension. Do not copy unprovided art.",
+      "files": [],
+      "expectations": [
+        "The output identifies the current prompt as mood-only and generic.",
+        "The revised brief adds player relation, central tension, setting pressure, and a non-generic visual detail.",
+        "The output includes the phrase Do not copy unprovided art as an active rule or check.",
+        "The output does not name private references, protected character designs, or living artists.",
+        "The output avoids MCP calls, image generation, render review, and publish readiness."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want an avatar prompt for a role, but the premise is only 'mysterious roommate maybe romance maybe thriller'. I do not know the player role or first scene yet.",
+      "expected_output": "Routes away from visual identity because the premise, player role, and tension are not settled; recommends premise/archetype work before avatar or cover prompt decisions.",
+      "files": [],
+      "expectations": [
+        "The output refuses to lock a final avatar prompt while the card promise is missing.",
+        "The output routes to lunatalk-premise-workshop or lunatalk-archetype-director before visual identity.",
+        "The output may list what the later visual identity packet will need, but does not invent final art direction.",
+        "The output avoids MCP calls, image generation, and asset upload.",
+        "The output treats visual polish as downstream of a coherent playable engine."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The avatar and cover are planned, but I need XMLV3 panels, Theme V3 colors, visible state, and first-screen hierarchy for the welcome.",
+      "expected_output": "Routes away from visual identity to lunatalk-presentation-director because the unresolved layer is Theme V3/XMLV3/presentation, while preserving any existing visual identity packet.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that Theme V3, XMLV3, visible state, and first-screen hierarchy are presentation work.",
+        "The output routes to lunatalk-presentation-director before render review or card authoring.",
+        "The output preserves the visual identity packet as input rather than replacing it.",
+        "The output does not call MCP tools, render, simulate, publish, generate images, or upload assets.",
+        "The output keeps visual identity and presentation as adjacent but distinct workflows."
+      ]
+    }
+  ]
+}

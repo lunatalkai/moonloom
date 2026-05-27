@@ -19,7 +19,7 @@ ideas; `../../references/sample-driven-calibration.md` plus
 `../../examples/sample-card-packets.md` / `lunatalk-sample-calibrator` for
 examples, golden samples, sample output packets, benchmark expected-output
 shapes, draft-to-sample comparison, or copy-risk review; `profile-packaging.md`,
-`language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
+`visual-identity.md`, `language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
 `ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
 `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
 `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
@@ -56,6 +56,12 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    pitch, public-facing package, first impression, discovery surface, or why a
    player should open the card, use `lunatalk-profile-packager` first unless a
    profile package packet already exists.
+   If the author asks for avatar, cover, thumbnail, profile image, key art, image
+   prompt, art brief, or visual identity, use `lunatalk-visual-identity-director`
+   before profile or presentation work unless a visual identity packet already
+   exists. If the player role, tension, or first-scene proof is missing, route to
+   the missing writing skill first; if XMLV3/Theme V3 layout is the blocker, use
+   `lunatalk-presentation-director`.
    If the author asks for language consistency, zh-Hant / zh-TW cleanup,
    Traditional/Simplified mixing, translated-sounding prose, register alignment,
    pronouns, address terms, punctuation, mixed-language tags, or mismatch between
@@ -293,7 +299,7 @@ MCP tools make the card real; Moonloom makes the card good.
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, profile package, language-style decisions,
-  quality audit, render repair, simulation repair, instruction guardrail,
+  visual identity, quality audit, render repair, simulation repair, instruction guardrail,
   archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
   agency, voice, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.

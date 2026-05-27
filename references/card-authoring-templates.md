@@ -51,6 +51,42 @@ Profile package packet:
 - fields to preserve:
 - fields to patch:
 - handoff:
+Visual identity packet:
+- current request:
+- card shape:
+- language:
+- premise / engine preserved:
+- promise proof:
+  - player role:
+  - role / system anchor:
+  - central tension:
+  - first-scene proof:
+  - non-generic visual detail:
+- asset plan:
+  - avatar:
+  - cover:
+  - thumbnail:
+- art direction:
+  - silhouette / focal subject:
+  - expression / gesture / object:
+  - setting pressure:
+  - camera / crop:
+  - palette / lighting:
+  - texture / finish:
+- image prompts:
+  - avatar prompt:
+  - cover prompt:
+  - thumbnail prompt:
+  - negative prompt:
+- consistency checks:
+  - roleName / roleDesc aligned:
+  - Theme V3 aligned:
+  - opening aligned:
+  - readable at small size:
+  - public-safe and original:
+- fields to preserve:
+- fields to patch:
+- handoff:
 Language-style packet:
 - current request:
 - target language / locale:
@@ -669,6 +705,7 @@ Route:
 Inputs preserved:
 - premise workshop packet:
 - profile package packet:
+- visual identity packet:
 - language-style packet:
 - quality audit packet:
 - archetype packet:
@@ -721,6 +758,7 @@ Role fields:
   - samples or field guidance:
 - tags:
 - Theme V3 / visual notes:
+  - visual identity packet:
   - presentation packet:
   - visible content map:
   - hidden state JSON plan:
@@ -741,6 +779,7 @@ Token allocation:
 Packet preservation checklist:
 - character core preserved:
 - relationship engine preserved:
+- visual identity preserved:
 - daily-life engine preserved:
 - world / play / scenario engine preserved:
 - generator artifact loop preserved:
