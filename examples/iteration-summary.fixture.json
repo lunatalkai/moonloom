@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "moonloom.iteration-summary.v1",
+  "iterationLabel": "synthetic-relationship-story-loop",
+  "cardShape": "relationship-story",
+  "language": "zh-Hant",
+  "testCard": {
+    "premiseSummary": "A private test card about a role under immediate social pressure.",
+    "detailEngineSummary": "Detail covers motive, player leverage, proactive turns, state, secrets, and consequences.",
+    "openingSummary": "Opening proves place, role action, pressure, and multiple player moves.",
+    "tokenStance": "Detail was expanded for reusable behavior; welcome stayed compact."
+  },
+  "evidence": {
+    "fieldReview": {
+      "status": "pass",
+      "summary": "Detail modules, welcome ratio, language consistency, and asset readiness were reviewed."
+    },
+    "mcpVisualValidation": {
+      "status": "pass",
+      "desktopPreview": "pass",
+      "mobilePreview": "pass",
+      "rendererMode": "xmlv3",
+      "summary": "Full-card and message previews kept state, scene prose, and choices readable."
+    },
+    "chatPlaytest": {
+      "status": "pass",
+      "probes": [
+        "normal_interaction",
+        "short_reply",
+        "off_path",
+        "background_question",
+        "relationship_push",
+        "secret_exploration",
+        "boundary_test"
+      ],
+      "perMessagePreview": "pass",
+      "summary": "Replies preserved role initiative, user agency, format stability, and safety boundaries."
+    },
+    "benchmarkPattern": {
+      "status": "validated",
+      "packetVersion": "moonloom.benchmark-pattern.v1",
+      "summary": "The anonymized pattern gap focused on scene reservoirs and second-turn initiative."
+    }
+  },
+  "gapComparison": {
+    "detailGap": "Scene reservoir was present but not reusable enough.",
+    "openingGap": "First-turn choices were meaningful but could expose route consequence more clearly.",
+    "longplayGap": "Second-turn hook needed a clearer state or promise update.",
+    "xmlv3Gap": "Choice grouping was readable; no new XMLV3 capability needed this round."
+  },
+  "repair": {
+    "rootCause": "Templates did not force reusable scene seeds and turn recipes.",
+    "changedArtifacts": [
+      "references/card-authoring-templates.md",
+      "tests/detail-engineer-coverage.test.mjs"
+    ],
+    "nextMoonloomSkill": "lunatalk-detail-engineer",
+    "rerunResult": "pass"
+  },
+  "safetyCheck": {
+    "noRawCardText": true,
+    "noRawTranscript": true,
+    "noRoleOrChatIds": true,
+    "noSourceSelectionFlow": true,
+    "noQueryText": true,
+    "noInternalUrls": true,
+    "noPrivateMetrics": true
+  },
+  "nextTodo": [
+    "Run another private-card loop where XMLV3 action layout is the suspected weakest layer."
+  ]
+}

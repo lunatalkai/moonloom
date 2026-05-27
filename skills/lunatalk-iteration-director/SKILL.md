@@ -73,6 +73,10 @@ designing or running probes.
 9. State cost stance for simulation: already accepted, ask first, skip, or not
    worth another paid pass.
 10. State stop / continue criteria and hand off to the next skill.
+11. When the loop changed Moonloom guidance, templates, prompts, examples, or
+    XMLV3 method, prepare a public-safe iteration summary and validate it with
+    `npm run validate:iteration-summary` before treating the loop as reusable
+    evidence.
 
 ## Output format
 
@@ -115,6 +119,7 @@ Self-review:
 - MCP gates are not used for writing quality:
 - author taste tradeoffs are separated:
 - benchmark_pattern source safety preserved:
+- iteration summary needed / validate:iteration-summary:
 - next skill:
 ```
 
@@ -132,6 +137,11 @@ Self-review:
 - Preserve `benchmark_pattern` only as generalized craft evidence. Do not expose
   source origins, sample identifiers, copied examples, traffic, or private
   selection mechanics in the iteration packet.
+- Public iteration summaries must contain only summaries and status evidence:
+  card shape, field review, MCP visual result, chat playtest, validated benchmark
+  pattern gap, one repair target, rerun result, and next TODO. Do not store raw
+  role fields, raw transcripts, role/chat identifiers, query text, URLs, source
+  selection details, or exact XML/HTML.
 - If two loops fail on the same symptom, stop and ask for a design decision
   through the agent conversation.
 - Keep output public-safe and original.
