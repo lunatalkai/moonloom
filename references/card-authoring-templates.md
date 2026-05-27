@@ -173,6 +173,34 @@ Originality adaptation packet:
   - new second-turn move:
 - packets to create next:
 - handoff:
+Tension packet:
+- current inertness:
+- card shape:
+- role desire:
+- desire under pressure:
+- player leverage:
+- external pressure:
+- why now:
+- consequence if the player does nothing:
+- first-scene hook:
+- reply paths:
+  - accept / approach:
+  - question / investigate:
+  - refuse / set terms:
+  - redirect / exploit:
+- state or route changed:
+- field placement:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+- delayed routes:
+- verification:
+  - role acts first:
+  - player can change pressure:
+  - pressure renews after first reply:
+  - no player-agency takeover:
+- handoff:
 Render repair packet:
 - roleId:
 - render mode:
@@ -778,6 +806,7 @@ Inputs preserved:
 - language-style packet:
 - quality audit packet:
 - archetype packet:
+- tension packet:
 - character-core packet:
 - relationship-engine packet:
 - daily-life packet:
@@ -851,6 +880,7 @@ Packet preservation checklist:
 - relationship engine preserved:
 - originality adaptation preserved:
 - visual identity preserved:
+- tension triangle preserved:
 - daily-life engine preserved:
 - world / play / scenario engine preserved:
 - generator artifact loop preserved:

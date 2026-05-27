@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-tension-weaver",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "My LunaTalk role idea has a beautiful mood and a clear character: a retired astronomer keeps an illegal star map in a silent observatory. It still feels passive. Before fields, build the tension triangle: what the role wants, what I can change, why now, and what happens if I do nothing. Do not call MCP tools.",
+      "expected_output": "Produces a Tension packet with role desire, player leverage, external pressure, why now, consequence if the player does nothing, first-scene hook, reply paths, field placement, verification, and handoff without MCP calls or final fields.",
+      "files": [],
+      "expectations": [
+        "The output selects lunatalk-tension-weaver and returns a Tension packet.",
+        "The packet identifies current inertness rather than solving it with prettier atmosphere.",
+        "The triangle includes role desire, player leverage, external pressure, why now, and consequence if the player does nothing.",
+        "Reply paths let the player accept, question, refuse, or redirect with different state, route, access, risk, relationship, clue, or boundary changes.",
+        "The output avoids MCP calls, final role fields, lore dumping, and deciding the player's feelings or actions."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The premise is already chosen: a cafe owner remembers everyone except the player. The character is not trope-only and the player is not overwritten, but there is no reason the scene starts today. Add stakes and why-now before opening repair.",
+      "expected_output": "Builds a tension packet instead of broad premise workshop or final fields, adds a focused pressure source and first-scene hook, then hands off to opening-director or blueprint.",
+      "files": [],
+      "expectations": [
+        "The output does not reroute to premise workshop because the premise is already chosen.",
+        "The output does not route primarily to character-core or agency when role core and player agency are not the stated blockers.",
+        "The Tension packet creates one focused pressure source and a concrete why-now.",
+        "The first-scene hook can be executed by opening-director without becoming a lore dump.",
+        "The handoff names lunatalk-opening-director or lunatalk-card-blueprint after tension is coherent."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I only have vibes: cozy, eerie, maybe romance, maybe ghosts, maybe a light fantasy town. I do not know the role, player position, or first scene yet. Should tension weaving start now?",
+      "expected_output": "Routes away from tension weaving to premise workshop because no settled direction exists, and delays the tension packet until a role, player position, and primary contract are chosen.",
+      "files": [],
+      "expectations": [
+        "The output says this is earlier than tension weaving because no direction, role, player position, or primary contract exists.",
+        "The output routes to lunatalk-premise-workshop first.",
+        "The output delays Tension packet creation until a selected direction exists.",
+        "The output does not draft final fields or call MCP tools.",
+        "The output may mention that later directions should be pressure-tested for role desire, player leverage, external pressure, and why now."
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, sample calibration, originality, canon/IP inspiration, profile, visual identity, language, talkExample, micro-samples, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
+description: Use when routing Moonloom or LunaTalk creation work involving role cards, MCP setup, private card creation or patching, field drafts, premise/tension, sample calibration, originality, canon/IP inspiration, profile, visual identity, language, talkExample, Theme V3/XMLV3, render review, chat simulation, publish readiness, instruction guardrails, role_patch_jailbreak, benchmark handoff reports, Benchmark report packet, or uncertainty about which Moonloom skill applies.
 ---
 
 # Using Moonloom
@@ -133,6 +133,13 @@ bottleneck and list delayed routes under `do not do yet`.
   readiness: use `lunatalk-quality-auditor` unless the main task is narrow
   public profile packaging or a concrete multi-symptom diagnosis for an existing
   card.
+- Tension triangle, stakes, hook, why-now, external pressure, role desire,
+  player leverage, inert but attractive premises, pretty-but-passive ideas, or a
+  chosen direction that lacks a reason to start now: use
+  `lunatalk-tension-weaver` before broad blueprinting, opening repair, authoring,
+  render review, or simulation. If no direction exists yet, route to
+  `lunatalk-premise-workshop`; if only character core, player agency, or opening
+  execution is missing, route to that narrower skill first.
 - Existing card or draft diagnosis, mixed symptoms, author feedback like boring
   or off, validate/render passing but behavior still weak, simulation symptoms,
   deciding what to fix first, weakest-layer triage, field patch mapping, or
@@ -329,6 +336,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/world-engine-design.md` when working on worldbuilding,
   relationship networks, factions, locations, playable world rules, lore-heavy
   settings, compact state, route seeds, or lore-dump repair.
+- Read `../../references/tension-triangle.md` when the task involves tension
+  triangle, role desire, player leverage, external pressure, why-now, stakes,
+  hook, inert premises, or pretty-but-passive idea repair.
 - Read `../../references/role-card-writing-framework.md` before writing or deeply
   revising any role card.
 - Read `../../references/archetype-contracts.md` when the task involves card

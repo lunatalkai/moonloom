@@ -186,6 +186,19 @@
         "The first screen and second-turn concept prove a finished artifact plus revision path rather than a long questionnaire.",
         "The output does not call or instruct immediate mutating MCP tool use before the generator packet is ready."
       ]
+    },
+    {
+      "id": 15,
+      "prompt": "Before creating anything, blueprint a chosen premise: a retired astronomer hides an illegal star map from the player, but every version feels beautiful and passive. I need role desire, player leverage, external pressure, why now, and a first-scene hook before opening or fields.",
+      "expected_output": "Routes the chosen-but-inert premise to lunatalk-tension-weaver before broad blueprinting or opening repair, preserves the Tension packet, and avoids MCP calls.",
+      "files": [],
+      "expectations": [
+        "The blueprint routes missing tension triangle, role desire, player leverage, external pressure, why-now, and first-scene hook to lunatalk-tension-weaver or tension-triangle.md before broad field drafting.",
+        "The Tension packet identifies current inertness and defines consequence if the player does nothing.",
+        "The reply paths let the player accept, question, refuse, or redirect with different state, route, access, risk, relationship, clue, or boundary changes.",
+        "The output does not route to premise-workshop because the premise is already chosen.",
+        "The output does not call or instruct immediate mutating MCP tool use before the Tension packet is ready."
+      ]
     }
   ]
 }

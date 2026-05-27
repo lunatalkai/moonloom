@@ -22,6 +22,9 @@ transcripts, behavior failure, or a probe plan. Read
 `../../references/profile-packaging.md` when the symptoms involve generic
 `roleName`, overlong or vague `roleDesc`, weak tags, title/tagline, first
 impression, public profile, discovery surface, or reason-to-open failures. Read
+`../../references/tension-triangle.md` when symptoms show an attractive premise
+with no stakes, why-now, role desire, player leverage, external pressure, or
+first-scene pressure. Read
 `../../references/token-economy.md` when `tokenBudget`, overlong welcome, thin
 detail, high `welcomeToDetailRatio`, repeated lore, or visual bloat appears.
 Read `../../references/card-authoring-templates.md` when the diagnosis needs a
@@ -132,6 +135,9 @@ Hand the packet to:
 - `lunatalk-profile-packager` when the engine is coherent but `roleName`,
   `roleDesc`, tags, short pitch, public profile, or first impression is the weak
   layer.
+- `lunatalk-tension-weaver` when the premise is chosen and attractive but lacks
+  role desire, player leverage, external pressure, why-now, or first-scene
+  pressure.
 - `lunatalk-archetype-director` when card type or primary contract is unclear.
 - `lunatalk-character-core`, `lunatalk-relationship-architect`,
   `lunatalk-daily-life-architect`, or `lunatalk-world-engineer` when the durable
