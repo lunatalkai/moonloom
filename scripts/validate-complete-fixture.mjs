@@ -36,6 +36,7 @@ const REQUIRED_DETAIL_SECTIONS = [
   'Voice fingerprint',
   'Progression and consequence',
   'Longplay engine',
+  'Scene reservoir / turn recipes',
   'Do / Avoid',
 ];
 
