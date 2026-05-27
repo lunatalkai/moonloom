@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-iteration-director",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We have a private role that passed validate_role and render_preview. tokenBudget says detail is in range and welcome is near the upper target. The author points out that the Chinese-card roleDetailDesc hard cap is 10,000 chars and asks whether filling that limit would make it richer. Decide the next iteration step before any patch.",
+      "expected_output": "Produces an iteration packet that distinguishes the 10,000-character hard cap from a quality target, rejects max-length padding, preserves the working welcome/render, recommends only behavior-bearing detail if needed, and hands off to token or card-author only with a clear hypothesis.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-iteration-director because there is loop evidence and a next-iteration decision.",
+        "The token stance says the 10,000-character detail cap is a hard limit, not a target to fill for richness.",
+        "The next single repair is narrow and tied to reusable behavior, route costs, state updates, voice control, boundaries, or memory.",
+        "The output does not call MCP tools or mutate the private card.",
+        "The output separates craft evidence from author taste tradeoff."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A story card has: self-review mostly pass, validate_role pass, render_preview warning about action visibility, no simulation yet, and author feedback says the opening looks pretty but they do not know what to do. Pick the next step.",
+      "expected_output": "Produces an iteration packet that treats action visibility as the decisive evidence, rejects simulation/publish for now, and hands off to opening or render review with a focused patch hypothesis.",
+      "files": [],
+      "expectations": [
+        "The output normalizes the evidence stack and names missing simulation evidence.",
+        "The decision delays simulation and publish readiness until the first action path is fixed.",
+        "The next single repair targets roleWelcome/opening action visibility rather than broad rewriting.",
+        "The handoff routes to lunatalk-opening-director or lunatalk-render-review as appropriate.",
+        "The output names stop or continue criteria for rerendering."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "After two simulation repair passes on the same companion card, the transcript still ignores refusal and the author now says they may prefer a darker control fantasy instead. Decide whether to keep patching.",
+      "expected_output": "Produces an iteration packet that stops the current repair loop, separates boundary/agency failure from author taste, and hands off to collaboration or boundary design before any more paid simulation.",
+      "files": [],
+      "expectations": [
+        "The output identifies two failed loops on the same symptom as a stop condition.",
+        "The decision does not recommend another paid simulation without a new design choice.",
+        "The weakest dimensions include boundary handling and player agency.",
+        "The handoff routes to lunatalk-collaboration-director or lunatalk-boundary-designer before card-author.",
+        "The output keeps author taste tradeoffs separate from craft blockers."
+      ]
+    }
+  ]
+}

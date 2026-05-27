@@ -56,11 +56,17 @@ judgment.
 
 These ranges are starting points. Preserve playability before hitting a number.
 
+Field limits are hard caps, not quality targets. When a client exposes a
+10,000-character `roleDetailDesc` limit for a Chinese role card, treat that as
+room for unusually modular engines, not as a target to fill. Most cards should
+stop once added detail no longer changes future behavior, route cost, state,
+voice, boundary handling, or return-later memory.
+
 | Archetype | roleDesc | roleDetailDesc | roleWelcome |
 |---|---:|---:|---:|
 | Companion / relationship | 80-260 | 1,200-2,200 | 250-700 |
 | Daily-life | 80-220 | 800-1,800 | 200-600 |
-| Story / mystery / scenario | 120-260 | 2,000-4,000 | 600-1,200 |
+| Story / mystery / scenario | 120-260 | 1,500-4,000 | 600-1,200 |
 | Ensemble | 140-300 | 2,500-5,000 | 700-1,400 |
 | System / RPG / sandbox | 180-500 | 4,500-10,000 | 900-2,000 |
 | Generator / assistant | 180-500 | 3,000-7,000 | 700-1,600 |

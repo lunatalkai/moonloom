@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom/LunaTalk creation work involving role cards, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
+description: Use when routing Moonloom/LunaTalk creation work involving role cards, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
 ---
 
 # Using Moonloom
@@ -62,9 +62,9 @@ Router packet:
 ```
 
 Use `mode` to distinguish draft-only work, MCP readiness, real private-card
-mutation, render review, simulation, publish readiness, benchmark, or
-collaboration. If several routes are plausible, choose the first decisive
-bottleneck and list delayed routes under `do not do yet`.
+mutation, render review, simulation, closed-loop iteration, publish readiness,
+benchmark, or collaboration. If several routes are plausible, choose the first
+decisive bottleneck and list delayed routes under `do not do yet`.
 
 ## Skill routing
 
@@ -82,6 +82,14 @@ bottleneck and list delayed routes under `do not do yet`.
   mixed symptoms for an existing card, hand off from collaboration to
   `lunatalk-card-doctor`; if it only needs final field application, hand off to
   `lunatalk-card-author`.
+- Closed-loop iteration after evidence exists, including Moonloom self-review,
+  validation, tokenBudget, render, simulation, benchmark, previous patches, or
+  author feedback; deciding the next single repair, whether to rerender,
+  simulate, stop, ask for co-review, or move to publish readiness: use
+  `lunatalk-iteration-director`. If there is no loop evidence yet, route to the
+  narrow writing skill; if the task is only a scorecard, use
+  `lunatalk-quality-auditor`; if it is only one render or simulation issue, use
+  `lunatalk-render-review` or `lunatalk-chat-simulation`.
 - Examples, golden samples, sample output packets, benchmark expected-output
   shapes, draft-to-sample comparison, "make it like the good examples", or
   copy-risk review before blueprinting, authoring, simulation, or publishing:
@@ -309,6 +317,10 @@ bottleneck and list delayed routes under `do not do yet`.
   deciding how to structure XMLV3, Theme V3, HTML, visible state, or hidden state
   before authoring/rendering, use `lunatalk-presentation-director`.
 - Testing role behavior in LunaTalk chat: use `lunatalk-chat-simulation`.
+- Deciding the next iteration after self-review, validation, tokenBudget,
+  render, simulation, benchmark, previous patches, or author feedback exists:
+  use `lunatalk-iteration-director` before more patching, rerendering,
+  simulation, or publish readiness.
 - Preparing public submission: use `lunatalk-publish-readiness`.
 - Running regression checks, comparing Moonloom quality across archetypes, or
   summarizing an already-run benchmark: use `lunatalk-benchmark-runner`. If the
@@ -330,6 +342,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/author-collaboration.md` when the task involves author
   feedback, co-review, taste/preference calibration, draft comparison, revision
   choices, or deciding what to preserve/change/reject/delay.
+- Read `../../references/iteration-loop.md` when the task has self-review,
+  validation, tokenBudget, render, simulation, benchmark, previous patch, or
+  author-feedback evidence and needs a next-iteration, stop/continue, rerender,
+  simulation, or publish-readiness decision.
 - Read `../../references/sample-driven-calibration.md` and
   `../../examples/sample-card-packets.md` when the task involves examples,
   golden samples, sample output packets, benchmark expected-output shapes,
