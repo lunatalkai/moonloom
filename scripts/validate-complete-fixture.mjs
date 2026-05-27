@@ -48,6 +48,11 @@ const REQUIRED_FINALIZATION_MARKERS = [
   'MCP patch mapping',
 ];
 
+const REQUIRED_LEGIBILITY_MARKERS = [
+  'five-second legibility',
+  'recognizable shelf before novelty',
+];
+
 const REQUIRED_VISUAL_ASSET_MARKERS = [
   'avatar prompt:',
   'background prompt:',
@@ -270,6 +275,14 @@ export function validateCompleteFixture(markdown, options = {}) {
     file,
     'fixture.finalization_marker.missing',
     'field finalization marker',
+  );
+  validateMarkers(
+    markdown,
+    REQUIRED_LEGIBILITY_MARKERS,
+    issues,
+    file,
+    'fixture.legibility.missing',
+    'legibility marker',
   );
   validateMarkers(
     markdown,

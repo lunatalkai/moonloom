@@ -36,6 +36,11 @@ It should feel intimate, mysterious, and playable, not just pretty lore.
 - voice: precise, restrained, tactile, avoids melodrama and forced intimacy
 - presentation: XMLV3 welcome with compact hidden state JSON
 - token plan: durable engine in detail; welcome stays one playable scene
+- five-second legibility: player is a returning borrower at a concrete library
+  counter; the role is the restorer on duty; one map is changing one city street;
+  the player can repair, bargain, explain, or leave
+- recognizable shelf before novelty: relationship obligation + night-shift
+  library incident first, rain-map fantasy second
 
 ## Final Role Fields
 

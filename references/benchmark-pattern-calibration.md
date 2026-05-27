@@ -61,6 +61,20 @@ biography. They spend detail budget on reusable mechanics:
 - hidden information with staged reveal conditions
 - format rules that survive beyond the opening turn
 
+Strong premises are usually legible before they are original. They give the
+player a familiar shelf first, then add novelty:
+
+- academy / school entry, household visit, survival problem, workplace duty,
+  investigation, journey, competition, tabletop adventure, simulator, generator,
+  or companion relationship
+- a concrete player position such as new student, tutor, survivor, recruit,
+  investigator, traveler, customer, teammate, heir, patient, debtor, or guide
+- one human-scale first action: fill a form, open a door, choose equipment,
+  answer a witness, treat a wound, negotiate a rule, check a map, or decide
+  whether to leave
+- novelty as an overlay that changes routes, costs, secrets, relationships, or
+  state, not as an abstract concept the player must decode before acting
+
 Strong openings usually do three jobs at once:
 
 - place the player in a concrete scene with immediate pressure
@@ -71,6 +85,7 @@ Weak ordinary-card patterns tend to cluster around these gaps:
 
 - long biography but no runnable pressure
 - many proper nouns but no player action surface
+- poetic or abstract premise whose ordinary story shelf is unclear
 - beautiful first scene but no second-turn move
 - choices that are decorative mood labels
 - voice described as adjectives instead of executable rhythm and behavior

@@ -36,6 +36,8 @@ Check these signals:
 
 - `roleDetailDesc` length by language and card ambition
 - welcome length and welcome-to-detail ratio
+- whether the premise has a recognizable public-facing shelf before the novelty
+  layer
 - profile/detail/welcome/talkExample field balance
 - HTML-like, XMLV3-like, plain text, and Theme V3 presentation posture
 - whether the card shape needs state, choices, forms, layout grouping, or plain
@@ -75,6 +77,7 @@ Use this contrast table when auditing a draft:
 | Dimension | Strong pattern | Weak pattern |
 |---|---|---|
 | Detail operating engine | Motive, pressure, state, triggers, voice, agency, consequences | Character facts and adjectives |
+| Premise legibility | Recognizable shelf, concrete player position, human-scale first action, novelty as overlay | Abstract mood or invented institution before the player knows what to do |
 | Player role | Concrete leverage, risk, knowledge, and routes | "You can do anything" with no action surface |
 | Role initiative | Role asks, tests, reveals, delays, bargains, or complicates | Role waits for the player to carry every beat |
 | Longplay hook | Timers, secrets, return hooks, route costs, memory changes | One pretty scene with no renewal path |
@@ -113,6 +116,25 @@ omitted for a lightweight card:
 - format stability for XMLV3, Theme V3, state, or tool output
 
 If the draft lacks several modules, expand the engine before polishing prose.
+
+## Premise Legibility Gate
+
+Before a card becomes field-ready, pass the five-second legibility test:
+
+- What familiar shelf is this card on?
+- Where is the player in the first scene?
+- Who is the role in ordinary terms?
+- Who is the player in ordinary terms?
+- What can the player do first?
+
+Strong cards can be strange, but the strangeness sits on a recognizable contract:
+school, survival, household visit, workplace duty, investigation, journey,
+competition, simulator, generator, mission, tabletop adventure, or relationship
+obligation. If the answer is mostly a poetic place, metaphysical object, mood, or
+private term, route back to `lunatalk-premise-workshop` before blueprinting.
+
+Novelty should change routes, costs, secrets, relationships, or state. It should
+not make the first screen harder to understand.
 
 ## Opening First-Turn Contract
 
@@ -168,18 +190,19 @@ Use this operating sequence for benchmark-calibrated creation:
 
 1. Build an anonymized benchmark pattern packet from aggregate calibration, deep
    sample reading, and ordinary-card contrast.
-2. Choose the card shape and language budget target.
-3. Draft the detail operating engine before writing final prose.
-4. Draft the opening first-turn contract separately from durable rules.
-5. Choose XMLV3/Theme V3 presentation, layout pack, or justified HTML fallback.
-6. Run field finalization: caps, placeholders, language consistency, asset
+2. Pass the premise legibility gate or route back to premise workshop.
+3. Choose the card shape and language budget target.
+4. Draft the detail operating engine before writing final prose.
+5. Draft the opening first-turn contract separately from durable rules.
+6. Choose XMLV3/Theme V3 presentation, layout pack, or justified HTML fallback.
+7. Run field finalization: caps, placeholders, language consistency, asset
    readiness, and public-safe originality.
-7. Create or patch the private role through MCP.
-8. Run `validate_role`.
-9. Run `render_preview` for desktop and mobile when presentation density matters.
-10. Run conversation playtest with `conversation_send_message`,
+8. Create or patch the private role through MCP.
+9. Run `validate_role`.
+10. Run `render_preview` for desktop and mobile when presentation density matters.
+11. Run conversation playtest with `conversation_send_message`,
     `conversation_inspect`, and per-message preview evidence.
-11. Compare failures against the benchmark pattern packet and patch one weakest
+12. Compare failures against the benchmark pattern packet and patch one weakest
     layer at a time.
 
 ## Prompt Framework
@@ -253,6 +276,7 @@ Top-card method calibration packet:
 - top vs ordinary contrast:
 - bilingual budget translation:
 - detail operating engine gap:
+- premise legibility gap:
 - opening first-turn contract gap:
 - longplay hook gap:
 - XMLV3 presentation gap:

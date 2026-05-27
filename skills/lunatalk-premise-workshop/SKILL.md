@@ -13,8 +13,10 @@ recommended handoff, not final role fields and not a mutating MCP operation.
 
 Read `../../references/premise-workshop.md` first. Read
 `../../references/archetype-contracts.md` only when the directions need primary
-contract comparison. Read `../../references/card-authoring-templates.md` when the
-packet must be preserved for later blueprinting or authoring.
+contract comparison. Read `../../references/benchmark-pattern-calibration.md`
+when the author says the current card feels abstract, unreadable, confusing, or
+not like strong public cards. Read `../../references/card-authoring-templates.md`
+when the packet must be preserved for later blueprinting or authoring.
 
 If one direction becomes clearly dominant and exposes a narrow weak layer, hand
 off to the matching Moonloom skill instead of continuing to broaden:
@@ -58,13 +60,17 @@ analysis. Keep the output original and public-safe.
    useful directions. Otherwise state assumptions and proceed.
 4. Name 3-5 taste axes that will shape the directions.
 5. Propose exactly three sharply different directions. Make them differ by
-   primary contract, player role, first scene, core loop, involvement ladder, and
-   risk.
+   audience-legible pitch, primary contract, player role, first scene, core
+   loop, involvement ladder, and risk.
 6. Pressure-test each direction: first reply clarity, player leverage, what
    changes after reply, likely failure mode, and best next Moonloom skill.
-7. Recommend one direction and explain why it is more playable than the generic
-   version.
-8. Return a premise workshop packet and handoff target.
+7. Run the five-second legibility gate before recommending: a normal player must
+   be able to answer where they are, who the role is, who they are, what happened,
+   and what they can do first without decoding metaphors or private lore. Prefer
+   a human-scale first scene over abstract atmosphere.
+8. Recommend one direction and explain why it is more playable than the generic
+   or abstract version.
+9. Return a premise workshop packet and handoff target.
 
 ## Output format
 
@@ -88,6 +94,7 @@ Premise workshop packet:
 - directions:
   - [direction]:
     - title:
+    - audience-legible pitch:
     - primary contract:
     - player role:
     - role seed:
@@ -108,6 +115,8 @@ Premise workshop packet:
 Self-review:
 - not field drafting:
 - three directions differ by play contract:
+- five-second legibility passed:
+- recognizable shelf before novelty:
 - player can act in first reply:
 - refusal / distance can continue play:
 - next skill is narrow:
@@ -119,6 +128,15 @@ Self-review:
 - Prefer three strong options over many weak options.
 - Make every option playable in one first scene. A mood without player leverage
   is not a direction.
+- Avoid abstract prestige premises: a poetic institution, object, ritual, or
+  mood is not enough. Attach the novelty to a familiar shelf such as school,
+  survival, workplace, household visit, academy training, investigation, travel,
+  competition, simulator, generator, mission, or companion relationship. Treat
+  the novelty overlay as an add-on, not the whole premise.
+- A strange direction must still sound like a concrete situation: "you arrive for
+  your first academy registration", "your shift starts during an outbreak", "the
+  guide needs your missing route note", or "your roommate has one practical
+  problem tonight". If the pitch needs "you will understand later", repair it.
 - Do not let "popular", "top-tier", "like the best cards", or similar requests
   become unsupported performance claims. Translate them into public craft goals.
 - Keep romance optional unless the author makes it the primary fantasy.
