@@ -49,6 +49,35 @@ const FORBIDDEN_PUBLIC_CLAIM_PATTERNS = [
   },
 ];
 
+const CONCRETE_IDENTIFIER_PATTERNS = [
+  {
+    label: 'UUID-shaped concrete identifier',
+    pattern: /\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b/gi,
+  },
+];
+
+const SQL_SNIPPET_PATTERNS = [
+  {
+    label: 'SQL SELECT statement',
+    pattern: /\bSELECT\b[\s\S]{0,160}\bFROM\b/gi,
+  },
+  {
+    label: 'SQL DDL/DML statement',
+    pattern: /\b(?:CREATE\s+TABLE|ALTER\s+TABLE|INSERT\s+INTO|UPDATE\s+[A-Za-z0-9_]+\s+SET|DELETE\s+FROM)\b/gi,
+  },
+];
+
+const INTERNAL_URL_PATTERNS = [
+  {
+    label: 'localhost URL',
+    pattern: /\bhttps?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?(?:\/[^\s"'<>)]*)?/gi,
+  },
+  {
+    label: 'environment-specific internal path',
+    pattern: /\bhttps?:\/\/[^/\s"'<>)]*\/(?:api|admin|mcp)\/[^\s"'<>)]*/gi,
+  },
+];
+
 function issue(code, file, message) {
   return { code, file, message };
 }
@@ -270,6 +299,24 @@ async function scanReleaseSafety(root, issues) {
       pattern.lastIndex = 0;
       if (pattern.test(content)) {
         issues.push(issue('release.forbidden_public_claim', relativePath, `Found ${label}.`));
+      }
+    }
+    for (const { label, pattern } of CONCRETE_IDENTIFIER_PATTERNS) {
+      pattern.lastIndex = 0;
+      if (pattern.test(content)) {
+        issues.push(issue('release.concrete_identifier', relativePath, `Found ${label}.`));
+      }
+    }
+    for (const { label, pattern } of SQL_SNIPPET_PATTERNS) {
+      pattern.lastIndex = 0;
+      if (pattern.test(content)) {
+        issues.push(issue('release.sql_snippet', relativePath, `Found ${label}.`));
+      }
+    }
+    for (const { label, pattern } of INTERNAL_URL_PATTERNS) {
+      pattern.lastIndex = 0;
+      if (pattern.test(content)) {
+        issues.push(issue('release.internal_url', relativePath, `Found ${label}.`));
       }
     }
   }

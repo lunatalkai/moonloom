@@ -38,7 +38,10 @@ Theme V3, hidden state JSON, or visible state.
    `lunatalk-presentation-director` or `lunatalk-render-review` rather than
    patching.
 7. Map fields to MCP tools: profile, assets, detail, welcome, optional
-   instruction guardrail, theme binding, and extension enablement.
+   instruction guardrail, theme binding, and extension enablement. XMLV3 real
+   chat requires `theme_bind`; if the card expects conversation controls, do not
+   mark the final packet ready while `roleWelcome` is XMLV3 and `theme_bind` is
+   missing.
 8. Return a Field finalization packet and final status:
    `ready | needs narrow repair | missing external asset | cost-gated`.
 

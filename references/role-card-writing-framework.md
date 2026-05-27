@@ -89,6 +89,14 @@ engine depth because their information density differs. Use character counts as
 a client-limit signal and use word/token proxy plus behavior coverage as the
 quality signal.
 
+Use `role-detail-engine.md` or `lunatalk-detail-engineer` when `roleDetailDesc`
+is a thin biography, under-budget for the card's language and ambition, or
+missing the durable engine modules that make later turns work. A detail engine
+pass should define current pressure, player relationship, world/play functions,
+proactive turn behavior, voice/action logic, emotional reactions, longplay hooks,
+time and consequence, secret pacing, player insertion space, agency boundaries,
+and format stability before MCP patching.
+
 ### 3. Play layer
 
 This is the first scene and the ongoing action loop. It belongs in `roleWelcome`
@@ -186,6 +194,8 @@ When `validate_role` returns `tokenBudget`, use it as a structural check:
   current situation, relationship rules, world/play functions, proactive moves,
   voice, emotional reactions, longplay hooks, time/consequence logic, secrets,
   player insertion space, agency boundaries, or format stability.
+- Use a Detail engine packet when those modules are missing; do not treat token
+  compression as a substitute for building the engine.
 - A full-detail candidate uses most of the useful budget for the card type, but
   only while each section creates reusable behavior, route costs, state updates,
   voice control, boundary handling, or return-later memory.

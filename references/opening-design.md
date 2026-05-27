@@ -57,6 +57,18 @@ Every narrative opening needs these beats:
 If any beat is missing, the opening usually becomes a generic prompt, menu, or
 lore paragraph.
 
+## Opening legibility gate
+
+Before mood, metaphor, or named lore, the first two lines must make the 4-W
+legible: Who is acting, Where the player is, When this is happening, and What
+problem is already in motion. Use concrete nouns and concrete objects the player
+can point at, take, refuse, inspect, open, hide, or question.
+
+Reject a mood-first opening when it feels pretty but unclear,雲裡霧裡, or asks
+the player to decode invented terms before they know what they can do. One
+invented noun is fine only if the same first screen explains its playable
+function through an object, risk, or choice.
+
 ## First reply path
 
 The player should be able to write a first reply in under ten seconds. Use one or
@@ -161,6 +173,7 @@ pressure, or player implication.
 | Lore before action | move durable lore to `roleDetailDesc`; open on one active problem |
 | Menu with no scene | add place, role action, pressure, and player implication before choices |
 | Pretty mood with no task | add a concrete object, decision, risk, or route |
+| Mood-first / 雲裡霧裡 opening | rewrite the first two lines with 4-W, concrete nouns, and one immediate object or decision |
 | Role waits for player to invent plot | add proactive role action and passive-player behavior |
 | Welcome too long | cut backstory, keep immediate pressure and reply path |
 | System/RPG manual | expose defaults, state, and first crisis together |

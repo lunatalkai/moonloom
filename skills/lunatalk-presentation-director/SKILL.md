@@ -55,18 +55,34 @@ which meters are decorative and should be omitted.
    If state fields, update rules, or visible/hidden classification are unresolved,
    route to `lunatalk-state-economist` before designing the presentation layer.
 3. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 plus Theme V3 for new
-   structured welcomes.
+   structured welcomes. Treat platform XMLV3 syntax as server-provided; do not
+   paste the generic XMLV3 manual into `roleDetailDesc`.
+   `roleDetailDesc` stores the role-specific format contract, not the platform
+   XMLV3 server guide.
 4. Separate visible content, hidden JSON state, Theme V3 responsibilities, and
    `roleDetailDesc` responsibilities.
    Hidden `<state>` must be preview-compatible: use top-level `scene`, `status`,
    and `relationships`. Flat JSON state can render as `state:none` in MCP preview
    evidence even when it is syntactically valid.
-5. Apply the visual affordance test: every visible element must prove action,
+5. Before choosing HTML, check whether core XMLV3 plus an extension pack can
+   express the need. Use pack tags such as `collapse`, `bar`, `tag`,
+   `result-card`, or `share-text` only when the presentation packet explains the
+   play value and the MCP handoff includes `extension_enable`.
+   When the missing capability is HTML div-like structure or per-section color,
+   prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`, and
+   `divider` create container and section block hierarchy, while Theme V3 owns
+   theme-bound tone, palette, and panel color. Do not place raw style/class or
+   arbitrary CSS in XML. If this pack is used, the MCP handoff must include
+   `extension_enable` for `layout` plus a readable XMLV3 fallback stance.
+6. Keep XMLV3 evolution on the compatible XMLV3 extension target. Do not propose
+   XMLV4/XMLV5 for backward-compatible additions; use optional tags,
+   attributes, packs, and fallback behavior.
+7. Apply the visual affordance test: every visible element must prove action,
    state, mood, route, risk, clue, resource, boundary, or relationship pressure.
-6. Define first-screen hierarchy and mobile/readability risks.
-7. State the token stance without inventing tokenBudget numbers.
-8. Provide a compact XMLV3 scaffold only when it clarifies structure.
-9. Hand off to `lunatalk-card-author`, `lunatalk-opening-director`,
+8. Define first-screen hierarchy and mobile/readability risks.
+9. State the token stance without inventing tokenBudget numbers.
+10. Provide a compact XMLV3 scaffold only when it clarifies structure.
+11. Hand off to `lunatalk-card-author`, `lunatalk-opening-director`,
    `lunatalk-token-architect`, or `lunatalk-render-review` as the next step.
 
 ## Output format
@@ -81,6 +97,7 @@ Presentation packet:
 - welcome mode: plain | xmlv3 | html
 - mode decision:
 - XMLV3 semantic plan:
+- XMLV3 capability / pack plan:
 - visible content map:
 - hidden state JSON plan:
 - Theme V3 responsibilities:
@@ -120,6 +137,14 @@ Self-review:
   in visible tags.
 - Do not choose HTML just because the card should look good. Use HTML only for a
   layout need XMLV3 and Theme V3 cannot express.
+- Do not use arbitrary XML `style`/`class` as a shortcut for HTML div styling.
+  Use layout pack `panel`, `stack`, `row`, `grid`, and `divider` plus Theme V3
+  tone/variant tokens, then check fallback readability.
+- Do not duplicate the platform XMLV3 server guide inside role detail. Detail
+  gets the role-specific format contract: state update rules, choice rules,
+  visible status meaning, pack usage, and player-agency boundaries.
+- Do not invent XMLV4/XMLV5. Compatible XMLV3 extension work uses optional tags,
+  attributes, extension packs, and readable fallback behavior.
 - Do not overrule a weak opening with visual polish. If the next player action is
   unclear, repair the opening first.
 - Keep output original and public-safe.

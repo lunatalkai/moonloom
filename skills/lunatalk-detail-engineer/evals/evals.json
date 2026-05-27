@@ -1,0 +1,38 @@
+{
+  "skill_name": "lunatalk-detail-engineer",
+  "evals": [
+    {
+      "id": "thin-biography-to-engine",
+      "prompt": "I have a LunaTalk role card whose roleDetailDesc is only a short biography: she is quiet, has a tragic past, and secretly cares about the user. Make the detail less empty before I patch it.",
+      "expected_output": "A Detail engine packet that identifies the thin biography problem, expands current pressure, player relationship, proactive behavior, voice, consequences, secrets, and agency boundaries without writing production-specific claims.",
+      "expectations": [
+        "Includes a Detail engine packet.",
+        "Names thin biography as the current failure.",
+        "Expands multiple runnable engine modules rather than only adding prose.",
+        "Protects player insertion space and agency boundaries."
+      ]
+    },
+    {
+      "id": "english-full-detail-budget",
+      "prompt": "I'm making an English mystery/school role card. The detail is 4,000 characters, but the app limit is much higher and the card feels hollow after turn one. What should Moonloom do before MCP patching?",
+      "expected_output": "A Detail engine packet that uses language-aware detail budget guidance for English, treats 4,000 characters as likely under-budget for a mystery engine, and defines scenario/world/secret/longplay modules before MCP patching.",
+      "expectations": [
+        "Uses language-aware detail budget guidance.",
+        "Recognizes English cards need more characters for similar engine depth.",
+        "Defines secret and reveal, time and consequence, and longplay hooks.",
+        "Says the card is not ready for MCP patching until the durable engine is expanded."
+      ]
+    },
+    {
+      "id": "move-welcome-rules-to-detail",
+      "prompt": "My welcome has a huge rules manual, state instructions, and lore, but roleDetailDesc is short. I want to keep the opening pretty. How should I repair the card?",
+      "expected_output": "A Detail engine packet that moves durable rules from welcome into detail, keeps only first-scene pressure and reply paths in welcome, and names validation/render/simulation probes.",
+      "expectations": [
+        "Moves durable rules out of welcome into roleDetailDesc.",
+        "Keeps the welcome focused on a playable first scene.",
+        "Includes format stability and field placement guidance.",
+        "Names validation, render, and simulation probes."
+      ]
+    }
+  ]
+}

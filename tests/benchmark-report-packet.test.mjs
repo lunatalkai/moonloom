@@ -17,6 +17,7 @@ test('benchmark runner defines a structured benchmark report packet', async () =
     '- MCP technical status:',
     '- render status:',
     '- simulation status:',
+    '- acceptance evidence status:',
     '- tokenBudget findings:',
     '- weakest Moonloom dimensions:',
     '- patch loop count:',
@@ -39,4 +40,5 @@ test('benchmark runner evals cover report packet handoff after regression runs',
   assert.match(evals, /negative cases/i);
   assert.match(evals, /next Moonloom skill repairs/i);
   assert.match(evals, /do not turn into MCP gates/i);
+  assert.match(evals, /validate:acceptance/i);
 });

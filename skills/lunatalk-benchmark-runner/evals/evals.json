@@ -346,7 +346,7 @@
     {
       "id": 27,
       "prompt": "After a Moonloom skill change, run the end-to-end acceptance for one synthetic private card. The text fields validate and render, but the card was initially delivered with no avatar or background. Simulation has not been approved because it costs normal chat credits. Return the regression handoff.",
-      "expected_output": "Treats the missing avatar/background as an end-to-end acceptance failure, requires role_patch_assets with real URLs, checks normal app role-detail and chat visual surfaces, keeps simulation cost-gated rather than behavior-complete, and returns an End-to-end acceptance packet plus benchmark repair targets.",
+      "expected_output": "Treats the missing avatar/background as an end-to-end acceptance failure, requires role_patch_assets with real URLs, checks normal app role-detail and chat visual surfaces, keeps simulation cost-gated rather than behavior-complete, runs or requires validate:acceptance before completion language, and returns an End-to-end acceptance packet plus benchmark repair targets.",
       "files": [],
       "expectations": [
         "The report uses the End-to-end acceptance packet or includes the same fields: assets, validation, render, app visual check, simulation cost stance, failures, root-cause repair, rerun evidence, and remaining non-complete gates.",
@@ -354,6 +354,7 @@
         "The report requires role_patch_assets with real avatar and background URLs before claiming visual completion.",
         "The report requires normal app evidence, including role-detail avatar and chat background image request success, not only validate_role or render_preview.",
         "The report records conversation_send_message as cost-gated and does not claim behavior checked when billing was not approved.",
+        "The report records validate:acceptance as failed or blocked until missing assets and app visual evidence are repaired.",
         "The report maps the root-cause repair to Moonloom skills, references, templates, or evals rather than turning subjective writing quality into an MCP hard gate.",
         "The check remains public-safe and uses only synthetic role-card evidence."
       ]
@@ -361,7 +362,7 @@
     {
       "id": 28,
       "prompt": "After accepted conversation_send_message turns and conversation_inspect for a synthetic private card, the result includes one conversationId and three AI chatId values. The role renders XMLV3 in its replies. Return the end-to-end acceptance handoff and preview each returned chatId without relying on the normal chat UI.",
-      "expected_output": "Uses the dedicated per-message preview harness for each returned chatId, records message preview status and evidence in the End-to-end acceptance packet, and avoids parsing the normal chat UI for transcript formatting.",
+      "expected_output": "Uses the dedicated per-message preview harness for each returned chatId, records message preview status and evidence in the End-to-end acceptance packet, runs or records validate:acceptance for the handoff, and avoids parsing the normal chat UI for transcript formatting.",
       "files": [],
       "expectations": [
         "The report treats simulation behavior and message rendering as separate evidence layers.",
@@ -369,6 +370,7 @@
         "The report records message preview status, checked chatIds, renderer mode or DOM evidence, overflow or console issues, and screenshot or visual notes when available.",
         "The report says not to parse the normal chat UI for transcript formatting; the normal chat surface remains for avatar/background app evidence.",
         "The report does not claim per-turn visual completion if message identifiers are missing or previews were not opened.",
+        "The report records validate:acceptance status after message preview evidence is available.",
         "The check remains public-safe and uses only synthetic role-card evidence."
       ]
     }

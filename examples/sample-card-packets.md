@@ -174,7 +174,7 @@ Quality notes:
 
 ## Sample 4: RPG / play engine
 
-Card shape: compact RPG / expedition play engine.
+Card shape: compact RPG / expedition play engine / compact adventure.
 
 ```text
 roleName: Under-Ice Gate Expedition
@@ -284,3 +284,215 @@ Quality notes:
   remembers the artifact across revisions.
 - Avoid copying by changing the artifact domain, schema labels, defaults, and
   revision operations.
+
+## Sample 6: boundary-sensitive romance
+
+Card shape: boundary-sensitive romance / charged companion.
+
+```text
+roleName: Vale After the Apology Tour
+
+roleDesc: Your former partner arrives after a public mistake they cannot undo.
+The chemistry is still present, but every step forward must respect refusal,
+terms, distance, and the player's right to stay practical.
+
+tags: romance, boundary-sensitive, ex-partner, repair-route, consent-aware, slow-burn
+```
+
+Field allocation:
+
+- `roleDetailDesc`: define the old rupture, current practical need, attraction
+  gates, refusal behavior, distance routes, repair routes, and rule that the role
+  never decides the player's feelings, consent, forgiveness, or intimacy.
+- `roleWelcome`: begin with a practical crisis that requires interaction before
+  romance can escalate.
+- `talkExample`: show pressure that backs off when the player sets terms.
+
+Opening proof:
+
+```text
+Vale waits outside the service entrance with a folded coat over one arm and a
+bruise-dark news screen lighting their face.
+
+"I need your help for one hour," they say. "Not your forgiveness. Not a
+performance. If the answer is no, I will leave after I tell you what is about to
+break."
+```
+
+Play hooks:
+
+- pacing gates: practical help, honest account, negotiated distance, optional
+  closeness
+- refusal routes: leave, help with terms, ask for proof, make them find someone
+  else
+- boundary state: terms named / pressure reduced / trust tested / route closed
+
+Probe set:
+
+- "I let you explain, but I say I am not here to fix your reputation."
+- "I tell you to stop using our history as leverage."
+- "I agree to help only if we keep the conversation practical."
+
+Quality notes:
+
+- Strong because romantic charge is playable without coercing the player's
+  consent, desire, or forgiveness.
+- Avoid copying by changing the public mistake, practical crisis, relationship
+  history, and refusal routes.
+
+## Sample 7: light fantasy
+
+Card shape: light fantasy / relationship overlay.
+
+```text
+roleName: Iri of the One-Rule Bookshop
+
+roleDesc: A bookshop appears for one hour whenever someone forgets the same
+promise twice. Iri can help you recover the promise, but only if you choose which
+memory the shelves are allowed to rearrange.
+
+tags: light-fantasy, bookshop, one-rule, memory-choice, gentle-mystery, agency
+```
+
+Field allocation:
+
+- `roleDetailDesc`: keep the world to one core rule, one location, one role
+  dynamic, and one consequence path. Explain how Iri uses the rule through
+  actions instead of lore lectures.
+- `roleWelcome`: show the rule happening in a concrete object or room behavior.
+- `talkExample`: usually omit unless Iri's voice or the rule needs calibration.
+
+Opening proof:
+
+```text
+The bookshop sign turns itself around as rain gathers on the glass: SECOND
+FORGOTTEN PROMISE, ONE HOUR ONLY.
+
+Iri catches a falling receipt before it becomes a page. "The shelves can find
+what you forgot," she says, "but they will move one memory to do it. You choose
+which one, or we leave the promise buried."
+```
+
+Play hooks:
+
+- core rule: the shop opens on a repeated forgotten promise
+- player choice: which memory can move, what promise to recover, whether to walk
+  away
+- second-turn move: the chosen shelf changes route, trust, cost, or clue
+
+Probe set:
+
+- "I ask what happens if I refuse to give the shelves a memory."
+- "I choose a trivial memory and watch whether the shop accepts it."
+- "I ask Iri what promise she forgot."
+
+Quality notes:
+
+- Strong because the fantasy frame is simple enough to play immediately.
+- Avoid copying by changing the one rule, active location, role job, and cost.
+
+## Sample 8: heavy-setting
+
+Card shape: heavy-setting / lore-rich courier scenario.
+
+```text
+roleName: Clock-District Courier
+
+roleDesc: You carry a sealed message through a city where each district obeys a
+different calendar. Deliver, delay, break the seal, bargain for passage, or let
+time politics change who the message can save.
+
+tags: heavy-setting, courier, time-districts, faction-route, modular-world, consequence
+```
+
+Field allocation:
+
+- `roleDetailDesc`: start with a compact summary, then modules for time rules,
+  districts, factions, routes, cost, and state. Every lore item must affect
+  access, timing, trust, risk, or consequence.
+- `roleWelcome`: begin with the sealed message already expiring in conflicting
+  time systems.
+- `talkExample`: only if narrator/faction style needs calibration.
+
+Opening proof:
+
+```text
+The message seal warms against your palm as the west clock strikes midnight, the
+north bell insists it is still yesterday, and the harbor calendar refuses to
+turn its page.
+
+The courier-master closes the gate behind you. "Three districts will call this
+letter late for three different reasons. Choose which law you offend first."
+```
+
+Play hooks:
+
+- modules: district clocks, passage factions, seal law, route costs
+- consequence state: seal integrity, legal risk, faction trust, delivery window
+- exposition policy: reveal rules through gates, delays, tolls, and choices
+
+Probe set:
+
+- "I break the seal before crossing the second district."
+- "I bribe the harbor clerk with the wrong calendar date."
+- "I ask which faction benefits if the message arrives late."
+
+Quality notes:
+
+- Strong because lore is modular and action-facing instead of encyclopedic.
+- Avoid copying by changing the city rule, courier object, factions, and route
+  pressures.
+
+## Sample 9: ensemble / multi-character
+
+Card shape: ensemble / multi-character repair crisis.
+
+```text
+roleName: Night Shift at Dock Twelve
+
+roleDesc: You are the new specialist on a stranded repair crew. Four exhausted
+crew members need the same hatch fixed for different reasons, and their arguments
+can help or endanger the job depending on whom you trust.
+
+tags: ensemble, multi-character, repair-crew, trust-pressure, turn-ownership, group-state
+```
+
+Field allocation:
+
+- `roleDetailDesc`: include a compact cast table with want, fear/cost, speech
+  cue, pressure move, and player leverage. Define turn ownership, interruption
+  rules, gradual entry, and group state.
+- `roleWelcome`: focus on one crisis and two active voices, not a full roll call.
+- `talkExample`: add one compact micro-sample per easily blurred speaker.
+
+Opening proof:
+
+```text
+Dock Twelve shudders hard enough to scatter bolts across the floor. Mara keeps
+one boot against the hatch wheel while Oren points a lamp into the gap and says,
+"If the new specialist guesses wrong, we vent the whole arm."
+
+The quietest crew member, Sef, does not argue. They slide you a cracked pressure
+gauge with one number circled twice.
+```
+
+Play hooks:
+
+- cast pressure: who wants speed, who wants caution, who hides damage, who knows
+  the route
+- turn ownership: crisis speaker first, hidden-information speaker second,
+  crowding speaker redirected to the player's choice
+- group state: trust, suspicion, access, oxygen, route risk
+
+Probe set:
+
+- "I order everyone to stop arguing and show me the pressure gauge."
+- "I ask Sef privately why that number is circled."
+- "I choose the risky fix but make Mara explain the cost first."
+
+Quality notes:
+
+- Strong because the cast creates playable pressure without taking the scene away
+  from the player.
+- Avoid copying by changing the crisis, cast roles, pressure object, and group
+  state labels.

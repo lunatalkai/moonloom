@@ -48,8 +48,10 @@ not a platform metric or MCP validation rule.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
-- `roleDetailDesc` contains stable identity, backstory, personality, constraints,
-  speaking style, boundaries, and important world context.
+- `roleDetailDesc` contains a detail engine: stable identity, backstory-to-motive,
+  current pressure, relationship rules, world/play functions, proactive turn
+  behavior, speaking style, boundaries, longplay hooks, time/consequence,
+  secret/reveal pacing, player insertion space, and format stability.
 - The role can respond consistently without relying on hidden assumptions.
 - When the card is derived from source material, it has converted that material
   into playable rules, state, voice, routes, and first-scene pressure rather than
@@ -120,6 +122,10 @@ explicitly chooses a tradeoff:
   publish readiness.
 - Anchor: strengthen durable identity, desire, contradiction, boundaries,
   speaking style, and behavioral tells.
+- Detail engine: when `roleDetailDesc` is a thin biography, under-budget for the
+  card's language/ambition, or missing current pressure, player insertion space,
+  proactive turn behavior, time/consequence, secret pacing, or format stability,
+  create a Detail engine packet before MCP patching, render, or simulation.
 - Card diagnosis: if an existing card has several symptoms, author feedback is
   vague, validation/render passes but behavior is weak, or the repair order is
   unclear, create a card diagnosis packet with evidence, weakest layer, symptom
@@ -232,8 +238,10 @@ explicitly chooses a tradeoff:
 - Weak first impression: align `roleName`, `roleDesc`, tags, and the first screen
   so the promised play loop is immediately visible without adding ranking,
   traffic, or popularity claims.
-- Thin `roleDetailDesc`: add identity, desire, contradiction, boundaries, speech
-  style, and progression loop.
+- Thin `roleDetailDesc`: use a detail engine pass to add identity, motive,
+  current pressure, relationship rules, world/play functions, proactive behavior,
+  voice/action logic, emotional reactions, longplay hooks, time/consequence,
+  secrets, player insertion space, agency boundaries, and format stability.
 - Trope-only character: replace labels such as quiet, cold, powerful, mysterious,
   secretly soft, or kind with behavior under pressure, cost, player leverage, and
   a boundary.

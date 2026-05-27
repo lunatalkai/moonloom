@@ -13,7 +13,9 @@ decide whether another pass is worth the cost.
 ## Required references
 
 Read `../../references/card-writer-mcp.md` for `conversation_send_message` and
-`conversation_inspect`.
+`conversation_turn_status` / `conversation_inspect`, plus
+`conversation_create`, `conversation_list`, and `conversation_load` when the test
+needs a fresh thread, conversation discovery, resume, or rollback.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, per-message preview, and author co-review.
 Use `npm run validate:simulation` when a run produces a redacted simulation
@@ -82,40 +84,67 @@ not call the tool.
 3. Build a playtest plan before the tool call:
    - target risk: opening hook, agency, continuity, longplay, boundary,
      token/progression, archetype behavior, or onboarding clarity
-   - probe count: 1 to 5 user messages
+   - probe scope: narrow spot-check or behavior-complete acceptance
    - probe text: realistic player messages, not evaluator instructions
+   - required matrix: behavior-complete acceptance uses the seven-probe
+     Moonloom matrix: normal interaction, short reply, off-path reply,
+     background question, relationship push, secret exploration, and boundary
+     test
    - expected healthy behavior: what the role should do if the card works
    - patch triggers: what transcript evidence would require changes to
      `roleDetailDesc`, `roleWelcome`, profile fields, or jailbreak
    - cost stance: already accepted, needs confirmation, or skipped
-4. Call `conversation_send_message` after cost is accepted. For a multi-turn
-   probe, continue with the returned `conversationId`.
-5. Call `conversation_inspect` after each accepted message. Read the
+4. Use `conversation_create` when the test needs a fresh thread, or
+   `conversation_list` when the author asks to inspect/resume an existing thread.
+   Use `conversation_load` only when the author wants that conversation made
+   current or rolled back to `rollbackToChatId`.
+   In raw JSON-RPC responses, unwrap `result.structuredContent.conversation`
+   before reading `conversationId`, `latestMessage`, `messages`, `evaluation`,
+   or `previewUrl`.
+5. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
+   so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
+   still returns `generationStatus: "waiting_ai"` or `"generating"`, treat it as
+   the normal async path and poll with `conversation_turn_status` instead of
+   holding the client request open longer. For a multi-turn probe, continue with
+   the returned `conversationId`.
+6. Call `conversation_inspect` after each accepted message once the latest turn
+   is complete. For long conversations, pass `chatIds` for the specific messages
+   under review instead of loading an oversized history page. Read the
    returned conversation history, AI messages, `evaluation`, and per-message
    metadata. Evaluate behavior, not just whether the tool ran.
-6. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
+7. If `conversation_inspect` returns `messages[].previewUrl`, open those URLs for
    selected AI messages. If `previewUrl` is absent but the result includes
    `conversationId`, `chatId`, and `roleId`, build the dedicated preview harness URL:
-   `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>`.
+   `/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>&viewport=mobile`.
+   Use `viewport=desktop` for PC chat-column proportions and `viewport=mobile`
+   for mobile bubble proportions. Check both when layout is part of acceptance.
    Record Ready status, renderer mode, DOM summary, text overflow, relevant
    console errors, and screenshot or visual notes as message preview evidence.
    Do not parse the normal chat page UI for transcript formatting.
-7. If message identifiers are missing, record "message preview unavailable" and
+   When the role is supposed to be XMLV3/Theme V3, treat `isV3:false` or
+   `rendererMode:"plain"` on AI messages as a format failure. The likely patch
+   is `theme_bind` first, then `role_patch_welcome` or `role_patch_detail` only
+   if the content itself is not following the chosen presentation contract.
+   After metadata is correct, inspect the message body too: the first character
+   should be `<`, scene text should be wrapped in XMLV3 tags, player affordances
+   should use `<choice>`, and state changes should use `<state>` with compact
+   JSON. Do not mark XMLV3 visual closure just because `isV3:true` is present.
+8. If message identifiers are missing, record "message preview unavailable" and
    keep the visual claim narrower.
-8. When preparing benchmark or repository handoff evidence, write a redacted
+9. When preparing benchmark or repository handoff evidence, write a redacted
    simulation evidence packet shaped like
    `../../examples/simulation-evidence.fixture.json` and run
    `npm run validate:simulation`. Do not store raw transcripts in Moonloom.
-9. Map each failure to a Moonloom patch target using `playtest-loop.md`.
+10. Map each failure to a Moonloom patch target using `playtest-loop.md`.
    If the transcript shows several failures at once, create or preserve a
    `lunatalk-card-doctor` diagnosis packet before choosing field patches.
-10. Produce a simulation repair packet before patching fields or paying for
+11. Produce a simulation repair packet before patching fields or paying for
    another simulation pass.
-11. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
+12. Patch profile, detail, welcome, or jailbreak only when the transcript shows a
    concrete role-card problem. Most behavior fixes should target
    `roleDetailDesc` or `roleWelcome`; do not change MCP validation logic.
-12. Run `validate_role` after structural patches.
-13. Re-run the conversation test when the patch changes core behavior, boundary
+13. Run `validate_role` after structural patches.
+14. Re-run the conversation test when the patch changes core behavior, boundary
     handling, state, voice, or first-turn flow and the author accepts the cost.
 
 ## Playtest plan format
@@ -126,13 +155,26 @@ Before a simulation call, write this compact plan:
 Playtest plan:
 - roleId:
 - target risks:
+- probe scope: narrow spot-check | behavior-complete
 - probes:
   1. ...
 - expected healthy behavior:
 - patch triggers:
 - cost stance:
-- tool call: conversation_send_message now | wait for confirmation | skipped
+- tool call: conversation_send_message with waitMs: 60000 now | wait for confirmation | skipped
 ```
+
+Use a narrow spot-check only for a targeted regression, a known weak layer, or a
+cost-limited pass; label it as not behavior-complete. To claim behavior-complete
+status, run the seven-probe Moonloom matrix:
+
+1. normal interaction
+2. short reply
+3. off-path reply
+4. background question
+5. relationship push
+6. secret exploration
+7. boundary test
 
 ## Simulation repair packet
 
@@ -186,6 +228,13 @@ world, relationship, daily-life, ensemble, or character core.
   whether the role changes state, recalls a memory thread, shifts route pressure,
   or renews a hook without waiting for the player to write the whole plot.
 - The transcript has no obvious safety, formatting, or system-leak issue.
+- For XMLV3/Theme V3 cards, AI messages are not accepted as visually stable when
+  they return `isV3:false` or `rendererMode:"plain"`; bind Theme V3 with
+  `theme_bind` and rerun a focused conversation probe.
+- For XMLV3/Theme V3 cards, metadata is necessary but not sufficient: the reply
+  body's first character should be `<`, the turn should expose meaningful
+  `<choice>` buttons when the player needs a next move, and `<state>` should
+  appear when scene, risk, route, resource, or relationship state changes.
 - The billing summary or charged amount is included when available.
 - Treat `evaluation.qualityDimensions` as the first triage map:
   `responsePresence`, `agency`, `progression`, and `safetyFormat`.

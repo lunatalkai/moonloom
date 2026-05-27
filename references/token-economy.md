@@ -83,6 +83,13 @@ rules, world functions, proactive moves, voice, emotional reactions, longplay
 hooks, time/consequence logic, secrets, player insertion space, agency
 boundaries, and output format stability.
 
+For XMLV3 cards, output format stability does not mean pasting the platform
+XMLV3 server guide into `roleDetailDesc`. The server guide owns generic tag
+syntax. Detail owns the role-specific format contract: when this card emits
+choices, what state fields can change, which visible status labels matter, which
+extension pack is intentionally enabled, and what the assistant must not decide
+for the player. Do not copy a generic XMLV3 manual into detail.
+
 Do not pad. Fill detail until the next section would no longer improve later
 turns. Then stop.
 

@@ -81,9 +81,15 @@ Self-review:
 - Private creation or field patching: hand off to `lunatalk-card-author`.
 - Validation and render evidence: hand off to `lunatalk-render-review` only after
   `validate_role` has no blockers and `render_preview` is available.
+  When inspecting raw JSON-RPC output, unwrap `result.structuredContent.report`
+  for validation and `result.structuredContent.render` for preview URLs and
+  render evaluation.
 - Behavior testing: hand off to `lunatalk-chat-simulation` only after validation
   is ready and the author accepts normal conversation-test cost. The required
-  tools are `conversation_send_message` and `conversation_inspect`.
+  tools are `conversation_create` or `conversation_list`, plus
+  `conversation_send_message` and `conversation_inspect`. `conversation_load` is
+  optional and mutating; use it only for explicit resume or rollback. Unwrap
+  `result.structuredContent.conversation` before reading conversation payloads.
 - Public submission: hand off to `lunatalk-publish-readiness`; require explicit
   author confirmation before `publish_submit`.
 
