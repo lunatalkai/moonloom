@@ -39,6 +39,19 @@
         "The handoff routes to lunatalk-collaboration-director or lunatalk-boundary-designer before card-author.",
         "The output keeps author taste tradeoffs separate from craft blockers."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "A private test card passed validate_role and render_preview, but simulation shows the role waits for the player after turn two. The benchmark report includes an anonymized benchmark_pattern packet: aggregate signals say high-ambition cards use proactive route pressure; deep sample reading says durable details define passive-user behavior and return hooks; source safety passed with no raw source, no identifiers, no exact markup. Pick the next iteration step.",
+      "expected_output": "Produces an iteration packet that preserves benchmark_pattern separately from benchmark, records source safety, treats passive role initiative as the weakest dimension, rejects broad rewriting or another paid simulation first, and hands off to longplay, agency, or card-author with one patch hypothesis.",
+      "files": [],
+      "expectations": [
+        "The output includes benchmark_pattern in the evidence stack rather than collapsing it into generic benchmark notes.",
+        "The output records source safety as passed and does not mention source origins, rankings, traffic, IDs, or raw examples.",
+        "The next single repair targets passive-user behavior, proactive route pressure, or return hooks in roleDetailDesc.",
+        "The decision rejects broad rewriting and another paid simulation until the benchmark-pattern repair has a verification hypothesis.",
+        "The handoff routes to lunatalk-longplay-architect, lunatalk-agency-designer, or lunatalk-card-author with a narrow patch."
+      ]
     }
   ]
 }
