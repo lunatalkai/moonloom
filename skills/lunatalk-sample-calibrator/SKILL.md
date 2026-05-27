@@ -5,9 +5,9 @@ description: Use when a LunaTalk role-card task asks for examples, golden sample
 
 # LunaTalk Sample Calibrator
 
-Use this skill when the author needs a public example shape before writing or
-repairing a card. The output is a sample calibration packet, not final fields and
-not permission to copy sample prose.
+Use this skill when the author needs a public synthetic sample shape before
+writing or repairing a card. The output is a sample calibration packet, not final
+fields and not permission to copy sample prose.
 
 ## Required references
 
@@ -16,6 +16,9 @@ Read `../../references/sample-driven-calibration.md` first. Read
 sample. Read `../../references/quality-scorecard.md` when the author asks
 whether the draft is strong enough after calibration. Read only the narrow
 archetype reference after the packet identifies the missing layer.
+If the task includes an anonymized benchmark pattern packet or source-restricted
+pattern gap, read `../../references/benchmark-pattern-calibration.md` only to
+understand the generalized gap. Keep it separate from synthetic sample selection.
 
 ## Boundary
 
@@ -30,10 +33,16 @@ proof, token placement, and probe type.
 Do not attach origin or performance claims to samples. They are public synthetic
 teaching fixtures.
 
+Do not copy benchmark wording, exact markup, names, identifiers, source
+phrasing, or any provenance from an anonymized benchmark pattern. Use it only as
+a gap signal such as detail density, durable operating engine, first-turn proof,
+longplay spine, agency, or presentation gap.
+
 ## Workflow
 
 1. Identify whether the request is example-seeking, draft calibration, benchmark
-   expected-output shaping, or copy-risk review.
+   expected-output shaping, anonymized benchmark pattern comparison, or
+   copy-risk review.
 2. Select one primary sample and, only when useful, one secondary overlay.
 3. Compare by structure: primary contract, promise, engine, opening proof, voice,
    longplay, token allocation, probes, and originality.
@@ -60,6 +69,7 @@ Sample calibration packet:
 - request:
 - selected sample:
 - secondary overlay:
+- anonymized benchmark pattern:
 - card shape:
 - structure borrowed, not text:
 - draft strengths:

@@ -12,9 +12,15 @@ sample shape -> draft shape -> missing craft layer -> repair skill -> original r
 
 ## Source posture
 
-Use only the public synthetic samples in `examples/sample-card-packets.md`.
-Treat them as fictional teaching fixtures. Do not attach origin or performance
-claims to them.
+Use only the public synthetic samples in `examples/sample-card-packets.md` for
+normal author-facing sample calibration. Treat them as fictional teaching
+fixtures. Do not attach origin or performance claims to them.
+
+If the workflow already has a source-restricted anonymized benchmark pattern
+packet, keep it separate from synthetic sample selection and read
+`benchmark-pattern-calibration.md`. Synthetic samples provide a public output
+shape; benchmark patterns provide a generalized gap signal. Never blend the two
+into a claim that a sample has outside proof.
 
 Do not copy sample names, scene text, role wording, voice lines, tag strings, or
 world details into a real card. Borrow the contract shape and checklist logic:
@@ -83,6 +89,7 @@ Sample calibration packet:
 - request:
 - selected sample:
 - secondary overlay:
+- anonymized benchmark pattern:
 - card shape:
 - structure borrowed, not text:
 - draft strengths:
