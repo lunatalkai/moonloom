@@ -1,6 +1,6 @@
 ---
 name: lunatalk-iteration-director
-description: Use when a Moonloom role-card workflow has self-review, validation, tokenBudget, render, simulation, benchmark, or author-feedback evidence and needs a closed-loop next-iteration decision, patch hypothesis, rerender/simulation stance, stop/continue criteria, or handoff before more rewriting, MCP calls, or publishing.
+description: Use when a Moonloom role-card workflow has self-review, validation, tokenBudget, render, simulation, benchmark, benchmark_pattern, or author-feedback evidence and needs a closed-loop next-iteration decision, patch hypothesis, rerender/simulation stance, stop/continue criteria, or handoff before more rewriting, MCP calls, or publishing.
 ---
 
 # LunaTalk Iteration Director
@@ -54,7 +54,8 @@ designing or running probes.
 
 1. Gather the evidence stack: Moonloom self-review, validation, tokenBudget,
    render report or screenshot, simulation probes/transcript, author feedback,
-   benchmark report, and previous patches.
+   benchmark report, anonymized `benchmark_pattern` packet with source safety
+   status, and previous patches.
 2. Mark missing evidence explicitly. Do not invent validation, render,
    simulation, or author feedback.
 3. Separate hard blockers from craft issues, taste tradeoffs, and cost decisions.
@@ -88,6 +89,7 @@ Iteration packet:
   - simulation:
   - author_feedback:
   - benchmark:
+  - benchmark_pattern:
 - decision:
 - hard blockers:
 - strongest evidence:
@@ -112,6 +114,7 @@ Self-review:
 - token stance avoids max-length padding:
 - MCP gates are not used for writing quality:
 - author taste tradeoffs are separated:
+- benchmark_pattern source safety preserved:
 - next skill:
 ```
 
@@ -126,6 +129,9 @@ Self-review:
   behavior, route cost, state update, voice control, boundary handling, or memory.
 - Do not overwrite working packets. Preserve what passed and patch the weakest
   layer.
+- Preserve `benchmark_pattern` only as generalized craft evidence. Do not expose
+  source origins, sample identifiers, copied examples, traffic, or private
+  selection mechanics in the iteration packet.
 - If two loops fail on the same symptom, stop and ask for a design decision
   through the agent conversation.
 - Keep output public-safe and original.

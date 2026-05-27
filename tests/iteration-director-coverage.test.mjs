@@ -34,6 +34,7 @@ test('iteration director defines evidence stack and one-repair iteration packet'
 
   assert.match(skill, /Iteration packet:/);
   assert.match(skill, /evidence stack/i);
+  assert.match(skill, /benchmark_pattern/i);
   assert.match(skill, /next single repair/i);
   assert.match(skill, /stop \/ continue criteria/i);
   assert.match(skill, /Do not call MCP tools/i);
@@ -41,6 +42,7 @@ test('iteration director defines evidence stack and one-repair iteration packet'
   assert.match(reference, /language-aware hard caps/i);
   assert.match(reference, /50,000-character English `roleDetailDesc`/i);
   assert.match(reference, /10,000-character non-English `roleDetailDesc`/i);
+  assert.match(reference, /source safety/i);
 });
 
 test('router and README expose closed-loop iteration as first-class workflow', async () => {
@@ -60,4 +62,6 @@ test('iteration director evals cover token padding, render action visibility, an
   assert.match(evals, /action visibility/i);
   assert.match(evals, /two simulation repair passes|two failed loops/i);
   assert.match(evals, /paid simulation/i);
+  assert.match(evals, /benchmark_pattern/i);
+  assert.match(evals, /source safety/i);
 });
