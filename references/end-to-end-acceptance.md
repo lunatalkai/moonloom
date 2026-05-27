@@ -33,10 +33,12 @@ production behavior.
 8. Run `conversation_send_message` only after the author accepts normal billing.
    If cost is not accepted, record "conversation test skipped by cost gate" and
    do not claim behavior-complete status.
-9. If conversation testing runs, use probes for normal interaction, short reply,
-   off-path reply, background question, relationship or trust push,
-   secret/progression exploration, passive input, and boundary handling. Continue
-   the returned `conversationId` when probes are meant to form one conversation.
+9. If conversation testing runs for behavior-complete status, use the
+   seven-probe Moonloom matrix: normal interaction, short reply, off-path reply,
+   background question, relationship push, secret exploration, and boundary test.
+   Continue the returned `conversationId` when probes are meant to form one
+   conversation. Passive-input checks can be folded into short reply or off-path
+   reply instead of becoming an eighth required probe.
 10. Run `conversation_inspect` after accepted probes. Use returned
     `messages[].chatMessage` for behavior evaluation and returned
     `messages[].previewUrl` values for visual checks. If `previewUrl` is absent
@@ -54,9 +56,35 @@ production behavior.
     `examples/simulation-evidence.fixture.json`, then run
     `npm run validate:simulation`. Do not store raw transcripts in public
     Moonloom files.
-13. When any layer fails, patch the narrow root cause in a Moonloom skill,
+13. For full trial-card handoff, convert the whole run into a redacted
+    end-to-end acceptance evidence packet shaped like
+    `examples/end-to-end-acceptance.fixture.json`, then run
+    `npm run validate:acceptance`. This validator checks that the claimed status
+    is backed by skill routing, patched avatar/background assets, validation,
+    render evidence, app visual proof, accepted simulation when behavior is
+    claimed, and per-message preview evidence.
+14. When any layer fails, patch the narrow root cause in a Moonloom skill,
     reference, template, or card field. Re-run the affected layer instead of
     declaring a one-off card fix complete.
+
+## End-to-end acceptance evidence
+
+Use `npm run validate:acceptance` before claiming a trial card is visually or
+behaviorally complete. The evidence packet is public-safe and redacted; it should
+not include raw transcripts, private identifiers, internal URLs, credentials, or
+source-card text. Its job is to prove the completion language, not to archive
+the whole run.
+
+The validator enforces these status boundaries:
+
+- `visual_complete` requires patched avatar and background assets, successful
+  asset patch evidence, `validate_role` pass evidence, ready render evidence,
+  app role-detail avatar proof, app chat background proof, and successful image
+  request evidence.
+- `behavior_checked` additionally requires accepted simulation cost, a validated
+  simulation evidence packet, the seven-probe matrix, passing simulation result,
+  and per-message preview evidence.
+- statuses with remaining non-complete gates cannot be treated as complete.
 
 ## Evidence checks
 

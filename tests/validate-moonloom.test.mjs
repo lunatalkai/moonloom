@@ -172,3 +172,35 @@ test('blocks public-source claims about protected data origins', async () => {
 
   assert.ok(codes.includes('release.forbidden_public_claim'));
 });
+
+test('blocks concrete identifiers, SQL snippets, and internal URLs in public files', async () => {
+  const root = await createFixture();
+  const concreteRoleId = '123e4567-e89b-12d3-a456-426614174000';
+  const sqlSnippet = 'SELECT role_name FROM character_role WHERE id = 1;';
+  const localUrl = 'http://localhost:8888/mcp/card-writer';
+
+  await writeFile(
+    path.join(root, 'README.md'),
+    ['# Fixture', concreteRoleId, sqlSnippet, localUrl].join('\n'),
+    'utf8',
+  );
+  await addSkill(
+    root,
+    'safe-skill',
+    `---\nname: safe-skill\ndescription: Use when checking release safety scanning.\n---\n\n# Safe Skill\n`,
+    [
+      {
+        prompt: 'Route this fixture.',
+        expected_output: 'Uses the safe skill.',
+        expectations: ['Mentions the safe skill.'],
+      },
+    ],
+  );
+
+  const result = await validateRepository(root);
+  const codes = result.issues.map((item) => item.code);
+
+  assert.ok(codes.includes('release.concrete_identifier'));
+  assert.ok(codes.includes('release.sql_snippet'));
+  assert.ok(codes.includes('release.internal_url'));
+});

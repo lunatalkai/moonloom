@@ -25,6 +25,23 @@ Mutating tools also require `idempotencyKey` with at least 8 characters. Generat
 a stable key per intended operation; retrying the same operation should reuse the
 same key.
 
+## Response envelope
+
+MCP clients receive each tool result inside the normal JSON-RPC
+`result.structuredContent` envelope. Unwrap the tool-specific payload before
+reading fields:
+
+- `validate_role`: read `structuredContent.report`.
+- `render_preview`: read `structuredContent.render`; `previewUrl`,
+  `evaluation`, and `structuredReport` live there.
+- Conversation tools: read `structuredContent.conversation`; this includes
+  `conversationId`, `turn`, `latestMessage`, `messages`, `evaluation`, and
+  per-message `previewUrl`.
+- `publish_submit`: read `structuredContent.publish`.
+
+Do not assume `previewUrl`, `messages`, or `evaluation` are top-level fields of
+the JSON-RPC response.
+
 ## Core tool order
 
 1. `role_create_private` or `role_get`
@@ -32,12 +49,16 @@ same key.
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
-6. Optional `theme_bind` and `extension_enable`
+6. `theme_bind` when XMLV3 real chat controls are expected; optional
+   `extension_enable` for specific packs
 7. `validate_role`
 8. `render_preview`
-9. `conversation_send_message`
-10. `conversation_inspect`
-11. `publish_submit` only after explicit author confirmation
+9. `conversation_create` or `conversation_list`
+10. `conversation_send_message`
+11. `conversation_turn_status` when the send result is still pending
+12. `conversation_inspect`
+13. Optional `conversation_load` when the author wants to resume or roll back
+14. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -57,7 +78,8 @@ Required:
 
 Optional: `language`, `cardType`, `contentRatingIntent`, `successCriteria`.
 
-Defaults: `language` is `zh-Hant`, `cardType` is `story`, and visibility is private.
+Defaults: `language` follows the authenticated user's LunaTalk language when the
+server can resolve it, `cardType` is `story`, and visibility is private.
 
 ### `role_get`
 
@@ -127,6 +149,11 @@ Update the role detail body.
 }
 ```
 
+For XMLV3 cards, `roleDetailDesc` should not duplicate the platform XMLV3
+server guide. Put only the role-specific format contract in detail: state update
+rules, choice behavior, enabled pack purpose, visible status meaning, and
+player-agency boundaries.
+
 ### `role_patch_welcome`
 
 Update the opening welcome. Supported modes are `plain`, `html`, and `xmlv3`.
@@ -143,6 +170,18 @@ Preview-compatible state example:
 ```xml
 <state>{"scene":{"location":"雨夜郵件廳","mood":"tense"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"沈燈","label":"信任","affinity":1,"max":5}]}</state>
 ```
+
+If the welcome needs structured controls beyond core tags, prefer an XMLV3
+extension pack before falling back to HTML. Use `extension_enable` only when the
+presentation packet names a concrete pack need; the card must still degrade to
+readable XMLV3 prose if a client cannot render that pack.
+
+For HTML div-like hierarchy or per-section color needs, prefer the `layout`
+extension pack before custom HTML. `panel`, `stack`, `row`, `grid`, and
+`divider` supply container and section block structure; Theme V3 supplies tone,
+palette, and panel color. When these tags appear in `roleWelcome`, call
+`extension_enable` with `packId: "layout"` after patching the welcome and before
+render or simulation.
 
 ```json
 {
@@ -164,11 +203,22 @@ Update jailbreak text when the author explicitly asks for system behavior change
 
 Bind Theme V3 to a private role.
 
+XMLV3 real chat / conversation controls require `theme_bind` before simulation
+acceptance. A valid XMLV3 `roleWelcome` can preview correctly while real chat
+still returns `isV3:false` and `rendererMode:"plain"` if no Theme V3 binding or
+extension exists.
+
 Use `mode: "reference"` with `themeId`, or `mode: "forked"` with a `snapshot`.
 
 ### `extension_enable`
 
 Toggle a Theme V3 extension pack.
+
+Use `packId: "layout"` for the XMLV3 layout pack when a welcome uses `panel`,
+`stack`, `row`, `grid`, or `divider` to replace HTML div-like container
+structure. Do not enable packs as decoration-only defaults; the presentation
+packet should explain the readable fallback and why the structure helps the
+player understand action, state, route, or relationship pressure.
 
 ### `validate_role`
 
@@ -204,8 +254,8 @@ technical repair surface:
   or unsupported render tags.
 - `validate_role` after the patch.
 
-Do not call `render_preview`, `conversation_send_message`, or
-`conversation_inspect` just because they are available. Use them after
+Do not call `render_preview`, `conversation_create`, `conversation_send_message`,
+or `conversation_inspect` just because they are available. Use them after
 `validate_role` has no blockers and after the Moonloom self-review says the draft
 is worth testing visually or behaviorally.
 
@@ -228,6 +278,68 @@ multimodal access, open `previewUrl` and inspect it visually. If
 `evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
 `roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 
+### `conversation_create`
+
+Create a new MCP-operated private conversation for an owned role. Use this when
+the test needs a fresh thread instead of continuing the latest returned
+`conversationId`. It returns the new `conversationId`, the raw welcome message,
+conversation context, and a preview URL for the welcome message when available.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "conversation-create-...",
+  "roleId": "..."
+}
+```
+
+Optional: `pageSize` and `viewport`. Use `viewport: "desktop"` to preview the
+PC chat column proportions and `viewport: "mobile"` to preview the mobile chat
+bubble proportions.
+
+### `conversation_list`
+
+List owned conversations for a private role. Use this when an AI client needs to
+find the conversation to inspect, resume, or compare. The response includes
+conversation tags, last raw message data, renderer mode, and preview URL for the
+last AI message when available.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "..."
+}
+```
+
+Optional: `pageNum`, `pageSize`, and `viewport`.
+
+### `conversation_load`
+
+Load an owned conversation as the current role conversation, then return the same
+raw history/context shape as `conversation_inspect`. Use this when the author
+wants to resume a specific conversation or roll back to a specific message.
+
+This is a mutating tool. If `rollbackToChatId` is provided, LunaTalk trims
+messages after that chat and rolls conversation memory back when memory exists.
+Do not use it for passive inspection.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "conversation-load-...",
+  "roleId": "...",
+  "conversationId": "..."
+}
+```
+
+Optional: `rollbackToChatId`, `pageNum`, `pageSize`, and `viewport`.
+
 ### `conversation_send_message`
 
 Send one real user message through LunaTalk's private chat pipeline. It uses
@@ -243,19 +355,45 @@ Required:
   "schemaVersion": "2026-05-26.m1",
   "idempotencyKey": "conversation-send-...",
   "roleId": "...",
-  "message": "..."
+  "message": "...",
+  "waitMs": 60000
 }
 ```
 
-Optional: `conversationId` to continue a prior MCP-operated conversation,
-`model`, and `pageSize`.
+Optional: `conversationId` to continue a prior MCP-operated conversation. If it
+is absent, the server creates a new MCP test conversation. Optional: `model` and
+`pageSize`.
 
-### `conversation_inspect`
+Optional `waitMs` controls how long the MCP call waits for the generated reply
+before returning. Use `waitMs: 60000` for accepted playtests. The default wait is
+60 seconds and the server caps it at 60 seconds. The tool may still return
+`generationStatus: "waiting_ai"` or
+`"generating"` when the turn is not finished within that window or the client
+needs to recover from a broken request. Treat those statuses as a normal async
+path, not a failure: call `conversation_turn_status` and then
+`conversation_inspect` until the latest AI message is complete.
 
-Read an owned conversation's history for evaluation. This is the tool AI clients
-should use to get conversation data instead of parsing the normal chat page UI.
-It returns USER and AI messages, AI `chatId` values, `previewUrl`, renderer mode,
-text length, warnings, and a conversation evaluation.
+Set `viewport` when the returned `turn.previewUrl` should be opened at a
+specific chat proportion:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "conversation-send-mobile-...",
+  "roleId": "...",
+  "conversationId": "...",
+  "message": "...",
+  "waitMs": 60000,
+  "viewport": "mobile"
+}
+```
+
+### `conversation_turn_status`
+
+Check whether the latest turn, or a specific `chatId`, is still generating. Use
+this after `conversation_send_message` returns `generationStatus: "waiting_ai"`
+or `"generating"`, or when a client wants a lightweight poll before pulling a
+larger transcript.
 
 Required:
 
@@ -267,12 +405,54 @@ Required:
 }
 ```
 
-Optional: `pageNum` and `pageSize`.
+Optional: `chatId`, `pageSize`, and `viewport`. A complete result includes the
+latest message metadata and can be followed by `conversation_inspect` for the
+raw context and evaluation.
+
+### `conversation_inspect`
+
+Read an owned conversation's raw history and context for evaluation. This is the
+tool AI clients should use to get conversation data instead of parsing the
+normal chat page UI. It returns USER and AI messages before UI rendering, AI
+`chatId` values, `previewUrl`, renderer mode, text length, warnings,
+conversation metadata, role snapshot, Theme V3 state snapshot, and a conversation
+evaluation.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "...",
+  "conversationId": "..."
+}
+```
+
+Optional: `pageNum`, `pageSize`, `viewport`, and `chatIds`. Use `chatIds` when
+the conversation is long and the agent only needs a few specific raw messages or
+preview URLs instead of a full page of history.
+
+For UI validation, inspect both `viewport: "desktop"` and `viewport: "mobile"`
+when layout, overflow, choice buttons, dense XMLV3 blocks, or HTML cards are
+part of the acceptance criteria. The dedicated preview page supports the same
+query parameter:
+
+```text
+/pages/mcp/rolePreview?conversationId=<conversationId>&chatId=<chatId>&roleId=<roleId>&pageSize=<n>&viewport=mobile
+```
+
+Treat this page as the clean chat preview for AI output. It is not the normal
+chat page UI, and review should ignore avatar, byline, sidebar, composer, and
+other app chrome. Judge the assistant output inside the bubble, then judge XMLV3
+state/status outside the bubble when state exists. Hidden `<state>` data should
+not appear as inline message prose, but the preview must still expose its effect
+as an out-of-bubble status/state surface so desktop and mobile screenshots can
+confirm the conversation state is readable.
 
 After every accepted behavior-test message, call `conversation_inspect` before
 claiming the role behavior is stable. Use the returned `messages[].chatMessage`
-for role-behavior evaluation and the returned AI `messages[].previewUrl` for
-visual/render evidence.
+and `context.state` for role-behavior evaluation, and the returned AI
+`messages[].previewUrl` for visual/render evidence.
 
 The send and inspect responses include `evaluation`:
 

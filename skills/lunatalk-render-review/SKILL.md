@@ -80,6 +80,10 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - XMLV3 parses cleanly and does not fall back into unstructured raw text.
 - XMLV3 visible text uses registered tags. Hidden data tags such as `<state>` do
   not substitute for on-screen status copy.
+- For conversation preview, use the clean chat preview as the AI output surface:
+  judge the assistant message bubble, ignore avatar, byline, sidebar, composer,
+  and other normal chat page chrome, and verify XMLV3 state outside the bubble
+  as a status surface when state exists.
 - The role's visual style supports the premise without hiding story content.
 - The preview makes the next user action obvious; a beautiful but inert first
   screen is a card quality problem, not only a visual problem.

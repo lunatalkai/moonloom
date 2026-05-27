@@ -43,12 +43,24 @@ Expected Card Writer tools:
 - optional `extension_enable`
 - `validate_role`
 - `render_preview`
+- `conversation_create`
+- `conversation_list`
+- optional `conversation_load`
 - `conversation_send_message`
+- `conversation_turn_status`
 - `conversation_inspect`
 - `publish_submit`
 
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
+
+## Reading tool results
+
+Read tool payloads from `result.structuredContent` before evaluating them:
+`validate_role` returns `report`, `render_preview` returns `render`,
+conversation tools return `conversation`, and `publish_submit` returns
+`publish`. Preview URLs, generation status, messages, and evaluations are inside
+those nested payloads, not at the JSON-RPC top level.
 
 ## Stage gates
 
@@ -58,8 +70,14 @@ does not need it yet or ask the author to fix the client configuration.
 | Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
-| Conversation testing | `conversation_send_message`, `conversation_inspect` | spend cost before validation and author acceptance; parse the normal chat UI for transcript data |
+| Conversation testing | `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
 | Public submission | `publish_submit` | submit without explicit author confirmation |
+
+For accepted conversation tests, pass `waitMs: 60000` to
+`conversation_send_message`. The server default and cap are 60 seconds; a
+pending `generationStatus` after that window is an async handoff, not a failure.
+Use `conversation_turn_status` and then `conversation_inspect` for completion and
+per-message evidence.
 
 ## Operation packet
 

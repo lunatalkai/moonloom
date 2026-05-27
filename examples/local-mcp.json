@@ -2,7 +2,7 @@
   "mcpServers": {
     "lunatalk-card-writer-local": {
       "type": "http",
-      "url": "http://localhost:8888/mcp/card-writer",
+      "url": "${LUNATALK_CARD_WRITER_MCP_URL}",
       "headers": {
         "Authorization": "Bearer ${LUNATALK_ACCOUNT_TOKEN}"
       }

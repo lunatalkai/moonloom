@@ -13,30 +13,21 @@ Read `../../references/card-writer-mcp.md` before MCP calls, `../../references/c
 before final field drafts, and `../../references/field-finalization.md` before MCP-backed creation or patching.
 
 Load the narrow reference and skill before authoring when that layer is primary:
-`../../references/premise-workshop.md` / `lunatalk-premise-workshop` for loose
-ideas; `../../references/sample-driven-calibration.md` plus
-`../../examples/sample-card-packets.md` / `lunatalk-sample-calibrator` for
-examples, golden samples, sample output packets, benchmark expected-output
-shapes, draft-to-sample comparison, or copy-risk review;
-`originality-adaptation.md` / `lunatalk-originality-adapter` for canon/IP,
-similar-card, copied-draft, derivative, or "like X but original" work before
-fields; `profile-packaging.md`, `visual-identity.md`, `language-style.md`,
-`quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`,
-`archetype-contracts.md`, `card-diagnosis.md`,
+`premise-workshop.md`, `sample-driven-calibration.md` plus `../../examples/sample-card-packets.md`,
+`originality-adaptation.md`, `profile-packaging.md`, `visual-identity.md`,
+`language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
+`ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
 `tension-triangle.md`, `state-economy-design.md`, `presentation-design.md`,
-`token-economy.md`, `voice-calibration.md`,
-`talk-example-design.md`, `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
-`agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
-matching focused tasks.
-
-For card-shape engines, use `character-core-design.md`,
+`role-detail-engine.md`, `token-economy.md`, `voice-calibration.md`,
+`talk-example-design.md`, `boundary-design.md`, `opening-design.md`,
+`longplay-design.md`, `agency-design.md`, `instruction-guardrails.md`, or
+`playtest-loop.md`. For card-shape engines, use `character-core-design.md`,
 `relationship-engine.md`, `world-engine-design.md`, `scenario-design.md`,
 `daily-life-design.md`, `play-engine-design.md`, and `generator-design.md` with
-their matching Moonloom skills before fields when those layers are unresolved.
-Use `material-distillation.md` for author-provided files or large notes,
-`theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `safety-and-cost.md` for
-rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
-`quality-rubric.md` for Moonloom self-review, and
+their matching Moonloom skills before fields. Use `material-distillation.md` for
+large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
+`safety-and-cost.md` for rating/simulation/publishing/credentials,
+`role-card-writing-framework.md` and `quality-rubric.md` for self-review, and
 `../../examples/synthetic-card-briefs.md` for benchmark or regression work.
 
 ## Workflow
@@ -45,114 +36,30 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    role creation, or patching an existing private role. Also capture role
    premise, relationship dynamic, play loop, tone, language, content rating
    intent, and success criteria.
-   If the author has no settled premise yet and only gives mood, trope,
-   aesthetic cluster, or asks to brainstorm/open directions before fields, use
-   `lunatalk-premise-workshop` first unless a premise workshop packet already
-   exists.
-   If the author asks for examples, golden samples, sample output packets,
-   benchmark expected-output shapes, draft-to-sample comparison, "make it like
-   this sample", or copy-risk review before fields, use
-   `lunatalk-sample-calibrator` first unless a sample calibration packet already
-   exists. Treat samples as structure-only calibration, not final prose and not
-   a reason to call MCP tools.
-   If the author asks for canon/IP, fan premises, another role card, recognizable
-   inspiration, copied drafts, derivative concepts, "like X but original",
-   original transformation, or renamed-copy repair, use
-   `lunatalk-originality-adapter` before field assembly unless an originality
-   adaptation packet already exists. Do not solve copy risk by swapping names.
-   If the author asks for `roleName`, `roleDesc`, tags, title, tagline, short
-   pitch, public-facing package, first impression, discovery surface, or why a
-   player should open the card, use `lunatalk-profile-packager` first unless a
-   profile package packet already exists.
-   If the author asks for avatar, cover, thumbnail, profile image, key art, image
-   prompt, art brief, or visual identity, use `lunatalk-visual-identity-director`
-   before profile or presentation work unless a visual identity packet already
-   exists. If the player role, tension, or first-scene proof is missing, route to
-   the missing writing skill first; if XMLV3/Theme V3 layout is the blocker, use
-   `lunatalk-presentation-director`.
-   If the author asks for stakes, hook, tension triangle, role desire, player
-   leverage, external pressure, why-now, first-scene pressure, or says the chosen
-   idea is attractive but passive, use `lunatalk-tension-weaver` before field
-   assembly unless a Tension packet already exists.
-   If the author asks which state fields should exist, what should be visible vs
-   hidden vs detail-only, how memory/state updates, whether status meters are
-   decorative, or how to keep state player-agency-safe, use
-   `lunatalk-state-economist` before field assembly unless a State economy
-   packet already exists.
-   If the author asks for language consistency, zh-Hant / zh-TW cleanup,
-   Traditional/Simplified mixing, translated-sounding prose, register alignment,
-   pronouns, address terms, punctuation, mixed-language tags, or mismatch between
-   `roleDesc`, `roleDetailDesc`, `roleWelcome`, and `talkExample`, use
-   `lunatalk-language-stylist` first unless a language-style packet already
-   exists.
-   If the author asks for `talkExample`, micro-samples, dialogue samples, example
-   turns, generator output examples, RPG/system turn examples, or whether to omit
-   examples, use `lunatalk-talk-example-curator` before field assembly unless a
-   TalkExample packet already exists.
-   If the author asks whether a draft, blueprint, packet stack, or role fields
-   are good enough, top-tier, ready to continue, or needs a scorecard / first
-   three repairs, use `lunatalk-quality-auditor` first unless a quality audit
-   packet already exists.
-   If the author asks for system behavior changes, instruction-layer repair,
-   jailbreak text, `role_patch_jailbreak`, or transcript-backed fixes for
-   repeated out-of-character assistant framing, schema drift, state protocol
-   drift, or format drift after normal fields are coherent, use
-   `lunatalk-instruction-guardrail` first unless an instruction guardrail packet
-   already exists. Do not use jailbreak for boring, generic, passive, or
-   trope-only cards.
-   If the author asks to create or plan several related cards, alternate
-   versions, variants, a card set, or decides what to keep, merge, reject, or
-   author first, use `lunatalk-series-architect` first unless a card-series
-   packet already exists. Create real private cards one at a time after the
-   series packet is coherent.
-   If the author asks to create or repair an ensemble / multi-character card,
-   several active speakers, cast size, keep/merge/cut decisions, turn ownership,
-   spotlight rules, or group tension, use `lunatalk-ensemble-director` first
-   unless an ensemble packet already exists. Do not create or patch the card
-   until the cast structure, player leverage, and turn ownership are coherent.
-   If the author is unsure whether the card is companion, story, system, RPG,
-   generator, daily-life, light-setting, heavy-setting, ensemble, or a hybrid,
-   or if generator/helper behavior is only a small overlay inside another card
-   contract, use `lunatalk-archetype-director` first unless an archetype packet
-   already exists.
-   If the author asks to create or repair an RPG, adventure, open-world,
-   sandbox, survival, investigation, simulator, or game-like card with stats,
-   resources, inventory, quests, combat, turn protocol, compact state updates,
-   or failure-forward behavior, use `lunatalk-play-engineer` first unless a
-   play-engine packet already exists. Do not create or patch the card until the
-   playable rule loop, state model, resource rules, and failure behavior are
-   coherent.
-   If the author asks to create or repair a primary generator, helper,
-   creator-assistant, artifact-producing, intake/defaults, output-schema,
-   revision-command, or advice-only assistant card, use
-   `lunatalk-generator-architect` first unless a generator packet already exists.
-   Do not create or patch the card until the artifact contract, defaults, schema,
-   revision operations, and artifact memory are coherent.
-   If the author asks to create or repair a story, scenario, mystery,
-   investigation, case-file, event, trial, rescue, betrayal, or social-drama card
-   with stakes, route branches, clue/reveal pacing, false leads, suspect
-   pressure, compact consequence state, route-funnel repair, opening incident,
-   second-turn reveal, or scenario probes, use `lunatalk-scenario-architect`
-   first unless a scenario packet already exists. Do not create or patch the card
-   until the scenario branches, clue ladder, and consequence state are coherent.
-   If the author asks to create or repair a daily-life, slice-of-life, quiet
-   companion, neighbor, roommate, cohabitation, cafe, workplace, school, or
-   ordinary-routine card with small playable desire, tiny disruption, shared
-   object/place, habit state, passive-player behavior, second-turn change, or
-   return-next-time hooks, use `lunatalk-daily-life-architect` first unless a
-   daily-life packet already exists. Do not create or patch the card until the
-   routine loop, habit state, and first two turns are coherent.
-   If the author is improving an existing card and provides concrete symptoms,
-   validation/render output, simulation findings, or asks what to fix first, use
-   `lunatalk-card-doctor` first unless a diagnosis packet already exists. If the
-   feedback is taste-level or comparative, use `lunatalk-collaboration-director`
-   first unless a collaboration packet already exists.
-   If the author provides large source material, local files, a draft, or a world
-   bible, use `lunatalk-material-distiller` first and author from its
-   source-to-play map instead of pasting the source into role fields.
-   If the goal is mature, intense, adult, horror-leaning, consent-sensitive, or
-   boundary-sensitive, use `lunatalk-boundary-designer` first unless a boundary
-   packet already exists.
+   Route narrow blockers before field assembly unless the matching packet already
+   exists:
+   - loose mood/trope/aesthetic directions: `lunatalk-premise-workshop`
+   - examples, golden samples, sample output packets, benchmark shapes, copy-risk review: `lunatalk-sample-calibrator`
+   - canon/IP, fan premise, copied draft, derivative, "like X but original": `lunatalk-originality-adapter`
+   - `roleName`, `roleDesc`, tags, title, tagline, public-facing first impression: `lunatalk-profile-packager`
+   - avatar, cover, thumbnail, key art, image prompt, art brief, visual identity before profile/presentation: `lunatalk-visual-identity-director`
+   - stakes, hook, tension triangle, role desire, player leverage, why-now: `lunatalk-tension-weaver`
+   - state fields, visible vs hidden vs detail-only state, memory/state updates: `lunatalk-state-economist`
+   - zh-Hant / zh-TW cleanup, Traditional/Simplified mixing, register, pronouns, field language mismatch: `lunatalk-language-stylist`
+   - `talkExample`, micro-samples, dialogue samples, output examples, omit/keep decision: `lunatalk-talk-example-curator`
+   - "good enough", top-tier, scorecard, first three repairs: `lunatalk-quality-auditor`
+   - instruction-layer repair, `role_patch_jailbreak`, assistant framing, schema/state/format drift: `lunatalk-instruction-guardrail`
+   - related cards, alternate versions, variants, card set, keep/merge/reject: `lunatalk-series-architect`
+   - ensemble / multi-character, cast size, turn ownership, spotlight, group tension: `lunatalk-ensemble-director`
+   - unclear card type or hybrid companion/story/system/RPG/generator/daily-life/light-setting/heavy-setting/ensemble: `lunatalk-archetype-director`
+   - RPG, adventure, open-world, sandbox, survival, simulator, stats/resources/quests/combat/turn protocol: `lunatalk-play-engineer`
+   - generator, helper, creator-assistant, artifact output, intake/defaults, revision commands: `lunatalk-generator-architect`
+   - story, scenario, mystery, investigation, case-file, event, trial, rescue, betrayal, clue/reveal: `lunatalk-scenario-architect`
+   - daily-life, slice-of-life, quiet companion, neighbor/roommate/cohabitation, ordinary routine: `lunatalk-daily-life-architect`
+   - existing-card symptoms from validation/render/simulation or "what to fix first": `lunatalk-card-doctor`
+   - taste-level/comparative feedback: `lunatalk-collaboration-director`
+   - large source material, local files, draft, or world bible: `lunatalk-material-distiller`
+   - mature, intense, adult, horror-leaning, consent-sensitive, or boundary-sensitive goals: `lunatalk-boundary-designer`
 2. If the brief is thin but still has no settled role, player position, first
    scene, or primary contract, use or preserve `lunatalk-premise-workshop`
    before blueprinting or authoring. If the brief is thin but already has a
@@ -192,9 +99,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    `lunatalk-generator-architect` when the author primarily asks for a generator,
    helper, creator-assistant, artifact output, intake defaults, stable schema,
    revision commands, or repair for advice-only / endless-intake behavior. Prefer
-   `lunatalk-token-architect` when the author primarily asks about tokenBudget,
-   welcomeToDetailRatio, overlong fields, compression, keep/move/cut/rewrite, or
-   preserving playability while reducing token cost. Prefer
+   `lunatalk-detail-engineer` when the author primarily asks for a fuller
+   `roleDetailDesc`, less empty settings, full-detail/top-card depth, or a durable detail engine. Prefer `lunatalk-token-architect` when the engine exists
+   and the ask is tokenBudget, welcomeToDetailRatio, overlong fields, compression,
+   keep/move/cut/rewrite, or preserving playability while reducing token cost. Prefer
    `lunatalk-state-economist` when the author primarily asks which memory/state
    fields to keep, omit, show, hide, or update before longplay or presentation.
    Prefer
@@ -226,10 +134,11 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    Patch avatar/background URLs with `role_patch_assets` once public-safe image
    URLs exist. If only prompts exist, stop with the missing asset action; do not
    claim completion while `roleAvatar` or `roleBackground` is blank.
-9. If the current card or draft has an overlong `roleDesc`, thin
-   `roleDetailDesc`, overlong `roleWelcome`, high `welcomeToDetailRatio`,
-   duplicated lore, visual bloat, or misplaced durable rules, use or preserve
-   `lunatalk-token-architect` before patching fields.
+9. If the current card or draft has a thin `roleDetailDesc`, thin biography,
+   under-budget detail for its language/card ambition, or missing durable role
+   engine, use or preserve `lunatalk-detail-engineer` before patching fields. Use
+   `lunatalk-token-architect` for overlong `roleDesc`, overlong `roleWelcome`,
+   high `welcomeToDetailRatio`, duplicated lore, visual bloat, or misplaced rules.
 10. Before patching stable character and world context with `role_patch_detail`,
    use or preserve `lunatalk-play-engineer` when the current patch changes
    RPG/adventure rules, compact state, resources, inventory, quests, combat,
@@ -267,16 +176,39 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    visible/hidden state fields themselves are not settled, use or preserve
    `lunatalk-state-economist` before presentation. Patch the opening scene with
    `role_patch_welcome` from the opening and presentation packets.
+   For a new or repaired opening, the first two lines must pass 4-W legibility
+   before mood: Who / Where / When / What, concrete nouns, and one playable
+   object, decision, or risk. If the opening feels mood-first, pretty mood,
+   or 雲裡霧裡, route back to opening repair before MCP patching.
 12. Prefer `mode: "xmlv3"` for new visual welcomes. Use `plain` for simple text.
    Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
    a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot
    express.
+   If the author needs HTML div-like sectioning, grouped blocks, or local color
+   distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,
+   `stack`, `row`, `grid`, and `divider` for container and section block
+   hierarchy, and use Theme V3 tone/color tokens for the actual visual skin.
+   When these tags appear, include `extension_enable` for `layout` in the MCP
+   patch sequence; keep the fallback readable if the pack is unsupported.
+   Do not paste the platform XMLV3 server guide into `roleDetailDesc`; detail
+   should carry the role-specific format contract: when this card updates state,
+   when choices appear, which pack is intentionally enabled, and what visible
+   status means for future turns.
+   In XMLV3, close `</scene>` after the prose/dialogue beat and put controls
+   such as `bar`, `collapse`, `form`, `result-card`, `share-text`, and `choice`
+   as sibling tags. Do not wrap or nest the whole interface inside one scene.
 13. Before calling `role_patch_jailbreak`, use or preserve
     `lunatalk-instruction-guardrail`. Only patch jailbreak text when the author
     explicitly asks for a real instruction-layer patch or confirms
     transcript-backed behavior evidence. Prefer `roleDetailDesc`, `roleWelcome`,
     and `talkExample` for ordinary behavior fixes.
-14. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+14. XMLV3 real chat requires `theme_bind` before conversation acceptance. If
+    `roleWelcome` uses XMLV3 and the author expects real chat / 對話回覆 controls,
+    call `theme_bind` after `role_patch_welcome`; otherwise conversation replies
+    may return `isV3:false` and render as plain text. Use `extension_enable`
+    only when a specific pack is needed. Keep compatible XMLV3 extension work on
+    the XMLV3 target; do not propose XMLV4/XMLV5 for optional tags, attributes,
+    packs, or fallback behavior.
 15. Call `validate_role`.
 16. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
@@ -358,9 +290,11 @@ MCP tools make the card real; Moonloom makes the card good.
   dense, rewrite a compressed final version instead of only noting the issue.
 - The first scene should invite the player to act immediately. If the first reply
   path is unclear, the card is not ready.
-- Build a language-aware detail budget before MCP creation or patching; if
-  `roleDetailDesc` is thin for its language and ambition, it is not ready for MCP patching.
-  Expand durable engine first; token economy removes empty prose and duplicate rules, not playable core.
+- The first two lines of `roleWelcome` must state the 4-W in playable terms:
+  who is in motion, where/when the player is, and what concrete problem is in
+  front of them. Do not let a poetic or mood-first opening make the author feel
+  雲裡霧裡 before they know what they can do.
+- Build a language-aware detail budget before MCP creation or patching; if `roleDetailDesc` is thin for its language and ambition, use `lunatalk-detail-engineer` and treat it as not ready for MCP patching. Expand durable engine first; token economy removes empty prose and duplicate rules, not playable core.
 - If the player can only watch, choices are decorative, or the card narrates the
   player's feelings/actions, use `lunatalk-agency-designer` before patching
   fields.
@@ -475,6 +409,9 @@ MCP tools make the card real; Moonloom makes the card good.
   repeated lore, or visual scaffolding out of welcome before render/simulation.
 - In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for
   dialogue. Do not invent aliases such as `<narration>` or `<dialogue>`.
+- In XMLV3, avoid wrapping controls inside `<scene>`. Close `</scene>` before
+  `choice`, `form`, `result-card`, `bar`, or `collapse` blocks so the preview
+  keeps usable mobile width and clear panel hierarchy.
 - Treat `<state>` as hidden JSON data. If text should be visible, put it in
   `<n>`; if it should drive state UI, make it valid JSON.
 - If the card is strong for one scene but weak over time, call

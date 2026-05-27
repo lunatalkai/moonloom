@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "validate": "node scripts/validate-moonloom.mjs && node scripts/validate-complete-fixture.mjs && node scripts/validate-simulation-evidence.mjs",
+    "validate": "node scripts/validate-moonloom.mjs && node scripts/validate-complete-fixture.mjs && node scripts/validate-simulation-evidence.mjs && node scripts/validate-acceptance-evidence.mjs",
     "validate:fixture": "node scripts/validate-complete-fixture.mjs",
-    "validate:simulation": "node scripts/validate-simulation-evidence.mjs"
+    "validate:simulation": "node scripts/validate-simulation-evidence.mjs",
+    "validate:acceptance": "node scripts/validate-acceptance-evidence.mjs"
   },
   "license": "MIT"
 }

@@ -14,6 +14,7 @@ const REQUIRED_SECTIONS = [
   'roleWelcome',
   'talkExample',
   'compact fallback',
+  'Visual asset packet',
   'Field finalization packet',
   'Playtest Probes',
   'End-to-end acceptance packet',
@@ -45,6 +46,13 @@ const REQUIRED_FINALIZATION_MARKERS = [
   'MCP patch mapping',
 ];
 
+const REQUIRED_VISUAL_ASSET_MARKERS = [
+  'avatar prompt:',
+  'background prompt:',
+  'visual consistency:',
+  'role_patch_assets:',
+];
+
 const REQUIRED_ACCEPTANCE_MARKERS = [
   'validate_role',
   'render_preview',
@@ -66,6 +74,8 @@ const REQUIRED_PROBES = [
 
 const REQUIRED_XML_TAGS = ['scene', 'state', 'n', 'speaker', 'd', 'choice'];
 const ALLOWED_XML_TAGS = new Set(REQUIRED_XML_TAGS);
+const MIN_DETAIL_CHARS = 5000;
+const MIN_DETAIL_SECTION_CHARS = 80;
 
 const PLACEHOLDER_PATTERNS = [
   /\bTODO\b/i,
@@ -102,6 +112,33 @@ function hasHeading(markdown, heading) {
 function extractXmlBlock(markdown) {
   const match = markdown.match(/```xml\s*([\s\S]*?)```/i);
   return match?.[1]?.trim() || '';
+}
+
+function extractRoleDetailBlock(markdown) {
+  const match = markdown.match(/### roleDetailDesc\s+```text\s*([\s\S]*?)\s*```\s+### roleWelcome/i);
+  return match?.[1]?.trim() || '';
+}
+
+function sectionBody(markdown, section, allSections) {
+  const startPattern = new RegExp(`(^|\\n)${escapeRegExp(section)}\\s*\\n`, 'i');
+  const startMatch = markdown.match(startPattern);
+  if (!startMatch || startMatch.index === undefined) {
+    return '';
+  }
+
+  const start = startMatch.index + startMatch[0].length;
+  let end = markdown.length;
+  for (const next of allSections) {
+    if (next.toLowerCase() === section.toLowerCase()) {
+      continue;
+    }
+    const nextPattern = new RegExp(`\\n${escapeRegExp(next)}\\s*\\n`, 'i');
+    const nextMatch = markdown.slice(start).match(nextPattern);
+    if (nextMatch && nextMatch.index !== undefined) {
+      end = Math.min(end, start + nextMatch.index);
+    }
+  }
+  return markdown.slice(start, end).trim();
 }
 
 function collectXmlTags(xml) {
@@ -157,6 +194,39 @@ function validatePublicSafety(markdown, issues, file) {
   }
 }
 
+function validateDetailDensity(markdown, issues, file) {
+  const detail = extractRoleDetailBlock(markdown);
+  if (!detail) {
+    issues.push(issue('fixture.detail.missing', file, 'Missing roleDetailDesc text block.'));
+    return { detail, detailChars: 0 };
+  }
+
+  if (detail.length < MIN_DETAIL_CHARS) {
+    issues.push(
+      issue(
+        'fixture.detail.too_short',
+        file,
+        `roleDetailDesc has ${detail.length} characters; expected at least ${MIN_DETAIL_CHARS}.`,
+      ),
+    );
+  }
+
+  for (const section of REQUIRED_DETAIL_SECTIONS) {
+    const body = sectionBody(detail, section, REQUIRED_DETAIL_SECTIONS);
+    if (body.length < MIN_DETAIL_SECTION_CHARS) {
+      issues.push(
+        issue(
+          'fixture.detail_section.thin',
+          file,
+          `roleDetailDesc section is too thin: ${section}.`,
+        ),
+      );
+    }
+  }
+
+  return { detail, detailChars: detail.length };
+}
+
 export function validateCompleteFixture(markdown, options = {}) {
   const file = options.filePath || DEFAULT_FIXTURE_PATH;
   const issues = [];
@@ -170,6 +240,8 @@ export function validateCompleteFixture(markdown, options = {}) {
         xmlTags: 0,
         playtestProbes: 0,
         stateKeys: 0,
+        visualAssetBriefs: 0,
+        detailChars: 0,
       },
     };
   }
@@ -199,6 +271,14 @@ export function validateCompleteFixture(markdown, options = {}) {
   );
   validateMarkers(
     markdown,
+    REQUIRED_VISUAL_ASSET_MARKERS,
+    issues,
+    file,
+    'fixture.visual_asset.missing',
+    'visual asset marker',
+  );
+  validateMarkers(
+    markdown,
     REQUIRED_ACCEPTANCE_MARKERS,
     issues,
     file,
@@ -208,6 +288,7 @@ export function validateCompleteFixture(markdown, options = {}) {
   validateMarkers(markdown, REQUIRED_PROBES, issues, file, 'fixture.probe.missing', 'playtest probe');
   validatePlaceholders(markdown, issues, file);
   validatePublicSafety(markdown, issues, file);
+  const { detailChars } = validateDetailDensity(markdown, issues, file);
 
   const xml = extractXmlBlock(markdown);
   const { tags, unknown } = collectXmlTags(xml);
@@ -237,6 +318,8 @@ export function validateCompleteFixture(markdown, options = {}) {
       xmlTags: tags.size,
       playtestProbes: countPresent(markdown, REQUIRED_PROBES),
       stateKeys: state && typeof state === 'object' && !Array.isArray(state) ? Object.keys(state).length : 0,
+      visualAssetBriefs: countPresent(markdown, ['avatar prompt:', 'background prompt:']),
+      detailChars,
     },
   };
 }
@@ -267,6 +350,8 @@ async function main() {
       `Complete fixture validation passed: ${result.summary.requiredSections} sections`,
       `${result.summary.xmlTags} XMLV3 tags`,
       `${result.summary.playtestProbes} probes`,
+      `${result.summary.visualAssetBriefs} visual asset briefs`,
+      `${result.summary.detailChars} detail chars`,
       `${result.summary.stateKeys} state keys.`,
     ].join(', '),
   );

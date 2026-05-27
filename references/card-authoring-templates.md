@@ -234,6 +234,34 @@ State economy packet:
 - agency guardrails:
 - verification probes:
 - handoff:
+Detail engine packet:
+- current failure:
+- language / budget target:
+- card shape:
+- existing packets preserved:
+- engine modules:
+  - identity and core charm:
+  - background and motive:
+  - current pressure:
+  - player relationship:
+  - world / scenario / play functions:
+  - proactive turn behavior:
+  - voice and action logic:
+  - emotional reactions:
+  - longplay hooks:
+  - time and consequence:
+  - secret and reveal plan:
+  - player insertion space:
+  - agency boundaries:
+  - format stability:
+- field placement:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - XMLV3 / Theme V3:
+- compression stance:
+- validation / render / simulation probes:
+- handoff:
 Render repair packet:
 - roleId:
 - render mode:

@@ -74,6 +74,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-state-economist` decides which state fields deserve token
   budget, which are visible/hidden/detail-only, which decorative meters to omit,
   and how state updates before authoring, longplay, or presentation.
+- `skills/lunatalk-detail-engineer` turns thin biographies, under-budget
+  `roleDetailDesc`, and missing durable role engines into full Detail engine
+  packets before field assembly, MCP patching, render, or simulation.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
 - `skills/lunatalk-talk-example-curator` decides when to omit `talkExample`, add
@@ -139,6 +142,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/state-economy-design.md` defines visible/hidden/detail-only state
   decisions, update rules, decorative meter removal, agency-safe state, and State
   economy packets.
+- `references/role-detail-engine.md` defines language-aware detail budgets,
+  durable detail modules, field placement, thin biography repair, and Detail
+  engine packets.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `references/archetype-contracts.md` defines primary card contracts, hybrid
@@ -251,6 +257,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/simulation-evidence.fixture.json` provides a public-safe closed-loop
   simulation evidence packet shape for seven probes and per-message preview
   evidence.
+- `examples/end-to-end-acceptance.fixture.json` provides a public-safe
+  end-to-end acceptance evidence packet shape covering skill route, assets,
+  validation, render, app visual checks, simulation, and per-message previews.
 - `.mcp.json` contains an example remote MCP client configuration.
 
 ## Skill references
@@ -274,7 +283,10 @@ synthetic fixture's field structure, XMLV3 state, probe coverage, and acceptance
 handoff shape. Use `npm run validate:fixture` when only the complete fixture or
 its expected structure changes. Use `npm run validate:simulation` after recording
 MCP simulation evidence to check required probes, per-message preview coverage,
-repair-packet requirements, and public-safe evidence shape.
+repair-packet requirements, and public-safe evidence shape. Use
+`npm run validate:acceptance` after a full trial-card run to check that assets,
+validation, render, app visual proof, accepted simulation, and per-message
+preview evidence support the claimed completion status.
 
 ## MCP endpoint
 

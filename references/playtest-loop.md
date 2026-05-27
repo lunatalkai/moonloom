@@ -21,23 +21,28 @@ XMLV3, unsafe HTML, and obvious token bloat before simulation.
 
 ## Probe ladder
 
-Choose 1 to 5 user messages. Prefer fewer probes when the card risk is narrow,
-and more probes when the card is close to publishing or has complex behavior.
-
 Use probes that a real player might write. A probe should be short enough that
 the role has to carry part of the scene.
 
-1. Hook probe: accepts the opening and gives the role a normal first turn.
-2. Agency probe: does something plausible but not scripted.
-3. Continuity probe: refers to a changed state, relationship beat, or route.
-4. Boundary probe: presses against a stated limit, taboo, refusal, or pacing rule.
-5. Token/progression probe: asks the scene to continue and reveals whether the
-   role repeats setup instead of moving play forward.
+For a narrow spot-check, choose the few probes that directly target the suspected
+risk. Mark the result as a spot-check, not behavior-complete.
 
-If the probes are meant to be a single short conversation, order them so each
-message follows from the previous one and continue the returned
-`conversationId`. If they are independent stress tests, run separate
-conversation sessions only when the author accepts the extra cost.
+For behavior-complete acceptance, run the seven-probe Moonloom matrix:
+
+1. normal interaction: accepts the opening and gives the role a normal first turn.
+2. short reply: gives minimal input and checks whether the role can carry motion.
+3. off-path reply: does something plausible but not scripted.
+4. background question: asks about the setting, relationship, or premise without
+   inviting a lore dump.
+5. relationship push: presses trust, distance, attachment, rivalry, or leverage.
+6. secret exploration: explores hidden information, progression, or a locked
+   route without demanding immediate exposition.
+7. boundary test: presses against a stated limit, refusal, pacing rule, or safety
+   boundary.
+
+Continue the returned `conversationId` when these probes are meant to form one
+conversation. Split into separate conversations only when the author accepts the
+extra cost and the probes are independent stress tests.
 
 Before running the probes, state the patch triggers: what transcript evidence
 would cause a `roleDetailDesc`, `roleWelcome`, profile, or jailbreak change. This
@@ -104,6 +109,11 @@ The probe should use a normal player reply that follows the welcome's affordance
 If the role only repeats the welcome, asks another generic question, or fails to
 change state, relationship, route, risk, or information, patch the opening packet
 or `roleWelcome` before spending more simulation cost.
+
+Also check opening legibility. If the first screen is confusing, 雲裡霧裡, or
+requires the player to act as a decoder for invented terms before 4-W and a
+concrete action path are visible, patch `roleWelcome` before judging deeper
+behavior.
 
 ## Longplay probe
 
@@ -187,6 +197,8 @@ then map the observed problem to a card patch.
 | Reply treats refusal as the end of play | boundary design | refusal route and safer fallback |
 | Reply dumps lore instead of scene movement | token economy, play layer | move lore to modular detail and add current pressure |
 | Reply repeats welcome setup or spends turns on decorative panels | token architecture | use `lunatalk-token-architect`; move durable rules/lore to `roleDetailDesc`, shorten welcome, rerun validation/render |
+| XMLV3 card replies render as plain text (`isV3:false` or `rendererMode:"plain"`) | Theme V3 binding / presentation handoff | call `theme_bind`, then rerun a focused preview and conversation probe |
+| XMLV3 metadata is green but reply body is not tagged, first character is not `<`, `<choice>` is missing for needed actions, or `<state>` is missing after state change | instruction/presentation contract drift | patch detail or instruction guardrail, then rerun a focused conversation probe |
 | Cast talks over the player | ensemble turn ownership | `lunatalk-ensemble-director`; cast table, spotlight rules, and scene rules |
 | RPG/system loses state | play engine / state economy | `lunatalk-play-engineer`; compact state format, turn protocol, and update rules |
 | RPG resources or failure do not affect choices | play engine | `lunatalk-play-engineer`; resource rules, quest/risk model, and failure-forward behavior |
@@ -258,6 +270,9 @@ A playtest pass means:
 - the reply does not seize player agency
 - the transcript does not leak system or implementation artifacts
 - token use creates reusable progress instead of repeating setup
+- XMLV3/Theme V3 replies pass both metadata and body checks: `isV3:true`,
+  non-plain renderer, first character `<`, meaningful `<choice>` when action is
+  needed, and `<state>` when state actually changes.
 
 If a card passes validation and render review but fails these checks, revise the
 Moonloom writing layer. Do not add subjective server gates to compensate for a

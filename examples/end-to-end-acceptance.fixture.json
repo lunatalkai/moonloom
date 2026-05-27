@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "moonloom.end-to-end-acceptance.v1",
+  "trigger": "Public-safe synthetic complete-card acceptance evidence shape.",
+  "selectedSkills": [
+    "using-moonloom",
+    "lunatalk-creation-conductor",
+    "lunatalk-card-author",
+    "lunatalk-visual-identity-director",
+    "lunatalk-render-review",
+    "lunatalk-chat-simulation"
+  ],
+  "card": {
+    "status": "behavior_checked",
+    "roleId": "redacted-role-id",
+    "fixture": "public-safe synthetic role card"
+  },
+  "assets": {
+    "avatar": {
+      "status": "patched",
+      "evidence": "Avatar asset request succeeded and role detail displayed the image."
+    },
+    "background": {
+      "status": "patched",
+      "evidence": "Background asset request succeeded and chat surface displayed the image."
+    },
+    "rolePatchAssets": {
+      "status": "pass",
+      "evidence": "Asset patch operation completed for both avatar and background."
+    }
+  },
+  "validation": {
+    "status": "pass",
+    "validateRoleStatus": "pass",
+    "tokenBudgetSummary": "Detail uses the target band, welcome stays compact, and no placeholder fields remain."
+  },
+  "render": {
+    "status": "pass",
+    "rendererMode": "xmlv3",
+    "previewStatus": "ready",
+    "domSummary": ["mode:xmlv3", "state:present", "textLength:sample"],
+    "textOverflow": [],
+    "consoleErrors": [],
+    "visualNotes": "Full-card preview is readable, state is outside the bubble, and choices are visible."
+  },
+  "appVisualCheck": {
+    "roleDetailAvatar": "pass",
+    "chatBackground": "pass",
+    "imageRequests": {
+      "avatar": "success",
+      "background": "success"
+    }
+  },
+  "simulation": {
+    "costStance": "accepted",
+    "evidenceValidated": true,
+    "probes": [
+      "normal_interaction",
+      "short_reply",
+      "off_path",
+      "background_question",
+      "relationship_push",
+      "secret_exploration",
+      "boundary_test"
+    ],
+    "result": "pass"
+  },
+  "messagePreviews": {
+    "status": "per_turn_visual_checked",
+    "checkedChatIds": ["redacted-chat-1", "redacted-chat-2"],
+    "evidence": "Selected AI turns were opened in the dedicated per-message preview harness."
+  },
+  "failures": [],
+  "rootCauseRepair": {
+    "needed": false,
+    "summary": "No repeated Moonloom process failure in this synthetic evidence shape."
+  },
+  "remainingNonCompleteGates": []
+}

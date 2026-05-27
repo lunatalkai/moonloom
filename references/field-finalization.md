@@ -32,12 +32,20 @@ Check these gates in order:
    `role_patch_profile`, `role_patch_assets`, `role_patch_detail`,
    `role_patch_welcome`, optional `role_patch_jailbreak`, `theme_bind`, and
    `extension_enable`.
+   XMLV3 real chat requires `theme_bind` before conversation acceptance; if
+   `roleWelcome` is XMLV3 and the author expects real chat controls, missing
+   theme binding is not MCP-ready.
+   Do not use `roleDetailDesc` to paste the platform XMLV3 server guide. Detail
+   should contain the role-specific format contract: this card's state updates,
+   choice rules, enabled pack purpose, visible status meaning, and agency limits.
 8. Handoff: state whether the packet is `ready | needs narrow repair | missing external asset | cost-gated`.
 
 ## Format Checks
 
 - XMLV3: use registered tags only. Use `<n>` for narration/actions and `<d>` for
   dialogue. Treat `<state>` as hidden JSON; visible text belongs in `<n>`.
+  If the card needs pack controls such as collapse, bar, tag, result-card, or
+  share-text, confirm the presentation packet and map `extension_enable`.
 - JSON: every hidden state or setup object must be parseable and compact. Do not
   store player feelings, consent, loyalty, irreversible actions, or chosen route
   as facts.

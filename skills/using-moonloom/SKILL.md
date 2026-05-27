@@ -170,14 +170,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   `lunatalk-card-doctor` before token architecture, render review, authoring,
   simulation, or publish readiness, unless the main symptom is only profile
   packaging (`roleName`, `roleDesc`, tags, title, tagline, first impression).
-- TokenBudget, estimatedTokens, roleDescChars, roleDetailDescChars,
-  roleWelcomeChars, welcomeToDetailRatio, overlong welcome, field allocation,
-  keep/move/cut/rewrite plans, compression, duplicated lore, HTML/XMLV3 bloat,
-  misplaced durable rules, or preserving playability while reducing token cost:
-  use `lunatalk-token-architect` before authoring, opening repair, render review,
-  simulation, or publish readiness. If there is no concrete tokenBudget,
-  welcome ratio, field size, or validated bloat evidence and the author is only
-  deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
+- `roleDetailDesc`, detail engine, thin biography, under-budget detail, full-detail/top-card role setting, durable operating engine, current pressure, player insertion space, proactive turn behavior, secret/reveal pacing, time/consequence, or format stability before field assembly: use `lunatalk-detail-engineer`. Use `lunatalk-token-architect` instead when the engine already exists and the blocker is tokenBudget, estimatedTokens, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite, compression, duplicated lore, HTML/XMLV3 bloat, misplaced durable rules, or reducing token cost. If there is no concrete field-size evidence and the author is only deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
 - Pre-authoring or pre-render presentation planning, deciding XMLV3 vs plain vs
   HTML, Theme V3 vs `roleWelcome`, visible state vs hidden JSON state, first-
   screen hierarchy, visual affordances, status panels, choices/forms as
@@ -384,8 +377,7 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/state-economy-design.md` when the task involves state
   economy, compact memory fields, visible/hidden/detail-only state, update
   rules, decorative meters, status panels, hidden JSON, or agency-safe state.
-- Read `../../references/role-card-writing-framework.md` before writing or deeply
-  revising any role card.
+- Read `../../references/role-card-writing-framework.md` and `../../references/role-detail-engine.md` before writing or deeply revising any role card with a thin or under-budget `roleDetailDesc`.
 - Read `../../references/archetype-contracts.md` when the task involves card
   type selection, hybrid archetypes, primary/secondary card contracts, or field
   allocation by card shape.

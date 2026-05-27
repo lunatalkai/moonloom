@@ -38,9 +38,11 @@ test('benchmark runner routes full trial-card acceptance through the new referen
   assert.match(skill, /app visual status:/);
   assert.match(skill, /asset status:/);
   assert.match(skill, /End-to-end acceptance packet/);
+  assert.match(skill, /validate:acceptance/);
   assert.match(evals, /no avatar or background/i);
   assert.match(evals, /role-detail avatar and chat background/i);
   assert.match(evals, /cost-gated/i);
+  assert.match(evals, /validate:acceptance/i);
 });
 
 test('router and README expose end-to-end acceptance as a first-class workflow', async () => {

@@ -59,3 +59,21 @@ test('synthetic samples cover multiple card shapes without copy or non-public or
   assert.match(samples, /Do not copy|do not copy|copy risk/i);
   assert.doesNotMatch(samples, /non-public origin|ranking|traffic|credential/i);
 });
+
+test('synthetic samples cover required Moonloom archetype matrix', async () => {
+  const samples = await readFile('examples/sample-card-packets.md', 'utf8');
+
+  for (const phrase of [
+    'boundary-sensitive romance',
+    'light fantasy',
+    'heavy-setting',
+    'compact adventure',
+    'ensemble / multi-character',
+    'companion',
+    'daily-life',
+    'story / scenario',
+    'RPG / play engine',
+  ]) {
+    assert.match(samples, new RegExp(phrase, 'i'), `missing required archetype sample: ${phrase}`);
+  }
+});

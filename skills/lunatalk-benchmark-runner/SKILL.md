@@ -125,7 +125,13 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
 10. When simulation evidence is recorded for benchmark handoff, use the redacted
    shape in `../../examples/simulation-evidence.fixture.json` and run
    `npm run validate:simulation`.
-11. Record pass/fail by archetype and list the weakest dimension.
+11. When the benchmark claims `visual_complete`, `behavior_checked`, or full
+   end-to-end acceptance, use the redacted shape in
+   `../../examples/end-to-end-acceptance.fixture.json` and run
+   `npm run validate:acceptance`. Treat failure as a benchmark blocker; do not
+   soften missing assets, app visual proof, accepted simulation, or per-message
+   preview evidence into completion language.
+12. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 
@@ -319,6 +325,7 @@ Benchmark report packet:
 - message preview status:
 - asset status:
 - simulation status:
+- acceptance evidence status:
 - tokenBudget findings:
 - weakest Moonloom dimensions:
 - patch loop count:
@@ -338,12 +345,16 @@ requests succeeded. `message preview status` should state whether simulation
 returned message identifiers, which `chatId` values were opened in the dedicated
 per-message preview harness, and whether any renderer, overflow, or relevant
 console issue was seen. `asset status` should state ready, prompt-only, missing,
-or partial. `regression classification` should separate Moonloom writing
-guidance, visual asset workflow, render/theme guidance, simulation behavior, and
-MCP technical flow. `do not turn into MCP gates` should name any subjective
-writing failures that must stay in skills rather than server validation.
+or partial. `acceptance evidence status` should state whether
+`npm run validate:acceptance` was run, passed, failed, or was not applicable. If
+it failed, list the missing evidence layer instead of upgrading the card status.
+`regression classification` should separate Moonloom writing guidance, visual
+asset workflow, render/theme guidance, simulation behavior, and MCP technical
+flow. `do not turn into MCP gates` should name any subjective writing failures
+that must stay in skills rather than server validation.
 
 When the benchmark is specifically an end-to-end trial-card acceptance run,
 return the `End-to-end acceptance packet` from
 `../../references/end-to-end-acceptance.md` before the broader benchmark report
-packet, or embed the same fields inside the benchmark report.
+packet, or embed the same fields inside the benchmark report. Include the
+`validate:acceptance` result in either form.

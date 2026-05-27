@@ -16,6 +16,30 @@ XMLV3 welcome + Theme V3 styling
 This keeps semantic story content separate from reusable visual style and makes
 render review easier for AI clients.
 
+## Server guide vs role contract
+
+XMLV3's generic tag grammar is a platform concern. The server injects the
+XMLV3 format guide near generation so AI clients do not need to paste the full
+platform tag manual into `roleDetailDesc`.
+
+Use `roleDetailDesc` for the card-specific format contract instead:
+
+- which state fields this card updates
+- when choices should appear and what they should change
+- which optional extension pack is part of the card shape
+- which visible status labels matter to play
+- what the assistant must never decide for the player
+
+Do not copy a generic XMLV3 instruction manual into detail. That wastes the
+durable engine budget and makes future platform guide updates harder to follow.
+
+## Compatible XMLV3 Extension Target
+
+Keep XMLV3 evolution on one compatible XMLV3 extension target. No XMLV4:
+do not create XMLV4, XMLV5, or a new format name when extending the framework. Add optional
+tags, optional attributes, or extension packs with fallback behavior while
+keeping older XMLV3 tags backward compatible.
+
 ## When to use XMLV3
 
 Use XMLV3 when the welcome needs structured narrative blocks, dialogue, stage
@@ -27,7 +51,7 @@ rewrite the welcome into explicit XMLV3 tags.
 
 Use the core tags first:
 
-- `<scene>` wraps an opening beat.
+- `<scene>` wraps an opening beat's prose and dialogue.
 - `<n>` is narration, physical action, and stage direction.
 - `<speaker>` marks speaker changes.
 - `<d>` is dialogue.
@@ -35,6 +59,13 @@ Use the core tags first:
 - `<choice>` gives a player action prompt.
 - `<form>`, `<input>`, `<radio>`, and `<checkbox>` are for setup fields.
 - `<state>` is hidden state data, not visible prose.
+
+Keep scene prose separate from interactive controls. Close `</scene>` after the
+current narrative beat, then place `bar`, `collapse`, `form`, `result-card`,
+`share-text`, `choice`, and other controls as sibling tags. Do not wrap or nest a
+whole welcome's controls inside one large `<scene>`; it makes mobile previews
+cramped and causes every panel to look like it was stuffed into the same glass
+card.
 
 Do not invent aliases such as `<narration>` or `<dialogue>`. They may fall back
 to visible text, but Theme V3 styling and validation are less reliable. Use
@@ -52,15 +83,56 @@ state as present. Do not use flat state objects such as
 <state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"小碟","label":"信任","affinity":1,"max":5}]}</state>
 ```
 
+When using the MCP clean chat preview, inspect the assistant output bubble and
+the state surface separately. The bubble should show only message output; XMLV3
+state belongs outside the bubble as a status/state panel when available. Do not
+judge avatar, byline, sidebar, composer, or other normal chat page chrome as
+part of the card render. Open both desktop and mobile preview URLs when the
+state surface, choice buttons, or layout density may change with viewport.
+
 `<action>` belongs to the battle extension pack. For prose actions, use `<n>`.
 Only use `<action>` for battle markers with attributes such as `type`, `by`,
 `target`, or `skill`.
+
+## Optional extension packs
+
+Use core tags first. Before falling back to HTML, check whether an XMLV3
+extension pack can express the need. For example, a mini-game or structured
+result flow can use optional tags such as `collapse`, `bar`, `tag`,
+`result-card`, or `share-text` when that pack is enabled.
+
+Use the layout pack when the author needs HTML div-like container structure:
+`panel`, `stack`, `row`, `grid`, and `divider` create section blocks, grouped
+controls, compact columns, and visual separators without exposing raw
+`style`/`class` or arbitrary CSS inside XML. Treat layout as the safe structure
+layer; Theme V3 owns the color layer through theme-bound tone, palette, and
+panel tokens. A panel can carry a semantic `tone` or `variant`, but the actual
+color should come from the bound Theme V3 snapshot so clients can keep contrast
+and fallback behavior consistent.
+
+Call `extension_enable` with `packId: "layout"` when the presentation packet
+uses layout pack tags. If layout is unavailable, the same content must still be
+readable XMLV3 prose with scene text, choices, and status labels in order.
+
+Use `extension_enable` only when the card's presentation packet names a specific
+pack and explains why it improves play. If the pack is unavailable or unsupported
+in a client, the card should still degrade to readable XMLV3 prose instead of
+depending on custom HTML for core interaction.
 
 ## When to use Theme V3
 
 Use Theme V3 for reusable visual identity: typography, colors, panels, speech
 treatments, scene atmosphere, and extension packs. Binding a theme should not
 hide critical story content.
+
+## Real chat binding
+
+XMLV3 welcome is not enough to prove XMLV3 real chat. For MCP-backed cards that
+expect conversation replies to keep LunaTalk controls, call `theme_bind` before
+simulation or acceptance. Without a role Theme V3 binding or enabled extension,
+real chat may return `isV3:false` / `rendererMode:"plain"` and the assistant
+reply will render like ordinary text even if the welcome preview looked
+structured.
 
 `theme_bind` supports:
 
