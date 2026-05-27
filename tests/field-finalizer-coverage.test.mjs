@@ -40,7 +40,7 @@ test('field finalization defines MCP-ready last-mile gates', async () => {
 
   assert.match(reference, /Field finalization packet:/);
   assert.match(reference, /placeholder/i);
-  assert.match(reference, /10,000-character `roleDetailDesc` hard cap/i);
+  assert.match(reference, /language-aware hard caps/i);
   assert.match(reference, /compact fallback/i);
   assert.match(reference, /role_patch_profile[\s\S]*role_patch_detail[\s\S]*role_patch_welcome/i);
   assert.match(reference, /XMLV3[\s\S]*JSON[\s\S]*Markdown|Markdown[\s\S]*JSON[\s\S]*XMLV3/i);
@@ -49,6 +49,20 @@ test('field finalization defines MCP-ready last-mile gates', async () => {
   assert.match(evals, /placeholder/i);
   assert.match(evals, /compact fallback/i);
   assert.match(evals, /MCP-ready/i);
+});
+
+test('field finalization uses language-aware hard caps for detail and welcome', async () => {
+  const skill = await readFile('skills/lunatalk-field-finalizer/SKILL.md', 'utf8');
+  const reference = await readFile('references/field-finalization.md', 'utf8');
+  const evals = await readFile('skills/lunatalk-field-finalizer/evals/evals.json', 'utf8');
+
+  for (const source of [skill, reference, evals]) {
+    assert.match(source, /language-aware|language \/ locale|locale-aware/i);
+    assert.match(source, /50,000-character English `roleDetailDesc`|English[\s\S]{0,120}50,000[\s\S]{0,120}roleDetailDesc/i);
+    assert.match(source, /10,000-character non-English `roleDetailDesc`|non-English[\s\S]{0,120}10,000[\s\S]{0,120}roleDetailDesc/i);
+    assert.match(source, /10,000-character English `roleWelcome`|English[\s\S]{0,120}10,000[\s\S]{0,120}roleWelcome/i);
+    assert.match(source, /3,000-character non-English `roleWelcome`|non-English[\s\S]{0,120}3,000[\s\S]{0,120}roleWelcome/i);
+  }
 });
 
 test('router, card author, templates, and README expose field finalization', async () => {

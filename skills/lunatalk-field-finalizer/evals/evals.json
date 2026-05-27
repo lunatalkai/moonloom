@@ -4,12 +4,12 @@
     {
       "id": 1,
       "prompt": "I have final zh-Hant role fields from a prepared packet stack and want them MCP-ready. roleDetailDesc is around 9200 characters, roleWelcome is XMLV3 with hidden state JSON, and there are a few bracketed notes like [fill later]. Do not brainstorm new ideas; finalize or block the handoff.",
-      "expected_output": "Uses lunatalk-field-finalizer, returns a Field finalization packet, blocks MCP-ready status until placeholders are removed, checks the 10,000-character roleDetailDesc hard cap, provides compact fallback, and verifies XMLV3/JSON formatting.",
+      "expected_output": "Uses lunatalk-field-finalizer, returns a Field finalization packet, blocks MCP-ready status until placeholders are removed, checks the language-aware hard caps including the 10,000-character non-English `roleDetailDesc` and 3,000-character non-English `roleWelcome` caps, provides compact fallback, and verifies XMLV3/JSON formatting.",
       "files": [],
       "expectations": [
         "The output treats the task as last-mile field finalization, not premise, blueprint, broad rewriting, render review, or simulation.",
         "The packet preserves the prepared packet stack and explicitly says not to brainstorm new directions.",
-        "The hard-cap check distinguishes the 10,000-character roleDetailDesc hard cap from a quality target and requires behavior-bearing density.",
+        "The hard-cap check uses language / locale, distinguishes the 10,000-character non-English `roleDetailDesc` and 3,000-character non-English `roleWelcome` caps from quality targets, and requires behavior-bearing density.",
         "The output provides compact fallback fields or a fallback plan for near-limit content.",
         "The placeholder/meta check blocks MCP-ready status while bracketed notes remain.",
         "The format checks cover XMLV3 and hidden JSON before render or MCP calls."
@@ -23,7 +23,7 @@
       "expectations": [
         "The output maps fields to role_patch_profile, role_patch_assets, role_patch_detail, role_patch_welcome, optional role_patch_jailbreak, and theme_bind or extension_enable when relevant.",
         "The output does not call MCP tools directly unless the user separately asks for real mutation.",
-        "The final status is ready only because required fields, assets, placeholders, format checks, and hard-cap checks are complete.",
+        "The final status is ready only because required fields, assets, placeholders, format checks, and language-aware hard-cap checks are complete.",
         "The handoff names validate_role, render_preview, conversation_send_message stance, and conversation_inspect focus after patching.",
         "The output keeps subjective writing quality in Moonloom skills rather than MCP gates."
       ]
@@ -39,6 +39,19 @@
         "The output preserves useful drafted fields instead of restarting ideation.",
         "The final status is needs narrow repair, not ready.",
         "The output does not rely on validate_role passing as proof of writing readiness."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I have final English role fields from a prepared packet stack. roleDetailDesc is 42,000 characters, roleWelcome is 8,500 characters, and the draft is otherwise coherent. Finalize the MCP handoff without shrinking it like a Chinese card.",
+      "expected_output": "Uses lunatalk-field-finalizer, records language / locale as English, checks the 50,000-character English `roleDetailDesc` and 10,000-character English `roleWelcome` caps, preserves behavior-bearing detail, creates compact fallback only as risk control, and does not force the card into non-English limits.",
+      "files": [],
+      "expectations": [
+        "The output uses language / locale before judging field length.",
+        "The output names the 50,000-character English `roleDetailDesc` cap and 10,000-character English `roleWelcome` cap.",
+        "The output does not apply the 10,000-character non-English `roleDetailDesc` cap to English fields.",
+        "The output keeps behavior-bearing detail when it is within cap and not padding.",
+        "The output still provides compact fallback planning for near-limit or risky fields."
       ]
     }
   ]

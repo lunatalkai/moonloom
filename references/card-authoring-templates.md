@@ -1018,11 +1018,16 @@ Field finalization packet:
   - tags:
   - avatar/background:
 - hard-cap and density check:
+  - language / locale:
   - roleDesc estimate:
   - roleDetailDesc estimate:
   - detail budget plan:
     - language / locale: zh-Hant | zh-Hans | English | other
-    - hard cap stance:
+    - language-aware hard cap stance:
+      - 50,000-character English `roleDetailDesc`:
+      - 10,000-character non-English `roleDetailDesc`:
+      - 10,000-character English `roleWelcome`:
+      - 3,000-character non-English `roleWelcome`:
     - full-detail candidate: yes | no
     - empty budget / thin detail risk:
     - missing engine sections:
