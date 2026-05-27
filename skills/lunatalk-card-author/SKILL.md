@@ -194,6 +194,9 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    `stack`, `row`, `grid`, `choices`, and `divider` for container, section
    block, and action-button hierarchy, and use Theme V3 tone/color tokens for
    the actual visual skin.
+   When a forked theme is needed, use CSS variables such as `--lt-panel-bg`,
+   `--lt-choice-border-color`, `--lt-form-field-bg`, `--lt-form-submit-bg`,
+   `--lt-collapse-bg`, and `--lt-bar-track-bg` instead of inline XML styling.
    When these tags appear, include `extension_enable` for `layout` in the MCP
    patch sequence; keep the fallback readable if the pack is unsupported.
    Do not paste the platform XMLV3 server guide into `roleDetailDesc`; detail

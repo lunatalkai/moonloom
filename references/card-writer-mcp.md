@@ -189,6 +189,13 @@ For several short action buttons, use `<choices cols="2" align="stretch">` with
 child `<choice>` tags instead of a left-heavy vertical stack. Use semantic
 `tone` hooks on the child choices and rely on Theme V3 for color.
 
+When binding a forked Theme V3 snapshot for layout-heavy XMLV3 cards, prefer
+semantic CSS variable hooks over inline XML styling. Common hooks:
+`--lt-panel-bg`, `--lt-panel-border`, `--lt-choice-bg`,
+`--lt-choice-border-color`, `--lt-choice-color`, `--lt-form-bg`,
+`--lt-form-field-bg`, `--lt-form-option-active-bg`,
+`--lt-form-submit-bg`, `--lt-collapse-bg`, and `--lt-bar-track-bg`.
+
 ```json
 {
   "schemaVersion": "2026-05-26.m1",

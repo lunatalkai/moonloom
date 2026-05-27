@@ -75,6 +75,9 @@ which meters are decorative and should be omitted.
    not place raw style/class or arbitrary CSS in XML. If this pack is used, the
    MCP handoff must include `extension_enable` for `layout` plus a readable
    XMLV3 fallback stance.
+   Use Theme V3 CSS variables for the skin: `--lt-panel-bg`,
+   `--lt-choice-border-color`, `--lt-form-submit-bg`, `--lt-collapse-bg`, and
+   `--lt-bar-track-bg` are preferred hooks before considering HTML.
    When a screen has 2-4 short action buttons, prefer
    `<choices cols="2" align="stretch" gap="sm">` over several naked `<choice>`
    tags so the preview does not collapse into an uneven left-aligned stack.

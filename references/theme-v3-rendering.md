@@ -127,6 +127,19 @@ hooks. Use these as Theme V3 hooks, not arbitrary inline styling.
 If a client lacks the layout pack, the child `<choice>` tags still remain
 readable and clickable as fallback.
 
+Theme V3 can make XMLV3 feel closer to high-quality HTML cards without putting
+raw style inside XML. Useful CSS variable hooks include:
+
+- panels: `--lt-panel-bg`, `--lt-panel-border`, `--lt-panel-title-color`
+- choices: `--lt-choice-bg`, `--lt-choice-border-color`, `--lt-choice-color`
+- forms: `--lt-form-bg`, `--lt-form-border`, `--lt-form-field-bg`,
+  `--lt-form-field-border`, `--lt-form-option-bg`,
+  `--lt-form-option-active-bg`, `--lt-form-control-accent`,
+  `--lt-form-submit-bg`
+- collapses and bars: `--lt-collapse-bg`, `--lt-collapse-border`,
+  `--lt-collapse-title-color`, `--lt-bar-track-bg`, `--lt-bar-label-color`,
+  `--lt-bar-value-color`
+
 Call `extension_enable` with `packId: "layout"` when the presentation packet
 uses layout pack tags. If layout is unavailable, the same content must still be
 readable XMLV3 prose with scene text, choices, and status labels in order.
