@@ -246,6 +246,11 @@ If one side is missing, repair it before writing style polish. A beautiful card
 with no player leverage becomes passive. A rich setting with no external pressure
 becomes a lore dump.
 
+Use `tension-triangle.md` or `lunatalk-tension-weaver` when the selected premise
+is attractive but inert: missing role desire, player leverage, external pressure,
+why-now, stakes, or a first-scene hook. Produce a Tension packet before opening
+repair or final field assembly.
+
 ### 2. Character core
 
 Before polishing fields, make sure the role is memorable as behavior, not only as

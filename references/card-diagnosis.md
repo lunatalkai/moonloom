@@ -79,8 +79,9 @@ Use evidence, not taste, to choose order. When multiple symptoms exist, prefer:
 5. Generator engine: generator/helper cards that ask indefinitely, provide advice
    without a finished artifact, lack defaults, shift output schema, forget
    artifact continuity, or have no named revision operations.
-6. Durable engine: thin character core, flat relationship, mood-only daily-life,
-   inert world, missing player leverage, no state/consequence, no route pressure.
+6. Tension and durable engine: missing role desire, player leverage, external
+   pressure, why-now, thin character core, flat relationship, mood-only
+   daily-life, inert world, no state/consequence, or no route pressure.
 7. Agency and opening: spectator play, decorative choices, route funneling,
    generic questions, missing first reply path, missing second-turn move.
 8. Longplay: dead third turn, no memory, no route costs, passive role, no scene
@@ -99,6 +100,7 @@ directly to that narrow skill.
 |---|---|---|---|
 | Pretty premise but vague expectation | Promise | `roleDesc` | `lunatalk-profile-packager`, `lunatalk-card-blueprint`, or `lunatalk-archetype-director` |
 | Generic roleName, overlong roleDesc, vague tags, or weak reason to open | Profile packaging / promise compression | `roleName`, `roleDesc`, tags | `lunatalk-profile-packager` |
+| Attractive premise has no stakes, why-now, or external pressure | Tension triangle | `roleDesc`, `roleDetailDesc`, `roleWelcome` | `lunatalk-tension-weaver` |
 | Biography or trivia with no present pressure | Character core / world engine | `roleDetailDesc` | `lunatalk-character-core` or `lunatalk-world-engineer` |
 | Long visual welcome carries lore/rules | Token architecture / opening | `roleWelcome`, XMLV3/HTML | `lunatalk-token-architect` then `lunatalk-opening-director` |
 | Choices all return to same response | Agency / consequence | `roleWelcome`, `roleDetailDesc` | `lunatalk-agency-designer` |

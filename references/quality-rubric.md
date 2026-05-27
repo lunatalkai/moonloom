@@ -18,6 +18,8 @@ not a platform metric or MCP validation rule.
 - The public-facing profile is scannable and specific: `roleName`, `roleDesc`,
   tags, and the first screen agree on who the player is, what pressure starts
   play, and why the card is worth opening.
+- The selected premise has a tension triangle: role desire, player leverage,
+  external pressure, why-now, and a consequence if the player does nothing.
 - The role has a memorable character core: desire, contradiction, boundary,
   player leverage, and pressure behavior that are visible in play.
 - Relationship-heavy cards have a relationship engine: promise, asymmetry,
@@ -94,6 +96,9 @@ The first publish-grade pass should satisfy these items unless the author
 explicitly chooses a tradeoff:
 
 - Promise: clarify the premise, player relationship, and tension.
+- Tension triangle: if the chosen premise is attractive but inert, create a
+  Tension packet with role desire, player leverage, external pressure, why-now,
+  first-scene hook, reply paths, and handoff before opening repair or fields.
 - Profile packaging: if the engine is coherent but `roleName`, `roleDesc`, tags,
   or first impression do not explain the reason to open, create a profile
   package packet with promise angle, name candidates, description candidates,

@@ -24,7 +24,7 @@ similar-card, copied-draft, derivative, or "like X but original" work before
 fields; `profile-packaging.md`, `visual-identity.md`, `language-style.md`,
 `quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`,
 `archetype-contracts.md`, `card-diagnosis.md`,
-`presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
+`tension-triangle.md`, `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
 `talk-example-design.md`, `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
 `agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
 matching focused tasks.
@@ -70,6 +70,10 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    exists. If the player role, tension, or first-scene proof is missing, route to
    the missing writing skill first; if XMLV3/Theme V3 layout is the blocker, use
    `lunatalk-presentation-director`.
+   If the author asks for stakes, hook, tension triangle, role desire, player
+   leverage, external pressure, why-now, first-scene pressure, or says the chosen
+   idea is attractive but passive, use `lunatalk-tension-weaver` before field
+   assembly unless a Tension packet already exists.
    If the author asks for language consistency, zh-Hant / zh-TW cleanup,
    Traditional/Simplified mixing, translated-sounding prose, register alignment,
    pronouns, address terms, punctuation, mixed-language tags, or mismatch between
@@ -314,7 +318,7 @@ MCP tools make the card real; Moonloom makes the card good.
   language-style decisions, visual identity, quality audit, render repair,
   simulation repair, instruction guardrail,
   archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
-  agency, voice, TalkExample, opening, longplay, boundary, token, presentation, and
+  tension, agency, voice, TalkExample, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.
 - If a packet is missing and the missing layer blocks a good card, route to the
   narrow skill before field assembly. Do not fill missing packets with generic

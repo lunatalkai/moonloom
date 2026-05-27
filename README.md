@@ -61,6 +61,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   routes into relationship-engine packets.
 - `skills/lunatalk-world-engineer` turns world seeds, relationship networks,
   factions, locations, and lore-heavy settings into playable world-engine packets.
+- `skills/lunatalk-tension-weaver` turns inert or pretty-but-passive premises into
+  role desire, player leverage, external pressure, why-now, and first-scene hooks.
 - `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
   catchphrase overuse, and blurred ensemble speakers into voice-director packets.
 - `skills/lunatalk-talk-example-curator` decides when to omit `talkExample`, add
@@ -118,6 +120,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   behavior, and field allocation for relationship-heavy cards.
 - `references/world-engine-design.md` defines playable world rules, relationship
   networks, location functions, compact state, route seeds, and lore compression.
+- `references/tension-triangle.md` defines role desire, player leverage, external
+  pressure, why-now checks, and tension packets for inert premise repair.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `references/archetype-contracts.md` defines primary card contracts, hybrid

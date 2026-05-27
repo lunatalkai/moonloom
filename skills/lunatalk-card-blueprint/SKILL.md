@@ -46,7 +46,11 @@ schema, named revision operations, artifact memory, or advice-only repair. Use
 `lunatalk-generator-architect` first when artifact production is the primary
 task. Read
 `../../references/role-card-writing-framework.md` for the top-card pattern stack
-and archetype recipes. Read `../../references/archetype-contracts.md` when the
+and archetype recipes. Read `../../references/tension-triangle.md` when a chosen
+direction is attractive but lacks role desire, player leverage, external
+pressure, why-now, stakes, or a first-scene hook. Use `lunatalk-tension-weaver`
+first when tension triangle repair is the primary task. Read
+`../../references/archetype-contracts.md` when the
 author is unsure whether the card is companion, story, system, RPG, generator,
 daily-life, light-setting, heavy-setting, ensemble, or a hybrid. Use
 `lunatalk-archetype-director` first when card type or hybrid contract is the
@@ -148,6 +152,10 @@ creation, validation, render review, simulation, and publishing workflow.
 4. Pick or recommend one direction. Explain why it is more playable than the
    generic version.
 5. Build the tension triangle: role desire, player leverage, external pressure.
+   If the main blocker is an inert but chosen premise, missing why-now, weak
+   stakes, no player leverage, no external pressure, or a pretty idea with no
+   first-scene hook, use `lunatalk-tension-weaver` first unless a Tension packet
+   already exists.
 6. If the weak layer is character appeal, use `lunatalk-character-core` first or
    preserve its packet. Define the character core: identity, desire,
    contradiction, boundary, mask/wound, player leverage, pressure behavior, and
@@ -247,10 +255,17 @@ Recommended direction:
 - language:
 - content rating intent:
 
-Tension triangle:
+Tension packet:
+- current inertness:
 - role desire:
 - player leverage:
 - external pressure:
+- why now:
+- consequence if the player does nothing:
+- first-scene hook:
+- reply paths:
+- field placement:
+- handoff:
 
 Character core:
 - appeal promise:

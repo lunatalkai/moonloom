@@ -31,6 +31,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 |---|---|
 | Promise | Can the player understand the fantasy, relationship, tension, and reason to open in a few seconds through `roleName`, `roleDesc`, tags, and first screen? |
 | Archetype contract | Does one primary card shape drive the experience while overlays support it? |
+| Tension triangle | Does the chosen premise have role desire, player leverage, external pressure, why-now, and a consequence if the player does nothing? |
 | Character appeal | Does the role have desire, contradiction, boundary, player leverage, and pressure behavior? |
 | Relationship / daily-life / world / scenario engine | Does relationship, routine, setting, faction, incident, clue, or pressure content create choices, costs, state, and routes? |
 | Play engine | For RPG/adventure/sandbox cards, do compact state, resources, quests, turn protocol, and failure-forward behavior produce runnable turns? |
@@ -63,6 +64,8 @@ Flag blockers before scoring:
 - player-agency takeover: card decides the player's feelings, consent, actions,
   commitments, or route choice
 - no playable first action
+- missing tension triangle: no role desire, player leverage, external pressure,
+  why-now, or consequence if the player does nothing
 - boundary-sensitive premise without rating, pacing, refusal, or stop conditions
 - copied or unprovided material presented as card content
 - primary archetype conflict that makes field allocation impossible
@@ -89,6 +92,7 @@ Quality audit packet:
 - scorecard:
   - promise:
   - archetype contract:
+  - tension triangle:
   - character appeal:
   - relationship / daily-life / world / scenario engine:
   - play engine:
@@ -117,7 +121,10 @@ Quality audit packet:
 Choose first repairs by risk and leverage:
 
 1. Critical blockers and player agency.
-2. Archetype contract and promise. Use `lunatalk-profile-packager` when the
+2. Archetype contract, promise, and tension triangle. Use
+   `lunatalk-tension-weaver` when a chosen premise is attractive but lacks role
+   desire, player leverage, external pressure, why-now, or first-scene pressure.
+   Use `lunatalk-profile-packager` when the
    engine exists but `roleName`, `roleDesc`, tags, or first impression are the
    weak layer.
 3. Durable engine: character core, relationship engine, daily-life engine, world

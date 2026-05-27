@@ -533,6 +533,19 @@
         "The output does not route to broad voice repair when voice rules are already coherent, and does not jump directly to final field assembly.",
         "The output avoids MCP calls, render, simulation, publishing, welcome repetition, long decorative examples, and player-agency takeover."
       ]
+    },
+    {
+      "id": 42,
+      "prompt": "I am not sure which Moonloom skill to use. I already chose the premise: a beautiful observatory role with an illegal star map and a clear character voice, but the idea is passive. I need role desire, player leverage, external pressure, why now, and what changes if the player does nothing before opening or fields.",
+      "expected_output": "Uses using-moonloom as the router and routes tension triangle, inert premise repair, role desire, player leverage, external pressure, why-now, and passive premise pressure to lunatalk-tension-weaver before opening repair or field assembly.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes tension triangle, role desire, player leverage, external pressure, why-now, and inert premise repair to lunatalk-tension-weaver.",
+        "The route focuses on a Tension packet with current inertness, role desire, player leverage, external pressure, why now, consequence if the player does nothing, first-scene hook, reply paths, field placement, verification, and handoff.",
+        "The output does not route to premise-workshop because the premise is already chosen, and does not jump directly to opening repair or final field assembly.",
+        "The output avoids MCP calls, render, simulation, publishing, lore dumping, prettier-prose-only repair, and player-agency takeover."
+      ]
     }
   ]
 }
