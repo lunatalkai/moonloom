@@ -141,13 +141,14 @@ Sample calibration packet:
 - opening proof changes:
 - simulation probes to keep:
 - handoff:
-Top-card method calibration packet:
+Benchmark pattern calibration packet:
 - calibration scope:
 - source safety:
   - no raw source:
   - no exact markup:
   - no identifiers:
   - no source URLs:
+  - no source selection flow:
   - no provenance claim:
 - aggregate calibration:
 - deep sample reading:

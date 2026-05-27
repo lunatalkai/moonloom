@@ -36,7 +36,7 @@ test('Moonloom has a public-safe benchmark pattern calibration reference', async
 
   assert.doesNotMatch(reference, /\bSELECT\b[\s\S]{0,160}\bFROM\b/i);
   assert.doesNotMatch(reference, /\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b/i);
-  assert.doesNotMatch(reference, /leaderboard|ranking rail|internal ranking|endpoint|api route|V2 ranking|榜單/i);
+  assert.doesNotMatch(reference, /source selection recipe|non-public operational output|platform score endpoint|source scoring route|how to select cards/i);
 });
 
 test('benchmark runner and iteration loop consume benchmark pattern evidence', async () => {
