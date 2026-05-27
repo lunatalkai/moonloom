@@ -178,11 +178,16 @@ presentation packet names a concrete pack need; the card must still degrade to
 readable XMLV3 prose if a client cannot render that pack.
 
 For HTML div-like hierarchy or per-section color needs, prefer the `layout`
-extension pack before custom HTML. `panel`, `stack`, `row`, `grid`, and
-`divider` supply container and section block structure; Theme V3 supplies tone,
-palette, and panel color. When these tags appear in `roleWelcome`, call
+extension pack before custom HTML. `panel`, `stack`, `row`, `grid`, `choices`,
+and `divider` supply container, section block, and action-button group
+structure; Theme V3 supplies tone, palette, and panel color. When these tags
+appear in `roleWelcome`, call
 `extension_enable` with `packId: "layout"` after patching the welcome and before
 render or simulation.
+
+For several short action buttons, use `<choices cols="2" align="stretch">` with
+child `<choice>` tags instead of a left-heavy vertical stack. Use semantic
+`tone` hooks on the child choices and rely on Theme V3 for color.
 
 ```json
 {
@@ -216,10 +221,11 @@ Use `mode: "reference"` with `themeId`, or `mode: "forked"` with a `snapshot`.
 Toggle a Theme V3 extension pack.
 
 Use `packId: "layout"` for the XMLV3 layout pack when a welcome uses `panel`,
-`stack`, `row`, `grid`, or `divider` to replace HTML div-like container
-structure. Do not enable packs as decoration-only defaults; the presentation
-packet should explain the readable fallback and why the structure helps the
-player understand action, state, route, or relationship pressure.
+`stack`, `row`, `grid`, `choices`, or `divider` to replace HTML div-like
+container structure or to group several short `<choice>` buttons into an action
+grid. Do not enable packs as decoration-only defaults; the presentation packet
+should explain the readable fallback and why the structure helps the player
+understand action, state, route, or relationship pressure.
 
 ### `validate_role`
 
