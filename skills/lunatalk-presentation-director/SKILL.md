@@ -87,12 +87,17 @@ which meters are decorative and should be omitted.
 7. Apply the visual affordance test: every visible element must prove action,
    state, mood, route, risk, clue, resource, boundary, or relationship pressure.
 8. Define first-screen hierarchy and mobile/readability risks.
-9. State the token stance without inventing tokenBudget numbers.
-10. Provide a compact XMLV3 scaffold only when it clarifies structure.
+9. If the card is intended to match a rich HTML-style experience, run the HTML
+   parity checklist from `theme-v3-rendering.md`: sectioning, local color,
+   action density, state surface, form controls, and desktop/mobile density. If
+   XMLV3 cannot express the required play value yet, patch the layout/theme plan
+   before changing writing logic.
+10. State the token stance without inventing tokenBudget numbers.
+11. Provide a compact XMLV3 scaffold only when it clarifies structure.
     If the scaffold changes the XMLV3 welcome structure, include
     `npm run validate:xmlv3-presentation` in the handoff before field
     finalization or render review.
-11. Hand off to `lunatalk-card-author`, `lunatalk-opening-director`,
+12. Hand off to `lunatalk-card-author`, `lunatalk-opening-director`,
    `lunatalk-token-architect`, or `lunatalk-render-review` as the next step.
 
 ## Output format
@@ -153,6 +158,10 @@ Self-review:
 - Do not leave several short action buttons as a left-heavy vertical pile. Use
   `<choices>` for button-grid intent, with semantic `tone` hooks on each child
   `<choice>` when the theme needs visual distinction.
+- Do not continue writing-card logic when the renderer cannot show the intended
+  structure. First repair XMLV3/Theme V3 sectioning, tones, action grids, state
+  surface, and form controls until the preview carries the same play value as a
+  rich HTML-style layout.
 - Do not mark XMLV3 scaffold structure ready until the handoff names
   `validate:xmlv3-presentation` for grouped choices, preview-compatible state,
   scene/control separation, and no raw style/class hooks.

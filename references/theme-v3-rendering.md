@@ -127,6 +127,32 @@ hooks. Use these as Theme V3 hooks, not arbitrary inline styling.
 If a client lacks the layout pack, the child `<choice>` tags still remain
 readable and clickable as fallback.
 
+When XMLV3 is replacing a rich HTML card, run an HTML parity checklist before
+writing more prose. The goal is not pixel parity with arbitrary HTML, but the
+same play value:
+
+- **sectioning parity**: HTML `div`/card stacks usually separate setup,
+  clue, risk, status, input, and actions. XMLV3 should mirror that with
+  `panel`, `stack`, `grid`, `divider`, and visible headings, not one long scene.
+- **local color parity**: HTML often gives each section a different background,
+  border, or accent. XMLV3 should map those distinctions to semantic `tone`
+  values and Theme V3 variables. Do not fake this with XML `style` or `class`.
+- **action density parity**: 2-4 short actions should occupy a balanced row or
+  grid through `choices`, not several unequal left-aligned buttons.
+- **state parity**: durable meters and facts belong in `<state>` plus the
+  external state/status surface; player-facing explanations belong in visible
+  `panel`, `bar`, `tag`, or prose.
+- **form parity**: if the HTML card uses inputs/radio/checkboxes, XMLV3 should
+  use `form`, `input`, `radio`, and `checkbox` with concise labels. Do not
+  bury setup questions in narration.
+- **density parity**: desktop can carry more columns and compact panels; mobile
+  must remain one vertical reading path. Judge density with actual desktop and
+  mobile previews, not by shrinking the card text.
+
+If XMLV3 fails this checklist, patch the presentation packet or Theme V3 before
+improving the writing logic. A weak renderer makes even a strong role engine
+look worse than it is.
+
 Theme V3 can make XMLV3 feel closer to high-quality HTML cards without putting
 raw style inside XML. Useful CSS variable hooks include:
 

@@ -103,6 +103,11 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - If the first screen is visually elaborate because durable rules, repeated lore,
   duplicated monologues, or large visual panels live in `roleWelcome`, use
   `lunatalk-token-architect` before more visual polish.
+- When reviewing an XMLV3 card that is meant to replace rich HTML presentation,
+  check parity of sectioning, local color/tone, action density, state surface,
+  form controls, and desktop/mobile density. If the XMLV3 preview cannot carry
+  the same play value, patch XMLV3 structure or Theme V3 before changing the
+  role's writing logic.
 - Treat `evaluation.qualityDimensions` as the structured review map:
   `captureReadiness`, `semanticStructure`, `readability`, and
   `actionVisibility`.
