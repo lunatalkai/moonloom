@@ -145,6 +145,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/role-detail-engine.md` defines language-aware detail budgets,
   durable detail modules, field placement, thin biography repair, and Detail
   engine packets.
+- `references/top-card-method-calibration.md` defines public-safe aggregate
+  calibration, deep sample reading, top vs ordinary contrast, bilingual budget
+  translation, prompt framework, XMLV3 method, SOP, and testing method for
+  benchmark-calibrated role writing.
 - `references/role-card-writing-framework.md` defines the practical framework for
   writing high-playability cards.
 - `references/archetype-contracts.md` defines primary card contracts, hybrid

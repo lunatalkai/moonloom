@@ -59,6 +59,26 @@ validation rule.
 A long detail is only justified when modules change future turns. A short detail
 is acceptable only when it can still pass the engine coverage check below.
 
+## Top-Card Method Calibration
+
+When a task includes anonymized benchmark evidence, read
+`top-card-method-calibration.md` before expanding detail. Use top-card method
+calibration to translate aggregate plus deep-reading evidence into safe craft
+targets:
+
+- ordinary-card contrast: identify whether the weaker draft stops at biography,
+  ability lists, mood, or a setup form instead of a runnable engine.
+- bilingual budget translation: judge English and non-English drafts by module
+  coverage and language budget, not by copying the same character-count target.
+- detail density: keep only sections that change future behavior, route, state,
+  consequence, voice, or agency.
+- presentation gap: if HTML-like grouping was doing real work, move the
+  structure into XMLV3 layout or Theme V3 guidance instead of hiding durable
+  rules in visual markup.
+
+Do not paste benchmark wording, exact markup, names, or source provenance into
+detail. The output should be an original operating engine for the current card.
+
 ## Detail Engine Packet
 
 Return this packet before writing or patching a large `roleDetailDesc`:
