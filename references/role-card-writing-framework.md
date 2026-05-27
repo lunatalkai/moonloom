@@ -981,6 +981,9 @@ over a long scene that showcases only the loudest character.
 
 Use sparingly. Prefer explicit behavior rules in detail. Only add jailbreak text
 when the card needs stable formatting or style constraints that repeatedly fail.
+Use `instruction-guardrails.md` before any `role_patch_jailbreak` patch, and do
+not use jailbreak as a shortcut for weak character core, missing voice, bad
+opening, weak longplay, unsafe boundaries, or generic card quality.
 
 ## Common failure patterns
 

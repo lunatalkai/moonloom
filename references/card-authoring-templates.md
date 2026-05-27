@@ -129,6 +129,19 @@ Simulation repair packet:
 - rerun stance:
 - cost stance:
 - handoff:
+Instruction guardrail packet:
+- current request:
+- evidence:
+- prerequisite packets checked:
+- instruction-layer need:
+- not fixed by:
+- allowed constraints:
+- forbidden constraints:
+- field patch target:
+- jailbreak stance: omit | draft-only | patch after confirmation
+- role_patch_jailbreak readiness:
+- validation / simulation plan:
+- handoff:
 Quality audit packet:
 - audit scope:
 - evidence available:
@@ -737,6 +750,7 @@ Packet preservation checklist:
 - boundary posture preserved:
 - token architecture preserved:
 - presentation plan preserved:
+- instruction guardrail preserved:
 
 Conflict resolution:
 - conflict:

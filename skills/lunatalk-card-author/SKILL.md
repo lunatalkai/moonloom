@@ -23,7 +23,8 @@ shapes, draft-to-sample comparison, or copy-risk review; `profile-packaging.md`,
 `ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
 `presentation-design.md`, `token-economy.md`, `voice-calibration.md`,
 `boundary-design.md`, `opening-design.md`, `longplay-design.md`,
-`agency-design.md`, or `playtest-loop.md` for their matching focused tasks.
+`agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md` for their
+matching focused tasks.
 
 For card-shape engines, use `character-core-design.md`,
 `relationship-engine.md`, `world-engine-design.md`, `scenario-design.md`,
@@ -65,6 +66,13 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    are good enough, top-tier, ready to continue, or needs a scorecard / first
    three repairs, use `lunatalk-quality-auditor` first unless a quality audit
    packet already exists.
+   If the author asks for system behavior changes, instruction-layer repair,
+   jailbreak text, `role_patch_jailbreak`, or transcript-backed fixes for
+   repeated out-of-character assistant framing, schema drift, state protocol
+   drift, or format drift after normal fields are coherent, use
+   `lunatalk-instruction-guardrail` first unless an instruction guardrail packet
+   already exists. Do not use jailbreak for boring, generic, passive, or
+   trope-only cards.
    If the author asks to create or plan several related cards, alternate
    versions, variants, a card set, or decides what to keep, merge, reject, or
    author first, use `lunatalk-series-architect` first unless a card-series
@@ -220,23 +228,28 @@ rating/simulation/publishing/credentials, `role-card-writing-framework.md` and
    Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
    a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot
    express.
-13. Optionally use `theme_bind` and `extension_enable` for Theme V3.
-14. Call `validate_role`.
-15. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
+13. Before calling `role_patch_jailbreak`, use or preserve
+    `lunatalk-instruction-guardrail`. Only patch jailbreak text when the author
+    explicitly asks for a real instruction-layer patch or confirms
+    transcript-backed behavior evidence. Prefer `roleDetailDesc`, `roleWelcome`,
+    and `talkExample` for ordinary behavior fixes.
+14. Optionally use `theme_bind` and `extension_enable` for Theme V3.
+15. Call `validate_role`.
+16. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
     `role-card-writing-framework.md` and `quality-rubric.md`.
-16. If `validate_role.tokenBudget` shows allocation drift, use
+17. If `validate_role.tokenBudget` shows allocation drift, use
     `lunatalk-token-architect` before render or simulation.
-17. Call `render_preview` and review the result with `lunatalk-render-review`.
+18. Call `render_preview` and review the result with `lunatalk-render-review`.
     If render found visual or first-action failures, preserve render repair
     before patching visual fields or before another render pass.
-18. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
+19. Call `simulate_private_chat` with `lunatalk-chat-simulation` when behavior
     needs to be tested and the author accepts normal chat billing. Include a
     playtest plan, transcript triage, simulation repair packet, and
     evidence-backed patch decision, not only a tool status check.
     If simulation found behavior failures, preserve simulation repair before
     patching fields or before another simulation pass.
-19. Summarize the card, validation result, render result, simulation result, and
+20. Summarize the card, validation result, render result, simulation result, and
     remaining risks.
 
 ## Collaboration Loop
@@ -280,8 +293,8 @@ MCP tools make the card real; Moonloom makes the card good.
   response unless it is present or required.
 - Preserve packets by name and by behavior. At minimum, keep the selected
   premise, sample calibration, profile package, language-style decisions,
-  quality audit, render repair, simulation repair, archetype, character core,
-  relationship/daily-life/world/play/generator/scenario/ensemble engines,
+  quality audit, render repair, simulation repair, instruction guardrail,
+  archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
   agency, voice, opening, longplay, boundary, token, presentation, and
   material-distillation packets whenever they exist.
 - If a packet is missing and the missing layer blocks a good card, route to the
@@ -332,6 +345,12 @@ MCP tools make the card real; Moonloom makes the card good.
 - If voice is the main problem, use `lunatalk-voice-director` before patching
   fields so the voice card, pressure grid, talkExample decision, and blind-line
   test stay coherent.
+- If the normal fields are coherent but simulation repeatedly shows
+  out-of-character assistant framing, schema drift, state protocol drift, or
+  format drift, use `lunatalk-instruction-guardrail` before any
+  `role_patch_jailbreak` call. Do not use jailbreak text as a shortcut for weak
+  character core, missing voice, bad opening, weak longplay, unsafe boundaries,
+  or generic writing quality.
 - For ensemble cards, run a contrast check before finalizing: each core speaker
   needs a different want, fear, speech cue, pressure move, and player leverage.
   If the cast has three or more active speakers, add compact micro-samples for
