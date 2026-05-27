@@ -319,6 +319,10 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   `lunatalk-card-author` in draft-only field assembly mode. Do not re-run broad
   ideation or call MCP tools unless the author asks to create or patch a real
   private role.
+- Last-mile final field QA, MCP-ready handoff, placeholder cleanup, hard-cap
+  checks, compact fallback, XMLV3/JSON/Markdown/YAML-style format checks, or
+  patch mapping after fields already exist: use `lunatalk-field-finalizer`
+  before `lunatalk-card-author` calls mutating tools.
 - Creating or editing a real private role card: use `lunatalk-card-author`.
 - Checking HTML/XMLV3/Theme V3 rendering after validation, preview, screenshot,
   or render report exists: use `lunatalk-render-review`. If the author is still
@@ -413,6 +417,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/card-authoring-templates.md` when producing or checking
   a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
   plan, or self-review packet.
+- Read `../../references/field-finalization.md` when final fields need MCP-ready
+  QA, placeholder cleanup, hard-cap and compact fallback checks, format sanity,
+  or patch mapping before creation/patching.
 - Read `../../references/material-distillation.md` when working from local files,
   notes, material packs, imported drafts, source fragments, or large world bibles.
 - Read `../../references/boundary-design.md` when working on mature, adult,
@@ -471,9 +478,8 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
 - Read `../../references/end-to-end-acceptance.md` when the task is a full
   trial-card acceptance run, private-card visual completion check, or regression
-  handoff after missing assets, app visual evidence, render evidence, or
-  simulation cost stance, including per-message preview evidence after simulated
-  AI turns.
+  handoff after missing assets, app visual evidence, render evidence, simulation
+  cost stance, or per-message preview evidence.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or
   regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet`
   when reporting benchmark results or handing failures to the next skill.
@@ -483,15 +489,11 @@ validation, render review, simulation, and publish readiness.
 - Use the authenticated LunaTalk account; do not invent separate MCP scopes.
 - Use idempotency keys for every mutating tool call.
 - Prefer XMLV3 plus Theme V3 for new cards.
-- Use Moonloom self-review, render preview, and simulation as the quality loop,
-  not as optional decoration.
-- Treat MCP validation as mechanical validation. It can block unsafe HTML,
-  invalid XMLV3, missing fields, or publish prerequisites, but it is not
-  responsible for deciding whether a card is emotionally strong, playable, or
-  original enough.
-- Keep writing quality inside the Moonloom skills. When a card is boring,
-  generic, passive, or weak after a technical pass, revise the role-card prompt
-  and authoring framework rather than expecting MCP to reject it.
+- Use Moonloom self-review, render preview, and simulation as the quality loop.
+- Treat MCP validation as mechanical validation for unsafe HTML, invalid XMLV3,
+  missing fields, and publish prerequisites; writing quality stays in Moonloom.
+- When a card is boring, generic, passive, or weak after a technical pass, revise
+  the role-card prompt and authoring framework rather than expecting MCP to reject it.
 - Optimize for playable loops: hook, agency, consequence, memory, progression, and
   a new hook.
 - Do not call `publish_submit` until the author explicitly confirms submission.

@@ -585,6 +585,19 @@
         "The output does not jump directly to role_create_private, card-author, render_preview, simulate_private_chat, or publish_submit.",
         "The output says evidence from validation/render/simulation should later route to lunatalk-iteration-director."
       ]
+    },
+    {
+      "id": 46,
+      "prompt": "I am not sure which Moonloom skill to use. I already have final roleName, roleDesc, roleDetailDesc, XMLV3 roleWelcome, talkExample decision, tags, and avatar/background URLs. Before MCP patching I need placeholder cleanup, hard-cap checks, compact fallback, XMLV3/JSON/Markdown format sanity, and patch mapping.",
+      "expected_output": "Uses using-moonloom as the router and routes last-mile final field QA, MCP-ready handoff, placeholder cleanup, hard-cap checks, compact fallback, format sanity, and patch mapping to lunatalk-field-finalizer before mutating MCP tools.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes final field QA and MCP-ready handoff to lunatalk-field-finalizer.",
+        "The route focuses on a Field finalization packet with final field status, hard-cap and density check, compact fallback, format checks, placeholder/meta check, MCP patch mapping, and final status.",
+        "The output does not route primarily to broad card-authoring because final fields already exist.",
+        "The output avoids role_create_private, patch tools, validation, render, simulation, and publish actions until finalization marks the handoff ready."
+      ]
     }
   ]
 }

@@ -956,6 +956,59 @@ Self-review:
 - remaining risks:
 ```
 
+## Field finalization packet
+
+Use after a final role-field packet exists and before MCP-backed creation or
+patching. This packet checks whether fields are actually ready to submit to the
+Card Writer MCP.
+
+```text
+Field finalization packet:
+- mode: draft-only | MCP-ready creation | MCP-ready patch | blocked
+- source packets preserved:
+- unresolved packets or conflicts:
+- final field status:
+  - roleName:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+  - tags:
+  - avatar/background:
+- hard-cap and density check:
+  - roleDesc estimate:
+  - roleDetailDesc estimate:
+  - 10,000-character `roleDetailDesc` hard cap stance:
+  - roleWelcome estimate:
+  - talkExample estimate:
+  - sections that earn tokens:
+- compact fallback:
+  - roleDesc:
+  - roleDetailDesc:
+  - roleWelcome:
+  - talkExample:
+- format checks:
+  - XMLV3:
+  - JSON:
+  - Markdown:
+  - YAML-style lists:
+  - plain-text paragraphing:
+- placeholder / meta check:
+- MCP patch mapping:
+  - role_patch_profile:
+  - role_patch_assets:
+  - role_patch_detail:
+  - role_patch_welcome:
+  - role_patch_jailbreak:
+  - theme_bind / extension_enable:
+- validation / render / simulation handoff:
+  - validate_role focus:
+  - render_preview focus:
+  - simulate_private_chat stance:
+- final status: ready | needs narrow repair | missing external asset | cost-gated
+- next action:
+```
+
 ## Source-to-play handoff packet
 
 Use after `lunatalk-material-distiller` has processed notes, files, drafts, or a

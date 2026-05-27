@@ -119,6 +119,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   weak memory, and flat routes into longplay packets for sustained sessions.
 - `skills/lunatalk-card-author` assembles packet stacks into field-ready drafts
   and guides end-to-end private role card creation.
+- `skills/lunatalk-field-finalizer` performs last-mile field QA for MCP-ready
+  drafts: hard caps, placeholders, compact fallbacks, formats, and patch mapping.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
@@ -163,6 +165,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/card-authoring-templates.md` provides reusable draft packets,
   final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
   boundary-sensitive prompts, and self-review packets.
+- `references/field-finalization.md` defines MCP-ready last-mile field gates:
+  placeholders, hard caps, compact fallbacks, format checks, and patch mapping.
 - `references/creation-workflow.md` defines the end-to-end creation runway,
   stage ladder, Creation runway packet, MCP gates, asset gates, cost gates, and
   completion checks for external AI clients.
