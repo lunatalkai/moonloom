@@ -15,6 +15,10 @@ Read `../../examples/synthetic-card-briefs.md` first. Read
 `../../examples/sample-card-packets.md` and
 `../../references/sample-driven-calibration.md` when benchmark output needs a
 public synthetic expected-output shape, sample comparison, or copy-risk review.
+Read `../../references/benchmark-pattern-calibration.md` when a benchmark run
+includes an anonymized benchmark pattern packet, deep sample reading,
+ordinary-card contrast, or source-restricted pattern gap that must be reduced to
+public-safe repair guidance.
 Read `../../examples/complete-synthetic-card-fixture.md` when a benchmark needs a
 complete synthetic card fixture that shows final fields, compact fallback,
 playtest probes, field finalization, and acceptance handoff shape.
@@ -101,37 +105,41 @@ triage. Read `../../references/safety-and-cost.md` before simulation.
    exists before authoring. For generator/helper briefs, confirm a generator
    packet exists before authoring.
 3. Run Moonloom self-review against `quality-rubric.md` before tool validation.
-4. Run `validate_role` and patch technical blockers only.
-5. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
+4. When the run is driven by an anonymized benchmark pattern, confirm the packet
+   includes aggregate signals, deep sample reading, ordinary-card contrast,
+   pattern gap, source safety check, and one repair target before touching card
+   fields or skills.
+5. Run `validate_role` and patch technical blockers only.
+6. Run `render_preview`; inspect `evaluation`, `structuredReport`, and
    `previewUrl` when browser or multimodal access is available.
-6. For MCP-backed full-card acceptance, confirm `role_patch_assets` has patched
+7. For MCP-backed full-card acceptance, confirm `role_patch_assets` has patched
    real avatar and background URLs, then open the normal app surface when
    possible. Role detail should show the avatar, chat should show the background
    or intended visual container, and both image requests should succeed. A
    prompt-only art brief or missing asset URL is a regression, not completion.
-7. Run `conversation_send_message` with the listed probes or a playtest plan from
+8. Run `conversation_send_message` with the listed probes or a playtest plan from
    `playtest-loop.md` only when normal billing is acceptable. Continue the
    returned `conversationId` for connected multi-turn probes.
-8. Run `conversation_inspect` after accepted probes. Open returned
+9. Run `conversation_inspect` after accepted probes. Open returned
    `messages[].previewUrl` values for selected AI turns and record message
    preview status. If `previewUrl` is absent but `conversationId` and `chatId`
    values are present, build the dedicated per-message preview harness URL. Do
    not parse the normal chat page UI to judge message formatting.
-9. When the benchmark changes field assembly, finalization, render review,
+10. When the benchmark changes field assembly, finalization, render review,
    simulation, or end-to-end acceptance guidance, run `npm run validate:fixture`
    from the Moonloom repository root. Treat a fixture validator failure as a
    Moonloom regression unless the complete synthetic fixture itself needs an
    intentional structure update.
-10. When simulation evidence is recorded for benchmark handoff, use the redacted
+11. When simulation evidence is recorded for benchmark handoff, use the redacted
    shape in `../../examples/simulation-evidence.fixture.json` and run
    `npm run validate:simulation`.
-11. When the benchmark claims `visual_complete`, `behavior_checked`, or full
+12. When the benchmark claims `visual_complete`, `behavior_checked`, or full
    end-to-end acceptance, use the redacted shape in
    `../../examples/end-to-end-acceptance.fixture.json` and run
    `npm run validate:acceptance`. Treat failure as a benchmark blocker; do not
    soften missing assets, app visual proof, accepted simulation, or per-message
    preview evidence into completion language.
-12. Record pass/fail by archetype and list the weakest dimension.
+13. Record pass/fail by archetype and list the weakest dimension.
 
 ## Negative checks
 
@@ -316,6 +324,7 @@ trial-card evidence to the next Moonloom skill or prompt repair:
 Benchmark report packet:
 - benchmark scope:
 - synthetic briefs tested:
+- anonymized benchmark pattern:
 - positive cases:
 - negative cases:
 - Moonloom self-review result:
@@ -327,6 +336,7 @@ Benchmark report packet:
 - simulation status:
 - acceptance evidence status:
 - tokenBudget findings:
+- pattern gap:
 - weakest Moonloom dimensions:
 - patch loop count:
 - cost stance:

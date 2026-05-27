@@ -40,6 +40,9 @@ Normalize evidence before deciding:
   decisions from the agent conversation
 - `benchmark`: synthetic regression result, positive/negative case failures,
   weakest dimensions
+- `benchmark_pattern`: anonymized benchmark pattern packet, aggregate signals,
+  deep sample reading, ordinary-card contrast, pattern gap, and source safety
+  status when source-restricted comparison was used
 
 Evidence can be missing. Say what is missing and avoid pretending it was checked.
 
@@ -96,6 +99,7 @@ Iteration packet:
   - simulation:
   - author_feedback:
   - benchmark:
+  - benchmark_pattern:
 - decision:
 - hard blockers:
 - strongest evidence:
