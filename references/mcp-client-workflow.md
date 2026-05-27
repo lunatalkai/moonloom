@@ -35,6 +35,7 @@ Expected Card Writer tools:
 - `role_create_private`
 - `role_get`
 - `role_patch_profile`
+- `role_patch_assets`
 - `role_patch_detail`
 - `role_patch_welcome`
 - optional `role_patch_jailbreak`
@@ -53,7 +54,7 @@ does not need it yet or ask the author to fix the client configuration.
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
-| Private creation | `role_create_private`, profile/detail/welcome patch tools | render or simulate before validation |
+| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
 | Behavior simulation | `simulate_private_chat` | spend cost before validation and author acceptance |

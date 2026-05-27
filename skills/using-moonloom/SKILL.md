@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom/LunaTalk creation work involving role cards, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
+description: Use when routing Moonloom/LunaTalk creation work involving role cards, end-to-end creation workflow, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
 ---
 
 # Using Moonloom
@@ -70,6 +70,13 @@ decisive bottleneck and list delayed routes under `do not do yet`.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.
+- End-to-end creation, "from idea to private card", full Moonloom workflow,
+  creation runway, external AI client coordination, or deciding the skill queue
+  across ideation, MCP readiness, assets, validation, render, simulation,
+  iteration, and publish readiness: use `lunatalk-creation-conductor`. If the
+  request already names one narrow bottleneck, route directly to that skill; if
+  evidence from validation/render/simulation already exists, the conductor should
+  hand off to `lunatalk-iteration-director`.
 - MCP readiness, external client setup, Card Writer tool availability, auth
   posture, idempotency planning, client configuration triage, or stage-gating
   before role creation, render, simulation, or publish actions: use

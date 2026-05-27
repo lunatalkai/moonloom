@@ -572,6 +572,19 @@
         "The token stance distinguishes a 10,000-character roleDetailDesc hard cap from a quality target and rejects max-length padding.",
         "The output avoids MCP calls, field mutation, rerender, paid simulation, and publishing until the iteration decision is made."
       ]
+    },
+    {
+      "id": 45,
+      "prompt": "I am not sure which Moonloom skill to use. I want the whole workflow from a vague idea to a private LunaTalk card: decide the skills, prepare avatar/background, create through MCP later, validate, render, maybe simulate, then iterate.",
+      "expected_output": "Uses using-moonloom as the router and routes full end-to-end workflow, creation runway, skill queue, MCP readiness, assets, validation, render, simulation, and iteration planning to lunatalk-creation-conductor before any narrow skill or MCP call.",
+      "files": [],
+      "expectations": [
+        "The output explicitly starts from using-moonloom because the user is unsure which skill applies.",
+        "The output routes the full workflow to lunatalk-creation-conductor.",
+        "The route focuses on a Creation runway packet with first bottleneck, skill queue, MCP stance, asset requirement, cost/public-action warnings, do not do yet, and handoff.",
+        "The output does not jump directly to role_create_private, card-author, render_preview, simulate_private_chat, or publish_submit.",
+        "The output says evidence from validation/render/simulation should later route to lunatalk-iteration-director."
+      ]
     }
   ]
 }

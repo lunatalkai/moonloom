@@ -1,0 +1,58 @@
+{
+  "skill_name": "lunatalk-creation-conductor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I only have a vague idea: make me a popular vampire LunaTalk card. Use Moonloom from start to finish, but do not call MCP tools until the direction is ready.",
+      "expected_output": "Routes to lunatalk-creation-conductor, returns a Creation runway packet, identifies premise as the first bottleneck, queues lunatalk-premise-workshop before card-author or MCP calls, and avoids role_create_private, render, simulation, or publish.",
+      "files": [],
+      "expectations": [
+        "The output selects lunatalk-creation-conductor and includes a Creation runway packet.",
+        "The first bottleneck is premise or playable direction, not MCP readiness.",
+        "The immediate next skill is lunatalk-premise-workshop.",
+        "The output lists role_create_private, render_preview, simulate_private_chat, and publish_submit under do not do yet.",
+        "The workflow translates popular/top-tier into public craft goals rather than unsupported performance claims."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have a completed packet stack and want the AI client to create the private card end-to-end through MCP, including avatar/background, validation, render review, and maybe simulation.",
+      "expected_output": "Uses lunatalk-creation-conductor to produce a runway packet that preserves the packet stack, checks MCP readiness, hands off to card-author for role_create_private and profile/assets/detail/welcome patches, validates before render, requires role_patch_assets for avatar/background URLs, and only simulates after cost acceptance.",
+      "files": [],
+      "expectations": [
+        "The output preserves the completed packet stack instead of re-brainstorming.",
+        "The skill queue includes lunatalk-mcp-operator before mutating MCP tools and lunatalk-card-author for field assembly.",
+        "The MCP stance names role_patch_assets or an avatar/background asset requirement.",
+        "The workflow validates before render review.",
+        "The output treats simulate_private_chat as optional and cost-gated.",
+        "The output does not include publish_submit without explicit author confirmation."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We already created a private role. validate_role passes, render is readable, but simulation and author feedback say the second turn goes flat. Continue the Moonloom workflow.",
+      "expected_output": "Routes through lunatalk-creation-conductor into lunatalk-iteration-director because evidence exists, keeps the existing private role, selects one next repair, and avoids restarting from premise or creating a duplicate role.",
+      "files": [],
+      "expectations": [
+        "The output recognizes validation, render, simulation, and author feedback as loop evidence.",
+        "The immediate next skill is lunatalk-iteration-director.",
+        "The output keeps the existing private role rather than creating another role.",
+        "The workflow selects one next repair or asks for the minimum missing evidence.",
+        "The output does not rerun paid simulation before a patch and cost stance are clear."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I have a large fantasy town document and want Moonloom to turn it into a playable card later. Give me the full workflow, but don't paste the whole document into detail.",
+      "expected_output": "Uses lunatalk-creation-conductor, marks source/material distillation as the first bottleneck, queues lunatalk-material-distiller before archetype/card-author work, and preserves token/source hygiene.",
+      "files": [],
+      "expectations": [
+        "The output selects lunatalk-creation-conductor and returns a Creation runway packet.",
+        "The first bottleneck is material distillation or source-to-play mapping.",
+        "The immediate next skill is lunatalk-material-distiller.",
+        "The output says not to paste the whole document into roleDetailDesc.",
+        "The MCP stance keeps calls off until the source-to-play map and card contract are coherent."
+      ]
+    }
+  ]
+}
