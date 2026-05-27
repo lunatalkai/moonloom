@@ -11,7 +11,8 @@ after the first screen.
 
 ```text
 identity -> motive -> pressure -> relationship -> world/play functions ->
-voice -> consequence -> longplay -> boundaries -> format stability
+voice -> consequence -> longplay -> scene reservoir -> boundaries ->
+format stability
 ```
 
 Do not pad. Fill detail only while each section buys future behavior, route
@@ -72,6 +73,8 @@ targets:
   coverage and language budget, not by copying the same character-count target.
 - detail density: keep only sections that change future behavior, route, state,
   consequence, voice, or agency.
+- scene reservoir: preserve reusable scene seeds, triggers, and turn recipes so
+  later replies do not become abstract mood or repeated setup.
 - presentation gap: if HTML-like grouping was doing real work, move the
   structure into XMLV3 layout or Theme V3 guidance instead of hiding durable
   rules in visual markup.
@@ -99,6 +102,7 @@ Detail engine packet:
   - voice and action logic:
   - emotional reactions:
   - longplay hooks:
+  - scene reservoir / turn recipes:
   - time and consequence:
   - secret and reveal plan:
   - player insertion space:
@@ -181,6 +185,40 @@ List route seeds with triggers, costs, unlocks, memory, and renewed hooks. A
 strong detail can name what changes by turn two, what can recur later, and what
 the role remembers when the player returns.
 
+### Scene Reservoir / Turn Recipes
+
+Give the role concrete material to spend after the opening. A scene reservoir is
+not a script and not a list of copied sample scenes; it is a compact inventory of
+playable situations the model can recombine.
+
+Use this grammar:
+
+```text
+Scene seed:
+- trigger:
+- place / object:
+- role move:
+- player leverage:
+- state or relationship change:
+- renewed hook:
+```
+
+Write 4-8 seeds for high-ambition cards, fewer for light cards. Cover normal,
+passive, refusal, route-change, return-later, and pressure-spike situations when
+the card shape needs them. Include at least one turn recipe for what the role
+does after a short player reply:
+
+```text
+Turn recipe:
+observe player move -> show concrete consequence -> make in-character move ->
+offer one next action or sharper question
+```
+
+This protects against abstract cards whose detail explains the mood but gives no
+specific second or third scene to run. Keep seeds original, short, and modular.
+Do not write long prose samples unless `talkExample` is the cheaper way to teach
+voice or format.
+
 ### Time And Consequence
 
 Define how time passes and what delay changes: location status, relationship
@@ -231,6 +269,8 @@ detail, not hidden in the first-screen prose.
 - Would the second turn be better than the first without inventing a new plot?
 - Does each section change future behavior, state, route, voice, or boundary?
 - Can the role act when the player gives a short or passive message?
+- Does the detail include enough scene seeds or turn recipes to avoid abstract
+  repeated setup after the opening?
 - Can the player refuse, redirect, ask, test, or slow down without the card
   ending?
 - Are secrets paced instead of dumped?
@@ -246,7 +286,9 @@ When detail is thin:
 1. Preserve existing narrow packets and author taste.
 2. Identify missing engine modules.
 3. Expand missing modules with concrete behavior, not prose padding.
-4. Move durable rules out of welcome or examples.
-5. Compress repeated mood, biography, and lore that do not affect play.
-6. Rebuild welcome only if it was carrying the engine.
-7. Validate, render, and simulate after the detail can sustain later turns.
+4. Add a small scene reservoir and turn recipe for the next few likely player
+   moves.
+5. Move durable rules out of welcome or examples.
+6. Compress repeated mood, biography, and lore that do not affect play.
+7. Rebuild welcome only if it was carrying the engine.
+8. Validate, render, and simulate after the detail can sustain later turns.

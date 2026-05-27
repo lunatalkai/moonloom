@@ -44,14 +44,17 @@ test('detail engine reference turns roleDetailDesc into a runnable engine', asyn
   assert.match(reference, /proactive turn behavior/i);
   assert.match(reference, /time and consequence/i);
   assert.match(reference, /secret and reveal/i);
+  assert.match(reference, /scene reservoir|scene seed|turn recipe/i);
   assert.match(reference, /player insertion space/i);
   assert.match(reference, /format stability/i);
   assert.match(reference, /thin biography/i);
   assert.match(reference, /Do not pad/i);
   assert.match(skill, /below target/i);
   assert.match(skill, /complete card/i);
+  assert.match(skill, /scene reservoir|scene seed|turn recipe/i);
   assert.match(evals, /Detail engine packet/);
   assert.match(evals, /thin biography/i);
+  assert.match(evals, /scene reservoir|scene seed|turn recipe/i);
 });
 
 test('router, authoring templates, framework, and quality docs expose detail engineering', async () => {
