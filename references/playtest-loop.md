@@ -70,6 +70,21 @@ affordance, or consequence, the run is not accepted just because later turns
 pass. Patch `roleDetailDesc` and `roleWelcome` so the card can close sparse,
 normal, off-path, and boundary replies with a playable next move.
 
+When judging closure, inspect the last visible block of the selected AI turn.
+A response that advances evidence, reveals a clue, or ends on a strong line is
+not enough if the player is left only to admire or decode it. The last visible
+block should be one of:
+
+- grouped XMLV3 choices for branch, risk, route, or investigation decisions;
+- a direct in-character decision question that names the decision the player must
+  make;
+- a concrete affordance such as what can be preserved, compared, asked, opened,
+  refused, delayed, risked, or carried into the next location.
+
+Do not repair this by forcing buttons on every turn. Repair it by teaching the
+card's engine which moments need choices and which moments need a sharper
+question or concrete object/action handoff.
+
 ## Per-message visual check
 
 After `conversation_send_message`, call `conversation_inspect` to retrieve the

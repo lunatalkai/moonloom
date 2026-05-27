@@ -14,3 +14,17 @@ test('Moonloom simulation guidance treats action-path closure as a per-turn acce
     assert.match(source, /roleDetailDesc[\s\S]*roleWelcome|roleWelcome[\s\S]*roleDetailDesc/);
   }
 });
+
+test('Moonloom action-path closure checks the last visible AI block', async () => {
+  const chatSkill = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
+  const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
+  const roleDetailEngine = await readFile('references/role-detail-engine.md', 'utf8');
+
+  for (const source of [chatSkill, playtestLoop, roleDetailEngine]) {
+    assert.match(source, /last\s+visible\s+block/i);
+    assert.match(source, /grouped\s+(?:XMLV3\s+)?choices/i);
+    assert.match(source, /direct\s+(?:in-character\s+)?decision\s+question/i);
+    assert.match(source, /concrete\s+(?:object\/action\s+)?affordance/i);
+    assert.match(source, /not\s+enough/i);
+  }
+});
