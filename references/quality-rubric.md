@@ -303,6 +303,10 @@ explicitly chooses a tradeoff:
   every beat.
 - Weak first action path: add choices, a direct question, or an explicit response
   path in the opening scene.
+- Per-turn action-path closure failure: if any selected AI turn has no concrete
+  next action path, visible affordance, decision, question, or consequence, do
+  not accept the run because later turns pass. Patch `roleDetailDesc` and
+  `roleWelcome` so every reviewed turn gives the player a playable next move.
 - Hollow opening: choices alone are not enough. Add a visible place, sensory cue,
   role action or beat, pressure, and a reason the player is implicated now.
 - Missing second-turn move: write one likely first user message and define how
@@ -370,6 +374,9 @@ For probe design and transcript-to-patch mapping, use `playtest-loop.md`.
 
 - The role stays in character across at least one realistic user turn.
 - The first reply advances the scene instead of restating the profile.
+- Per-turn action-path closure holds for any selected AI turn: a single inert
+  reviewed turn still fails acceptance even when later turns pass, and should map
+  to a `roleDetailDesc` and `roleWelcome` repair.
 - Continuation probes show the role can sustain play after the opening through
   changed state, route pressure, memory callback, or renewed hook.
 - The reply reflects player agency and creates consequence or a new hook.

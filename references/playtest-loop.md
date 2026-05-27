@@ -64,6 +64,12 @@ Poll with `conversation_turn_status`, then inspect the completed AI message with
 invalidates the playtest because the transcript no longer represents real player
 turn-taking.
 
+Apply per-turn action-path closure to the inspected turns. If any selected AI
+turn fails to leave a concrete next action path, decision, question, visible
+affordance, or consequence, the run is not accepted just because later turns
+pass. Patch `roleDetailDesc` and `roleWelcome` so the card can close sparse,
+normal, off-path, and boundary replies with a playable next move.
+
 ## Per-message visual check
 
 After `conversation_send_message`, call `conversation_inspect` to retrieve the
@@ -205,6 +211,7 @@ then map the observed problem to a card patch.
 |---|---|---|
 | Reply is generic, short, or repeats setup | anchor, voice fingerprint | `roleDetailDesc` voice and behavior rules |
 | Reply gives no next action | agency, opening affordance | `roleWelcome` reply path and role initiative |
+| One selected AI turn lacks per-turn action-path closure, even though later turns pass | agency, opening affordance, route reply protocol | `roleDetailDesc` and `roleWelcome` next-move rules |
 | Reply restates welcome or asks another generic question | opening direction, second-turn engine | opening packet and `roleWelcome` second-turn move |
 | Reply ignores player choice | consequence loop | `roleDetailDesc` state and route rules |
 | Reply forgets route or restarts premise after a few turns | longplay engine | continuity spine, memory threads, return-later behavior |
