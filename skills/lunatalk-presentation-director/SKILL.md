@@ -77,8 +77,11 @@ which meters are decorative and should be omitted.
    play value and the MCP handoff includes `extension_enable`.
    When the missing capability is HTML div-like structure or per-section color,
    prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`,
-   `choices`, and `divider` create container, section block, and action-button
-   hierarchy, while Theme V3 owns reusable tone, palette, and panel color. Use
+   `field`, `choices`, and `divider` create container, section block,
+   label-description fact rows, and action-button hierarchy, while Theme V3 owns
+   reusable tone, palette, and panel color. Use `<field label="...">...</field>`
+   for information rows; do not use row+tag+n or
+   `<row><tag>...</tag><n>...</n></row>` for label-description facts. Use
    constrained presentation attributes such as `bg`, `border`, `color`,
    `label-color`, `track-bg`, `submit-bg`, `radius`, and `padding` when a local
    block, action, form, collapse, tag, or meter needs HTML-like contrast without
@@ -86,8 +89,9 @@ which meters are decorative and should be omitted.
    pack is used, the MCP handoff must include `extension_enable` for `layout`
    plus a readable XMLV3 fallback stance.
    Use Theme V3 CSS variables for the skin: `--lt-panel-bg`,
-   `--lt-choice-border-color`, `--lt-form-submit-bg`, `--lt-collapse-bg`, and
-   `--lt-bar-track-bg` are preferred hooks before considering HTML.
+   `--lt-field-label-color`, `--lt-choice-border-color`,
+   `--lt-form-submit-bg`, `--lt-collapse-bg`, and `--lt-bar-track-bg` are
+   preferred hooks before considering HTML.
    When a screen has 2-4 short action buttons, prefer
    `<choices cols="2" align="stretch" gap="sm">` over several naked `<choice>`
    tags so the preview does not collapse into an uneven left-aligned stack.

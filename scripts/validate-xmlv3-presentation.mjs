@@ -75,6 +75,10 @@ function collectNakedChoices(xml) {
   }));
 }
 
+function hasRowTagNarrationField(xml) {
+  return /<row\b[^>]*>\s*<tag\b[^>]*>[\s\S]*?<\/tag>\s*<n\b[^>]*>[\s\S]*?<\/n>\s*<\/row>/i.test(xml);
+}
+
 function parseState(xml) {
   const match = xml.match(/<state>\s*([\s\S]*?)\s*<\/state>/i);
   if (!match) {
@@ -127,6 +131,16 @@ function validateXmlv3Presentation(input, options = {}) {
       );
       break;
     }
+  }
+
+  if (hasRowTagNarrationField(xml)) {
+    issues.push(
+      issue(
+        'xmlv3.field.row_tag_n',
+        file,
+        'Use <field label="...">...</field> for label-description facts instead of <row><tag>...</tag><n>...</n></row>.',
+      ),
+    );
   }
 
   const { state, error } = parseState(xml);

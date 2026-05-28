@@ -125,7 +125,7 @@ Keep it to 2-6 fields that change play: scene/time/phase, relationship
 pressure, risk, resources, clues, route gates, or available support. `bar` is
 only for continuous numeric values. Text, enum, flag, resource, phase, location,
 or available/unavailable fields should use `state.status[].value`,
-`state.relationships[].value`, visible tags/panels/prose, or the external fact
+`state.relationships[].value`, visible field/panel/prose, or the external fact
 card surface instead of being forced into `max:100`. `roleDetailDesc` should
 define the update contract for every kept field: stable key, label, allowed
 values, update trigger, play effect, and output cadence.
@@ -160,9 +160,15 @@ result flow can use optional tags such as `collapse`, `bar`, `tag`,
 `result-card`, or `share-text` when that pack is enabled.
 
 Use the layout pack when the author needs HTML div-like container structure:
-`panel`, `stack`, `row`, `grid`, `choices`, and `divider` create section blocks,
-grouped controls, compact columns, action groups, and visual separators without
-exposing raw `style`/`class` or arbitrary CSS inside XML.
+`panel`, `stack`, `row`, `grid`, `field`, `choices`, and `divider` create
+section blocks, grouped controls, compact columns, label-description facts,
+action groups, and visual separators without exposing raw `style`/`class` or
+arbitrary CSS inside XML.
+
+Use `<field label="...">...</field>` for a single information row, status fact,
+task summary, or setup checklist item. Do not use row+tag+n or
+`<row><tag>...</tag><n>...</n></row>` for label-description facts: that pattern
+turns labels into decorative pills and ordinary descriptions into narration.
 
 Treat layout as the safe structure layer. Theme V3 owns reusable identity through
 theme-bound tone, palette, and panel tokens. For local HTML-like section
@@ -190,7 +196,7 @@ problem. Prefer Theme V3 variables for reusable style, and use presentation
 attributes sparingly where the screenshot needs one section, one action, one
 form, one collapse, one tag, or one meter to stand apart immediately. A client
 that does not support them should still show readable XMLV3 content with
-ordinary panels, choices, forms, collapses, tags, and bars.
+ordinary panels, fields, choices, forms, collapses, tags, and bars.
 
 Use `<choices cols="2" align="stretch" gap="sm">` for ordinary 2-4 short action
 buttons that should share horizontal space. Use weighted action hierarchy when
@@ -218,7 +224,8 @@ same play value:
 
 - **sectioning parity**: HTML `div`/card stacks usually separate setup,
   clue, risk, status, input, and actions. XMLV3 should mirror that with
-  `panel`, `stack`, `grid`, `divider`, and visible headings, not one long scene.
+  `panel`, `stack`, `grid`, `field`, `divider`, and visible headings, not one
+  long scene.
 - **local color parity**: HTML often gives each section a different background,
   border, or accent. XMLV3 should map durable identity to semantic `tone` values
   and Theme V3 variables. Use constrained `panel` / `choice` presentation
@@ -292,6 +299,8 @@ Theme V3 can make XMLV3 feel closer to high-quality HTML cards without putting
 raw style inside XML. Useful CSS variable hooks include:
 
 - panels: `--lt-panel-bg`, `--lt-panel-border`, `--lt-panel-title-color`
+- fields: `--lt-field-accent`, `--lt-field-label-color`,
+  `--lt-field-body-color`, `--lt-field-value-color`
 - choices: `--lt-choice-bg`, `--lt-choice-border-color`, `--lt-choice-color`
 - forms: `--lt-form-bg`, `--lt-form-border`, `--lt-form-field-bg`,
   `--lt-form-field-border`, `--lt-form-option-bg`,
