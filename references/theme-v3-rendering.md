@@ -41,6 +41,36 @@ do not create XMLV4, XMLV5, or a new format name when extending the framework. A
 tags, optional attributes, or extension packs with fallback behavior while
 keeping older XMLV3 tags backward compatible.
 
+## XMLV3 feature levels
+
+Use XMLV3 feature levels to separate the stable baseline from newer renderer
+capabilities.
+
+- **Feature Level 1** is the 2026-05-27 XMLV3 baseline. Treat it as supported by
+  all XMLV3-capable LunaTalk clients. It covers the core XMLV3 tags and older
+  extension behavior.
+- **Feature Level 2** is the HTML-parity extension layer. It covers layout
+  containers, explicit grouped/weighted choices, fact-card style visible status,
+  semantic speaker usage, and token-economy guidance for dynamic XML output.
+
+Cards should declare the minimum XMLV3 feature level they require. A card that
+uses Level 2 tags or behavior should set its minimum feature level to `2` and
+list the relevant capabilities, such as `layout.containers`,
+`choices.weighted`, `status.fact-cards`, `speaker.semantic`, or
+`token.output-economy`. A baseline XMLV3 card should remain at Level 1.
+
+When generating dynamic assistant turns, do not assume the latest XMLV3 feature
+level. Generate at or below the client-declared renderer level. If the client is
+Level 1, use Level 1-safe output even when the platform has newer guidance. If a
+card itself requires Level 2 and the current client only supports Level 1, treat
+that as a compatibility issue before judging the prose or interaction quality.
+
+Level 2 is still XMLV3, not a new format. Do not create XMLV4/XMLV5, do not
+paste raw HTML into XMLV3, and do not copy a full platform XMLV3 manual into
+`roleDetailDesc`. The role should contain the card-specific contract: which
+feature level it needs, which packs are enabled, which state fields update, and
+how visible status/actions should behave.
+
 ## When to use XMLV3
 
 Use XMLV3 when the welcome needs structured narrative blocks, dialogue, stage

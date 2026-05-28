@@ -243,6 +243,12 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
     only when a specific pack is needed. Keep compatible XMLV3 extension work on
     the XMLV3 target; do not propose XMLV4/XMLV5 for optional tags, attributes,
     packs, or fallback behavior.
+    - If `roleWelcome` or dynamic reply guidance uses Level 2 layout containers,
+      grouped/weighted `<choices>`, or fact-card style status, mark the card as
+      requiring XMLV3 Feature Level 2 and record the relevant capability names.
+      If it only uses the 2026-05-27 baseline, keep the minimum at Feature
+      Level 1. Generate future turns at or below the client-declared feature
+      level.
 15. Call `validate_role`.
 16. Fix MCP blockers before moving on. Do not rely on MCP to judge writing
     quality; run the Moonloom self-review checklist from
