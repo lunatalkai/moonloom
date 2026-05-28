@@ -25,8 +25,9 @@ client config -> auth presence -> tool availability -> stage gate -> operation p
 Do not print tokens, cookies, authorization headers, secrets, or full credential
 values. Say whether auth appears configured, missing, or unverified.
 
-Do not hard-code environment-specific URLs in skills or public examples. Use the
-client's configured MCP server entry and environment placeholders.
+Use the official production Card Writer MCP endpoint from `.mcp.json`:
+`https://api.lunatalk.ai/mcp/card-writer`. Local development may use
+`examples/local-mcp.json` with private environment placeholders.
 
 ## Tool availability
 

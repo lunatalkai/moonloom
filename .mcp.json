@@ -2,7 +2,7 @@
   "mcpServers": {
     "lunatalk-card-writer": {
       "type": "http",
-      "url": "${LUNATALK_CARD_WRITER_MCP_URL}"
+      "url": "https://api.lunatalk.ai/mcp/card-writer"
     }
   }
 }
