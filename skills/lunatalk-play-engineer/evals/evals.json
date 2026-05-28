@@ -40,6 +40,19 @@
         "The opening contract starts inside one playable case pressure instead of explaining the whole mystery system.",
         "The simulation probes test resource spend, route change, failure-forward, continuity/state, and passive/minimal input."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Design a simulator card with an intake console: setup fields, visible meters, a resource grid, and four balanced actions. The current draft is one long manual and the XMLV3 buttons are stacked on the left.",
+      "expected_output": "Uses play-engine plus system-intake guidance, cuts the manual, defines compact state and failure-forward rules, and maps the setup console to XMLV3 panel/form/grid/bar/choices/state before authoring.",
+      "files": [],
+      "expectations": [
+        "The output treats the simulator controls as a play-engine problem before prose polish.",
+        "The packet reads or preserves system-intake-card-design.md for the intake console layer.",
+        "The opening contract proves one playable setup or crisis instead of explaining the whole system.",
+        "The XMLV3 plan uses panel, form, grid, bar, choices, and state so short buttons are not left-heavy stacked choices.",
+        "The output preserves player agency and defines failure-forward consequences for risky setup choices."
+      ]
     }
   ]
 }

@@ -17,6 +17,10 @@ state update, and renewed choice.
 Read `../../references/play-engine-design.md` first. Read
 `../../references/archetype-contracts.md` when the task needs RPG/open-world,
 system/simulator, story, generator, or hybrid contract selection. Read
+`../../references/system-intake-card-design.md` when a simulator, management,
+mission-board, investigation desk, or RPG setup welcome needs an intake-first
+setup wizard, intake console, defaults surface, or HTML-to-XMLV3 panel/form/choices
+parity before authoring. Read
 `../../references/world-engine-design.md` when the play engine depends on
 factions, locations, relationship networks, lore-heavy settings, or world rules.
 Read `../../references/longplay-design.md` when the task needs route memory,
@@ -62,6 +66,10 @@ guidance.
 10. Write failure-forward behavior and lethal-risk warnings.
 11. Define progression phases, opening contract, field allocation, token plan,
     and play-engine probes.
+    If the first screen needs setup controls, preserve a system intake packet:
+    scene beat first, then sibling `panel`, `grid`, `form`, `bar`, `choices`,
+    and preview-compatible `state` so XMLV3 carries the same play value as a
+    rich HTML control surface.
 12. Run self-review and hand off to the narrow next skill or authoring.
 
 ## Output format
@@ -116,6 +124,9 @@ Handoff:
 - Keep the state visible and compact enough to update after each assistant turn.
 - The opening should prove the system through one playable setup or crisis, not
   explain the whole game.
+- A simulator setup wizard should not become a left-heavy button pile or one
+  flat scene. Use XMLV3 panel/form/choices structure and Theme V3 tones before
+  tuning the writing logic.
 - Preserve player agency. The system may pressure, warn, tempt, block, or price
   a route, but it must not write the user's next action or interior state.
 - Keep output original and public-safe.

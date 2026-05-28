@@ -369,6 +369,19 @@
         "The workflow preserves coherent final fields instead of restarting ideation.",
         "The output treats hard-cap and format readiness as Moonloom last-mile QA, not subjective server validation."
       ]
+    },
+    {
+      "id": 29,
+      "prompt": "Assemble final fields for a private SFW simulator card: it should open with a setup wizard, visible state, a form, and four balanced action buttons. I want XMLV3 unless HTML is truly required.",
+      "expected_output": "Routes the system/simulator intake surface through system-intake guidance, preserves play-engine or generator packets as needed, chooses XMLV3 plus Theme V3 layout before HTML, and delays MCP calls until self-review and field finalization are ready.",
+      "files": [],
+      "expectations": [
+        "The workflow reads or preserves system-intake-card-design.md for the setup wizard / intake console layer.",
+        "The output maps the welcome to XMLV3 scene plus sibling panel, form, choices, and state blocks before writing prose polish.",
+        "The workflow rejects HTML unless XMLV3 layout plus Theme V3 cannot express the play value.",
+        "The detail plan carries state update rules, defaults, turn protocol, failure-forward behavior, and format contract.",
+        "The output does not call role_create_private, patch tools, render, simulation, or publish before Moonloom self-review and field finalization."
+      ]
     }
   ]
 }

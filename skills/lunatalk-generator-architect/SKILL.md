@@ -15,6 +15,9 @@ Read `../../references/generator-design.md` first. Read
 `../../references/archetype-contracts.md` when the task needs generator vs
 companion/story/RPG/system classification. Read `../../references/opening-design.md`
 when the intake welcome is vague or too long. Read
+`../../references/system-intake-card-design.md` when the generator needs an
+intake-first setup wizard, intake console, defaults surface, or HTML-to-XMLV3
+panel/form/choices parity before field assembly. Read
 `../../references/voice-calibration.md` when the generator has a diegetic persona
 or drifts into generic assistant voice. Read `../../references/token-economy.md`
 when the schema, examples, or forms bloat `roleWelcome`. Read
@@ -48,6 +51,9 @@ Keep output original and public-safe.
    and must not include.
 5. Design intake with defaults: required inputs, optional inputs, default
    assumptions, when to ask, and when to proceed.
+   If the intake is a visible setup wizard or console, use
+   `system-intake-card-design.md` to map the first screen into XMLV3 `panel`,
+   `form`, `grid`, `bar`, and `choices` before authoring prose.
 6. Build the output schema and quality rubric.
 7. Define named revision operations and what each operation preserves.
 8. Define artifact memory and `continue` behavior.
@@ -124,6 +130,9 @@ Self-review:
   accepts defaults.
 - Do not let setup questions become the whole experience. Ask only for details
   that change the artifact.
+- Do not flatten a generator intake console into one XMLV3 scene. When the
+  welcome needs controls, use system-intake structure: scene first, then sibling
+  panel/form/choices/state blocks with defaults and one default-start action.
 - Do not answer with generic advice when the player asked for an artifact.
 - Keep schema stable enough that the player can revise by section.
 - Named revision operations should preserve the player's constraints and the

@@ -39,6 +39,19 @@
         "Theme V3 receives reusable style but not story logic or route consequences.",
         "The output names render review as a later proof step after authoring."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "My system card's first screen used to be a rich HTML setup wizard with sections, inputs, status meters, and four buttons. Before fields, make an XMLV3 plus Theme V3 presentation plan that does not regress into one flat scene.",
+      "expected_output": "Uses system-intake-card-design.md, returns a presentation packet that maps the intake console to XMLV3 scene plus sibling panel/form/grid/bar/choices/state blocks, uses Theme V3 for reusable style, and rejects HTML unless XMLV3 cannot express the play value.",
+      "files": [],
+      "expectations": [
+        "The output treats this as an intake-first system presentation problem, not ordinary prose or render review.",
+        "The packet references system-intake-card-design.md or equivalent system intake guidance.",
+        "The XMLV3 plan uses panel, form, grid, bar, choices, and preview-compatible state instead of one flat scene.",
+        "The HTML decision compares HTML-to-XMLV3 parity for sectioning, form controls, state, and action density.",
+        "The output does not call validate_role, render_preview, conversation_send_message, conversation_inspect, or mutating tools."
+      ]
     }
   ]
 }

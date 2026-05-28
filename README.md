@@ -167,6 +167,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/generator-design.md` defines artifact contracts, intake defaults,
   output schemas, revision operations, diegetic creator modes, and probes for
   generator/helper/creator-assistant cards.
+- `references/system-intake-card-design.md` defines setup wizard and intake
+  console patterns for system/simulator/generator cards, including
+  HTML-to-XMLV3 parity for panel, form, choices, state, and visible controls.
 - `references/scenario-design.md` defines branchable incidents, story spines,
   clue/reveal ladders, false lead handling, suspect pressure networks, compact
   consequence state, and probes for story-first cards.
@@ -259,6 +262,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `examples/complete-synthetic-card-fixture.md` provides one public-safe complete
   synthetic card fixture with final fields, compact fallback, playtest probes,
   field finalization, and acceptance handoff shape.
+- `examples/system-intake-synthetic-card-fixture.md` provides one public-safe
+  system/simulator intake fixture with XMLV3 layout controls, visible state,
+  setup defaults, action grouping, and render-review plan.
 - `examples/simulation-evidence.fixture.json` provides a public-safe closed-loop
   simulation evidence packet shape for seven probes and per-message preview
   evidence.
@@ -299,7 +305,10 @@ its expected structure changes. Use `npm run validate:xmlv3-presentation` when
 an XMLV3 welcome, scaffold, or fixture changes; it rejects left-heavy naked
 choice piles, controls nested inside `<scene>`, flat state JSON, and raw
 style/class hooks while allowing constrained `panel` / `choice` presentation
-attributes. Use `npm run validate:simulation` after recording MCP simulation
+attributes. Use `npm run validate:system-intake` when system/simulator setup
+wizard fixtures or HTML-to-XMLV3 intake parity guidance changes; it checks
+panel/form/choices/state structure, grouped actions, and public-safe fixture
+shape. Use `npm run validate:simulation` after recording MCP simulation
 evidence to check required probes, per-message preview coverage,
 repair-packet requirements, and public-safe evidence shape. Use
 `npm run validate:acceptance` after a full trial-card run to check that assets,

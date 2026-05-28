@@ -65,6 +65,19 @@
         "The output avoids making the companion card a vague helper assistant.",
         "The output does not call MCP tools."
       ]
+    },
+    {
+      "id": 6,
+      "prompt": "Plan a generator card whose first screen is a setup wizard: one input, one mode selector, constraints, visible progress state, and four actions. It should produce an artifact immediately when defaults are accepted and should use XMLV3 unless HTML is required.",
+      "expected_output": "Uses generator architecture plus system-intake-card-design.md, defines defaults and artifact schema, and maps the setup wizard to XMLV3 panel/form/choices/state with Theme V3 style before authoring.",
+      "files": [],
+      "expectations": [
+        "The output treats artifact production as the primary generator contract.",
+        "The packet includes defaults and a proceed rule so the setup wizard does not become endless intake.",
+        "The output reads or preserves system-intake-card-design.md for the visible intake console.",
+        "The XMLV3 / Theme V3 plan includes scene plus sibling panel, form, choices, visible state, and preview-compatible hidden state.",
+        "The output does not call MCP tools, render, simulate, publish, or make protected source claims."
+      ]
     }
   ]
 }
