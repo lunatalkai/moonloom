@@ -52,6 +52,23 @@ Do not use visible panels as decoration. A visible state field earns space by
 clarifying action, risk, clue, resource, relationship pressure, route, or
 boundary.
 
+## Status Bar Contract
+
+The status bar / 狀態欄 is a visible update contract, not progress bars or a
+meter dump. Keep 2-6 fields that help the next player action or future role behavior:
+scene/time/phase, relationship pressure, risk, resources, clues, route gates, or
+available support.
+
+Use `bar` only for continuous numeric state. Text, enum, flag, resource, phase,
+location, available/unavailable, and pending/locked values should render as
+tags, fact cards, relationship/resource cards, or short panels. Do not add a
+fake `max:100` just to make a field look like a meter.
+
+`roleDetailDesc` should own the update contract for every kept field: stable key,
+label, allowed values, update trigger, update cadence, and the play effect. The
+welcome only shows the first useful surface; hidden JSON stores compact runtime
+updates.
+
 ## Agency Safety
 
 State must not store player feelings, consent, loyalty, guilt, desire, actions,

@@ -33,6 +33,7 @@ test('system intake fixture uses XMLV3 layout controls instead of a flat scene o
   const xml = fixture.match(/```xml\s*([\s\S]*?)```/i)?.[1] || '';
 
   assert.match(xml, /<scene\b/i);
+  assert.doesNotMatch(xml, /<speaker\b/i);
   assert.match(xml, /<stack\b/i);
   assert.match(xml, /<panel\b/i);
   assert.match(xml, /<grid\b/i);
@@ -43,6 +44,7 @@ test('system intake fixture uses XMLV3 layout controls instead of a flat scene o
   assert.match(xml, /<bar\b/i);
   assert.match(xml, /<choices\b[^>]*\bcols=["']2["']/i);
   assert.match(xml, /<state>\s*\{/i);
+  assert.ok((xml.match(/<\s*(input|radio|checkbox)\b/gi) || []).length >= 6);
   assert.doesNotMatch(xml, /\s(?:style|class)=/i);
   assert.doesNotMatch(xml, /<div\b|<section\b|<button\b/i);
 });
@@ -75,9 +77,14 @@ test('system intake validator accepts the committed fixture and rejects raw HTML
   const accepted = validateSystemIntakeFixture(fixture, { filePath: fixturePath });
   assert.deepEqual(accepted.issues, []);
   assert.equal(accepted.summary.choicesGrouped, true);
+  assert.ok(accepted.summary.formControlCount >= 6);
   assert.equal(accepted.summary.hasPreviewState, true);
 
   const broken = fixture.replace('<stack gap="md">', '<div class="console">');
   const result = validateSystemIntakeFixture(broken, { filePath: fixturePath });
   assert.ok(result.issues.some((item) => item.code === 'system_intake.xml_raw_html'));
+
+  const sparse = fixture.replace(/<input label="Known location"[\s\S]*?<checkbox label="Do not cross"[^>]*\/>\n/i, '');
+  const sparseResult = validateSystemIntakeFixture(sparse, { filePath: fixturePath });
+  assert.ok(sparseResult.issues.some((item) => item.code === 'system_intake.form_too_sparse'));
 });

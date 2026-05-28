@@ -81,7 +81,6 @@ Use this shape for a rich system intake welcome:
 ```xml
 <scene location="..." time="..." mood="...">
   <n>One concrete situation, not a manual.</n>
-  <speaker name="..." />
   <d>One line that makes the next player action obvious.</d>
 </scene>
 <stack gap="md">
@@ -104,6 +103,10 @@ Use this shape for a rich system intake welcome:
 </stack>
 <state>{"scene":{"location":"...","time":"...","mood":"..."},"status":[],"relationships":[]}</state>
 ```
+
+System intake cards are usually single-speaker tools. Do not add `<speaker>` just
+to name the operator; the role context and panel titles already provide that
+information. Use `<speaker>` only for an actual multi-speaker switch.
 
 Rules:
 

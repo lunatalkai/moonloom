@@ -25,6 +25,7 @@ platform tag manual into `roleDetailDesc`.
 Use `roleDetailDesc` for the card-specific format contract instead:
 
 - which state fields this card updates
+- which status bar fields this card shows and how each one updates
 - when choices should appear and what they should change
 - which optional extension pack is part of the card shape
 - which visible status labels matter to play
@@ -53,7 +54,9 @@ Use the core tags first:
 
 - `<scene>` wraps an opening beat's prose and dialogue.
 - `<n>` is narration, physical action, and stage direction.
-- `<speaker>` marks speaker changes.
+- `<speaker>` marks speaker changes, not every line of dialogue. For a
+  single-speaker card or turn, omit `<speaker>` and write `<d>` directly; the
+  chat bubble and role context already identify who is speaking.
 - `<d>` is dialogue.
 - `<quote>` is inner thought or emotional emphasis.
 - `<choice>` gives a player action prompt.
@@ -78,6 +81,24 @@ machine-readable updates. For MCP preview evidence, use a top-level
 state as present. Do not use flat state objects such as
 `{"location":"...","trust":1}`; those may parse as JSON but still appear as
 `state:none` in preview reports.
+
+Visible status widgets must stay in sync with hidden state. If a visible `bar`
+or meter and hidden `state.status` / `state.relationships` describe the same
+metric, they should share the same key or label, and their value/max must match.
+A clean preview warning such as `stateVisualMismatchCount > 0` or
+`xmlv3_state_visual_value_mismatch` means the bubble and external status surface
+are presenting two different truths; fix the XMLV3 output before judging prose
+quality.
+
+The status bar / 狀態欄 is an update contract, not progress bars or a meter dump.
+Keep it to 2-6 fields that change play: scene/time/phase, relationship
+pressure, risk, resources, clues, route gates, or available support. `bar` is
+only for continuous numeric values. Text, enum, flag, resource, phase, location,
+or available/unavailable fields should use `state.status[].value`,
+`state.relationships[].value`, visible tags/panels/prose, or the external fact
+card surface instead of being forced into `max:100`. `roleDetailDesc` should
+define the update contract for every kept field: stable key, label, allowed
+values, update trigger, play effect, and output cadence.
 
 ```xml
 <state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"小碟","label":"信任","affinity":1,"max":5}]}</state>
@@ -179,13 +200,25 @@ same play value:
   `cols="4"` plus `span="full"` / `span="2"` rather than flattening every button.
 - **state parity**: durable meters and facts belong in `<state>` plus the
   external state/status surface; player-facing explanations belong in visible
-  `panel`, `bar`, `tag`, or prose.
+  `panel`, `bar`, `tag`, or prose. When a visible `bar` and hidden state refer to
+  the same key or label, their value/max must match so the bubble and the
+  external status surface read as one state system. Do not convert every status
+  into a meter: use `bar` for continuous numeric pressure, and use fact cards,
+  tags, relationship/resource cards, or short panels for text, enum, flag, phase,
+  clue, and resource fields.
 - **form parity**: if the HTML card uses inputs/radio/checkboxes, XMLV3 should
   use `form`, `input`, `radio`, and `checkbox` with concise labels. Do not
-  bury setup questions in narration.
+  bury setup questions in narration. Intake-first system cards should preserve
+  dense setup surfaces; a clean preview with fewer than six rendered form
+  controls is usually still below rich HTML intake parity.
 - **density parity**: desktop can carry more columns and compact panels; mobile
   must remain one vertical reading path. Judge density with actual desktop and
   mobile previews, not by shrinking the card text.
+- **token parity**: V2 HTML can spend many generated tokens on repeated tags,
+  attributes, inline CSS, class names, and wrapper scaffolding. XMLV3 should
+  keep the visual hierarchy but move reusable style to Theme V3, use short
+  semantic tone/variant hooks, omit single-speaker `<speaker>`, and emit only
+  changed setup/state values after the opening.
 
 If XMLV3 fails this checklist, patch the presentation packet or Theme V3 before
 improving the writing logic. A weak renderer makes even a strong role engine
@@ -197,8 +230,8 @@ HTML control surfaces into one XMLV3 scene. Preserve play value by mapping the
 intake into sibling `panel`, `grid`, `form`, `bar`, `choices`, and
 preview-compatible `state` blocks, with Theme V3 tones or constrained
 presentation attributes carrying local color. The goal is HTML-to-XMLV3 parity
-for sectioning, form controls, state, and balanced actions before changing the
-writing logic.
+for sectioning, dense form controls, state, and balanced actions before changing
+the writing logic.
 
 Read the render report as a parity map before making prose changes:
 
@@ -221,6 +254,9 @@ Read the render report as a parity map before making prose changes:
 - `stateSurface` should become visible in browser preview when state exists.
   Server-only reports may say `expected`; verify the clean preview status area
   before accepting the card.
+- `stateVisualMismatchCount` / `xmlv3_state_visual_value_mismatch` means a
+  visible bar or meter disagrees with hidden state using the same key or label.
+  Treat this as a structure bug, not a writing-style issue.
 
 Theme V3 can make XMLV3 feel closer to high-quality HTML cards without putting
 raw style inside XML. Useful CSS variable hooks include:
@@ -243,6 +279,23 @@ Use `extension_enable` only when the card's presentation packet names a specific
 pack and explains why it improves play. If the pack is unavailable or unsupported
 in a client, the card should still degrade to readable XMLV3 prose instead of
 depending on custom HTML for core interaction.
+
+## Token-Aware Rendering
+
+Use `o200k_base` as the single offline tokenizer baseline for card token reviews.
+Apply it consistently across V2 HTML, XMLV3, Theme V3, OpenAI, Claude, and
+unknown-provider budget checks so render-format diffs are comparable. Treat the
+result as a local structure and attention-cost estimate, not an exact provider
+billing statement.
+
+Review visible value and structure cost separately. Input-side context is
+`roleDetailDesc + roleWelcome`; `roleDesc` is display/search context and is not
+model input. Do not hollow out detail to reduce tokens. The optimization target
+is per-turn AI output: if markup, wrapper tags, inline CSS, class names, or
+unchanged setup controls dominate the generated output, do not ask the model to
+"write better prose" first. Patch the XMLV3 structure or Theme V3 style layer so
+the next turn spends tokens on story, state, consequences, and actionable
+choices.
 
 ## When to use Theme V3
 

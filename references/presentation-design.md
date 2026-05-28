@@ -63,6 +63,7 @@ Presentation packet:
 - XMLV3 capability / pack plan:
 - visible content map:
 - hidden state JSON plan:
+- status bar update contract:
 - Theme V3 responsibilities:
 - roleDetailDesc responsibilities:
 - HTML decision:
@@ -74,6 +75,9 @@ Presentation packet:
 - first-screen hierarchy:
 - mobile / readability risks:
 - token stance:
+  - tokenizer baseline:
+  - structure-token risk:
+  - repeated style/setup moved to Theme V3:
 - render review plan:
 - handoff:
 
@@ -146,7 +150,9 @@ Use core tags first:
 
 - `<scene>` wraps the opening beat's prose and dialogue.
 - `<n>` carries narration, physical action, and stage direction.
-- `<speaker>` marks speaker changes.
+- `<speaker>` marks speaker changes, not every line of dialogue. For a
+  single-speaker card or turn, omit `<speaker>` and write `<d>` directly; role
+  context and the chat bubble already identify who is speaking.
 - `<d>` carries dialogue.
 - `<quote>` carries inner thought or emphasis.
 - `<choice>` exposes a player action prompt.
@@ -195,10 +201,42 @@ inside `<scene>`, flat state JSON that previews as missing state, and raw
 that sentence in `<n>` or a short visible label, then keep `<state>` compact and
 machine-readable.
 
+Visible status and hidden state must agree. When a visible `bar`, meter, or
+status panel and hidden `<state>` describe the same key or label, value/max
+should match exactly. If MCP reports `stateVisualMismatchCount` or
+`xmlv3_state_visual_value_mismatch`, treat it as an XMLV3 structure regression:
+fix the state contract before polishing prose or adding more panels.
+
+The status bar / 狀態欄 is a compact update contract, not a collection of
+progress bars. Plan 2-6 fields that change the next action, risk, route, clue,
+relationship pressure, resource, or scene. `bar` is only for continuous numeric
+values. Text, enum, flag, resource, phase, location, and available/unavailable
+state should render as tags, fact cards, relationship/resource cards, or concise
+panels instead of fake `max:100` meters.
+
 Do not paste the server XMLV3 manual into `roleDetailDesc`. Detail should name
 the role-specific contract: when this card updates state, when it presents
-choices, what each visible meter means, and what the assistant must not decide
-for the player.
+choices, what each visible meter or fact means, the status bar update contract,
+and what the assistant must not decide for the player.
+
+## Token-Aware Presentation
+
+For offline review, use `o200k_base` as the single tokenizer baseline for V2
+HTML, XMLV3, Theme V3, OpenAI, Claude, and unknown-provider budget checks. This
+keeps structure-token comparisons stable. Do not present local estimates as
+exact provider billing.
+
+Input context comes from `roleDetailDesc + roleWelcome`; `roleDesc` is
+display/search context and is not sent as model input. Preserve enough detail so
+the role is not hollow. Token optimization is mostly about per-turn AI output:
+how much XMLV3 structure the model must generate to match the HTML card's
+visible hierarchy.
+
+V2 HTML is a golden reference for visual hierarchy, not for token shape. Preserve
+sectioning, state, forms, choices, and mobile/desktop polish, but do not preserve
+class-heavy wrappers, inline CSS, repeated unchanged setup panels, or speaker labels
+that the chat bubble already provides. XMLV3 should describe the current playable
+screen; Theme V3 should carry the reusable style.
 
 ## Theme V3 responsibilities
 

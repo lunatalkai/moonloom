@@ -43,9 +43,13 @@ promise, route, or boundary handling.
    cadence, effect on role behavior, effect on player options, and token cost.
 5. Apply agency safety: state must not store player feelings, consent, loyalty,
    actions, guilt, confession, desire, or final route choice.
-6. Decide placement: durable rules in `roleDetailDesc`, visible status in
+6. If a visible status bar / 狀態欄 is needed, define its generation rule and
+   update rule in `roleDetailDesc`. The status bar is not progress bars: use
+   `bar` only for continuous numeric fields, and use fact/tag/panel surfaces for
+   text, enum, flag, resource, phase, location, or availability fields.
+7. Decide placement: durable rules in `roleDetailDesc`, visible status in
    welcome/XMLV3, compact hidden JSON only when it supports future updates.
-7. Produce verification probes and hand off to longplay, play-engine,
+8. Produce verification probes and hand off to longplay, play-engine,
    presentation, card-author, or simulation.
 
 ## Output format
@@ -65,6 +69,13 @@ State economy packet:
 - current request:
 - card shape:
 - state need:
+- status bar generation:
+  - status bar / 狀態欄 is not progress bars:
+  - roleDetailDesc status bar contract:
+  - generation rule:
+  - update trigger:
+  - update cadence:
+  - visible control: bar | fact | tag | panel | hidden-only
 - candidate fields:
   - field:
   - keep | omit:

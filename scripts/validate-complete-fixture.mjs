@@ -80,8 +80,8 @@ const REQUIRED_PROBES = [
   'boundary test',
 ];
 
-const REQUIRED_XML_TAGS = ['scene', 'state', 'n', 'speaker', 'd', 'choices', 'choice'];
-const ALLOWED_XML_TAGS = new Set(REQUIRED_XML_TAGS);
+const REQUIRED_XML_TAGS = ['scene', 'state', 'n', 'd', 'choices', 'choice'];
+const ALLOWED_XML_TAGS = new Set([...REQUIRED_XML_TAGS, 'speaker']);
 const MIN_DETAIL_CHARS = 7000;
 const MIN_DETAIL_SECTION_CHARS = 80;
 

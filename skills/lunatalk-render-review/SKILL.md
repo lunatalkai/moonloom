@@ -104,6 +104,9 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   `unresolvedToneCount`, and `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
+- For intake-first system cards, target `formControlCount >= 6`; treat
+  `formControlCount < 6` as a likely rich HTML parity gap unless the card
+  intentionally has a tiny setup surface.
 - Treat `presentationAttrCount > 0` as evidence that XMLV3 is using the safe
   local presentation-attribute path for panel or choice contrast. It is not the
   same as raw `style`/`class`. Review the screenshot for contrast, spacing, and

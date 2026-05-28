@@ -231,6 +231,14 @@ State economy packet:
 - current request:
 - card shape:
 - state need:
+- status bar generation:
+  - status bar / 狀態欄 is not progress bars:
+  - fields shown: 2-6 fields that change next action, risk, relationship, resource, or scene
+  - roleDetailDesc status bar contract:
+  - generation rule:
+  - update rule:
+  - update cadence:
+  - visible control: bar for continuous numeric only; fact/tag/panel for text, enum, flag, resource, phase, or location
 - candidate fields:
   - field:
   - keep | omit:
@@ -1344,7 +1352,6 @@ Use for companion, story, daily-life, romance, and ensemble cards.
   <state>{"scene":{"location":"[place]","time":"[time]","mood":"[short mood]"},"status":[{"key":"tension","label":"張力","value":"[short state]"}],"relationships":[{"target":"[role]","label":"信任","affinity":1,"max":5}]}</state>
   <n>[Sensory opening tied to place/time.]</n>
   <n>[Role action already in progress.]</n>
-  <speaker>[Role name]</speaker>
   <d>[Dialogue that reveals pressure and invites response.]</d>
   <n>[Player implication: why the player matters now.]</n>
   <choice>[Concrete action option 1]</choice>
@@ -1354,8 +1361,15 @@ Use for companion, story, daily-life, romance, and ensemble cards.
 ```
 
 Use the `scene` / `status` / `relationships` shape for every XMLV3 hidden state
+and omit `<speaker>` for single-speaker openings. Add `<speaker>` only when a
+visible multi-speaker scene needs to mark a speaker switch.
 block that needs MCP preview evidence. A flat JSON object can validate as JSON
 but still produce `state:none` in the role preview report.
+
+For cards with a visible status bar, define the status bar / 狀態欄 generation
+and update rules in `roleDetailDesc`. The status bar is not progress bars: use
+`bar` only for continuous numeric values, and use facts/tags/panels for text,
+enum, flag, resource, phase, or location fields.
 
 Do not use choices as a substitute for scene. The scene must already contain
 place, role action, pressure, and player implication.

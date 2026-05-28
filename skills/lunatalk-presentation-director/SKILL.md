@@ -67,6 +67,10 @@ which meters are decorative and should be omitted.
    Hidden `<state>` must be preview-compatible: use top-level `scene`, `status`,
    and `relationships`. Flat JSON state can render as `state:none` in MCP preview
    evidence even when it is syntactically valid.
+   If the card has a visible status bar / 狀態欄, `roleDetailDesc` must define
+   the status bar generation and update rule. The status bar is not progress bars:
+   use `bar` only for continuous numeric values, and use fact/tag/panel
+   surfaces for text, enum, flag, resource, phase, location, or availability.
 5. Before choosing HTML, check whether core XMLV3 plus an extension pack can
    express the need. Use pack tags such as `collapse`, `bar`, `tag`,
    `result-card`, or `share-text` only when the presentation packet explains the
@@ -101,9 +105,11 @@ which meters are decorative and should be omitted.
 8. Define first-screen hierarchy and mobile/readability risks.
 9. If the card is intended to match a rich HTML-style experience, run the HTML
    parity checklist from `theme-v3-rendering.md`: sectioning, local color,
-   action density, state surface, form controls, and desktop/mobile density. If
-   XMLV3 cannot express the required play value yet, patch the layout/theme plan
-   before changing writing logic.
+   action density, state surface, form controls, and desktop/mobile density.
+   Intake-first system cards that are matching dense HTML setup surfaces should
+   plan for `formControlCount >= 6` on clean preview. If XMLV3 cannot express
+   the required play value yet, patch the layout/theme plan before changing
+   writing logic.
    For system/simulator and generator intake screens, also read
    `system-intake-card-design.md`: keep the scene beat separate from the setup
    wizard, then map the console into sibling `panel`, `grid`, `form`, `bar`,

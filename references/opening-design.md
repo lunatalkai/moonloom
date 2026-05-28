@@ -153,7 +153,6 @@ Use XMLV3 when structure helps the first screen:
   <state>{"location":"[place]","time":"[time]","pressure":"[short pressure]"}</state>
   <n>[Sensory opening tied to the current place/time.]</n>
   <n>[Role action already in progress.]</n>
-  <speaker>[Role name]</speaker>
   <d>[Dialogue that reveals pressure and invites response.]</d>
   <n>[Why the player matters now.]</n>
   <choice>[Action with consequence 1]</choice>
@@ -164,6 +163,8 @@ Use XMLV3 when structure helps the first screen:
 
 Use choices only after the scene exists. Choices cannot replace place, action,
 pressure, or player implication.
+For a single-speaker opening, omit `<speaker>`; use it only when the visible
+turn needs to mark a speaker switch in a multi-speaker scene.
 
 ## Failure repairs
 

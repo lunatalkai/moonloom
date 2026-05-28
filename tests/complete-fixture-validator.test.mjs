@@ -22,7 +22,7 @@ test('complete fixture validator accepts the committed synthetic card fixture', 
 
   assert.deepEqual(result.issues, []);
   assert.equal(result.summary.requiredSections, 12);
-  assert.equal(result.summary.xmlTags, 7);
+  assert.equal(result.summary.xmlTags, 6);
   assert.equal(result.summary.playtestProbes, 7);
   assert.equal(result.summary.stateKeys, 3);
   assert.equal(result.summary.visualAssetBriefs, 2);
