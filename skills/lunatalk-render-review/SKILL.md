@@ -96,10 +96,15 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
   `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
   `actionLayoutMaxColumns`, `formControlCount`, `stateSurface`, `toneCount`,
-  `localStyleHookCount`, `themeStyleHookCount`, `customToneCount`,
-  `unresolvedToneCount`, and `nestedControlCount`.
+  `localStyleHookCount`, `themeStyleHookCount`, `presentationAttrCount`,
+  `customToneCount`, `unresolvedToneCount`, and `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
+- Treat `presentationAttrCount > 0` as evidence that XMLV3 is using the safe
+  local presentation-attribute path for panel or choice contrast. It is not the
+  same as raw `style`/`class`. Review the screenshot for contrast, spacing, and
+  hierarchy; only patch it if the attributes create a noisy or unreadable
+  surface.
 - Treat `xmlv3_actions_render_single_column` as an action-layout blocker when
   there are three or more choices: use `<choices cols="2" align="stretch">` or a
   comparable layout pack structure before tuning prose.

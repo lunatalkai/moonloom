@@ -298,8 +298,9 @@ handoff shape. Use `npm run validate:fixture` when only the complete fixture or
 its expected structure changes. Use `npm run validate:xmlv3-presentation` when
 an XMLV3 welcome, scaffold, or fixture changes; it rejects left-heavy naked
 choice piles, controls nested inside `<scene>`, flat state JSON, and raw
-style/class hooks. Use `npm run validate:simulation` after recording
-MCP simulation evidence to check required probes, per-message preview coverage,
+style/class hooks while allowing constrained `panel` / `choice` presentation
+attributes. Use `npm run validate:simulation` after recording MCP simulation
+evidence to check required probes, per-message preview coverage,
 repair-packet requirements, and public-safe evidence shape. Use
 `npm run validate:acceptance` after a full trial-card run to check that assets,
 validation, render, app visual proof, accepted simulation, and per-message

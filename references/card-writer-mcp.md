@@ -302,9 +302,11 @@ renderer-structure map, not a replacement for screenshot review:
   as controls.
 - `stateSurface`: `expected` from server-side static analysis, `visible` from
   the browser preview payload when a status/state surface is actually rendered.
-- `toneCount`, `localStyleHookCount`, and `themeStyleHookCount`: whether visual
-  distinction comes from Theme V3 tones, HTML style hooks, or bound Theme V3 CSS
-  hooks.
+- `toneCount`, `localStyleHookCount`, `themeStyleHookCount`, and
+  `presentationAttrCount`: whether visual distinction comes from Theme V3 tones,
+  HTML style hooks, bound Theme V3 CSS hooks, or constrained XMLV3 presentation
+  attributes. `presentationAttrCount` is not a raw style warning by itself; use
+  the screenshot to judge readability and hierarchy.
 - `customToneCount` and `unresolvedToneCount`: whether XMLV3 uses custom tone
   names that are not covered by the current Theme V3 CSS. A nonzero
   `unresolvedToneCount` means the card may fall back to the default XMLV3 look

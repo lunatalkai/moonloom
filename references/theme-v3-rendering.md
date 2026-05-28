@@ -109,13 +109,27 @@ result flow can use optional tags such as `collapse`, `bar`, `tag`,
 `result-card`, or `share-text` when that pack is enabled.
 
 Use the layout pack when the author needs HTML div-like container structure:
-`panel`, `stack`, `row`, `grid`, `choices`, and `divider` create section blocks, grouped
-controls, compact columns, action groups, and visual separators without exposing raw
-`style`/`class` or arbitrary CSS inside XML. Treat layout as the safe structure
-layer; Theme V3 owns the color layer through theme-bound tone, palette, and
-panel tokens. A panel can carry a semantic `tone` or `variant`, but the actual
-color should come from the bound Theme V3 snapshot so clients can keep contrast
-and fallback behavior consistent.
+`panel`, `stack`, `row`, `grid`, `choices`, and `divider` create section blocks,
+grouped controls, compact columns, action groups, and visual separators without
+exposing raw `style`/`class` or arbitrary CSS inside XML.
+
+Treat layout as the safe structure layer. Theme V3 owns reusable identity through
+theme-bound tone, palette, and panel tokens. For local HTML-like section
+distinctions, XMLV3 also supports a constrained presentation-attribute escape
+hatch:
+
+- `panel`: `bg`, `background`, `border`, `color`, `text-color`, `txt-color`,
+  `title-color`, `subtitle-color`, `radius`, and `padding`
+- `choice`: `bg`, `background`, `border`, `color`, `text-color`, `txt-color`,
+  and `radius`
+
+These attributes are not arbitrary CSS. Use only safe color values, Theme V3
+variables, and tokenized radius/padding values. They are for card-specific local
+contrast and sectioning when a full forked theme would be heavier than the
+problem. Prefer Theme V3 variables for reusable style, and use presentation
+attributes sparingly where the screenshot needs one section or one action to
+stand apart immediately. A client that does not support them should still show
+readable XMLV3 content with ordinary panels and choices.
 
 Use `<choices cols="2" align="stretch" gap="sm">` for 2-4 short action buttons
 that should share horizontal space. Consecutive naked `<choice>` tags may still
@@ -137,8 +151,10 @@ same play value:
   clue, risk, status, input, and actions. XMLV3 should mirror that with
   `panel`, `stack`, `grid`, `divider`, and visible headings, not one long scene.
 - **local color parity**: HTML often gives each section a different background,
-  border, or accent. XMLV3 should map those distinctions to semantic `tone`
-  values and Theme V3 variables. Do not fake this with XML `style` or `class`.
+  border, or accent. XMLV3 should map durable identity to semantic `tone` values
+  and Theme V3 variables. Use constrained `panel` / `choice` presentation
+  attributes only for local section contrast. Do not fake this with XML
+  `style` or `class`.
 - **action density parity**: 2-4 short actions should occupy a balanced row or
   grid through `choices`, not several unequal left-aligned buttons.
 - **state parity**: durable meters and facts belong in `<state>` plus the
@@ -167,6 +183,10 @@ Read the render report as a parity map before making prose changes:
   moved to sibling layout blocks.
 - `themeHooks`, `customTones`, and `unresolvedTones` explain whether XMLV3 has
   enough Theme V3 backing to replace HTML local color/style blocks.
+- `presentationAttrs` explains whether the author used the safe XMLV3
+  presentation-attribute escape hatch. This is not the same as raw
+  `style`/`class`; inspect the screenshot for readability, contrast, and visual
+  hierarchy instead of treating it as a blocker by itself.
 - `stateSurface` should become visible in browser preview when state exists.
   Server-only reports may say `expected`; verify the clean preview status area
   before accepting the card.
