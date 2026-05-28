@@ -200,15 +200,19 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    express.
    If the author needs HTML div-like sectioning, grouped blocks, or local color
    distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,
-   `stack`, `row`, `grid`, `choices`, and `divider` for container, section
-   block, and action-button hierarchy. Use Theme V3 tone/color tokens for
-   reusable skin. For local section, button, form, collapse, tag, or meter
-   emphasis, use constrained presentation attributes such as `bg`, `border`,
+   `stack`, `row`, `grid`, `field`, `choices`, and `divider` for container,
+   section block, label-description facts, and action-button hierarchy. Use
+   `<field label="...">...</field>` for information rows; do not use row+tag+n
+   or `<row><tag>...</tag><n>...</n></row>` for label-description facts. Use
+   Theme V3 tone/color tokens for reusable skin. For local section, button,
+   form, collapse, tag, or meter emphasis, use constrained presentation
+   attributes such as `bg`, `border`,
    `color`, `label-color`, `track-bg`, `submit-bg`, `radius`, and `padding`
    instead of falling back to HTML.
    When a forked theme is needed, use CSS variables such as `--lt-panel-bg`,
-   `--lt-choice-border-color`, `--lt-form-field-bg`, `--lt-form-submit-bg`,
-   `--lt-collapse-bg`, and `--lt-bar-track-bg`. Do not use raw XML
+   `--lt-field-label-color`, `--lt-choice-border-color`,
+   `--lt-form-field-bg`, `--lt-form-submit-bg`, `--lt-collapse-bg`, and
+   `--lt-bar-track-bg`. Do not use raw XML
    `style`/`class`; the presentation attributes are the only allowed local
    styling shortcut.
    When these tags appear, include `extension_enable` for `layout` in the MCP

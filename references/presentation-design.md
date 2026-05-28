@@ -109,15 +109,18 @@ record why and hand off to `extension_enable`; if a client lacks the pack, the
 fallback must remain readable XMLV3 prose.
 
 If the need is "I want HTML div blocks with different local colors", try the
-layout extension first: `panel`, `stack`, `row`, `grid`, `choices`, and
-`divider` provide the container structure and action-button grouping. Use Theme
-V3 for reusable tone, palette, and panel color. When only one section or action
-needs local emphasis, use the constrained presentation attributes instead of
+layout extension first: `panel`, `stack`, `row`, `grid`, `field`, `choices`,
+and `divider` provide the container structure, label-description fact rows, and
+action-button grouping. Use Theme V3 for reusable tone, palette, and panel
+color. Use `<field label="...">...</field>` for information rows; do not use
+row+tag+n or `<row><tag>...</tag><n>...</n></row>` for label-description facts.
+When only one section or action needs local emphasis, use the constrained
+presentation attributes instead of
 falling back to HTML:
 
 ```xml
 <panel title="Current lead" bg="rgba(16, 22, 30, 0.82)" border="rgba(121, 168, 255, 0.42)" radius="lg" padding="md">
-  <n>The clue is readable because the block has its own local contrast.</n>
+  <field label="Clue">The clue is readable because the block has its own local contrast.</field>
 </panel>
 <choices cols="2" align="stretch" gap="sm">
   <choice bg="var(--lt-choice-bg)" border="rgba(255,255,255,0.24)">Check the lock</choice>
@@ -186,6 +189,7 @@ inner `<choice>` tags remain readable fallback actions.
 Theme V3 should carry the visual variables that HTML cards used to place in
 `div` style attributes. For layout-heavy XMLV3, plan tone CSS around:
 `--lt-panel-bg`, `--lt-panel-border`, `--lt-panel-title-color`,
+`--lt-field-label-color`, `--lt-field-body-color`,
 `--lt-choice-bg`, `--lt-choice-border-color`, `--lt-choice-color`,
 `--lt-form-bg`, `--lt-form-field-bg`, `--lt-form-option-bg`,
 `--lt-form-option-active-bg`, `--lt-form-control-accent`,

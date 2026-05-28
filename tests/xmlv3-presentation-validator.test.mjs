@@ -87,6 +87,18 @@ test('XMLV3 presentation validator rejects controls nested inside the scene body
   assert.ok(issueCodes(result).includes('xmlv3.controls.inside_scene'));
 });
 
+test('XMLV3 presentation validator rejects row tag narration used as information fields', () => {
+  const result = validateXmlv3Presentation(
+    validXml(`
+<panel title="Setup">
+  <row><tag>Player entry</tag><n>Who the player is and what they can do first.</n></row>
+</panel>`),
+    { filePath: 'roleWelcome.xml' },
+  );
+
+  assert.ok(issueCodes(result).includes('xmlv3.field.row_tag_n'));
+});
+
 test('XMLV3 presentation validator rejects flat state and raw styling hooks', () => {
   const result = validateXmlv3Presentation(
     `

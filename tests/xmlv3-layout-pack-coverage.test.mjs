@@ -11,7 +11,7 @@ test('Moonloom names the XMLV3 layout pack as the safe div-like structure layer'
 
   for (const source of [themeRendering, presentation, cardWriterMcp, presentationSkill, cardAuthor]) {
     assert.match(source, /layout pack|pack.*layout|layout.*extension/i);
-    assert.match(source, /panel[\s\S]{0,220}stack[\s\S]{0,220}row[\s\S]{0,220}grid[\s\S]{0,220}choices[\s\S]{0,220}divider/i);
+    assert.match(source, /panel[\s\S]{0,260}stack[\s\S]{0,260}row[\s\S]{0,260}grid[\s\S]{0,260}field[\s\S]{0,260}choices[\s\S]{0,260}divider/i);
     assert.match(source, /div-like|HTML div|container|section block|封裝|分層/i);
     assert.match(source, /Theme V3[\s\S]{0,260}(tone|color|palette|色|顏色)/i);
     assert.match(source, /extension_enable[\s\S]{0,160}layout|layout[\s\S]{0,160}extension_enable/i);
@@ -73,9 +73,24 @@ test('Moonloom documents Theme V3 CSS variable hooks for XMLV3 layout controls',
 
   for (const source of [themeRendering, presentation, cardWriterMcp, presentationSkill, cardAuthor]) {
     assert.match(source, /--lt-panel-bg/);
+    assert.match(source, /--lt-field-label-color/);
     assert.match(source, /--lt-choice-border-color/);
     assert.match(source, /--lt-form-submit-bg|--lt-form-field-bg/);
     assert.match(source, /--lt-collapse-bg/);
     assert.match(source, /--lt-bar-track-bg/);
+  }
+});
+
+test('Moonloom teaches field rows instead of row tag narration for label-description facts', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+  const cardWriterMcp = await readFile('references/card-writer-mcp.md', 'utf8');
+  const presentationSkill = await readFile('skills/lunatalk-presentation-director/SKILL.md', 'utf8');
+  const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
+
+  for (const source of [themeRendering, presentation, cardWriterMcp, presentationSkill, cardAuthor]) {
+    assert.match(source, /<field[\s\S]{0,120}label=/i);
+    assert.match(source, /row\+tag\+n|row \+ tag \+ n|<row><tag>|tag\+n/i);
+    assert.match(source, /label-description|label\/description|資訊欄位|信息行|fact/i);
   }
 });

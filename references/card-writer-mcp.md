@@ -178,10 +178,12 @@ presentation packet names a concrete pack need; the card must still degrade to
 readable XMLV3 prose if a client cannot render that pack.
 
 For HTML div-like hierarchy or per-section color needs, prefer the `layout`
-extension pack before custom HTML. `panel`, `stack`, `row`, `grid`, `choices`,
-and `divider` supply container, section block, and action-button group
-structure; Theme V3 supplies tone, palette, and panel color. When these tags
-appear in `roleWelcome`, call
+extension pack before custom HTML. `panel`, `stack`, `row`, `grid`, `field`,
+`choices`, and `divider` supply container, section block, label-description fact
+rows, and action-button group structure; Theme V3 supplies tone, palette, and
+panel color. Use `<field label="...">...</field>` for information rows; do not
+use row+tag+n or `<row><tag>...</tag><n>...</n></row>` for label-description
+facts. When these tags appear in `roleWelcome`, call
 `extension_enable` with `packId: "layout"` after patching the welcome and before
 render or simulation.
 
@@ -198,7 +200,8 @@ layout pack, the child choices must still be readable as fallback.
 When binding a forked Theme V3 snapshot for layout-heavy XMLV3 cards, prefer
 semantic CSS variable hooks over inline XML styling. Common hooks:
 `--lt-panel-bg`, `--lt-panel-border`, `--lt-choice-bg`,
-`--lt-choice-border-color`, `--lt-choice-color`, `--lt-form-bg`,
+`--lt-choice-border-color`, `--lt-choice-color`, `--lt-field-label-color`,
+`--lt-field-body-color`, `--lt-form-bg`,
 `--lt-form-field-bg`, `--lt-form-option-active-bg`,
 `--lt-form-submit-bg`, `--lt-collapse-bg`, and `--lt-bar-track-bg`.
 
