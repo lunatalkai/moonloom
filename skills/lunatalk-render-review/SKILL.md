@@ -36,8 +36,11 @@ visibility, opening clarity, or second-turn setup.
 2. Fix blockers before relying on visual review.
 3. Call `render_preview` with `mode: "full-card"` by default.
 4. If a specific issue is being debugged, use `mode: "xmlv3"` or `mode: "html"`.
-5. If the AI client can open a browser or inspect images, open `previewUrl` and
-   visually inspect desktop and mobile.
+5. If the AI client can open a browser or inspect images, open the clean
+   `previewUrl` exactly as returned and visually inspect desktop and mobile. Do
+   not add `debug=1` for normal UI review; debug chrome is for renderer
+   diagnosis only and can pollute the screenshot with headers, IDs, and report
+   panels.
 6. Read the preview page `capturePlan` when available. If it is segmented,
    capture every vertical segment before judging. For desktop, resize to
    `requiredCaptureWidth` when requested; do not split screenshots horizontally.
@@ -95,9 +98,10 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Read `structuredReport.surfaceDiagnostics` and, when available, the browser
   preview `report.surfaceDiagnostics`: check `sectionBlocks`, `panelBlocks`,
   `actionCount`, `groupedActionCount`, `fallbackActionGroupCount`,
-  `actionLayoutMaxColumns`, `formControlCount`, `stateSurface`, `toneCount`,
-  `localStyleHookCount`, `themeStyleHookCount`, `presentationAttrCount`,
-  `customToneCount`, `unresolvedToneCount`, and `nestedControlCount`.
+  `actionLayoutMaxColumns`, `choiceSpans` / `choiceSpanCount`,
+  `formControlCount`, `stateSurface`, `toneCount`, `localStyleHookCount`,
+  `themeStyleHookCount`, `presentationAttrCount`, `customToneCount`,
+  `unresolvedToneCount`, and `nestedControlCount`.
   Treat `stateSurface: expected` as a prompt to verify the browser preview shows
   the external state/status surface as `visible`.
 - Treat `presentationAttrCount > 0` as evidence that XMLV3 is using the safe
@@ -108,6 +112,12 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Treat `xmlv3_actions_render_single_column` as an action-layout blocker when
   there are three or more choices: use `<choices cols="2" align="stretch">` or a
   comparable layout pack structure before tuning prose.
+- Treat missing `choiceSpans` as a hierarchy gap when the screenshot needs a
+  primary action or HTML-style action weighting. Patch to
+  `<choices cols="4">` with `span="full"` / `span="2"` / `span="3"` / `span="4"`
+  for 2:1:1, 3:1, or full-width weighting, then verify mobile collapses to a
+  vertical or near-single-column readable path. Omit `span` for normal
+  one-column actions so fallback stays readable.
 - Treat `fallbackActionGroupCount > 0` as a repair signal even when
   `actionLayoutMaxColumns >= 2`: the renderer may have recovered naked
   consecutive `<choice>` tags into a usable 2-column fallback, but high-quality

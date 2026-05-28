@@ -34,6 +34,23 @@ test('Moonloom teaches choices as the XMLV3 action button group instead of left-
   }
 });
 
+test('Moonloom teaches weighted XMLV3 choice spans for action hierarchy', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+  const cardWriterMcp = await readFile('references/card-writer-mcp.md', 'utf8');
+  const presentationSkill = await readFile('skills/lunatalk-presentation-director/SKILL.md', 'utf8');
+  const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
+
+  for (const source of [themeRendering, presentation, cardWriterMcp, presentationSkill, cardAuthor]) {
+    assert.match(source, /cols="4"/);
+    assert.match(source, /span="full"/);
+    assert.match(source, /span="2"/);
+    assert.match(source, /2:1:1|3:1|weighted|權重|主行動/i);
+    assert.match(source, /mobile[\s\S]{0,180}(full|single|stack|collapse|一欄|直向)/i);
+    assert.match(source, /fallback|readable|可讀/i);
+  }
+});
+
 test('Moonloom rejects arbitrary XML style/class while allowing theme-bound layout tones', async () => {
   const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
   const presentation = await readFile('references/presentation-design.md', 'utf8');

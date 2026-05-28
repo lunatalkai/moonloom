@@ -5,7 +5,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const DEFAULT_XMLV3_PATH = 'examples/complete-synthetic-card-fixture.md';
-const VALID_CHOICE_COLS = new Set(['1', '2', '3', 'auto']);
+const VALID_CHOICE_COLS = new Set(['1', '2', '3', '4', 'auto']);
+const VALID_CHOICE_SPANS = new Set(['full', '2', '3', '4']);
 const MAX_SHORT_CHOICE_TEXT = 80;
 
 function issue(code, file, message) {
@@ -31,19 +32,35 @@ function countChoiceTags(xml) {
 function collectGroupedChoiceCount(xml) {
   let groupedChoiceCount = 0;
   let choicesGroupCount = 0;
+  let choiceSpanCount = 0;
   const invalidGroups = [];
+  const invalidSpans = [];
 
   for (const match of xml.matchAll(/<choices\b([^>]*)>([\s\S]*?)<\/choices>/gi)) {
     choicesGroupCount += 1;
     const attrs = match[1] || '';
+    const body = match[2] || '';
     const colsMatch = attrs.match(/\bcols\s*=\s*["']([^"']+)["']/i);
     if (!colsMatch || !VALID_CHOICE_COLS.has(colsMatch[1])) {
       invalidGroups.push(match[0]);
     }
-    groupedChoiceCount += countChoiceTags(match[2] || '');
+    for (const choiceMatch of body.matchAll(/<choice\b([^>]*)>/gi)) {
+      const choiceAttrs = choiceMatch[1] || '';
+      const spanMatch = choiceAttrs.match(/\bspan\s*=\s*["']([^"']+)["']/i);
+      if (!spanMatch) {
+        continue;
+      }
+      const span = spanMatch[1].trim().toLowerCase();
+      if (VALID_CHOICE_SPANS.has(span)) {
+        choiceSpanCount += 1;
+      } else {
+        invalidSpans.push(choiceMatch[0]);
+      }
+    }
+    groupedChoiceCount += countChoiceTags(body);
   }
 
-  return { groupedChoiceCount, choicesGroupCount, invalidGroups };
+  return { groupedChoiceCount, choicesGroupCount, choiceSpanCount, invalidGroups, invalidSpans };
 }
 
 function removeChoicesGroups(xml) {
@@ -93,6 +110,7 @@ function validateXmlv3Presentation(input, options = {}) {
         choiceCount: 0,
         groupedChoiceCount: 0,
         choicesGroupCount: 0,
+        choiceSpanCount: 0,
         hasPreviewState: false,
       },
     };
@@ -130,10 +148,21 @@ function validateXmlv3Presentation(input, options = {}) {
     }
   }
 
-  const { groupedChoiceCount, choicesGroupCount, invalidGroups } = collectGroupedChoiceCount(xml);
+  const {
+    groupedChoiceCount,
+    choicesGroupCount,
+    choiceSpanCount,
+    invalidGroups,
+    invalidSpans,
+  } = collectGroupedChoiceCount(xml);
   for (const _group of invalidGroups) {
     issues.push(
-      issue('xmlv3.choices.cols_invalid', file, 'Each <choices> group should declare cols="1|2|3|auto".'),
+      issue('xmlv3.choices.cols_invalid', file, 'Each <choices> group should declare cols="1|2|3|4|auto".'),
+    );
+  }
+  for (const _choice of invalidSpans) {
+    issues.push(
+      issue('xmlv3.choice.span_invalid', file, 'Each weighted <choice> span should be full, 2, 3, or 4. Omit span for a one-column item.'),
     );
   }
 
@@ -155,6 +184,7 @@ function validateXmlv3Presentation(input, options = {}) {
       choiceCount: countChoiceTags(xml),
       groupedChoiceCount,
       choicesGroupCount,
+      choiceSpanCount,
       hasPreviewState,
     },
   };
@@ -184,6 +214,7 @@ async function main() {
       `XMLV3 presentation validation passed: ${result.summary.choiceCount} choices`,
       `${result.summary.groupedChoiceCount} grouped choices`,
       `${result.summary.choicesGroupCount} choice groups`,
+      `${result.summary.choiceSpanCount} weighted choices`,
       `preview state: ${result.summary.hasPreviewState ? 'yes' : 'no'}.`,
     ].join(', '),
   );

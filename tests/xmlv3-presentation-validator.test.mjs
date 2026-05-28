@@ -31,7 +31,27 @@ test('XMLV3 presentation validator accepts grouped choices and preview-compatibl
   assert.deepEqual(result.issues, []);
   assert.equal(result.summary.choiceCount, 2);
   assert.equal(result.summary.groupedChoiceCount, 2);
+  assert.equal(result.summary.choiceSpanCount, 0);
   assert.equal(result.summary.hasPreviewState, true);
+});
+
+test('XMLV3 presentation validator accepts weighted choice layouts', () => {
+  const result = validateXmlv3Presentation(
+    validXml(`
+<choices cols="4" align="stretch" gap="sm">
+  <choice span="full" tone="primary" send="start the main route">Start the main route</choice>
+  <choice span="2" tone="clue" send="inspect the clue">Inspect the clue</choice>
+  <choice tone="neutral" send="wait">Wait</choice>
+  <choice tone="risk" send="take the risky route">Risk route</choice>
+</choices>`),
+    { filePath: 'roleWelcome.xml' },
+  );
+
+  assert.deepEqual(result.issues, []);
+  assert.equal(result.summary.choiceCount, 6);
+  assert.equal(result.summary.groupedChoiceCount, 6);
+  assert.equal(result.summary.choicesGroupCount, 2);
+  assert.equal(result.summary.choiceSpanCount, 2);
 });
 
 test('XMLV3 presentation validator rejects short naked choice piles', () => {

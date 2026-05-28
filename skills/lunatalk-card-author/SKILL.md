@@ -224,6 +224,13 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    `<choices cols="2" align="stretch" gap="sm">` and use semantic child `tone`
    hooks. Do not leave short buttons as an uneven left-aligned vertical stack
    unless each option is intentionally long prose.
+   When a screen needs visible action hierarchy, use weighted XMLV3 choices:
+   `<choices cols="4" align="stretch" gap="sm">` with `span="full"` for the
+   main action row and `span="2"` / `span="3"` / `span="4"` for 2:1:1, 3:1,
+   or full-width weighting. Omit `span` for normal one-column actions; do not
+   write `span="1"`. Mobile preview should collapse these buttons into a
+   vertical or near-single-column readable path, with fallback text still usable
+   if the layout pack is unavailable.
 13. Before calling `role_patch_jailbreak`, use or preserve
     `lunatalk-instruction-guardrail`. Only patch jailbreak text when the author
     explicitly asks for a real instruction-layer patch or confirms
