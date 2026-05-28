@@ -71,10 +71,12 @@ which meters are decorative and should be omitted.
    When the missing capability is HTML div-like structure or per-section color,
    prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`,
    `choices`, and `divider` create container, section block, and action-button
-   hierarchy, while Theme V3 owns theme-bound tone, palette, and panel color. Do
-   not place raw style/class or arbitrary CSS in XML. If this pack is used, the
-   MCP handoff must include `extension_enable` for `layout` plus a readable
-   XMLV3 fallback stance.
+   hierarchy, while Theme V3 owns reusable tone, palette, and panel color. Use
+   constrained `panel`/`choice` presentation attributes such as `bg`, `border`,
+   `color`, `radius`, and `padding` when a local block or action needs HTML-like
+   contrast without custom HTML. Do not place raw style/class or arbitrary CSS in
+   XML. If this pack is used, the MCP handoff must include `extension_enable` for
+   `layout` plus a readable XMLV3 fallback stance.
    Use Theme V3 CSS variables for the skin: `--lt-panel-bg`,
    `--lt-choice-border-color`, `--lt-form-submit-bg`, `--lt-collapse-bg`, and
    `--lt-bar-track-bg` are preferred hooks before considering HTML.
@@ -153,8 +155,9 @@ Self-review:
 - Do not choose HTML just because the card should look good. Use HTML only for a
   layout need XMLV3 and Theme V3 cannot express.
 - Do not use arbitrary XML `style`/`class` as a shortcut for HTML div styling.
-  Use layout pack `panel`, `stack`, `row`, `grid`, `choices`, and `divider`
-  plus Theme V3 tone/variant tokens, then check fallback readability.
+  Use layout pack `panel`, `stack`, `row`, `grid`, `choices`, and `divider`,
+  Theme V3 tone/variant tokens, and only the constrained presentation attributes
+  on `panel` / `choice`, then check fallback readability.
 - Do not leave several short action buttons as a left-heavy vertical pile. Use
   `<choices>` for button-grid intent, with semantic `tone` hooks on each child
   `<choice>` when the theme needs visual distinction.

@@ -14,8 +14,11 @@ Presentation is not decoration. It should make the card easier to play.
   treatments, atmosphere, and extension packs.
 - The layout pack is XMLV3's safe div-like layer. Use `panel`, `stack`, `row`,
   `grid`, `choices`, and `divider` for container, section block, grouping,
-  action-button layout, and separation;
-  use Theme V3 tone and color tokens for the visual identity behind those blocks.
+  action-button layout, and separation.
+- Theme V3 tone and color tokens carry reusable visual identity. Constrained
+  XMLV3 presentation attributes may carry card-specific local contrast for
+  `panel` and `choice`, but raw XML `style`/`class` still does not belong in
+  role content.
 - HTML is an exception for custom one-off layout or legacy migration.
 - Render review proves the result only after a real validation or preview exists.
 - Platform XMLV3 syntax belongs to the server guide. `roleDetailDesc` should
@@ -103,9 +106,22 @@ fallback must remain readable XMLV3 prose.
 
 If the need is "I want HTML div blocks with different local colors", try the
 layout extension first: `panel`, `stack`, `row`, `grid`, `choices`, and
-`divider` provide the container structure and action-button grouping, while
-Theme V3 provides theme-bound tone, palette, and panel color. Do not put raw
-style/class or arbitrary CSS in XML. Call
+`divider` provide the container structure and action-button grouping. Use Theme
+V3 for reusable tone, palette, and panel color. When only one section or action
+needs local emphasis, use the constrained presentation attributes instead of
+falling back to HTML:
+
+```xml
+<panel title="Current lead" bg="rgba(16, 22, 30, 0.82)" border="rgba(121, 168, 255, 0.42)" radius="lg" padding="md">
+  <n>The clue is readable because the block has its own local contrast.</n>
+</panel>
+<choices cols="2" align="stretch" gap="sm">
+  <choice bg="var(--lt-choice-bg)" border="rgba(255,255,255,0.24)">Check the lock</choice>
+  <choice bg="rgba(84, 46, 130, 0.55)" color="#ffffff">Question the witness</choice>
+</choices>
+```
+
+Do not put raw `style`/`class` or arbitrary CSS in XML. Call
 `extension_enable` for `layout` only when the structure changes play readability,
 state visibility, or action hierarchy; if unsupported, the fallback should still
 read as ordered XMLV3 prose.
@@ -141,9 +157,12 @@ When a screen has several short action choices, wrap them:
 </choices>
 ```
 
-Use semantic `tone` names as Theme V3 hooks. Do not copy HTML-style raw colors,
-pixel radii, or inline CSS into XMLV3. If a client does not support the layout
-pack, the inner `<choice>` tags remain readable fallback actions.
+Use semantic `tone` names as Theme V3 hooks when the style is reusable. Use
+constrained `bg`, `border`, `color`, and `radius` attributes on child choices
+only when the local action hierarchy needs to survive without a full theme fork.
+Do not copy arbitrary HTML `style` or `class` into XMLV3. If a client does not
+support the layout pack, the inner `<choice>` tags remain readable fallback
+actions.
 
 Theme V3 should carry the visual variables that HTML cards used to place in
 `div` style attributes. For layout-heavy XMLV3, plan tone CSS around:
