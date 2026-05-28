@@ -78,6 +78,10 @@ function hasPreviewStateShape(state) {
   );
 }
 
+function countFormControls(xml) {
+  return [...xml.matchAll(/<\s*(input|radio|checkbox)\b/gi)].length;
+}
+
 export function validateSystemIntakeFixture(markdown, options = {}) {
   const file = options.filePath || DEFAULT_FIXTURE_PATH;
   const issues = [];
@@ -122,6 +126,11 @@ export function validateSystemIntakeFixture(markdown, options = {}) {
     issues.push(issue('system_intake.choices_not_grouped', file, 'System intake fixture should group short actions with <choices cols="2">.'));
   }
 
+  const formControlCount = countFormControls(xml);
+  if (formControlCount < 6) {
+    issues.push(issue('system_intake.form_too_sparse', file, 'Dense intake fixture should expose at least six XMLV3 form controls.'));
+  }
+
   const { state, error } = parseState(xml);
   let hasPreviewState = false;
   if (error === 'missing') {
@@ -141,6 +150,7 @@ export function validateSystemIntakeFixture(markdown, options = {}) {
       markers: REQUIRED_MARKERS.filter((marker) => markdown.toLowerCase().includes(marker.toLowerCase())).length,
       xmlTags: tags.size,
       choicesGrouped,
+      formControlCount,
       hasPreviewState,
     },
   };
@@ -168,6 +178,7 @@ async function main() {
       `System intake fixture validation passed: ${result.summary.markers} markers`,
       `${result.summary.xmlTags} XMLV3 tags`,
       `grouped choices: ${result.summary.choicesGrouped ? 'yes' : 'no'}`,
+      `form controls: ${result.summary.formControlCount}`,
       `preview state: ${result.summary.hasPreviewState ? 'yes' : 'no'}.`,
     ].join(', '),
   );

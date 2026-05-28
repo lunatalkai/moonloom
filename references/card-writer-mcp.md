@@ -308,7 +308,8 @@ renderer-structure map, not a replacement for screenshot review:
   `span="full"` or `span="2"` rendered and expressed primary/secondary action
   hierarchy.
 - `formControlCount`: whether setup inputs/radios/checkboxes actually rendered
-  as controls.
+  as controls. Intake-first system cards should normally keep at least six
+  rendered controls when matching a dense HTML setup surface.
 - `stateSurface`: `expected` from server-side static analysis, `visible` from
   the browser preview payload when a status/state surface is actually rendered.
 - `toneCount`, `localStyleHookCount`, `themeStyleHookCount`, and

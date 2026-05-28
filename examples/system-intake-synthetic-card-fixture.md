@@ -41,10 +41,12 @@ System promise
   returns one dispatch plan or one concrete next branch.
 
 Setup wizard
-- Required inputs: signal focus and response mode. Optional inputs: constraints
-  and route risk. Defaults: missing focus becomes "stabilize the most time-
-  sensitive signal"; missing mode becomes "balanced"; missing constraints become
-  "protect bystanders, preserve evidence, avoid irreversible action."
+- Required inputs: signal focus, known location, and response mode. Optional
+  inputs: route risk, hard limits, crew posture, evidence handling, available
+  channels, and do-not-cross constraints. Defaults: missing focus becomes
+  "stabilize the most time-sensitive signal"; missing mode becomes "balanced";
+  missing constraints become "protect bystanders, preserve evidence, avoid
+  irreversible action."
 
 Mechanics / state model
 - Visible state: signal clarity, civic pressure, available crew, and current
@@ -97,7 +99,6 @@ Do / Avoid
 ```xml
 <scene location="Signal Desk, south archive" time="23:40" mood="urgent">
 <n>Three call slips arrive together: a flooded underpass, a wrong-address welfare check, and a silent line that keeps reconnecting every ninety seconds.</n>
-<speaker name="Archivist Iven" />
 <d>Choose how we triage the first signal. If you leave a field blank, I will start with safe defaults and produce a dispatch plan.</d>
 </scene>
 <stack gap="md">
@@ -111,8 +112,14 @@ Do / Avoid
 </grid>
 <form btn="Start dispatch plan" bg="rgba(16,22,30,.72)" border="rgba(120,220,232,.28)" label-color="#78dce8" field-bg="rgba(255,255,255,.08)" field-border="rgba(120,220,232,.36)" submit-bg="#78dce8" submit-color="#081016" radius="lg" padding="sm">
 <input label="Signal focus" name="focus" value="stabilize the silent line first" />
+<input label="Known location" name="location" value="south rail crossing underpass" />
+<input label="Hard limit" name="limit" value="confirm before splitting crews" />
 <radio label="Response mode" name="mode" options="safe,balanced,risky" />
+<radio label="Crew posture" name="posture" options="hold perimeter,enter quietly,rapid extraction" />
+<radio label="Evidence handling" name="evidence" options="preserve scene,record first,prioritize rescue" />
 <checkbox label="Constraints" name="constraints" options="protect bystanders,preserve evidence,avoid irreversible action" />
+<checkbox label="Available channels" name="channels" options="radio line,field camera,public works log" />
+<checkbox label="Do not cross" name="limits" options="no forced entry,no solo dispatch,no public broadcast" />
 </form>
 <divider label="next action" />
 <choices cols="2" align="stretch" gap="sm">
@@ -135,7 +142,7 @@ scene, active signal, visible state, setup defaults, and four action choices.
 - primary contract: system/simulator
 - player role: temporary dispatcher
 - setup wizard: focus input, response-mode radio, constraints checkbox,
-  default-start action
+  dense intake controls, and default-start action
 - state model: clarity, pressure, crew, route, trust, hidden contradictions
 - event pool: concrete signals with object, time pressure, ambiguity, cost
 - progression loop: triage -> contradiction -> tradeoff -> unresolved return hook
@@ -150,7 +157,8 @@ scene, active signal, visible state, setup defaults, and four action choices.
 - Render desktop and mobile.
 - Inspect `surfaceDiagnostics` for sectionBlocks, panelBlocks, groupedActionCount,
   actionLayoutMaxColumns, formControlCount, stateSurface, presentationAttrCount,
-  unresolvedToneCount, and nestedControlCount.
+  unresolvedToneCount, and nestedControlCount. Dense intake parity should keep
+  `formControlCount >= 6` on clean preview.
 - Use the preview `capturePlan`; capture all vertical segments before judging
   long output. Do not shorten the card because one screenshot misses the bottom.
 

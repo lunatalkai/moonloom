@@ -42,7 +42,8 @@ Token architecture packet:
 Use `validate_role.tokenBudget` as a structural diagnostic, not as a taste
 judgment.
 
-- `roleDescChars`: promise layer. Too long means the premise is not scannable.
+- `roleDescChars`: promise layer for display/search. `roleDesc` is not sent as
+  model input in normal chat, so do not use it for AI-input cost math.
 - `roleDetailDescChars`: durable engine. Too short means the card may drift after
   the first turn.
 - `roleWelcomeChars`: play layer. Too long usually means the welcome is carrying
@@ -51,6 +52,32 @@ judgment.
   strong signal to move durable content into detail.
 - `estimatedTokens`: comparison signal. Use it to compare revisions, not as a
   billing statement.
+
+## Tokenizer Baseline
+
+For current card analysis, use `tiktoken` with `o200k_base` as the single
+offline tokenizer baseline. Apply the same baseline to V2 HTML, XMLV3, Theme V3,
+OpenAI, Claude, and unknown-provider budget reviews so diffs are comparable.
+Treat the result as a local structure and attention-cost estimate, not an exact
+provider billing statement.
+
+Input-side budget is `roleDetailDesc + roleWelcome`, not `roleDesc`. Do not make
+the detail engine hollow just to reduce tokens; a thin detail creates generic
+characters and weak long chats.
+
+When reviewing V2 HTML or XMLV3 bloat, measure both:
+
+- full AI output tokens: everything the AI must generate per turn
+- visible text tokens: prose, labels, and changed semantic values after stripping
+  markup/CSS
+- structure tokens: full AI output minus visible values, including repeated tags, attributes,
+  inline CSS, class names, and wrapper scaffolding
+
+A high structure-token share is a format attention problem, not just a cost
+problem. It means the model is spending output and attention on layout syntax
+instead of current scene change, state change, consequence, voice, and player
+agency. The fix is usually to move reusable visual style into Theme V3 and make
+XMLV3 emit only semantic structure and changed values.
 
 ## Field Targets
 
@@ -140,6 +167,11 @@ Visual structure earns tokens only when it clarifies:
 
 Use XMLV3 for semantic scene structure and Theme V3 for reusable style. Use HTML
 only for a specific layout need that XMLV3 and Theme V3 cannot express.
+
+For XMLV3, do not copy V2 HTML's token profile. Preserve the useful information
+hierarchy, but avoid per-turn CSS, class-heavy wrappers, repeated speaker labels,
+unchanged setup forms, and decorative panels. After setup, spend AI output tokens
+only on the current beat, changed state, consequences, and next playable actions.
 
 ## Patch Order
 
