@@ -87,6 +87,12 @@ which meters are decorative and should be omitted.
    When a screen has 2-4 short action buttons, prefer
    `<choices cols="2" align="stretch" gap="sm">` over several naked `<choice>`
    tags so the preview does not collapse into an uneven left-aligned stack.
+   When one action should carry more weight, use weighted XMLV3 choices:
+   `<choices cols="4" align="stretch" gap="sm">` with `span="full"` for the
+   main action row and `span="2"` / `span="3"` / `span="4"` for 2:1:1, 3:1,
+   or full-width weighting. Omit `span` for normal one-column actions, keep
+   the fallback readable, and verify mobile collapses to a vertical or
+   near-single-column path instead of cramped buttons.
 6. Keep XMLV3 evolution on the compatible XMLV3 extension target. Do not propose
    XMLV4/XMLV5 for backward-compatible additions; use optional tags,
    attributes, packs, and fallback behavior.

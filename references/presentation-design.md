@@ -119,6 +119,12 @@ falling back to HTML:
   <choice bg="var(--lt-choice-bg)" border="rgba(255,255,255,0.24)">Check the lock</choice>
   <choice bg="rgba(84, 46, 130, 0.55)" color="#ffffff">Question the witness</choice>
 </choices>
+<choices cols="4" align="stretch" gap="sm">
+  <choice span="full" tone="primary">Begin the main route</choice>
+  <choice span="2" tone="clue">Inspect the clue</choice>
+  <choice tone="neutral">Wait</choice>
+  <choice tone="risk">Take the risk</choice>
+</choices>
 <bar label="Pressure" value="71" max="100" color="#fb7185" track-bg="rgba(255,255,255,0.08)" />
 ```
 
@@ -126,6 +132,13 @@ Do not put raw `style`/`class` or arbitrary CSS in XML. Call
 `extension_enable` for `layout` only when the structure changes play readability,
 state visibility, or action hierarchy; if unsupported, the fallback should still
 read as ordered XMLV3 prose.
+
+Use weighted `<choices cols="4">` only when action hierarchy matters. A primary
+button may use `span="full"`; a secondary action may use `span="2"` for a 2:1:1
+layout, or `span="3"` / `span="4"` for 3:1 and full-width weighting. Omit
+`span` for a normal one-column action. On mobile, the same layout should collapse
+to a vertical or near-single-column path so text remains readable instead of
+becoming cramped.
 
 ## XMLV3 planning
 

@@ -186,8 +186,14 @@ appear in `roleWelcome`, call
 render or simulation.
 
 For several short action buttons, use `<choices cols="2" align="stretch">` with
-child `<choice>` tags instead of a left-heavy vertical stack. Use semantic
-`tone` hooks on the child choices and rely on Theme V3 for color.
+child `<choice>` tags instead of a left-heavy vertical stack. When the card needs
+HTML-style action hierarchy, use `<choices cols="4">` with
+`<choice span="full">` for a primary row or `span="2"` / `span="3"` / `span="4"`
+for 2:1:1, 3:1, or full-width weighting. Omit `span` for normal one-column
+actions; do not write `span="1"`. Mobile preview should collapse the weighted
+choices into a vertical or near-single-column readable path. Use semantic `tone`
+hooks on the child choices and rely on Theme V3 for color. If a client lacks the
+layout pack, the child choices must still be readable as fallback.
 
 When binding a forked Theme V3 snapshot for layout-heavy XMLV3 cards, prefer
 semantic CSS variable hooks over inline XML styling. Common hooks:
@@ -298,6 +304,9 @@ renderer-structure map, not a replacement for screenshot review:
 - `actionLayoutMaxColumns`: the widest rendered or inferred row of action
   buttons. `1` with three or more actions usually means the UI is a left-heavy
   vertical button stack instead of a useful action grid.
+- `choiceSpans` / `choiceSpanCount`: whether weighted choices such as
+  `span="full"` or `span="2"` rendered and expressed primary/secondary action
+  hierarchy.
 - `formControlCount`: whether setup inputs/radios/checkboxes actually rendered
   as controls.
 - `stateSurface`: `expected` from server-side static analysis, `visible` from
@@ -327,7 +336,10 @@ changing writing logic. If XMLV3 cannot show sectioning, action density, form
 controls, or a visible state surface, patch XMLV3 layout / Theme V3 first.
 
 The first version uses client-side capture. If the AI client has browser or
-multimodal access, open `previewUrl` and inspect it visually. If
+multimodal access, open the clean `previewUrl` exactly as returned and inspect
+it visually. Do not append `debug=1` during ordinary UI review; debug mode is
+only for renderer diagnosis because it adds headers, IDs, and report panels that
+are not part of the user-facing chat output. If
 `evaluation.status` is `warning`, follow `nextRecommendedTools`, patch
 `roleWelcome`, rerun `validate_role`, then rerun `render_preview`.
 

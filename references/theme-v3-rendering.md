@@ -141,15 +141,23 @@ form, one collapse, one tag, or one meter to stand apart immediately. A client
 that does not support them should still show readable XMLV3 content with
 ordinary panels, choices, forms, collapses, tags, and bars.
 
-Use `<choices cols="2" align="stretch" gap="sm">` for 2-4 short action buttons
-that should share horizontal space. Consecutive naked `<choice>` tags may still
-render as a usable fallback grid, including a full-width odd final item, but this
-is a fallback path: the report should show `fallbackActionGroups`, and the author
-has not declared grouping, density, or tone strategy. Use explicit `choices` for
-short actions unless every option is intentionally long prose. `choices` may
-carry `cols="1|2|3|auto"`, `align="start|center|end|stretch"`, `gap`, and
-`variant`; each child `<choice>` may carry semantic `tone`, `variant`, `width`,
-or `align` hooks. Use these as Theme V3 hooks, not arbitrary inline styling. If a
+Use `<choices cols="2" align="stretch" gap="sm">` for ordinary 2-4 short action
+buttons that should share horizontal space. Use weighted action hierarchy when
+one action should visually lead the set: `<choices cols="4">` with
+`<choice span="full">` for a primary row, or `span="2"` / `span="3"` / `span="4"`
+for 2:1:1, 3:1, or full-width weighting. Omit `span` for a normal one-column
+item; do not write `span="1"`. Mobile preview collapses weighted choices into a
+vertical or near-single-column reading path, so the fallback remains readable
+instead of forcing cramped mini-buttons.
+
+Consecutive naked `<choice>` tags may still render as a usable fallback grid,
+including a full-width odd final item, but this is a fallback path: the report
+should show `fallbackActionGroups`, and the author has not declared grouping,
+density, tone strategy, or action hierarchy. Use explicit `choices` for short
+actions unless every option is intentionally long prose. `choices` may carry
+`cols="1|2|3|4|auto"`, `align="start|center|end|stretch"`, `gap`, and `variant`;
+each child `<choice>` may carry semantic `tone`, `variant`, `width`, `align`, or
+`span` hooks. Use these as Theme V3 hooks, not arbitrary inline styling. If a
 client lacks the layout pack, the child `<choice>` tags still remain readable and
 clickable as fallback.
 
@@ -166,7 +174,9 @@ same play value:
   attributes only for local section contrast. Do not fake this with XML
   `style` or `class`.
 - **action density parity**: 2-4 short actions should occupy a balanced row or
-  grid through `choices`, not several unequal left-aligned buttons.
+  grid through `choices`, not several unequal left-aligned buttons. When HTML
+  gives the primary action more visual weight, XMLV3 should use weighted
+  `cols="4"` plus `span="full"` / `span="2"` rather than flattening every button.
 - **state parity**: durable meters and facts belong in `<state>` plus the
   external state/status surface; player-facing explanations belong in visible
   `panel`, `bar`, `tag`, or prose.
@@ -193,6 +203,8 @@ writing logic.
 Read the render report as a parity map before making prose changes:
 
 - `actionColumns` should be at least 2 when there are 3-4 short actions.
+- `choiceSpans` / `choiceSpanCount` should be nonzero when a primary action,
+  2:1:1 grouping, or 3:1 weighted hierarchy is part of the intended layout.
 - `groupedActions` means the author used an explicit layout group; this is
   preferred for dense action rows.
 - `fallbackActionGroups` means the renderer rescued naked `<choice>` siblings.
@@ -266,7 +278,10 @@ handlers, or external URLs. Treat any validation blocker as mandatory to fix.
 2. Fix validation blockers before relying on visual review.
 3. Call `render_preview` with `mode: "full-card"` unless inspecting a specific
    `html` or `xmlv3` issue.
-4. Open the `previewUrl` when the client has browser or multimodal access.
+4. Open the clean `previewUrl` when the client has browser or multimodal access.
+   Do not add `debug=1` during ordinary UI review; debug chrome is only for
+   renderer diagnosis and can add headers, IDs, and report panels that should
+   not be judged as part of the card output.
 5. Read `capturePlan` and capture every required vertical segment before visual
    judgment.
 6. Read `evaluation` for capture readiness, semantic structure, readability, and

@@ -25,9 +25,23 @@ test('Moonloom render review reads action layout diagnostics before prose repair
 
   for (const source of [themeRendering, renderReview]) {
     assert.match(source, /actionColumns|actionLayoutMaxColumns/);
+    assert.match(source, /choiceSpans|choiceSpanCount/);
     assert.match(source, /fallbackActionGroups|fallbackActionGroupCount/);
     assert.match(source, /naked[\s\S]*<choice>|consecutive[\s\S]*<choice>/);
     assert.match(source, /explicit[\s\S]*<choices>/);
     assert.match(source, /horizontal splitting|left\/right halves|full-width/i);
+  }
+});
+
+test('Moonloom keeps normal visual review on clean preview URLs', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const renderReview = await readFile('skills/lunatalk-render-review/SKILL.md', 'utf8');
+  const cardWriterMcp = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  for (const source of [themeRendering, renderReview, cardWriterMcp]) {
+    assert.match(source, /clean[\s\S]*previewUrl/i);
+    assert.match(source, /Do[\s\S]*not[\s\S]*(add|append) `debug=1`/i);
+    assert.match(source, /debug[\s\S]*renderer\s+diagnosis/i);
+    assert.match(source, /headers[\s\S]*IDs[\s\S]*report\s+panels/i);
   }
 });
