@@ -22,8 +22,9 @@ Presentation is not decoration. It should make the card easier to play.
 - HTML is an exception for custom one-off layout or legacy migration.
 - Render review proves the result only after a real validation or preview exists.
 - Platform XMLV3 syntax belongs to the server guide. `roleDetailDesc` should
-  carry only the card-specific format contract: state fields, choice rules,
-  pack choice, visible status meaning, and player-agency boundaries.
+  carry only the card-specific format contract: when this card should use
+  controls, state fields, choice rules, pack choice, visible status meaning,
+  and player-agency boundaries.
 - XMLV3 compatible extension work stays on one target. Do not create XMLV4;
   add optional tags, optional attributes, or packs with fallback behavior.
 
@@ -146,6 +147,93 @@ layout, or `span="3"` / `span="4"` for 3:1 and full-width weighting. Omit
 `span` for a normal one-column action. On mobile, the same layout should collapse
 to a vertical or near-single-column path so text remains readable instead of
 becoming cramped.
+
+## XMLV3 Control Catalog
+
+Use this catalog when planning a card surface. It is not something to paste into
+`roleDetailDesc`; roleDetailDesc should state when this card should use controls,
+what state fields change, and what each visible action/status means.
+
+- Core story: `<scene>`, `<n>`, `<d>`, and `<quote>` cover scene grouping,
+  narration, dialogue, and inner emphasis. `<speaker>` is only for speaker
+  changes.
+- Actions: `<choices>` groups 2-4 `<choice>` buttons; naked `<choice>` is a
+  fallback for one action.
+- Forms: `<form>`, `<input>`, `<radio>`, `<checkbox>`, and `<option>` collect
+  setup or intake.
+- Layout: `<panel>`, `<stack>`, `<row>`, `<grid>`, `<field>`, and `<divider>`
+  provide section blocks, vertical rhythm, short rows, compact columns,
+  label-description facts, and separators.
+- Status / mini-game: `<bar>` is only for continuous numeric values;
+  `<collapse>`, `<tag>`, `<result-card>`, and `<share-text>` cover optional
+  rules, badges, results, and share text.
+- Battle: `<action>`, `<damage>`, and `<turn>` are battle resolution.
+- Inventory: `<loot>`, `<item>`, `<stat>`, and `<desc>` are item acquisition and
+  item cards.
+- TRPG: `<roll>`, `<check>`, and `<announcement>` are dice, checks, and system
+  notices.
+- VN: `<cg>` and `<flag>` are rare visual-novel visual/route markers.
+
+Control parameter reference:
+
+- scene: mood/location/time. Use for atmosphere, place, and time on one story
+  beat; `mood` is a theme hook.
+- n/d/quote/speaker: no required params. Use `speaker` only when the active
+  speaker changes.
+- choice: send/tone/variant/width/align/span/type/category. `send` is the full
+  user intent; `tone`, `type`, and `category` are semantic hooks; `variant` is
+  `soft|solid|outline|ghost|glass`; `width` is `auto|full|half|third|fill`;
+  `align` is `left|center|right`; `span` is `full|2|3|4`.
+- state: scene/status/relationships. Hidden JSON only; use it for machine
+  updates that later rendering or behavior depends on.
+- form: btn/submit-label. Use for first-turn setup or creator intake.
+- input: name/label/placeholder/value/type. Use for editable text setup.
+- radio/checkbox: name/label/options. Use radio for one-of-many and checkbox
+  for many-of-many; child `<option>` may provide explicit values.
+- option: value/label. Use stable values for submitted form data.
+- panel: title/subtitle/tone/variant. Use one compact section, clue card, status
+  block, or setup group.
+- stack: gap. Use `xs|sm|md|lg` for vertical rhythm.
+- row: gap/wrap/align/justify. Use short chips or tiny facts; avoid
+  row+tag+n for information fields.
+- grid: cols/gap. Use `cols=1|2|3` for short comparable facts.
+- field: label/value/tone. Use label + description facts, status facts, task
+  summaries, and checklist items.
+- choices: cols/gap/align/variant. Use `cols=1|2|3|4|auto`, gap
+  `xs|sm|md|lg`, align `start|center|end|stretch`, and variant
+  `soft|solid|outline|ghost|glass`.
+- divider: label. Use sparingly for scan breaks.
+- bar: label/value/max/color. Use continuous values only and keep it synced with
+  hidden `<state>`.
+- tag: color/bg/background/text-color/txt-color/border/radius. Use small badges
+  or resource markers.
+- collapse: title/open. Use optional rules, help, lore, or logs.
+- result-card: title/theme. Use final outcomes or shareable mini-game results.
+- share-text: no required params. Use after result-card for a short share block.
+- action: by/type/target/skill/dmg/crit. Use only for battle actions.
+- damage: target/amount/type. Use battle damage/heal numbers.
+- turn: next. Use battle turn ownership.
+- item: id/name/rarity/type. Use real item cards inside `<loot>`; `<stat>` and
+  `<desc>` carry stat and description lines.
+- roll: dice/skill/dc/result/total/success. Use resolved TRPG dice rolls.
+- check: type/skill/dc/roll/success. Use active/passive checks.
+- announcement: type. Use `death|levelup|warn|info` for system notices.
+- cg: prompt/style/seq/url/status/width/height. Use rare VN CG moments;
+  `seq` deduplicates and `status` is `loading|ready|failed`.
+- flag: key/value. Invisible route marker; durable state should also live in
+  `<state>`.
+
+When to use:
+
+- Story tags carry immediate scene and dialogue.
+- Layout tags carry information hierarchy, not decoration.
+- Form tags carry first setup and intake.
+- Choices carry concrete next actions; each choice should have one intent.
+- State carries hidden truth; visible fields, bars, tags, and panels explain it
+  to the player.
+- Keep the result mobile-first: readable body text, line-height around 1.5-1.75,
+  at least 4.5:1 contrast for normal text, short touch-friendly choices, and no
+  color-only meaning.
 
 ## XMLV3 planning
 
