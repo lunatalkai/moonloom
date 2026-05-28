@@ -193,9 +193,10 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,
    `stack`, `row`, `grid`, `choices`, and `divider` for container, section
    block, and action-button hierarchy. Use Theme V3 tone/color tokens for
-   reusable skin. For local section or button emphasis, use constrained
-   `panel`/`choice` presentation attributes such as `bg`, `border`, `color`,
-   `radius`, and `padding` instead of falling back to HTML.
+   reusable skin. For local section, button, form, collapse, tag, or meter
+   emphasis, use constrained presentation attributes such as `bg`, `border`,
+   `color`, `label-color`, `track-bg`, `submit-bg`, `radius`, and `padding`
+   instead of falling back to HTML.
    When a forked theme is needed, use CSS variables such as `--lt-panel-bg`,
    `--lt-choice-border-color`, `--lt-form-field-bg`, `--lt-form-submit-bg`,
    `--lt-collapse-bg`, and `--lt-bar-track-bg`. Do not use raw XML

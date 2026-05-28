@@ -122,14 +122,24 @@ hatch:
   `title-color`, `subtitle-color`, `radius`, and `padding`
 - `choice`: `bg`, `background`, `border`, `color`, `text-color`, `txt-color`,
   and `radius`
+- `form`: `bg`, `background`, `border`, `label-color`, `field-bg`,
+  `field-border`, `option-bg`, `option-active-bg`, `accent`, `submit-bg`,
+  `submit-color`, `submit-txt-color`, `radius`, and `padding`
+- `collapse`: `bg`, `background`, `border`, `title-color`, `color`,
+  `text-color`, `txt-color`, and `radius`
+- `tag`: `bg`, `background`, `color`, `text-color`, `txt-color`, `border`,
+  and `radius`; for legacy tag compatibility, `color` is the tag background
+- `bar`: `track-bg`, `label-color`, `value-color`, `bg`, `background`,
+  `color`, `text-color`, and `txt-color`
 
 These attributes are not arbitrary CSS. Use only safe color values, Theme V3
 variables, and tokenized radius/padding values. They are for card-specific local
 contrast and sectioning when a full forked theme would be heavier than the
 problem. Prefer Theme V3 variables for reusable style, and use presentation
-attributes sparingly where the screenshot needs one section or one action to
-stand apart immediately. A client that does not support them should still show
-readable XMLV3 content with ordinary panels and choices.
+attributes sparingly where the screenshot needs one section, one action, one
+form, one collapse, one tag, or one meter to stand apart immediately. A client
+that does not support them should still show readable XMLV3 content with
+ordinary panels, choices, forms, collapses, tags, and bars.
 
 Use `<choices cols="2" align="stretch" gap="sm">` for 2-4 short action buttons
 that should share horizontal space. Consecutive naked `<choice>` tags may still

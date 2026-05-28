@@ -17,8 +17,8 @@ Presentation is not decoration. It should make the card easier to play.
   action-button layout, and separation.
 - Theme V3 tone and color tokens carry reusable visual identity. Constrained
   XMLV3 presentation attributes may carry card-specific local contrast for
-  `panel` and `choice`, but raw XML `style`/`class` still does not belong in
-  role content.
+  `panel`, `choice`, `form`, `collapse`, `tag`, and `bar`, but raw XML
+  `style`/`class` still does not belong in role content.
 - HTML is an exception for custom one-off layout or legacy migration.
 - Render review proves the result only after a real validation or preview exists.
 - Platform XMLV3 syntax belongs to the server guide. `roleDetailDesc` should
@@ -119,6 +119,7 @@ falling back to HTML:
   <choice bg="var(--lt-choice-bg)" border="rgba(255,255,255,0.24)">Check the lock</choice>
   <choice bg="rgba(84, 46, 130, 0.55)" color="#ffffff">Question the witness</choice>
 </choices>
+<bar label="Pressure" value="71" max="100" color="#fb7185" track-bg="rgba(255,255,255,0.08)" />
 ```
 
 Do not put raw `style`/`class` or arbitrary CSS in XML. Call
@@ -158,11 +159,10 @@ When a screen has several short action choices, wrap them:
 ```
 
 Use semantic `tone` names as Theme V3 hooks when the style is reusable. Use
-constrained `bg`, `border`, `color`, and `radius` attributes on child choices
-only when the local action hierarchy needs to survive without a full theme fork.
-Do not copy arbitrary HTML `style` or `class` into XMLV3. If a client does not
-support the layout pack, the inner `<choice>` tags remain readable fallback
-actions.
+constrained local attributes only when the action, form, collapse, tag, or meter
+hierarchy needs to survive without a full theme fork. Do not copy arbitrary HTML
+`style` or `class` into XMLV3. If a client does not support the layout pack, the
+inner `<choice>` tags remain readable fallback actions.
 
 Theme V3 should carry the visual variables that HTML cards used to place in
 `div` style attributes. For layout-heavy XMLV3, plan tone CSS around:
