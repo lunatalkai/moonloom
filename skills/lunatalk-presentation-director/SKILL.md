@@ -18,6 +18,9 @@ presentation packet must be preserved into field assembly. Read
 `../../references/state-economy-design.md` when visible status, hidden JSON, or
 status panels require unsettled state-field decisions. Use
 `lunatalk-state-economist` first when state economy is unresolved. Read
+`../../references/system-intake-card-design.md` when the first screen is a
+system/simulator setup wizard, intake console, mission board, generator intake,
+or HTML-to-XMLV3 panel/form/choices parity problem. Read
 `../../references/opening-design.md` when first-screen beats or second-turn
 change are incomplete. Read `../../references/token-economy.md` when visual
 structure may become welcome bloat. Read `../../references/agency-design.md`
@@ -95,6 +98,10 @@ which meters are decorative and should be omitted.
    action density, state surface, form controls, and desktop/mobile density. If
    XMLV3 cannot express the required play value yet, patch the layout/theme plan
    before changing writing logic.
+   For system/simulator and generator intake screens, also read
+   `system-intake-card-design.md`: keep the scene beat separate from the setup
+   wizard, then map the console into sibling `panel`, `grid`, `form`, `bar`,
+   `choices`, and preview-compatible `state` blocks.
 10. State the token stance without inventing tokenBudget numbers.
 11. Provide a compact XMLV3 scaffold only when it clarifies structure.
     If the scaffold changes the XMLV3 welcome structure, include
@@ -162,6 +169,9 @@ Self-review:
 - Do not leave several short action buttons as a left-heavy vertical pile. Use
   `<choices>` for button-grid intent, with semantic `tone` hooks on each child
   `<choice>` when the theme needs visual distinction.
+- Do not flatten an intake-first setup wizard into one scene. If the card needs
+  panel/form/choices controls, make the XMLV3 structure prove the same play
+  value as the HTML control surface before improving prose.
 - Do not continue writing-card logic when the renderer cannot show the intended
   structure. First repair XMLV3/Theme V3 sectioning, tones, action grids, state
   surface, and form controls until the preview carries the same play value as a

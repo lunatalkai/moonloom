@@ -181,6 +181,15 @@ If XMLV3 fails this checklist, patch the presentation packet or Theme V3 before
 improving the writing logic. A weak renderer makes even a strong role engine
 look worse than it is.
 
+For system/simulator and generator cards with a setup wizard or intake console,
+also read `system-intake-card-design.md`. These cards should not collapse rich
+HTML control surfaces into one XMLV3 scene. Preserve play value by mapping the
+intake into sibling `panel`, `grid`, `form`, `bar`, `choices`, and
+preview-compatible `state` blocks, with Theme V3 tones or constrained
+presentation attributes carrying local color. The goal is HTML-to-XMLV3 parity
+for sectioning, form controls, state, and balanced actions before changing the
+writing logic.
+
 Read the render report as a parity map before making prose changes:
 
 - `actionColumns` should be at least 2 when there are 3-4 short actions.

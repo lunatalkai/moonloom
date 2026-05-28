@@ -21,10 +21,13 @@ Load the narrow reference and skill before authoring when that layer is primary:
 `role-detail-engine.md`, `token-economy.md`, `voice-calibration.md`,
 `talk-example-design.md`, `boundary-design.md`, `opening-design.md`,
 `longplay-design.md`, `agency-design.md`, `instruction-guardrails.md`, or
-`playtest-loop.md`. For card-shape engines, use `character-core-design.md`,
-`relationship-engine.md`, `world-engine-design.md`, `scenario-design.md`,
-`daily-life-design.md`, `play-engine-design.md`, and `generator-design.md` with
-their matching Moonloom skills before fields. Use `material-distillation.md` for
+`playtest-loop.md`. Use `system-intake-card-design.md` when a system,
+simulator, generator, or mission-board card needs an intake-first setup wizard,
+intake console, or HTML-to-XMLV3 control-surface parity. For card-shape engines,
+use `character-core-design.md`, `relationship-engine.md`, `world-engine-design.md`,
+`scenario-design.md`, `daily-life-design.md`, `play-engine-design.md`, and
+`generator-design.md` with their matching Moonloom skills before fields. Use
+`material-distillation.md` for
 large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
 `safety-and-cost.md` for rating/simulation/publishing/credentials,
 `role-card-writing-framework.md` and `quality-rubric.md` for self-review, and
@@ -53,8 +56,10 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    - related cards, alternate versions, variants, card set, keep/merge/reject: `lunatalk-series-architect`
    - ensemble / multi-character, cast size, turn ownership, spotlight, group tension: `lunatalk-ensemble-director`
    - unclear card type or hybrid companion/story/system/RPG/generator/daily-life/light-setting/heavy-setting/ensemble: `lunatalk-archetype-director`
-   - RPG, adventure, open-world, sandbox, survival, simulator, stats/resources/quests/combat/turn protocol: `lunatalk-play-engineer`
-   - generator, helper, creator-assistant, artifact output, intake/defaults, revision commands: `lunatalk-generator-architect`
+   - RPG, adventure, open-world, sandbox, survival, simulator, stats/resources/quests/combat/turn protocol:
+     `lunatalk-play-engineer`; read `system-intake-card-design.md` when the first screen should be a setup wizard or intake console
+   - generator, helper, creator-assistant, artifact output, intake/defaults, revision commands:
+     `lunatalk-generator-architect`; read `system-intake-card-design.md` when the generator welcome needs panel/form/choices parity with a rich HTML control surface
    - story, scenario, mystery, investigation, case-file, event, trial, rescue, betrayal, clue/reveal: `lunatalk-scenario-architect`
    - daily-life, slice-of-life, quiet companion, neighbor/roommate/cohabitation, ordinary routine: `lunatalk-daily-life-architect`
    - existing-card symptoms from validation/render/simulation or "what to fix first": `lunatalk-card-doctor`
@@ -172,7 +177,11 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    paths, second-turn change, or return-next-time hooks.
    Use or preserve `lunatalk-generator-architect` when the current patch changes
    artifact type, intake rules, defaults, output schema, revision operations,
-   artifact memory, diegetic creator behavior, or advice-only drift.
+   artifact memory, diegetic creator behavior, or advice-only drift. For
+   system/simulator or generator welcomes that should behave like an intake-first
+   setup wizard, preserve a `system-intake-card-design.md` packet so XMLV3 can
+   map rich HTML-style panel, form, state, and choices controls before prose
+   polish.
 11. Before patching the welcome, use `lunatalk-opening-director` when the current
    task is welcome/opening repair or the first-action path is unclear. Use or
    preserve `lunatalk-presentation-director` when the opening is coherent but the
