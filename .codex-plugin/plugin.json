@@ -1,6 +1,6 @@
 {
   "name": "moonloom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LunaTalk role-card authoring skills and MCP workflows for external agent clients.",
   "author": {
     "name": "LunaTalk AI",
@@ -36,7 +36,7 @@
       "Review this LunaTalk card before publishing.",
       "Simulate a private chat for this card."
     ],
-    "websiteURL": "https://github.com/lunatalkai/moonloom",
+    "websiteURL": "https://lunatalk.ai",
     "privacyPolicyURL": "https://lunatalk.ai/privacy",
     "termsOfServiceURL": "https://lunatalk.ai/terms",
     "brandColor": "#F3D37B",

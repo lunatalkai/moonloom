@@ -4,8 +4,14 @@ Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
 ## Endpoint
 
-Configure the Card Writer MCP endpoint and authentication through the AI client's
-normal MCP settings. Do not hard-code environment URLs or credentials in skills,
+The production Card Writer MCP endpoint is:
+
+```text
+https://api.lunatalk.ai/mcp/card-writer
+```
+
+Configure authentication through the AI client's normal MCP OAuth flow. For local
+development, use `examples/local-mcp.json`; do not put credentials in skills,
 prompts, or public examples.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
