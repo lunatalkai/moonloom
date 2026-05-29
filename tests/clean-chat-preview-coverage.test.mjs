@@ -57,3 +57,19 @@ test('Moonloom uses surfaceDiagnostics for HTML and XMLV3 render parity checks',
     assert.match(source, /HTML.*XMLV3|XMLV3.*HTML/i);
   }
 });
+
+test('Moonloom documents inline XMLV3 MCP preview probes', async () => {
+  const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  for (const source of [cardWriter, workflow, themeRendering]) {
+    assert.match(source, /inline XMLV3 preview probe/i);
+    assert.match(source, /payloadKey/);
+    assert.match(source, /lunatalk:mcp-preview:payload:/);
+    assert.match(source, /themeCss/);
+    assert.match(source, /stateJson|state/);
+    assert.match(source, /desktop.*mobile|mobile.*desktop/i);
+    assert.match(source, /__LUNATALK_MCP_PREVIEW__/);
+  }
+});

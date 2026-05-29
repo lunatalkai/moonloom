@@ -89,6 +89,26 @@ Expected Card Writer tools:
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
 
+Also inspect `initialize` capabilities when the client exposes them. Card Writer
+adds `capabilities.lunatalkPreview` with the clean preview paths and inline
+XMLV3 case interface:
+
+- `desktopPath` and `mobilePath`: both point to `/pages/mcp/rolePreview` on the
+  corresponding app origin.
+- `inlinePayloadStoragePrefix`: `lunatalk:mcp-preview:payload:`.
+- `inlineQueryParams`: `payloadKey`, `xml`, `themeCss`, `themeMode`,
+  `stateJson`, `roleName`, and `viewport`.
+- `supportedViewports`: `desktop` and `mobile`.
+
+For inline XMLV3 preview probes, store `{ xml, themeCss, themeMode, state,
+roleName }` in localStorage or sessionStorage under
+`lunatalk:mcp-preview:payload:<payloadKey>`, then open
+`/pages/mcp/rolePreview?payloadKey=<payloadKey>&viewport=desktop` and repeat
+with `viewport=mobile`. After render, inspect screenshots and
+`report.surfaceDiagnostics` when `window.__LUNATALK_MCP_PREVIEW__` is
+available. Moonloom uses this for content review, not for renderer regression
+testing.
+
 For long role or worldbook documents, prefer an uploadId flow. If the AI client
 or plugin can upload local bytes directly with the same MCP auth, POST the
 parsed document to `/mcp/card-writer/uploads`; the server stores it for 30

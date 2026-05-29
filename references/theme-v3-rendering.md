@@ -143,6 +143,17 @@ judge avatar, byline, sidebar, composer, or other normal chat page chrome as
 part of the card render. Open both desktop and mobile preview URLs when the
 state surface, choice buttons, or layout density may change with viewport.
 
+For inline XMLV3 preview probes before a production role exists, use the same
+clean preview page. Store `{ xml, themeCss, themeMode, state, roleName }` in the
+target app origin under `lunatalk:mcp-preview:payload:<payloadKey>`, then open
+`/pages/mcp/rolePreview?payloadKey=<payloadKey>&viewport=desktop` and repeat
+with `viewport=mobile`. For tiny probes, encoded query params `xml`,
+`themeCss`, `themeMode`, `stateJson`, and `roleName` are supported. After
+render, compare screenshots with `report.surfaceDiagnostics` when the client can
+read `window.__LUNATALK_MCP_PREVIEW__`. Moonloom uses this only to review
+generated card content; XMLV3 renderer implementation issues belong to the
+LunaTalk renderer project.
+
 Use the preview page capture plan before deciding a visual pass/fail. Desktop
 output must be captured at full content width in one horizontal view; do not
 review left and right halves separately. Vertical overflow is expected for dense
