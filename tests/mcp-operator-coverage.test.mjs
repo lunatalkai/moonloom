@@ -63,6 +63,7 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
     'role_patch_document',
     'worldbook_find',
     'worldbook_get',
+    'worldbook_patch_document',
     'worldbook_entry_list',
     'worldbook_entry_create',
     'worldbook_entry_update',
@@ -75,6 +76,22 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
   }
   assert.match(mcpReference, /structuredContent\.worldbook/);
   assert.match(mcpReference, /structuredContent\.binding/);
+});
+
+test('MCP workflow documents worldbook patch document workflow', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(mcpReference, /lunatalk\.worldbookPatch\.v1/);
+  assert.match(mcpReference, /worldbook_patch_document/);
+  assert.match(mcpReference, /locally prepared document/i);
+  assert.match(mcpReference, /MCP cannot read a client-local file path by itself/i);
+  assert.match(mcpReference, /"entries"/);
+  assert.match(mcpReference, /"op": "create"/);
+  assert.match(mcpReference, /"op": "update"/);
+  assert.match(mcpReference, /"op": "delete"/);
+  assert.match(mcpReference, /structuredContent\.document/);
+  assert.match(workflow, /worldbook_patch_document/);
 });
 
 test('MCP workflow documents worldbook injection limits conservatively', async () => {

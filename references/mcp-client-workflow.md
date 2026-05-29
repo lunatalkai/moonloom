@@ -65,6 +65,7 @@ Expected Card Writer tools:
 - `worldbook_entry_list`
 - `worldbook_create`
 - `worldbook_update`
+- `worldbook_patch_document`
 - `worldbook_entry_create`
 - `worldbook_entry_update`
 - `worldbook_entry_delete`
@@ -90,10 +91,11 @@ does not need it yet or ask the author to fix the client configuration.
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
-worldbook read/write/entry tools return `worldbook`, worldbook bind tools return
-`binding`, and `publish_submit` returns `publish`. Preview URLs, generation
-status, messages, role/worldbook search matches, entry lists, bindings, and
-evaluations are inside those nested payloads, not at the JSON-RPC top level.
+worldbook read/write/entry tools return `worldbook`, `worldbook_patch_document`
+returns `document`, worldbook bind tools return `binding`, and `publish_submit`
+returns `publish`. Preview URLs, generation status, messages, role/worldbook
+search matches, entry lists, bindings, and evaluations are inside those nested
+payloads, not at the JSON-RPC top level.
 
 ## Stage gates
 
@@ -102,7 +104,7 @@ evaluations are inside those nested payloads, not at the JSON-RPC top level.
 | Draft-only design | none | create private role, render, simulate, publish |
 | Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document` when detail or welcome is long enough to maintain as a local file | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
-| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |

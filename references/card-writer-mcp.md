@@ -52,6 +52,9 @@ reading fields:
   per-message `previewUrl`.
 - Worldbook tools: read `structuredContent.worldbook`; this includes worldbook
   summaries, detail payloads, and entry lists.
+- `worldbook_patch_document`: read `structuredContent.document`; this includes
+  metadata update status, created entry ids, update/delete counts, and binding
+  status.
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
@@ -72,8 +75,8 @@ are top-level fields of the JSON-RPC response.
 7. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
 8. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
-   `worldbook_get`, `worldbook_entry_list`, entry create/update/delete, then
-   `worldbook_bind`
+   `worldbook_get`, `worldbook_entry_list`, entry create/update/delete or
+   `worldbook_patch_document`, then `worldbook_bind`
 9. `validate_role`
 10. `render_preview`
 11. `conversation_model_catalog` before paid conversation testing
@@ -236,6 +239,79 @@ Update owned worldbook metadata.
   "tags": ["rpg"]
 }
 ```
+
+### `worldbook_patch_document`
+
+Patch an owned worldbook from a locally prepared document. This is the
+recommended path when entry content is long or many entries need to be created,
+updated, deleted, and bound in one authoring pass: keep the final worldbook
+payload in a local JSON file, validate it locally, then pass the parsed document
+to this tool. Short one-entry edits can still use `worldbook_entry_create`,
+`worldbook_entry_update`, or `worldbook_entry_delete`.
+
+MCP cannot read a client-local file path by itself. The AI client must read and
+validate the file, then send its parsed JSON object as `document`.
+
+Document format:
+
+```json
+{
+  "documentVersion": "lunatalk.worldbookPatch.v1",
+  "worldbookId": "...",
+  "metadata": {
+    "name": "Worldbook name",
+    "description": "Reusable world rules.",
+    "visibility": "private",
+    "tags": ["rpg", "city"]
+  },
+  "entries": [
+    {
+      "op": "create",
+      "name": "Moon Gate",
+      "content": "The Moon Gate opens only after the bell rings.",
+      "keywords": ["Moon Gate"],
+      "category": "rule",
+      "isConstant": false
+    },
+    {
+      "op": "update",
+      "entryId": "...",
+      "name": "Moon Gate",
+      "content": "Updated rule.",
+      "keywords": ["Moon Gate"],
+      "category": "rule",
+      "isEnabled": true
+    },
+    {
+      "op": "delete",
+      "entryId": "..."
+    }
+  ],
+  "binding": {
+    "roleId": "..."
+  }
+}
+```
+
+Tool call:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-document-...",
+  "worldbookId": "...",
+  "document": {
+    "documentVersion": "lunatalk.worldbookPatch.v1",
+    "worldbookId": "...",
+    "entries": []
+  }
+}
+```
+
+If `document.worldbookId` is present, it must match the tool `worldbookId`.
+Allowed entry operations are `create`, `update`, and `delete`. Allowed entry
+categories are still exactly `rule`, `character`, `location`, `item`, `event`,
+and `custom`. The response includes `structuredContent.document`.
 
 ### `worldbook_entry_create`
 
