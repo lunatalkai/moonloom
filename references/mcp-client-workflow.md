@@ -57,6 +57,7 @@ Expected Card Writer tools:
 - `role_patch_detail`
 - `role_patch_welcome`
 - `role_patch_document`
+- `document_upload`
 - `role_patch_document_upload`
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
@@ -88,12 +89,22 @@ Expected Card Writer tools:
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
 
-For long role or worldbook documents, avoid sending the full document through
-MCP tool arguments. If the AI client or plugin can upload local bytes directly,
-POST the parsed document to `/mcp/card-writer/uploads`; the server stores it for
-30 minutes and returns an `uploadId`. Then call `role_patch_document_upload` or
+For long role or worldbook documents, prefer an uploadId flow. If the AI client
+or plugin can upload local bytes directly with the same MCP auth, POST the
+parsed document to `/mcp/card-writer/uploads`; the server stores it for 30
+minutes and returns an `uploadId`. Then call `role_patch_document_upload` or
 `worldbook_patch_document_upload` with that short id. The long payload does not
-go through MCP tool arguments in this flow.
+go through MCP tool arguments in this HTTP upload flow.
+
+If the client can call MCP tools but cannot read or forward the MCP bearer token,
+call the MCP `document_upload` fallback instead. It returns the same short
+`uploadId`, but the document still passes through MCP tool arguments. For
+normal-sized patches where upload is unavailable or unnecessary, use
+`role_patch_document` or `worldbook_patch_document` directly. Do not claim the
+task is impossible only because the agent cannot access the OAuth bearer token.
+Consuming an `uploadId` still runs the same server-side role field validation,
+including per-locale length limits for detail, welcome, description, and
+jailbreak fields.
 
 ## Reading tool results
 
@@ -111,9 +122,9 @@ not at the JSON-RPC top level.
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
-| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document_upload` after HTTP upload for long local files, or `role_patch_document` when upload is unavailable | render or simulate before validation |
+| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document_upload` after HTTP upload or MCP `document_upload` for long local files, or `role_patch_document` when upload is unavailable | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
-| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, `worldbook_patch_document_upload` after HTTP upload, or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`, or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |

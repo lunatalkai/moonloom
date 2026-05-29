@@ -16,11 +16,23 @@ The plugin manager discovers that file through `.codex-plugin/plugin.json`:
 Card Writer tool response. Actual MCP JSON-RPC requests use HTTP
 POST `/mcp/card-writer` on the LunaTalk API host.
 
-Long local documents can use the companion upload endpoint:
-POST `/mcp/card-writer/uploads`. This endpoint uses the same MCP auth, stores
-the parsed document for 30 minutes, and returns an `uploadId`. The upload body
-does not go through MCP tool arguments; use `role_patch_document_upload` or
-`worldbook_patch_document_upload` afterward with the short `uploadId`.
+Long local documents have three supported paths:
+
+1. If the client integration can send the same MCP OAuth auth to normal HTTP
+   requests, POST the parsed document to `/mcp/card-writer/uploads`. The server
+   stores it for 30 minutes and returns an `uploadId`; the long body does not go
+   through MCP tool arguments.
+2. If the agent can call MCP tools but cannot read or forward the MCP bearer
+   token, call `document_upload` inside the authenticated MCP session. It
+   returns the same short `uploadId`, but this fallback still sends the document
+   through MCP tool arguments.
+3. For normal-sized patches where upload is not needed or not available, call
+   `role_patch_document` or `worldbook_patch_document` directly.
+
+After either upload path, use `role_patch_document_upload` or
+`worldbook_patch_document_upload` with the short `uploadId`. Consuming an
+`uploadId` does not bypass server validation: role document fields still run the
+same per-locale length checks as normal text patch tools.
 
 Configure authentication through the AI client's normal MCP OAuth flow. Do not
 print credentials, tokens, cookies, or authorization headers in skills, prompts,
@@ -61,9 +73,11 @@ reading fields:
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
   metadata update status, created entry ids, update/delete counts, and binding
   status.
+- `document_upload`: read `structuredContent.upload`; this includes `uploadId`,
+  `kind`, `bytes`, `sha256`, `expiresAt`, and `expiresInSeconds`.
 - `role_patch_document_upload` and `worldbook_patch_document_upload`: read
   `structuredContent.document`; these consume a short `uploadId` created by
-  POST `/mcp/card-writer/uploads`.
+  POST `/mcp/card-writer/uploads` or by the MCP `document_upload` fallback.
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
@@ -78,13 +92,14 @@ are top-level fields of the JSON-RPC response.
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
-6. `role_patch_document_upload` after HTTP upload for long local files, or
-   `role_patch_document` when upload is unavailable
+6. `role_patch_document_upload` after HTTP upload or MCP `document_upload` for
+   long local files, or `role_patch_document` when upload is unavailable
 7. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
 8. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
-   `worldbook_patch_document_upload` after HTTP upload, or
+   `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`,
+   or
    `worldbook_patch_document`, then `worldbook_bind`
 9. `validate_role`
 10. `render_preview`
@@ -523,6 +538,35 @@ Tool call:
 Only fields present in `fields` are patched. If `document.roleId` is present, it
 must match the tool `roleId`. The response includes
 `structuredContent.document.patchedFields`.
+
+### `document_upload`
+
+Create a short-lived `uploadId` from inside the authenticated MCP session. Use
+this when the client can call MCP tools but cannot access the MCP OAuth bearer
+token needed for POST `/mcp/card-writer/uploads`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "kind": "rolePatchDocument",
+  "document": {
+    "documentVersion": "lunatalk.rolePatch.v1",
+    "roleId": "...",
+    "fields": {
+      "roleDetailDesc": "..."
+    }
+  }
+}
+```
+
+Use `kind: "worldbookPatchDocument"` for a `lunatalk.worldbookPatch.v1`
+document. Read `structuredContent.upload.uploadId`, then call
+`role_patch_document_upload` or `worldbook_patch_document_upload`.
+
+This fallback solves the auth-token visibility problem, but it does not avoid
+MCP tool argument size constraints. Prefer direct HTTP upload when the client
+supports it. For role patches, the later uploadId consumer still enforces the
+same language-specific field length limits as normal patch tools.
 
 ### `role_patch_welcome`
 
