@@ -25,9 +25,25 @@ client config -> auth presence -> tool availability -> stage gate -> operation p
 Do not print tokens, cookies, authorization headers, secrets, or full credential
 values. Say whether auth appears configured, missing, or unverified.
 
-Use the Card Writer MCP endpoint configured by the client environment. The
-public `.mcp.json` and `examples/local-mcp.json` files use placeholders so
-concrete endpoints and credentials stay in private client settings.
+Moonloom's published plugin config is file-based, not returned by a Card Writer
+business API. `.codex-plugin/plugin.json` points `mcpServers` to `./.mcp.json`,
+and `.mcp.json` defines `lunatalk-card-writer`:
+
+```json
+{
+  "mcpServers": {
+    "lunatalk-card-writer": {
+      "type": "http",
+      "url": "https://api.lunatalk.ai/mcp/card-writer"
+    }
+  }
+}
+```
+
+The AI client loads that config during plugin installation or refresh, then
+connects to the public Card Writer endpoint through its normal MCP OAuth flow.
+For local development only, use `examples/local-mcp.json` with private
+environment variables for a local endpoint and token.
 
 ## Tool availability
 

@@ -37,13 +37,22 @@ test('Moonloom router exposes MCP setup and tool-readiness workflow', async () =
   assert.match(readme, /lunatalk-mcp-operator/);
 });
 
-test('MCP client workflow reference avoids credentials and environment URLs', async () => {
+test('MCP client workflow reference documents the public plugin endpoint', async () => {
   const reference = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
 
   assert.match(reference, /Do not print tokens|credentials/i);
   assert.match(reference, /idempotency/i);
   assert.match(reference, /schemaVersion/);
   assert.match(reference, /tool availability|tool list/i);
+  assert.match(reference, /https:\/\/api\.lunatalk\.ai\/mcp\/card-writer/);
+  assert.match(reference, /\.codex-plugin\/plugin\.json[\s\S]{0,160}mcpServers[\s\S]{0,160}\.mcp\.json/);
+  assert.match(reference, /\.mcp\.json[\s\S]{0,160}lunatalk-card-writer/);
+  assert.doesNotMatch(reference, /public `\.mcp\.json`[\s\S]{0,120}placeholders/i);
+  assert.match(cardWriter, /https:\/\/api\.lunatalk\.ai\/mcp\/card-writer/);
+  assert.match(cardWriter, /POST `\/mcp\/card-writer`/);
+  assert.match(cardWriter, /OAuth/i);
+  assert.doesNotMatch(cardWriter, /Public Moonloom files use endpoint placeholders/i);
 });
 
 test('MCP workflow documents worldbook authoring and binding tools', async () => {
