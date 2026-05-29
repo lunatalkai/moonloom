@@ -1079,6 +1079,7 @@ Field finalization packet:
   - plain-text paragraphing:
 - placeholder / meta check:
 - MCP patch mapping:
+  - role_patch_document:
   - role_patch_profile:
   - role_patch_assets:
   - role_patch_detail:

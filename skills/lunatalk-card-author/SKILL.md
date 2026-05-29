@@ -144,6 +144,9 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    Patch avatar/background URLs with `role_patch_assets` once public-safe image
    URLs exist. If only prompts exist, stop with the missing asset action; do not
    claim completion while `roleAvatar` or `roleBackground` is blank.
+   For long final fields, prefer preparing a local `lunatalk.rolePatch.v1`
+   document, validating it locally, then calling `role_patch_document`. Keep the
+   older one-field patch tools available for short edits and targeted repairs.
 9. If the current card or draft has a thin `roleDetailDesc`, thin biography,
    under-budget detail for its language/card ambition, or missing durable role
    engine, use or preserve `lunatalk-detail-engineer` before patching fields. Use

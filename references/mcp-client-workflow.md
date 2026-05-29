@@ -56,6 +56,7 @@ Expected Card Writer tools:
 - `role_patch_assets`
 - `role_patch_detail`
 - `role_patch_welcome`
+- `role_patch_document`
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
 - optional `extension_enable`
@@ -99,7 +100,7 @@ evaluations are inside those nested payloads, not at the JSON-RPC top level.
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
-| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
+| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document` when detail or welcome is long enough to maintain as a local file | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
 | Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
