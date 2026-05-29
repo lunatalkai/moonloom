@@ -16,6 +16,20 @@ The plugin manager discovers that file through `.codex-plugin/plugin.json`:
 Card Writer tool response. Actual MCP JSON-RPC requests use HTTP
 POST `/mcp/card-writer` on the LunaTalk API host.
 
+The MCP `initialize` response exposes the preview interface under
+`capabilities.lunatalkPreview`. Clients should read this capability instead of
+hard-coding hidden paths when possible:
+
+```json
+{
+  "desktopPath": "/pages/mcp/rolePreview",
+  "mobilePath": "/pages/mcp/rolePreview",
+  "inlinePayloadStoragePrefix": "lunatalk:mcp-preview:payload:",
+  "inlineQueryParams": ["payloadKey", "xml", "themeCss", "themeMode", "stateJson", "roleName", "viewport"],
+  "supportedViewports": ["desktop", "mobile"]
+}
+```
+
 Long local documents have three supported paths:
 
 1. If the client integration can send the same MCP OAuth auth to normal HTTP
@@ -773,6 +787,28 @@ When the preview page exposes `window.__LUNATALK_MCP_PREVIEW__`, read its
   client can run page JavaScript, or manually scroll to each `segments[].y`.
 - Do not shorten a welcome or AI reply only to fit one screenshot. Long replies
   are normal; incomplete screenshots are a review failure.
+
+The same clean preview page also supports inline XMLV3 preview probes while
+reviewing generated content before a role exists. Store the payload on the
+target origin as `lunatalk:mcp-preview:payload:<payloadKey>` and open both
+desktop and mobile:
+
+```js
+localStorage.setItem('lunatalk:mcp-preview:payload:choices-gap', JSON.stringify({
+  roleName: 'Choices gap regression',
+  xml: '<scene><n>自製 XMLV3 case。</n></scene><choices cols="2" gap="sm"><choice tone="primary">A</choice><choice tone="risk">B</choice></choices>',
+  themeCss: '.lt-choice[data-tone="primary"] { --lt-choice-bg: rgba(245,197,66,.18); }',
+  state: { scene: { location: '測試場' } }
+}))
+location.href = '/pages/mcp/rolePreview?payloadKey=choices-gap&viewport=mobile'
+```
+
+For tiny cases, encoded query params `xml`, `themeCss`, `themeMode`,
+`stateJson`, and `roleName` are accepted, but `payloadKey` is preferred for real
+probes. Use screenshots and
+`report.surfaceDiagnostics` as review signals when judging generated content.
+Do not treat Moonloom as the owner of XMLV3 renderer behavior; renderer
+implementation issues belong to the LunaTalk renderer project.
 
 ### `conversation_create`
 

@@ -41,6 +41,13 @@ visibility, opening clarity, or second-turn setup.
    not add `debug=1` for normal UI review; debug chrome is for renderer
    diagnosis only and can pollute the screenshot with headers, IDs, and report
    panels.
+   For a generated XMLV3 snippet that needs preview before a role exists, use
+   the inline preview harness: store the payload under
+   `lunatalk:mcp-preview:payload:<payloadKey>`, open
+   `/pages/mcp/rolePreview?payloadKey=<payloadKey>&viewport=desktop`, repeat for
+   mobile, and read `window.__LUNATALK_MCP_PREVIEW__` when available. Use this
+   only for content review; do not treat Moonloom as the owner of XMLV3 renderer
+   behavior.
 6. Read the preview page `capturePlan` when available. If it is segmented,
    capture every vertical segment before judging. For desktop, resize to
    `requiredCaptureWidth` when requested; do not split screenshots horizontally.
