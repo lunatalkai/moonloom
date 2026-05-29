@@ -2,20 +2,22 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-const CARD_WRITER_URL_PLACEHOLDER = '${LUNATALK_CARD_WRITER_MCP_URL}';
+const CARD_WRITER_URL = 'https://api.lunatalk.ai/mcp/card-writer';
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-test('plugin MCP config uses a placeholder Card Writer endpoint', async () => {
+test('plugin MCP config uses the public API Card Writer endpoint', async () => {
+	const plugin = await readJson('.codex-plugin/plugin.json');
 	const rawConfig = await readFile('.mcp.json', 'utf8');
 	const config = JSON.parse(rawConfig);
 
+	assert.equal(plugin.mcpServers, './.mcp.json');
 	assert.equal(config.mcpServers['lunatalk-card-writer'].type, 'http');
-	assert.equal(config.mcpServers['lunatalk-card-writer'].url, CARD_WRITER_URL_PLACEHOLDER);
-	assert.match(rawConfig, /\$\{LUNATALK_CARD_WRITER_MCP_URL\}/);
-	assert.doesNotMatch(rawConfig, /https?:\/\/(?:api|admin)\.lunatalk\.(?:ai|pro)/);
+	assert.equal(config.mcpServers['lunatalk-card-writer'].url, CARD_WRITER_URL);
+	assert.doesNotMatch(rawConfig, /\$\{[^}]+\}/);
+	assert.doesNotMatch(rawConfig, /LUNATALK_CARD_WRITER_MCP_URL/);
 });
 
 test('Codex plugin website points to LunaTalk public site', async () => {
