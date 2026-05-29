@@ -82,6 +82,10 @@ function issue(code, file, message) {
   return { code, file, message };
 }
 
+function stripAllowedPublicUrls(content) {
+  return content.replaceAll('https://api.lunatalk.ai/mcp/card-writer', '');
+}
+
 async function exists(filePath) {
   try {
     await access(filePath);
@@ -289,33 +293,34 @@ async function scanReleaseSafety(root, issues) {
 
   for (const relativePath of [...relativeFiles].sort()) {
     const content = await readFile(path.join(root, relativePath), 'utf8');
+    const releaseSafetyContent = stripAllowedPublicUrls(content);
     for (const { label, pattern } of SECRET_PATTERNS) {
       pattern.lastIndex = 0;
-      if (pattern.test(content)) {
+      if (pattern.test(releaseSafetyContent)) {
         issues.push(issue('release.secret_pattern', relativePath, `Found ${label}-shaped text.`));
       }
     }
     for (const { label, pattern } of FORBIDDEN_PUBLIC_CLAIM_PATTERNS) {
       pattern.lastIndex = 0;
-      if (pattern.test(content)) {
+      if (pattern.test(releaseSafetyContent)) {
         issues.push(issue('release.forbidden_public_claim', relativePath, `Found ${label}.`));
       }
     }
     for (const { label, pattern } of CONCRETE_IDENTIFIER_PATTERNS) {
       pattern.lastIndex = 0;
-      if (pattern.test(content)) {
+      if (pattern.test(releaseSafetyContent)) {
         issues.push(issue('release.concrete_identifier', relativePath, `Found ${label}.`));
       }
     }
     for (const { label, pattern } of SQL_SNIPPET_PATTERNS) {
       pattern.lastIndex = 0;
-      if (pattern.test(content)) {
+      if (pattern.test(releaseSafetyContent)) {
         issues.push(issue('release.sql_snippet', relativePath, `Found ${label}.`));
       }
     }
     for (const { label, pattern } of INTERNAL_URL_PATTERNS) {
       pattern.lastIndex = 0;
-      if (pattern.test(content)) {
+      if (pattern.test(releaseSafetyContent)) {
         issues.push(issue('release.internal_url', relativePath, `Found ${label}.`));
       }
     }

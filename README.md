@@ -325,9 +325,15 @@ public-safe next TODO.
 
 ## MCP endpoint
 
-Moonloom's Card Writer MCP endpoint is provided by the client environment. Use
-`.mcp.json` as a placeholder-based config and provide the concrete endpoint
-through private client settings or environment variables.
+Moonloom's production Card Writer MCP endpoint is:
+
+```text
+https://api.lunatalk.ai/mcp/card-writer
+```
+
+Configure authentication through the AI client's normal MCP OAuth flow. For local
+development, use `examples/local-mcp.json` and provide the local endpoint and
+token through your private environment.
 
 Moonloom does not introduce separate MCP-specific scopes; the server applies
 normal login identity, account ownership, quota, moderation, publishing, and
