@@ -16,6 +16,12 @@ The plugin manager discovers that file through `.codex-plugin/plugin.json`:
 Card Writer tool response. Actual MCP JSON-RPC requests use HTTP
 POST `/mcp/card-writer` on the LunaTalk API host.
 
+Long local documents can use the companion upload endpoint:
+POST `/mcp/card-writer/uploads`. This endpoint uses the same MCP auth, stores
+the parsed document for 30 minutes, and returns an `uploadId`. The upload body
+does not go through MCP tool arguments; use `role_patch_document_upload` or
+`worldbook_patch_document_upload` afterward with the short `uploadId`.
+
 Configure authentication through the AI client's normal MCP OAuth flow. Do not
 print credentials, tokens, cookies, or authorization headers in skills, prompts,
 references, reports, or public examples. For local development only, use
@@ -55,6 +61,9 @@ reading fields:
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
   metadata update status, created entry ids, update/delete counts, and binding
   status.
+- `role_patch_document_upload` and `worldbook_patch_document_upload`: read
+  `structuredContent.document`; these consume a short `uploadId` created by
+  POST `/mcp/card-writer/uploads`.
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
@@ -69,13 +78,13 @@ are top-level fields of the JSON-RPC response.
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
-6. `role_patch_document` when final fields are maintained as a local
-   `lunatalk.rolePatch.v1` file or detail/welcome is long enough that repeated
-   manual patch arguments are risky
+6. `role_patch_document_upload` after HTTP upload for long local files, or
+   `role_patch_document` when upload is unavailable
 7. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
 8. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
-   `worldbook_get`, `worldbook_entry_list`, entry create/update/delete or
+   `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
+   `worldbook_patch_document_upload` after HTTP upload, or
    `worldbook_patch_document`, then `worldbook_bind`
 9. `validate_role`
 10. `render_preview`

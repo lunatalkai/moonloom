@@ -57,6 +57,7 @@ Expected Card Writer tools:
 - `role_patch_detail`
 - `role_patch_welcome`
 - `role_patch_document`
+- `role_patch_document_upload`
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
 - optional `extension_enable`
@@ -66,6 +67,7 @@ Expected Card Writer tools:
 - `worldbook_create`
 - `worldbook_update`
 - `worldbook_patch_document`
+- `worldbook_patch_document_upload`
 - `worldbook_entry_create`
 - `worldbook_entry_update`
 - `worldbook_entry_delete`
@@ -86,25 +88,32 @@ Expected Card Writer tools:
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
 
+For long role or worldbook documents, avoid sending the full document through
+MCP tool arguments. If the AI client or plugin can upload local bytes directly,
+POST the parsed document to `/mcp/card-writer/uploads`; the server stores it for
+30 minutes and returns an `uploadId`. Then call `role_patch_document_upload` or
+`worldbook_patch_document_upload` with that short id. The long payload does not
+go through MCP tool arguments in this flow.
+
 ## Reading tool results
 
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
-worldbook read/write/entry tools return `worldbook`, `worldbook_patch_document`
-returns `document`, worldbook bind tools return `binding`, and `publish_submit`
-returns `publish`. Preview URLs, generation status, messages, role/worldbook
-search matches, entry lists, bindings, and evaluations are inside those nested
-payloads, not at the JSON-RPC top level.
+worldbook read/write/entry tools return `worldbook`, document patch tools return
+`document`, worldbook bind tools return `binding`, and `publish_submit` returns
+`publish`. Preview URLs, generation status, messages, role/worldbook search
+matches, entry lists, bindings, and evaluations are inside those nested payloads,
+not at the JSON-RPC top level.
 
 ## Stage gates
 
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
-| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document` when detail or welcome is long enough to maintain as a local file | render or simulate before validation |
+| Private creation | `role_create_private`, profile/assets/detail/welcome patch tools; prefer `role_patch_document_upload` after HTTP upload for long local files, or `role_patch_document` when upload is unavailable | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
-| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, `worldbook_patch_document_upload` after HTTP upload, or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |

@@ -94,6 +94,20 @@ test('MCP workflow documents worldbook patch document workflow', async () => {
   assert.match(workflow, /worldbook_patch_document/);
 });
 
+test('MCP workflow documents uploadId document workflow', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(mcpReference, /\/mcp\/card-writer\/uploads/);
+  assert.match(mcpReference, /uploadId/);
+  assert.match(mcpReference, /30 minutes/i);
+  assert.match(mcpReference, /role_patch_document_upload/);
+  assert.match(mcpReference, /worldbook_patch_document_upload/);
+  assert.match(mcpReference, /does not go through MCP tool arguments/i);
+  assert.match(workflow, /role_patch_document_upload/);
+  assert.match(workflow, /worldbook_patch_document_upload/);
+});
+
 test('MCP workflow documents worldbook injection limits conservatively', async () => {
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
 
