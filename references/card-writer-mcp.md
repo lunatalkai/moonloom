@@ -4,15 +4,10 @@ Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
 ## Endpoint
 
-The production Card Writer MCP endpoint is:
-
-```text
-https://api.lunatalk.ai/mcp/card-writer
-```
-
-Configure authentication through the AI client's normal MCP OAuth flow. For local
-development, use `examples/local-mcp.json`; do not put credentials in skills,
-prompts, or public examples.
+The Card Writer MCP endpoint is supplied by the AI client's private
+configuration. Public Moonloom files use endpoint placeholders; do not put
+concrete endpoints, credentials, tokens, or cookies in skills, prompts,
+references, or public examples.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
 role ownership, normal publish gates, quota, moderation, and billing.
@@ -43,29 +38,36 @@ reading fields:
 - Conversation tools: read `structuredContent.conversation`; this includes
   `conversationId`, `turn`, `latestMessage`, `messages`, `evaluation`, and
   per-message `previewUrl`.
+- Worldbook tools: read `structuredContent.worldbook`; this includes worldbook
+  summaries, detail payloads, and entry lists.
+- Worldbook bind tools: read `structuredContent.binding`; this includes target
+  type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
 
-Do not assume `previewUrl`, `messages`, or `evaluation` are top-level fields of
-the JSON-RPC response.
+Do not assume `previewUrl`, `messages`, `entries`, `bindings`, or `evaluation`
+are top-level fields of the JSON-RPC response.
 
 ## Core tool order
 
-1. `role_create_private` or `role_get`
+1. `role_create_private`, or `role_find` then `role_get` when the author gives a name instead of a roleId
 2. `role_patch_profile`
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
 6. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
-7. `validate_role`
-8. `render_preview`
-9. `conversation_model_catalog` before paid conversation testing
-10. `conversation_create` or `conversation_list`
-11. `conversation_send_message`
-12. `conversation_turn_status` when the send result is still pending
-13. `conversation_inspect`
-14. Optional `conversation_load` when the author wants to resume or roll back
-15. `publish_submit` only after explicit author confirmation
+7. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
+   `worldbook_get`, `worldbook_entry_list`, entry create/update/delete, then
+   `worldbook_bind`
+8. `validate_role`
+9. `render_preview`
+10. `conversation_model_catalog` before paid conversation testing
+11. `conversation_create` or `conversation_list`
+12. `conversation_send_message`
+13. `conversation_turn_status` when the send result is still pending
+14. `conversation_inspect`
+15. Optional `conversation_load` when the author wants to resume or roll back
+16. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -88,9 +90,186 @@ Optional: `language`, `cardType`, `contentRatingIntent`, `successCriteria`.
 Defaults: `language` follows the authenticated user's LunaTalk language when the
 server can resolve it, `cardType` is `story`, and visibility is private.
 
+### `role_find`
+
+Find roles owned by the authenticated account by partial name or exact roleId.
+Use this before `role_get` or `conversation_list` when the author names a card
+but does not provide its roleId.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "query": "Role name",
+  "pageSize": 20
+}
+```
+
+Returns `structuredContent.roles.roles[]` with `roleId`, `roleName`,
+`roleVisibility`, `reviewStatus`, `language`, `isR18`, `accountPermission`, and
+`lastUpdateTime`.
+
 ### `role_get`
 
 Read a role owned by the authenticated account.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "..."
+}
+```
+
+### `worldbook_find`
+
+Find worldbooks owned by the authenticated account by partial name, description,
+tag, or exact `worldbookId`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "query": "Moon city",
+  "pageSize": 20
+}
+```
+
+Returns `structuredContent.worldbook.worldbooks[]` with `worldbookId`, name,
+description, visibility, language, tags, entry count, ownership, and update time.
+
+### `worldbook_get`
+
+Read a worldbook detail payload and its entries. Use this for a quick snapshot;
+use `worldbook_entry_list` when doing systematic entry review or category
+filtering.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "worldbookId": "..."
+}
+```
+
+### `worldbook_entry_list`
+
+List entries in a worldbook, optionally filtered by `category`. This is the
+required first step before systematic entry optimization, because updates and
+deletes need `entryId`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "worldbookId": "...",
+  "category": "rule"
+}
+```
+
+### `worldbook_create`
+
+Create a worldbook owned by the authenticated account.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-create-...",
+  "name": "Worldbook name",
+  "description": "Reusable world rules.",
+  "language": "zh-Hant",
+  "visibility": "private",
+  "tags": ["rpg", "city"]
+}
+```
+
+### `worldbook_update`
+
+Update owned worldbook metadata.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-update-...",
+  "worldbookId": "...",
+  "name": "Worldbook name",
+  "description": "Updated world rules.",
+  "visibility": "private",
+  "tags": ["rpg"]
+}
+```
+
+### `worldbook_entry_create`
+
+Create an entry in an owned worldbook.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-entry-create-...",
+  "worldbookId": "...",
+  "name": "Moon Gate",
+  "content": "The Moon Gate opens only after the bell rings.",
+  "keywords": ["Moon Gate"],
+  "category": "rule",
+  "isConstant": false
+}
+```
+
+### `worldbook_entry_update`
+
+Update an owned worldbook entry by `entryId`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-entry-update-...",
+  "entryId": "...",
+  "name": "Moon Gate",
+  "content": "The Moon Gate opens only after the bell rings.",
+  "keywords": ["Moon Gate"],
+  "category": "rule",
+  "isEnabled": true
+}
+```
+
+### `worldbook_entry_delete`
+
+Delete an owned worldbook entry by `entryId`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-entry-delete-...",
+  "entryId": "..."
+}
+```
+
+### `worldbook_bind`
+
+Bind a worldbook to a role card. For `targetType: "character"`, the server keeps
+one active worldbook binding for the target role.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-bind-...",
+  "worldbookId": "...",
+  "roleId": "..."
+}
+```
+
+### `worldbook_unbind`
+
+Remove a worldbook binding from a role card.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-unbind-...",
+  "worldbookId": "...",
+  "roleId": "..."
+}
+```
+
+### `worldbook_bindings`
+
+List worldbooks currently bound to a role card.
 
 ```json
 {

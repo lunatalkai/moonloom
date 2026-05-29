@@ -25,15 +25,16 @@ client config -> auth presence -> tool availability -> stage gate -> operation p
 Do not print tokens, cookies, authorization headers, secrets, or full credential
 values. Say whether auth appears configured, missing, or unverified.
 
-Use the official production Card Writer MCP endpoint from `.mcp.json`:
-`https://api.lunatalk.ai/mcp/card-writer`. Local development may use
-`examples/local-mcp.json` with private environment placeholders.
+Use the Card Writer MCP endpoint configured by the client environment. The
+public `.mcp.json` and `examples/local-mcp.json` files use placeholders so
+concrete endpoints and credentials stay in private client settings.
 
 ## Tool availability
 
 Expected Card Writer tools:
 
 - `role_create_private`
+- `role_find`
 - `role_get`
 - `role_patch_profile`
 - `role_patch_assets`
@@ -42,6 +43,17 @@ Expected Card Writer tools:
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
 - optional `extension_enable`
+- `worldbook_find`
+- `worldbook_get`
+- `worldbook_entry_list`
+- `worldbook_create`
+- `worldbook_update`
+- `worldbook_entry_create`
+- `worldbook_entry_update`
+- `worldbook_entry_delete`
+- `worldbook_bind`
+- `worldbook_unbind`
+- `worldbook_bindings`
 - `validate_role`
 - `render_preview`
 - `conversation_model_catalog`
@@ -60,9 +72,11 @@ does not need it yet or ask the author to fix the client configuration.
 
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
-conversation tools return `conversation`, and `publish_submit` returns
-`publish`. Preview URLs, generation status, messages, and evaluations are inside
-those nested payloads, not at the JSON-RPC top level.
+conversation tools return `conversation`, `role_find` returns `roles`,
+worldbook read/write/entry tools return `worldbook`, worldbook bind tools return
+`binding`, and `publish_submit` returns `publish`. Preview URLs, generation
+status, messages, role/worldbook search matches, entry lists, bindings, and
+evaluations are inside those nested payloads, not at the JSON-RPC top level.
 
 ## Stage gates
 
@@ -70,6 +84,9 @@ those nested payloads, not at the JSON-RPC top level.
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
 | Private creation | `role_create_private`, profile/assets/detail/welcome patch tools | render or simulate before validation |
+| Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
 | Conversation testing | `conversation_model_catalog`, `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
@@ -114,6 +131,8 @@ only when retrying the same intended operation.
 | No Card Writer tools visible | MCP server not configured or client not reloaded | fix client config |
 | Auth error | token/cookie/session missing or expired | re-auth through client, do not print token |
 | Tool exists but role not found | wrong `roleId` or role not owned by account | use owned private role |
+| Tool exists but worldbook not found | wrong `worldbookId`, not owned, or not public/followable | use `worldbook_find`, fork/create an owned worldbook, then retry |
+| Entry optimization is blind | entries were not listed before patching | call `worldbook_entry_list` and patch by `entryId` |
 | Validation blocker | technical role field or render safety issue | patch field, rerun `validate_role` |
 | Render unavailable | preview tool missing or validation still blocked | fix tool/config or validation first |
 | Conversation tools unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |
@@ -122,6 +141,8 @@ only when retrying the same intended operation.
 ## Handoff
 
 - Use `lunatalk-card-author` for private role creation or field patching.
+- Use `lunatalk-world-engineer` before worldbook creation or entry rewrite when
+  the issue is playable world rules, factions, locations, or lore compression.
 - Use `lunatalk-render-review` after `validate_role` passes and preview exists.
 - Use `lunatalk-chat-simulation` after validation passes and the author accepts
   normal conversation-test cost.
