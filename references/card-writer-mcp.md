@@ -4,10 +4,22 @@ Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
 ## Endpoint
 
-The Card Writer MCP endpoint is supplied by the AI client's private
-configuration. Public Moonloom files use endpoint placeholders; do not put
-concrete endpoints, credentials, tokens, or cookies in skills, prompts,
-references, or public examples.
+Moonloom's published plugin exposes the production Card Writer MCP endpoint in
+the root `.mcp.json`:
+
+```text
+https://api.lunatalk.ai/mcp/card-writer
+```
+
+The plugin manager discovers that file through `.codex-plugin/plugin.json`:
+`mcpServers: "./.mcp.json"`. This config is static plugin metadata, not a
+Card Writer tool response. Actual MCP JSON-RPC requests use HTTP
+POST `/mcp/card-writer` on the LunaTalk API host.
+
+Configure authentication through the AI client's normal MCP OAuth flow. Do not
+print credentials, tokens, cookies, or authorization headers in skills, prompts,
+references, reports, or public examples. For local development only, use
+`examples/local-mcp.json` with private environment variables.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
 role ownership, normal publish gates, quota, moderation, and billing.
