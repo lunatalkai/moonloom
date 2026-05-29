@@ -170,8 +170,8 @@ and non-constant entries are selected from the current player message plus recen
 the strongest design signal.
 
 Worldbook recall is a bounded ranked selection, not a full import of every
-related entry. Treat the current platform as selecting up to about 20 entries per
-turn, with per-category competition and additional runtime ranking. Exact runtime limits are not specified as an authoring contract and can change; verify
+related entry. The global runtime cap currently does not exceed 20 entries per
+turn, with per-category competition and additional runtime ranking. This is current runtime behavior, not a permanent product contract; verify
 important behavior with real conversation tests. Do not claim that worldbooks remove token limits; use them to move reusable lore and optional rules out of the
 always-on role detail while keeping core identity and behavior stable in the
 card.

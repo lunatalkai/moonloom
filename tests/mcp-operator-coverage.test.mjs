@@ -76,8 +76,8 @@ test('MCP workflow documents worldbook injection limits conservatively', async (
   assert.match(mcpReference, /recent conversation context/i);
   assert.match(mcpReference, /constant entries are available every turn/i);
   assert.match(mcpReference, /bounded ranked selection/i);
-  assert.match(mcpReference, /about 20 entries/i);
+  assert.match(mcpReference, /global runtime cap currently does not exceed 20 entries/i);
   assert.match(mcpReference, /per-category/i);
-  assert.match(mcpReference, /Exact runtime limits are not specified/i);
+  assert.match(mcpReference, /not a permanent product contract/i);
   assert.match(mcpReference, /do not claim that worldbooks remove token limits/i);
 });
