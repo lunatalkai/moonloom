@@ -164,11 +164,28 @@ deletes need `entryId`.
 
 Worldbook entry fields are authoring handles, not a complete runtime contract.
 `keywords` are trigger terms, `isConstant` marks an always-available entry, and
-`category` supports systematic review. Injection details are not specified by
-the MCP schema: keyword matching rules, scan depth, per-turn entry count, and
-runtime token budget must be verified with real conversation tests. Do not claim that worldbooks remove token limits; use them to move reusable lore and optional
-rules out of the always-on role detail while keeping core identity and behavior
-stable in the card.
+`category` supports systematic review. Recall is not only the current player
+message as a literal keyword check: constant entries are available every turn,
+and non-constant entries are selected from the current player message plus recent conversation context. A hit in the current player message should be treated as
+the strongest design signal.
+
+Worldbook recall is a bounded ranked selection, not a full import of every
+related entry. Treat the current platform as selecting up to about 20 entries per
+turn, with per-category competition and additional runtime ranking. Exact runtime limits are not specified as an authoring contract and can change; verify
+important behavior with real conversation tests. Do not claim that worldbooks remove token limits; use them to move reusable lore and optional rules out of the
+always-on role detail while keeping core identity and behavior stable in the
+card.
+
+Authoring implications for AI clients:
+
+- Make each entry a small, independently useful lore / rule / memory slice.
+- Put only short every-turn invariants in `isConstant`; avoid turning constant
+  entries into another long role detail.
+- Give `keywords` aliases the player is likely to type: names, nicknames,
+  places, objects, quest terms, and natural question phrases.
+- Do not require many entries from the same category to appear in one turn.
+- Keep identity, voice, and behavior that must be stable every turn in the role
+  fields, not only in keyed worldbook entries.
 
 ### `worldbook_create`
 
