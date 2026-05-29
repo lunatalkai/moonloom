@@ -101,9 +101,15 @@ test('MCP workflow documents uploadId document workflow', async () => {
   assert.match(mcpReference, /\/mcp\/card-writer\/uploads/);
   assert.match(mcpReference, /uploadId/);
   assert.match(mcpReference, /30 minutes/i);
+  assert.match(mcpReference, /document_upload/);
   assert.match(mcpReference, /role_patch_document_upload/);
   assert.match(mcpReference, /worldbook_patch_document_upload/);
-  assert.match(mcpReference, /does not go through MCP tool arguments/i);
+  assert.match(mcpReference, /does not go\s+through MCP tool arguments/i);
+  assert.match(mcpReference, /per-locale length checks/i);
+  assert.match(workflow, /cannot access the OAuth bearer token/i);
+  assert.match(workflow, /Do not claim the\s+task is impossible/i);
+  assert.match(workflow, /per-locale length limits/i);
+  assert.match(workflow, /document_upload/);
   assert.match(workflow, /role_patch_document_upload/);
   assert.match(workflow, /worldbook_patch_document_upload/);
 });
