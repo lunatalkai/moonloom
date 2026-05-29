@@ -179,10 +179,13 @@ deletes need `entryId`.
 
 Worldbook entry fields are authoring handles, not a complete runtime contract.
 `keywords` are trigger terms, `isConstant` marks an always-available entry, and
-`category` supports systematic review. Recall is not only the current player
-message as a literal keyword check: constant entries are available every turn,
-and non-constant entries are selected from the current player message plus recent conversation context. A hit in the current player message should be treated as
-the strongest design signal.
+`category` supports systematic review. Allowed categories are exactly `rule`,
+`character`, `location`, `item`, `event`, and `custom`. Do not invent categories
+such as `faction`, `timeline`, `relationship`, or `scene`; map them to the
+closest allowed category, or use `custom` when none fits. Recall is not only the
+current player message as a literal keyword check: constant entries are available every turn, and non-constant entries are selected from the current
+player message plus recent conversation context. A hit in the current player
+message should be treated as the strongest design signal.
 
 Worldbook recall is a bounded ranked selection, not a full import of every
 related entry. The global runtime cap currently does not exceed 20 entries per
