@@ -66,20 +66,23 @@ are top-level fields of the JSON-RPC response.
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
-6. `theme_bind` when XMLV3 real chat controls are expected; optional
+6. `role_patch_document` when final fields are maintained as a local
+   `lunatalk.rolePatch.v1` file or detail/welcome is long enough that repeated
+   manual patch arguments are risky
+7. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
-7. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
+8. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete, then
    `worldbook_bind`
-8. `validate_role`
-9. `render_preview`
-10. `conversation_model_catalog` before paid conversation testing
-11. `conversation_create` or `conversation_list`
-12. `conversation_send_message`
-13. `conversation_turn_status` when the send result is still pending
-14. `conversation_inspect`
-15. Optional `conversation_load` when the author wants to resume or roll back
-16. `publish_submit` only after explicit author confirmation
+9. `validate_role`
+10. `render_preview`
+11. `conversation_model_catalog` before paid conversation testing
+12. `conversation_create` or `conversation_list`
+13. `conversation_send_message`
+14. `conversation_turn_status` when the send result is still pending
+15. `conversation_inspect`
+16. Optional `conversation_load` when the author wants to resume or roll back
+17. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -376,6 +379,62 @@ For XMLV3 cards, `roleDetailDesc` should not duplicate the platform XMLV3
 server guide. Put only the role-specific format contract in detail: state update
 rules, choice behavior, enabled pack purpose, visible status meaning, and
 player-agency boundaries.
+
+### `role_patch_document`
+
+Patch multiple role fields from a locally prepared document. This is the
+recommended path when `roleDetailDesc` or `roleWelcome` is long: keep the final
+card payload in a local JSON file, validate it locally, then pass the parsed
+document to this tool. Short one-field edits can still use `role_patch_detail`,
+`role_patch_welcome`, `role_patch_profile`, or `role_patch_assets`.
+
+MCP cannot read a client-local file path by itself. The AI client must read and
+validate the file, then send its parsed JSON object as `document`.
+
+Document format:
+
+```json
+{
+  "documentVersion": "lunatalk.rolePatch.v1",
+  "roleId": "...",
+  "fields": {
+    "roleName": "Role name",
+    "roleDesc": "Short public/search description.",
+    "roleTag": ["story", "mystery"],
+    "userName": "你",
+    "roleType": "story",
+    "roleAvatar": "https://...",
+    "roleBackground": "https://...",
+    "roleDetailDesc": "Long stable role engine...",
+    "roleWelcomeMode": "xmlv3",
+    "roleWelcome": "<scene><n>Opening...</n></scene>",
+    "jailbreak": "Optional private behavior boundary."
+  }
+}
+```
+
+Tool call:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "document-...",
+  "roleId": "...",
+  "document": {
+    "documentVersion": "lunatalk.rolePatch.v1",
+    "roleId": "...",
+    "fields": {
+      "roleDetailDesc": "...",
+      "roleWelcomeMode": "xmlv3",
+      "roleWelcome": "..."
+    }
+  }
+}
+```
+
+Only fields present in `fields` are patched. If `document.roleId` is present, it
+must match the tool `roleId`. The response includes
+`structuredContent.document.patchedFields`.
 
 ### `role_patch_welcome`
 

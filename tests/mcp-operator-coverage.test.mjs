@@ -60,6 +60,7 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
 
   for (const tool of [
+    'role_patch_document',
     'worldbook_find',
     'worldbook_get',
     'worldbook_entry_list',
