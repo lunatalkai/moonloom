@@ -150,6 +150,7 @@ only when retrying the same intended operation.
 | Tool exists but role not found | wrong `roleId` or role not owned by account | use owned private role |
 | Tool exists but worldbook not found | wrong `worldbookId`, not owned, or not public/followable | use `worldbook_find`, fork/create an owned worldbook, then retry |
 | Entry optimization is blind | entries were not listed before patching | call `worldbook_entry_list` and patch by `entryId` |
+| Worldbook category rejected | entry category is not one of `rule, character, location, item, event, custom` | map the entry to an allowed category, or use `custom` |
 | Validation blocker | technical role field or render safety issue | patch field, rerun `validate_role` |
 | Render unavailable | preview tool missing or validation still blocked | fix tool/config or validation first |
 | Conversation tools unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |

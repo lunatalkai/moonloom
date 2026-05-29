@@ -91,3 +91,17 @@ test('MCP workflow documents worldbook injection limits conservatively', async (
   assert.match(mcpReference, /not a permanent product contract/i);
   assert.match(mcpReference, /do not claim that worldbooks remove token limits/i);
 });
+
+test('MCP workflow documents fixed worldbook entry categories', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+  const allowed = ['rule', 'character', 'location', 'item', 'event', 'custom'];
+
+  for (const category of allowed) {
+    assert.match(mcpReference, new RegExp(`\\b${category}\\b`));
+  }
+  assert.match(mcpReference, /allowed categor(?:y|ies)/i);
+  assert.match(mcpReference, /Do not invent categories/i);
+  assert.match(mcpReference, /faction|timeline|relationship|scene/i);
+  assert.match(workflow, /rule, character, location, item, event, custom/);
+});
