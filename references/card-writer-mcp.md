@@ -162,6 +162,14 @@ deletes need `entryId`.
 }
 ```
 
+Worldbook entry fields are authoring handles, not a complete runtime contract.
+`keywords` are trigger terms, `isConstant` marks an always-available entry, and
+`category` supports systematic review. Injection details are not specified by
+the MCP schema: keyword matching rules, scan depth, per-turn entry count, and
+runtime token budget must be verified with real conversation tests. Do not claim that worldbooks remove token limits; use them to move reusable lore and optional
+rules out of the always-on role detail while keeping core identity and behavior
+stable in the card.
+
 ### `worldbook_create`
 
 Create a worldbook owned by the authenticated account.

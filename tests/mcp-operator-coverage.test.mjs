@@ -66,3 +66,12 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
   assert.match(mcpReference, /structuredContent\.worldbook/);
   assert.match(mcpReference, /structuredContent\.binding/);
 });
+
+test('MCP workflow documents worldbook injection limits conservatively', async () => {
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(mcpReference, /keywords/);
+  assert.match(mcpReference, /isConstant/);
+  assert.match(mcpReference, /injection details are not specified/i);
+  assert.match(mcpReference, /do not claim that worldbooks remove token limits/i);
+});
