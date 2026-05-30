@@ -120,6 +120,14 @@ test('MCP workflow documents direct deep patch workflow', async () => {
   assert.doesNotMatch(workflow, /document_upload/);
 });
 
+test('MCP workflow documents roleTag text-array canonicalization', async () => {
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(mcpReference, /roleTag[\s\S]{0,160}plain array of tag text strings/);
+  assert.match(mcpReference, /Do not send one comma-separated string/);
+  assert.match(mcpReference, /\{"icon":"",\s*"text":"\.\.\.",\s*"type":2\}/);
+});
+
 test('MCP workflow documents author reply format contract', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');

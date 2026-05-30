@@ -584,6 +584,11 @@ fields. Short one-field edits can still use `role_patch_detail`,
 `role_patch_welcome`, `role_patch_profile`, `role_patch_output_contract`, or
 `role_patch_jailbreak`.
 
+`roleTag` fields in `role_patch_profile` and `role_patch_document` accept a
+plain array of tag text strings. Do not send one comma-separated string. The
+server persists each item as the LunaTalk platform tag object shape
+`{"icon":"","text":"...","type":2}` while preserving array order.
+
 MCP cannot read a client-local file path by itself. The AI client must read and
 validate the file, then send its parsed JSON object as `document`.
 
