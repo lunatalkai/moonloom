@@ -5,8 +5,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REQUIRED_JSON_FILES = [
+  'package.json',
   '.codex-plugin/plugin.json',
   '.claude-plugin/plugin.json',
+  '.claude-plugin/marketplace.json',
   '.cursor-plugin/plugin.json',
   '.mcp.json',
 ];
@@ -16,10 +18,23 @@ const SCAN_PATHS = [
   'references',
   'skills',
   'examples',
+  'package.json',
   '.codex-plugin/plugin.json',
   '.claude-plugin/plugin.json',
+  '.claude-plugin/marketplace.json',
   '.cursor-plugin/plugin.json',
   '.mcp.json',
+];
+
+const PUBLIC_PLUGIN_VERSION_SOURCES = [
+  { file: '.codex-plugin/plugin.json', label: 'version', read: (json) => json.version },
+  { file: '.claude-plugin/plugin.json', label: 'version', read: (json) => json.version },
+  {
+    file: '.claude-plugin/marketplace.json',
+    label: 'plugins[0].version',
+    read: (json) => json.plugins?.[0]?.version,
+  },
+  { file: '.cursor-plugin/plugin.json', label: 'version', read: (json) => json.version },
 ];
 
 const SECRET_PATTERNS = [
@@ -161,6 +176,40 @@ async function validateJsonFiles(root, issues) {
       continue;
     }
     await readJson(root, relativePath, issues);
+  }
+}
+
+async function validatePluginVersions(root, issues) {
+  const packageJson = await readJson(root, 'package.json', issues);
+  const packageVersion = packageJson?.version;
+
+  if (typeof packageVersion !== 'string' || packageVersion.length === 0) {
+    issues.push(issue('release.version_missing', 'package.json', 'package.json version is missing.'));
+    return;
+  }
+
+  for (const source of PUBLIC_PLUGIN_VERSION_SOURCES) {
+    if (!(await exists(path.join(root, source.file)))) {
+      continue;
+    }
+
+    const pluginJson = await readJson(root, source.file, issues);
+    if (!pluginJson) {
+      continue;
+    }
+
+    const pluginVersion = source.read(pluginJson);
+    if (typeof pluginVersion !== 'string' || pluginVersion.length === 0) {
+      issues.push(issue('release.version_missing', source.file, `${source.label} is missing.`));
+    } else if (pluginVersion !== packageVersion) {
+      issues.push(
+        issue(
+          'release.version_mismatch',
+          source.file,
+          `${source.label} is ${pluginVersion}; expected package version ${packageVersion}.`,
+        ),
+      );
+    }
   }
 }
 
@@ -336,6 +385,7 @@ export async function validateRepository(root = process.cwd()) {
   };
 
   await validateJsonFiles(root, issues);
+  await validatePluginVersions(root, issues);
   await validateSkills(root, issues, summary);
   await scanReleaseSafety(root, issues);
 
