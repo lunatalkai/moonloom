@@ -33,3 +33,20 @@ test('Claude marketplace uses a LunaTalk plugin-source name and public plugin na
 	assert.doesNotMatch(marketplace.name, /dev/i);
 	assert.equal(marketplace.plugins[0].name, 'moonloom');
 });
+
+test('all public plugin manifests use the package version', async () => {
+	const packageJson = await readJson('package.json');
+	const codexPlugin = await readJson('.codex-plugin/plugin.json');
+	const claudePlugin = await readJson('.claude-plugin/plugin.json');
+	const claudeMarketplace = await readJson('.claude-plugin/marketplace.json');
+	const cursorPlugin = await readJson('.cursor-plugin/plugin.json');
+
+	for (const version of [
+		codexPlugin.version,
+		claudePlugin.version,
+		claudeMarketplace.plugins[0].version,
+		cursorPlugin.version,
+	]) {
+		assert.equal(version, packageJson.version);
+	}
+});
