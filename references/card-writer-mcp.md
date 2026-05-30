@@ -35,11 +35,16 @@ Long local documents have three supported paths:
 1. If the client integration can send the same MCP OAuth auth to normal HTTP
    requests, POST the parsed document to `/mcp/card-writer/uploads`. The server
    stores it for 30 minutes and returns an `uploadId`; the long body does not go
-   through MCP tool arguments.
+   through MCP tool arguments. To revise the staged file, use
+   `GET /mcp/card-writer/uploads/:uploadId` for metadata or a selected JSON
+   Pointer path, then `PATCH /mcp/card-writer/uploads/:uploadId` with small
+   operations. This keeps the same `uploadId`.
 2. If the agent can call MCP tools but cannot read or forward the MCP bearer
    token, call `document_upload` inside the authenticated MCP session. It
-   returns the same short `uploadId`, but this fallback still sends the document
-   through MCP tool arguments.
+   creates the same short `uploadId`, but this fallback still sends the initial
+   document through MCP tool arguments. Later small revisions can use
+   `document_upload_read` and `document_upload_patch` with the same `uploadId`;
+   only the read slice and patch operations pass through MCP arguments.
 3. For normal-sized patches where upload is not needed or not available, call
    `role_patch_document` or `worldbook_patch_document` directly.
 
@@ -89,6 +94,12 @@ reading fields:
   status.
 - `document_upload`: read `structuredContent.upload`; this includes `uploadId`,
   `kind`, `bytes`, `sha256`, `expiresAt`, and `expiresInSeconds`.
+- `document_upload_read`: read `structuredContent.upload` for metadata and
+  `structuredContent.document` when a path was requested. String paths return a
+  bounded `text` slice plus `start`, `end`, `totalChars`, and `truncated`.
+- `document_upload_patch`: read `structuredContent.upload` for the updated
+  metadata and `structuredContent.patch` for `patchedPaths`, before applying the
+  same `uploadId`.
 - `role_patch_document_upload` and `worldbook_patch_document_upload`: read
   `structuredContent.document`; these consume a short `uploadId` created by
   POST `/mcp/card-writer/uploads` or by the MCP `document_upload` fallback.
@@ -111,14 +122,16 @@ are top-level fields of the JSON-RPC response.
 7. `role_patch_output_contract` when the card needs an author-locked reply
    format example for stable visible structure
 8. `role_patch_document_upload` after HTTP upload or MCP `document_upload` for
-   long local files, or `role_patch_document` when upload is unavailable
+   long local files; use `document_upload_read` and `document_upload_patch` for
+   small revisions to the staged upload; use `role_patch_document` when upload
+   is unavailable
 9. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
 10. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
    `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`,
-   or
-   `worldbook_patch_document`, then `worldbook_bind`
+   with `document_upload_read` / `document_upload_patch` for staged upload
+   revisions, or `worldbook_patch_document`, then `worldbook_bind`
 11. `validate_role`
 12. `render_preview`
 13. `conversation_model_catalog` before paid conversation testing
@@ -621,9 +634,9 @@ format rules, the platform guide wins.
 
 ### `document_upload`
 
-Create a short-lived `uploadId` from inside the authenticated MCP session. Use
-this when the client can call MCP tools but cannot access the MCP OAuth bearer
-token needed for POST `/mcp/card-writer/uploads`.
+Create a short-lived `uploadId` from scratch inside the authenticated MCP
+session. Use this when the client can call MCP tools but cannot access the MCP
+OAuth bearer token needed for POST `/mcp/card-writer/uploads`.
 
 ```json
 {
@@ -644,9 +657,71 @@ document. Read `structuredContent.upload.uploadId`, then call
 `role_patch_document_upload` or `worldbook_patch_document_upload`.
 
 This fallback solves the auth-token visibility problem, but it does not avoid
-MCP tool argument size constraints. Prefer direct HTTP upload when the client
-supports it. For role patches, the later uploadId consumer still enforces the
-same language-specific field length limits as normal patch tools.
+MCP tool argument size constraints for the initial create. Prefer direct HTTP
+upload when the client supports it. For role patches, the later uploadId
+consumer still enforces the same language-specific field length limits as normal
+patch tools.
+
+### `document_upload_read`
+
+Read metadata or a bounded slice from an existing staged upload. Use this before
+patching when the agent needs the current `sha256` or a small portion of a long
+string.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "uploadId": "upload_...",
+  "path": "/fields/roleDetailDesc",
+  "start": 0,
+  "maxChars": 1200
+}
+```
+
+Omit `path` to read only metadata. For string paths, the response returns
+`text`, `start`, `end`, `totalChars`, and `truncated`. For non-string JSON
+paths, pass `includeValue: true` only when the selected value is small enough to
+send through tool results.
+
+### `document_upload_patch`
+
+Patch an existing staged upload in place. The response keeps the same
+`uploadId`, updates `sha256`, and returns `patchedPaths`. Use `baseSha256` from
+`document_upload` or `document_upload_read` when you want conflict protection.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "uploadId": "upload_...",
+  "baseSha256": "current-upload-sha256",
+  "patch": {
+    "operations": [
+      {
+        "op": "replaceText",
+        "path": "/fields/roleDetailDesc",
+        "oldText": "old short unique text",
+        "newText": "new short replacement"
+      }
+    ]
+  }
+}
+```
+
+Supported operations:
+
+- `add`: add an object property or insert/append an array element. Use `-` as
+  the last array token to append, for example `/entries/-`.
+- `replaceText`: replace `oldText` with `newText` inside a string value at the
+  JSON Pointer `path`. By default `oldText` must appear exactly once; set
+  `replaceAll: true` for global replacement.
+- `set`: set a JSON value at `path`; useful for small metadata, tags, keywords,
+  or array elements.
+- `remove`: remove an object property or array element at `path`.
+
+Use JSON Pointer paths such as `/fields/roleDetailDesc`,
+`/fields/roleWelcome`, or `/entries/0/content`. After patching, call
+`role_patch_document_upload` or `worldbook_patch_document_upload` with the same
+`uploadId`.
 
 ### `role_patch_welcome`
 
