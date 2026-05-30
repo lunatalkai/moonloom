@@ -69,6 +69,7 @@ Field finalization packet:
   - roleDetailDesc:
   - roleWelcome:
   - talkExample:
+  - roleOutputContract:
   - tags:
   - avatar/background:
 - hard-cap and density check:
@@ -103,6 +104,8 @@ Field finalization packet:
   - role_patch_assets:
   - role_patch_detail:
   - role_patch_welcome:
+  - role_patch_talk_example:
+  - role_patch_output_contract:
   - role_patch_jailbreak:
   - theme_bind / extension_enable:
 - validation / render / simulation handoff:

@@ -307,7 +307,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   genre cluster and wants options first, use `lunatalk-premise-workshop`.
 - Prepared packet stacks, field-ready drafts, final role fields, or assembling
   `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
-  tags, Theme V3 notes, token allocation, validation handoff, render handoff, or
+  `roleOutputContract`, tags, Theme V3 notes, token allocation, validation handoff, render handoff, or
   simulation handoff after ideation packets already exist: use
   `lunatalk-card-author` in draft-only field assembly mode. Do not re-run broad
   ideation or call MCP tools unless the author asks to create or patch a real
@@ -446,6 +446,9 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/talk-example-design.md` when the task involves
   `talkExample` decisions, micro-samples, dialogue samples, example turns,
   generator output examples, RPG/system turn examples, or sample token cost.
+- Use `roleOutputContract` when the unresolved layer is an author-locked reply
+  format example for stable visible structure; keep it short and route final
+  patching through `lunatalk-field-finalizer`.
 - Read `../../references/agency-design.md` when the task involves player agency,
   user insertion space, interaction hooks, decorative choices, route funneling,
   player-agency takeover, or consequence checks.

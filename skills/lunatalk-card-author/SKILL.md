@@ -196,6 +196,13 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    visible/hidden state fields themselves are not settled, use or preserve
    `lunatalk-state-economist` before presentation. Patch the opening scene with
    `role_patch_welcome` from the opening and presentation packets.
+   When the final packet includes compact `talkExample` samples, patch them with
+   `role_patch_talk_example`; keep them as Example Chat calibration samples, not
+   current-session summaries or long plot text.
+   When the final packet includes an author-locked reply format template, patch
+   it with `role_patch_output_contract`; keep it short, label it as a reply
+   format example, and do not use player-overridable `talkExample` as the only
+   structure stabilizer.
    For a new or repaired opening, the first two lines must pass 4-W legibility
    before mood: Who / Where / When / What, concrete nouns, and one playable
    object, decision, or risk. If the opening feels mood-first, pretty mood,
@@ -314,7 +321,7 @@ MCP tools make the card real; Moonloom makes the card good.
 - When a prepared packet stack already exists, do not brainstorm from scratch.
   Resolve conflicts, preserve the strongest packet signals, and assemble
    `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
-   tags/theme notes, avatar/background status, token allocation,
+   `roleOutputContract`, tags/theme notes, avatar/background status, token allocation,
    validation/render/simulation handoff, and self-review. Use the final
    role-field authoring packet in `card-authoring-templates.md`.
 - Use `lunatalk-field-finalizer` before role_create_private or patch tools when
