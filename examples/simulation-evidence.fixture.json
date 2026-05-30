@@ -242,6 +242,15 @@
       "visualNotes": "Ready state observed after the long-arc macro-progression probe."
     }
   ],
+  "longArcFormatStability": {
+    "turns": 10,
+    "structureShare": 0.91,
+    "panelRetention": 0.9,
+    "choicesRetention": 1,
+    "hiddenStateObserved": false,
+    "absorbingStateRisk": "none",
+    "evidenceSummary": "Synthetic long-arc probe preserved XMLV3 structure, visible panel state, and choices; choices did not drop first, so no absorbing-state-like self-reinforcing format drift appeared."
+  },
   "rootCauseRepair": {
     "needed": false,
     "summary": "No repeated Moonloom process failure in this synthetic evidence shape."

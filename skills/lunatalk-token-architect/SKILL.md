@@ -11,6 +11,10 @@ architecture packet, not a full card and not a mutating MCP operation.
 ## Required References
 
 Read `../../references/token-economy.md` first. Read
+`../../references/prompt-attention-architecture.md` and
+`../../references/one-shot-prompt-runtime.md` when the token problem is really
+attention dilution, Tier 4 format stability, one-shot raw detail placement,
+RoleDetail/RoleUserName positioning, or long prompt structure. Read
 `../../references/card-writer-mcp.md` when interpreting `validate_role` and
 `tokenBudget`. Read `../../references/role-card-writing-framework.md` for PACT,
 archetype ranges, and token-efficient play loops. Read
@@ -53,7 +57,10 @@ use `lunatalk-presentation-director` instead.
    For generator/helper cards, preserve the artifact contract, default-start
    path, output schema, named revision operations, quality rubric, and artifact
    memory before moving or cutting schema/examples.
-8. Name rerun checks and handoff target.
+8. If XMLV3, choices, panels, or hidden state are brittle, reserve a small
+   structural budget for Minimum Viable Reply and Tier 4 format exemplar before
+   cutting lower-priority lore or decoration.
+9. Name rerun checks and handoff target.
 
 ## Output Format
 
@@ -95,6 +102,9 @@ Self-review:
   action, route, mood, or risk.
 - Do not add examples unless they teach voice, output format, refusal handling,
   or pressure behavior more cheaply than rules.
+- Do not delete the Tier 4 format exemplar or Minimum Viable Reply from a
+  control-heavy card just to reduce character count; cut prose, repeated lore,
+  or decorative XML first.
 - Do not compress a generator/helper card by deleting the artifact schema,
   default-start path, revision operations, or artifact memory. Move or shorten
   them, but keep the loop executable.

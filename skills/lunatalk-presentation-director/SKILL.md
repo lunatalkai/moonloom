@@ -118,7 +118,11 @@ which meters are decorative and should be omitted.
    `system-intake-card-design.md`: keep the scene beat separate from the setup
    wizard, then map the console into sibling `panel`, `grid`, `form`, `bar`,
    `choices`, and preview-compatible `state` blocks.
-10. State the token stance without inventing tokenBudget numbers.
+10. State the token stance without inventing tokenBudget numbers. For one-shot
+   weak-model stability, name the minimum XMLV3 skeleton that must survive:
+   scene wrapper, visible state/panel when needed, and choices at decision
+   points. Keep panel/bar/layout additions subordinate to choices retention and
+   action-path closure.
 11. Provide a compact XMLV3 scaffold only when it clarifies structure.
     If the scaffold changes the XMLV3 welcome structure, include
     `npm run validate:xmlv3-presentation` in the handoff before field
@@ -202,4 +206,7 @@ Self-review:
   attributes, extension packs, and readable fallback behavior.
 - Do not overrule a weak opening with visual polish. If the next player action is
   unclear, repair the opening first.
+- Do not spend the weak-model structural budget on decorative layout before the
+  minimum skeleton is reliable. Long-play format stability needs choices
+  retention before richer panel/bar density.
 - Keep output original and public-safe.

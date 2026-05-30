@@ -49,6 +49,19 @@ in the same location/route for too long. Treat same location/route stagnation,
 repeated opening-scene beats, or no movement toward the intended route map as a
 warning even if individual turns look lively.
 
+For XMLV3 or control-heavy cards, add long-arc format stability to the same
+conversation. Weak models can show format dilution after a long emotional turn:
+scene movement may stay good while XMLV3 panels, bars, choices, or hidden state
+collapse into plain text. This can become an absorbing-state-like /
+self-reinforcing format drift because the model imitates its own recent
+plain-text turns. U-shaped attention can delay not cure this failure. Run 10+ turns
+when structure matters, record `longArcFormatStability` with
+`structureShare`, `panelRetention`, `choicesRetention`, `hiddenStateObserved`,
+and `absorbingStateRisk`, and treat choices as fragile: choices are often the
+first drop and the most important action-path closure surface. If choices first
+drop at a decision point, the format run is not accepted.
+U-shaped can delay not cure long-arc format collapse.
+
 Continue the returned `conversationId` when these probes are meant to form one
 conversation. Split into separate conversations only when the author accepts the
 extra cost and the probes are independent stress tests.
@@ -135,6 +148,9 @@ The evidence packet should cover:
   agency, format stability, reasonable length, safety boundary, and
   macro-progression
 - one per-message preview entry per probe when message identifiers are available
+- `longArcFormatStability` for XMLV3/control-heavy cards: turns,
+  `structureShare`, `panelRetention`, `choicesRetention`,
+  `hiddenStateObserved`, `absorbingStateRisk`, and a public-safe summary
 - a repair packet when any probe or check is warning/fail
 
 Do not put raw transcripts, account material, private notes, internal URLs, or

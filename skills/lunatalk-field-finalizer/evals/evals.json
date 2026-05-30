@@ -53,6 +53,18 @@
         "The output keeps behavior-bearing detail when it is within cap and not padding.",
         "The output still provides compact fallback planning for near-limit or risky fields."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "My roleDetailDesc working document starts with a date stamp, version banner, revision note, and changelog, then jumps directly into ## Runtime Rules without a # H1. The content is otherwise final. Make it MCP-ready without changing the card concept.",
+      "expected_output": "Uses lunatalk-field-finalizer, strips working-document metadata including the version marker, date stamp, revision note, changelog, and 版本標註, validates heading hierarchy with one H1 / single H1 / exactly one H1 before H2 sections, rejects skipped heading levels or a jump from H1 to H3, and blocks MCP-ready upload until the field is clean.",
+      "files": [],
+      "expectations": [
+        "The output treats version banner, version marker, date stamp, revision note, changelog, and working-document metadata as content pollution that must be removed before MCP-ready upload.",
+        "The output validates heading hierarchy, requires one H1 / single H1 / exactly one H1 when Markdown headings are used, and rejects skipped heading levels, start with H2, or jump from H1 to H3.",
+        "The output preserves the card concept and runtime rules while stripping authoring metadata.",
+        "The final status is not MCP-ready until the metadata and heading hierarchy are fixed."
+      ]
     }
   ]
 }

@@ -26,8 +26,9 @@ Theme V3, hidden state JSON, or visible state.
    the engine, or reopen broad alternatives unless the supplied packets
    contradict each other or leave a required field undecidable.
 3. Inspect final fields for missing content, placeholders, TODOs, bracketed
-   instructions, unresolved alternatives, meta commentary, and author-facing
-   notes that should not enter the card.
+   instructions, unresolved alternatives, meta commentary, author-facing notes,
+   working-document metadata, version banner / version marker, date stamp,
+   revision note, changelog, and 版本標註 that should not enter the card.
 4. Check language-aware hard caps and density. Use the author's language /
    locale, card fields, or MCP validation/tokenBudget result when available.
    English fields use the 50,000-character English `roleDetailDesc` cap and
@@ -38,10 +39,13 @@ Theme V3, hidden state JSON, or visible state.
    handling, or return-later play.
 5. Produce a compact fallback for any field near a limit or any field whose
    purpose could survive in shorter form.
-6. Check format stability for XMLV3, JSON, Markdown, YAML-style lists, and plain
-   paragraphing. If XMLV3, hidden JSON, or HTML is not stable, hand off to
-   `lunatalk-presentation-director` or `lunatalk-render-review` rather than
-   patching.
+6. Check format stability for XMLV3, JSON, Markdown, heading hierarchy,
+   YAML-style lists, and plain paragraphing. For final field documents using
+   Markdown headings, require one H1 / single H1 / exactly one H1 before H2
+   sections; do not skip heading levels, use skipped heading levels, start with
+   H2, or jump from H1 to H3. If XMLV3, hidden JSON, HTML, or Markdown hierarchy
+   is not stable, hand off to `lunatalk-presentation-director` or
+   `lunatalk-render-review` rather than patching.
 7. Map fields to MCP tools: profile, assets, detail, welcome, optional
    instruction guardrail, theme binding, and extension enablement. XMLV3 real
    chat requires `theme_bind`; if the card expects conversation controls, do not
@@ -92,6 +96,8 @@ Field finalization packet:
   - YAML-style lists:
   - plain-text paragraphing:
 - placeholder / meta check:
+  - working-document metadata / version banner / date stamp stripped:
+  - heading hierarchy:
 - MCP patch mapping:
   - role_patch_profile:
   - role_patch_assets:
@@ -128,6 +134,8 @@ Field finalization packet:
 - Do not call MCP tools when placeholder text or unresolved alternatives remain.
 - Do not let validation, render review, or simulation discover obvious format
   mistakes that a field pass could catch.
+- Do not upload working-document metadata, version marker, date stamp, changelog,
+  or broken heading hierarchy as if it were role content.
 - Do not turn subjective writing quality into MCP/server gates. Route writing
   failures to Moonloom skills.
 - Do not claim MCP-ready status when avatar/background URLs are missing; mark

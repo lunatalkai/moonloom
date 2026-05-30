@@ -40,6 +40,7 @@ const REQUIRED_REPAIR_FIELDS = [
 ];
 
 const VALID_RESULTS = new Set(['pass', 'warning', 'fail']);
+const VALID_ABSORBING_STATE_RISKS = new Set(['none', 'watch', 'warning', 'fail']);
 const RAW_TRANSCRIPT_KEYS = new Set([
   'rawtranscript',
   'fulltranscript',
@@ -216,6 +217,80 @@ function validateRepairPacket(evidence, issues, file, failedChecks) {
   }
 }
 
+function validateRatioMetric(metrics, field, issues, file) {
+  const value = metrics?.[field];
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1) {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.ratio_invalid',
+        file,
+        `longArcFormatStability.${field} must be a number from 0 to 1.`,
+      ),
+    );
+  }
+}
+
+// longArcFormatStability captures weak-model absorbing-state-like /
+// self-reinforcing format drift. Choices are tracked because choices first-drop
+// is the most damaging structural collapse for interactive cards.
+function validateLongArcFormatStability(evidence, issues, file) {
+  const metrics = evidence?.longArcFormatStability;
+  if (!isObject(metrics)) {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.missing',
+        file,
+        'Evidence requires longArcFormatStability metrics for long-arc format stability.',
+      ),
+    );
+    return;
+  }
+
+  if (typeof metrics.turns !== 'number' || !Number.isInteger(metrics.turns) || metrics.turns < 10) {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.turns_invalid',
+        file,
+        'longArcFormatStability.turns must be an integer of 10 or more.',
+      ),
+    );
+  }
+
+  for (const field of ['structureShare', 'panelRetention', 'choicesRetention']) {
+    validateRatioMetric(metrics, field, issues, file);
+  }
+
+  if (typeof metrics.hiddenStateObserved !== 'boolean') {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.boolean_invalid',
+        file,
+        'longArcFormatStability.hiddenStateObserved must be boolean.',
+      ),
+    );
+  }
+
+  if (!VALID_ABSORBING_STATE_RISKS.has(metrics.absorbingStateRisk)) {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.risk_invalid',
+        file,
+        'longArcFormatStability.absorbingStateRisk must be none, watch, warning, or fail.',
+      ),
+    );
+  }
+
+  if (typeof metrics.evidenceSummary !== 'string' || metrics.evidenceSummary.trim() === '') {
+    issues.push(
+      issue(
+        'simulation.long_arc_format_stability.summary_missing',
+        file,
+        'longArcFormatStability.evidenceSummary is required.',
+      ),
+    );
+  }
+}
+
 export function validateSimulationEvidence(evidence, options = {}) {
   const file = options.filePath || DEFAULT_EVIDENCE_PATH;
   const issues = [];
@@ -265,6 +340,7 @@ export function validateSimulationEvidence(evidence, options = {}) {
     }
   }
 
+  validateLongArcFormatStability(evidence, issues, file);
   validateRepairPacket(evidence, issues, file, failedChecks);
 
   return {
@@ -273,6 +349,7 @@ export function validateSimulationEvidence(evidence, options = {}) {
       probes: probes.length,
       messagePreviews: previews.length,
       failedChecks,
+      longArcFormatStability: isObject(evidence.longArcFormatStability),
     },
   };
 }

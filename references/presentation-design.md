@@ -25,6 +25,10 @@ Presentation is not decoration. It should make the card easier to play.
   carry only the card-specific format contract: when this card should use
   controls, state fields, choice rules, pack choice, visible status meaning,
   and player-agency boundaries.
+- Weak-model structural budget matters. If a one-shot card must preserve XMLV3
+  over long play, plan the minimum skeleton first: scene wrapper, visible
+  state/panel when needed, and choices at decision points. Add decorative panels,
+  bars, and nested layout only after that skeleton is stable.
 - XMLV3 compatible extension work stays on one target. Do not create XMLV4;
   add optional tags, optional attributes, or packs with fallback behavior.
 
@@ -78,6 +82,8 @@ Presentation packet:
 - token stance:
   - tokenizer baseline:
   - structure-token risk:
+  - weak-model minimum skeleton:
+  - choices retention:
   - repeated style/setup moved to Theme V3:
 - render review plan:
 - handoff:

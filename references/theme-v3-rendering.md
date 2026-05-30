@@ -119,10 +119,21 @@ JSON is a high-drift output trap in real chat. In plain terms, hidden <state>
 JSON is high-drift. Even when
 `roleDetailDesc` asks for state every turn, the model may omit it after several
 rounds. When state matters, provide a visible panel/state-surface fallback with
-the same player-facing facts, then use hidden `<state>` JSON as the
-machine-readable source when it appears. Treat missing `<state>` after a real
-state change as a simulation warning and patch the role-specific output
-contract.
+the same player-facing facts; the visible panel is the source of truth for the
+player. Then use hidden `<state>` JSON as the machine-readable source when it
+appears. Treat missing `<state>` after a real state change as a simulation
+warning and patch the role-specific output contract.
+
+Weak models can suffer format dilution even when the card's behavior remains
+good. A long emotional turn may drop XMLV3 and create an absorbing-state-like /
+self-reinforcing format drift where later turns imitate the plain-text output.
+U-shaped attention can delay not cure this. Test format stability for 10+ turns
+when using panels, bars, choices, or hidden state, and record
+`structureShare`, `panelRetention`, and `choicesRetention` when available.
+Choices are fragile and often first drop, so protect choices as the required
+closure surface at decision points
+rather than adding more decorative controls.
+U-shaped can delay not cure weak-model format collapse.
 
 Visible status widgets must stay in sync with hidden state. If a visible `bar`
 or meter and hidden `state.status` / `state.relationships` describe the same

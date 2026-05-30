@@ -125,6 +125,12 @@ not call the tool.
    or meaningful consequence, do not accept the conversation just because later
    turns pass. Patch `roleDetailDesc` and `roleWelcome` so first replies and
    route replies close with a playable next move.
+   For XMLV3 or control-heavy cards, also record longArcFormatStability during
+   the 10+ turn long arc: `structureShare`, `panelRetention`,
+   `choicesRetention`, `hiddenStateObserved`, and `absorbingStateRisk`.
+   Treat absorbing-state-like / self-reinforcing format drift as a warning even
+   when behavior stays in character. Choices are often first to drop, so a
+   choices first failure is a structural acceptance failure at decision points.
    When triaging a warning, inspect the last visible block of the AI turn. Ending
    on a clue reveal, mood beat, twist quote, or character statement is not enough
    unless the turn also names what the player can do next. Prefer a role-specific
@@ -211,6 +217,13 @@ Simulation repair packet:
 - transcript-backed failures:
 - evaluation signals:
 - message preview evidence:
+- longArcFormatStability:
+  - turns:
+  - structureShare:
+  - panelRetention:
+  - choicesRetention:
+  - hiddenStateObserved:
+  - absorbingStateRisk: none | watch | warning | fail
 - weakest Moonloom dimension:
 - patch target:
 - next Moonloom skill:
