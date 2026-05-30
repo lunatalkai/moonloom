@@ -14,14 +14,15 @@ async function writeJson(filePath, value) {
 async function createFixture() {
   const root = await mkdtemp(path.join(tmpdir(), 'moonloom-validate-'));
 
-  for (const filePath of [
-    '.codex-plugin/plugin.json',
-    '.claude-plugin/plugin.json',
-    '.cursor-plugin/plugin.json',
-    '.mcp.json',
-  ]) {
-    await writeJson(path.join(root, filePath), { name: 'fixture' });
-  }
+  await writeJson(path.join(root, 'package.json'), { name: 'fixture', version: '0.1.0' });
+  await writeJson(path.join(root, '.codex-plugin/plugin.json'), { name: 'fixture', version: '0.1.0' });
+  await writeJson(path.join(root, '.claude-plugin/plugin.json'), { name: 'fixture', version: '0.1.0' });
+  await writeJson(path.join(root, '.claude-plugin/marketplace.json'), {
+    name: 'fixture-marketplace',
+    plugins: [{ name: 'fixture', version: '0.1.0' }],
+  });
+  await writeJson(path.join(root, '.cursor-plugin/plugin.json'), { name: 'fixture', version: '0.1.0' });
+  await writeJson(path.join(root, '.mcp.json'), { name: 'fixture' });
 
   await writeFile(path.join(root, 'README.md'), '# Fixture\n', 'utf8');
   await mkdir(path.join(root, 'references'), { recursive: true });
@@ -203,4 +204,30 @@ test('blocks concrete identifiers, SQL snippets, and internal URLs in public fil
   assert.ok(codes.includes('release.concrete_identifier'));
   assert.ok(codes.includes('release.sql_snippet'));
   assert.ok(codes.includes('release.internal_url'));
+});
+
+test('fails release validation when public plugin manifest versions drift', async () => {
+  const root = await createFixture();
+
+  await writeJson(path.join(root, '.claude-plugin/marketplace.json'), {
+    name: 'fixture-marketplace',
+    plugins: [{ name: 'fixture', version: '0.0.9' }],
+  });
+  await addSkill(
+    root,
+    'safe-skill',
+    `---\nname: safe-skill\ndescription: Use when checking release version consistency.\n---\n\n# Safe Skill\n`,
+    [
+      {
+        prompt: 'Route this fixture.',
+        expected_output: 'Uses the safe skill.',
+        expectations: ['Mentions the safe skill.'],
+      },
+    ],
+  );
+
+  const result = await validateRepository(root);
+  const codes = result.issues.map((item) => item.code);
+
+  assert.ok(codes.includes('release.version_mismatch'));
 });
