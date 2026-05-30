@@ -147,9 +147,12 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    For long final fields, prefer preparing a local `lunatalk.rolePatch.v1`
    document and validating it locally. Use HTTP upload when the client can send
    MCP auth to `/mcp/card-writer/uploads`; use MCP `document_upload` when the
-   client cannot access the bearer token; use `role_patch_document` directly for
-   normal-sized patches when upload is unavailable. Keep the older one-field
-   patch tools available for short edits and targeted repairs.
+   client cannot access the bearer token. After an upload exists, use
+   `document_upload_read` plus `document_upload_patch` for small staged
+   corrections instead of resending the entire long document. Use
+   `role_patch_document` directly for normal-sized patches when upload is
+   unavailable. Keep the older one-field patch tools available for short edits
+   and targeted repairs.
 9. If the current card or draft has a thin `roleDetailDesc`, thin biography,
    under-budget detail for its language/card ambition, or missing durable role
    engine, use or preserve `lunatalk-detail-engineer` before patching fields. Use
