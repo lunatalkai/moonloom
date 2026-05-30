@@ -144,15 +144,14 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    Patch avatar/background URLs with `role_patch_assets` once public-safe image
    URLs exist. If only prompts exist, stop with the missing asset action; do not
    claim completion while `roleAvatar` or `roleBackground` is blank.
-   For long final fields, prefer preparing a local `lunatalk.rolePatch.v1`
-   document and validating it locally. Use HTTP upload when the client can send
-   MCP auth to `/mcp/card-writer/uploads`; use MCP `document_upload` when the
-   client cannot access the bearer token. After an upload exists, use
-   `document_upload_read` plus `document_upload_patch` for small staged
-   corrections instead of resending the entire long document. Use
-   `role_patch_document` directly for normal-sized patches when upload is
-   unavailable. Keep the older one-field patch tools available for short edits
-   and targeted repairs.
+   For long existing fields, prefer direct deep patch instead of upload. Read
+   the current field, compute the SHA-256 of the exact current text, then send a
+   small `TextDeepPatch`: `role_patch_detail` / `role_patch_welcome` /
+   `role_patch_output_contract` / `role_patch_jailbreak` use `patch.deepPatch`,
+   `role_patch_profile` uses `patch.textPatches.roleDesc`, and
+   `role_patch_document` uses `document.fieldPatches` for coordinated
+   multi-field edits. Use full field replacement only when the whole final
+   field is intentionally being rewritten.
 9. If the current card or draft has a thin `roleDetailDesc`, thin biography,
    under-budget detail for its language/card ambition, or missing durable role
    engine, use or preserve `lunatalk-detail-engineer` before patching fields. Use

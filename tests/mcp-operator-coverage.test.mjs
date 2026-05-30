@@ -96,33 +96,28 @@ test('MCP workflow documents worldbook patch document workflow', async () => {
   assert.match(workflow, /worldbook_patch_document/);
 });
 
-test('MCP workflow documents uploadId document workflow', async () => {
+test('MCP workflow documents direct deep patch workflow', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
 
-  assert.match(mcpReference, /\/mcp\/card-writer\/uploads/);
-  assert.match(mcpReference, /uploadId/);
-  assert.match(mcpReference, /30 minutes/i);
-  assert.match(mcpReference, /document_upload/);
-  assert.match(mcpReference, /document_upload_read/);
-  assert.match(mcpReference, /document_upload_patch/);
-  assert.match(mcpReference, /`add`/);
+  assert.match(mcpReference, /direct deep patch/i);
+  assert.match(mcpReference, /patch\.deepPatch/);
+  assert.match(mcpReference, /patch\.textPatches\.roleDesc/);
+  assert.match(mcpReference, /document\.fieldPatches/);
+  assert.match(mcpReference, /contentDeepPatch/);
+  assert.match(mcpReference, /textPatches\.description/);
   assert.match(mcpReference, /replaceText/);
+  assert.match(mcpReference, /insertText/);
+  assert.match(mcpReference, /appendText/);
   assert.match(mcpReference, /baseSha256/);
-  assert.match(mcpReference, /role_patch_document_upload/);
-  assert.match(mcpReference, /worldbook_patch_document_upload/);
-  assert.match(mcpReference, /does not go\s+through MCP tool arguments/i);
-  assert.match(mcpReference, /same `uploadId`/i);
-  assert.match(mcpReference, /per-locale length checks/i);
-  assert.match(workflow, /cannot access the OAuth bearer token/i);
-  assert.match(workflow, /Do not claim the\s+task is impossible/i);
-  assert.match(workflow, /document_upload_read/);
-  assert.match(workflow, /document_upload_patch/);
-  assert.match(workflow, /same uploadId/i);
-  assert.match(workflow, /per-locale length limits/i);
-  assert.match(workflow, /document_upload/);
-  assert.match(workflow, /role_patch_document_upload/);
-  assert.match(workflow, /worldbook_patch_document_upload/);
+  assert.match(workflow, /direct deep patch/i);
+  assert.match(workflow, /role_get/);
+  assert.match(workflow, /worldbook_entry_list/);
+  assert.match(workflow, /SHA-256/);
+  assert.match(workflow, /stale bases/i);
+  assert.match(workflow, /non-unique anchors/i);
+  assert.doesNotMatch(mcpReference, /document_upload/);
+  assert.doesNotMatch(workflow, /document_upload/);
 });
 
 test('MCP workflow documents author reply format contract', async () => {
