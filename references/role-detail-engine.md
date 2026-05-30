@@ -80,9 +80,12 @@ If the issue is only field allocation or compression after a complete engine
 exists, use `token-economy.md`. If the issue is long-prompt attention dilution,
 cross-model instruction-following drift, or raw detail / raw description
 Markdown structure, read `prompt-attention-architecture.md` before final detail
-assembly. If the role's appeal, world, relationship, play rules, agency, voice,
-or longplay layer is not designed yet, preserve that narrow packet before final
-detail assembly.
+assembly. If the issue is where `roleDetailDesc`, `RoleUserName`, current user
+input, summaries, and near-generation rules sit in a one-shot Prompt V2 layout,
+read `one-shot-prompt-runtime.md`; detail is a pre-history runtime contract, not
+the final instruction before generation. If the role's appeal, world,
+relationship, play rules, agency, voice, or longplay layer is not designed yet,
+preserve that narrow packet before final detail assembly.
 
 ## Language-Aware Detail Budget
 

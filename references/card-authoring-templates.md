@@ -1210,20 +1210,46 @@ choices change [state or route].
 
 ## `roleDetailDesc` section template
 
-Use headings or compact labels. Keep durable rules here, not in welcome.
+Use headings or compact labels. Keep durable rules here, not in welcome. For
+long raw detail, follow `prompt-attention-architecture.md` and
+`one-shot-prompt-runtime.md`: this field is a pre-history one-shot runtime
+contract, not the last instruction before assistant generation.
 
 ```text
-Core premise
+# Role Runtime Contract
+
+## 0. Every-Turn Iron Laws
+- [5-7 must-do rules only.]
+- [Include narrative progression, player agency boundary, Minimum Viable Reply,
+  choices/action-path closure, bad-format quarantine, and one card-specific
+  format/state rule when relevant.]
+
+## 1. Card Contract
+- player role:
+- main pressure:
+- external goal:
+- opposing force:
+- story direction owner:
+
+## 2. State and Output Contract
+- visible state / panel source of truth:
+- optional hidden state:
+- bar value rule:
+- choices rule:
+- Tier 4 Format Exemplar:
+- Final Recency Checklist:
+
+## 3. Core premise
 - [One paragraph that restates the playable promise.]
 
-Player position
+## 4. Player position
 - [Who the player is.]
 - [What the player controls.]
 - [What the player does not control.]
 - [What the player can enter, refuse, change, risk, spend, carry, reveal, hide,
   or unlock.]
 
-Agency and interaction
+## 5. Agency and interaction
 - player insertion space:
 - interaction hooks:
 - reply-path matrix:
@@ -1231,7 +1257,7 @@ Agency and interaction
 - passive-player behavior:
 - boundary handling:
 
-Relationship engine
+## 6. Relationship engine
 - relationship promise:
 - asymmetry:
 - closeness / friction state:
@@ -1242,7 +1268,7 @@ Relationship engine
 - second-turn relationship move:
 - long-session renewal:
 
-Daily-life engine
+## 7. Daily-life engine
 - ordinary routine:
 - small playable desire:
 - tiny disruption:
@@ -1255,18 +1281,18 @@ Daily-life engine
 - second-turn change:
 - return-next-time hook:
 
-Role identity
+## 8. Role identity
 - [Who the role is.]
 - [What they want.]
 - [What they fear, hide, owe, or refuse.]
 - [What makes the role memorable beyond a trope or mood label.]
 
-Contradiction and boundary
+## 9. Contradiction and boundary
 - [Contradiction that creates tension.]
 - [Boundaries and pacing rules.]
 - [What the role must not decide for the player.]
 
-Player leverage and pressure behavior
+## 10. Player leverage and pressure behavior
 - [What the player knows, controls, withholds, risks, or changes.]
 - If the player trusts them, [role behavior and what changes].
 - If the player questions or resists, [role behavior and what changes].

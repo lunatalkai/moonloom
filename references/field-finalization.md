@@ -18,9 +18,10 @@ Check these gates in order:
 2. Field completeness: `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`,
    tags, talkExample decision, language, rating posture, and visual asset status
    are explicit.
-3. No placeholders: remove bracket labels, TODO text, "fill later" notes,
-   unresolved choices, meta commentary, and author-facing instructions from
-   final role fields.
+3. No placeholders or authoring metadata: remove bracket labels, TODO text,
+   "fill later" notes, unresolved choices, meta commentary, author-facing
+   instructions, working-document metadata, version banner / version marker,
+   date stamp, revision note, changelog, and 版本標註 from final role fields.
 4. Language-aware hard caps: use the author's language / locale, field language,
    or MCP validation/tokenBudget result when available. English fields use the
    50,000-character English `roleDetailDesc` cap and 10,000-character English
@@ -38,8 +39,11 @@ Check these gates in order:
    character-count constraint and leave buffer for final edits and MCP patching.
 5. Compact fallback: when any field is near a client limit, provide a shorter
    fallback that preserves the role engine before calling MCP tools.
-6. Format sanity: validate XMLV3 tags, JSON blocks, Markdown spacing, YAML-style
-   lists, line breaks, and indentation before render review.
+6. Format sanity: validate XMLV3 tags, JSON blocks, Markdown spacing, heading
+   hierarchy, YAML-style lists, line breaks, and indentation before render
+   review. For final field documents that use Markdown headings, use one H1 /
+   single H1 / exactly one H1 before H2 sections; do not skip heading levels,
+   use skipped heading levels, start with H2, or jump from H1 to H3.
 7. MCP patch mapping: map each final field to the intended tool:
    `role_patch_profile`, `role_patch_assets`, `role_patch_detail`,
    `role_patch_welcome`, optional `role_patch_jailbreak`, `theme_bind`, and
@@ -62,7 +66,9 @@ Check these gates in order:
   store player feelings, consent, loyalty, irreversible actions, or chosen route
   as facts.
 - Markdown: keep headings and lists readable without over-nesting. Do not place
-  long setup manuals inside `roleWelcome`.
+  long setup manuals inside `roleWelcome`. Validate heading hierarchy before
+  MCP-ready upload: one H1 / single H1 / exactly one H1 when headings are used,
+  no skipped heading levels, no start with H2, and no jump from H1 to H3.
 - YAML-style lists: keep indentation consistent and avoid pseudo-YAML that mixes
   free prose, broken colons, and unclosed quotes.
 - Plain text: preserve paragraph breaks for action, dialogue, rules, and examples.
@@ -110,6 +116,8 @@ Field finalization packet:
   - YAML-style lists:
   - plain-text paragraphing:
 - placeholder / meta check:
+  - working-document metadata / version banner / date stamp stripped:
+  - heading hierarchy:
 - MCP patch mapping:
   - role_patch_document:
   - role_patch_profile:

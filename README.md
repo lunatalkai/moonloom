@@ -240,6 +240,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/prompt-attention-architecture.md` defines Markdown / tag structure,
   primacy/recency placement, U-shaped attention risk handling, and cross-model
   standards for long raw description and raw detail prompts.
+- `references/one-shot-prompt-runtime.md` defines the sanitized Prompt V2
+  one-shot layout, where `RoleDetail`, `RoleUserName`, history, summaries,
+  near-generation rules, and assistant output position sit.
 - `references/presentation-design.md` defines pre-render presentation decisions
   for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
   hierarchy.

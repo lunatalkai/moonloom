@@ -25,7 +25,10 @@ primacy: put a 5-7 item every-turn iron laws / must-do block near the top of
 `roleDetailDesc`, before world history or long voice notes.
 For the full long-prompt structure standard, read
 `prompt-attention-architecture.md` before finalizing long raw description or raw
-detail fields.
+detail fields. When judging why long raw detail is ignored in chat, also read
+`one-shot-prompt-runtime.md`: in the one-shot Prompt V2 layout,
+`roleDetailDesc` is a pre-history durable engine, not the final instruction
+before assistant generation.
 
 For zh-Hant, Japanese, Korean, and other CJK-heavy cards, the platform hard cap
 is a character cap / character-count cap, not a token count. CJK fields hit the
@@ -133,6 +136,12 @@ syntax. Detail owns the role-specific format contract: when this card emits
 choices, what state fields can change, which visible status labels matter, which
 extension pack is intentionally enabled, and what the assistant must not decide
 for the player. Do not copy a generic XMLV3 manual into detail.
+
+For one-shot stability, reserve a small structural budget for the Tier 4 format
+exemplar and Minimum Viable Reply. This is not a new lore section. It is the
+smallest positive shape that teaches the model what to preserve when the scene
+gets long: scene wrapper, visible state/panel when needed, and choices at
+decision points. Cut decorative prose before cutting this structure.
 
 Do not pad. Fill detail until the next section would no longer improve later
 turns. Then stop.

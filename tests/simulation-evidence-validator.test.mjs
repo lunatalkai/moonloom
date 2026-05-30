@@ -55,6 +55,15 @@ function completeEvidence(overrides = {}) {
       consoleErrors: [],
       visualNotes: 'Ready state observed with readable paragraphs.',
     })),
+    longArcFormatStability: {
+      turns: 10,
+      structureShare: 0.91,
+      panelRetention: 0.9,
+      choicesRetention: 1,
+      hiddenStateObserved: false,
+      absorbingStateRisk: 'none',
+      evidenceSummary: 'Synthetic long-arc probe preserved XMLV3 structure, visible panel state, and choices.',
+    },
     rootCauseRepair: {
       needed: false,
       summary: 'No repeated Moonloom process failure in this synthetic evidence shape.',
@@ -107,6 +116,32 @@ test('simulation evidence validator requires a repair packet for warning or fail
   const result = validateSimulationEvidence(evidence, { filePath: 'synthetic.json' });
 
   assert.ok(issueCodes(result).includes('simulation.repair_packet.missing'));
+});
+
+test('simulation evidence validator requires long-arc format stability metrics', () => {
+  const missing = completeEvidence({ longArcFormatStability: undefined });
+  const missingResult = validateSimulationEvidence(missing, { filePath: 'synthetic.json' });
+  assert.ok(issueCodes(missingResult).includes('simulation.long_arc_format_stability.missing'));
+
+  const invalid = completeEvidence({
+    longArcFormatStability: {
+      turns: 9,
+      structureShare: 1.4,
+      panelRetention: -0.1,
+      choicesRetention: 0.6,
+      hiddenStateObserved: 'no',
+      absorbingStateRisk: 'unknown',
+      evidenceSummary: '',
+    },
+  });
+  const invalidResult = validateSimulationEvidence(invalid, { filePath: 'synthetic.json' });
+  const codes = issueCodes(invalidResult);
+
+  assert.ok(codes.includes('simulation.long_arc_format_stability.turns_invalid'));
+  assert.ok(codes.includes('simulation.long_arc_format_stability.ratio_invalid'));
+  assert.ok(codes.includes('simulation.long_arc_format_stability.boolean_invalid'));
+  assert.ok(codes.includes('simulation.long_arc_format_stability.risk_invalid'));
+  assert.ok(codes.includes('simulation.long_arc_format_stability.summary_missing'));
 });
 
 test('simulation evidence validator rejects raw transcript storage and protected public claims', () => {

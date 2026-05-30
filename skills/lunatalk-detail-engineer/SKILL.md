@@ -15,6 +15,10 @@ operation.
 Read `../../references/role-detail-engine.md` first. Read
 `../../references/token-economy.md` when length, language budget, or field
 allocation is part of the problem. Read
+`../../references/prompt-attention-architecture.md` and
+`../../references/one-shot-prompt-runtime.md` when long raw detail, Tier 4
+format stability, cross-model drift, one-shot prompt placement, or
+RoleDetail/RoleUserName positioning is part of the problem. Read
 `../../references/role-card-writing-framework.md` for the four-layer model and
 PACT review. Read `../../references/card-authoring-templates.md` when the packet
 will be assembled into final fields.
@@ -62,7 +66,10 @@ If the only issue is reducing bloat after the engine is complete, use
    **Narrative progression engine**: inciting incident within 1-2 assistant
    turns, every-turn next station, progression and responding to the player as
    separate duties, role/narrator ownership of story direction, and no reliance
-   on turn count or history-count rules.
+   on turn count or history-count rules. For XMLV3/control-heavy cards, also
+   include the one-shot stability pieces from `one-shot-prompt-runtime.md`:
+   Minimum Viable Reply, bad-format quarantine, and a tiny Tier 4 format
+   exemplar that teaches structure without teaching a new story beat.
 5. Fill the engine modules with concrete playable behavior:
    identity and core charm, background and motive, current pressure, narrative
    progression engine, player relationship, world/scenario/play functions,
