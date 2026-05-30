@@ -59,10 +59,6 @@ Expected Card Writer tools:
 - `role_patch_talk_example`
 - `role_patch_output_contract`
 - `role_patch_document`
-- `document_upload`
-- `document_upload_read`
-- `document_upload_patch`
-- `role_patch_document_upload`
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
 - optional `extension_enable`
@@ -72,7 +68,6 @@ Expected Card Writer tools:
 - `worldbook_create`
 - `worldbook_update`
 - `worldbook_patch_document`
-- `worldbook_patch_document_upload`
 - `worldbook_entry_create`
 - `worldbook_entry_update`
 - `worldbook_entry_delete`
@@ -113,28 +108,20 @@ with `viewport=mobile`. After render, inspect screenshots and
 available. Moonloom uses this for content review, not for renderer regression
 testing.
 
-For long role or worldbook documents, prefer an uploadId flow. If the AI client
-or plugin can upload local bytes directly with the same MCP auth, POST the
-parsed document to `/mcp/card-writer/uploads`; the server stores it for 30
-minutes and returns an `uploadId`. Then call `role_patch_document_upload` or
-`worldbook_patch_document_upload` with that short id. The long payload does not
-go through MCP tool arguments in this HTTP upload flow. If the staged document
-needs a small correction, read only metadata or a selected JSON Pointer slice
-with `document_upload_read` (or HTTP GET `/mcp/card-writer/uploads/:uploadId`)
-and patch the same uploadId with `document_upload_patch` (or HTTP PATCH). Use
-`replaceText` for small text replacements and `baseSha256` for conflict
-protection.
+For long role or worldbook fields, prefer direct deep patch. Read the current
+field with `role_get`, `worldbook_get`, or `worldbook_entry_list`, compute the
+SHA-256 of the exact current field text, then send only a small `TextDeepPatch`
+through MCP. Use `replaceText`, `insertText`, `deleteText`, `appendText`, or
+`prependText`; include `baseSha256` for conflict protection. The server rejects
+stale bases and non-unique anchors before mutating the card.
 
-If the client can call MCP tools but cannot read or forward the MCP bearer token,
-call the MCP `document_upload` fallback instead. It creates the same short
-`uploadId`, but the initial document still passes through MCP tool arguments.
-Later patch calls only send the small operations and keep the same uploadId. For
-normal-sized patches where upload is unavailable or unnecessary, use
-`role_patch_document` or `worldbook_patch_document` directly. Do not claim the
-task is impossible only because the agent cannot access the OAuth bearer token.
-Consuming an `uploadId` still runs the same server-side role field validation,
-including per-locale length limits for detail, welcome, description, and
-jailbreak fields.
+Use `role_patch_detail`, `role_patch_welcome`, `role_patch_output_contract`, and
+`role_patch_jailbreak` with `patch.deepPatch` for one-field edits. Use
+`role_patch_profile` with `patch.textPatches.roleDesc` for role description.
+Use `role_patch_document` with `document.fieldPatches` when several role text
+fields must change together. For worldbooks, use `worldbook_update`
+`textPatches.description`, `worldbook_entry_update.contentDeepPatch`, or
+`worldbook_patch_document` entry/metadata patches.
 
 ## Reading tool results
 
@@ -142,10 +129,9 @@ Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
 worldbook read/write/entry tools return `worldbook`, document patch tools return
-`document`, `document_upload_read` returns `upload` plus an optional bounded
-`document` slice, `document_upload_patch` returns updated `upload` metadata plus
-`patch`, worldbook bind tools return `binding`, and `publish_submit` returns
-`publish`. Preview URLs, generation status, messages, role/worldbook search
+`document`, direct deep patch role tools may return `patch` or `textPatches`,
+worldbook bind tools return `binding`, and `publish_submit` returns `publish`.
+Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.
 
@@ -154,9 +140,9 @@ not at the JSON-RPC top level.
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
-| Private creation | `role_create_private`, profile/assets/detail/welcome/talkExample/output-contract patch tools; prefer `role_patch_document_upload` after HTTP upload or MCP `document_upload` for long local files, use `document_upload_read` / `document_upload_patch` for staged small corrections, or `role_patch_document` when upload is unavailable | render or simulate before validation |
+| Private creation | `role_create_private`, profile/assets/detail/welcome/talkExample/output-contract patch tools; use direct `deepPatch` / `textPatches` for small edits to long existing fields, or `role_patch_document.fieldPatches` for coordinated multi-field edits | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
-| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`, use `document_upload_read` / `document_upload_patch` for staged small corrections, or `worldbook_patch_document`, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, direct `contentDeepPatch` / `textPatches` for small edits, or `worldbook_patch_document` for coordinated metadata/entry/binding updates, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |

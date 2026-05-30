@@ -30,28 +30,24 @@ hard-coding hidden paths when possible:
 }
 ```
 
-Long local documents have three supported paths:
+Long text edits should use direct deep patch instead of an upload flow. Read the
+current role or worldbook content, compute the SHA-256 of the exact current text,
+then call the normal patch tool with a small `TextDeepPatch` object:
 
-1. If the client integration can send the same MCP OAuth auth to normal HTTP
-   requests, POST the parsed document to `/mcp/card-writer/uploads`. The server
-   stores it for 30 minutes and returns an `uploadId`; the long body does not go
-   through MCP tool arguments. To revise the staged file, use
-   `GET /mcp/card-writer/uploads/:uploadId` for metadata or a selected JSON
-   Pointer path, then `PATCH /mcp/card-writer/uploads/:uploadId` with small
-   operations. This keeps the same `uploadId`.
-2. If the agent can call MCP tools but cannot read or forward the MCP bearer
-   token, call `document_upload` inside the authenticated MCP session. It
-   creates the same short `uploadId`, but this fallback still sends the initial
-   document through MCP tool arguments. Later small revisions can use
-   `document_upload_read` and `document_upload_patch` with the same `uploadId`;
-   only the read slice and patch operations pass through MCP arguments.
-3. For normal-sized patches where upload is not needed or not available, call
-   `role_patch_document` or `worldbook_patch_document` directly.
+- `role_patch_profile`: `patch.textPatches.roleDesc`
+- `role_patch_detail`, `role_patch_welcome`, `role_patch_output_contract`,
+  `role_patch_jailbreak`: `patch.deepPatch`
+- `role_patch_document`: `document.fieldPatches` for multi-field role edits
+- `worldbook_update`: `textPatches.description`
+- `worldbook_entry_update`: `contentDeepPatch` or `textPatches.content`
+- `worldbook_patch_document`: metadata `textPatches.description` and entry
+  `contentDeepPatch` / `textPatches.content`
 
-After either upload path, use `role_patch_document_upload` or
-`worldbook_patch_document_upload` with the short `uploadId`. Consuming an
-`uploadId` does not bypass server validation: role document fields still run the
-same per-locale length checks as normal text patch tools.
+Full replacement is still supported by sending the original field name, for
+example `roleDetailDesc`, `roleWelcome`, `roleOutputContract`, or worldbook
+entry `content`. Deep patch is the preferred path for small edits to long
+existing fields because only the old/new anchors and inserted text pass through
+MCP arguments.
 
 Configure authentication through the AI client's normal MCP OAuth flow. Do not
 print credentials, tokens, cookies, or authorization headers in skills, prompts,
@@ -91,18 +87,9 @@ reading fields:
   summaries, detail payloads, and entry lists.
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
   metadata update status, created entry ids, update/delete counts, and binding
-  status.
-- `document_upload`: read `structuredContent.upload`; this includes `uploadId`,
-  `kind`, `bytes`, `sha256`, `expiresAt`, and `expiresInSeconds`.
-- `document_upload_read`: read `structuredContent.upload` for metadata and
-  `structuredContent.document` when a path was requested. String paths return a
-  bounded `text` slice plus `start`, `end`, `totalChars`, and `truncated`.
-- `document_upload_patch`: read `structuredContent.upload` for the updated
-  metadata and `structuredContent.patch` for `patchedPaths`, before applying the
-  same `uploadId`.
-- `role_patch_document_upload` and `worldbook_patch_document_upload`: read
-  `structuredContent.document`; these consume a short `uploadId` created by
-  POST `/mcp/card-writer/uploads` or by the MCP `document_upload` fallback.
+  status, and text patch summaries when applicable.
+- Direct role patch tools return role metadata, and when a deep patch was used
+  also return `structuredContent.patch` or `structuredContent.textPatches`.
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
@@ -121,17 +108,14 @@ are top-level fields of the JSON-RPC response.
    voice, refusal, interaction rhythm, or output-shape calibration
 7. `role_patch_output_contract` when the card needs an author-locked reply
    format example for stable visible structure
-8. `role_patch_document_upload` after HTTP upload or MCP `document_upload` for
-   long local files; use `document_upload_read` and `document_upload_patch` for
-   small revisions to the staged upload; use `role_patch_document` when upload
-   is unavailable
+8. `role_patch_document` for coordinated multi-field updates; use
+   `document.fieldPatches` for small changes to long existing fields
 9. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
 10. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
-   `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`,
-   with `document_upload_read` / `document_upload_patch` for staged upload
-   revisions, or `worldbook_patch_document`, then `worldbook_bind`
+   `worldbook_patch_document` for coordinated metadata/entry/binding updates,
+   then `worldbook_bind`
 11. `validate_role`
 12. `render_preview`
 13. `conversation_model_catalog` before paid conversation testing
@@ -295,14 +279,31 @@ Update owned worldbook metadata.
 }
 ```
 
+Patch only the description when the current text is long:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-description-patch-...",
+  "worldbookId": "...",
+  "textPatches": {
+    "description": {
+      "baseSha256": "sha256-of-current-description",
+      "operations": [
+        {"op": "replaceText", "oldText": "old unique phrase", "newText": "new phrase"}
+      ]
+    }
+  }
+}
+```
+
 ### `worldbook_patch_document`
 
-Patch an owned worldbook from a locally prepared document. This is the
-recommended path when entry content is long or many entries need to be created,
-updated, deleted, and bound in one authoring pass: keep the final worldbook
-payload in a local JSON file, validate it locally, then pass the parsed document
-to this tool. Short one-entry edits can still use `worldbook_entry_create`,
-`worldbook_entry_update`, or `worldbook_entry_delete`.
+Patch an owned worldbook from a locally prepared document. Use this when many
+entries need to be created, updated, deleted, and bound in one authoring pass.
+Use full `content` for replacement and `contentDeepPatch` / `textPatches` for
+small edits to existing long entries. Short one-entry edits can still use
+`worldbook_entry_create`, `worldbook_entry_update`, or `worldbook_entry_delete`.
 
 MCP cannot read a client-local file path by itself. The AI client must read and
 validate the file, then send its parsed JSON object as `document`.
@@ -317,7 +318,15 @@ Document format:
     "name": "Worldbook name",
     "description": "Reusable world rules.",
     "visibility": "private",
-    "tags": ["rpg", "city"]
+    "tags": ["rpg", "city"],
+    "textPatches": {
+      "description": {
+        "baseSha256": "sha256-of-current-description",
+        "operations": [
+          {"op": "appendText", "text": "New metadata note."}
+        ]
+      }
+    }
   },
   "entries": [
     {
@@ -335,7 +344,13 @@ Document format:
       "content": "Updated rule.",
       "keywords": ["Moon Gate"],
       "category": "rule",
-      "isEnabled": true
+      "isEnabled": true,
+      "contentDeepPatch": {
+        "baseSha256": "sha256-of-current-entry-content",
+        "operations": [
+          {"op": "replaceText", "oldText": "old unique rule", "newText": "new rule"}
+        ]
+      }
     },
     {
       "op": "delete",
@@ -366,7 +381,8 @@ Tool call:
 If `document.worldbookId` is present, it must match the tool `worldbookId`.
 Allowed entry operations are `create`, `update`, and `delete`. Allowed entry
 categories are still exactly `rule`, `character`, `location`, `item`, `event`,
-and `custom`. The response includes `structuredContent.document`.
+and `custom`. The response includes `structuredContent.document` and, for deep
+patches, `structuredContent.document.textPatches`.
 
 ### `worldbook_entry_create`
 
@@ -399,6 +415,25 @@ Update an owned worldbook entry by `entryId`.
   "keywords": ["Moon Gate"],
   "category": "rule",
   "isEnabled": true
+}
+```
+
+For content patching, include `worldbookId` so the server can read the current
+entry before applying the small patch:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-entry-content-patch-...",
+  "worldbookId": "...",
+  "entryId": "...",
+  "contentDeepPatch": {
+    "baseSha256": "sha256-of-current-entry-content",
+    "operations": [
+      {"op": "replaceText", "oldText": "old unique sentence", "newText": "new sentence"},
+      {"op": "appendText", "text": "Additional rule.\n"}
+    ]
+  }
 }
 ```
 
@@ -509,6 +544,33 @@ Update the role detail body.
 }
 ```
 
+For small edits to existing long detail, prefer `deepPatch`:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "detail-patch-...",
+  "roleId": "...",
+  "patch": {
+    "deepPatch": {
+      "baseSha256": "sha256-of-current-roleDetailDesc",
+      "operations": [
+        {
+          "op": "replaceText",
+          "oldText": "old unique sentence",
+          "newText": "new sentence"
+        },
+        {
+          "op": "insertText",
+          "beforeText": "unique following anchor",
+          "text": "inserted paragraph\n"
+        }
+      ]
+    }
+  }
+}
+```
+
 For XMLV3 cards, `roleDetailDesc` should not duplicate the platform XMLV3
 server guide. Put only the role-specific format contract in detail: state update
 rules, choice behavior, enabled pack purpose, visible status meaning, and
@@ -516,11 +578,11 @@ player-agency boundaries.
 
 ### `role_patch_document`
 
-Patch multiple role fields from a locally prepared document. This is the
-recommended path when `roleDetailDesc` or `roleWelcome` is long: keep the final
-card payload in a local JSON file, validate it locally, then pass the parsed
-document to this tool. Short one-field edits can still use `role_patch_detail`,
-`role_patch_welcome`, `role_patch_profile`, or `role_patch_assets`.
+Patch multiple role fields from a locally prepared document. Use `fields` for
+full replacement and `fieldPatches` for direct deep patch of existing long text
+fields. Short one-field edits can still use `role_patch_detail`,
+`role_patch_welcome`, `role_patch_profile`, `role_patch_output_contract`, or
+`role_patch_jailbreak`.
 
 MCP cannot read a client-local file path by itself. The AI client must read and
 validate the file, then send its parsed JSON object as `document`.
@@ -548,6 +610,26 @@ Document format:
     ],
     "roleOutputContract": "Optional short author-locked reply format example.",
     "jailbreak": "Optional private behavior boundary."
+  },
+  "fieldPatches": {
+    "roleDetailDesc": {
+      "baseSha256": "sha256-of-current-roleDetailDesc",
+      "operations": [
+        {"op": "replaceText", "oldText": "old unique text", "newText": "new text"}
+      ]
+    },
+    "roleWelcome": {
+      "baseSha256": "sha256-of-current-roleWelcome",
+      "operations": [
+        {"op": "appendText", "text": "<n>New beat.</n>"}
+      ]
+    },
+    "roleOutputContract": {
+      "baseSha256": "sha256-of-current-roleOutputContract",
+      "operations": [
+        {"op": "insertText", "beforeText": "</scene>", "text": "<choices>...</choices>"}
+      ]
+    }
   }
 }
 ```
@@ -571,9 +653,11 @@ Tool call:
 }
 ```
 
-Only fields present in `fields` are patched. If `document.roleId` is present, it
-must match the tool `roleId`. The response includes
-`structuredContent.document.patchedFields`.
+Only fields present in `fields` are replaced, and only fields present in
+`fieldPatches` are deep-patched. If `document.roleId` is present, it must match
+the tool `roleId`. The response includes
+`structuredContent.document.patchedFields` and, for deep patches,
+`structuredContent.document.textPatches`.
 
 ### `role_patch_talk_example`
 
@@ -632,96 +716,8 @@ format rules, the platform guide wins.
 }
 ```
 
-### `document_upload`
-
-Create a short-lived `uploadId` from scratch inside the authenticated MCP
-session. Use this when the client can call MCP tools but cannot access the MCP
-OAuth bearer token needed for POST `/mcp/card-writer/uploads`.
-
-```json
-{
-  "schemaVersion": "2026-05-26.m1",
-  "kind": "rolePatchDocument",
-  "document": {
-    "documentVersion": "lunatalk.rolePatch.v1",
-    "roleId": "...",
-    "fields": {
-      "roleDetailDesc": "..."
-    }
-  }
-}
-```
-
-Use `kind: "worldbookPatchDocument"` for a `lunatalk.worldbookPatch.v1`
-document. Read `structuredContent.upload.uploadId`, then call
-`role_patch_document_upload` or `worldbook_patch_document_upload`.
-
-This fallback solves the auth-token visibility problem, but it does not avoid
-MCP tool argument size constraints for the initial create. Prefer direct HTTP
-upload when the client supports it. For role patches, the later uploadId
-consumer still enforces the same language-specific field length limits as normal
-patch tools.
-
-### `document_upload_read`
-
-Read metadata or a bounded slice from an existing staged upload. Use this before
-patching when the agent needs the current `sha256` or a small portion of a long
-string.
-
-```json
-{
-  "schemaVersion": "2026-05-26.m1",
-  "uploadId": "upload_...",
-  "path": "/fields/roleDetailDesc",
-  "start": 0,
-  "maxChars": 1200
-}
-```
-
-Omit `path` to read only metadata. For string paths, the response returns
-`text`, `start`, `end`, `totalChars`, and `truncated`. For non-string JSON
-paths, pass `includeValue: true` only when the selected value is small enough to
-send through tool results.
-
-### `document_upload_patch`
-
-Patch an existing staged upload in place. The response keeps the same
-`uploadId`, updates `sha256`, and returns `patchedPaths`. Use `baseSha256` from
-`document_upload` or `document_upload_read` when you want conflict protection.
-
-```json
-{
-  "schemaVersion": "2026-05-26.m1",
-  "uploadId": "upload_...",
-  "baseSha256": "current-upload-sha256",
-  "patch": {
-    "operations": [
-      {
-        "op": "replaceText",
-        "path": "/fields/roleDetailDesc",
-        "oldText": "old short unique text",
-        "newText": "new short replacement"
-      }
-    ]
-  }
-}
-```
-
-Supported operations:
-
-- `add`: add an object property or insert/append an array element. Use `-` as
-  the last array token to append, for example `/entries/-`.
-- `replaceText`: replace `oldText` with `newText` inside a string value at the
-  JSON Pointer `path`. By default `oldText` must appear exactly once; set
-  `replaceAll: true` for global replacement.
-- `set`: set a JSON value at `path`; useful for small metadata, tags, keywords,
-  or array elements.
-- `remove`: remove an object property or array element at `path`.
-
-Use JSON Pointer paths such as `/fields/roleDetailDesc`,
-`/fields/roleWelcome`, or `/entries/0/content`. After patching, call
-`role_patch_document_upload` or `worldbook_patch_document_upload` with the same
-`uploadId`.
+For targeted fixes to an existing format template, use `patch.deepPatch` with
+the same `TextDeepPatch` shape as `role_patch_detail`.
 
 ### `role_patch_welcome`
 
