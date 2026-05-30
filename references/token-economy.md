@@ -16,6 +16,23 @@ promise -> durable engine -> playable opening -> compact state -> optional style
 If the first screen is doing the work of the whole card, repair field allocation
 before polishing prose.
 
+## Attention Dilution
+
+Long prompts can reduce instruction-following because critical rules compete
+with lore, examples, style notes, and format guidance. Treat this as attention
+dilution, not only token cost. Front-load the most important behavior with
+primacy: put a 5-7 item every-turn iron laws / must-do block near the top of
+`roleDetailDesc`, before world history or long voice notes.
+For the full long-prompt structure standard, read
+`prompt-attention-architecture.md` before finalizing long raw description or raw
+detail fields.
+
+For zh-Hant, Japanese, Korean, and other CJK-heavy cards, the platform hard cap
+is a character cap / character-count cap, not a token count. CJK fields hit the
+10,000-character non-English `roleDetailDesc` ceiling quickly, so leave buffer
+for final edits, XMLV3 state rules, and MCP patching instead of writing to the
+last character.
+
 ## Token Architecture Packet
 
 Return this packet before patching fields:

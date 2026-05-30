@@ -237,6 +237,9 @@ repair, token budgeting, render review, simulation, and publish readiness.
   matrices, agency guardrails, consequence checks, and interaction hooks.
 - `references/token-economy.md` defines token budget diagnostics, field
   allocation, compression ladders, and keep / move / cut / rewrite plans.
+- `references/prompt-attention-architecture.md` defines Markdown / tag structure,
+  primacy/recency placement, U-shaped attention risk handling, and cross-model
+  standards for long raw description and raw detail prompts.
 - `references/presentation-design.md` defines pre-render presentation decisions
   for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
   hierarchy.
@@ -266,7 +269,7 @@ repair, token budgeting, render review, simulation, and publish readiness.
   system/simulator intake fixture with XMLV3 layout controls, visible state,
   setup defaults, action grouping, and render-review plan.
 - `examples/simulation-evidence.fixture.json` provides a public-safe closed-loop
-  simulation evidence packet shape for seven probes and per-message preview
+  simulation evidence packet shape for eight probes and per-message preview
   evidence.
 - `examples/end-to-end-acceptance.fixture.json` provides a public-safe
   end-to-end acceptance evidence packet shape covering skill route, assets,

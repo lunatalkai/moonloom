@@ -60,6 +60,7 @@ function completeAcceptance(overrides = {}) {
         'relationship_push',
         'secret_exploration',
         'boundary_test',
+        'long_arc_macro_progression',
       ],
       result: 'pass',
     },
@@ -88,7 +89,7 @@ test('acceptance evidence validator accepts a complete visual and behavior check
   assert.deepEqual(result.issues, []);
   assert.equal(result.summary.selectedSkills, 5);
   assert.equal(result.summary.assetChecks, 3);
-  assert.equal(result.summary.simulationProbes, 7);
+  assert.equal(result.summary.simulationProbes, 8);
 });
 
 test('acceptance evidence validator rejects visual complete status without patched assets and app visual proof', () => {

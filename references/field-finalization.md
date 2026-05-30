@@ -29,6 +29,13 @@ Check these gates in order:
    These caps are ceilings, not quality targets. Record the intended range,
    current estimate, and why each long section changes behavior, route, state,
    voice, boundary, or return-later play.
+   Long fields also risk instruction-following dilution / attention dilution:
+   front-load a 5-7 item every-turn iron laws / must-do block when strict
+   behavior matters, and keep the highest-priority rules early for primacy.
+   For long raw description or raw detail drafts, apply
+   `prompt-attention-architecture.md` before treating the field as final.
+   For zh-Hant and other CJK-heavy cards, treat this as a character cap /
+   character-count constraint and leave buffer for final edits and MCP patching.
 5. Compact fallback: when any field is near a client limit, provide a shorter
    fallback that preserves the role engine before calling MCP tools.
 6. Format sanity: validate XMLV3 tags, JSON blocks, Markdown spacing, YAML-style

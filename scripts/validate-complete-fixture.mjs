@@ -78,6 +78,7 @@ const REQUIRED_PROBES = [
   'relationship push',
   'secret exploration',
   'boundary test',
+  'long-arc macro-progression',
 ];
 
 const REQUIRED_XML_TAGS = ['scene', 'state', 'n', 'd', 'choices', 'choice'];

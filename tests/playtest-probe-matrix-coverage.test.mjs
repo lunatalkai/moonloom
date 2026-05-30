@@ -10,19 +10,23 @@ const REQUIRED_PROBE_TERMS = [
   'relationship push',
   'secret exploration',
   'boundary test',
+  'long-arc macro-progression',
 ];
 
-test('full behavior acceptance requires the seven-probe Moonloom matrix', async () => {
+test('full behavior acceptance requires the eight-probe Moonloom matrix', async () => {
   const chatSkill = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
   const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
   const e2eAcceptance = await readFile('references/end-to-end-acceptance.md', 'utf8');
   const validator = await readFile('scripts/validate-simulation-evidence.mjs', 'utf8');
 
   for (const source of [chatSkill, playtestLoop, e2eAcceptance]) {
-    assert.match(source, /seven-probe Moonloom matrix/i);
+    assert.match(source, /eight-probe Moonloom matrix/i);
     for (const term of REQUIRED_PROBE_TERMS) {
       assert.match(source, new RegExp(term, 'i'));
     }
+    assert.match(source, /8-12 turns/i);
+    assert.match(source, /same location\/route/i);
+    assert.match(source, /stagnation|stalled/i);
   }
 
   assert.match(chatSkill, /narrow spot-check/i);
@@ -37,7 +41,9 @@ test('full behavior acceptance requires the seven-probe Moonloom matrix', async 
     'relationship_push',
     'secret_exploration',
     'boundary_test',
+    'long_arc_macro_progression',
   ]) {
     assert.match(validator, new RegExp(`'${kind}'`));
   }
+  assert.match(validator, /macroProgression/);
 });

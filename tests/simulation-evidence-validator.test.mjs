@@ -14,6 +14,7 @@ const requiredProbeKinds = [
   'relationship_push',
   'secret_exploration',
   'boundary_test',
+  'long_arc_macro_progression',
 ];
 
 function completeEvidence(overrides = {}) {
@@ -39,6 +40,7 @@ function completeEvidence(overrides = {}) {
         formatStability: 'pass',
         reasonableLength: 'pass',
         safetyBoundary: 'pass',
+        macroProgression: 'pass',
       },
     })),
     messagePreviews: requiredProbeKinds.map((kind, index) => ({
@@ -69,8 +71,8 @@ test('simulation evidence validator accepts a complete closed-loop evidence pack
   const result = validateSimulationEvidence(completeEvidence(), { filePath: 'synthetic.json' });
 
   assert.deepEqual(result.issues, []);
-  assert.equal(result.summary.probes, 7);
-  assert.equal(result.summary.messagePreviews, 7);
+  assert.equal(result.summary.probes, 8);
+  assert.equal(result.summary.messagePreviews, 8);
   assert.equal(result.summary.failedChecks, 0);
 });
 

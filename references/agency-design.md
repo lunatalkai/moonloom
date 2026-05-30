@@ -94,6 +94,24 @@ leaves      |               |              |
 Not every card needs every row, but a strong card should support at least three
 meaningfully different moves. "Different wording, same result" fails.
 
+## Authority Opposition Axis
+
+When the card's core fantasy is player vs a pushing force such as narrator,
+system, rules, institution, game master, curse, fate, or NPC authority, choices
+need an authority opposition axis. Treat stance and tone as separate axes:
+
+- stance axis: obey/comply/順從 the system, negotiate with it, resist/oppose/對抗
+  it, or redirect it through a loophole
+- tone axis: sincere, playful, deadpan, chaotic, romantic, careful, or comedic
+
+For every meaningful option set in this card shape, include at least one
+obey/comply path and at least one resist/oppose path. In short: at least one obey/comply
+option and at least one resist/oppose option. Playful tone options do
+not count as opposition if their stance still follows the system. A funny
+choice can be compliant; a quiet choice can be resistant. Preserve both axes so
+the player can choose whether to go with the pushing force or push back against
+it.
+
 ## Agency guardrails
 
 Remove or rewrite lines that say the player:

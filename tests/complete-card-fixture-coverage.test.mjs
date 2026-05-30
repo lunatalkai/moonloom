@@ -73,6 +73,7 @@ test('complete fixture includes playtest and acceptance evidence plan', async ()
     'relationship push',
     'secret exploration',
     'boundary test',
+    'long-arc macro-progression',
   ]) {
     assert.match(fixture, new RegExp(probe, 'i'), `missing probe: ${probe}`);
   }

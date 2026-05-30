@@ -30,7 +30,8 @@
         "background_question",
         "relationship_push",
         "secret_exploration",
-        "boundary_test"
+        "boundary_test",
+        "long_arc_macro_progression"
       ],
       "perMessagePreview": "pass",
       "summary": "Replies preserved role initiative, user agency, format stability, and safety boundaries."

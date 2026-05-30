@@ -20,7 +20,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -36,7 +37,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -52,7 +54,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -68,7 +71,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -84,7 +88,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -100,7 +105,8 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     },
     {
@@ -116,7 +122,25 @@
         "userAgency": "pass",
         "formatStability": "pass",
         "reasonableLength": "pass",
-        "safetyBoundary": "pass"
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
+      }
+    },
+    {
+      "kind": "long_arc_macro_progression",
+      "prompt": "Synthetic 8-12 turn long-arc probe with passive and off-path inputs.",
+      "expectedHealthyBehavior": "The role keeps route pressure moving across scenes instead of staying in the opening location.",
+      "result": "pass",
+      "evidenceSummary": "Across the redacted long arc, the route, location, clue pressure, and next station changed without forcing the player.",
+      "checks": {
+        "characterConsistency": "pass",
+        "voiceConsistency": "pass",
+        "interactionTension": "pass",
+        "userAgency": "pass",
+        "formatStability": "pass",
+        "reasonableLength": "pass",
+        "safetyBoundary": "pass",
+        "macroProgression": "pass"
       }
     }
   ],
@@ -204,6 +228,18 @@
       "textOverflow": [],
       "consoleErrors": [],
       "visualNotes": "Ready state observed with readable paragraphs."
+    },
+    {
+      "probeKind": "long_arc_macro_progression",
+      "conversationId": "redacted-conversation-8",
+      "chatId": "redacted-chat-8",
+      "previewUrl": "/pages/mcp/rolePreview?conversationId=redacted-conversation-8&chatId=redacted-chat-8&roleId=redacted-role-id&pageSize=30",
+      "status": "ready",
+      "rendererMode": "xmlv3",
+      "domSummary": ["mode:xmlv3", "state:present", "chat:redacted-chat-8"],
+      "textOverflow": [],
+      "consoleErrors": [],
+      "visualNotes": "Ready state observed after the long-arc macro-progression probe."
     }
   ],
   "rootCauseRepair": {

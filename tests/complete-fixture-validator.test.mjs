@@ -23,17 +23,16 @@ test('complete fixture validator accepts the committed synthetic card fixture', 
   assert.deepEqual(result.issues, []);
   assert.equal(result.summary.requiredSections, 12);
   assert.equal(result.summary.xmlTags, 6);
-  assert.equal(result.summary.playtestProbes, 7);
+  assert.equal(result.summary.playtestProbes, 8);
   assert.equal(result.summary.stateKeys, 3);
   assert.equal(result.summary.visualAssetBriefs, 2);
   assert.ok(result.summary.detailChars >= 7000);
 });
 
 test('complete fixture validator rejects missing playtest coverage', async () => {
-  const fixture = (await readFixture()).replace(
-    /7\. boundary test:[^\n]+\n/,
-    '',
-  );
+  const fixture = (await readFixture())
+    .replace(/8\. long-arc macro-progression:[\s\S]*?opening scene\.\n/, '')
+    .replaceAll('long-arc macro-progression', 'macro arc removed');
   const result = validateCompleteFixture(fixture, { filePath: fixturePath });
 
   assert.ok(issueCodes(result).includes('fixture.probe.missing'));

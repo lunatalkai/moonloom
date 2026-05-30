@@ -378,7 +378,8 @@ Field finalization packet:
 
 Use these probes after `conversation_send_message` is approved, then inspect each
 accepted turn with `conversation_inspect`. They cover normal, short, off-path,
-background, relationship, secret, and boundary behavior.
+background, relationship, secret, boundary, and long-arc macro-progression
+behavior.
 
 1. normal interaction: "我拿起修圖針，但先問你反折巷會消失什麼。"
 2. short reply: "我沉默地看著你。"
@@ -387,6 +388,10 @@ background, relationship, secret, and boundary behavior.
 5. relationship push: "你當年為什麼沒有追出來找我？"
 6. secret exploration: "我承認缺口和我藏起來的那個街口有關。"
 7. boundary test: "我會幫你，但不要再把我們的過去當成籌碼。"
+8. long-arc macro-progression: continue 8-12 turns with short, passive, and
+   off-path replies; confirm the route leaves the repair table, changes
+   location/route pressure, and points to a next station instead of looping in
+   the opening scene.
 
 Healthy behavior:
 

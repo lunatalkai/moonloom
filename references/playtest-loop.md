@@ -27,7 +27,7 @@ the role has to carry part of the scene.
 For a narrow spot-check, choose the few probes that directly target the suspected
 risk. Mark the result as a spot-check, not behavior-complete.
 
-For behavior-complete acceptance, run the seven-probe Moonloom matrix:
+For behavior-complete acceptance, run the eight-probe Moonloom matrix:
 
 1. normal interaction: accepts the opening and gives the role a normal first turn.
 2. short reply: gives minimal input and checks whether the role can carry motion.
@@ -39,6 +39,15 @@ For behavior-complete acceptance, run the seven-probe Moonloom matrix:
    route without demanding immediate exposition.
 7. boundary test: presses against a stated limit, refusal, pacing rule, or safety
    boundary.
+8. long-arc macro-progression: continues one conversation for 8-12 turns with
+   passive, short, and off-path player moves, then checks whether route, scene,
+   location, clue, risk, or obligation actually moved.
+
+The long-arc macro-progression probe exists because per-turn `progression=pass`
+can be a false positive. A turn may add a local hook while the conversation stays
+in the same location/route for too long. Treat same location/route stagnation,
+repeated opening-scene beats, or no movement toward the intended route map as a
+warning even if individual turns look lively.
 
 Continue the returned `conversationId` when these probes are meant to form one
 conversation. Split into separate conversations only when the author accepts the
@@ -118,11 +127,13 @@ packet instead of storing full transcripts in the public repository. Use
 
 The evidence packet should cover:
 
-- seven probe kinds: normal interaction, short reply, off-path reply, background
-  question, relationship push, secret exploration, and boundary test
+- eight probe kinds: normal interaction, short reply, off-path reply, background
+  question, relationship push, secret exploration, boundary test, and
+  long-arc macro-progression
 - one public-safe paraphrased `evidenceSummary` per probe
 - checks for character consistency, voice consistency, interaction tension, user
-  agency, format stability, reasonable length, and safety boundary
+  agency, format stability, reasonable length, safety boundary, and
+  macro-progression
 - one per-message preview entry per probe when message identifiers are available
 - a repair packet when any probe or check is warning/fail
 
@@ -237,6 +248,7 @@ then map the observed problem to a card patch.
 | Reply repeats welcome setup or spends turns on decorative panels | token architecture | use `lunatalk-token-architect`; move durable rules/lore to `roleDetailDesc`, shorten welcome, rerun validation/render |
 | XMLV3 card replies render as plain text (`isV3:false` or `rendererMode:"plain"`) | Theme V3 binding / presentation handoff | call `theme_bind`, then rerun a focused preview and conversation probe |
 | XMLV3 metadata is green but reply body is not tagged, first character is not `<`, `<choice>` is missing for needed actions, or `<state>` is missing after state change | instruction/presentation contract drift | patch detail or instruction guardrail, then rerun a focused conversation probe |
+| `<bar>` value is not a single number, such as `8 -> 14`, `8-14`, or `+6` | XMLV3 state/display contract drift | keep bar value numeric and move the delta into visible prose or a status field |
 | Cast talks over the player | ensemble turn ownership | `lunatalk-ensemble-director`; cast table, spotlight rules, and scene rules |
 | RPG/system loses state | play engine / state economy | `lunatalk-play-engineer`; compact state format, turn protocol, and update rules |
 | RPG resources or failure do not affect choices | play engine | `lunatalk-play-engineer`; resource rules, quest/risk model, and failure-forward behavior |

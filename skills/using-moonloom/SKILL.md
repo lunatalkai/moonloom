@@ -170,7 +170,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   `lunatalk-card-doctor` before token architecture, render review, authoring,
   simulation, or publish readiness, unless the main symptom is only profile
   packaging (`roleName`, `roleDesc`, tags, title, tagline, first impression).
-- `roleDetailDesc`, detail engine, thin biography, under-budget detail, full-detail/top-card role setting, durable operating engine, current pressure, player insertion space, proactive turn behavior, secret/reveal pacing, time/consequence, or format stability before field assembly: use `lunatalk-detail-engineer`. Use `lunatalk-token-architect` instead when the engine already exists and the blocker is tokenBudget, estimatedTokens, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite, compression, duplicated lore, HTML/XMLV3 bloat, misplaced durable rules, or reducing token cost. If there is no concrete field-size evidence and the author is only deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
+- `roleDetailDesc`, detail engine, thin biography, under-budget detail, full-detail/top-card role setting, durable operating engine, current pressure, player insertion space, proactive turn behavior, secret/reveal pacing, time/consequence, or format stability before field assembly: use `lunatalk-detail-engineer`. Use `lunatalk-token-architect` instead when the engine already exists and the blocker is tokenBudget, estimatedTokens, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite, compression, duplicated lore, HTML/XMLV3 bloat, misplaced durable rules, attention dilution, long raw detail prompt architecture, Markdown/tag structure, or reducing token cost. If there is no concrete field-size evidence and the author is only deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
 - Pre-authoring or pre-render presentation planning, deciding XMLV3 vs plain vs
   HTML, Theme V3 vs `roleWelcome`, visible state vs hidden JSON state, first-
   screen hierarchy, visual affordances, status panels, choices/forms as
@@ -452,6 +452,10 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/token-economy.md` when the task involves tokenBudget,
   token allocation, overlong welcomes, duplicated lore, compression plans, or
   keep / move / cut / rewrite decisions.
+- Read `../../references/prompt-attention-architecture.md` when the task involves
+  attention dilution, long raw detail, long raw description, Markdown prompt
+  structure, XML tags, primacy/recency, U-shaped attention, lost-in-the-middle,
+  or cross-model instruction-following drift.
 - Read `../../references/presentation-design.md` when deciding XMLV3 vs plain vs
   HTML, Theme V3 vs welcome content, visible state vs hidden JSON state,
   first-screen hierarchy, visual affordances, or presentation packets before

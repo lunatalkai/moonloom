@@ -47,6 +47,9 @@ not a platform metric or MCP validation rule.
   usable artifact path from minimal input rather than only advice.
 - The card has a repeatable play loop: hook, agency, consequence, memory,
   progression, and a renewed hook.
+- Plot-driven cards have macro-progression: an inciting incident, visible route
+  pressure, next-station hooks, and evidence that location, route, relationship,
+  risk, clue, access, or obligation changes across a long arc.
 - `roleDesc` is concise enough to scan but specific enough to set expectations.
 - `roleDetailDesc` contains a detail engine: stable identity, backstory-to-motive,
   current pressure, relationship rules, world/play functions, proactive turn

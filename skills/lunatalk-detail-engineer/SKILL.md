@@ -37,10 +37,10 @@ Preserve narrow packets when they already exist:
 
 Do not call MCP tools from this skill. Do not treat detail length as a server
 gate. Do not pad prose to hit a number. The job is to buy future behavior:
-identity, motive, current pressure, relationship rules, world/play functions,
-proactive moves, voice, emotional reactions, longplay hooks, scene reservoir /
-turn recipes, time/consequence, secret pacing, player insertion space, agency
-boundaries, and format stability.
+identity, motive, current pressure, narrative progression engine, relationship
+rules, world/play functions, proactive moves, voice, emotional reactions,
+longplay hooks, scene reservoir / turn recipes, time/consequence, secret pacing,
+player insertion space, agency boundaries, and format stability.
 
 If the only issue is reducing bloat after the engine is complete, use
 `lunatalk-token-architect`. If the card's premise is not chosen, route to
@@ -57,19 +57,26 @@ If the only issue is reducing bloat after the engine is complete, use
    non-English draft stays under the 5,000-character target floor without a
    proven light-setting reason.
 3. Classify the card shape and preserve existing packet signals.
-4. Fill the engine modules with concrete playable behavior:
-   identity and core charm, background and motive, current pressure, player
-   relationship, world/scenario/play functions, proactive turn behavior, voice
-   and action logic, emotional reactions, longplay hooks, scene reservoir /
-   turn recipes, time and consequence, secret and reveal plan, player insertion
-   space, agency boundaries, and format stability.
-5. Decide field placement: what belongs in `roleDetailDesc`, `roleWelcome`,
+4. Put a 5-7 item every-turn iron laws block near the top of long detail drafts
+   when the card depends on strict behavior. For plot-driven cards, include a
+   **Narrative progression engine**: inciting incident within 1-2 assistant
+   turns, every-turn next station, progression and responding to the player as
+   separate duties, role/narrator ownership of story direction, and no reliance
+   on turn count or history-count rules.
+5. Fill the engine modules with concrete playable behavior:
+   identity and core charm, background and motive, current pressure, narrative
+   progression engine, player relationship, world/scenario/play functions,
+   proactive turn behavior, voice and action logic, emotional reactions,
+   longplay hooks, scene reservoir / turn recipes, time and consequence, secret
+   and reveal plan, player insertion space, agency boundaries, and format
+   stability.
+6. Decide field placement: what belongs in `roleDetailDesc`, `roleWelcome`,
    `talkExample`, XMLV3/Theme V3, or hidden state.
-6. Create a compression stance: what to expand, move, cut, or keep because it
+7. Create a compression stance: what to expand, move, cut, or keep because it
    changes future turns.
-7. Name validation, render, and simulation probes that would prove the detail
+8. Name validation, render, and simulation probes that would prove the detail
    engine works.
-8. Hand off to `lunatalk-card-author` or the narrow missing skill.
+9. Hand off to `lunatalk-card-author` or the narrow missing skill.
 
 ## Output Format
 
@@ -85,6 +92,7 @@ Detail engine packet:
   - identity and core charm:
   - background and motive:
   - current pressure:
+  - narrative progression engine:
   - player relationship:
   - world / scenario / play functions:
   - proactive turn behavior:
@@ -123,6 +131,12 @@ Self-review:
   relationship cost.
 - Convert lore into functions: access, risk, route, cost, state, clue,
   relationship pressure, or player leverage.
+- For story cards, add a Narrative progression engine: an inciting incident in
+  1-2 assistant turns, one next station every turn, and a rule that progression
+  and responding to the player are separate duties. Do not make the player open
+  the new scene; the player decides how to act while the role/narrator keeps
+  story direction moving.
+  Explicitly: do not make the player open the new scene.
 - Write proactive behavior for passive, brief, resistant, curious,
   boundary-setting, and route-changing player input.
 - Write voice as rhythm, vocabulary, address terms, emotional tells, action
@@ -139,6 +153,9 @@ Self-review:
   RPG turn protocol, or other output constraints matter.
 - Stop expanding when a new section would only repeat mood, biography, or
   decorative lore.
+- Avoid history-count anti-patterns such as "same scene for 1-2 turns," "after
+  three turns," or "turn 5 reveal." Use stateless rules instead: keep the
+  forward door open, leave a next station, and make each turn self-contained.
 
 ## Handoff
 
