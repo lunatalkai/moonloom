@@ -34,11 +34,14 @@ production behavior.
    If cost is not accepted, record "conversation test skipped by cost gate" and
    do not claim behavior-complete status.
 9. If conversation testing runs for behavior-complete status, use the
-   seven-probe Moonloom matrix: normal interaction, short reply, off-path reply,
-   background question, relationship push, secret exploration, and boundary test.
+   eight-probe Moonloom matrix: normal interaction, short reply, off-path reply,
+   background question, relationship push, secret exploration, boundary test,
+   and long-arc macro-progression.
    Continue the returned `conversationId` when probes are meant to form one
-   conversation. Passive-input checks can be folded into short reply or off-path
-   reply instead of becoming an eighth required probe.
+   conversation. The long-arc macro-progression probe should run 8-12 turns
+   with passive or off-path inputs and checks for same location/route
+   stagnation, repeated opening-scene loops, or failure to move toward the
+   intended route map.
 10. Run `conversation_inspect` after accepted probes. Use returned
     `messages[].chatMessage` for behavior evaluation and returned
     `messages[].previewUrl` values for visual checks. If `previewUrl` is absent
@@ -82,7 +85,7 @@ The validator enforces these status boundaries:
   app role-detail avatar proof, app chat background proof, and successful image
   request evidence.
 - `behavior_checked` additionally requires accepted simulation cost, a validated
-  simulation evidence packet, the seven-probe matrix, passing simulation result,
+  simulation evidence packet, the eight-probe matrix, passing simulation result,
   and per-message preview evidence.
 - statuses with remaining non-complete gates cannot be treated as complete.
 

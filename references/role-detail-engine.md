@@ -19,6 +19,50 @@ Do not pad. Fill detail only while each section buys future behavior, route
 memory, state change, voice control, or agency protection. Stop when the next
 section would only repeat mood, lore, or adjectives.
 
+## Every-Turn Iron Laws
+
+Put a compact 5-7 item every-turn iron laws block near the top of any long
+`roleDetailDesc` for a high-ambition story, scenario, RPG, system, or
+meta-narrative card. This protects the most important behavior from attention
+dilution in long prompts and gives the model a primacy anchor before lore,
+voice, and scene reservoirs.
+This is explicitly an attention dilution guardrail for instruction-following.
+
+For zh-Hant and other CJK-heavy fields, remember that the platform limit is a
+character cap / character-count cap. Leave buffer under the hard cap so final
+format checks, hidden state rules, and MCP patching do not push the field over
+the limit.
+
+For plot-driven cards, include a **Narrative progression engine**:
+
+1. **Inciting incident:** within the first 1-2 assistant turns, the role,
+   narrator, system, or world must ignite a main line with an external goal,
+   pressure, route, risk, or obligation. Do not let the card remain in
+   goal-less daily chatter unless daily-life is the primary contract.
+2. **Next station:** every assistant turn must leave one concrete next station:
+   a reachable place, route, clue, person, object, task, deadline, or decision
+   that points beyond the current beat.
+3. **Progression and responding to the player are separate duties:** the
+   assistant answers the player's move, then also moves the story one step. The
+   player chooses how to act; the role/narrator owns story direction.
+4. **Do not make the player open the new scene:** if the player is passive,
+   evasive, joking, or off-path, the role/narrator still introduces a playable
+   next situation while preserving player agency.
+5. **State change over mood loop:** each turn should change relationship, route,
+   risk, clue, location/access, resource, boundary, or obligation. If only mood
+   changes, add a concrete affordance.
+6. **Output contract:** when XMLV3/state is part of the card, include compact
+   hidden state updates and visible player-facing meaning without turning the
+   reply into a dashboard.
+
+Do not write turn-count rules as the enforcement mechanism. Anti-pattern:
+"same scene for 1-2 turns," "after three turns move on," "on turn 5 reveal the
+secret," or any rule that depends on the model counting history, round count, or
+第幾輪. The model may not reliably see or count enough history, and hard turn
+timers can rush players who want to linger. Prefer stateless, per-turn rules:
+keep the forward door open, leave a next station, and make the current turn
+self-contained enough that it can progress from whatever context is visible.
+
 ## When To Use
 
 Use a detail engine pass when any of these are true:
@@ -33,9 +77,12 @@ Use a detail engine pass when any of these are true:
   longplay, or less-empty role.
 
 If the issue is only field allocation or compression after a complete engine
-exists, use `token-economy.md`. If the role's appeal, world, relationship, play
-rules, agency, voice, or longplay layer is not designed yet, preserve that narrow
-packet before final detail assembly.
+exists, use `token-economy.md`. If the issue is long-prompt attention dilution,
+cross-model instruction-following drift, or raw detail / raw description
+Markdown structure, read `prompt-attention-architecture.md` before final detail
+assembly. If the role's appeal, world, relationship, play rules, agency, voice,
+or longplay layer is not designed yet, preserve that narrow packet before final
+detail assembly.
 
 ## Language-Aware Detail Budget
 
@@ -97,6 +144,7 @@ Detail engine packet:
   - identity and core charm:
   - background and motive:
   - current pressure:
+  - narrative progression engine:
   - player relationship:
   - world / scenario / play functions:
   - proactive turn behavior:

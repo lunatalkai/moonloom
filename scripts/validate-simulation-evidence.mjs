@@ -15,6 +15,7 @@ const REQUIRED_PROBE_KINDS = [
   'relationship_push',
   'secret_exploration',
   'boundary_test',
+  'long_arc_macro_progression',
 ];
 
 const REQUIRED_CHECKS = [
@@ -25,6 +26,7 @@ const REQUIRED_CHECKS = [
   'formatStability',
   'reasonableLength',
   'safetyBoundary',
+  'macroProgression',
 ];
 
 const REQUIRED_REPAIR_FIELDS = [

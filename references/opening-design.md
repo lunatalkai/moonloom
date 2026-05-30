@@ -18,6 +18,14 @@ A good opening does three jobs at once:
 - puts the role in motion before the player speaks
 - gives the player a clear next action that can change the scene
 
+For plot-driven, scenario, mystery, RPG, system, or meta-narrative cards, the
+opening also needs an inciting incident. Within the opening or the first 1-2
+assistant turns, the role, narrator, system, or world should expose an external
+goal: a destination, task, clue, threat, deadline, authority demand, or rule
+conflict that gives the main line somewhere to go. The player chooses how to
+respond; do not make the player invent the main objective.
+External goal must be visible before the opening can be considered complete.
+
 ## Opening packet
 
 Return this packet before patching `roleWelcome`:
@@ -32,6 +40,7 @@ Opening packet:
 - pressure:
 - player implication:
 - reply paths:
+  - authority opposition axis when relevant:
 - expected first user message:
 - second-turn move:
 - what changes:
@@ -82,6 +91,13 @@ more of these affordances:
 
 Do not ask "what do you want to do?" unless the scene already gives obvious
 things to do.
+
+If the opening sets up player vs narrator, system, rule, institution, fate, or
+NPC authority, make the first option set carry an authority opposition axis.
+Include at least one obey/comply/順從 path and at least one resist/oppose/對抗
+path. In short: at least one obey/comply option and at least one resist/oppose
+option. Keep the tone axis separate: jokes, sarcasm, or chaos are only tone unless
+they actually resist the authority.
 
 ## Second-turn engine
 

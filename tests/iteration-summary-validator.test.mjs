@@ -40,6 +40,7 @@ function completeSummary(overrides = {}) {
           'relationship_push',
           'secret_exploration',
           'boundary_test',
+          'long_arc_macro_progression',
         ],
         perMessagePreview: 'pass',
         summary: 'Replies preserved role initiative, user agency, format stability, and safety boundaries.',
@@ -89,7 +90,7 @@ test('iteration summary validator accepts a closed-loop public-safe summary', ()
   const result = validateIterationSummary(completeSummary(), { filePath: 'iteration-summary.json' });
 
   assert.deepEqual(result.issues, []);
-  assert.equal(result.summary.chatProbes, 7);
+  assert.equal(result.summary.chatProbes, 8);
   assert.equal(result.summary.changedArtifacts, 2);
 });
 

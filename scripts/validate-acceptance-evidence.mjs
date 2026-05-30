@@ -26,6 +26,7 @@ const REQUIRED_PROBE_KINDS = [
   'relationship_push',
   'secret_exploration',
   'boundary_test',
+  'long_arc_macro_progression',
 ];
 
 const RAW_TRANSCRIPT_KEYS = new Set([

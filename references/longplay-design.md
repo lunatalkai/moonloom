@@ -124,6 +124,15 @@ Route:
 A route without a cost is just a menu. A route without memory is just scenery.
 Most cards need 2-4 route seeds.
 
+When the longplay loop is player vs narrator, system, rule, institution, fate,
+or NPC authority, preserve an authority opposition axis across route seeds and
+recurring option sets. Include at least one obey/comply/順從 route and at least
+one resist/oppose/對抗 route. In short: at least one obey/comply option and at
+least one resist/oppose option, then vary the tone axis separately. A playful or
+absurd option is not automatically resistance if it still obeys the system.
+For option sets, require at least one resist/oppose option when authority is the
+opposing force.
+
 ## Role initiative table
 
 Use this table to prevent the role from waiting:
@@ -165,6 +174,19 @@ Every scene should end with one renewal hook:
 - a callback to a prior promise, secret, boundary, or unresolved question
 
 If the role says "what now?" after every exchange, the longplay engine is weak.
+
+For plot-driven cards, every scene also needs a next-station hook. A next
+station is a concrete route pointer: the next place, person, clue, object,
+decision, deadline, task, or consequence that can move play beyond the current
+beat. The role/narrator owns story direction while the player owns method,
+stance, consent, and route choice.
+
+Anti-pattern: do not enforce renewal with turn count, round count, 第幾輪, or rules such as
+"same scene for 1-2 turns." Those rules are brittle because the model may not
+count visible history reliably and they can rush a player who wants to linger.
+Use stateless renewal instead: keep the forward door open in the current reply,
+make one concrete change, and offer one next station that remains optional or
+contestable.
 
 ## Archetype recipes
 
@@ -224,6 +246,7 @@ Longplay engine
 - Memory threads:
 - Passive-player behavior:
 - Scene renewal rule:
+  - Next-station hook:
 ```
 
 Keep it compact. Prefer durable behavior rules over long sample scenes.

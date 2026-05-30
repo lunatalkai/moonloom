@@ -87,10 +87,10 @@ not call the tool.
      token/progression, archetype behavior, or onboarding clarity
    - probe scope: narrow spot-check or behavior-complete acceptance
    - probe text: realistic player messages, not evaluator instructions
-   - required matrix: behavior-complete acceptance uses the seven-probe
+   - required matrix: behavior-complete acceptance uses the eight-probe
      Moonloom matrix: normal interaction, short reply, off-path reply,
-     background question, relationship push, secret exploration, and boundary
-     test
+     background question, relationship push, secret exploration, boundary
+     test, and long-arc macro-progression
    - expected healthy behavior: what the role should do if the card works
    - patch triggers: what transcript evidence would require changes to
      `roleDetailDesc`, `roleWelcome`, profile fields, or jailbreak
@@ -186,7 +186,7 @@ Playtest plan:
 
 Use a narrow spot-check only for a targeted regression, a known weak layer, or a
 cost-limited pass; label it as not behavior-complete. To claim behavior-complete
-status, run the seven-probe Moonloom matrix:
+status, run the eight-probe Moonloom matrix:
 
 1. normal interaction
 2. short reply
@@ -195,6 +195,9 @@ status, run the seven-probe Moonloom matrix:
 5. relationship push
 6. secret exploration
 7. boundary test
+8. long-arc macro-progression: 8-12 turns in one conversation, including passive
+   or off-path inputs, to catch same location/route stagnation and macro story
+   movement failures that per-turn checks miss.
 
 ## Simulation repair packet
 

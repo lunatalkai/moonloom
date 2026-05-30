@@ -69,6 +69,20 @@ label, allowed values, update trigger, update cadence, and the play effect. The
 welcome only shows the first useful surface; hidden JSON stores compact runtime
 updates.
 
+Hidden <state> JSON high-drift is expected in long real chats. Hidden `<state>`
+JSON is a high-drift output trap; hidden <state> JSON is high-drift. Do not rely
+on hidden JSON as the only proof of state when long real chats matter; add a visible panel
+fallback for player-facing state such as phase, route, clue, risk, location, or
+relationship pressure. The visible panel fallback should stay understandable
+when the model forgets `<state>`, and hidden JSON should remain compact when it
+is emitted.
+
+For visible bars, value must be a single numeric value; bar value must be a
+single number. Do not write 8 -> 14 in bar value; it will break progress
+rendering. Do not write bar value strings such as `8 -> 14`, `8-14`, or `+6`;
+those belong in prose as the delta or change amount. Keep the bar at the current
+number and explain the change in a nearby field or status note.
+
 ## Agency Safety
 
 State must not store player feelings, consent, loyalty, guilt, desire, actions,

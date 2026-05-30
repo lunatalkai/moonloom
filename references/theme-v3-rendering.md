@@ -114,6 +114,16 @@ state as present. Do not use flat state objects such as
 `{"location":"...","trust":1}`; those may parse as JSON but still appear as
 `state:none` in preview reports.
 
+Hidden <state> JSON high-drift is expected in long real chats. Hidden `<state>`
+JSON is a high-drift output trap in real chat. In plain terms, hidden <state>
+JSON is high-drift. Even when
+`roleDetailDesc` asks for state every turn, the model may omit it after several
+rounds. When state matters, provide a visible panel/state-surface fallback with
+the same player-facing facts, then use hidden `<state>` JSON as the
+machine-readable source when it appears. Treat missing `<state>` after a real
+state change as a simulation warning and patch the role-specific output
+contract.
+
 Visible status widgets must stay in sync with hidden state. If a visible `bar`
 or meter and hidden `state.status` / `state.relationships` describe the same
 metric, they should share the same key or label, and their value/max must match.
@@ -131,6 +141,13 @@ or available/unavailable fields should use `state.status[].value`,
 card surface instead of being forced into `max:100`. `roleDetailDesc` should
 define the update contract for every kept field: stable key, label, allowed
 values, update trigger, play effect, and output cadence.
+
+For `<bar>`, the `value` attribute must be one single numeric value; bar value
+must be a single number. Do not write 8 -> 14 in bar value; it will break
+progress rendering. Do not put change strings such as `8 -> 14`, `8-14`, or
+`+6` in `value`; that breaks progress rendering. Put the delta / change amount
+in visible prose, a field, or the state panel, while the bar keeps `value="14"`
+and a numeric `max`.
 
 ```xml
 <state>{"scene":{"mood":"rain","location":"公寓門口"},"status":[{"key":"risk","label":"風險","value":"低"}],"relationships":[{"target":"小碟","label":"信任","affinity":1,"max":5}]}</state>

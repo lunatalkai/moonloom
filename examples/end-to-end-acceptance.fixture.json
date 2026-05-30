@@ -60,7 +60,8 @@
       "background_question",
       "relationship_push",
       "secret_exploration",
-      "boundary_test"
+      "boundary_test",
+      "long_arc_macro_progression"
     ],
     "result": "pass"
   },
