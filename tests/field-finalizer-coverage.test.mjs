@@ -43,6 +43,10 @@ test('field finalization defines MCP-ready last-mile gates', async () => {
   assert.match(reference, /language-aware hard caps/i);
   assert.match(reference, /compact fallback/i);
   assert.match(reference, /role_patch_profile[\s\S]*role_patch_detail[\s\S]*role_patch_welcome/i);
+  assert.match(reference, /role_patch_talk_example/);
+  assert.match(reference, /role_patch_output_contract/);
+  assert.match(reference, /roleOutputContract/);
+  assert.match(reference, /2,000-character `roleOutputContract`/);
   assert.match(reference, /XMLV3[\s\S]*JSON[\s\S]*Markdown|Markdown[\s\S]*JSON[\s\S]*XMLV3/i);
   assert.match(reference, /ready \| needs narrow repair \| missing external asset \| cost-gated/i);
 

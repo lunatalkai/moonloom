@@ -61,6 +61,8 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
 
   for (const tool of [
     'role_patch_document',
+    'role_patch_talk_example',
+    'role_patch_output_contract',
     'worldbook_find',
     'worldbook_get',
     'worldbook_patch_document',
@@ -112,6 +114,19 @@ test('MCP workflow documents uploadId document workflow', async () => {
   assert.match(workflow, /document_upload/);
   assert.match(workflow, /role_patch_document_upload/);
   assert.match(workflow, /worldbook_patch_document_upload/);
+});
+
+test('MCP workflow documents author reply format contract', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(workflow, /role_patch_output_contract/);
+  assert.match(workflow, /output-contract/i);
+  assert.match(mcpReference, /role_patch_output_contract/);
+  assert.match(mcpReference, /roleOutputContract/);
+  assert.match(mcpReference, /Reply Format Example|回覆格式範例/);
+  assert.match(mcpReference, /2,000 characters/i);
+  assert.match(mcpReference, /platform runtime\s+format rules/i);
 });
 
 test('MCP workflow documents worldbook injection limits conservatively', async () => {

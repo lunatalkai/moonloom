@@ -46,8 +46,8 @@ Check these gates in order:
    use skipped heading levels, start with H2, or jump from H1 to H3.
 7. MCP patch mapping: map each final field to the intended tool:
    `role_patch_profile`, `role_patch_assets`, `role_patch_detail`,
-   `role_patch_welcome`, optional `role_patch_jailbreak`, `theme_bind`, and
-   `extension_enable`.
+   `role_patch_welcome`, optional `role_patch_talk_example`, optional
+   `role_patch_jailbreak`, `theme_bind`, and `extension_enable`.
    XMLV3 real chat requires `theme_bind` before conversation acceptance; if
    `roleWelcome` is XMLV3 and the author expects real chat controls, missing
    theme binding is not MCP-ready.
@@ -89,6 +89,7 @@ Field finalization packet:
   - roleDetailDesc:
   - roleWelcome:
   - talkExample:
+  - roleOutputContract:
   - tags:
   - avatar/background:
 - hard-cap and density check:
@@ -103,12 +104,15 @@ Field finalization packet:
     - 10,000-character English `roleWelcome`:
     - 3,000-character non-English `roleWelcome`:
   - talkExample estimate:
+  - roleOutputContract estimate:
+  - 2,000-character `roleOutputContract` hard cap stance:
   - sections that earn tokens:
 - compact fallback:
   - roleDesc:
   - roleDetailDesc:
   - roleWelcome:
   - talkExample:
+  - roleOutputContract:
 - format checks:
   - XMLV3:
   - JSON:
@@ -124,6 +128,8 @@ Field finalization packet:
   - role_patch_assets:
   - role_patch_detail:
   - role_patch_welcome:
+  - role_patch_talk_example:
+  - role_patch_output_contract:
   - role_patch_jailbreak:
   - theme_bind / extension_enable:
 - validation / render / simulation handoff:

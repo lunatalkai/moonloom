@@ -106,24 +106,28 @@ are top-level fields of the JSON-RPC response.
 3. `role_patch_assets`
 4. `role_patch_detail`
 5. `role_patch_welcome`
-6. `role_patch_document_upload` after HTTP upload or MCP `document_upload` for
+6. `role_patch_talk_example` when compact Example Chat samples are needed for
+   voice, refusal, interaction rhythm, or output-shape calibration
+7. `role_patch_output_contract` when the card needs an author-locked reply
+   format example for stable visible structure
+8. `role_patch_document_upload` after HTTP upload or MCP `document_upload` for
    long local files, or `role_patch_document` when upload is unavailable
-7. `theme_bind` when XMLV3 real chat controls are expected; optional
+9. `theme_bind` when XMLV3 real chat controls are expected; optional
    `extension_enable` for specific packs
-8. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
+10. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
    `worldbook_patch_document_upload` after HTTP upload or MCP `document_upload`,
    or
    `worldbook_patch_document`, then `worldbook_bind`
-9. `validate_role`
-10. `render_preview`
-11. `conversation_model_catalog` before paid conversation testing
-12. `conversation_create` or `conversation_list`
-13. `conversation_send_message`
-14. `conversation_turn_status` when the send result is still pending
-15. `conversation_inspect`
-16. Optional `conversation_load` when the author wants to resume or roll back
-17. `publish_submit` only after explicit author confirmation
+11. `validate_role`
+12. `render_preview`
+13. `conversation_model_catalog` before paid conversation testing
+14. `conversation_create` or `conversation_list`
+15. `conversation_send_message`
+16. `conversation_turn_status` when the send result is still pending
+17. `conversation_inspect`
+18. Optional `conversation_load` when the author wants to resume or roll back
+19. `publish_submit` only after explicit author confirmation
 
 ## Tools
 
@@ -525,6 +529,11 @@ Document format:
     "roleDetailDesc": "Long stable role engine...",
     "roleWelcomeMode": "xmlv3",
     "roleWelcome": "<scene><n>Opening...</n></scene>",
+    "talkExample": [
+      {"roleType": "user", "content": "Short player line."},
+      {"roleType": "ai", "content": "Short assistant sample that demonstrates voice or output shape."}
+    ],
+    "roleOutputContract": "Optional short author-locked reply format example.",
     "jailbreak": "Optional private behavior boundary."
   }
 }
@@ -552,6 +561,63 @@ Tool call:
 Only fields present in `fields` are patched. If `document.roleId` is present, it
 must match the tool `roleId`. The response includes
 `structuredContent.document.patchedFields`.
+
+### `role_patch_talk_example`
+
+Update the role-level `talkExample` field. In the normal one-shot chat prompt,
+this field is labeled as Example Chat and used as dialogue-style calibration,
+not as current conversation history.
+
+Use it only when compact samples teach something rules do not: voice under
+pressure, refusal style, ensemble turn ownership, interaction rhythm, or one
+complete assistant output shape for generator / XMLV3 cards. Keep samples short;
+long samples compete with `roleDetailDesc`, `roleWelcome`, worldbook, memory, and
+real history for attention.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "talk-example-...",
+  "roleId": "...",
+  "patch": {
+    "talkExample": [
+      {"roleType": "user", "content": "雨還沒停？"},
+      {"roleType": "ai", "content": "「還沒。先別走。」"}
+    ]
+  }
+}
+```
+
+`roleType` should be `user` or `ai`. Do not put version banners, working notes,
+long plot dumps, or current-session summaries in `talkExample`.
+
+### `role_patch_output_contract`
+
+Update the author-level `roleOutputContract` field. The frontend label is
+"回覆格式範例" / "Reply Format Example". In the one-shot chat prompt this field
+is placed near generation as a labeled template, after normal card/history
+context and before platform runtime format guides.
+
+Use it when a card needs a stable visible reply shape that should not be
+overridden by a player's personal conversation style: XMLV3 skeleton, status
+panel order, choice count, generator output sections, or a compact state/action
+layout. Keep it short, ideally one complete assistant reply template plus 3-5
+necessary reminders. The hard cap is 2,000 characters.
+
+Do not put version banners, working notes, long plot dumps, private data, or the
+entire `roleDetailDesc` here. If the template conflicts with platform runtime
+format rules, the platform guide wins.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "reply-format-...",
+  "roleId": "...",
+  "patch": {
+    "roleOutputContract": "<scene><panel>狀態</panel><choices>...</choices></scene>"
+  }
+}
+```
 
 ### `document_upload`
 
@@ -702,6 +768,8 @@ technical repair surface:
 - `role_patch_detail` when required detail fields are missing.
 - `role_patch_welcome` for required welcome content, unsafe HTML, invalid XMLV3,
   or unsupported render tags.
+- `role_patch_talk_example` when the final field packet includes compact Example
+  Chat samples that need to be stored separately from `roleDetailDesc`.
 - `validate_role` after the patch.
 
 Do not call `render_preview`, `conversation_create`, `conversation_send_message`,
