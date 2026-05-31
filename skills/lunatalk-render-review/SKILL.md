@@ -96,6 +96,8 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - HTML has no scripts, inline event handlers, external URLs, or unsupported assets.
 - HTML mode with `hc-*` components uses `lunatalk-html-card-components` and only the supported catalog in
   `html-card-components.md`; do not invent unsupported tags or attributes.
+- Renderer modes are mutually exclusive. Flag any `hc-*` / HTML inside XMLV3,
+  or XMLV3 tags inside HTML, as a structural mode error before visual polish.
   Prefer XMLV3 first when the same play value can be expressed by XMLV3 packs.
 - XMLV3 parses cleanly and does not fall back into unstructured raw text.
 - XMLV3 visible text uses registered tags. Hidden data tags such as `<state>` do

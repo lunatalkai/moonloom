@@ -16,6 +16,12 @@ utilities, MCP preview behavior, and server-side HTML preservation rules.
 
 ## Safety Rules
 
+- Renderer modes are mutually exclusive. A card/welcome uses one renderer:
+  Markdown/plain, HTML, or XMLV3. `hc-*` components belong only to HTML mode.
+- Do not place `hc-*`, `<div>`, `<section>`, inline HTML, or HTML classes inside
+  `mode: "xmlv3"` content. XMLV3 cards must output XMLV3 tags only.
+- Do not rely on XMLV3 tags inside an HTML card. HTML cards are rendered by the
+  HTML renderer, not the XMLV3 renderer.
 - Prefer XMLV3 first. Before choosing HTML, check whether `<panel>`, `<stack>`,
   `<grid>`, `<field>`, `<choices>`, `<form>`, `<bar>`, `<tag>`, or
   `<collapse>` can carry the same play value.
@@ -26,6 +32,9 @@ utilities, MCP preview behavior, and server-side HTML preservation rules.
 - Keep actions explicit: `send` fills the chat input with the intended player
   action; `copy` copies text. Do not hide critical play state in button labels.
 - Validate, render preview, and inspect desktop/mobile when HTML mode is used.
+
+When an existing HTML surface should become XMLV3, rewrite it into equivalent
+XMLV3 controls and Theme V3 CSS hooks. Do not embed the HTML surface in XMLV3.
 
 ## Support Tiers
 
@@ -39,7 +48,7 @@ utilities, MCP preview behavior, and server-side HTML preservation rules.
   but not safe as a new cross-client Moonloom default unless a current renderer
   validation report proves support on every target.
 
-## Cross-Client Component Catalog
+## Cross-Client HTML Component Catalog
 
 These are the stable `hc-*` elements Moonloom may use for HTML cards across
 desktop, mobile, MCP preview, and sanitizer paths.

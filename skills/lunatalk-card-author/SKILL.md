@@ -23,7 +23,7 @@ Load the narrow reference and skill before authoring when that layer is primary:
 `longplay-design.md`, `agency-design.md`, `instruction-guardrails.md`, or
 `playtest-loop.md`. Use `system-intake-card-design.md` when a system,
 simulator, generator, or mission-board card needs an intake-first setup wizard,
-intake console, or HTML-to-XMLV3 control-surface parity. For card-shape engines,
+intake console, or HTML-to-XMLV3 rewrite parity for a control surface. For card-shape engines,
 use `character-core-design.md`, `relationship-engine.md`, `world-engine-design.md`,
 `scenario-design.md`, `daily-life-design.md`, `play-engine-design.md`, and
 `generator-design.md` with their matching Moonloom skills before fields. Use
@@ -213,7 +213,7 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-compone
    Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
    a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot
    express.
-   For HTML mode, preserve or use `lunatalk-html-card-components`, read `html-card-components.md`, and use only supported `hc-*` HTML card components. Do not invent tags or attributes, and do not rely on
+   Renderer modes are exclusive: HTML uses `hc-*`; XMLV3 uses XMLV3 tags only. For HTML mode, preserve or use `lunatalk-html-card-components`, read `html-card-components.md`, and use only supported `hc-*` HTML card components. Do not invent tags or attributes, and do not rely on
    scripts, inline event handlers, external URLs, or client-specific components.
    If the author needs HTML div-like sectioning, grouped blocks, or local color
    distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,

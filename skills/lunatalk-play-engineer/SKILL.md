@@ -19,8 +19,8 @@ Read `../../references/play-engine-design.md` first. Read
 system/simulator, story, generator, or hybrid contract selection. Read
 `../../references/system-intake-card-design.md` when a simulator, management,
 mission-board, investigation desk, or RPG setup welcome needs an intake-first
-setup wizard, intake console, defaults surface, or HTML-to-XMLV3 panel/form/choices
-parity before authoring. Read
+setup wizard, intake console, defaults surface, or HTML-to-XMLV3 rewrite parity
+for panel/form/choices before authoring. Read
 `../../references/world-engine-design.md` when the play engine depends on
 factions, locations, relationship networks, lore-heavy settings, or world rules.
 Read `../../references/longplay-design.md` when the task needs route memory,

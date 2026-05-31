@@ -17,7 +17,7 @@ companion/story/RPG/system classification. Read `../../references/opening-design
 when the intake welcome is vague or too long. Read
 `../../references/system-intake-card-design.md` when the generator needs an
 intake-first setup wizard, intake console, defaults surface, or HTML-to-XMLV3
-panel/form/choices parity before field assembly. Read
+rewrite parity for panel/form/choices before field assembly. Read
 `../../references/voice-calibration.md` when the generator has a diegetic persona
 or drifts into generic assistant voice. Read `../../references/token-economy.md`
 when the schema, examples, or forms bloat `roleWelcome`. Read

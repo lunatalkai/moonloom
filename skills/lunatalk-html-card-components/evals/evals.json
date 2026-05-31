@@ -39,6 +39,19 @@
         "The output routes planning to lunatalk-presentation-director or field assembly to lunatalk-card-author as appropriate.",
         "The output includes no private data, account identifiers, copied card text, scripts, inline handlers, or external URLs."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I am making an XMLV3 card, but I want to use hc-form and hc-btn inside the XML so it looks like the HTML card.",
+      "expected_output": "Rejects mixed renderer output, explains that hc-* belongs only to HTML mode, and routes the need to a non-mixed XMLV3 rewrite using XMLV3 controls and Theme V3 hooks.",
+      "files": [],
+      "expectations": [
+        "The output states that Markdown/plain, HTML, and XMLV3 renderers are mutually exclusive.",
+        "The output refuses to place hc-form, hc-btn, div, section, or HTML classes inside mode: \"xmlv3\" content.",
+        "The output offers a non-mixed XMLV3 rewrite using XMLV3 controls such as panel, form, choices, bar, tag, or collapse.",
+        "The output does not imply that HTML will render inside an XMLV3 card.",
+        "The output routes unresolved presentation decisions to lunatalk-presentation-director."
+      ]
     }
   ]
 }
