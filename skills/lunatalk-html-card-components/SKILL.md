@@ -21,6 +21,11 @@ Prefer XMLV3 plus Theme V3 for new visual welcomes. Use HTML only for explicit
 HTML requests, legacy HTML migration, or a custom layout that XMLV3 layout packs
 cannot express yet.
 
+Renderer modes are mutually exclusive. This skill may return `hc-*` markup only
+for `mode: "html"` / normal HTML cards. If the target is `mode: "xmlv3"`, do not
+emit `hc-*`, `<div>`, `<section>`, or HTML classes; route to
+`lunatalk-presentation-director` for an XMLV3 rewrite instead.
+
 Do not call MCP tools from this skill. Do not create or patch a private card
 here; hand the component plan to `lunatalk-card-author` after review.
 
@@ -46,10 +51,12 @@ here; hand the component plan to `lunatalk-card-author` after review.
 4. Reject invented or unsupported components. If the author asks for limited
    components, either replace them with stable equivalents or require current
    desktop/mobile renderer validation before approval.
-5. Apply HTML safety rules: no scripts, inline event handlers, external URLs,
+5. Reject mixed-renderer output. `hc-*` is not a fallback inside XMLV3; it is an
+   HTML-mode component family.
+6. Apply HTML safety rules: no scripts, inline event handlers, external URLs,
    iframes, object embeds, arbitrary JavaScript, or hidden critical state in
    labels.
-6. Hand off with a preview plan. HTML output needs validation plus desktop and
+7. Hand off with a preview plan. HTML output needs validation plus desktop and
    mobile render inspection.
 
 ## Component Plan Packet
@@ -61,7 +68,7 @@ HTML component packet:
 - components:
 - attributes and meanings:
 - rejected components:
-- XMLV3 fallback:
+- non-mixed XMLV3 rewrite option:
 - safety checks:
 - preview / validation plan:
 - handoff:

@@ -26,7 +26,8 @@ HTML is justified, use the stable component catalog in
 `hc-collapse`, `hc-radio`, `hc-checkbox`, `hc-input`, and `hc-form`. Do not
 invent new `hc-*` components or rely on scripts, inline event handlers, external
 URLs, or client-specific custom elements. If XMLV3 plus layout/control packs can
-express the same play value, stay in XMLV3.
+express the same play value, stay in XMLV3. Renderer modes are mutually
+exclusive: never put `hc-*` or HTML containers inside XMLV3 content.
 
 ## Server guide vs role contract
 
@@ -425,9 +426,9 @@ also read `system-intake-card-design.md`. These cards should not collapse rich
 HTML control surfaces into one XMLV3 scene. Preserve play value by mapping the
 intake into sibling `panel`, `grid`, `form`, `bar`, `choices`, and
 preview-compatible `state` blocks, with Theme V3 tones or constrained
-presentation attributes carrying local color. The goal is HTML-to-XMLV3 parity
-for sectioning, dense form controls, state, and balanced actions before changing
-the writing logic.
+presentation attributes carrying local color. The goal is migration parity:
+rewrite HTML surfaces into XMLV3 equivalents for sectioning, dense form
+controls, state, and balanced actions before changing the writing logic.
 
 Read the render report as a parity map before making prose changes:
 

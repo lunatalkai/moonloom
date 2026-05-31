@@ -23,7 +23,7 @@ status panels require unsettled state-field decisions. Use
 `lunatalk-state-economist` first when state economy is unresolved. Read
 `../../references/system-intake-card-design.md` when the first screen is a
 system/simulator setup wizard, intake console, mission board, generator intake,
-or HTML-to-XMLV3 panel/form/choices parity problem. Read
+or HTML-to-XMLV3 rewrite parity problem for panel/form/choices. Read
 `../../references/opening-design.md` when first-screen beats or second-turn
 change are incomplete. Read `../../references/token-economy.md` when visual
 structure may become welcome bloat. Read `../../references/agency-design.md`
@@ -60,7 +60,8 @@ which meters are decorative and should be omitted.
    blocker, route to the narrower skill before presentation polish.
    If state fields, update rules, or visible/hidden classification are unresolved,
    route to `lunatalk-state-economist` before designing the presentation layer.
-3. Choose welcome mode: plain, XMLV3, or HTML. Prefer XMLV3 plus Theme V3 for new
+3. Choose exactly one welcome renderer: plain/Markdown, XMLV3, or HTML. Do not
+   mix `hc-*` or HTML containers into XMLV3. Prefer XMLV3 plus Theme V3 for new
    structured welcomes. Treat platform XMLV3 syntax as server-provided; do not
    paste the generic XMLV3 manual into `roleDetailDesc`.
    `roleDetailDesc` stores the role-specific format contract, not the platform
@@ -80,7 +81,8 @@ which meters are decorative and should be omitted.
    play value and the MCP handoff includes `extension_enable`.
    If HTML remains justified, use `lunatalk-html-card-components`, load `html-card-components.md`, use only supported
    `hc-*` HTML card components, and do not invent unsupported tags, attributes,
-   scripts, inline event handlers, external URLs, or client-specific components.
+   scripts, inline event handlers, external URLs, client-specific components,
+   or XMLV3 tags that depend on the XMLV3 renderer.
    When the missing capability is HTML div-like structure or per-section color,
    prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`,
    `field`, `choices`, and `divider` create container, section block,
@@ -93,7 +95,7 @@ which meters are decorative and should be omitted.
    block, action, form, collapse, tag, or meter needs HTML-like contrast without
    custom HTML. Do not place raw style/class or arbitrary CSS in XML. If this
    pack is used, the MCP handoff must include `extension_enable` for `layout`
-   plus a readable XMLV3 fallback stance.
+   plus a readable XMLV3 rewrite stance for older layouts.
    Use Theme V3 CSS variables for the skin: `--lt-panel-bg`,
    `--lt-field-label-color`, `--lt-choice-border-color`,
    `--lt-form-submit-bg`, `--lt-collapse-bg`, and `--lt-bar-track-bg` are

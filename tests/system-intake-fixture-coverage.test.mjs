@@ -12,7 +12,7 @@ async function read(path) {
   return readFile(path, 'utf8');
 }
 
-test('Moonloom includes a public-safe system intake fixture for HTML-to-XMLV3 parity work', async () => {
+test('Moonloom includes a public-safe system intake fixture for HTML-to-XMLV3 rewrite parity work', async () => {
   const fixture = await read(fixturePath);
 
   assert.match(fixture, /System intake synthetic fixture/i);

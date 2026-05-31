@@ -115,3 +115,23 @@ test('Moonloom prevents invented or unsafe hc-* HTML components', async () => {
   assert.match(reference, /hc-list[\s\S]{0,220}not.*cross-client|mobile-only|avoid/i);
   assert.match(reference, /hc-alert[\s\S]{0,220}not.*cross-client|mobile-only|avoid/i);
 });
+
+test('Moonloom forbids mixing HTML hc-* components with XMLV3 renderer output', async () => {
+  const reference = await readFile('references/html-card-components.md', 'utf8');
+  const skill = await readFile('skills/lunatalk-html-card-components/SKILL.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
+  const renderReview = await readFile('skills/lunatalk-render-review/SKILL.md', 'utf8');
+  const evals = await readFile('skills/lunatalk-html-card-components/evals/evals.json', 'utf8');
+
+  for (const source of [reference, skill, presentation, themeRendering, cardAuthor, renderReview]) {
+    assert.match(source, /renderer modes? (are )?mutually\s+exclusive|Renderer modes? are exclusive/i);
+    assert.match(source, /do not mix|never put|do not place|not a fallback inside XMLV3|must output XMLV3 tags only|XMLV3.*uses XMLV3 tags only|Flag any[\s\S]{0,80}HTML inside XMLV3/i);
+  }
+
+  assert.match(skill, /mode: "html"[\s\S]{0,180}mode: "xmlv3"/);
+  assert.match(skill, /non-mixed XMLV3 rewrite option/);
+  assert.match(evals, /hc-form and hc-btn inside the XML/);
+  assert.match(evals, /mutually exclusive/);
+});

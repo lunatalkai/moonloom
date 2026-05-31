@@ -171,7 +171,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
   generator/helper/creator-assistant cards.
 - `references/system-intake-card-design.md` defines setup wizard and intake
   console patterns for system/simulator/generator cards, including
-  HTML-to-XMLV3 parity for panel, form, choices, state, and visible controls.
+  HTML-to-XMLV3 rewrite parity for panel, form, choices, state, and visible
+  controls.
 - `references/scenario-design.md` defines branchable incidents, story spines,
   clue/reveal ladders, false lead handling, suspect pressure networks, compact
   consequence state, and probes for story-first cards.
@@ -319,7 +320,7 @@ an XMLV3 welcome, scaffold, or fixture changes; it rejects left-heavy naked
 choice piles, controls nested inside `<scene>`, flat state JSON, and raw
 style/class hooks while allowing constrained `panel` / `choice` presentation
 attributes. Use `npm run validate:system-intake` when system/simulator setup
-wizard fixtures or HTML-to-XMLV3 intake parity guidance changes; it checks
+wizard fixtures or HTML-to-XMLV3 rewrite parity guidance changes; it checks
 panel/form/choices/state structure, grouped actions, and public-safe fixture
 shape. Use `npm run validate:simulation` after recording MCP simulation
 evidence to check required probes, per-message preview coverage,

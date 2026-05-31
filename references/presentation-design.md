@@ -12,6 +12,8 @@ Presentation is not decoration. It should make the card easier to play.
   setup fields, and compact hidden state.
 - Theme V3 carries reusable visual identity: typography, color, panels, speech
   treatments, atmosphere, and extension packs.
+- Renderer modes are mutually exclusive. Choose one welcome renderer:
+  Markdown/plain, HTML, or XMLV3. Do not mix XMLV3 tags with HTML or `hc-*`.
 - The layout pack is XMLV3's safe div-like layer. Use `panel`, `stack`, `row`,
   `grid`, `choices`, and `divider` for container, section block, grouping,
   action-button layout, and separation.
@@ -106,12 +108,14 @@ Choose `plain` when the first screen is mostly prose and does not need structure
 state, choices, or setup fields.
 
 Choose `xmlv3` when structure improves play: scene beats, speaker changes,
-visible status, relationship cues, choices, forms, or hidden state.
+visible status, relationship cues, choices, forms, or hidden state. XMLV3 cards
+must output XMLV3 tags only.
 
 Choose `html` only when a specific custom layout is necessary or existing HTML
 must be migrated. HTML must not rely on scripts, inline handlers, external URLs,
 or critical behavior hidden in unsupported code. When HTML is justified, read
-`html-card-components.md`; do not invent unsupported `hc-*` tags or attributes.
+`html-card-components.md`; do not invent unsupported `hc-*` tags or attributes,
+and do not expect XMLV3 tags to be handled by the XMLV3 renderer.
 
 Before choosing HTML, check whether core XMLV3 plus an enabled extension pack can
 express the need. For example, setup and result surfaces may use pack tags such

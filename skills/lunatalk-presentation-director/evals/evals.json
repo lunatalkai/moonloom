@@ -49,7 +49,7 @@
         "The output treats this as an intake-first system presentation problem, not ordinary prose or render review.",
         "The packet references system-intake-card-design.md or equivalent system intake guidance.",
         "The XMLV3 plan uses panel, form, grid, bar, choices, and preview-compatible state instead of one flat scene.",
-        "The HTML decision compares HTML-to-XMLV3 parity for sectioning, form controls, state, and action density.",
+        "The HTML decision compares HTML-to-XMLV3 rewrite parity for sectioning, form controls, state, and action density without mixing renderers.",
         "The output does not call validate_role, render_preview, conversation_send_message, conversation_inspect, or mutating tools."
       ]
     }
