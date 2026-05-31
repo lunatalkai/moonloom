@@ -28,7 +28,7 @@ use `character-core-design.md`, `relationship-engine.md`, `world-engine-design.m
 `scenario-design.md`, `daily-life-design.md`, `play-engine-design.md`, and
 `generator-design.md` with their matching Moonloom skills before fields. Use
 `material-distillation.md` for
-large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
+large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-components.md` for intentional HTML mode or `hc-*` HTML card components,
 `safety-and-cost.md` for rating/simulation/publishing/credentials,
 `role-card-writing-framework.md` and `quality-rubric.md` for self-review, and
 `../../examples/synthetic-card-briefs.md` for benchmark or regression work.
@@ -213,6 +213,8 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3,
    Use `html` only when the author explicitly needs custom HTML, legacy HTML, or
    a presentation packet justifies a layout that XMLV3 plus Theme V3 cannot
    express.
+   For HTML mode, preserve or use `lunatalk-html-card-components`, read `html-card-components.md`, and use only supported `hc-*` HTML card components. Do not invent tags or attributes, and do not rely on
+   scripts, inline event handlers, external URLs, or client-specific components.
    If the author needs HTML div-like sectioning, grouped blocks, or local color
    distinction, prefer the XMLV3 `layout` extension pack first. Use `panel`,
    `stack`, `row`, `grid`, `field`, `choices`, and `divider` for container,

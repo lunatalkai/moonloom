@@ -13,7 +13,10 @@ real card patch and not a render report.
 
 Read `../../references/presentation-design.md` first. Read
 `../../references/theme-v3-rendering.md` for XMLV3, Theme V3, and HTML syntax
-boundaries. Read `../../references/card-authoring-templates.md` when a
+boundaries. Use `lunatalk-html-card-components` and read
+`../../references/html-card-components.md` when HTML mode or `hc-*` HTML card
+components are intentionally required. Read
+`../../references/card-authoring-templates.md` when a
 presentation packet must be preserved into field assembly. Read
 `../../references/state-economy-design.md` when visible status, hidden JSON, or
 status panels require unsettled state-field decisions. Use
@@ -75,6 +78,9 @@ which meters are decorative and should be omitted.
    express the need. Use pack tags such as `collapse`, `bar`, `tag`,
    `result-card`, or `share-text` only when the presentation packet explains the
    play value and the MCP handoff includes `extension_enable`.
+   If HTML remains justified, use `lunatalk-html-card-components`, load `html-card-components.md`, use only supported
+   `hc-*` HTML card components, and do not invent unsupported tags, attributes,
+   scripts, inline event handlers, external URLs, or client-specific components.
    When the missing capability is HTML div-like structure or per-section color,
    prefer the `layout` extension pack: `panel`, `stack`, `row`, `grid`,
    `field`, `choices`, and `divider` create container, section block,
