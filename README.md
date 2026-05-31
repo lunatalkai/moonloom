@@ -88,6 +88,8 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-presentation-director` plans pre-render XMLV3, Theme V3,
   HTML, visible state, hidden state, visual affordances, and first-screen
   hierarchy before authoring or render review.
+- `skills/lunatalk-html-card-components` explains supported `hc-*` HTML card
+  components, attribute meanings, support tiers, and safe cross-client usage.
 - `skills/lunatalk-instruction-guardrail` designs narrow instruction-layer
   guardrails and `role_patch_jailbreak` handoffs only when normal fields are
   coherent but behavior or format still drifts.
