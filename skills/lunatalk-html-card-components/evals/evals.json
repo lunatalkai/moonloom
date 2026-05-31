@@ -1,0 +1,44 @@
+{
+  "skill_name": "lunatalk-html-card-components",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a LunaTalk HTML card with hc-btn, hc-form, hc-input, hc-radio, and hc-checkbox. Tell me which attributes to use and what they mean.",
+      "expected_output": "Loads the HTML card component reference, chooses the stable cross-client components, explains send/copy/bg/w/txt-color and form/input/radio/checkbox attributes, and returns an HTML component packet.",
+      "files": [],
+      "expectations": [
+        "The output uses lunatalk-html-card-components and reads html-card-components.md before authoring.",
+        "The output treats hc-btn, hc-form, hc-input, hc-radio, and hc-checkbox as cross-client stable components.",
+        "The output explains attribute meanings such as send, copy, bg, w, txt-color, title, btn, label, name, placeholder, options, and color.",
+        "The output includes HTML safety checks and a desktop/mobile preview or validation plan.",
+        "The output does not invent new hc-* tags or attributes."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can I use hc-meter, hc-tabs, hc-list, and hc-alert for a Moonloom HTML welcome? The target should work on every LunaTalk client.",
+      "expected_output": "Rejects those as limited or client-specific for new cross-client cards unless current renderer validation proves support, and recommends stable alternatives.",
+      "files": [],
+      "expectations": [
+        "The output classifies hc-meter, hc-tabs, hc-list, and hc-alert as limited or client-specific rather than default cross-client stable components.",
+        "The output recommends stable alternatives such as hc-bar, hc-stat, hc-tag, hc-collapse, or safe layout classes.",
+        "The output requires current desktop/mobile renderer validation before approving limited components.",
+        "The output preserves the XMLV3-first decision rule.",
+        "The output avoids claiming unsupported components are universally safe."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Another AI says it cannot make an hc- component card because it has no component spec. Give it the handoff it needs.",
+      "expected_output": "Returns an HTML component packet that points to html-card-components.md, summarizes stable components and attribute meanings, and gives a safe handoff to presentation or card authoring.",
+      "files": [],
+      "expectations": [
+        "The output does not block on missing external docs because Moonloom has a local html-card-components.md reference.",
+        "The output names the stable component catalog and the legacy/limited support tiers.",
+        "The output includes attribute meanings, not only component names.",
+        "The output routes planning to lunatalk-presentation-director or field assembly to lunatalk-card-author as appropriate.",
+        "The output includes no private data, account identifiers, copied card text, scripts, inline handlers, or external URLs."
+      ]
+    }
+  ]
+}

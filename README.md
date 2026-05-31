@@ -246,6 +246,11 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/presentation-design.md` defines pre-render presentation decisions
   for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
   hierarchy.
+- `references/html-card-components.md` defines the supported `hc-*` HTML card
+  component catalog, safe attributes, legacy compatibility notes, and XMLV3-first
+  decision rules for HTML mode.
+- `skills/lunatalk-html-card-components` routes HTML component authoring,
+  attribute meanings, support tiers, and cross-client `hc-*` review.
 - `references/instruction-guardrails.md` defines when a narrow instruction layer
   is justified, how to avoid jailbreak misuse, and how to hand off optional
   `role_patch_jailbreak` patches.

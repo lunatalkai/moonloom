@@ -31,6 +31,9 @@ Presentation is not decoration. It should make the card easier to play.
   bars, and nested layout only after that skeleton is stable.
 - XMLV3 compatible extension work stays on one target. Do not create XMLV4;
   add optional tags, optional attributes, or packs with fallback behavior.
+- If HTML mode or `hc-*` HTML card components are intentionally needed, use
+  `lunatalk-html-card-components`, load `html-card-components.md`, and use only
+  the supported component catalog.
 
 ## Lane decision
 
@@ -107,7 +110,8 @@ visible status, relationship cues, choices, forms, or hidden state.
 
 Choose `html` only when a specific custom layout is necessary or existing HTML
 must be migrated. HTML must not rely on scripts, inline handlers, external URLs,
-or critical behavior hidden in unsupported code.
+or critical behavior hidden in unsupported code. When HTML is justified, read
+`html-card-components.md`; do not invent unsupported `hc-*` tags or attributes.
 
 Before choosing HTML, check whether core XMLV3 plus an enabled extension pack can
 express the need. For example, setup and result surfaces may use pack tags such

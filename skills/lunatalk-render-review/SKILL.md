@@ -11,7 +11,10 @@ Use this skill to close the visual feedback loop for LunaTalk role cards.
 
 Read `../../references/card-writer-mcp.md` for `validate_role` and
 `render_preview` details. Read `../../references/theme-v3-rendering.md` for XMLV3,
-HTML, and Theme V3 decisions. Read `../../references/presentation-design.md` when
+HTML, and Theme V3 decisions. Use `lunatalk-html-card-components` and read
+`../../references/html-card-components.md` when reviewing HTML mode or `hc-*`
+HTML card components. Read
+`../../references/presentation-design.md` when
 the issue is a pre-render presentation plan rather than an actual preview or
 render result. Read `../../references/quality-rubric.md` for the
 visual quality rubric. Read `../../references/role-card-writing-framework.md` when
@@ -91,6 +94,9 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
 - Contrast is readable against the active theme/background.
 - Mobile and desktop maintain the intended hierarchy.
 - HTML has no scripts, inline event handlers, external URLs, or unsupported assets.
+- HTML mode with `hc-*` components uses `lunatalk-html-card-components` and only the supported catalog in
+  `html-card-components.md`; do not invent unsupported tags or attributes.
+  Prefer XMLV3 first when the same play value can be expressed by XMLV3 packs.
 - XMLV3 parses cleanly and does not fall back into unstructured raw text.
 - XMLV3 visible text uses registered tags. Hidden data tags such as `<state>` do
   not substitute for on-screen status copy.

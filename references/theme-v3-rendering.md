@@ -3,7 +3,9 @@
 Use this reference when authoring or reviewing visual card content. For
 pre-authoring or pre-render decisions about what belongs in XMLV3, Theme V3,
 HTML, visible state, hidden state, or first-screen hierarchy, read
-`presentation-design.md` first.
+`presentation-design.md` first. When a card intentionally uses HTML mode or
+`hc-*` HTML card components, use `lunatalk-html-card-components` and also read
+`html-card-components.md`.
 
 ## Default choice
 
@@ -15,6 +17,16 @@ XMLV3 welcome + Theme V3 styling
 
 This keeps semantic story content separate from reusable visual style and makes
 render review easier for AI clients.
+
+## HTML Card Components
+
+HTML mode is a legacy/custom-layout exception, not the default for new cards. If
+HTML is justified, use the stable component catalog in
+`html-card-components.md`: `hc-btn`, `hc-bar`, `hc-stat`, `hc-tag`,
+`hc-collapse`, `hc-radio`, `hc-checkbox`, `hc-input`, and `hc-form`. Do not
+invent new `hc-*` components or rely on scripts, inline event handlers, external
+URLs, or client-specific custom elements. If XMLV3 plus layout/control packs can
+express the same play value, stay in XMLV3.
 
 ## Server guide vs role contract
 

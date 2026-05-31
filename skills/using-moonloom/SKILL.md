@@ -182,6 +182,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   fields or update rules are unresolved, use `lunatalk-state-economist` first;
   if opening beats or player agency are missing, use `lunatalk-opening-director`
   or `lunatalk-agency-designer` first.
+- HTML mode, legacy HTML roleWelcome, or explicit `hc-*` HTML card component authoring/review: use `lunatalk-html-card-components` and load `html-card-components.md` before writing or patching, then route to `lunatalk-presentation-director`, `lunatalk-card-author`, or `lunatalk-render-review` depending on whether the task is planning, field assembly, or preview evidence. Prefer XMLV3 first unless HTML is justified.
 - Instruction-layer repairs, system behavior requests, jailbreak text,
   `role_patch_jailbreak`, repeated out-of-character assistant framing, output
   schema drift, state protocol drift, or transcript-backed format/style
