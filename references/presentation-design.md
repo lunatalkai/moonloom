@@ -235,16 +235,17 @@ Control parameter reference:
   alignment attrs; bare numeric width/height values are layout unit numbers.
   Non-button FL3 atoms and custom components may use `tap-action="send|fill|copy"`
   with non-empty `tap-value` when the whole surface must be interactive; prefer
-  `choice` or `button` for ordinary visible actions. `send` directly submits the
-  payload as the player's turn; `fill` pre-fills the composer for player
-  confirmation; copy writes to clipboard, copy does not increment actionCount,
-  and it may show `tap-feedback`. `send`/`fill` count toward actionCount.
+  `choice` or `button` for ordinary visible actions. `send` fills the composer
+  with a complete proposed player turn; `fill` pre-fills the composer for player
+  confirmation. Send/fill must not auto-submit; the user must tap Send manually
+  after review or editing. copy writes to clipboard and copy does not increment actionCount;
+  it may show `tap-feedback`. `send`/`fill` count toward actionCount.
   Interactive surfaces need `aria-label` or visible text as the
   visible name / accessible name; the renderer adds `role=button`, `tabindex=0`,
   Enter/Space activation, `[data-interactive]`, focus ring, and pointer/hover
   affordance. Tap surfaces must not nest `<choice>`, `<button>`, or another `tap-action`
   surface inside a tap surface. `tap-value` for send/fill must be static text,
-  not hidden state or template bindings. Keep choices fallback when direct send
+  not hidden state or template bindings. Keep choices fallback when composer-fill
   support may be unavailable.
 - field: label/value/tone. Use label + description facts, status facts, task
   summaries, and checklist items.

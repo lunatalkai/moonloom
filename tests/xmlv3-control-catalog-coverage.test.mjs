@@ -120,7 +120,8 @@ test('Moonloom documents XMLV3 FL3 safe tap action contract', async () => {
     assert.match(source, /tap-value[\s\S]{0,180}non-empty|non-empty[\s\S]{0,180}tap-value|tap-value[\s\S]{0,180}必填|非空[\s\S]{0,180}tap-value/i);
     assert.match(source, /aria-label[\s\S]{0,180}(visible name|可見名稱|accessible name)|visible name[\s\S]{0,180}aria-label/i);
     assert.match(source, /tap-feedback[\s\S]{0,220}copy|copy[\s\S]{0,220}tap-feedback/i);
-    assert.match(source, /send[\s\S]{0,160}(directly submits|直接送出|玩家這回合)/i);
+    assert.match(source, /send[\s\S]{0,200}(fills? the composer|pre-fills? the composer|填入 composer|填進 composer|填入輸入框|填入下方輸入框)/i);
+    assert.match(source, /(never auto-submits|must not auto-submit|不可自動送出|不能自動送出|不直接送出)/i);
     assert.match(source, /fill[\s\S]{0,160}(pre-fills|填進 composer|填入 composer|待.*確認)/i);
     assert.match(source, /copy[\s\S]{0,180}(clipboard|剪貼板)/i);
     assert.match(source, /copy[\s\S]{0,180}(does not increment actionCount|不計入 action|不算 action)/i);
