@@ -110,3 +110,24 @@ test('Moonloom documents every XMLV3 FL3 atom primitive as an API reference', as
   assert.doesNotMatch(source, /https:\/\/\.\.\./i);
   assert.doesNotMatch(source, /<list gap="xs">\.\.\.<\/list>/i);
 });
+
+test('Moonloom documents XMLV3 FL3 safe tap action contract', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+
+  for (const source of [themeRendering, presentation]) {
+    assert.match(source, /tap-action="send\|fill\|copy"|tap-action.*send.*fill.*copy/i);
+    assert.match(source, /tap-value[\s\S]{0,180}non-empty|non-empty[\s\S]{0,180}tap-value|tap-value[\s\S]{0,180}必填|非空[\s\S]{0,180}tap-value/i);
+    assert.match(source, /aria-label[\s\S]{0,180}(visible name|可見名稱|accessible name)|visible name[\s\S]{0,180}aria-label/i);
+    assert.match(source, /tap-feedback[\s\S]{0,220}copy|copy[\s\S]{0,220}tap-feedback/i);
+    assert.match(source, /send[\s\S]{0,160}(directly submits|直接送出|玩家這回合)/i);
+    assert.match(source, /fill[\s\S]{0,160}(pre-fills|填進 composer|填入 composer|待.*確認)/i);
+    assert.match(source, /copy[\s\S]{0,180}(clipboard|剪貼板)/i);
+    assert.match(source, /copy[\s\S]{0,180}(does not increment actionCount|不計入 action|不算 action)/i);
+    assert.match(source, /role=button[\s\S]{0,180}tabindex=0[\s\S]{0,180}Enter\/Space/i);
+    assert.match(source, /\[data-interactive\]/i);
+    assert.match(source, /must not nest[\s\S]{0,220}(choice|button|tap-action)|禁止[\s\S]{0,220}(巢狀|嵌套)[\s\S]{0,220}(choice|button|tap-action)/i);
+    assert.match(source, /tap-value[\s\S]{0,220}(static text|靜態文字)[\s\S]{0,220}(state|hidden|隱藏)/i);
+    assert.match(source, /choices fallback|fallback choices|降級[\s\S]{0,120}choice/i);
+  }
+});
