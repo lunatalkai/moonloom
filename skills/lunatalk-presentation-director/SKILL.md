@@ -66,6 +66,12 @@ which meters are decorative and should be omitted.
    paste the generic XMLV3 manual into `roleDetailDesc`.
    `roleDetailDesc` stores the role-specific format contract, not the platform
    XMLV3 server guide.
+   If default Theme V3 cannot express the role atmosphere, worldview, story
+   mood, custom action hierarchy, or custom `tone` values, mark the packet as
+   requiring custom Theme V3 and plan the MCP loop:
+   `theme_validate_css` -> `render_xmlv3_theme_case` -> Visual Check ->
+   patch XMLV3/Theme V3 -> repeat for at most 3 loops / 3 iterations ->
+   `theme_create` or `theme_update` -> `theme_bind` -> `render_preview`.
 4. Separate visible content, hidden JSON state, Theme V3 responsibilities, and
    `roleDetailDesc` responsibilities.
    Hidden `<state>` must be preview-compatible: use top-level `scene`, `status`,
@@ -217,4 +223,11 @@ Self-review:
 - Do not spend the weak-model structural budget on decorative layout before the
   minimum skeleton is reliable. Long-play format stability needs choices
   retention before richer panel/bar density.
+- For custom Theme V3, design the AI chat bubble UI before writing CSS:
+  dialogue / 台詞 belongs in `<d>`, narration / 旁白 in `<n>`, status / 狀態 in
+  `<field>` or numeric `<bar>`, and actions in `<choices>` / `<choice>`.
+  Theme V3 owns reusable palette, contrast, borders, panel surfaces, and custom
+  tone hooks such as `[data-tone="postal"]`; XMLV3 owns the semantic content.
+  The handoff must call out contrast, mobile 44pt / 48dp touch target risks,
+  and the required Visual Check evidence.
 - Keep output original and public-safe.

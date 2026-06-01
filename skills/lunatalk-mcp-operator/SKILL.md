@@ -84,6 +84,13 @@ Self-review:
   When inspecting raw JSON-RPC output, unwrap `result.structuredContent.report`
   for validation and `result.structuredContent.render` for preview URLs and
   render evaluation.
+- Custom Theme V3 authoring: require `theme_validate_css`,
+  `render_xmlv3_theme_case`, `theme_create`, `theme_update`, and `theme_bind`
+  before promising a custom themed XMLV3 card. The safe loop is
+  `theme_validate_css` -> `render_xmlv3_theme_case` -> Visual Check desktop and
+  mobile -> patch XMLV3 or Theme V3 CSS -> repeat for at most 3 loops /
+  3 iterations -> `theme_create` or `theme_update` -> `theme_bind` -> real
+  `render_preview`. If these tools are missing, do not invent a replacement.
 - Behavior testing: hand off to `lunatalk-chat-simulation` only after validation
   is ready and the author accepts normal conversation-test cost. The required
   tools are `conversation_create` or `conversation_list`, plus
@@ -101,6 +108,8 @@ Self-review:
   premise, blueprint, collaboration, token, presentation, or quality packets.
 - Do not retry mutating calls with new idempotency keys unless the intended
   operation changed.
+- Do not mark custom Theme V3 ready from text alone; require Visual Check
+  evidence before handing off to final render review.
 - Keep output public-safe. Do not mention deployment details,
   environment-specific URLs, account implementation details, or unsupported
   platform claims.

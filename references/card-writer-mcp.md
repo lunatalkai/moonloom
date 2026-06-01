@@ -126,6 +126,31 @@ are top-level fields of the JSON-RPC response.
 18. Optional `conversation_load` when the author wants to resume or roll back
 19. `publish_submit` only after explicit author confirmation
 
+## Theme V3 custom authoring loop
+
+Use this loop when XMLV3 needs a custom Theme V3 for role atmosphere, worldview,
+story mood, custom action hierarchy, or custom `tone` values. Do not accept a
+custom visual package from text review alone.
+
+1. Draft XMLV3 and Theme V3 CSS as a synthetic case.
+2. Call `theme_validate_css`; read `structuredContent.theme`.
+3. Call `render_xmlv3_theme_case`; read `structuredContent.render.previewUrl`,
+   `evaluation`, and `structuredReport.surfaceDiagnostics`.
+4. Run Visual Check on desktop and mobile. Inspect screenshot output and
+   `window.__LUNATALK_MCP_PREVIEW__` when available.
+5. Patch XMLV3 or Theme V3 CSS when contrast, layout, unresolved custom tone,
+   overflow, touch target, or hierarchy problems appear.
+6. Repeat the loop for at most 3 loops / 3 iterations, then report remaining
+   visual risks.
+7. When the case passes, call `theme_create` or `theme_update`, then `theme_bind`
+   for the private role. Finish with `validate_role` and `render_preview`.
+
+Theme tool payloads live under `structuredContent.theme`; case and role preview
+payloads live under `structuredContent.render`. The expected Theme V3 tool set
+for custom authoring is `theme_validate_css`, `render_xmlv3_theme_case`,
+`theme_create`, `theme_update`, `theme_get`, `theme_list_available`, and
+`theme_bind`.
+
 ## Tools
 
 ### `role_create_private`

@@ -61,6 +61,12 @@ Expected Card Writer tools:
 - `role_patch_document`
 - optional `role_patch_jailbreak`
 - optional `theme_bind`
+- optional `theme_validate_css`
+- optional `render_xmlv3_theme_case`
+- optional `theme_create`
+- optional `theme_update`
+- optional `theme_get`
+- optional `theme_list_available`
 - optional `extension_enable`
 - `worldbook_find`
 - `worldbook_get`
@@ -107,6 +113,21 @@ with `viewport=mobile`. After render, inspect screenshots and
 `report.surfaceDiagnostics` when `window.__LUNATALK_MCP_PREVIEW__` is
 available. Moonloom uses this for content review, not for renderer regression
 testing.
+
+For custom Theme V3 work, prefer the MCP-rendered case loop over local storage
+probes when the tools are available:
+
+1. Draft XMLV3 plus Theme V3 CSS for the role atmosphere, worldview, story mood,
+   custom action hierarchy, or custom `tone` hooks.
+2. Call `theme_validate_css` and read `structuredContent.theme`.
+3. Call `render_xmlv3_theme_case` and read `structuredContent.render.previewUrl`.
+4. Run Visual Check in desktop and mobile. Inspect screenshots plus
+   `window.__LUNATALK_MCP_PREVIEW__` when the client exposes it.
+5. Fix XMLV3 or Theme V3 CSS when contrast, layout, unresolved custom tone,
+   overflow, or mobile touch target problems appear.
+6. Stop after at most 3 loops / 3 iterations and report any remaining risk.
+7. Call `theme_create` or `theme_update`, then `theme_bind`, then real
+   `render_preview`.
 
 For long role or worldbook fields, prefer direct deep patch. Read the current
 field with `role_get`, `worldbook_get`, or `worldbook_entry_list`, compute the

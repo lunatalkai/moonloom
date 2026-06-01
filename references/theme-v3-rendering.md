@@ -18,6 +18,56 @@ XMLV3 welcome + Theme V3 styling
 This keeps semantic story content separate from reusable visual style and makes
 render review easier for AI clients.
 
+## Custom Theme V3 closed loop
+
+Use custom Theme V3 when default styling cannot carry the role atmosphere,
+worldview, story mood, custom action hierarchy, or custom `tone` values. Theme
+V3 is for reusable visual language, not story facts.
+
+Required loop before acceptance:
+
+1. Draft the XMLV3 bubble and Theme V3 CSS together.
+2. Call `theme_validate_css` and fix sanitizer warnings that affect the intended
+   style.
+3. Call `render_xmlv3_theme_case` to get a MCP preview URL and structured
+   diagnostics before mutating a real role.
+4. Run Visual Check in desktop and mobile using screenshots plus
+   `window.__LUNATALK_MCP_PREVIEW__` when available.
+5. Patch XMLV3 or Theme V3 CSS when contrast, spacing, overflow, unresolved
+   custom tone hooks, action hierarchy, or mobile touch target issues appear.
+6. Repeat for at most 3 loops / 3 iterations. If it still fails, report the
+   remaining visual risk instead of claiming pass.
+7. Only after the case passes, call `theme_create` or `theme_update`, then
+   `theme_bind`, then real `render_preview`.
+
+Use `theme_get` or `theme_list_available` when deciding whether to extend an
+existing theme. Use `theme_create` for a new private custom theme and
+`theme_update` for an owned draft. Never rely on default fallback when custom
+`data-tone` or `tone` hooks are part of the XMLV3 card.
+
+## AI Chat Bubble UI Guide
+
+Design inside the AI reply bubble as message output, not as app chrome. Separate
+the hierarchy:
+
+- Dialogue / 台詞: use `<d>` for spoken lines.
+- Narration / 旁白: use `<n>` for action, scene movement, and sensory prose.
+- Status / 狀態: use `<field>` for text or enum facts and `<bar>` only for
+  numeric continuous values.
+- Choices / 選項: use `<choices>` with child `<choice>` so the action layout is
+  explicit and durable.
+- Hidden state: use `<state>` outside visible prose; keep it synchronized with
+  visible fields or bars.
+
+Theme V3 owns palette, borders, panel surfaces, button states, and custom tone
+hooks such as `.lt-choice[data-tone="postal"]` or
+`.lt-layout-panel[data-tone="signal"]`. XMLV3 owns the semantic content. Do not
+put one-off inline `style` or `class` into XMLV3 just to force a look.
+
+Visual Check must verify readable contrast, no clipping or overlap, clear action
+hierarchy, resolved custom tone hooks, and mobile touch target size. Use at
+least 44pt / 48dp as the practical minimum target for tappable choices and CTAs.
+
 ## HTML Card Components
 
 HTML mode is a legacy/custom-layout exception, not the default for new cards. If
