@@ -15,6 +15,7 @@ test('Moonloom documents the Theme V3 MCP render and Visual Check closed loop', 
     assert.match(source, /render_xmlv3_theme_case/);
     assert.match(source, /theme_create/);
     assert.match(source, /theme_update/);
+    assert.match(source, /theme_submit/);
     assert.match(source, /theme_bind/);
     assert.match(source, /Visual Check|visual check|視覺校驗/i);
     assert.match(source, /3\s*(loops|iterations|rounds)|3\s*輪|三輪/i);
@@ -31,4 +32,14 @@ test('Moonloom documents the Theme V3 MCP render and Visual Check closed loop', 
     assert.match(source, /contrast|對比/i);
     assert.match(source, /44pt|48dp|touch target|點擊區域/i);
   }
+
+  assert.match(themeRendering, /\.lt-status-bar/);
+  assert.match(themeRendering, /\.lt-status-stat-fill/);
+  assert.match(themeRendering, /\.lt-status-rel-fill/);
+  assert.match(themeRendering, /status bar[\s\S]{0,240}Theme V3|Theme V3[\s\S]{0,240}status bar/i);
+  assert.match(presentationDirector, /status bar[\s\S]{0,240}Theme V3|Theme V3[\s\S]{0,240}status bar/i);
+  assert.match(mcpWorkflow, /structuredContent\.binding|binding[\s\S]{0,160}themeId/i);
+  assert.match(mcpWorkflow, /render_preview[\s\S]{0,260}preview payload[\s\S]{0,260}bound theme|bound theme[\s\S]{0,260}preview payload[\s\S]{0,260}render_preview/i);
+  assert.match(cardWriterMcp, /theme_bind[\s\S]{0,420}structuredContent\.binding|structuredContent\.binding[\s\S]{0,420}theme_bind/i);
+  assert.match(cardWriterMcp, /default fallback[\s\S]{0,260}themeStyleHookCount|themeStyleHookCount[\s\S]{0,260}default fallback/i);
 });

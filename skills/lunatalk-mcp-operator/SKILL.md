@@ -85,12 +85,14 @@ Self-review:
   for validation and `result.structuredContent.render` for preview URLs and
   render evaluation.
 - Custom Theme V3 authoring: require `theme_validate_css`,
-  `render_xmlv3_theme_case`, `theme_create`, `theme_update`, and `theme_bind`
-  before promising a custom themed XMLV3 card. The safe loop is
+  `render_xmlv3_theme_case`, `theme_create`, `theme_update`, `theme_submit`,
+  and `theme_bind` before promising a custom themed XMLV3 card. The safe loop is
   `theme_validate_css` -> `render_xmlv3_theme_case` -> Visual Check desktop and
   mobile -> patch XMLV3 or Theme V3 CSS -> repeat for at most 3 loops /
   3 iterations -> `theme_create` or `theme_update` -> `theme_bind` -> real
-  `render_preview`. If these tools are missing, do not invent a replacement.
+  `render_preview`. Use `theme_submit` only when the author wants public market
+  review for the theme artifact. If these tools are missing, do not invent a
+  replacement.
 - Behavior testing: hand off to `lunatalk-chat-simulation` only after validation
   is ready and the author accepts normal conversation-test cost. The required
   tools are `conversation_create` or `conversation_list`, plus

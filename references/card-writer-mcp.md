@@ -144,12 +144,14 @@ custom visual package from text review alone.
    visual risks.
 7. When the case passes, call `theme_create` or `theme_update`, then `theme_bind`
    for the private role. Finish with `validate_role` and `render_preview`.
+   Use `theme_submit` only when the author wants the Theme V3 itself to enter
+   public market review.
 
 Theme tool payloads live under `structuredContent.theme`; case and role preview
 payloads live under `structuredContent.render`. The expected Theme V3 tool set
 for custom authoring is `theme_validate_css`, `render_xmlv3_theme_case`,
-`theme_create`, `theme_update`, `theme_get`, `theme_list_available`, and
-`theme_bind`.
+`theme_create`, `theme_update`, `theme_submit`, `theme_get`,
+`theme_list_available`, and `theme_bind`.
 
 ## Tools
 
@@ -825,6 +827,30 @@ still returns `isV3:false` and `rendererMode:"plain"` if no Theme V3 binding or
 extension exists.
 
 Use `mode: "reference"` with `themeId`, or `mode: "forked"` with a `snapshot`.
+After calling the tool, read `result.structuredContent.binding`, not just the
+human message. It should echo `roleId`, `mode`, `themeId` for reference mode, or
+`snapshotBound: true` for forked mode. Then call `render_preview` and confirm the
+preview payload carries the bound theme. For custom tones, use
+`structuredReport.surfaceDiagnostics.themeStyleHookCount > 0` and
+`unresolvedToneCount == 0` as the minimum technical signal that the preview is
+not falling back to the default fallback styling.
+
+### `theme_submit`
+
+Submit an owned Theme V3 to the public market review queue. This is for the
+theme artifact, not for publishing a role card. Required payload:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-submit-...",
+  "themeId": "..."
+}
+```
+
+Read `structuredContent.theme.reviewStatus`; successful submission returns
+`pending`. Do not call this just to bind a private role. Use `theme_bind` and
+`render_preview` first when the goal is proving a custom themed card.
 
 ### `extension_enable`
 
