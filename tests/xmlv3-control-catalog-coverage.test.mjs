@@ -42,3 +42,20 @@ test('Moonloom documents XMLV3 control parameters and recommended situations', a
     assert.match(source, /When to use|推薦使用|推荐使用/i);
   }
 });
+
+test('Moonloom documents XMLV3 Feature Level 3 primitives and custom component theming', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+  const presentation = await readFile('references/presentation-design.md', 'utf8');
+
+  for (const source of [themeRendering, presentation]) {
+    assert.match(source, /Feature Level 3|FL3/i);
+    assert.match(source, /<linear-layout>[\s\S]{0,220}<flex-layout>[\s\S]{0,220}<grid-layout>/i);
+    assert.match(source, /<view>[\s\S]{0,260}<container>[\s\S]{0,260}<card>/i);
+    assert.match(source, /<heading>[\s\S]{0,260}<paragraph>[\s\S]{0,260}<badge>[\s\S]{0,260}<notice>/i);
+    assert.match(source, /<list>[\s\S]{0,260}<list-item>[\s\S]{0,260}<avatar>[\s\S]{0,260}<info-row>[\s\S]{0,260}<fact>/i);
+    assert.match(source, /layout unit[\s\S]{0,180}1px[\s\S]{0,180}2rpx/i);
+    assert.match(source, /tagConfig[\s\S]{0,220}xmlv3[\s\S]{0,220}components/i);
+    assert.match(source, /:host[\s\S]{0,220}part\(name\)[\s\S]{0,220}part="name"/i);
+    assert.match(source, /lowercase\/kebab-case|lowercase.*kebab/i);
+  }
+});

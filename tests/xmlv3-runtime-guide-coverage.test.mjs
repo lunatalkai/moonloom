@@ -54,3 +54,16 @@ test('Moonloom keeps XMLV3 scene prose separate from interactive controls', asyn
     assert.match(source, /wrap|nest|包|嵌套|塞進/i);
   }
 });
+
+test('Moonloom skills route XMLV3 FL3 custom component and theme work', async () => {
+  const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
+  const presentationSkill = await readFile('skills/lunatalk-presentation-director/SKILL.md', 'utf8');
+  const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
+
+  for (const source of [router, presentationSkill, cardAuthor]) {
+    assert.match(source, /Feature Level 3|FL3/i);
+    assert.match(source, /tagConfig[\s\S]{0,220}xmlv3[\s\S]{0,220}components/i);
+    assert.match(source, /:host[\s\S]{0,220}part\(name\)|part\(name\)[\s\S]{0,220}:host/i);
+    assert.match(source, /layout unit[\s\S]{0,220}1px[\s\S]{0,220}2rpx/i);
+  }
+});

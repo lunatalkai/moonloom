@@ -33,6 +33,18 @@ Presentation is not decoration. It should make the card easier to play.
   bars, and nested layout only after that skeleton is stable.
 - XMLV3 compatible extension work stays on one target. Do not create XMLV4;
   add optional tags, optional attributes, or packs with fallback behavior.
+- XMLV3 Feature Level 3 adds atomized layout primitives, not a new renderer
+  family. Use lowercase/kebab-case `<linear-layout>`, `<flex-layout>`,
+  `<grid-layout>`, `<view>`, `<container>`, `<card>`, `<text>`, `<heading>`,
+  `<paragraph>`, `<image>`, `<button>`, `<badge>`, `<notice>`, `<list>`,
+  `<list-item>`, `<avatar>`, `<info-row>`, and `<fact>` when nested layout or
+  user-defined atom-based controls are needed.
+- FL3 bare numeric sizes use XMLV3 layout unit mapping: 1 layout unit = 1px on
+  Desktop/H5 and 1 layout unit = 2rpx on Mobile/uni-app. Write `height="120"`,
+  not `height="120px"` or `height="240rpx"`.
+- Theme V3 custom controls are declared in `tagConfig.xmlv3.components`. Their
+  component CSS may use `:host` for the custom root and `part(name)` for an
+  atomic child with `part="name"`; XML still must not use `class` or `style`.
 - If HTML mode or `hc-*` HTML card components are intentionally needed, use
   `lunatalk-html-card-components`, load `html-card-components.md`, and use only
   the supported component catalog.
@@ -178,6 +190,11 @@ what state fields change, and what each visible action/status means.
 - Layout: `<panel>`, `<stack>`, `<row>`, `<grid>`, `<field>`, and `<divider>`
   provide section blocks, vertical rhythm, short rows, compact columns,
   label-description facts, and separators.
+- Feature Level 3 atoms: `<linear-layout>`, `<flex-layout>`, `<grid-layout>`,
+  `<view>`, `<container>`, `<card>`, `<text>`, `<heading>`, `<paragraph>`,
+  `<image>`, `<button>`, `<badge>`, `<notice>`, `<list>`, `<list-item>`,
+  `<avatar>`, `<info-row>`, and `<fact>` provide atomized layout and UI
+  primitives for advanced XMLV3 surfaces and Theme V3 custom components.
 - Status / mini-game: `<bar>` is only for continuous numeric values;
   `<collapse>`, `<tag>`, `<result-card>`, and `<share-text>` cover optional
   rules, badges, results, and share text.
@@ -211,6 +228,11 @@ Control parameter reference:
 - row: gap/wrap/align/justify. Use short chips or tiny facts; avoid
   row+tag+n for information fields.
 - grid: cols/gap. Use `cols=1|2|3` for short comparable facts.
+- linear-layout/flex-layout/grid-layout: orientation/weight/wrap/columns/gap.
+  Use these for atomized nested layout and child weighting.
+- view/container/card/text/heading/paragraph/image/button/badge/notice/list/list-item/avatar/info-row/fact:
+  use safe width/height/padding/margin/gap/border/borderRadius/background and
+  alignment attrs; bare numeric width/height values are layout unit numbers.
 - field: label/value/tone. Use label + description facts, status facts, task
   summaries, and checklist items.
 - choices: cols/gap/align/variant. Use `cols=1|2|3|4|auto`, gap

@@ -267,6 +267,13 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-compone
     - If `roleWelcome` or dynamic reply guidance uses Level 2 layout containers,
       grouped/weighted `<choices>`, or fact-card style status, mark the card as
       requiring XMLV3 Feature Level 2 and record the relevant capability names.
+      If it uses XMLV3 Feature Level 3 / FL3 atomized primitives or Theme V3
+      `tagConfig.xmlv3.components`, mark the card as requiring Feature Level 3,
+      record the custom component contract, and keep component CSS in Theme V3:
+      `:host` targets the component root, `part(name)` targets atomic children
+      with `part="name"`. Bare numeric size attrs are layout unit values:
+      1 layout unit = 1px on Desktop/H5 and 1 layout unit = 2rpx on
+      Mobile/uni-app.
       If it only uses the 2026-05-27 baseline, keep the minimum at Feature
       Level 1. Generate future turns at or below the client-declared feature
       level.

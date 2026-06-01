@@ -119,12 +119,21 @@ capabilities.
 - **Feature Level 2** is the HTML-parity extension layer. It covers layout
   containers, explicit grouped/weighted choices, fact-card style visible status,
   semantic speaker usage, and token-economy guidance for dynamic XML output.
+- **Feature Level 3** is the atomized layout and custom component layer. It adds
+  lowercase/kebab-case `<linear-layout>`, `<flex-layout>`, and `<grid-layout>`;
+  primitives such as `<view>`, `<container>`, `<card>`, `<text>`, `<heading>`,
+  `<paragraph>`, `<image>`, `<button>`, `<badge>`, `<notice>`, `<list>`,
+  `<list-item>`, `<avatar>`, `<info-row>`, and `<fact>`; and Theme V3
+  `tagConfig.xmlv3.components` custom controls based on those atoms.
 
 Cards should declare the minimum XMLV3 feature level they require. A card that
-uses Level 2 tags or behavior should set its minimum feature level to `2` and
-list the relevant capabilities, such as `layout.containers`,
-`choices.weighted`, `status.fact-cards`, `speaker.semantic`, or
-`token.output-economy`. A baseline XMLV3 card should remain at Level 1.
+uses Level 2 tags or behavior should set its minimum feature level to `2`; a
+card that uses Level 3 primitives or custom components should set its minimum
+feature level to `3`. List the relevant capabilities, such as
+`layout.containers`, `choices.weighted`, `status.fact-cards`,
+`speaker.semantic`, `token.output-economy`, `layout.standard-v3`,
+`view.primitives`, or `custom.registry`. A baseline XMLV3 card should remain at
+Level 1.
 
 When generating dynamic assistant turns, do not assume the latest XMLV3 feature
 level. Generate at or below the client-declared renderer level. If the client is
@@ -132,11 +141,23 @@ Level 1, use Level 1-safe output even when the platform has newer guidance. If a
 card itself requires Level 2 and the current client only supports Level 1, treat
 that as a compatibility issue before judging the prose or interaction quality.
 
-Level 2 is still XMLV3, not a new format. Do not create XMLV4/XMLV5, do not
+Level 2 and Feature Level 3 are still XMLV3, not a new format. Do not create XMLV4/XMLV5, do not
 paste raw HTML into XMLV3, and do not copy a full platform XMLV3 manual into
 `roleDetailDesc`. The role should contain the card-specific contract: which
 feature level it needs, which packs are enabled, which state fields update, and
 how visible status/actions should behave.
+
+FL3 size attributes use XMLV3 layout unit numbers. Write `height="120"` rather
+than `height="120px"` or `height="240rpx"`: Desktop/H5 maps 1 layout unit to
+1px, while Mobile/uni-app maps 1 layout unit to 2rpx. Use token values such as
+`padding="md"` and `gap="sm"` when possible.
+
+Theme V3 custom components live in `tagConfig.xmlv3.components`. A declaration
+names a lowercase/kebab-case tag, chooses an atomic `extends` primitive, lists
+allowed semantic attributes, and may include scoped component CSS. In component
+CSS, `:host` targets the custom component root and `part(name)` targets an
+atomic child with `part="name"`. In XML, add `part="name"` only as a stable
+local hook; do not add `class` or `style`.
 
 ## When to use XMLV3
 
@@ -285,6 +306,13 @@ controls, which state fields update, and what each visible choice/status means.
 - Layout: `<panel>`, `<stack>`, `<row>`, `<grid>`, `<field>`, and `<divider>`
   create safe HTML-like sections, vertical rhythm, short rows, compact columns,
   label-description facts, and separators.
+- Feature Level 3 atoms: `<linear-layout>`, `<flex-layout>`, and
+  `<grid-layout>` create Android/CSS-like layout; `<view>`, `<container>`,
+  `<card>`, `<text>`, `<heading>`, `<paragraph>`, `<image>`, `<button>`,
+  `<badge>`, `<notice>`, `<list>`, `<list-item>`, `<avatar>`, `<info-row>`,
+  and `<fact>` create reusable UI primitives. Use these when the card needs
+  nested layout, image + text + button composition, or a custom component built
+  from atoms.
 - Status / mini-game: `<bar>` is for continuous numeric values only;
   `<collapse>`, `<tag>`, `<result-card>`, and `<share-text>` cover optional
   rules, badges, final outcomes, and share text.
@@ -327,6 +355,13 @@ Control parameter reference:
   do not use row+tag+n for label-description prose.
 - grid: cols/gap. Use `cols=1|2|3` for short comparable facts; do not place long
   paragraphs in multi-column grids.
+- linear-layout/flex-layout/grid-layout: orientation/weight/wrap/columns/gap.
+  Use `orientation="horizontal|vertical"`, `wrap="true"`, child `weight`, and
+  `row`/`column`/`span` for atomized FL3 layouts.
+- view/container/card/text/heading/paragraph/image/button/badge/notice/list/list-item/avatar/info-row/fact:
+  use width/height/padding/margin/gap/border/borderRadius/background/alignment.
+  Bare numeric width/height values use layout unit mapping: 1 layout unit = 1px
+  on Desktop/H5 and 1 layout unit = 2rpx on Mobile/uni-app.
 - field: label/value/tone. Recommended for label + description facts, status
   facts, task summaries, or checklist items.
 - choices: cols/gap/align/variant. Use `cols=1|2|3|4|auto`, gap
