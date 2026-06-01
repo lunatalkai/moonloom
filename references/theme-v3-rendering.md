@@ -159,6 +159,158 @@ CSS, `:host` targets the custom component root and `part(name)` targets an
 atomic child with `part="name"`. In XML, add `part="name"` only as a stable
 local hook; do not add `class` or `style`.
 
+Custom components may also declare root `defaults`:
+
+```json
+{
+  "tag": "primary-action",
+  "extends": "button",
+  "defaults": {
+    "tone": "primary",
+    "variant": "solid",
+    "width": "full",
+    "height": "44",
+    "borderRadius": "pill"
+  }
+}
+```
+
+Defaults are XMLV3/FL3-only. They do not change legacy HTML cards or `hc-*`
+HTML components. The merge order is:
+
+```text
+primitive defaults < component defaults < XML instance attrs
+```
+
+This means a component can define normal spacing, variant, tone, radius, or
+sizing once, while a specific XML tag can still override it. Alias overrides are
+kept compatible: XML `border-radius`/`radius` overrides a default
+`borderRadius`, and XML `align` overrides a default `alignment`.
+
+## XMLV3 FL3 Component API Reference
+
+Use this as the full Moonloom authoring manual for XMLV3 Feature Level 3 atoms.
+All public tags are lowercase/kebab-case. Do not output PascalCase names, mixed
+aliases such as `linearlayout`, or private Vue component names. Bare numbers in
+layout attributes are XMLV3 layout units, not CSS pixels written by the AI:
+Desktop/H5 maps `1` unit to `1px`, while Mobile/uni-app maps `1` unit to `2rpx`.
+Write `height="120"` when the intended cross-client height is 120 layout units;
+do not write `height="120px"`, `height="240rpx"`, or `height="120dp"` in new
+XML. Explicit `px`, `rpx`, and `%` are accepted only as migration input from old
+cards.
+
+For one-shot AI generation, treat this section as the executable contract: if a
+tag, attribute, or value is not listed here or in the active custom-component
+contract, omit it. Do not invent `style`, `class`, font-size attributes, helper
+aliases, private component names, or CSS syntax to "make it look right"; Theme
+V3 supplies visual styling through supported attributes, `tone`, `variant`, and
+custom component CSS.
+
+### Primitive Defaults
+
+Do not repeat these attrs unless you need to override them. They are applied
+only by the XMLV3/FL3 renderer:
+
+| Primitive | Default attrs |
+| --- | --- |
+| `<linear-layout>` | `orientation="vertical" gap="md" alignment="stretch"` |
+| `<flex-layout>` | `orientation="horizontal" gap="sm" alignment="center" wrap="true"` |
+| `<grid-layout>` | `columns="1" gap="md"` |
+| `<container>` | `gap="sm"` |
+| `<card>` | `padding="md" gap="sm" borderRadius="lg" variant="glass"` |
+| `<button>` | `padding="sm" borderRadius="pill" alignment="center" variant="soft"` |
+| `<badge>` | `borderRadius="pill" variant="glass"` |
+| `<notice>` | `padding="sm" gap="xs" borderRadius="lg" variant="glass"` |
+| `<list>` | `gap="xs"` |
+| `<avatar>` | `width="56" height="56" borderRadius="pill" fit="cover"` |
+| `<image>` | `fit="cover"` |
+
+Buttons are action controls, so the default renderer centers text horizontally
+and vertically. Use `align="start"` / `align="end"` or
+`alignment="start"` / `alignment="end"` only when a custom component really
+needs non-centered button content.
+
+### Attribute Groups
+
+| Attribute Group | Attributes | Allowed values | Default / behavior |
+| --- | --- | --- | --- |
+| Size values | `width`, `height` | `auto`, `wrap`, `wrap-content`, `match`, `fill`, `full`, `half`, `third`, `quarter`, or bare integer `N` from `0` to `9999` | Empty means natural size. `match`/`fill`/`full` become `100%`; `half`/`third`/`quarter` become percentages. Bare `N` is a layout unit: Desktop/H5 `Npx`, Mobile/uni-app `N*2rpx`. |
+| Spacing values | `padding`, `margin`, `gap` | `none`, `xs`, `sm`, `md`, `lg`, `xl`, or 1-4 size values for `padding`/`margin`; `gap` is one token/value | Prefer tokens. `padding="md"` gives a comfortable card inset; `gap="sm"` is for tight rows; `gap="md"` is the normal section rhythm. |
+| Border radius values | `borderRadius`, `border-radius`, `radius` | `none`, `sm`, `md`, `lg`, `xl`, `pill` | Empty uses the component/theme default. `pill` is for badges and chips, not large cards. |
+| Color values | `background`, `bg`, `border`, `color`, `text-color`, `txt-color` | `#rgb`, `#rrggbb`, `#rrggbbaa`, `rgb()`, `rgba()`, `hsl()`, `hsla()`, `var(--lt-*)` | Unsafe colors are ignored. Do not use `url()`, gradients, raw CSS, theme-unknown CSS variables, `class`, or `style`. |
+| Layout values | `orientation`, `alignment`, `align`, `justify`, `wrap`, `weight`, `columns`, `rows`, `row`, `column`, `span` | `orientation`: `vertical` or `horizontal`; `alignment`/`align`: `start`, `center`, `end`, `stretch`, `between`, `around`; `justify`: same alignment values; `wrap`: `true`, `false`, or `wrap`; `weight`: integer `1`-`12`; `columns`: `1`-`4`; `row`/`column`: positive integer; `span`: `full`, `1`, `2`, `3`, `4` | `weight` is a child attribute inside `linear-layout`/`flex-layout`. `row`, `column`, and `span` are child attributes inside `grid-layout`. |
+| Semantic hook values | `tone`, `variant`, `part` | `tone`: lowercase/kebab-case semantic token up to 32 chars; `variant`: `glass`, `solid`, `outline`, `plain` for surfaces and `soft`, `solid`, `outline`, `ghost`, `glass` for actions; `part`: lowercase/kebab-case local part name | These are Theme V3 hooks. `part` becomes `.lt-part-<name>` and `data-part="<name>"`; use it only for stable custom-component styling hooks. |
+| CommonBoxAttrs | `width`, `height`, `padding`, `margin`, `gap`, `background`/`bg`, `border`, `borderRadius`/`border-radius`/`radius`, `alignment`/`align`, `justify`, `weight`, `row`, `column`, `span`, `part` | See Size, Spacing, Color, Border radius, Layout, and Semantic hook groups | Shared by neutral wrappers, cards, media, buttons, and custom component roots. `weight` applies when the box is a child of linear/flex layout; `row`/`column`/`span` apply when it is a child of grid layout. |
+| CommonTextAttrs | `color`, `text-color`, `txt-color`, `alignment`, `align`, `tone` | See Color, Layout, and Semantic hook groups | Text alignment supports `start`, `left`, `center`, `end`, and `right`; unsupported values are ignored instead of becoming raw CSS. |
+
+### Component Table
+
+Tag | Purpose | Children | Attributes | Example
+--- | --- | --- | --- | ---
+| `<linear-layout>` | Row/column layout | Any XMLV3 children | `orientation`, `gap`, `alignment`, `wrap`, `weight`, `CommonBoxAttrs` | `<linear-layout orientation="horizontal" gap="sm" alignment="center"><text weight="1">信任</text><badge>上升</badge></linear-layout>` |
+| `<flex-layout>` | Responsive flex layout | Any XMLV3 children | `orientation`, `gap`, `alignment`, `wrap`, `weight`, `CommonBoxAttrs` | `<flex-layout orientation="horizontal" wrap="true" gap="xs"><badge>線索</badge><badge>可交涉</badge></flex-layout>` |
+| `<grid-layout>` | CSS-grid style layout | Any XMLV3 children | `columns`, `rows`, `gap`, child `row`, child `column`, child `span`, `CommonBoxAttrs` | `<grid-layout columns="2" gap="sm"><fact label="時間" value="午夜" /><fact label="風險" value="中" /></grid-layout>` |
+| `<view>` | Neutral atom wrapper | Any XMLV3 children | `CommonBoxAttrs` | `<view padding="sm" part="meter"><text>局部樣式 hook</text></view>` |
+| `<container>` | Grouped atom wrapper | Any XMLV3 children | `CommonBoxAttrs` | `<container padding="md" gap="sm"><heading level="3">現況</heading><paragraph>她正在觀察出口。</paragraph></container>` |
+| `<card>` | Card surface | Any XMLV3 children | `CommonBoxAttrs`, `tone`, `variant` | `<card padding="md" borderRadius="lg" tone="clue"><heading level="3">倉庫後門</heading><paragraph>門縫有新鮮水痕。</paragraph></card>` |
+| `<text>` | Short inline label/text | Text only | `CommonTextAttrs`, `part` | `<text color="var(--lt-speaker-color)">警戒</text>` |
+| `<heading>` | Section title | Text only | `level`, `CommonTextAttrs`, `part` | `<heading level="3">下一步</heading>` |
+| `<paragraph>` | Short paragraph | Text only | `CommonTextAttrs`, `part` | `<paragraph>主路被封，繞行會消耗更多時間。</paragraph>` |
+| `<image>` | Public media | No children | `src`, `alt`, `width`, `height`, `borderRadius`, `fit`, `part` | `<image src="https://downloads.lunatalk.ai/example.png" alt="倉庫門" width="120" height="80" borderRadius="lg" fit="cover" />` |
+| `<button>` | Atom action button | Text/inline children | `send`, `CommonBoxAttrs`, `CommonTextAttrs`, `tone`, `variant` | `<button send="查看倉庫後門" variant="solid" width="full">查看後門</button>` |
+| `<badge>` | Small status label | Text only | `label`, `CommonBoxAttrs`, `CommonTextAttrs`, `tone`, `variant` | `<badge tone="warning">風險：中</badge>` |
+| `<notice>` | Compact callout | Text/inline children | `title`, `CommonBoxAttrs`, `CommonTextAttrs`, `tone`, `variant` | `<notice title="提示" tone="warning">巡邏會在三分鐘後返回。</notice>` |
+| `<list>` | Short list wrapper | `<list-item>` children | `gap`, `tone`, `variant`, `part` | `<list gap="xs"><list-item label="1">關燈</list-item><list-item label="2">貼牆前進</list-item></list>` |
+| `<list-item>` | One list row | Text/inline children | `label`, `value`, `tone`, `variant`, `part` | `<list-item label="出口" value="東側">樓梯仍可通行。</list-item>` |
+| `<avatar>` | Public thumbnail | No children | `src`, `alt`, `width`, `height`, `borderRadius`, `fit`, `part` | `<avatar src="https://downloads.lunatalk.ai/avatar.png" alt="角色頭像" width="56" height="56" borderRadius="pill" />` |
+| `<info-row>` | Key-value row | Text/inline children | `label`, `value`, `tone`, `variant`, `part` | `<info-row label="關係" value="試探">她還沒有完全信任你。</info-row>` |
+| `<fact>` | Compact fact | Text/inline children | `label`, `value`, `tone`, `variant`, `part` | `<fact label="資源" value="2">只夠再嘗試兩次。</fact>` |
+
+Use `<text>`, `<heading>`, and `<paragraph>` for concise UI copy inside atom
+layouts. Keep long story prose in `<scene>/<n>/<d>/<quote>` so the renderer can
+preserve narrative typography. Use `<button>` only when the atom UI itself needs
+a semantic action; normal chat options still use `<choice>` or `<choices>`.
+`send` must be the complete player intent, not a visual label fragment.
+
+Surface variants are `glass`, `solid`, `outline`, `plain`. Action variants are `soft`, `solid`, `outline`, `ghost`, `glass`. Use variants as Theme V3 hooks, not as raw CSS requests.
+
+`fit` accepts `cover` or `contain` for image-like tags. Use `cover` for avatars,
+cards, and fixed thumbnails. Use `contain` only when cropping would remove
+important information. Images must be public previewable HTTPS URLs or safe app
+relative paths; never emit private, signed, local, base64, or tracking URLs.
+
+Custom component contract: a Theme V3 `tagConfig.xmlv3.components` entry may
+declare a custom component that `extends` an atom primitive, lists allowed
+semantic attributes, and provides scoped CSS. In component CSS, `:host` styles
+the custom root and `part(name)` styles atom children with `part="name"`.
+Custom components should save output tokens by replacing repeated atom
+structures, not hide state or invent behavior.
+
+HC parity map for migrating old HTML cards:
+
+- `hc-btn` and `hc-action` -> `<button>` inside an atom layout, or `<choice>` /
+  `<choices>` for normal chat actions.
+- `hc-bar` and `hc-meter` -> `<bar>` for continuous numeric values only.
+- `hc-stat`, `hc-info-row`, and `hc-display type="stat"` -> `<field>`,
+  `<info-row>`, or `<fact>`.
+- `hc-tag`, `hc-badge`, and `hc-display type="tag"` -> `<tag>` or `<badge>`.
+- `hc-collapse`, `hc-toggle`, `hc-tabs`, and `hc-tab` -> `<collapse>` or grouped
+  `<card>` sections when all content must stay visible.
+- `hc-form`, `hc-input`, `hc-radio`, `hc-checkbox`, and `hc-option` -> `<form>`,
+  `<input>`, `<radio>`, `<checkbox>`, and `<option>`.
+- `hc-c`, `hc-light`, `hc-panel`, and `hc-notice` -> `<panel>`, `<card>`,
+  `<container>`, or `<notice>`.
+- `hc-h`, `hc-h1`, `hc-h2`, `hc-h3`, `hc-p`, `hc-quote`, `hc-d`, `hc-n`, and
+  `hc-speaker` -> `<heading>`, `<paragraph>`, `<quote>`, `<d>`, `<n>`, and
+  `<speaker>`.
+- `hc-f`, `hc-fj`, `hc-fw`, `hc-fill`, and `hc-wrap` -> `<flex-layout>` or
+  `<linear-layout>`.
+- `hc-g2` and `hc-g3` -> `<grid-layout>` or `<grid>`.
+- `hc-list` and `hc-item` -> `<list>` and `<list-item>`.
+- `hc-avatar` -> `<avatar>` or `<image>`.
+- Decorative classes such as `hc-bg-*`, `hc-glow`, `hc-gradient-text`,
+  `hc-shimmer`, and `hc-bg-aurora` belong in Theme V3 CSS, not XML tags.
+
 ## When to use XMLV3
 
 Use XMLV3 when the welcome needs structured narrative blocks, dialogue, stage
