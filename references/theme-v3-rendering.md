@@ -242,7 +242,7 @@ needs non-centered button content.
 | Semantic hook values | `tone`, `variant`, `part` | `tone`: lowercase/kebab-case semantic token up to 32 chars; `variant`: `glass`, `solid`, `outline`, `plain` for surfaces and `soft`, `solid`, `outline`, `ghost`, `glass` for actions; `part`: lowercase/kebab-case local part name | These are Theme V3 hooks. `part` becomes `.lt-part-<name>` and `data-part="<name>"`; use it only for stable custom-component styling hooks. |
 | CommonBoxAttrs | `width`, `height`, `padding`, `margin`, `gap`, `background`/`bg`, `border`, `borderRadius`/`border-radius`/`radius`, `alignment`/`align`, `justify`, `weight`, `row`, `column`, `span`, `part` | See Size, Spacing, Color, Border radius, Layout, and Semantic hook groups | Shared by neutral wrappers, cards, media, buttons, and custom component roots. `weight` applies when the box is a child of linear/flex layout; `row`/`column`/`span` apply when it is a child of grid layout. |
 | CommonTextAttrs | `color`, `text-color`, `txt-color`, `alignment`, `align`, `tone` | See Color, Layout, and Semantic hook groups | Text alignment supports `start`, `left`, `center`, `end`, and `right`; unsupported values are ignored instead of becoming raw CSS. |
-| CommonTapAttrs | `tap-action`, `tap-value`, `tap-feedback`, `aria-label` | `tap-action="send|fill|copy"`; tap-value is non-empty static text; `tap-feedback` is optional copy feedback; `aria-label` supplies the visible name / accessible name when text is not enough | Use only when a non-button FL3 atom or custom component must behave like a safe action surface. send directly submits the payload as the player's turn; fill pre-fills the composer and waits for player confirmation; copy writes `tap-value` to the clipboard and copy does not increment actionCount; it may show `tap-feedback`. send and fill increment actionCount. Renderer adds `role=button`, `tabindex=0`, Enter/Space activation, focus ring, pointer/hover/active affordance, and `[data-interactive]`. Tap surfaces must not nest `<choice>`, `<button>`, or another `tap-action` surface inside a tap surface. `tap-value` for send/fill must be static text, not hidden state or template bindings. Keep choices fallback / visible `<choice>` options when direct send support may be unavailable. |
+| CommonTapAttrs | `tap-action`, `tap-value`, `tap-feedback`, `aria-label` | `tap-action="send|fill|copy"`; tap-value is non-empty static text; `tap-feedback` is optional copy feedback; `aria-label` supplies the visible name / accessible name when text is not enough | Use only when a non-button FL3 atom or custom component must behave like a safe action surface. send fills the composer with a complete proposed player turn; fill pre-fills the composer and waits for player confirmation; send/fill never auto-submits, so the user must tap Send manually after review or editing. copy writes `tap-value` to the clipboard and copy does not increment actionCount; it may show `tap-feedback`. send and fill increment actionCount. Renderer adds `role=button`, `tabindex=0`, Enter/Space activation, focus ring, pointer/hover/active affordance, and `[data-interactive]`. Tap surfaces must not nest `<choice>`, `<button>`, or another `tap-action` surface inside a tap surface. `tap-value` for send/fill must be static text, not hidden state or template bindings. Keep choices fallback / visible `<choice>` options when composer-fill support may be unavailable. |
 
 ### Component Table
 
@@ -272,12 +272,12 @@ layouts. Keep long story prose in `<scene>/<n>/<d>/<quote>` so the renderer can
 preserve narrative typography. Use `<button>` only when the atom UI itself needs
 a semantic action; normal chat options still use `<choice>` or `<choices>`.
 `<choice send>` and `<button send>` are action sugar for the same safe send
-pipeline: they submit a complete player intent directly, not arbitrary
-JavaScript. Use `tap-action="fill"` only when the player should review or edit
-the text before sending. `send`/`fill` payloads count as action paths; copy
-controls are clipboard utilities and are tracked separately. `send`, `tap-value`,
-and visible button text are separate concerns: payloads must be complete player
-intents, while labels stay short.
+pipeline: they fill the composer with a complete player intent, never auto-submit,
+and never run arbitrary JavaScript. Use `tap-action="fill"` when the payload is
+an editable draft rather than a complete proposed turn. `send`/`fill` payloads
+count as action paths; copy controls are clipboard utilities and are tracked
+separately. `send`, `tap-value`, and visible button text are separate concerns:
+payloads must be complete player intents, while labels stay short.
 
 Surface variants are `glass`, `solid`, `outline`, `plain`. Action variants are `soft`, `solid`, `outline`, `ghost`, `glass`. Use variants as Theme V3 hooks, not as raw CSS requests.
 
