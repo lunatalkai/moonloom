@@ -233,6 +233,19 @@ Control parameter reference:
 - view/container/card/text/heading/paragraph/image/button/badge/notice/list/list-item/avatar/info-row/fact:
   use safe width/height/padding/margin/gap/border/borderRadius/background and
   alignment attrs; bare numeric width/height values are layout unit numbers.
+  Non-button FL3 atoms and custom components may use `tap-action="send|fill|copy"`
+  with non-empty `tap-value` when the whole surface must be interactive; prefer
+  `choice` or `button` for ordinary visible actions. `send` directly submits the
+  payload as the player's turn; `fill` pre-fills the composer for player
+  confirmation; copy writes to clipboard, copy does not increment actionCount,
+  and it may show `tap-feedback`. `send`/`fill` count toward actionCount.
+  Interactive surfaces need `aria-label` or visible text as the
+  visible name / accessible name; the renderer adds `role=button`, `tabindex=0`,
+  Enter/Space activation, `[data-interactive]`, focus ring, and pointer/hover
+  affordance. Tap surfaces must not nest `<choice>`, `<button>`, or another `tap-action`
+  surface inside a tap surface. `tap-value` for send/fill must be static text,
+  not hidden state or template bindings. Keep choices fallback when direct send
+  support may be unavailable.
 - field: label/value/tone. Use label + description facts, status facts, task
   summaries, and checklist items.
 - choices: cols/gap/align/variant. Use `cols=1|2|3|4|auto`, gap
