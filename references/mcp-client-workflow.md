@@ -65,6 +65,7 @@ Expected Card Writer tools:
 - optional `render_xmlv3_theme_case`
 - optional `theme_create`
 - optional `theme_update`
+- optional `theme_submit`
 - optional `theme_get`
 - optional `theme_list_available`
 - optional `extension_enable`
@@ -126,8 +127,17 @@ probes when the tools are available:
 5. Fix XMLV3 or Theme V3 CSS when contrast, layout, unresolved custom tone,
    overflow, or mobile touch target problems appear.
 6. Stop after at most 3 loops / 3 iterations and report any remaining risk.
-7. Call `theme_create` or `theme_update`, then `theme_bind`, then real
-   `render_preview`.
+7. Call `theme_create` or `theme_update`, then `theme_bind`, then read
+   `structuredContent.binding`. The binding must show the expected `roleId`,
+   `mode`, and `themeId` or `snapshotBound`.
+8. Call real `render_preview`. The preview payload must include the bound theme,
+   and `structuredContent.render.structuredReport.surfaceDiagnostics` should
+   show `themeStyleHookCount > 0` and `unresolvedToneCount == 0` for custom
+   tones. If the preview payload lacks the bound theme, treat it as default
+   fallback and fix binding before Visual Check.
+9. Call `theme_submit` only when the author wants the Theme V3 itself submitted
+   to public market review. Read `structuredContent.theme.reviewStatus` and
+   expect `pending`.
 
 For long role or worldbook fields, prefer direct deep patch. Read the current
 field with `role_get`, `worldbook_get`, or `worldbook_entry_list`, compute the
@@ -151,7 +161,8 @@ Read tool payloads from `result.structuredContent` before evaluating them:
 conversation tools return `conversation`, `role_find` returns `roles`,
 worldbook read/write/entry tools return `worldbook`, document patch tools return
 `document`, direct deep patch role tools may return `patch` or `textPatches`,
-worldbook bind tools return `binding`, and `publish_submit` returns `publish`.
+worldbook bind tools return `binding`, `theme_bind` returns `binding`,
+`theme_submit` returns `theme`, and `publish_submit` returns `publish`.
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.

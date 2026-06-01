@@ -55,7 +55,9 @@ visibility, opening clarity, or second-turn setup.
    `theme_validate_css`, then `render_xmlv3_theme_case`, then Visual Check on
    desktop and mobile, then patch XMLV3 or Theme V3 CSS. Repeat for at most
    3 loops / 3 iterations. When the case passes, use `theme_create` or
-   `theme_update`, then `theme_bind`, then real `render_preview`.
+   `theme_update`, then `theme_bind`, then real `render_preview`. Use
+   `theme_submit` only when the author wants public market review for the Theme
+   V3 artifact.
 6. Read the preview page `capturePlan` when available. If it is segmented,
    capture every vertical segment before judging. For desktop, resize to
    `requiredCaptureWidth` when requested; do not split screenshots horizontally.

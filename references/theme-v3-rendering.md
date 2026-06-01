@@ -38,12 +38,14 @@ Required loop before acceptance:
 6. Repeat for at most 3 loops / 3 iterations. If it still fails, report the
    remaining visual risk instead of claiming pass.
 7. Only after the case passes, call `theme_create` or `theme_update`, then
-   `theme_bind`, then real `render_preview`.
+   `theme_bind`, then real `render_preview`. Use `theme_submit` only when the
+   author wants the Theme V3 itself submitted to the public market review queue.
 
 Use `theme_get` or `theme_list_available` when deciding whether to extend an
 existing theme. Use `theme_create` for a new private custom theme and
-`theme_update` for an owned draft. Never rely on default fallback when custom
-`data-tone` or `tone` hooks are part of the XMLV3 card.
+`theme_update` for an owned draft. Use `theme_submit` after review evidence when
+the theme should become market-review pending. Never rely on default fallback
+when custom `data-tone` or `tone` hooks are part of the XMLV3 card.
 
 ## AI Chat Bubble UI Guide
 
@@ -215,6 +217,16 @@ or available/unavailable fields should use `state.status[].value`,
 card surface instead of being forced into `max:100`. `roleDetailDesc` should
 define the update contract for every kept field: stable key, label, allowed
 values, update trigger, play effect, and output cadence.
+
+The status bar can also be Theme V3-skinned when it is part of the card
+experience. Use `.lt-status-bar` for the surface, `.lt-status-eyebrow` for the
+label, `.lt-status-stat[data-key="..."]` and `.lt-status-relation[data-key="..."]`
+for targeted rows, and `.lt-status-stat-track`, `.lt-status-stat-fill`,
+`.lt-status-rel-track`, `.lt-status-rel-fill` for meters. Keep the CSS visual:
+background, border, text contrast, track/fill color, and mood-specific hooks
+such as `.lt-status-bar[data-mood="tense"]`. Do not put story facts in Theme V3;
+the facts still belong in XMLV3 `<state>` / visible prose. Visual Check must
+inspect the bubble and status bar separately on desktop and mobile.
 
 For `<bar>`, the `value` attribute must be one single numeric value; bar value
 must be a single number. Do not write 8 -> 14 in bar value; it will break

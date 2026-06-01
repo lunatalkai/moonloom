@@ -228,6 +228,9 @@ Self-review:
   `<field>` or numeric `<bar>`, and actions in `<choices>` / `<choice>`.
   Theme V3 owns reusable palette, contrast, borders, panel surfaces, and custom
   tone hooks such as `[data-tone="postal"]`; XMLV3 owns the semantic content.
+  If the card uses a status bar / 狀態欄, Theme V3 may also skin `.lt-status-bar`,
+  `.lt-status-stat-fill`, and `.lt-status-rel-fill`; keep the data contract in
+  `<state>` and verify the out-of-bubble status surface in Visual Check.
   The handoff must call out contrast, mobile 44pt / 48dp touch target risks,
   and the required Visual Check evidence.
 - Keep output original and public-safe.
