@@ -51,6 +51,11 @@ visibility, opening clarity, or second-turn setup.
    mobile, and read `window.__LUNATALK_MCP_PREVIEW__` when available. Use this
    only for content review; do not treat Moonloom as the owner of XMLV3 renderer
    behavior.
+   For custom Theme V3 before a real role exists, use the MCP closed loop:
+   `theme_validate_css`, then `render_xmlv3_theme_case`, then Visual Check on
+   desktop and mobile, then patch XMLV3 or Theme V3 CSS. Repeat for at most
+   3 loops / 3 iterations. When the case passes, use `theme_create` or
+   `theme_update`, then `theme_bind`, then real `render_preview`.
 6. Read the preview page `capturePlan` when available. If it is segmented,
    capture every vertical segment before judging. For desktop, resize to
    `requiredCaptureWidth` when requested; do not split screenshots horizontally.
@@ -173,6 +178,12 @@ carry durable rules, `lunatalk-opening-director` for inert first screens, and
   `actionVisibility`.
 - `evaluation` does not replace screenshot review. If the client has browser or
   multimodal access, still inspect the rendered preview.
+- Custom Theme V3 review must check the AI chat bubble UI, not app chrome:
+  dialogue / 台詞 in `<d>`, narration / 旁白 in `<n>`, status / 狀態 in
+  `<field>` or numeric `<bar>`, actions in `<choices>` / `<choice>`, and custom
+  tone hooks such as `[data-tone="postal"]` resolved by Theme V3. Verify role
+  atmosphere, worldview, story mood, contrast, no overlap, no clipping, and
+  mobile 44pt / 48dp touch target readability before accepting the preview.
 
 ## Reporting
 
