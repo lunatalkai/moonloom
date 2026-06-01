@@ -118,6 +118,12 @@ which meters are decorative and should be omitted.
 6. Keep XMLV3 evolution on the compatible XMLV3 extension target. Do not propose
    XMLV4/XMLV5 for backward-compatible additions; use optional tags,
    attributes, packs, and fallback behavior.
+   For XMLV3 Feature Level 3 / FL3, prefer atomized lowercase/kebab-case
+   primitives and Theme V3 `tagConfig.xmlv3.components` custom controls instead
+   of HTML. Custom component CSS may use `:host` for the component root and
+   `part(name)` for descendants with `part="name"`. FL3 bare numeric size attrs
+   are layout unit values: 1 layout unit = 1px on Desktop/H5 and 1 layout unit =
+   2rpx on Mobile/uni-app.
 7. Apply the visual affordance test: every visible element must prove action,
    state, mood, route, risk, clue, resource, boundary, or relationship pressure.
 8. Define first-screen hierarchy and mobile/readability risks.
