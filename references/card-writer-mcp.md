@@ -230,9 +230,10 @@ conversation testing, not for editing or reading private role definitions.
 ```
 
 Returns `structuredContent.search.results[]` with `type`, `roleId` or
-`worldId`, `name`, `description`, public visibility, public stats, and
-`nextRecommendedTools`. For role hits, call `conversation_model_catalog` before
-`conversation_create` when the author wants a real chat probe.
+`worldId`, `name`, `description`, public visibility, public stats, `systemTag`
+public AI/system classification metadata, and `nextRecommendedTools`.
+For role hits, call `conversation_model_catalog` before `conversation_create`
+when the author wants a real chat probe.
 
 `roleDetailDesc` is confidential/private role core data. `public_search` never
 returns `roleDetailDesc`, `roleWelcome`, `jailbreak`, `talkExample`, or
