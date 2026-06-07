@@ -32,3 +32,17 @@ test('Moonloom conversation guidance queries model cost before paid playtests', 
   assert.match(playtestLoop, /waiting_ai[\s\S]*generating/);
   assert.match(playtestLoop, /latest message[\s\S]*USER/i);
 });
+
+test('Moonloom model catalog guidance reads status confidence and gateway health', async () => {
+  const chatSkill = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
+  const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  for (const source of [chatSkill, playtestLoop, mcpReference]) {
+    assert.match(source, /status\.confidence/);
+    assert.match(source, /status\.gatewayHealth/);
+    assert.match(source, /status\.errorBuckets/);
+    assert.match(source, /unknown[\s\S]{0,120}sample/i);
+    assert.match(source, /gatewayHealth\.state[\s\S]{0,100}unknown/i);
+  }
+});

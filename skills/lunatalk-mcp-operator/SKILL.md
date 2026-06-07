@@ -99,6 +99,10 @@ Self-review:
   `conversation_send_message` and `conversation_inspect`. `conversation_load` is
   optional and mutating; use it only for explicit resume or rollback. Unwrap
   `result.structuredContent.conversation` before reading conversation payloads.
+  When raw results are available, token telemetry lives inside that conversation
+  payload as `turn.tokenUsage`, `latestMessage.tokenUsage`, or
+  `messages[].tokenUsage`; `cacheReadTokens` and `cacheReadRatio` describe
+  prompt-cache behavior, not writing quality.
 - Public submission: hand off to `lunatalk-publish-readiness`; require explicit
   author confirmation before `publish_submit`.
 

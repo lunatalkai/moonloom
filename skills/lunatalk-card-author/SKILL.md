@@ -14,24 +14,9 @@ before final field drafts, and `../../references/field-finalization.md` before M
 
 Load the narrow reference and skill before authoring when that layer is primary:
 `premise-workshop.md`, `sample-driven-calibration.md` plus `../../examples/sample-card-packets.md`,
-`benchmark-pattern-calibration.md`, `originality-adaptation.md`, `profile-packaging.md`, `visual-identity.md`,
-`language-style.md`, `quality-scorecard.md`, `card-series-design.md`,
-`ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`,
-`tension-triangle.md`, `state-economy-design.md`, `presentation-design.md`,
-`role-detail-engine.md`, `token-economy.md`, `voice-calibration.md`,
-`talk-example-design.md`, `boundary-design.md`, `opening-design.md`,
-`longplay-design.md`, `agency-design.md`, `instruction-guardrails.md`, or
-`playtest-loop.md`. Use `system-intake-card-design.md` when a system,
-simulator, generator, or mission-board card needs an intake-first setup wizard,
-intake console, or HTML-to-XMLV3 rewrite parity for a control surface. For card-shape engines,
-use `character-core-design.md`, `relationship-engine.md`, `world-engine-design.md`,
-`scenario-design.md`, `daily-life-design.md`, `play-engine-design.md`, and
-`generator-design.md` with their matching Moonloom skills before fields. Use
-`material-distillation.md` for
-large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-components.md` for intentional HTML mode or `hc-*` HTML card components,
-`safety-and-cost.md` for rating/simulation/publishing/credentials,
-`role-card-writing-framework.md` and `quality-rubric.md` for self-review, and
-`../../examples/synthetic-card-briefs.md` for benchmark or regression work.
+`benchmark-pattern-calibration.md`, `originality-adaptation.md`, `profile-packaging.md`, `visual-identity.md`, `language-style.md`, `quality-scorecard.md`, `card-series-design.md`, `ensemble-card-design.md`, `archetype-contracts.md`, `card-diagnosis.md`, `tension-triangle.md`, `state-economy-design.md`, `presentation-design.md`, `role-detail-engine.md`, `token-economy.md`, `voice-calibration.md`, `talk-example-design.md`, `boundary-design.md`, `opening-design.md`, `longplay-design.md`, `agency-design.md`, `instruction-guardrails.md`, or `playtest-loop.md`.
+Use `system-intake-card-design.md` when a system, simulator, generator, or mission-board card needs an intake-first setup wizard, intake console, or HTML-to-XMLV3 rewrite parity for a control surface. For card-shape engines, use `character-core-design.md`, `relationship-engine.md`, `world-engine-design.md`, `scenario-design.md`, `daily-life-design.md`, `play-engine-design.md`, and `generator-design.md` with their matching Moonloom skills before fields.
+Use `material-distillation.md` for large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-components.md` for intentional HTML mode or `hc-*` HTML card components, `safety-and-cost.md` for rating/simulation/publishing/credentials, `role-card-writing-framework.md` and `quality-rubric.md` for self-review, and `../../examples/synthetic-card-briefs.md` for benchmark or regression work.
 
 ## Workflow
 

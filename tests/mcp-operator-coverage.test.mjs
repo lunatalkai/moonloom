@@ -80,6 +80,21 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
   assert.match(mcpReference, /structuredContent\.binding/);
 });
 
+test('MCP workflow documents public search tool for accessible roles and worlds', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  assert.match(workflow, /public_search/);
+  assert.match(mcpReference, /public_search/);
+  assert.match(mcpReference, /structuredContent\.search/);
+  assert.match(mcpReference, /role_find[\s\S]{0,220}owned/i);
+  assert.match(mcpReference, /public_search[\s\S]{0,260}public roles and worlds/i);
+  assert.match(mcpReference, /includeNsfw[\s\S]{0,180}account setting/i);
+  assert.match(mcpReference, /roleDetailDesc[\s\S]{0,180}(confidential|private)/i);
+  assert.match(mcpReference, /conversation_model_catalog[\s\S]{0,220}conversation_create/);
+  assert.match(workflow, /Public discovery/);
+});
+
 test('MCP workflow documents worldbook patch document workflow', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');

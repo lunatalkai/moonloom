@@ -51,6 +51,7 @@ Expected Card Writer tools:
 
 - `role_create_private`
 - `role_find`
+- `public_search`
 - `role_get`
 - `role_patch_profile`
 - `role_patch_assets`
@@ -159,13 +160,23 @@ fields must change together. For worldbooks, use `worldbook_update`
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
-worldbook read/write/entry tools return `worldbook`, document patch tools return
-`document`, direct deep patch role tools may return `patch` or `textPatches`,
-worldbook bind tools return `binding`, `theme_bind` returns `binding`,
-`theme_submit` returns `theme`, and `publish_submit` returns `publish`.
+`public_search` returns `search`, worldbook read/write/entry tools return
+`worldbook`, document patch tools return `document`, direct deep patch role tools
+may return `patch` or `textPatches`, worldbook bind tools return `binding`,
+`theme_bind` returns `binding`, `theme_submit` returns `theme`, and
+`publish_submit` returns `publish`.
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.
+
+For conversation diagnostics, inspect `tokenUsage` only inside the conversation
+payload: `turn.tokenUsage` from `conversation_send_message`,
+`latestMessage.tokenUsage` from `conversation_turn_status`, and
+`messages[].tokenUsage` from `conversation_inspect` or `conversation_load`. The
+telemetry fields include `inputTokens`, `outputTokens`, `cacheReadTokens`,
+`cacheWriteTokens`, `effectiveInputTokens`, and `cacheReadRatio`. Use
+`cacheReadTokens` and `cacheReadRatio` as author-facing cost/caching telemetry,
+not to grade character quality or guide server prompt-cache optimization.
 
 ## Stage gates
 
@@ -174,11 +185,12 @@ not at the JSON-RPC top level.
 | Draft-only design | none | create private role, render, simulate, publish |
 | Private creation | `role_create_private`, profile/assets/detail/welcome/talkExample/output-contract patch tools; use direct `deepPatch` / `textPatches` for small edits to long existing fields, or `role_patch_document.fieldPatches` for coordinated multi-field edits | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
+| Public discovery | `public_search`, then `conversation_model_catalog` and `conversation_create` for an accessible public role | use `role_find` for public marketplace discovery; expect roleDetailDesc or private author fields from search results |
 | Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, direct `contentDeepPatch` / `textPatches` for small edits, or `worldbook_patch_document` for coordinated metadata/entry/binding updates, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
-| Conversation testing | `conversation_model_catalog`, `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
+| Conversation testing | `conversation_model_catalog`, `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback. These tools can test an owned private role or accessible public role, but do not grant edit rights. | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
 | Public submission | `publish_submit` | submit without explicit author confirmation |
 
 For accepted conversation tests, call `conversation_model_catalog` first and read
@@ -190,6 +202,12 @@ unknown, unavailable, or unsuitable for the current client environment. Also pas
 `conversation_turn_status` and then `conversation_inspect` for completion and
 per-message evidence. Do not send another probe while the latest message is a
 USER message or the latest turn is `waiting_ai` / `generating`.
+When token telemetry is present, include `inputTokens`, `outputTokens`,
+`cacheReadTokens`, and `cacheReadRatio` in the cost/caching note for the run. A
+high `inputTokens` value with low `cacheReadRatio` is a token-economy signal:
+inspect author-visible field bloat, worldbook bindings, and repeated setup
+before paying for repeated probes. Server prompt-cache internals belong outside
+Moonloom.
 
 ## Operation packet
 
@@ -219,7 +237,7 @@ only when retrying the same intended operation.
 |---|---|---|
 | No Card Writer tools visible | MCP server not configured or client not reloaded | fix client config |
 | Auth error | token/cookie/session missing or expired | re-auth through client, do not print token |
-| Tool exists but role not found | wrong `roleId` or role not owned by account | use owned private role |
+| Tool exists but role not found | wrong `roleId`, inaccessible private role, or public role unavailable to the authenticated account | use an owned private role, or an accessible public role only for conversation testing |
 | Tool exists but worldbook not found | wrong `worldbookId`, not owned, or not public/followable | use `worldbook_find`, fork/create an owned worldbook, then retry |
 | Entry optimization is blind | entries were not listed before patching | call `worldbook_entry_list` and patch by `entryId` |
 | Worldbook category rejected | entry category is not one of `rule, character, location, item, event, custom` | map the entry to an allowed category, or use `custom` |

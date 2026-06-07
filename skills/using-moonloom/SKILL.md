@@ -5,44 +5,36 @@ description: Use when routing Moonloom/LunaTalk creation work involving role car
 
 # Using Moonloom
 
-Moonloom is the skill framework for LunaTalk creation work. Use it to choose the
-right specialized skill, guide the author through ideation and revision, and call
-the MCP tools only when the card is ready for concrete creation, render review,
-simulation, or publishing.
+Moonloom is the skill framework for LunaTalk creation work. Use it to choose the right
+specialized skill, guide ideation and revision, and call MCP tools only when the
+card is ready for concrete creation, render review, simulation, or publishing.
 
-This is Moonloom's entry router. When an agent is unsure what to use, load this
-skill first, classify the task, and then route to the narrowest matching skill.
-This mirrors the start-with-the-router pattern: if a task might be Moonloom work,
-route first and only then load narrower skills.
+Moonloom is for LunaTalk authors and the external AI clients assisting them. This public repository
+contains author-facing card creation, review, MCP readiness, publish workflow guidance,
+public MCP response contracts, and safe client workflows. Platform implementation details
+belong in LunaTalk's private engineering guidance.
 
-Use this router before any Moonloom-specific answer, clarifying question, MCP
-tool call, field rewrite, render review, simulation, or publish-readiness check.
-The router may decide that no Moonloom skill applies, but that decision should be
-explicit rather than skipped.
+This is Moonloom's entry router. When an agent is unsure what to use, load this skill first,
+classify the task, and then route to the narrowest matching skill. If a task might be
+Moonloom work, route first and only then load narrower skills.
+
+Use this router before any Moonloom-specific answer, clarifying question, MCP tool call,
+field rewrite, render review, simulation, or publish-readiness check. The router may
+decide that no Moonloom skill applies, but that decision should be explicit.
 
 ## Router rule
 
-When there is any reasonable chance the task is about LunaTalk creation, role
-cards, card quality, Theme V3/XMLV3, MCP card tools, render review, simulation,
-or publishing, start with this skill and route from here. Do this before making
-MCP calls or choosing a narrower Moonloom skill.
+When there is any reasonable chance the task is about LunaTalk creation, role cards, card
+quality, Theme V3/XMLV3, MCP card tools, render review, simulation, or publishing, start
+with this skill and route from here before MCP calls or narrower skills.
 
 If the task says "not sure which skill", "which Moonloom workflow", "route this",
 "use Moonloom", "use MCP later", or otherwise asks for tool/skill selection, stay
 in this router until the route is explicit. The output should name the route,
 mode, next skill, and handoff packet before doing any narrower work.
 
-If the task is ambiguous, do not guess silently. Classify the author's intent,
-pick the narrowest matching skill, and state the route in the response. If no
-Moonloom skill fits, say so and proceed with the closest general workflow.
-
-## Start here
-
-1. Identify the author's current intent.
-2. Pick the narrowest Moonloom skill that fits.
-3. Load only the references needed for that workflow.
-4. Keep all role edits on private cards unless the author is explicitly submitting
-   a private card for public review.
+If the task is ambiguous, do not guess silently. Classify the author's intent, pick the
+narrowest matching skill, and state the route; if no Moonloom skill fits, say so.
 
 ## Router output
 

@@ -55,7 +55,10 @@ references, reports, or public examples. For local development only, use
 `examples/local-mcp.json` with private environment variables.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
-role ownership, normal publish gates, quota, moderation, and billing.
+role ownership, normal publish gates, quota, moderation, and billing. Role patch,
+theme binding, validation, render, and publish tools operate on owned private
+roles. Conversation tools may test an owned private role or an accessible public
+role, but they do not grant edit rights to that role.
 
 ## Schema version
 
@@ -83,6 +86,8 @@ reading fields:
 - Conversation tools: read `structuredContent.conversation`; this includes
   `conversationId`, `turn`, `latestMessage`, `messages`, `evaluation`, and
   per-message `previewUrl`.
+- `public_search`: read `structuredContent.search`; this includes public role
+  and world summaries only.
 - Worldbook tools: read `structuredContent.worldbook`; this includes worldbook
   summaries, detail payloads, and entry lists.
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
@@ -96,6 +101,19 @@ reading fields:
 
 Do not assume `previewUrl`, `messages`, `entries`, `bindings`, or `evaluation`
 are top-level fields of the JSON-RPC response.
+
+Conversation payloads may include AI turn token telemetry under `tokenUsage`.
+For `conversation_send_message`, read
+`structuredContent.conversation.turn.tokenUsage`. For
+`conversation_turn_status`, read
+`structuredContent.conversation.latestMessage.tokenUsage`. For
+`conversation_inspect` or `conversation_load`, read
+`structuredContent.conversation.messages[].tokenUsage` on AI messages when
+present. The fields are `inputTokens`, `outputTokens`, `cacheReadTokens`,
+`cacheWriteTokens`, `effectiveInputTokens`, and `cacheReadRatio`. Use
+`cacheReadTokens` and `cacheReadRatio` as author-facing cost/caching telemetry;
+do not treat `tokenUsage` as a writing-quality score or ask authors to optimize
+server prompt-cache internals. It can be absent on older rows or non-AI messages.
 
 ## Core tool order
 
@@ -125,6 +143,11 @@ are top-level fields of the JSON-RPC response.
 17. `conversation_inspect`
 18. Optional `conversation_load` when the author wants to resume or roll back
 19. `publish_submit` only after explicit author confirmation
+
+For public marketplace discovery, use `public_search` instead of `role_find`.
+`role_find` is for owned cards; `public_search` searches public roles and worlds
+and returns public summaries plus public role ids that can be tested with
+`conversation_model_catalog` and `conversation_create`.
 
 ## Theme V3 custom authoring loop
 
@@ -191,6 +214,32 @@ but does not provide its roleId.
 Returns `structuredContent.roles.roles[]` with `roleId`, `roleName`,
 `roleVisibility`, `reviewStatus`, `language`, `isR18`, `accountPermission`, and
 `lastUpdateTime`.
+
+### `public_search`
+
+Search public roles and worlds. This is for public discovery and accessible
+conversation testing, not for editing or reading private role definitions.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "query": "rainy visitor",
+  "pageSize": 20,
+  "includeNsfw": false
+}
+```
+
+Returns `structuredContent.search.results[]` with `type`, `roleId` or
+`worldId`, `name`, `description`, public visibility, public stats, and
+`nextRecommendedTools`. For role hits, call `conversation_model_catalog` before
+`conversation_create` when the author wants a real chat probe.
+
+`roleDetailDesc` is confidential/private role core data. `public_search` never
+returns `roleDetailDesc`, `roleWelcome`, `jailbreak`, `talkExample`, or
+`roleOutputContract`. Non-owner conversation context for public roles follows the
+same boundary; use the returned public summary to choose a role, not to inspect
+the author's hidden card definition. `includeNsfw` only works when the
+authenticated account setting and the platform switch allow NSFW discovery.
 
 ### `role_get`
 
@@ -1007,10 +1056,11 @@ implementation issues belong to the LunaTalk renderer project.
 
 ### `conversation_create`
 
-Create a new MCP-operated private conversation for an owned role. Use this when
-the test needs a fresh thread instead of continuing the latest returned
-`conversationId`. It returns the new `conversationId`, the raw welcome message,
-conversation context, and a preview URL for the welcome message when available.
+Create a new MCP-operated conversation for an owned private role or accessible
+public role. Use this when the test needs a fresh thread instead of continuing
+the latest returned `conversationId`. It returns the new `conversationId`, the
+raw welcome message, conversation context, and a preview URL for the welcome
+message when available.
 
 Required:
 
@@ -1045,17 +1095,24 @@ Optional: `query`, `recommendedOnly`, and `includeUnavailable`.
 
 Read `recommendedModel` first. Each model entry may include `costScore`,
 `effectiveCostScore`, `maxScore`, `effectiveMaxScore`, `status`, discount fields,
-and notes. `effectiveCostScore` includes active model discounts; actual billing
-still follows LunaTalk membership, context, MAX, stop, and server-side billing
-rules. If the selected model is not the server default, pass that value as
-`model` in `conversation_send_message`.
+and notes. When present, inspect `status.confidence`,
+`status.gatewayHealth`, and `status.errorBuckets` before choosing a paid probe
+model. Treat `status.status: "unknown"` as a sample confidence warning rather
+than proof that the model is broken. Treat `status.gatewayHealth.state:
+"unknown"` as gateway sample insufficiency, not healthy capacity; prefer a
+non-red model with usable confidence and no severe gateway or error-bucket
+warning.
+`effectiveCostScore` includes active model discounts; actual billing still
+follows LunaTalk membership, context, MAX, stop, and server-side billing rules.
+If the selected model is not the server default, pass that value as `model` in
+`conversation_send_message`.
 
 ### `conversation_list`
 
-List owned conversations for a private role. Use this when an AI client needs to
-find the conversation to inspect, resume, or compare. The response includes
-conversation tags, last raw message data, renderer mode, and preview URL for the
-last AI message when available.
+List conversations for an owned private role or accessible public role. Use this
+when an AI client needs to find the conversation to inspect, resume, or compare.
+The response includes conversation tags, last raw message data, renderer mode,
+and preview URL for the last AI message when available.
 
 Required:
 
@@ -1093,11 +1150,12 @@ Optional: `rollbackToChatId`, `pageNum`, `pageSize`, and `viewport`.
 
 ### `conversation_send_message`
 
-Send one real user message through LunaTalk's private chat pipeline. It uses
-normal billing and deducts credits or points according to the authenticated
-account's model and membership. Use this as the primary MCP-backed behavior test
-tool because it returns the AI reply, billing summary, message identifiers, and
-per-message preview URL for the new turn.
+Send one real user message through LunaTalk's chat pipeline for an owned private
+role or accessible public role. It uses normal billing and deducts credits or
+points according to the authenticated account's model and membership. Use this
+as the primary MCP-backed behavior test tool because it returns the AI reply,
+billing summary, message identifiers, and per-message preview URL for the new
+turn.
 
 Required:
 

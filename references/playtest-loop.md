@@ -71,8 +71,15 @@ would cause a `roleDetailDesc`, `roleWelcome`, profile, or jailbreak change. Thi
 keeps the simulation from becoming a vague taste check.
 
 Before the first paid probe, call `conversation_model_catalog` and read
-`recommendedModel`, model status, `costScore`, and `effectiveCostScore`. Use the
-returned `recommendedModel` as the explicit `model` for
+`recommendedModel`, model status, `status.confidence`, `status.gatewayHealth`,
+`status.errorBuckets`, `costScore`, and `effectiveCostScore`. Treat
+`status.status: "unknown"` as a sample confidence warning, not as proof that the
+model is broken. Treat `status.gatewayHealth.state: "unknown"` as gateway sample
+insufficiency, not as healthy capacity. Prefer a model whose status is not red,
+whose confidence is not `none`, and whose `status.gatewayHealth` /
+`status.errorBuckets` do not indicate gateway unavailability, empty responses,
+auth failures, or rate limits. Use the returned `recommendedModel` as the explicit
+`model` for
 `conversation_send_message` when the client environment has no reliable default
 or when the current default model is known to require unavailable local routing.
 Do not hard-code a model in Moonloom guidance; prefer the catalog result and

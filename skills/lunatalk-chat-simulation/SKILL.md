@@ -103,9 +103,15 @@ not call the tool.
    before reading `conversationId`, `latestMessage`, `messages`, `evaluation`,
    or `previewUrl`.
 5. Call `conversation_model_catalog` before the first paid probe. Read
-   `recommendedModel`, model status, `costScore`, and `effectiveCostScore`, then
-   pass the chosen value as `model` in `conversation_send_message` when the
-   environment default is unknown or known to be unavailable. Do not hard-code a
+   `recommendedModel`, model status, `status.confidence`,
+   `status.gatewayHealth`, `status.errorBuckets`, `costScore`, and
+   `effectiveCostScore`, then pass the chosen value as `model` in
+   `conversation_send_message` when the environment default is unknown or known
+   to be unavailable. Treat `status.status: "unknown"` as a sample confidence
+   warning, not as proof that the model is broken. Treat
+   `status.gatewayHealth.state: "unknown"` as gateway sample insufficiency, not
+   as healthy capacity. Prefer models with non-red status, non-`none`
+   confidence, and no severe gateway or error-bucket warning. Do not hard-code a
    model when the catalog can provide one.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
@@ -114,12 +120,18 @@ not call the tool.
    holding the client request open longer. For a multi-turn probe, continue with
    the returned `conversationId`, but do not send the next probe until the latest
    AI message is complete. If the latest message is USER, keep polling or inspect
-   the failed turn before adding more input.
+   the failed turn before adding more input. When the returned
+   `structuredContent.conversation.turn.tokenUsage` is present, record
+   `inputTokens`, `outputTokens`, `cacheReadTokens`, and `cacheReadRatio` as
+   cost/caching telemetry.
 7. Call `conversation_inspect` after each accepted message once the latest turn
    is complete. For long conversations, pass `chatIds` for the specific messages
    under review instead of loading an oversized history page. Read the
-   returned conversation history, AI messages, `evaluation`, and per-message
-   metadata. Evaluate behavior, not just whether the tool ran.
+   returned conversation history, AI messages, `evaluation`, per-message
+   metadata, and AI-message `messages[].tokenUsage` when present. Evaluate
+   behavior, not just whether the tool ran. Use `cacheReadTokens` and
+   `cacheReadRatio` to explain cache hit rate; a high `inputTokens` value with a
+   low cache ratio is a token-economy signal, not a character-quality failure.
    Apply per-turn action-path closure as an acceptance gate: if any selected AI
    turn lacks a concrete next action path, decision, question, visible affordance,
    or meaningful consequence, do not accept the conversation just because later
@@ -216,6 +228,11 @@ Simulation repair packet:
 - probes run:
 - transcript-backed failures:
 - evaluation signals:
+- tokenUsage:
+  - inputTokens:
+  - outputTokens:
+  - cacheReadTokens:
+  - cacheReadRatio:
 - message preview evidence:
 - longArcFormatStability:
   - turns:
