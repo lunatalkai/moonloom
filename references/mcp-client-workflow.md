@@ -194,10 +194,12 @@ not to grade character quality or guide server prompt-cache optimization.
 | Public submission | `publish_submit` | submit without explicit author confirmation |
 
 For accepted conversation tests, call `conversation_model_catalog` first and read
-`recommendedModel`, model status, `costScore`, and `effectiveCostScore`. Pass the
-chosen value as `model` in `conversation_send_message` when the default model is
-unknown, unavailable, or unsuitable for the current client environment. Also pass
-`waitMs: 60000`. The server default and cap are 60 seconds; a pending
+`recommendedModel`, model status, `costScore`, `effectiveCostScore`,
+`thinkingDepthOptions`, and `defaultThinkingDepth`. Pass the chosen model value
+as `model` in `conversation_send_message` when the default model is unknown,
+unavailable, or unsuitable for the current client environment. If the selected
+model exposes thinking metadata, choose from its `thinkingDepthOptions`. Pass the selected value as `thinkingDepth`; use `defaultThinkingDepth` only when the author accepts the quality/cost tradeoff. Also pass `waitMs: 60000`. The server
+default and cap are 60 seconds; a pending
 `generationStatus` after that window is an async handoff, not a failure. Use
 `conversation_turn_status` and then `conversation_inspect` for completion and
 per-message evidence. Do not send another probe while the latest message is a
@@ -223,6 +225,7 @@ MCP operation packet:
 - schemaVersion:
 - idempotency plan:
 - cost / public-action warnings:
+- model / thinkingDepth choice:
 - safe next operation:
 - Moonloom handoff:
 ```

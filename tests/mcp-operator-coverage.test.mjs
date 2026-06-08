@@ -185,3 +185,21 @@ test('MCP workflow documents fixed worldbook entry categories', async () => {
   assert.match(mcpReference, /faction|timeline|relationship|scene/i);
   assert.match(workflow, /rule, character, location, item, event, custom/);
 });
+
+test('MCP conversation testing documents thinking mode selection', async () => {
+  const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
+  const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
+  const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
+  const chatSimulation = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
+
+  for (const source of [workflow, mcpReference, playtestLoop, chatSimulation]) {
+    assert.match(source, /conversation_model_catalog/);
+    assert.match(source, /thinkingDepthOptions/);
+    assert.match(source, /defaultThinkingDepth/);
+    assert.match(source, /thinkingDepth/);
+  }
+  assert.match(mcpReference, /Instant[\s\S]{0,120}High[\s\S]{0,120}Max[\s\S]{0,120}Ultra/);
+  assert.match(mcpReference, /off[\s\S]{0,80}on[\s\S]{0,80}high[\s\S]{0,80}max[\s\S]{0,80}ultra/);
+  assert.match(workflow, /pass the selected value as `thinkingDepth`/i);
+  assert.match(chatSimulation, /record the selected thinkingDepth/i);
+});

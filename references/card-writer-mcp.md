@@ -115,6 +115,13 @@ present. The fields are `inputTokens`, `outputTokens`, `cacheReadTokens`,
 do not treat `tokenUsage` as a writing-quality score or ask authors to optimize
 server prompt-cache internals. It can be absent on older rows or non-AI messages.
 
+Conversation model catalog entries may also expose thinking mode metadata:
+`thinkingDepthOptions` and `defaultThinkingDepth`. Thinking mode is a
+quality/cost choice for supported models. Product labels follow Instant, High,
+Max, and Ultra; tool values may include `off`, `on`, `high`, `max`, and `ultra`
+depending on the selected model. Only pass values listed by that model's catalog
+entry.
+
 ## Core tool order
 
 1. `role_create_private`, or `role_find` then `role_get` when the author gives a name instead of a roleId
@@ -1082,7 +1089,7 @@ bubble proportions.
 Query available LunaTalk chat models, model values, status, and normal billing
 shape before a paid behavior test. Use this before `conversation_send_message`
 when the client needs to know which model value to pass or what the expected
-cost tier is.
+cost tier and thinking mode shape are.
 
 Required:
 
@@ -1096,7 +1103,7 @@ Optional: `query`, `recommendedOnly`, and `includeUnavailable`.
 
 Read `recommendedModel` first. Each model entry may include `costScore`,
 `effectiveCostScore`, `maxScore`, `effectiveMaxScore`, `status`, discount fields,
-and notes. When present, inspect `status.confidence`,
+`thinkingDepthOptions`, `defaultThinkingDepth`, and notes. When present, inspect `status.confidence`,
 `status.gatewayHealth`, and `status.errorBuckets` before choosing a paid probe
 model. Treat `status.status: "unknown"` as a sample confidence warning rather
 than proof that the model is broken. Treat `status.gatewayHealth.state:
@@ -1106,7 +1113,11 @@ warning.
 `effectiveCostScore` includes active model discounts; actual billing still
 follows LunaTalk membership, context, MAX, stop, and server-side billing rules.
 If the selected model is not the server default, pass that value as `model` in
-`conversation_send_message`.
+`conversation_send_message`. If the selected model exposes
+`thinkingDepthOptions`, choose one of those values and pass it as
+`thinkingDepth`; omit it only when the catalog entry has no thinking metadata or
+the author has not accepted the additional token/cost tradeoff. Record the
+chosen `model` and `thinkingDepth` in local playtest evidence.
 
 ### `conversation_list`
 
@@ -1171,8 +1182,15 @@ Required:
 ```
 
 Optional: `conversationId` to continue a prior MCP-operated conversation. If it
-is absent, the server creates a new MCP test conversation. Optional: `model` and
-`pageSize`.
+is absent, the server creates a new MCP test conversation. Optional: `model`,
+`thinkingDepth`, `pageSize`, and `viewport`.
+
+Use `thinkingDepth` only after reading the selected model's
+`thinkingDepthOptions` from `conversation_model_catalog`. Instant maps to the
+catalog's non-thinking value (`off` when available); binary models may expose
+`on`; multi-depth models may expose `high`, `max`, and, for supported Qwen
+models, `ultra`. Higher thinking modes can improve difficult replies but may use
+more output tokens and cost more. Do not hard-code Ultra for every model.
 
 Optional `waitMs` controls how long the MCP call waits for the generated reply
 before returning. Use `waitMs: 60000` for accepted playtests. The default wait is
@@ -1193,6 +1211,8 @@ specific chat proportion:
   "roleId": "...",
   "conversationId": "...",
   "message": "...",
+  "model": "qwen3.7-plus",
+  "thinkingDepth": "max",
   "waitMs": 60000,
   "viewport": "mobile"
 }

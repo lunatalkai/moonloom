@@ -72,7 +72,8 @@ keeps the simulation from becoming a vague taste check.
 
 Before the first paid probe, call `conversation_model_catalog` and read
 `recommendedModel`, model status, `status.confidence`, `status.gatewayHealth`,
-`status.errorBuckets`, `costScore`, and `effectiveCostScore`. Treat
+`status.errorBuckets`, `costScore`, `effectiveCostScore`,
+`thinkingDepthOptions`, and `defaultThinkingDepth`. Treat
 `status.status: "unknown"` as a sample confidence warning, not as proof that the
 model is broken. Treat `status.gatewayHealth.state: "unknown"` as gateway sample
 insufficiency, not as healthy capacity. Prefer a model whose status is not red,
@@ -82,8 +83,12 @@ auth failures, or rate limits. Use the returned `recommendedModel` as the explic
 `model` for
 `conversation_send_message` when the client environment has no reliable default
 or when the current default model is known to require unavailable local routing.
-Do not hard-code a model in Moonloom guidance; prefer the catalog result and
-record the chosen value in local evidence.
+If the model exposes thinking metadata, choose a listed `thinkingDepth` value
+from `thinkingDepthOptions`; `defaultThinkingDepth` is acceptable only after the
+author accepts that stronger thinking can improve hard probes while using more
+tokens. Do not hard-code a model or thinking mode in Moonloom guidance; prefer
+the catalog result and record the chosen model plus thinkingDepth in local
+evidence.
 
 Run probes sequentially. Do not send the next probe while the latest turn is
 `waiting_ai` or `generating`, or while the latest message in
