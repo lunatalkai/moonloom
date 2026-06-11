@@ -187,6 +187,43 @@ sizing once, while a specific XML tag can still override it. Alias overrides are
 kept compatible: XML `border-radius`/`radius` overrides a default
 `borderRadius`, and XML `align` overrides a default `alignment`.
 
+## Custom component normalization and diagnostics
+
+Renderers normalize `tagConfig.xmlv3.components` before registering anything.
+Declarations that fail normalization are silently skipped at render time, so
+XML that uses a skipped tag falls back to plain child text. The Theme V3 MCP
+tools (`theme_validate_css`, `theme_create`, `theme_update`,
+`render_xmlv3_theme_case`) report every normalization decision through the
+`componentDiagnostics` array described in `card-writer-mcp.md`. Treat
+`error`-severity entries as authoring blockers and fix `tagConfig` before
+binding the theme.
+
+A declaration registers only when all of these hold:
+
+- `tag` is lowercase kebab-case (`hp-bar`, not `Hp-Bar`, `1bar`, or `bar-`);
+  otherwise `invalid_tag_name`.
+- `tag` does not collide with a reserved LunaTalk tag (core tags, legacy layout
+  tags, and the FL3 primitives); otherwise `reserved_tag`.
+- `tag` is not declared twice; later duplicates get `duplicate_tag`.
+- At most 24 components register per theme; extra declarations get
+  `component_limit_exceeded`.
+
+`extends` must be a non-container atomic primitive: `view`, `container`,
+`card`, `text`, `paragraph`, `heading`, `image`, `button`, `badge`, `notice`,
+`list-item`, `avatar`, `info-row`, or `fact`. Any other value falls back to `view`
+and the component still registers, reported as `invalid_extends_fallback_view`.
+The container-flow primitives (`linear-layout`, `flex-layout`, `grid-layout`,
+`list`) are not valid `extends` bases.
+
+`defaults` attrs are sanitized one by one; every removed attr is reported as
+`default_attr_dropped`:
+
+- Keys must be simple attribute names. `style`, `class`, and any `on*` key are
+  always dropped.
+- Values must be a string, number, or boolean. Trimmed values must be
+  non-empty and at most 512 characters.
+- At most 32 default attrs are kept per component.
+
 ## XMLV3 FL3 Component API Reference
 
 Use this as the full Moonloom authoring manual for XMLV3 Feature Level 3 atoms.
