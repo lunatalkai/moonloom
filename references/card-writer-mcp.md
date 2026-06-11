@@ -153,6 +153,45 @@ for custom authoring is `theme_validate_css`, `render_xmlv3_theme_case`,
 `theme_create`, `theme_update`, `theme_submit`, `theme_get`,
 `theme_list_available`, and `theme_bind`.
 
+### Custom component diagnostics
+
+`theme_validate_css`, `theme_create`, `theme_update`, and
+`render_xmlv3_theme_case` return a `componentDiagnostics` array describing how
+the Theme V3 `tagConfig.xmlv3.components` declarations were normalized. Theme
+tool payloads carry it under `structuredContent.theme`; the test-case payload
+carries it under `structuredContent.render`. `theme_validate_css` accepts an
+optional `tagConfig` argument so a draft tagConfig can be checked before any
+theme mutation.
+
+Each entry has the shape:
+
+```json
+{
+  "severity": "error",
+  "code": "reserved_tag",
+  "tag": "panel",
+  "detail": "tag \"panel\" dropped: it collides with a reserved LunaTalk tag"
+}
+```
+
+The codes share one vocabulary across LunaTalk renderers and tools:
+
+| Code | Severity | Meaning |
+|---|---|---|
+| `invalid_tag_name` | `error` | tag is missing or not lowercase kebab-case; the component is dropped |
+| `reserved_tag` | `error` | tag collides with a reserved LunaTalk tag; the component is dropped |
+| `duplicate_tag` | `error` | tag is already declared earlier in the list; the later declaration is dropped |
+| `component_limit_exceeded` | `error` | more than 24 components are declared; the extra ones are dropped |
+| `invalid_extends_fallback_view` | `warning` | `extends` is not an allowed base; the component still registers with base `view` |
+| `default_attr_dropped` | `warning` | one `defaults` attr was sanitized away (see `theme-v3-rendering.md` for the rules) |
+
+`error` entries mean renderers silently skip that component, so the visible
+card can lose controls without any other signal. When any `error` is present,
+`nextRecommendedTools` leads with `theme_update`: fix `tagConfig` first, then
+rerun `render_xmlv3_theme_case` before binding or submitting. `warning` entries
+do not block registration; they explain why a default attr or `extends` choice
+did not survive normalization.
+
 ## Tools
 
 ### `role_create_private`
