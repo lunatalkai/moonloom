@@ -52,6 +52,7 @@ Expected Card Writer tools:
 - `role_create_private`
 - `role_find`
 - `public_search`
+- `creator_analytics_brief`
 - `role_get`
 - `role_patch_profile`
 - `role_patch_assets`
@@ -160,11 +161,12 @@ fields must change together. For worldbooks, use `worldbook_update`
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
-`public_search` returns `search`, worldbook read/write/entry tools return
-`worldbook`, document patch tools return `document`, direct deep patch role tools
-may return `patch` or `textPatches`, worldbook bind tools return `binding`,
-`theme_bind` returns `binding`, `theme_submit` returns `theme`, and
-`publish_submit` returns `publish`.
+`public_search` returns `search`, `creator_analytics_brief` returns
+`creatorAnalytics`, worldbook read/write/entry tools return `worldbook`,
+document patch tools return `document`, direct deep patch role tools may return
+`patch` or `textPatches`, worldbook bind tools return `binding`, `theme_bind`
+returns `binding`, `theme_submit` returns `theme`, and `publish_submit` returns
+`publish`.
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.
@@ -183,6 +185,7 @@ not to grade character quality or guide server prompt-cache optimization.
 | Stage | Required tools | Do not do yet |
 |---|---|---|
 | Draft-only design | none | create private role, render, simulate, publish |
+| Creator analytics brief | `creator_analytics_brief` when the author asks for trend-aware next steps, owned-card insight, writing suggestion, or creative opportunity | treat analytics as a writing-quality gate; force low-confidence observations into a final premise |
 | Private creation | `role_create_private`, profile/assets/detail/welcome/talkExample/output-contract patch tools; use direct `deepPatch` / `textPatches` for small edits to long existing fields, or `role_patch_document.fieldPatches` for coordinated multi-field edits | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
 | Public discovery | `public_search`, then `conversation_model_catalog` and `conversation_create` for an accessible public role | use `role_find` for public marketplace discovery; expect roleDetailDesc or private author fields from search results |
