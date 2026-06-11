@@ -33,7 +33,8 @@ private engineering guidance.
   and publish-readiness gates.
 - `skills/lunatalk-mcp-operator` checks external AI client MCP readiness, tool
   availability, auth posture, idempotency planning, and stage gates before real
-  Card Writer MCP actions.
+  Card Writer MCP actions, including `creator_analytics_brief` readiness when an
+  author asks for Creator Analytics.
 - `skills/lunatalk-collaboration-director` turns author feedback, co-review,
   taste/preference calibration, draft comparisons, and revision choices into a
   decision packet before rewriting, simulating, or publishing.
@@ -203,6 +204,10 @@ private engineering guidance.
 - `references/mcp-client-workflow.md` defines external AI client readiness,
   tool availability checks, auth handling, idempotency, and stage gates for MCP
   operations.
+- `references/creator-analytics.md` defines how to use Creator Analytics and
+  `creator_analytics_brief` as a read-only Creator Brief, trend, owned-card
+  insight, writing suggestion, and creative opportunity signal before routing to
+  Moonloom writing skills.
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.

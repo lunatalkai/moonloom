@@ -70,10 +70,13 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   evidence from validation/render/simulation already exists, the conductor should
   hand off to `lunatalk-iteration-director`.
 - MCP readiness, external client setup, Card Writer tool availability, auth
-  posture, idempotency planning, client configuration triage, or stage-gating
-  before role creation, render, simulation, or publish actions: use
+  posture, idempotency planning, client configuration triage, creator analytics
+  / `creator_analytics_brief` availability, or stage-gating before role creation,
+  render, simulation, or publish actions: use
   `lunatalk-mcp-operator`. If the task is draft-only writing, do not block on MCP
-  readiness; route to the narrow writing skill instead.
+  readiness; route to the narrow writing skill instead. For 創作風向標, Creator
+  Analytics, Creator Brief, owned-card insight, writing suggestion, or creative opportunity from LunaTalk analytics, treat analytics as a decision aid, not a
+  writing-quality gate, then hand off to the narrow Moonloom writing skill.
 - Author feedback, co-review, taste/preference calibration, draft comparison,
   "almost right but off", choosing between patch options, or deciding what to
   preserve/change/reject/delay before rewriting, simulation, or publishing: use

@@ -88,6 +88,9 @@ reading fields:
   per-message `previewUrl`.
 - `public_search`: read `structuredContent.search`; this includes public role
   and world summaries only.
+- `creator_analytics_brief`: read `structuredContent.creatorAnalytics`; this
+  includes Creator Brief, period range, metric contract, confidence guidance,
+  and next recommended tools.
 - Worldbook tools: read `structuredContent.worldbook`; this includes worldbook
   summaries, detail payloads, and entry lists.
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
@@ -124,6 +127,9 @@ entry.
 
 ## Core tool order
 
+0. Optional trend-aware planning: `creator_analytics_brief` when the author asks
+   what to write next, which owned card signal to use, or what opportunity to
+   explore before authoring
 1. `role_create_private`, or `role_find` then `role_get` when the author gives a name instead of a roleId
 2. `role_patch_profile`
 3. `role_patch_assets`
@@ -155,6 +161,10 @@ For public marketplace discovery, use `public_search` instead of `role_find`.
 `role_find` is for owned cards; `public_search` searches public roles and worlds
 and returns public summaries plus public role ids that can be tested with
 `conversation_model_catalog` and `conversation_create`.
+
+For creator trend decisions, use `creator_analytics_brief` before ideation or
+repair. It is read-only, returns `structuredContent.creatorAnalytics`, and is a
+decision aid rather than a writing-quality gate.
 
 ## Theme V3 custom authoring loop
 
@@ -248,6 +258,35 @@ returns `roleDetailDesc`, `roleWelcome`, `jailbreak`, `talkExample`, or
 same boundary; use the returned public summary to choose a role, not to inspect
 the author's hidden card definition. `includeNsfw` only works when the
 authenticated account setting and the platform switch allow NSFW discovery.
+
+### `creator_analytics_brief`
+
+Read the authenticated author's Creator Brief before trend-aware ideation,
+existing-card repair, or opportunity selection.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "period": "last30d",
+  "rating": "all",
+  "language": "zh-Hant"
+}
+```
+
+Allowed periods are `last1d`, `last7d`, `last30d`, `last90d`, `lastMonth`,
+`lastQuarter`, and `custom`. For `custom`, include `startMonth` and `endMonth`
+as `YYYY-MM`. Allowed ratings are `all`, `safe`, and `r18`; allowed languages
+are `zh-Hant`, `zh-Hans`, `en`, `ja`, `ko`, and `all`.
+
+Returns `structuredContent.creatorAnalytics` with `brief`, `periodRange`,
+`metricContract`, and `nextRecommendedTools`. The tool is read-only and does
+not need `idempotencyKey`.
+
+Use `confidenceLevel` to control language strength. Treat `high` as a strong
+signal, `medium` as a reference, and low or insufficient signals as observation.
+Do not treat creator analytics as a writing-quality gate; Moonloom writing
+skills still decide premise, character, agency, detail, presentation, and
+simulation repairs.
 
 ### `role_get`
 

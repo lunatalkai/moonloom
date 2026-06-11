@@ -17,7 +17,9 @@ credential dump, and not a writing-quality review.
 Read `../../references/mcp-client-workflow.md` first. Read
 `../../references/card-writer-mcp.md` when exact Card Writer tool names,
 arguments, schema version, idempotency, normal billing, or publish confirmation
-matter. Read `../../references/safety-and-cost.md` before simulation or public
+matter. Read `../../references/creator-analytics.md` when the author asks for
+trend-aware next steps, owned-card insight, writing suggestion, or creative
+opportunity. Read `../../references/safety-and-cost.md` before simulation or public
 submission. Read only the narrow Moonloom writing reference after the operation
 packet names the next authoring stage.
 
@@ -35,8 +37,8 @@ the authenticated LunaTalk account.
 
 ## Workflow
 
-1. Identify the client and intended stage: setup, draft-only, create private
-   role, patch, validate, render, conversation test, or publish.
+1. Identify the client and intended stage: setup, draft-only, creator analytics,
+   create private role, patch, validate, render, conversation test, or publish.
 2. Check whether the client has a Card Writer MCP server configured.
 3. If the client can list MCP tools, compare the tool availability with the
    intended stage.
@@ -78,6 +80,11 @@ Self-review:
 - Setup/auth/tool list problems: stay in `lunatalk-mcp-operator`.
 - Draft-only ideation, blueprinting, packets, collaboration, quality, or profile
   work: do not require MCP yet; route to the narrow Moonloom writing skill.
+- Creator analytics or trend-aware planning: require `creator_analytics_brief`
+  only when the author wants LunaTalk Creator Brief signals. Unwrap
+  `result.structuredContent.creatorAnalytics`, keep `confidenceLevel` in the
+  summary, and hand off to the narrow writing skill. Do not treat analytics as a
+  writing-quality gate.
 - Private creation or field patching: hand off to `lunatalk-card-author`.
 - Validation and render evidence: hand off to `lunatalk-render-review` only after
   `validate_role` has no blockers and `render_preview` is available.
