@@ -184,13 +184,48 @@ The codes share one vocabulary across LunaTalk renderers and tools:
 | `component_limit_exceeded` | `error` | more than 24 components are declared; the extra ones are dropped |
 | `invalid_extends_fallback_view` | `warning` | `extends` is not an allowed base; the component still registers with base `view` |
 | `default_attr_dropped` | `warning` | one `defaults` attr was sanitized away (see `theme-v3-rendering.md` for the rules) |
+| `template_parse_failed` | `error` | the `template` string is not strict, portable XMLV3 (unbalanced tags, fullwidth/unquoted attributes, comments, CDATA); the template is rejected and the component falls back to skin-only rendering |
+| `template_invalid_root` | `error` | the template does not have exactly one root element; template rejected, skin-only fallback |
+| `template_forbidden_tag` | `error` | the template uses a tag outside the 18 FL3 primitives + `<slot/>`; template rejected, skin-only fallback |
+| `template_too_large` | `error` | the template exceeds 4096 characters, 64 nodes, or depth 8; template rejected, skin-only fallback |
+| `template_multiple_slots` | `error` | more than one `<slot/>`; template rejected, skin-only fallback |
+| `template_invalid_slot_position` | `error` | `<slot/>` is not directly under a container primitive; template rejected, skin-only fallback |
+| `template_attr_dropped` | `warning` | a template node attr was sanitized away (`style` / `class` / `on*` or over-long value); template stays active |
+| `template_unknown_placeholder` | `warning` | an attribute-value placeholder is not declared in `attributes`/`defaults`; it renders literally; template stays active |
+| `template_attr_missing_default` | `warning` | a declared attribute is referenced by the template but has no default, so a missing instance attr substitutes as empty string; template stays active |
+| `template_fl3_content_hidden` | `warning` | the template references content-carrying placeholders but `example` shows no children alt text, so older clients would see an empty skin; template stays active |
 
 `error` entries mean renderers silently skip that component, so the visible
 card can lose controls without any other signal. When any `error` is present,
 `nextRecommendedTools` leads with `theme_update`: fix `tagConfig` first, then
 rerun `render_xmlv3_theme_case` before binding or submitting. `warning` entries
 do not block registration; they explain why a default attr or `extends` choice
-did not survive normalization.
+did not survive normalization. Template `error` codes never drop the component
+itself: the component still registers and renders skin-only (`extends` base +
+children), only the template expansion is rejected.
+
+### Template components and the fl3-degraded preview
+
+`theme_create`, `theme_update`, and `theme_validate_css` accept
+`tagConfig.xmlv3.components[].template` — the Feature Level 4 template
+component field described in `theme-v3-rendering.md`. The same
+`componentDiagnostics` array carries the `template_*` codes above, so validate
+a draft tagConfig with `theme_validate_css` before mutating a theme.
+
+`render_xmlv3_theme_case` additionally accepts an optional `viewMode`:
+
+- `"fl4"` (default): the preview expands template components normally.
+- `"fl3-degraded"`: the preview is served without the `template` fields, so
+  template components render the way older clients show them — skin base plus
+  children alt text. `componentDiagnostics` still reports against the original
+  tagConfig, so template errors stay visible in this mode.
+
+The output echoes the effective view in its `viewMode` field. Run one
+`fl3-degraded` case for every template-using theme before binding or
+publishing, and check the degraded view stays readable: each no-slot template
+instance should show its one-line children alt text. If the degraded view is
+not acceptable for the card, declare the card's minimum XMLV3 feature level as
+`4` instead of shipping an unreadable fallback.
 
 ## Tools
 

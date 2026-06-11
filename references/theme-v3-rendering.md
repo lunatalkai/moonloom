@@ -125,6 +125,11 @@ capabilities.
   `<paragraph>`, `<image>`, `<button>`, `<badge>`, `<notice>`, `<list>`,
   `<list-item>`, `<avatar>`, `<info-row>`, and `<fact>`; and Theme V3
   `tagConfig.xmlv3.components` custom controls based on those atoms.
+- **Feature Level 4** is the template component layer (`custom.templates`
+  capability). A Theme V3 custom component may declare a `template` — a small
+  tree of FL3 primitives that the client expands at render time — so each
+  dynamic turn only carries the compact custom tag and its declared
+  attributes. See "Template components (Feature Level 4)" below.
 
 Cards should declare the minimum XMLV3 feature level they require. A card that
 uses Level 2 tags or behavior should set its minimum feature level to `2`; a
@@ -132,8 +137,12 @@ card that uses Level 3 primitives or custom components should set its minimum
 feature level to `3`. List the relevant capabilities, such as
 `layout.containers`, `choices.weighted`, `status.fact-cards`,
 `speaker.semantic`, `token.output-economy`, `layout.standard-v3`,
-`view.primitives`, or `custom.registry`. A baseline XMLV3 card should remain at
-Level 1.
+`view.primitives`, `custom.registry`, or `custom.templates`. A baseline XMLV3
+card should remain at Level 1. A theme that declares template components does
+**not** force the card minimum to `4`: older clients render the component's
+skin base plus the children alt text, so the content stays readable. Declare
+minimum level `4` only when the template carries interaction the degraded view
+cannot express.
 
 When generating dynamic assistant turns, do not assume the latest XMLV3 feature
 level. Generate at or below the client-declared renderer level. If the client is
@@ -223,6 +232,99 @@ The container-flow primitives (`linear-layout`, `flex-layout`, `grid-layout`,
 - Values must be a string, number, or boolean. Trimmed values must be
   non-empty and at most 512 characters.
 - At most 32 default attrs are kept per component.
+
+## Template components (Feature Level 4)
+
+A custom component may declare a `template`: an XMLV3 string describing the
+primitive tree the component expands into. The client expands the template at
+render time, so dynamic turns pay only for the compact tag, not the structure
+— structure tokens move into the theme once instead of being re-emitted every
+message.
+
+```json
+{
+  "tag": "hp-bar",
+  "extends": "card",
+  "description": "Label + meter + value in one compact tag",
+  "attributes": { "label": "display name", "value": "current value", "max": "max value", "tone": "tone hook" },
+  "defaults": { "tone": "danger", "max": "100" },
+  "template": "<card tone=\"{tone}\" padding=\"sm\"><flex-layout alignment=\"center\" gap=\"sm\"><text part=\"label\">{label}</text><badge part=\"value\">{value}/{max}</badge></flex-layout></card>",
+  "example": "<hp-bar label=\"HP\" value=\"30\" max=\"100\">HP 30/100</hp-bar>"
+}
+```
+
+### Template field contract
+
+- The template must have **exactly one root element** (single root). Multiple
+  roots or root-level text are rejected.
+- Allowed tags are the 18 FL3 primitives plus at most one `<slot/>`. Core
+  story tags, extension pack tags, `<state>`, and other custom components are
+  forbidden inside a template. `slot` is a reserved tag name and cannot be
+  registered as a custom component.
+- Attributes must use straight double or single quotes (`name="value"`). XML
+  comments, CDATA, processing instructions, DOCTYPE, fullwidth quotes,
+  unquoted values, and bare value-less attributes are rejected.
+- Hard limits: source at most 4096 characters, at most 64 nodes, nesting depth
+  at most 8. Template node attrs follow the same sanitization as `defaults`
+  (`style` / `class` / `on*` dropped, values at most 512 characters).
+- Placeholders use `{name}` (lowercase kebab-case identifiers, e.g. `{label}`)
+  in attribute values and text nodes. The substitution domain is the declared
+  `attributes` and `defaults` keys; value priority is XML instance attr >
+  default > empty string. Substitution is **single-pass**: a substituted value
+  is never re-scanned for placeholders and never re-parsed as XML — placeholder
+  values are opaque text, so markup inside a value stays literal text.
+- `<slot/>` marks where the custom tag's children render. At most one slot is
+  allowed, and it must sit directly under a container primitive (`view`,
+  `container`, `card`, `linear-layout`, `flex-layout`, `grid-layout`, `list`,
+  `list-item`, `notice`, `info-row`).
+
+### Degradation alt text (no content loss on old clients)
+
+Children of a template component have two meanings:
+
+- **No slot in the template**: children are the FL3 degradation alt text.
+  Newer clients expand the template and do not render children; older clients
+  render the skin base (`extends`) with the children inline. Write **one short
+  summary line** (e.g. `HP 30/100`), never the body text.
+- **Slot in the template**: children are real content and render at the slot
+  position on every client level.
+
+The `example` field should always show the children alt text usage so AI
+generation copies the degradable shape. When a template references
+content-carrying placeholders but `example` shows no children, the tools warn
+with `template_fl3_content_hidden`.
+
+### Authoring rules for dynamic output
+
+1. Emit the **compact tag** with declared attributes only. Do not hand-build
+   the template's internal primitive structure in dynamic XML — that wastes
+   output tokens every turn and drifts visually between messages.
+2. For no-slot components, put one short summary line in children as alt text;
+   do not put the story body there.
+3. For slot components, put the body in children.
+
+### When to use a template component
+
+Declare a template when the same multi-primitive structure repeats across
+turns (status bars, stat cards, inventory rows, fixed info panels): the AI
+repeats only a compact tag, and the structure stays pixel-stable. Keep using
+plain FL3 primitives for one-off layout that appears in a single message, and
+keep using simple skin-only custom components (no template) when one primitive
+with defaults is enough. Templates are presentation-only: no conditionals, no
+loops, and no nesting of other custom components.
+
+### Template diagnostics
+
+Template problems are reported through the same `componentDiagnostics` array
+(see `card-writer-mcp.md` for the full table). `error` codes —
+`template_parse_failed`, `template_invalid_root`, `template_forbidden_tag`,
+`template_too_large`, `template_multiple_slots`,
+`template_invalid_slot_position` — mean the template is rejected and the
+component falls back to skin-only rendering. `warning` codes —
+`template_attr_dropped`, `template_unknown_placeholder`,
+`template_attr_missing_default`, `template_fl3_content_hidden` — keep the
+template active but flag authoring risks. Use `render_xmlv3_theme_case` with
+`viewMode: "fl3-degraded"` to preview the degraded form before publishing.
 
 ## XMLV3 FL3 Component API Reference
 
