@@ -652,6 +652,42 @@ If asset URLs are not available, stop before final validation/render handoff and
 return the visual identity packet, image prompts, and the missing asset action.
 Do not silently finish a "complete private card" without avatar and background.
 
+### `role_generate_assets`
+
+Generate an anime-style background image and avatar for a private role the
+account owns, then write the resulting URLs onto `roleBackground` and
+`roleAvatar`. Use this when no author-provided or pre-uploaded asset URL is
+available and the client should produce the images directly, instead of stopping
+at a prompt-only handoff. It runs the same image pipeline and billing as the
+in-app generation path.
+
+Behavior:
+
+- Charges the account the normal image-generation points on success (an
+  insufficient balance returns `insufficient_score`; a banned account returns
+  `account_forbidden`; nothing is charged when generation fails).
+- Auto-builds the prompt from the role fields. Pass `prompt` to override the art
+  direction with a visual-identity art brief.
+- `target`: `both` (background + cropped avatar, default) or `background`.
+- `overwrite`: when the role already has both assets, the call is a no-op that
+  returns the existing URLs and charges nothing unless `overwrite` is `true`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "genassets-...",
+  "roleId": "...",
+  "target": "both",
+  "prompt": "optional art-brief override; empty = auto from role fields",
+  "overwrite": false
+}
+```
+
+Response fields: `roleId`, `roleAvatar`, `roleBackground`, `generated`,
+`chargedScore`, and `prompt` (the final prompt used). Retry with the same
+`idempotencyKey` after a `generation_timeout` instead of issuing a fresh call, so
+the account is not charged twice.
+
 ### `role_patch_detail`
 
 Update the role detail body.
