@@ -630,6 +630,42 @@ If asset URLs are not available, stop before final validation/render handoff and
 return the visual identity packet, image prompts, and the missing asset action.
 Do not silently finish a "complete private card" without avatar and background.
 
+### `role_generate_assets`
+
+Generate an anime-style background image and avatar for a private role the
+account owns, then write the resulting URLs onto `roleBackground` and
+`roleAvatar`. Use this when no author-provided or pre-uploaded asset URL is
+available and the client should produce the images directly, instead of stopping
+at a prompt-only handoff. It runs the same image pipeline and billing as the
+in-app generation path.
+
+Behavior:
+
+- Charges the account the normal image-generation points on success (an
+  insufficient balance returns `insufficient_score`; a banned account returns
+  `account_forbidden`; nothing is charged when generation fails).
+- Auto-builds the prompt from the role fields. Pass `prompt` to override the art
+  direction with a visual-identity art brief.
+- `target`: `both` (background + cropped avatar, default) or `background`.
+- `overwrite`: when the role already has both assets, the call is a no-op that
+  returns the existing URLs and charges nothing unless `overwrite` is `true`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "genassets-...",
+  "roleId": "...",
+  "target": "both",
+  "prompt": "optional art-brief override; empty = auto from role fields",
+  "overwrite": false
+}
+```
+
+Response fields: `roleId`, `roleAvatar`, `roleBackground`, `generated`,
+`chargedScore`, and `prompt` (the final prompt used). Retry with the same
+`idempotencyKey` after a `generation_timeout` instead of issuing a fresh call, so
+the account is not charged twice.
+
 ### `role_patch_detail`
 
 Update the role detail body.
@@ -890,6 +926,37 @@ semantic CSS variable hooks over inline XML styling. Common hooks:
 ### `role_patch_jailbreak`
 
 Update jailbreak text when the author explicitly asks for system behavior changes.
+
+### `theme_list_available`
+
+List official Theme V3 themes plus the authenticated author's own themes.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "includeOfficial": true,
+  "includeMine": true,
+  "pageSize": 20,
+  "language": "en"
+}
+```
+
+Optional `language` (`en` / `zh-Hans` / `zh-Hant` / `ja` / `ko`) controls two
+behaviors. Official theme names and descriptions are localized into the
+requested language in the response. Themes tagged with the same language (or
+with no language tag) are sorted first; other languages still appear after
+them, so the list is never filtered down to empty. When `language` is omitted,
+the server falls back to the authenticated account's language. User-authored
+theme names are author content and are never translated.
+
+Each returned theme carries a `language` field: the creator's language tag, or
+empty for official themes (visible to every language).
+
+### `theme_create` language stamping
+
+`theme_create` stamps the new theme with the authenticated account language
+automatically — clients do not pass a language on create. The stamp powers the
+same-language sorting above and future market filtering.
 
 ### `theme_bind`
 
