@@ -66,6 +66,39 @@ hooks such as `.lt-choice[data-tone="postal"]` or
 `.lt-layout-panel[data-tone="signal"]`. XMLV3 owns the semantic content. Do not
 put one-off inline `style` or `class` into XMLV3 just to force a look.
 
+### Theme CSS hook contract (read before writing any theme CSS)
+
+The renderer turns each core tag into a fixed `.lt-*` class, and the client
+**drops every rule whose selector does not start with `.lt-`**:
+
+| Tag | Class hook |
+| --- | --- |
+| `<scene>` | `.lt-scene` |
+| `<n>` narration | `.lt-n` |
+| `<d>` dialogue | `.lt-d` |
+| `<speaker>` | `.lt-speaker` |
+| `<quote>` | `.lt-quote` |
+| `<choice>` | `.lt-choice` |
+
+Rules for theme CSS:
+
+- Target only `.lt-*` selectors and set only `--lt-*` variables (plus `:root`
+  and `body`). **Never invent selectors** like `.scene-card`, `.narration`, or
+  `.dialogue`, and never set non-`--lt-` custom properties like `--card-bg` for
+  color — the client drops those rules, so the theme renders with **no effect**
+  and the card silently falls back to base styling.
+- `theme_validate_css` (and `theme_create` / `theme_update`) return
+  `styleHookCount`. **`styleHookCount: 0` means the CSS hit zero Theme V3 hooks
+  — treat it as dead CSS and rewrite** using `.lt-*` / `--lt-*` before moving on;
+  the tool now also returns a `warning` status and steers you back to
+  `theme_update` in that case.
+- The base default leaves `.lt-n` and `.lt-d` visually identical (no color, no
+  bubble) on purpose — **differentiating narration from dialogue is the theme's
+  job**. A theme that does not distinguish `.lt-n` (muted prose) from `.lt-d`
+  (brighter, e.g. speaker nameplate + accent) is incomplete. Colors come from
+  `--lt-c-text` / `--lt-c-text-dim` / `--lt-c-gold`; dialogue/choice surfaces
+  from `--lt-dialogue-*` / `--lt-choice-*`; speaker from `--lt-speaker-color`.
+
 Visual Check must verify readable contrast, no clipping or overlap, clear action
 hierarchy, resolved custom tone hooks, and mobile touch target size. Use at
 least 44pt / 48dp as the practical minimum target for tappable choices and CTAs.
@@ -168,6 +201,51 @@ CSS, `:host` targets the custom component root and `part(name)` targets an
 atomic child with `part="name"`. In XML, add `part="name"` only as a stable
 local hook; do not add `class` or `style`.
 
+### Enabling custom components (`enabledComponents`)
+
+`tagConfig.xmlv3.enabledComponents` is an opt-in gate for custom components,
+parallel to `officialComponents` for official ones. The `components[]` array is
+the **library** of all defined custom components; `enabledComponents` selects
+which of them are **active** — only active custom components register for
+rendering, are offered to the AI, and appear in the theme's component list.
+
+- When `enabledComponents` is **absent** (not an array), all custom components in
+  `components[]` are enabled (backward-compatible default).
+- When it is an **array**, only the listed tags are active; an empty array `[]`
+  enables none.
+- Disabling a custom component never deletes it — its definition stays in
+  `components[]` (the library), so re-enabling restores it unchanged.
+
+```json
+{
+  "xmlv3": {
+    "components": [
+      { "tag": "hp-bar", "extends": "card", "name": "HP bar" },
+      { "tag": "mp-bar", "extends": "card", "name": "MP bar" }
+    ],
+    "enabledComponents": ["hp-bar"]
+  }
+}
+```
+
+In the example only `hp-bar` is active; `mp-bar` stays defined but disabled.
+
+A declaration may also carry an optional `name`: a short human-readable display
+title (mirroring official components) shown as the card heading in the theme
+editor. Keep it plain and reader-friendly — describe what the author sees, not
+the tag or any engine term. When `name` is absent, the client falls back to a
+humanized form of the `tag` (`relationship-meter` → `Relationship Meter`), so
+always set `name` when you want a clean, non-technical title:
+
+```json
+{
+  "tag": "relationship-meter",
+  "extends": "card",
+  "name": "Relationship meter",
+  "description": "Shows how close the player and character have become"
+}
+```
+
 Custom components may also declare root `defaults`:
 
 ```json
@@ -245,6 +323,7 @@ message.
 {
   "tag": "hp-bar",
   "extends": "card",
+  "name": "HP bar",
   "description": "Label + meter + value in one compact tag",
   "attributes": { "label": "display name", "value": "current value", "max": "max value", "tone": "tone hook" },
   "defaults": { "tone": "danger", "max": "100" },
