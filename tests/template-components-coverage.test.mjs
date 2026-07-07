@@ -38,6 +38,33 @@ test('Moonloom documents the template field protocol on Theme V3 custom componen
   assert.match(themeRendering, /container/i);
 });
 
+test('Moonloom documents the optional human-readable name field on custom components', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // The custom component declaration documents an optional `name` display title,
+  // mirroring official components, so editor cards show a readable heading
+  // instead of the raw tag.
+  assert.match(themeRendering, /`name`/);
+  assert.match(themeRendering, /display (title|name|heading)|human-?readable/i);
+  // The fallback contract: missing name → the client humanizes the tag.
+  assert.match(themeRendering, /fall(s)? back[\s\S]{0,120}tag|humaniz[\s\S]{0,60}tag/i);
+  // The example declaration carries a name field.
+  assert.match(themeRendering, /"name"\s*:/);
+});
+
+test('Moonloom documents the enabledComponents opt-in gate for custom components', async () => {
+  const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // The enabledComponents field gates which custom components are active.
+  assert.match(themeRendering, /`enabledComponents`/);
+  // Legacy / backward-compat: absent (not an array) → all enabled.
+  assert.match(themeRendering, /absent[\s\S]{0,120}all (are )?enabled|all enabled[\s\S]{0,120}absent|not an array[\s\S]{0,120}all/i);
+  // Array present → only listed tags are active; [] → none.
+  assert.match(themeRendering, /only[\s\S]{0,80}listed|empty array[\s\S]{0,40}none|\[\][\s\S]{0,40}none/i);
+  // Definitions stay in components[]; the gate does not delete defs.
+  assert.match(themeRendering, /components\[\][\s\S]{0,160}(library|stay|remain|keep|not (deleted|removed))/i);
+});
+
 test('Moonloom documents alt-text degradation and the three authoring rules', async () => {
   const themeRendering = await readFile('references/theme-v3-rendering.md', 'utf8');
 
