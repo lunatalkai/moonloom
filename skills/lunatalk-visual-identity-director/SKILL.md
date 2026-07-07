@@ -52,8 +52,10 @@ already exists.
    unprovided art or naming private references.
 7. Decide asset readiness: author-provided URL, generated/uploaded URL,
    prompt-only, or missing. If URLs are ready, hand off to `role_patch_assets`;
-   if not, hand off to image generation/upload or author provision before
-   MCP-backed completion.
+   if not, hand off to `role_generate_assets` to generate and bind the images
+   directly (pass this packet's art brief as its `prompt` override), or to author
+   provision, before MCP-backed completion. A prompt-only packet is not a
+   complete MCP-backed card.
 8. Check alignment with `roleName`, `roleDesc`, Theme V3, and the opening scene.
 9. Hand off to profile packaging, presentation, card authoring, or render review
    as the next bottleneck.
@@ -109,7 +111,7 @@ Visual identity packet:
 - MCP asset readiness:
   - roleAvatar URL:
   - roleBackground URL:
-  - next action: generate / upload / author-provide / patch-assets
+  - next action: generate (role_generate_assets) / upload / author-provide / patch-assets
 - handoff:
 
 Self-review:
@@ -138,8 +140,11 @@ Self-review:
 - If Theme V3 or XMLV3 structure is the real blocker, hand off to
   `lunatalk-presentation-director`.
 - If a private card already exists without avatar or background, keep the
-  writing fields intact, prepare public-safe asset URLs, call
-  `role_patch_assets`, then rerun validation before render or publish readiness.
+  writing fields intact, then either prepare public-safe asset URLs and call
+  `role_patch_assets`, or hand off to `role_generate_assets` (with this packet's
+  art brief as the `prompt`) to generate and bind them; rerun validation before
+  render or publish readiness. `role_generate_assets` charges image-generation
+  points, so treat it as a real, billed asset action, not a design preview.
 
 ## Handoff
 
