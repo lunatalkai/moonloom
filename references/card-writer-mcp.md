@@ -90,6 +90,8 @@ reading fields:
   status, and text patch summaries when applicable.
 - Direct role patch tools return role metadata, and when a deep patch was used
   also return `structuredContent.patch` or `structuredContent.textPatches`.
+- `role_generate_assets`: no wrapper key. Read `roleAvatar`, `roleBackground`,
+  `generated`, and `chargedScore` directly off `structuredContent`.
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
@@ -665,8 +667,11 @@ Behavior:
 }
 ```
 
-Response fields: `roleId`, `roleAvatar`, `roleBackground`, `generated`,
-`chargedScore`, and `prompt` (the final prompt used). Retry with the same
+Unlike the role, theme, and worldbook tools, this one has no wrapper key: read
+`roleId`, `roleAvatar`, `roleBackground`, `generated`, `chargedScore`, and
+`prompt` (the final prompt used) directly off `structuredContent`. Check
+`generated` to tell a real generation from an `overwrite: false` no-op, and
+`chargedScore` for what the call actually cost. Retry with the same
 `idempotencyKey` after a `generation_timeout` instead of issuing a fresh call, so
 the account is not charged twice.
 
