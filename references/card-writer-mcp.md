@@ -110,8 +110,11 @@ are top-level fields of the JSON-RPC response.
    format example for stable visible structure
 8. `role_patch_document` for coordinated multi-field updates; use
    `document.fieldPatches` for small changes to long existing fields
-9. `theme_bind` when XMLV3 real chat controls are expected; optional
-   `extension_enable` for specific packs
+9. `theme_bind` when XMLV3 real chat controls are expected (`theme_fork` first
+   when the starting point is an official or public theme, since official
+   themes are read-only); optional `extension_enable` for specific packs;
+   `theme_unbind` to remove a binding, `theme_delete` to remove an owned theme
+   record
 10. Optional worldbook loop: `worldbook_find` / `worldbook_create`,
    `worldbook_get`, `worldbook_entry_list`, entry create/update/delete,
    `worldbook_patch_document` for coordinated metadata/entry/binding updates,
@@ -151,7 +154,8 @@ Theme tool payloads live under `structuredContent.theme`; case and role preview
 payloads live under `structuredContent.render`. The expected Theme V3 tool set
 for custom authoring is `theme_validate_css`, `render_xmlv3_theme_case`,
 `theme_create`, `theme_update`, `theme_submit`, `theme_get`,
-`theme_list_available`, and `theme_bind`.
+`theme_list_available`, `theme_bind`, `theme_unbind`, `theme_fork`, and
+`theme_delete`.
 
 ### Custom component diagnostics
 
@@ -927,6 +931,22 @@ semantic CSS variable hooks over inline XML styling. Common hooks:
 
 Update jailbreak text when the author explicitly asks for system behavior changes.
 
+### `theme_get`
+
+Read a Theme V3 detail payload: official, public, or the authenticated author's
+own theme. Use this before deciding whether to extend an existing theme with
+`theme_fork`, or before comparing an owned draft against `theme_update` output.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "themeId": "..."
+}
+```
+
+Non-mutating; no `idempotencyKey` required. Read `structuredContent.theme` for
+the theme's CSS, `tagConfig`, ownership, and review status.
+
 ### `theme_list_available`
 
 List official Theme V3 themes plus the authenticated author's own themes.
@@ -958,6 +978,72 @@ empty for official themes (visible to every language).
 automatically — clients do not pass a language on create. The stamp powers the
 same-language sorting above and future market filtering.
 
+### `theme_update`
+
+Update fields on an owned Theme V3 draft: CSS, `tagConfig` (including
+`tagConfig.xmlv3.components` custom-component declarations), name, or
+description. Official themes cannot be updated in place; call `theme_fork`
+first to get an owned, editable copy.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-update-...",
+  "themeId": "...",
+  "css": "...",
+  "tagConfig": { "xmlv3": { "components": [] } }
+}
+```
+
+Read `structuredContent.theme.componentDiagnostics` and `styleHookCount` the
+same way as `theme_validate_css` and `theme_create`: fix any `error`-severity
+entry and rerun `render_xmlv3_theme_case` before rebinding or resubmitting.
+Calling `theme_update` on an official theme returns `official_theme_read_only`;
+fork it first.
+
+### `theme_fork`
+
+Copy an official, public, or the authenticated author's own Theme V3 into a new
+private theme owned by the caller. `theme_fork` produces an independent
+`themeId` — a new theme record, not a snapshot — that the caller can keep
+editing with `theme_update`; the source theme's fork count increases.
+
+This is a different operation from `theme_bind` with `mode: "forked"`: the
+`theme_bind` forked mode does not create a new theme record, it only freezes a
+CSS snapshot and binds it to one role. Use `theme_fork` when the goal is an
+editable, reusable theme of your own; use `theme_bind(mode: "forked")` when the
+goal is only to lock a one-off CSS snapshot onto a single role.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-fork-...",
+  "sourceThemeId": "...",
+  "name": "optional; defaults to \"<source theme name> · Fork\"",
+  "roleId": "optional private role to bind the fork to"
+}
+```
+
+`sourceThemeId` must reference an official theme, a public theme, or a theme the
+caller already owns. Pass `roleId` only to also bind the new fork to one of the
+caller's own private roles in forked mode in the same call; omit it to fork
+without touching any role binding.
+
+Read `structuredContent.theme`:
+
+```json
+{
+  "themeId": "<new owned theme id>",
+  "sourceThemeId": "...",
+  "roleId": "...",
+  "bound": true,
+  "nextRecommendedTools": ["..."]
+}
+```
+
+When `roleId` is omitted, the response has no `roleId` field and `bound` is
+`false`; no role binding is touched.
+
 ### `theme_bind`
 
 Bind Theme V3 to a private role.
@@ -976,6 +1062,24 @@ preview payload carries the bound theme. For custom tones, use
 `unresolvedToneCount == 0` as the minimum technical signal that the preview is
 not falling back to the default fallback styling.
 
+### `theme_unbind`
+
+Remove a Theme V3 binding from a role card. The role must be one of the
+caller's own private roles.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-unbind-...",
+  "roleId": "..."
+}
+```
+
+Read `structuredContent.theme`: `{"roleId": "...", "unbound": true,
+"nextRecommendedTools": ["..."]}`. After unbinding, the role falls back to the
+client's default styling. Calling `theme_unbind` again on a role with no active
+binding is an idempotent success, not an error.
+
 ### `theme_submit`
 
 Submit an owned Theme V3 to the public market review queue. This is for the
@@ -992,6 +1096,51 @@ theme artifact, not for publishing a role card. Required payload:
 Read `structuredContent.theme.reviewStatus`; successful submission returns
 `pending`. Do not call this just to bind a private role. Use `theme_bind` and
 `render_preview` first when the goal is proving a custom themed card.
+
+### `theme_delete`
+
+Delete an owned Theme V3 the caller no longer needs.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-delete-...",
+  "themeId": "..."
+}
+```
+
+Before removing the theme record, the server unbinds it from every role that
+still referenced it — a visible side effect the author should expect, not a
+silent cleanup. Read `structuredContent.theme`:
+
+```json
+{
+  "themeId": "...",
+  "unboundRoles": 3,
+  "nextRecommendedTools": ["..."]
+}
+```
+
+`unboundRoles` is the number of roles that were automatically unbound as part
+of the delete. Official themes cannot be deleted; calling `theme_delete` on one
+returns `official_theme_read_only` and `nextRecommendedTools` points to
+`theme_fork` or `theme_create` instead.
+
+### Theme lifecycle error codes
+
+`theme_delete`, `theme_fork`, and `theme_unbind` share one error vocabulary:
+
+| Code | Meaning |
+|---|---|
+| `invalid_arguments` | the request did not match the tool's input shape |
+| `theme_lifecycle_unavailable` | the theme lifecycle operation is not available right now |
+| `theme_id_required` | `themeId` was missing or empty |
+| `role_id_required` | `roleId` was missing or empty |
+| `source_theme_id_required` | `sourceThemeId` was missing or empty |
+| `theme_not_found` | the referenced theme does not exist or is not visible to the caller |
+| `permission_denied` | the caller does not own the referenced theme or role |
+| `official_theme_read_only` | the target is an official theme; fork it first with `theme_fork` |
+| `public_role_requires_clone` | the target role is a public role; theme operations only apply to the caller's own private roles |
 
 ### `extension_enable`
 

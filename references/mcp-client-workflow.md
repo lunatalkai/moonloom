@@ -68,6 +68,9 @@ Expected Card Writer tools:
 - optional `theme_submit`
 - optional `theme_get`
 - optional `theme_list_available`
+- optional `theme_unbind`
+- optional `theme_fork`
+- optional `theme_delete`
 - optional `extension_enable`
 - `worldbook_find`
 - `worldbook_get`
@@ -139,6 +142,15 @@ probes when the tools are available:
    to public market review. Read `structuredContent.theme.reviewStatus` and
    expect `pending`.
 
+Official themes are read-only: `theme_update` or `theme_delete` on an official
+theme returns `official_theme_read_only`. Call `theme_fork` first to get an
+owned, editable copy — this creates a new independent `themeId`, unlike
+`theme_bind(mode: "forked")`, which only freezes a CSS snapshot onto one role
+and does not create a new theme record. Use `theme_unbind` to remove a role's
+Theme V3 binding without deleting the theme, and `theme_delete` to remove an
+owned theme the author no longer needs; deleting a theme automatically unbinds
+every role that still referenced it.
+
 For long role or worldbook fields, prefer direct deep patch. Read the current
 field with `role_get`, `worldbook_get`, or `worldbook_entry_list`, compute the
 SHA-256 of the exact current field text, then send only a small `TextDeepPatch`
@@ -162,7 +174,9 @@ conversation tools return `conversation`, `role_find` returns `roles`,
 worldbook read/write/entry tools return `worldbook`, document patch tools return
 `document`, direct deep patch role tools may return `patch` or `textPatches`,
 worldbook bind tools return `binding`, `theme_bind` returns `binding`,
-`theme_submit` returns `theme`, and `publish_submit` returns `publish`.
+`theme_submit`, `theme_get`, `theme_create`, `theme_update`, `theme_fork`,
+`theme_unbind`, and `theme_delete` all return `theme`, and `publish_submit`
+returns `publish`.
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.

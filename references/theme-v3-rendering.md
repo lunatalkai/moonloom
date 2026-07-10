@@ -47,6 +47,17 @@ existing theme. Use `theme_create` for a new private custom theme and
 the theme should become market-review pending. Never rely on default fallback
 when custom `data-tone` or `tone` hooks are part of the XMLV3 card.
 
+Official themes are read-only: `theme_update` returns `official_theme_read_only`
+if the target is official. Call `theme_fork` first to copy an official, public,
+or already-owned theme into a new owned `themeId` that can then take
+`theme_update`. `theme_fork` is not the same operation as `theme_bind` with
+`mode: "forked"`: `theme_bind(mode: "forked")` only freezes a CSS snapshot onto
+one role and creates no new theme record, while `theme_fork` creates an
+independent, reusable theme the caller can keep editing. Use `theme_unbind` to
+remove a role's Theme V3 binding without touching the theme record, and
+`theme_delete` to remove an owned theme entirely — deleting a theme
+automatically unbinds every role that still referenced it.
+
 ## AI Chat Bubble UI Guide
 
 Design inside the AI reply bubble as message output, not as app chrome. Separate
@@ -989,6 +1000,10 @@ structured.
 
 - `mode: "reference"` with a `themeId`
 - `mode: "forked"` with an inline `snapshot`
+
+Use `theme_unbind` to remove the role's binding entirely and fall back to
+default client styling; this is different from re-binding with a different
+`themeId` or `snapshot`.
 
 `extension_enable` toggles extension packs on the private role.
 
