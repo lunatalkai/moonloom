@@ -54,6 +54,7 @@ Expected Card Writer tools:
 - `role_get`
 - `role_patch_profile`
 - `role_patch_assets`
+- optional `role_generate_assets` — generates an avatar and background; charges the author's score
 - `role_patch_detail`
 - `role_patch_welcome`
 - `role_patch_talk_example`
