@@ -17,6 +17,9 @@ test('Moonloom documents the Theme V3 MCP render and Visual Check closed loop', 
     assert.match(source, /theme_update/);
     assert.match(source, /theme_submit/);
     assert.match(source, /theme_bind/);
+    assert.match(source, /theme_delete/);
+    assert.match(source, /theme_unbind/);
+    assert.match(source, /theme_fork/);
     assert.match(source, /Visual Check|visual check|視覺校驗/i);
     assert.match(source, /3\s*(loops|iterations|rounds)|3\s*輪|三輪/i);
   }

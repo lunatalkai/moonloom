@@ -71,6 +71,7 @@ test('MCP workflow documents worldbook authoring and binding tools', async () =>
     'worldbook_entry_update',
     'worldbook_entry_delete',
     'worldbook_bind',
+    'worldbook_unbind',
     'worldbook_bindings',
   ]) {
     assert.match(workflow, new RegExp(tool));

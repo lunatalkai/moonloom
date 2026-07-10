@@ -93,6 +93,13 @@ Self-review:
   `render_preview`. Use `theme_submit` only when the author wants public market
   review for the theme artifact. If these tools are missing, do not invent a
   replacement.
+- Official themes are read-only: `theme_update` or `theme_delete` on an
+  official theme returns `official_theme_read_only`. Call `theme_fork` first to
+  get an owned, editable copy — this makes a new independent `themeId`, unlike
+  `theme_bind(mode: "forked")`, which only freezes a CSS snapshot onto one role.
+  Use `theme_unbind` to remove a role's Theme V3 binding, and `theme_delete` to
+  remove an owned theme the author no longer needs (this automatically unbinds
+  any roles still using it).
 - Behavior testing: hand off to `lunatalk-chat-simulation` only after validation
   is ready and the author accepts normal conversation-test cost. The required
   tools are `conversation_create` or `conversation_list`, plus
