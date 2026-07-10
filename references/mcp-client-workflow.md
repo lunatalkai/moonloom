@@ -95,6 +95,8 @@ Expected Card Writer tools:
 - `conversation_turn_status`
 - `conversation_inspect`
 - `publish_submit`
+- optional `public_search` — read-only; finds public roles and worlds by keyword
+- optional `creator_analytics_brief` — read-only; the author's own creator brief
 
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.

@@ -1546,3 +1546,67 @@ Required:
   "confirmationSummary": "Author confirmed after validation, render review, and conversation test."
 }
 ```
+
+### `public_search`
+
+Find public roles and public worlds by keyword. Read-only: it mutates nothing and
+takes no `idempotencyKey`. Use it to resolve a name the author mentioned into a
+public `roleId` you can pass to `conversation_create`, or to survey what already
+exists before authoring something similar.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "query": "detective",
+  "pageNum": 1,
+  "pageSize": 20,
+  "language": "all",
+  "includeNsfw": false
+}
+```
+
+Only `query` is required. `language` accepts `zh-Hans`, `zh-Hant`, `en`, `ja`,
+`ko`, or `all`. `pageSize` caps at 100. `includeNsfw` only takes effect when both
+the account's own NSFW setting and the global switch allow it — passing `true`
+does not override either.
+
+Read `structuredContent.search`: `query`, `total`, `pageNum`, `pageSize`,
+`hasNextPage`, and `results`. Page forward while `hasNextPage` is true rather
+than requesting a huge `pageSize`.
+
+Each result carries public surface only — `type`, `roleId` or `worldId`, `name`,
+`description`, `avatar`, visibility, `language`, `roleType`, `isR18`, and public
+counters. **Search results never include `roleDetailDesc`, `jailbreak`,
+`talkExample`, or `roleOutputContract`**, even for a role the caller happens to
+own; those are author-only fields reachable through owner-scoped tools such as
+`role_get`. Do not build a workflow that expects a public role's prompt body to
+come back from search.
+
+### `creator_analytics_brief`
+
+Read the authenticated author's own Creator Brief: market trends, insights on
+their own cards, and writing suggestions to inform the next creation decision.
+Read-only, owner-scoped, and takes no `idempotencyKey`. It is not a public
+analytics surface — it never reports on another author's cards.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "period": "last30d",
+  "rating": "all",
+  "language": "all"
+}
+```
+
+Every field is optional. `period` accepts `last1d`, `last7d`, `last30d`
+(default), `last90d`, `lastMonth`, `lastQuarter`, or `custom`. With
+`period: "custom"` you must also send `startMonth` and `endMonth` as `YYYY-MM`.
+`rating` accepts `all`, `safe`, or `r18`; `language` accepts the five content
+languages or `all`.
+
+Read `structuredContent.creatorAnalytics`: `schemaVersion`, the resolved
+`period`, `rating`, `language`, a `periodRange`, a `metricContract`, and `brief`.
+The `metricContract` states how to read the numbers — its `source`, `comparison`,
+`confidence`, and `personalization` fields tell you what the brief is derived
+from and how far to trust it. Quote the brief's own confidence rather than
+presenting every figure as settled fact.
