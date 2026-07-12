@@ -1547,6 +1547,30 @@ Required:
 }
 ```
 
+**Submitting is not publishing.** Read `structuredContent.publish` and branch on
+`reviewStatus`:
+
+| `reviewStatus` | What it means | What you do |
+| --- | --- | --- |
+| `running` | Automated review is in flight. A `taskId` is returned. | Tell the author review has started. Poll `role_get` for the settled state instead of calling `publish_submit` again. |
+| `pending` | The card is queued for **human review**. | Tell the author it is awaiting a human reviewer. **Do not call `publish_submit` again** — the card is already in the queue and resubmitting does not move it. Only a LunaTalk reviewer can release it. |
+| `passed` | The card is live. | Tell the author it is published. |
+
+A card can enter human review because automated review flagged it, or because the
+account or card carries a standing manual-review requirement.
+
+Two failure modes to avoid:
+
+- **Do not report a `pending` card to the author as published.** It is not live,
+  and telling them otherwise sends them looking for a card that nobody can find.
+- **Do not retry `publish_submit` on a `pending` card.** Retrying never changes
+  the outcome; it only produces repeated no-op submissions. If the author asks why
+  it is taking time, explain that a human reviewer has to look at it, and offer to
+  keep improving the card in the meantime — a queued card can still be patched.
+
+A `pending` result is not an error and not a rejection. It carries no verdict about
+the card's content; it only means a person, not a model, makes the final call.
+
 ### `public_search`
 
 Find public roles and public worlds by keyword. Read-only: it mutates nothing and
