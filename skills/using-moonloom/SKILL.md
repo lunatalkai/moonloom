@@ -171,6 +171,18 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   simulation, or publish readiness, unless the main symptom is only profile
   packaging (`roleName`, `roleDesc`, tags, title, tagline, first impression).
 - `roleDetailDesc`, detail engine, thin biography, under-budget detail, full-detail/top-card role setting, durable operating engine, current pressure, player insertion space, proactive turn behavior, secret/reveal pacing, time/consequence, one-shot Prompt V2 raw detail placement, RoleDetail/RoleUserName positioning, or format stability before field assembly: use `lunatalk-detail-engineer`. Load `one-shot-prompt-runtime.md` when the author asks how raw detail sits in the assembled one-shot prompt. Use `lunatalk-token-architect` instead when the engine already exists and the blocker is tokenBudget, estimatedTokens, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite, compression, duplicated lore, HTML/XMLV3 bloat, misplaced durable rules, attention dilution, long raw detail prompt architecture, Markdown/tag structure, Tier 4 format exemplar budget, Minimum Viable Reply budget, or reducing token cost. If there is no concrete field-size evidence and the author is only deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
+- Creating or editing a **visual theme** (Theme V3) — theme goal, "make me a
+  theme / 配個主題 / 换个皮 / theme this card", palette/mood/visual style, custom
+  component or dialogue-component styling: use `lunatalk-presentation-director`
+  (Theme V3 / XMLV3 structure and component CSS), plus
+  `lunatalk-visual-identity-director` when only palette/mood is unsettled; read
+  `../../references/theme-v3-rendering.md` "Theme quality". A theme session asks
+  **visual-design questions** (palette / mood / reference aesthetic, which reading
+  components need signature styling, cozy vs dramatic tone). A theme goal is not
+  a card premise: do not ask card-premise questions (题材 / world background,
+  player-vs-character relationship) and do not route it to
+  `lunatalk-premise-workshop`. A theme is a coherent styling of the reading
+  experience, not a kitchen-sink dump of every mechanic component.
 - Pre-authoring or pre-render presentation planning, deciding XMLV3 vs plain vs
   HTML, Theme V3 vs `roleWelcome`, visible state vs hidden JSON state, first-
   screen hierarchy, visual affordances, status panels, choices/forms as

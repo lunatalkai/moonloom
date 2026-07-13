@@ -72,6 +72,26 @@ Do not use presentation design as a catch-all:
 - Use `lunatalk-agency-designer` when visual choices are decorative, funnel the
   player, or decide the player's actions, feelings, identity, or consent.
 
+## Theme-creation sessions (visual goal, not a card premise)
+
+When the author's goal is a **visual theme** (Theme V3) — "make me a theme",
+"配個主題", "换个皮", theming an existing card — the session's opening questions are
+about how the card should **look and read**, not about card premise. Ask
+**visual-design questions**: palette / mood and reference aesthetic (noir / cozy /
+dramatic / cyberpunk); which reading components need signature styling (scene
+header, narration, dialogue, inner thought, speaker nameplate, at most one info
+card or restrained meter); and the tone (cozy vs dramatic). Do **not** ask
+card-premise questions in a theme session (题材 / world background, the
+player-vs-character relationship, opening basis) — those belong to a card
+session, and do not route a pure theme goal to `lunatalk-premise-workshop`.
+
+A theme is a coherent styling of the reading experience, not a component demo.
+Do **not** produce a kitchen-sink theme that dumps every mechanic component
+(dice / DC checks / combat / next-turn / rewards / items / fortune / score
+meters) into one palette. Style only the components the card actually uses;
+**restraint over completeness**. See `theme-v3-rendering.md` "Theme quality" for
+the full paradigm, visual standards, and the anti-homogenization tests.
+
 ## Presentation packet
 
 ```text
