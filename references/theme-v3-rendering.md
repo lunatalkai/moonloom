@@ -114,6 +114,72 @@ Visual Check must verify readable contrast, no clipping or overlap, clear action
 hierarchy, resolved custom tone hooks, and mobile touch target size. Use at
 least 44pt / 48dp as the practical minimum target for tappable choices and CTAs.
 
+## Theme quality: a coherent reading experience, not a mechanics dashboard
+
+A LunaTalk theme is a coherent, tasteful **styling of the story-reading
+experience** — not a showcase of every game mechanic. The paradigm a good theme
+targets is a clean reading flow that showcases immersion:
+
+- a **scene header** (place / time / mood) styled as a restrained accent,
+- **narration `<n>`** as calm, de-emphasized prose,
+- a **speaker nameplate + dialogue `<d>`** bubble for spoken lines,
+- **inner monologue `<quote>`** as a softer, tinted, italic aside,
+- at most **one tasteful character/status info card**, and
+- **one or two restrained meters** (e.g. a single relationship or mood bar) only
+  when the story actually tracks that value.
+
+The eye should move smoothly through scene → narration → dialogue → thought, each
+layer distinct by typography and restraint. That reading immersion is the product,
+not a grid of widgets.
+
+### The anti-pattern: the kitchen-sink theme (do not do this)
+
+A theme is **NOT** a demo of every mechanic component crammed into one palette.
+Do NOT pile dice rolls (2d6), DC / skill checks, combat / enemy panels,
+next-turn markers, reward / loot cards, item grids, fortune / tarot draws, and
+score-sharing meters into a theme just because those components exist. That
+produces a chaotic "component dashboard" that reads like a QA fixture, not a
+designed theme. **Restraint over completeness**: add a mechanic surface only when
+the specific story the theme is for actually uses it. Most themes need zero
+combat / dice / loot styling. If you cannot name the scene in the story that
+uses a component, cut it.
+
+### Visual standards (how the layers read)
+
+- Build hierarchy with **whitespace, font weight, and de-emphasis color** — not
+  by wrapping every block in a bordered box. Boxes-on-boxes is the engineering
+  look the paradigm rejects; a divider line or a shift in weight usually beats a
+  new card.
+- **Narration vs dialogue must be visually distinct**: narration is muted / calm
+  prose (`--lt-c-text-dim`), dialogue is brighter with a **speaker nameplate**
+  and an accent bubble (`--lt-c-text` + `--lt-speaker-color` + `--lt-dialogue-*`).
+- **Inner thought (`<quote>`)** reads as a softer tinted / italic aside, not
+  another box.
+- **Mainstream plus one accent**: keep the whole surface calm and let a single
+  brand accent (one gold sparkle, the speaker nameplate) be the one highlight. At
+  most two accent colors on screen.
+
+### Anti-homogenization (so every theme does not look the same)
+
+Separate two layers so themes share plumbing but read as distinct:
+
+- **Mechanism layer** (status row, choice grid, collection grid, timeline, ID
+  card): sharing structure across themes is a feature — only the CSS skin differs.
+  Do not rename a shared mechanic to fake distinctiveness.
+- **Signature layer**: each theme should carry at least **two genre-specific
+  narrative objects** (a prop / document / ritual from the story world, with its
+  own independent layout), not another dashboard widget.
+
+Two quick tests before shipping a theme:
+
+- **Genre-noun test**: strip the genre nouns from a component's description. If
+  what remains ("a card with three lines of text and a stamp on the right") would
+  fit any other theme, it is a clone — redesign it.
+- **Grayscale silhouette test**: desaturate a screenshot. If it is
+  indistinguishable from another theme's silhouette, the difference was only
+  color. Push the difference into **structure** (circular gauge / vertical text /
+  scattered pinboard / dual-axis scroll / terminal scanline …), not the palette.
+
 ## HTML Card Components
 
 HTML mode is a legacy/custom-layout exception, not the default for new cards. If

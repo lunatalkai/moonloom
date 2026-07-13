@@ -193,6 +193,22 @@ Self-review:
 
 ## Quality rules
 
+- When the session goal is a **visual theme** (Theme V3), ask **visual-design
+  questions** — palette/mood and reference aesthetic, which reading components
+  need signature styling, cozy vs dramatic tone — not card-premise questions
+  (题材, world background, player-vs-character relationship). A theme session is
+  not a card session; do not route a pure theme goal to
+  `lunatalk-premise-workshop`.
+- A theme is a coherent **styling of the reading experience** (scene / narration
+  `<n>` / dialogue `<d>` / inner thought `<quote>` / speaker nameplate, plus at
+  most one tasteful info card and one or two restrained meters) — NOT a
+  kitchen-sink demo of every mechanic (dice / DC / combat / turns / rewards /
+  loot / fortune / score-sharing). Style only the components the card actually
+  uses; **restraint over completeness**. Build hierarchy with whitespace, weight,
+  and de-emphasis color, not boxes-on-boxes; keep narration muted and dialogue
+  brighter; at most two accent colors. See `theme-v3-rendering.md` "Theme
+  quality" for the full paradigm and the genre-noun / grayscale anti-homogenization
+  tests.
 - Do not design visual blocks that only decorate. Move style to Theme V3 or cut
   it.
 - Do not hide durable role rules, relationship gates, or scenario logic in Theme
