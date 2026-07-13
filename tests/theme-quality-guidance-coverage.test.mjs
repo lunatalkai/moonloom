@@ -162,6 +162,35 @@ test('theme-v3-rendering teaches the vertical-stack meter layout (no collapsed b
     'template must not glue a weight-bearing label directly before the track');
 });
 
+test('theme-v3-rendering teaches styling custom components via the component css field', async () => {
+  const ref = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // Custom components render as .lt-cmp-<tag>, styled from the component's own css.
+  assert.match(ref, /\.lt-cmp-/i, 'must name the .lt-cmp-<tag> class');
+  assert.match(ref, /component'?s own `?css`? field|component `?css`? field|components\[\]\.css/i,
+    'must say to style internals in the component css field, not the theme global css');
+  assert.match(ref, /:host/, 'must document :host -> component root');
+  assert.match(ref, /part\(/i, 'must document part() scoping');
+
+  // The .lt-scene trap: custom components are siblings, not inside .lt-scene.
+  assert.match(ref, /never style custom-component internals/i,
+    'must forbid styling custom-component internals from the theme global css');
+  assert.match(ref, /wraps only the/i,
+    'must explain .lt-scene wraps only the scene tag');
+
+  // Tokens on :root, not on .lt-scene.
+  assert.match(ref, /tokens on[\s\S]{0,3}:root/i,
+    'must put --lt-* design tokens on :root, not .lt-scene');
+
+  // The bond-meter example must be complete: css field with part(track)/part(fill)
+  // and the template must mark the bar elements with part.
+  assert.match(ref, /"css":/, 'bond-meter example must include a css field');
+  assert.match(ref, /part\(track\)[\s\S]{0,160}part\(fill\)/i,
+    'example css must style part(track) and part(fill)');
+  assert.match(ref, /part=\\?"track"/i, 'template must mark part="track" on the bar rail');
+  assert.match(ref, /part=\\?"fill"/i, 'template must mark part="fill" on the bar fill');
+});
+
 test('router routes a theme-creation goal to visual/presentation, not premise workshop', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   assert.match(router, /visual theme|Theme V3.*goal|creating.*theme|theme goal/i,

@@ -110,6 +110,47 @@ Rules for theme CSS:
   `--lt-c-text` / `--lt-c-text-dim` / `--lt-c-gold`; dialogue/choice surfaces
   from `--lt-dialogue-*` / `--lt-choice-*`; speaker from `--lt-speaker-color`.
 
+### Styling custom components (their internals are NOT reachable from `.lt-scene`)
+
+The six hooks above cover the **core story tags only**. A **custom component**
+renders as its own element with class `.lt-cmp-<tag>` (e.g. a `<bond-meter>`
+component → `.lt-cmp-bond-meter`), and it is a **sibling** of `<scene>`, NOT a
+child of it. `.lt-scene` wraps only the `<scene>` tag, so a custom component's
+internal elements are unreachable from any `.lt-scene …` selector.
+
+Style a custom component's internals in the **component's own `css` field**
+(`components[].css`), never the theme global css. The renderer **auto-scopes**
+that css to the component so it cannot leak:
+
+- `:host` → the component root `.lt-cmp-<tag>`.
+- `part(name)` → an element you marked with `part="name"` on a template element
+  (it renders as `.lt-part-<name>`).
+- any other selector (e.g. `[data-tone="fill"]`) is auto-prefixed with
+  `.lt-cmp-<tag> `, so it matches only inside this component.
+
+Two rules that cause the classic **"meter bars never paint"** bug:
+
+1. **NEVER style custom-component internals from the theme global css under
+   `.lt-scene`.** `.lt-scene` wraps only the `<scene>` tag, so a rule like
+   `.lt-scene [data-tone="track"] { height:6px }` matches nothing for a sibling
+   custom component — the track stays `height:0` / transparent and no bar paints,
+   even though the fill's inline `width` is applied. This is exactly why generated
+   meters render as bare labels with no bars.
+2. **Put `--lt-*` design tokens on `:root`, not on `.lt-scene`.** Design tokens on
+   `:root` resolve everywhere; tokens declared on `.lt-scene` are **undefined for
+   everything outside a scene** — i.e. every custom component — so
+   `background: var(--lt-c-accent)` resolves to nothing and the fill is invisible.
+   `:root` is allowed by the contract; use it for tokens.
+
+Meter pattern, correct end-to-end: mark the bar elements with `part` in the
+template — `<view part="track"><view part="fill" width="{value}%"></view></view>`
+inside the vertical stack — and style them in the component's `css` field:
+`part(track){height:6px;background:var(--lt-track-bg);border-radius:3px;overflow:hidden}`
+and `part(fill){height:6px;background:var(--lt-c-accent);border-radius:3px}`. The
+fill's height + background come from the component css; its width comes from the
+`width="{value}%"` binding; the `--lt-*` tokens live on `:root`. See the complete
+`bond-meter` example below.
+
 Visual Check must verify readable contrast, no clipping or overlap, clear action
 hierarchy, resolved custom tone hooks, and mobile touch target size. Use at
 least 44pt / 48dp as the practical minimum target for tappable choices and CTAs.
@@ -369,9 +410,10 @@ rendering, are offered to the AI, and appear in the theme's component list.
   `components[]` (the library), so re-enabling restores it unchanged.
 
 A complete theme block looks like this — note the `officialComponents`, the full
-`template` + `example` on the structural component, and `enabledComponents` (a
-synthetic bond meter; invent your own genre and stat names, do not copy any
-official theme):
+`template` + `example` + per-component **`css`** on the structural component, the
+`--lt-*` tokens on **`:root`** (in the theme global css, shown below the block),
+and `enabledComponents` (a synthetic bond meter; invent your own genre and stat
+names, do not copy any official theme):
 
 ```json
 {
@@ -385,7 +427,8 @@ official theme):
         "description": "Three bonds that pull against each other",
         "attributes": { "warmth": "0-100", "trust": "0-100", "doubt": "0-100", "delta": "what just moved", "hint": "the tension this turn" },
         "defaults": { "warmth": "50", "trust": "50", "doubt": "20" },
-        "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>暖意</text><text>{warmth}</text></flex-layout><view tone=\"track\"><view tone=\"fill\" width=\"{warmth}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>信任</text><text>{trust}</text></flex-layout><view tone=\"track\"><view tone=\"fill\" width=\"{trust}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>疑慮</text><text>{doubt}</text></flex-layout><view tone=\"track\"><view tone=\"fill-warn\" width=\"{doubt}%\"></view></view></linear-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
+        "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>暖意</text><text>{warmth}</text></flex-layout><view part=\"track\"><view part=\"fill\" width=\"{warmth}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>信任</text><text>{trust}</text></flex-layout><view part=\"track\"><view part=\"fill\" width=\"{trust}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>疑慮</text><text>{doubt}</text></flex-layout><view part=\"track\"><view part=\"fill\" tone=\"warn\" width=\"{doubt}%\"></view></view></linear-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
+        "css": ":host{display:block} part(track){height:6px;background:var(--lt-track-bg);border-radius:3px;overflow:hidden;margin-top:2px} part(fill){height:6px;background:var(--lt-c-accent);border-radius:3px} [data-tone=\"warn\"]{background:var(--lt-c-warn)} [data-tone=\"delta\"]{color:var(--lt-c-accent);font-size:12px} [data-tone=\"hint\"]{color:var(--lt-c-text-dim);font-style:italic;font-size:12px}",
         "example": "<bond-meter warmth=\"62\" trust=\"48\" doubt=\"30\" delta=\"暖意 +12,疑慮 +8\" hint=\"你靠得越近,她越怕被看穿\">暖意62 信任48 疑慮30</bond-meter>"
       }
     ],
@@ -394,24 +437,41 @@ official theme):
 }
 ```
 
-The `template` is what turns `bond-meter` from a flat card into three real meter
-bars. Each stat is a **vertical stack**: a label + value row on top
-(`<flex-layout justify="between">` with the name and the number), then the
-`<view tone="track">` bar rail on its **own full-width row** below, whose inner
-`<view tone="fill" width="{warmth}%">` binds its width to the attribute —
-component CSS then gives `track` a height + rounded background and `fill` the
-same height + accent color.
+The tokens the component css references live on `:root` in the **theme global
+css** field (never on `.lt-scene`, or they would be undefined for this sibling
+component):
 
-**A meter's `track` must sit on its OWN full-width row inside a vertical stack.**
-Never place a `weight`-bearing label and the `track` in the **same horizontal
-flex row** — the label's flex-grow steals the width, the `track` collapses to
-zero, and no bar paints (bars look like bare labels with no fill). Stack them:
-label row on top, full-width track row below, one stack per stat.
+```css
+:root {
+  --lt-track-bg: rgba(255,255,255,.12);
+  --lt-c-accent: #e58fb0;   /* warmth / trust fill */
+  --lt-c-warn:   #d98a4a;   /* doubt fill */
+  --lt-c-text-dim: rgba(255,255,255,.6);
+}
+```
 
-The `example` is what the editor preview renders, so the author sees a pink bond
-meter, not a gold dice widget. `enabledComponents` gates which library entries
-are active: listing only `bond-meter` activates that tag even if `components[]`
-defines more.
+Why this paints where the old shape did not:
+
+- The `template` marks each bar rail `part="track"` and its inner fill
+  `part="fill"`; the component's **`css` field** styles them via `part(track)` /
+  `part(fill)`, which the renderer auto-scopes to `.lt-cmp-bond-meter`. The fill's
+  **height + background come from the css**; its **width comes from the
+  `width="{warmth}%"` binding**. Without the css field the bars are `height:0` and
+  transparent — a template alone paints nothing.
+- Each stat is a **vertical stack**: a label + value row on top
+  (`<flex-layout justify="between">`), then the `part="track"` rail on its **own
+  full-width row** below. **A meter's track must sit on its OWN full-width row
+  inside a vertical stack.** Never place a `weight`-bearing label and the track in
+  the **same horizontal flex row** — the label's flex-grow steals the width, the
+  track collapses to zero, and no bar paints.
+- The doubt fill carries `tone="warn"`; the auto-scoped `[data-tone="warn"]` rule
+  in the component css overrides its color, so one stat reads as caution without a
+  separate component.
+
+The `example` is what the editor preview renders, so the author sees a real bond
+meter with painted bars, not a gold dice widget. `enabledComponents` gates which
+library entries are active: listing only `bond-meter` activates that tag even if
+`components[]` defines more.
 
 A declaration may also carry an optional `name`: a short human-readable display
 title (mirroring official components) shown as the card heading in the theme
