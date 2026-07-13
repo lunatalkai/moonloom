@@ -386,6 +386,15 @@ CSS, `:host` targets the custom component root and `part(name)` targets an
 atomic child with `part="name"`. In XML, add `part="name"` only as a stable
 local hook; do not add `class` or `style`.
 
+**Cover every `{placeholder}`.** A component's `example` MUST supply a concrete
+value for **every** `{placeholder}` its `template` references — the editor preview
+and the degraded render substitute from the `example`, so any placeholder the
+`example` omits shows up on screen as literal `{placeholder}` text. `defaults`
+should likewise cover **every** placeholder: it is the fallback when a live turn
+omits an attribute, so no `{placeholder}` ever leaks into real chat either.
+Before shipping a component, list its template `{…}` names and confirm each one
+appears in both `example` and `defaults`.
+
 **Declare `tagConfig.xmlv3.officialComponents`** too — at least `["dialogue"]`. A
 theme that omits `officialComponents` is treated as a **legacy** theme, which
 also triggers the generic universal fallback sample (dice / DC / generic combat
@@ -426,7 +435,7 @@ names, do not copy any official theme):
         "name": "Bond meter",
         "description": "Three bonds that pull against each other",
         "attributes": { "warmth": "0-100", "trust": "0-100", "doubt": "0-100", "delta": "what just moved", "hint": "the tension this turn" },
-        "defaults": { "warmth": "50", "trust": "50", "doubt": "20" },
+        "defaults": { "warmth": "50", "trust": "50", "doubt": "20", "delta": "—", "hint": "尚無變化" },
         "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>暖意</text><text>{warmth}</text></flex-layout><view part=\"track\"><view part=\"fill\" width=\"{warmth}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>信任</text><text>{trust}</text></flex-layout><view part=\"track\"><view part=\"fill\" width=\"{trust}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>疑慮</text><text>{doubt}</text></flex-layout><view part=\"track\"><view part=\"fill\" tone=\"warn\" width=\"{doubt}%\"></view></view></linear-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
         "css": ":host{display:block} part(track){height:6px;background:var(--lt-track-bg);border-radius:3px;overflow:hidden;margin-top:2px} part(fill){height:6px;background:var(--lt-c-accent);border-radius:3px} [data-tone=\"warn\"]{background:var(--lt-c-warn)} [data-tone=\"delta\"]{color:var(--lt-c-accent);font-size:12px} [data-tone=\"hint\"]{color:var(--lt-c-text-dim);font-style:italic;font-size:12px}",
         "example": "<bond-meter warmth=\"62\" trust=\"48\" doubt=\"30\" delta=\"暖意 +12,疑慮 +8\" hint=\"你靠得越近,她越怕被看穿\">暖意62 信任48 疑慮30</bond-meter>"
