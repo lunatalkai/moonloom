@@ -181,8 +181,10 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   components need signature styling, cozy vs dramatic tone). A theme goal is not
   a card premise: do not ask card-premise questions (题材 / world background,
   player-vs-character relationship) and do not route it to
-  `lunatalk-premise-workshop`. A theme is a coherent styling of the reading
-  experience, not a kitchen-sink dump of every mechanic component.
+  `lunatalk-premise-workshop`. A strong theme is rich and genre-coherent — a
+  coherent set of in-world custom components plus at least two signature
+  narrative objects — not a bare reskin and not a generic kitchen-sink of
+  ungenred mechanics.
 - Pre-authoring or pre-render presentation planning, deciding XMLV3 vs plain vs
   HTML, Theme V3 vs `roleWelcome`, visible state vs hidden JSON state, first-
   screen hierarchy, visual affordances, status panels, choices/forms as
