@@ -191,6 +191,28 @@ test('theme-v3-rendering teaches styling custom components via the component css
   assert.match(ref, /part=\\?"fill"/i, 'template must mark part="fill" on the bar fill');
 });
 
+test('theme-v3-rendering requires example + defaults to cover every template placeholder', async () => {
+  const ref = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // The firm rule: example must supply a value for every {placeholder}, or the
+  // literal {placeholder} shows on screen; defaults must cover them too.
+  assert.match(ref, /every `?\{placeholder\}`?|every placeholder|each `?\{placeholder\}`?/i,
+    'must require covering every placeholder');
+  assert.match(ref, /literal `?\{[^}]*\}`? (text|on screen|on-screen)|shows (up )?(on screen )?as literal/i,
+    'must warn an omitted placeholder renders as literal text');
+  assert.match(ref, /defaults[\s\S]{0,80}(every|each) placeholder|defaults[\s\S]{0,80}cover/i,
+    'must say defaults should cover every placeholder for live turns');
+
+  // The synthetic bond-meter must itself be leak-free: defaults cover delta+hint.
+  const block = ref.slice(ref.indexOf('"tag": "bond-meter"'));
+  const defaults = block.match(/"defaults":\s*\{[^}]*\}/);
+  assert.ok(defaults, 'bond-meter must declare defaults');
+  for (const ph of ['warmth', 'trust', 'doubt', 'delta', 'hint']) {
+    assert.match(defaults[0], new RegExp(`"${ph}"`),
+      `bond-meter defaults must cover the {${ph}} placeholder`);
+  }
+});
+
 test('router routes a theme-creation goal to visual/presentation, not premise workshop', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   assert.match(router, /visual theme|Theme V3.*goal|creating.*theme|theme goal/i,
