@@ -85,12 +85,16 @@ card-premise questions in a theme session (题材 / world background, the
 player-vs-character relationship, opening basis) — those belong to a card
 session, and do not route a pure theme goal to `lunatalk-premise-workshop`.
 
-A theme is a coherent styling of the reading experience, not a component demo.
-Do **not** produce a kitchen-sink theme that dumps every mechanic component
-(dice / DC checks / combat / next-turn / rewards / items / fortune / score
-meters) into one palette. Style only the components the card actually uses;
-**restraint over completeness**. See `theme-v3-rendering.md` "Theme quality" for
-the full paradigm, visual standards, and the anti-homogenization tests.
+A strong theme is **rich and genre-coherent**: it dresses the story in a
+coherent set of in-world custom components (an identity header, a three-stat
+pulling status, a timeline, a collection grid, cost/risk choices) plus at least
+**two signature narrative objects** unique to the genre. Avoid both failure
+modes: a **bare reskin** (only recolored base tags, zero custom components) and a
+**generic kitchen-sink** (ungenred dice / DC / combat widgets that could belong
+to any game). The cure for the second is genre-coherence, not fewer components.
+Study real exemplars first: `theme_list_available` with `includeOfficial: true`.
+See `theme-v3-rendering.md` "Theme quality" for the full component set, cadence
+discipline, visual standards, and the anti-homogenization tests.
 
 ## Presentation packet
 

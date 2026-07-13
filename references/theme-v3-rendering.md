@@ -114,35 +114,80 @@ Visual Check must verify readable contrast, no clipping or overlap, clear action
 hierarchy, resolved custom tone hooks, and mobile touch target size. Use at
 least 44pt / 48dp as the practical minimum target for tappable choices and CTAs.
 
-## Theme quality: a coherent reading experience, not a mechanics dashboard
+## Theme quality: a rich, genre-coherent world — not a bare reskin, not a generic dashboard
 
-A LunaTalk theme is a coherent, tasteful **styling of the story-reading
-experience** — not a showcase of every game mechanic. The paradigm a good theme
-targets is a clean reading flow that showcases immersion:
+A LunaTalk theme is **not** a palette swap over the base dialogue tags. Every
+strong theme is **rich**: it dresses the whole story in a coherent set of
+in-world custom XMLV3 components, and it carries at least **two signature
+narrative objects** that belong only to that genre. Richness is the product; the
+discipline is that every piece must be **genre-coherent** — dressed in this
+story's material world, not a naked widget.
 
-- a **scene header** (place / time / mood) styled as a restrained accent,
-- **narration `<n>`** as calm, de-emphasized prose,
-- a **speaker nameplate + dialogue `<d>`** bubble for spoken lines,
-- **inner monologue `<quote>`** as a softer, tinted, italic aside,
-- at most **one tasteful character/status info card**, and
-- **one or two restrained meters** (e.g. a single relationship or mood bar) only
-  when the story actually tracks that value.
+**Study real exemplars before you design.** Call `theme_list_available` with
+`includeOfficial: true` and read the `tagConfig` of two or three official themes
+across different genres. Internalize how a complete theme is built — the
+component set, how each piece is skinned into its world, and when each one is
+allowed to appear — rather than designing a theme from an empty page.
 
-The eye should move smoothly through scene → narration → dialogue → thought, each
-layer distinct by typography and restraint. That reading immersion is the product,
-not a grid of widgets.
+### The component set a rich theme targets
 
-### The anti-pattern: the kitchen-sink theme (do not do this)
+Skin every piece below into the theme's genre. The synthetic examples are
+illustrations, not a catalog to copy — your components should be your genre's.
 
-A theme is **NOT** a demo of every mechanic component crammed into one palette.
-Do NOT pile dice rolls (2d6), DC / skill checks, combat / enemy panels,
-next-turn markers, reward / loot cards, item grids, fortune / tarot draws, and
-score-sharing meters into a theme just because those components exist. That
-produces a chaotic "component dashboard" that reads like a QA fixture, not a
-designed theme. **Restraint over completeness**: add a mechanic surface only when
-the specific story the theme is for actually uses it. Most themes need zero
-combat / dice / loot styling. If you cannot name the scene in the story that
-uses a component, cut it.
+- **Identity header (×1)** — an in-world identity card emitted **once** when the
+  session opens (synthetic examples: a guild charter, a field badge, a
+  ship's manifest). Re-emit only when the identity itself changes, never every
+  turn.
+- **Three-stat pulling status (×1)** — a status card with exactly **three stats
+  that pull against each other**, each a 0–100 meter plus a `delta` line and an
+  italic `hint`. The soul is the **tension**: raising one stat forces another
+  down (synthetic example: raising `影响力` necessarily raises `暴露`, or spends
+  `资源`). Re-emit the whole status **every action**; never let all three improve
+  at once.
+- **Timeline (×1)** — done / now / next rows with exactly one "now" row, and it
+  **always ends on a "next" hook** (a countdown or a promise) so the player
+  always sees what is coming. Re-emit on **stage change**, not every turn.
+- **Collection grid (×1)** — a 2-column badge grid with single-direction
+  progress (`todo → done → key`). List every known item including `todo`; keep at
+  most two `key` items lit at once. It never regresses.
+- **Cost/risk choices (×1)** — choice cards that each carry an **act, a cost, and
+  a risk**, 2–3 at a time, with costs on **different axes** (time vs trust vs
+  safety). Pair the card with a native `<choice send>` (the card displays, the
+  choice is the tappable button) and always include a free-input "describe it
+  myself" fallback option.
+- **Signature narrative objects (×2 or more)** — **the soul of the theme**:
+  genre-defining narrative **objects**, not dashboards — a prop, document, or
+  ritual from the story world, each with its own independent layout (synthetic
+  examples: a wax-sealed letter that unfolds, a brewing apparatus that fills as a
+  craft completes). These carry the strictest cadence: surface them only on
+  **milestones**, never every turn.
+
+**Cadence / emit-timing discipline is part of the design, not an afterthought.**
+Identity once, status every action, timeline on stage change, collection on
+acquisition, signatures on milestones. A theme whose components all fire every
+turn floods the screen and drifts; a theme whose state only moves one direction
+(a grid that never regresses, a status that re-states the whole picture each
+action) stays self-consistent turn over turn.
+
+### The two failure modes (avoid both)
+
+- **Bare reskin (under-built).** A theme that only recolors the base
+  `<n>` / `<d>` / `<scene>` tags with `tagConfig: {}` and **zero custom
+  components** is not a theme — it is a palette. It gives the card none of the
+  in-world structure above and reads as flat prose in new paint. A theme with no
+  custom components is unfinished.
+- **Generic kitchen-sink (mis-built).** The opposite failure is piling on
+  **ungenred** mechanic widgets — raw dice rolls, DC / skill checks,
+  combat / enemy panels, loot grids — that **could belong to any game** and are
+  dressed in nothing but a palette. That reads like a QA fixture, not a designed
+  world. The fix is **not fewer components** — it is genre-coherence: every
+  component must be dressed in this story's material world, and at least two must
+  be genuine signatures. If a component would fit any other theme unchanged, it
+  is generic; redesign it, do not delete the richness.
+
+The needle between them is **rich AND genre-coherent AND signature-bearing.** Add
+components generously, but every one must earn its place by belonging to this
+genre, and two or more must be objects only this world would have.
 
 ### Visual standards (how the layers read)
 
@@ -157,7 +202,9 @@ uses a component, cut it.
   another box.
 - **Mainstream plus one accent**: keep the whole surface calm and let a single
   brand accent (one gold sparkle, the speaker nameplate) be the one highlight. At
-  most two accent colors on screen.
+  most two accent colors on screen. A rich theme is still visually disciplined —
+  the richness lives in the **structure and the in-world objects**, not in a riot
+  of color.
 
 ### Anti-homogenization (so every theme does not look the same)
 

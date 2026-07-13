@@ -199,16 +199,21 @@ Self-review:
   (题材, world background, player-vs-character relationship). A theme session is
   not a card session; do not route a pure theme goal to
   `lunatalk-premise-workshop`.
-- A theme is a coherent **styling of the reading experience** (scene / narration
-  `<n>` / dialogue `<d>` / inner thought `<quote>` / speaker nameplate, plus at
-  most one tasteful info card and one or two restrained meters) — NOT a
-  kitchen-sink demo of every mechanic (dice / DC / combat / turns / rewards /
-  loot / fortune / score-sharing). Style only the components the card actually
-  uses; **restraint over completeness**. Build hierarchy with whitespace, weight,
-  and de-emphasis color, not boxes-on-boxes; keep narration muted and dialogue
-  brighter; at most two accent colors. See `theme-v3-rendering.md` "Theme
-  quality" for the full paradigm and the genre-noun / grayscale anti-homogenization
-  tests.
+- A strong theme is **rich and genre-coherent**: it dresses the story in a
+  coherent set of in-world custom components — an identity header, a three-stat
+  **pulling** status (three stats that pull against each other), a timeline, a
+  collection grid, cost/risk choices — plus at least **two signature narrative
+  objects** unique to the genre, each with its own cadence (identity once, status
+  every action, signatures on milestones). Avoid both failure modes: a **bare
+  reskin** (only recolored base tags, zero custom components) and a **generic
+  kitchen-sink** (ungenred dice / DC / combat widgets that could belong to any
+  game). The cure for the second is genre-coherence, not fewer components. Study
+  real exemplars first with `theme_list_available` (`includeOfficial: true`).
+  Build hierarchy with whitespace, weight, and de-emphasis color, not
+  boxes-on-boxes; keep narration muted and dialogue brighter with a speaker
+  nameplate; at most two accent colors. See `theme-v3-rendering.md` "Theme
+  quality" for the full component set, cadence discipline, and the
+  genre-noun / grayscale anti-homogenization tests.
 - Do not design visual blocks that only decorate. Move style to Theme V3 or cut
   it.
 - Do not hide durable role rules, relationship gates, or scenario logic in Theme
