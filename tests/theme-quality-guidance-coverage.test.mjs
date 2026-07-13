@@ -95,8 +95,48 @@ test('presentation-director skill carries the rich theme paradigm', async () => 
     'skill must say theme sessions ask visual-design questions');
   assert.match(skill, /theme-v3-rendering\.md/,
     'skill must point to theme-v3-rendering.md theme-quality guidance');
+  assert.match(skill, /template[\s\S]{0,200}example|template \+ example/i,
+    'skill must say each component ships a template + example, not a shell');
   assert.doesNotMatch(skill, /restraint over completeness/i,
     'skill must NOT keep the reversed anti-mechanics language');
+});
+
+test('theme-v3-rendering requires template + example, not hollow shells', async () => {
+  const ref = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // An extends-only declaration renders as a flat box.
+  assert.match(ref, /flat (colou?red )?box/i,
+    'must warn that an extends-only component renders as a flat box');
+
+  // template is REQUIRED for structural components.
+  assert.match(ref, /MUST declare a `?template`?|template[^.]{0,40}(required|must)/i,
+    'must require a template for structural components');
+
+  // example is part of the declaration contract and powers the preview.
+  assert.match(ref, /editor preview|degraded render|preview[^.]{0,40}depend/i,
+    'must explain example powers the editor preview / degraded render');
+
+  // officialComponents must be declared or the theme is legacy.
+  assert.match(ref, /officialComponents/, 'must require officialComponents');
+  assert.match(ref, /legacy|generic (universal )?sample|universal.*sample/i,
+    'must explain no officialComponents -> legacy generic fallback');
+
+  // The complete illustrative component carries a real meter template.
+  assert.match(ref, /"template":/, 'illustrative JSON must include a template field');
+  assert.match(ref, /"example":/, 'illustrative JSON must include an example field');
+  assert.match(ref, /track[\s\S]{0,200}fill/i,
+    'meter template must show track + fill bar structure');
+  assert.match(ref, /\{[a-z]+\}%/i,
+    'meter fill must bind a width percentage from an attribute placeholder');
+
+  // The old hollow hp-bar shell must be gone.
+  assert.doesNotMatch(ref,
+    /\{\s*"tag":\s*"hp-bar",\s*"extends":\s*"card",\s*"name":\s*"HP bar"\s*\}/,
+    'the hollow hp-bar shell must be replaced with a complete component');
+
+  // The paradigm section ties richness to template+example.
+  assert.match(ref, /only real when it ships/i,
+    'paradigm must state a component is real only with template + example');
 });
 
 test('router routes a theme-creation goal to visual/presentation, not premise workshop', async () => {

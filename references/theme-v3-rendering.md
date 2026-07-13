@@ -189,6 +189,16 @@ The needle between them is **rich AND genre-coherent AND signature-bearing.** Ad
 components generously, but every one must earn its place by belonging to this
 genre, and two or more must be objects only this world would have.
 
+**Each component above is only real when it ships a `template` + `example`.** The
+structure that makes a piece rich comes entirely from its `template` of FL3
+primitives — a status meter is `<view tone="track"><view tone="fill"
+width="{x}%">` bars, a timeline is rows, a collection grid is a `<grid-layout>`,
+a signature note is its own paper — and its editor preview comes from its
+`example`. A component that declares only `extends` + `attributes` renders as a
+flat colored box no matter how genre-right its name: that is the bare-reskin
+failure one component deep. See the custom-component declaration section below
+for the full contract and a complete meter example.
+
 ### Visual standards (how the layers read)
 
 - Build hierarchy with **whitespace, font weight, and de-emphasis color** — not
@@ -320,10 +330,28 @@ than `height="120px"` or `height="240rpx"`: Desktop/H5 maps 1 layout unit to
 
 Theme V3 custom components live in `tagConfig.xmlv3.components`. A declaration
 names a lowercase/kebab-case tag, chooses an atomic `extends` primitive, lists
-allowed semantic attributes, and may include scoped component CSS. In component
+allowed semantic `attributes`, and — for any component that is more than a
+one-primitive skin — **MUST declare a `template`** (the FL3 primitive tree that
+gives it real visual structure) **and an `example`** (a realistic usage string
+the theme editor's live preview and the degraded/alt render both depend on). A
+declaration that sets only `tag` + `extends` + `attributes` renders as a **flat
+box** — a name-and-color shell with none of the meter bars, timeline rows, grid
+cells, or note paper it is supposed to show. That hollow shell is the
+bare-reskin failure one component deep: "rich" in name only. A component with no
+`example` is worse than invisible — the editor preview cannot render it, so it
+shows none of your theme's components and falls back to a generic universal
+sample. It may also include `defaults` and scoped component CSS. In component
 CSS, `:host` targets the custom component root and `part(name)` targets an
 atomic child with `part="name"`. In XML, add `part="name"` only as a stable
 local hook; do not add `class` or `style`.
+
+**Declare `tagConfig.xmlv3.officialComponents`** too — at least `["dialogue"]`. A
+theme that omits `officialComponents` is treated as a **legacy** theme, which
+also triggers the generic universal fallback sample (dice / DC / generic combat
+props in default colors) in the editor preview instead of the theme's own
+components. So a complete theme carries, at the `xmlv3` level, all three:
+`officialComponents`, a `components[]` library where every structural entry has a
+`template` + `example`, and `enabledComponents`.
 
 ### Enabling custom components (`enabledComponents`)
 
@@ -340,19 +368,40 @@ rendering, are offered to the AI, and appear in the theme's component list.
 - Disabling a custom component never deletes it — its definition stays in
   `components[]` (the library), so re-enabling restores it unchanged.
 
+A complete theme block looks like this — note the `officialComponents`, the full
+`template` + `example` on the structural component, and `enabledComponents` (a
+synthetic bond meter; invent your own genre and stat names, do not copy any
+official theme):
+
 ```json
 {
   "xmlv3": {
+    "officialComponents": ["dialogue"],
     "components": [
-      { "tag": "hp-bar", "extends": "card", "name": "HP bar" },
-      { "tag": "mp-bar", "extends": "card", "name": "MP bar" }
+      {
+        "tag": "bond-meter",
+        "extends": "card",
+        "name": "Bond meter",
+        "description": "Three bonds that pull against each other",
+        "attributes": { "warmth": "0-100", "trust": "0-100", "doubt": "0-100", "delta": "what just moved", "hint": "the tension this turn" },
+        "defaults": { "warmth": "50", "trust": "50", "doubt": "20" },
+        "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">暖意</text><view tone=\"track\"><view tone=\"fill\" width=\"{warmth}%\"></view></view></flex-layout><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">信任</text><view tone=\"track\"><view tone=\"fill\" width=\"{trust}%\"></view></view></flex-layout><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">疑慮</text><view tone=\"track\"><view tone=\"fill-warn\" width=\"{doubt}%\"></view></view></flex-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
+        "example": "<bond-meter warmth=\"62\" trust=\"48\" doubt=\"30\" delta=\"暖意 +12,疑慮 +8\" hint=\"你靠得越近,她越怕被看穿\">暖意62 信任48 疑慮30</bond-meter>"
+      }
     ],
-    "enabledComponents": ["hp-bar"]
+    "enabledComponents": ["bond-meter"]
   }
 }
 ```
 
-In the example only `hp-bar` is active; `mp-bar` stays defined but disabled.
+The `template` is what turns `bond-meter` from a flat card into three real meter
+bars: each `<view tone="track">` is the bar rail and its inner
+`<view tone="fill" width="{warmth}%">` is the fill whose width binds to the
+attribute — component CSS then gives `track` a height + rounded background and
+`fill` the same height + accent color. The `example` is what the editor preview
+renders, so the author sees a pink bond meter, not a gold dice widget.
+`enabledComponents` gates which library entries are active: listing only
+`bond-meter` activates that tag even if `components[]` defines more.
 
 A declaration may also carry an optional `name`: a short human-readable display
 title (mirroring official components) shown as the card heading in the theme

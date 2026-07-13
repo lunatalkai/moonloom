@@ -211,9 +211,15 @@ Self-review:
   real exemplars first with `theme_list_available` (`includeOfficial: true`).
   Build hierarchy with whitespace, weight, and de-emphasis color, not
   boxes-on-boxes; keep narration muted and dialogue brighter with a speaker
-  nameplate; at most two accent colors. See `theme-v3-rendering.md` "Theme
-  quality" for the full component set, cadence discipline, and the
-  genre-noun / grayscale anti-homogenization tests.
+  nameplate; at most two accent colors. **Each component must ship a `template`
+  (FL3 primitive tree — meter bars = `<view tone="track"><view tone="fill"
+  width="{x}%">`) + an `example`, not a tag/name shell**: an `extends`-only
+  declaration renders as a flat box, and with no `example` the editor preview
+  shows none of your components and falls back to a generic sample. Also declare
+  `officialComponents` (≥ `["dialogue"]`) so the theme is not treated as legacy.
+  See `theme-v3-rendering.md` "Theme quality" for the full component set, cadence
+  discipline, the complete component example, and the genre-noun / grayscale
+  anti-homogenization tests.
 - Do not design visual blocks that only decorate. Move style to Theme V3 or cut
   it.
 - Do not hide durable role rules, relationship gates, or scenario logic in Theme
