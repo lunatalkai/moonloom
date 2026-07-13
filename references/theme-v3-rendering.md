@@ -385,7 +385,7 @@ official theme):
         "description": "Three bonds that pull against each other",
         "attributes": { "warmth": "0-100", "trust": "0-100", "doubt": "0-100", "delta": "what just moved", "hint": "the tension this turn" },
         "defaults": { "warmth": "50", "trust": "50", "doubt": "20" },
-        "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">暖意</text><view tone=\"track\"><view tone=\"fill\" width=\"{warmth}%\"></view></view></flex-layout><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">信任</text><view tone=\"track\"><view tone=\"fill\" width=\"{trust}%\"></view></view></flex-layout><flex-layout alignment=\"center\" gap=\"sm\"><text weight=\"1\">疑慮</text><view tone=\"track\"><view tone=\"fill-warn\" width=\"{doubt}%\"></view></view></flex-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
+        "template": "<card padding=\"md\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"sm\"><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>暖意</text><text>{warmth}</text></flex-layout><view tone=\"track\"><view tone=\"fill\" width=\"{warmth}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>信任</text><text>{trust}</text></flex-layout><view tone=\"track\"><view tone=\"fill\" width=\"{trust}%\"></view></view></linear-layout><linear-layout orientation=\"vertical\" gap=\"xs\"><flex-layout justify=\"between\" alignment=\"center\"><text>疑慮</text><text>{doubt}</text></flex-layout><view tone=\"track\"><view tone=\"fill-warn\" width=\"{doubt}%\"></view></view></linear-layout></linear-layout><text tone=\"delta\">{delta}</text><text tone=\"hint\">{hint}</text></card>",
         "example": "<bond-meter warmth=\"62\" trust=\"48\" doubt=\"30\" delta=\"暖意 +12,疑慮 +8\" hint=\"你靠得越近,她越怕被看穿\">暖意62 信任48 疑慮30</bond-meter>"
       }
     ],
@@ -395,13 +395,23 @@ official theme):
 ```
 
 The `template` is what turns `bond-meter` from a flat card into three real meter
-bars: each `<view tone="track">` is the bar rail and its inner
-`<view tone="fill" width="{warmth}%">` is the fill whose width binds to the
-attribute — component CSS then gives `track` a height + rounded background and
-`fill` the same height + accent color. The `example` is what the editor preview
-renders, so the author sees a pink bond meter, not a gold dice widget.
-`enabledComponents` gates which library entries are active: listing only
-`bond-meter` activates that tag even if `components[]` defines more.
+bars. Each stat is a **vertical stack**: a label + value row on top
+(`<flex-layout justify="between">` with the name and the number), then the
+`<view tone="track">` bar rail on its **own full-width row** below, whose inner
+`<view tone="fill" width="{warmth}%">` binds its width to the attribute —
+component CSS then gives `track` a height + rounded background and `fill` the
+same height + accent color.
+
+**A meter's `track` must sit on its OWN full-width row inside a vertical stack.**
+Never place a `weight`-bearing label and the `track` in the **same horizontal
+flex row** — the label's flex-grow steals the width, the `track` collapses to
+zero, and no bar paints (bars look like bare labels with no fill). Stack them:
+label row on top, full-width track row below, one stack per stat.
+
+The `example` is what the editor preview renders, so the author sees a pink bond
+meter, not a gold dice widget. `enabledComponents` gates which library entries
+are active: listing only `bond-meter` activates that tag even if `components[]`
+defines more.
 
 A declaration may also carry an optional `name`: a short human-readable display
 title (mirroring official components) shown as the card heading in the theme

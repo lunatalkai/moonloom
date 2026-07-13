@@ -139,6 +139,29 @@ test('theme-v3-rendering requires template + example, not hollow shells', async 
     'paradigm must state a component is real only with template + example');
 });
 
+test('theme-v3-rendering teaches the vertical-stack meter layout (no collapsed bars)', async () => {
+  const ref = await readFile('references/theme-v3-rendering.md', 'utf8');
+
+  // A meter track must sit on its own full-width row inside a vertical stack.
+  assert.match(ref, /own full-width row/i,
+    'meter track must sit on its own full-width row');
+  assert.match(ref, /vertical stack|stack vertically/i,
+    'meter rows stack vertically');
+
+  // Forbid the label+track-in-one-horizontal-flex anti-pattern.
+  assert.match(ref, /same horizontal\s+flex\s+row/i,
+    'must name the horizontal-flex anti-pattern');
+  assert.match(ref, /steals the width|collapses? to (nothing|zero)/i,
+    'must explain the label steals width and the bar collapses');
+
+  // The synthetic template must use a label+value row (justify between),
+  // not a weight-bearing label glued to the track in one horizontal flex.
+  assert.match(ref, /justify=\\?"?between/i,
+    'meter label row uses justify=between');
+  assert.doesNotMatch(ref, /weight=\\?"1\\?">[^<]{0,6}<\/text><view tone=\\?"track/i,
+    'template must not glue a weight-bearing label directly before the track');
+});
+
 test('router routes a theme-creation goal to visual/presentation, not premise workshop', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   assert.match(router, /visual theme|Theme V3.*goal|creating.*theme|theme goal/i,
