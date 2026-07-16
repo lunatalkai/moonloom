@@ -167,3 +167,25 @@ test('preview-page-authoring reference documents schema whitelist, limits, and s
   assert.match(authoring, /(?:not\s+terminal|non-terminal|can\s+take\s+longer|may\s+persist)/i);
   assert.match(authoring, /(?:temporarily|paused|not\s+be\s+visible|unavailable)/i);
 });
+
+test('preview-page-authoring reference states the REAL wire node/mark vocabulary', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // node type strings ARE the public wire contract — a client must send these
+  // exact names. Docs listing invented names strand every external AI client.
+  for (const node of ['heading', 'paragraph', 'blockquote', 'bulletList', 'orderedList',
+    'listItem', 'dialogueBubble', 'statCard', 'spoiler', 'divider', 'image']) {
+    assert.match(authoring, new RegExp('`' + node + '`'), `missing block node \`${node}\``);
+  }
+  for (const mark of ['bold', 'italic', 'underline', 'strike', 'highlight', 'textStyle']) {
+    assert.match(authoring, new RegExp('`' + mark + '`'), `missing mark \`${mark}\``);
+  }
+  // palette + tone enums and alignment attr key
+  assert.match(authoring, /gold/);
+  assert.match(authoring, /textAlign/);
+  // invented vocabulary must never come back
+  for (const fake of ['`gallery`', '`callout`', '`spacer`']) {
+    assert.ok(!authoring.includes(fake), `invented node ${fake} must not be documented`);
+  }
+  // dialogue bubble content shape: inline preferred, paragraphs flattened
+  assert.match(authoring, /dialogueBubble[\s\S]{0,400}?(?:inline|flatten)/i);
+});

@@ -14,24 +14,24 @@ node, and the agent repairs from there.
 
 ## Document shape
 
-A preview page document is a single JSON object with a top-level ordered list of
-blocks. Each block is one whitelisted node; some blocks carry inline content, and
-inline text can carry whitelisted marks.
+A preview page document is a ProseMirror-style JSON tree. The top level is
+`{ "type": "doc", "version": 1, "content": [ ...blocks ] }`. Every node is
+`{ "type": "<node>", "attrs": { ... }, "content": [ ...children ] }`; inline
+text is `{ "type": "text", "text": "...", "marks": [ { "type": "<mark>", "attrs": { ... } } ] }`.
 
 ```json
 {
-  "schemaVersion": "1",
-  "blocks": [
-    { "type": "heading", "level": 2, "text": "Who you are talking to" },
-    {
-      "type": "paragraph",
-      "content": [
-        { "type": "text", "text": "A night-shift archivist who ", "marks": [] },
-        { "type": "text", "text": "remembers everything", "marks": [{ "type": "bold" }] },
-        { "type": "text", "text": " and forgives nothing." }
-      ]
-    },
-    { "type": "image", "src": "<asset-library image URL that passed review>", "alt": "The archive at night" },
+  "type": "doc",
+  "version": 1,
+  "content": [
+    { "type": "heading", "attrs": { "level": 2, "textAlign": "center" },
+      "content": [ { "type": "text", "text": "Who you are talking to" } ] },
+    { "type": "paragraph", "content": [
+      { "type": "text", "text": "A night-shift archivist who " },
+      { "type": "text", "text": "remembers everything", "marks": [ { "type": "bold" } ] },
+      { "type": "text", "text": " and forgives nothing." }
+    ] },
+    { "type": "image", "attrs": { "src": "<asset-library image URL that passed review>" } },
     { "type": "divider" }
   ]
 }
@@ -43,23 +43,36 @@ account's asset library that has already passed review (see Image rules).
 ## Schema v1 whitelist
 
 Schema v1 accepts a fixed vocabulary. Anything outside it is rejected with
-`invalid_param`.
+`invalid_param` plus a `path` to the first offending node. These node and mark
+type strings are the exact wire contract — send them verbatim.
 
-- **11 block types**: `heading`, `paragraph`, `image`, `gallery`, `quote`,
-  `callout`, `bulletList`, `orderedList`, `listItem`, `divider`, and `spacer`.
+- **11 block types**: `heading`, `paragraph`, `blockquote`, `bulletList`,
+  `orderedList`, `listItem`, `dialogueBubble`, `statCard`, `spoiler`,
+  `divider`, and `image`.
 - **2 inline node types**: `text` and `hardBreak`.
-- **6 marks** on inline `text`: `bold`, `italic`, `underline`, `strike`, `code`,
-  and `link`.
+- **6 marks** on inline `text`: `bold`, `italic`, `underline`, `strike`,
+  `highlight`, and `textStyle`.
 
-Attributes are also constrained. Only whitelisted attributes survive, for
-example `heading.level` (a small integer), `image.src` / `image.alt`,
-`gallery.items[].src` / `gallery.items[].alt`, `link` target on a mark, and
-`listItem` children. Unknown attributes are dropped or rejected; do not invent
-attributes such as inline styles, class names, script handlers, or raw HTML.
+Attribute contract per node:
 
-Treat the concrete block names above as the v1 categories. The MCP validator is
-the source of truth; when in doubt, save a small draft and read the
-`invalid_param` `reason` and `path` rather than guessing.
+- `heading.attrs.level`: `2` or `3` only.
+- `heading` / `paragraph` may carry `attrs.textAlign`: `left`, `center`, or
+  `right` (the key is `textAlign`, not `align`).
+- `dialogueBubble.attrs.name`: speaker label, at most 20 characters. Its
+  content is inline (`text` / `hardBreak`). Paragraph-wrapped content is
+  tolerated and flattened into lines on render — prefer plain inline content.
+- `statCard.attrs.title`: at most 20 characters; `statCard.attrs.rows` is an
+  array of `{ "k": "...", "v": "..." }`, at most 12 rows, each key and value at
+  most 30 characters. `statCard` has no children (`content` stays empty).
+- `spoiler.attrs.title`: at most 40 characters; its `content` is block nodes.
+- `image.attrs.src`: an allowed asset URL (see Image rules).
+- `highlight.attrs.tone`: `gold`, `rose`, or `violet`.
+- `textStyle.attrs.color`: one of the 8-value palette `gold`, `rose`,
+  `violet`, `mint`, `sky`, `amber`, `silver`, or `default` (empty/`default`
+  means no color).
+
+Unknown node types, marks, or attributes are rejected; do not invent inline
+styles, class names, script handlers, or raw HTML.
 
 ## Hard limits
 
@@ -80,23 +93,27 @@ Use the block that matches the reading intent, not the one that looks densest.
 - `heading` (`level` 2 or 3): a short section label. Do not stack many headings
   with no body between them.
 - `paragraph`: normal prose. Most of a preview page is paragraphs.
-- `image`: one figure with `alt` text. Use it for a hero or a section anchor.
-- `gallery`: two to a few images read as a set (a mood board, a cast row).
-- `quote`: a pulled line — an in-character motto, a review-style hook.
-- `callout`: one boxed note the visitor should not miss (a content note, a
-  premise one-liner).
-- `bulletList` / `orderedList` with `listItem` children: scannable facts, rules,
-  or a short "what you can do here" list. Keep items short.
+- `blockquote`: a pulled line rendered as an accented quote card — an
+  in-character motto, a premise hook.
+- `dialogueBubble`: one speaker line rendered as a chat-style bubble with the
+  speaker name. A short row of bubbles is a strong way to preview each
+  character's voice.
+- `statCard`: a compact key/value panel (status board, relationship meter,
+  scene facts). Keep keys and values short — it renders as a two-column card.
+- `spoiler`: a collapsed section the visitor expands — hide twists or optional
+  lore behind a title that teases without revealing.
+- `bulletList` / `orderedList` with `listItem` children: scannable facts or a
+  short "what you can do here" list. Keep items short.
+- `image`: one figure. Use it for a hero or a section anchor.
 - `divider`: a quiet section break between two ideas.
-- `spacer`: breathing room where a divider would be too loud.
 
-Marks add emphasis inside prose. Use `bold` and `italic` sparingly, `link` only
-for a purposeful destination, and `code` for a literal token the visitor will
-type or recognize. Over-marking reads as noise.
+Marks add emphasis inside prose. Use `bold` and `italic` sparingly, `highlight`
+for at most a few glowing phrases, and `textStyle` colors so the page keeps at
+most one or two accent colors. Over-marking reads as noise.
 
 ## Image rules
 
-Every image in a preview page — `image.src` and each `gallery` item — must be a
+Every image in a preview page — each `image` node's `attrs.src` — must be a
 URL from the account's own asset library that has already passed review
 (`moderationState` is `pass`). Images that are still under review, or
 chat-generated images that carry no review state, appear in the picker but
