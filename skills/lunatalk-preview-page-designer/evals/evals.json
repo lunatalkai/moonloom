@@ -1,0 +1,57 @@
+{
+  "skill_name": "lunatalk-preview-page-designer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Decorate the preview page for my private role. It has no decoration yet. Add a short intro and one hero image.",
+      "expected_output": "Reads the role and role_get_preview_page (status none), plans whitelisted blocks within the limits, picks a pass image from creator_image_list, saves with role_patch_preview_page using a fresh idempotencyKey, and polls moderation to a settled state.",
+      "files": [],
+      "expectations": [
+        "The output reads role_get_preview_page and treats status none as a first decoration.",
+        "The output builds a whitelisted block document within the 200 KB / 200 blocks / 20000 character limits.",
+        "The output only uses images whose moderationState is pass from creator_image_list.",
+        "The output saves through role_patch_preview_page with schemaVersion and a fresh idempotencyKey and passes the read version.",
+        "The output waits for moderation and does not report a pending page as live."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "No suitable image exists, so generate one for this private role and put it on the preview page.",
+      "expected_output": "Generates via role_generate_assets, then polls creator_image_list until the intended URL reads pass before placing it, and treats a URL that was seen then disappeared as a terminal rejection.",
+      "files": [],
+      "expectations": [
+        "The output generates the image, then polls creator_image_list until the intended URL shows moderationState pass before using it.",
+        "The output treats a URL that was seen and then disappeared from the list as a terminal rejection and stops polling it.",
+        "The output distinguishes a seen-then-vanished URL from a URL that has never appeared yet.",
+        "The output uses bounded polling with backoff and delivers without the image rather than waiting forever.",
+        "The output notes that a rejected generated image is charged and cannot be reused."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I want to add a generated image to the preview page of a public role.",
+      "expected_output": "Explains that role_generate_assets returns public_role_requires_clone for a public role, does not retry generation, and falls back to an existing pass asset-library image or drops the image block while still decorating the text.",
+      "files": [],
+      "expectations": [
+        "The output recognizes that generating for a public role returns public_role_requires_clone.",
+        "The output does not retry generation after public_role_requires_clone.",
+        "The output falls back to an existing pass image or drops the image block.",
+        "The output still completes the text decoration.",
+        "The output lists public_role_requires_clone as a terminal signal for the generation path."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "My save came back rejected, and an earlier save got a version conflict. What should I do?",
+      "expected_output": "Explains that rejectReason is a category with no per-node path so the doc must be re-read and self-checked, that a version conflict means re-read the current version and reapply, and that each corrected save needs a fresh idempotencyKey.",
+      "files": [],
+      "expectations": [
+        "The output treats rejectReason as a category-only signal with no per-node location.",
+        "The output re-reads and self-checks the document against the reject category before re-saving.",
+        "The output resolves a version conflict by re-reading the current version and reapplying the change.",
+        "The output uses a fresh idempotencyKey for the corrected save rather than replaying the old key.",
+        "The output handles a rate-limited save with backoff instead of a tight retry loop."
+      ]
+    }
+  ]
+}

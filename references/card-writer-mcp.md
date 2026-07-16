@@ -1634,3 +1634,117 @@ The `metricContract` states how to read the numbers — its `source`, `compariso
 `confidence`, and `personalization` fields tell you what the brief is derived
 from and how far to trust it. Quote the brief's own confidence rather than
 presenting every figure as settled fact.
+
+## Preview page tools
+
+The preview page is the author-controlled long-form section on a role's detail
+screen. It is a whitelisted block document, not free HTML. Four tools cover it.
+For the document schema, hard limits, image rules, and moderation state machine,
+read `preview-page-authoring.md`; use `../skills/lunatalk-preview-page-designer/`
+for the decoration workflow. These tools reuse the same ownership, quota,
+moderation, and rate limits as the equivalent in-app editor; MCP is not a bypass.
+
+Mutating preview tools (`role_patch_preview_page`, `role_reset_preview_page`)
+require `idempotencyKey` with at least 8 characters, the same as the rest of the
+family, and the server caches the result by key — use a new key for each new
+document. Read tools (`role_get_preview_page`, `creator_image_list`) carry
+`schemaVersion` but take no `idempotencyKey`.
+
+### `role_get_preview_page`
+
+Read the authenticated author's own editable preview page for a role.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "..."
+}
+```
+
+The response is a closed four-field shape:
+
+```json
+{
+  "doc": { "schemaVersion": "1", "blocks": [] },
+  "status": "none",
+  "version": 0,
+  "rejectReason": null
+}
+```
+
+- `status` is one of `none`, `pending`, `passed`, or `rejected`.
+- When the role has no decoration yet, the call still succeeds with
+  `status: "none"`, `doc: null`, and `version: 0` — this is a normal empty state,
+  not an error.
+- `version` is the concurrency guard: pass it back on the next save.
+- `rejectReason` is a category (such as a text or image policy class) when
+  `status` is `rejected`, otherwise null. It carries no per-node path.
+
+The response never exposes reviewer-only or internal fields. Read only these four
+keys; do not expect a moderation review document, a content hash, or an account
+identifier.
+
+### `role_patch_preview_page`
+
+Save the whole preview page document for an owned role. There is no partial
+patch; send the complete document each time.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "preview-save-...",
+  "roleId": "...",
+  "doc": { "schemaVersion": "1", "blocks": [] },
+  "version": 3
+}
+```
+
+Read the response `{ status, version, moderating }`. `status` is typically
+`pending` right after a save; `moderating` indicates the document is queued for a
+moderation decision. Poll `role_get_preview_page` with backoff for the settled
+state instead of resubmitting.
+
+Error codes: `version_conflict` (the page changed since the read `version` —
+re-read and reapply), `rate_limited` (saving too quickly — back off and retry),
+`rejected_content_reused` (re-saving content already rejected), `empty_doc`
+(nothing to save), `invalid_param` (a block, mark, attribute, or limit is outside
+the schema v1 whitelist — the response includes a `reason` and a `path` to the
+first offending node), and `permission_denied` (the role is not owned by the
+authenticated account).
+
+### `role_reset_preview_page`
+
+Restore the default preview page (remove custom decoration). Idempotent —
+resetting an already-default page is a success.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "preview-reset-...",
+  "roleId": "..."
+}
+```
+
+### `creator_image_list`
+
+List the authenticated account's own asset-library images. Read-only, so it
+carries `schemaVersion` but no `idempotencyKey`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1"
+}
+```
+
+Each entry carries the image `url`, `moderationState`, the owning role, and a
+create time. Only images whose `moderationState` is `pass` may be placed in a
+preview page document; images still under review, or chat-generated images with
+no review state, appear in the list but are not eligible. The list is scoped to
+the authenticated account by the server — passing another account's role does not
+widen it — and it does not return account identifiers.
+
+When a generated image is rejected in the background, its library row is removed,
+so a rejected generated URL simply disappears from this list rather than showing a
+`rejected` state. A URL that was seen (usually as `pending`) and then vanished is
+a terminal rejection; a URL that has never appeared yet is insert lag. Poll the
+exact URL the document needs, with bounded polling and backoff.

@@ -108,6 +108,16 @@ Self-review:
   `result.structuredContent.conversation` before reading conversation payloads.
 - Public submission: hand off to `lunatalk-publish-readiness`; require explicit
   author confirmation before `publish_submit`.
+- Preview page decoration: require `role_get_preview_page`,
+  `role_patch_preview_page`, and `creator_image_list`, plus optional
+  `role_reset_preview_page` and (for a private role) `role_generate_assets`, then
+  hand off to `lunatalk-preview-page-designer`. The mutating tools
+  (`role_patch_preview_page`, `role_reset_preview_page`) need `schemaVersion` and
+  an `idempotencyKey` of at least 8 characters, with a new key per document; the
+  read tools (`role_get_preview_page`, `creator_image_list`) take `schemaVersion`
+  but no `idempotencyKey`. Do not save a preview page or place an image whose
+  `moderationState` is not `pass` from this operator skill; that belongs to the
+  downstream designer skill.
 
 ## Quality rules
 

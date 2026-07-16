@@ -301,201 +301,78 @@ large notes, `theme-v3-rendering.md` for HTML/XMLV3/Theme V3, `html-card-compone
 
 Moonloom should behave like a card-writing skill framework, not a form filler.
 
-- Before drafting, surface the emotional promise, player fantasy, pressure, or
-  gameplay loop that should survive every route.
-- For weak ideas, propose concrete alternatives with player leverage, first-scene
-  pressure, hidden contradiction, and a repeatable loop.
-- For existing cards, diagnose the weakest layer first and patch that layer
-  directly. Keep replayability in state, consequence, and role initiative rather
-  than longer prose.
+- Before drafting, surface the emotional promise, player fantasy, pressure, or gameplay loop that should survive every route.
+- For weak ideas, propose concrete alternatives with player leverage, first-scene pressure, hidden contradiction, and a repeatable loop.
+- For existing cards, diagnose the weakest layer first and patch that layer directly. Keep replayability in state, consequence, and role initiative rather than longer prose.
 
 ## MCP boundary
 
 MCP tools make the card real; Moonloom makes the card good.
 
-- Do not ask MCP to reject a technically valid card because it is generic,
-  passive, emotionally thin, or missing a strong second-turn loop.
-- Use MCP validation for concrete blockers: required fields, unsafe HTML,
-  invalid XMLV3, unsupported render tags, ownership, and publish prerequisites.
-- Use Moonloom references and self-review for writing quality. If
-  `validate_role` passes but the card still feels weak, patch the role-card
-  prompt, detail, welcome, voice rules, or play loop before render or simulation.
-- When improving the system itself, update this skill, the writing framework,
-  rubric, or eval expectations. Do not convert writing taste into hidden server
-  gates.
+- Do not ask MCP to reject a technically valid card because it is generic, passive, emotionally thin, or missing a strong second-turn loop.
+- Use MCP validation for concrete blockers: required fields, unsafe HTML, invalid XMLV3, unsupported render tags, ownership, and publish prerequisites.
+- Use Moonloom references and self-review for writing quality. If `validate_role` passes but the card still feels weak, patch the role-card prompt, detail, welcome, voice rules, or play loop before render or simulation.
+- When improving the system itself, update this skill, the writing framework, rubric, or eval expectations. Do not convert writing taste into hidden server gates.
 
 ## Authoring guidance
 
 - Keep the author in the loop through agent chat, not an in-app comment system.
-- Do not create extra storage, review sessions, or side ledgers. If feedback is
-  ambiguous or comparative, use `lunatalk-collaboration-director` first.
-- When a prepared packet stack already exists, do not brainstorm from scratch.
-  Resolve conflicts, preserve the strongest packet signals, and assemble
+- Do not create extra storage, review sessions, or side ledgers. If feedback is ambiguous or comparative, use `lunatalk-collaboration-director` first.
+- When a prepared packet stack already exists, do not brainstorm from scratch. Resolve conflicts, preserve the strongest packet signals, and assemble
    `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`, `talkExample`,
    `roleOutputContract`, tags/theme notes, avatar/background status, token allocation,
    validation/render/simulation handoff, and self-review. Use the final
    role-field authoring packet in `card-authoring-templates.md`.
-- Use `lunatalk-field-finalizer` before role_create_private or patch tools when
-  a field draft already exists and needs MCP-ready placeholder cleanup, hard-cap
-  checks, compact fallback, format sanity, or patch mapping.
-- Preserve packets by name and by behavior. At minimum, keep the selected
-  premise, sample calibration, originality adaptation, profile package,
-  language-style decisions, visual identity, quality audit, render repair,
-  simulation repair, instruction guardrail,
-  archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines,
-  tension, agency, voice, TalkExample, opening, longplay, boundary, token, presentation, and
-  material-distillation packets whenever they exist.
-- If a packet is missing and the missing layer blocks a good card, route to the
-  narrow skill before field assembly. Do not fill missing packets with generic
-  prose just to continue.
-- Use Traditional Chinese for user-facing LunaTalk card content when the author
-  writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep
-  profile, detail, welcome, and examples consistently Traditional Chinese.
-  If the issue is more than a simple script preference, use
-  `lunatalk-language-stylist` before patching fields so the language pass does
-  not accidentally change engine, opening, voice rules, XMLV3 tags, or JSON keys.
-- Keep `roleDesc` scannable. If a draft exceeds the recommended length or feels
-  dense, rewrite a compressed final version instead of only noting the issue.
-- The first scene should invite the player to act immediately. If the first reply
-  path is unclear, the card is not ready.
-- The first two lines of `roleWelcome` must state the 4-W in playable terms:
-  who is in motion, where/when the player is, and what concrete problem is in
-  front of them. Do not let a poetic or mood-first opening make the author feel
-  雲裡霧裡 before they know what they can do.
+- Use `lunatalk-field-finalizer` before role_create_private or patch tools when a field draft already exists and needs MCP-ready placeholder cleanup, hard-cap checks, compact fallback, format sanity, or patch mapping.
+- Preserve packets by name and by behavior. At minimum, keep the selected premise, sample calibration, originality adaptation, profile package, language-style decisions, visual identity, quality audit, render repair, simulation repair, instruction guardrail, archetype, character core, relationship/daily-life/world/play/generator/scenario/ensemble engines, tension, agency, voice, TalkExample, opening, longplay, boundary, token, presentation, and material-distillation packets whenever they exist.
+- If a packet is missing and the missing layer blocks a good card, route to the narrow skill before field assembly. Do not fill missing packets with generic prose just to continue.
+- Use Traditional Chinese for user-facing LunaTalk card content when the author writes in Traditional Chinese or asks for it. For `zh-Hant` cards, keep profile, detail, welcome, and examples consistently Traditional Chinese. If the issue is more than a simple script preference, use `lunatalk-language-stylist` before patching fields so the language pass does not accidentally change engine, opening, voice rules, XMLV3 tags, or JSON keys.
+- Keep `roleDesc` scannable. If a draft exceeds the recommended length or feels dense, rewrite a compressed final version instead of only noting the issue.
+- The first scene should invite the player to act immediately. If the first reply path is unclear, the card is not ready.
+- The first two lines of `roleWelcome` must state the 4-W in playable terms: who is in motion, where/when the player is, and what concrete problem is in front of them. Do not let a poetic or mood-first opening make the author feel 雲裡霧裡 before they know what they can do.
 - Build a language-aware detail budget before MCP creation or patching; if `roleDetailDesc` is thin for its language and ambition, use `lunatalk-detail-engineer` and treat it as not ready for MCP patching. Expand durable engine first; token economy removes empty prose and duplicate rules, not playable core.
-- If the player can only watch, choices are decorative, or the card narrates the
-  player's feelings/actions, use `lunatalk-agency-designer` before patching
-  fields.
-- `roleDetailDesc` should carry durable identity, backstory, constraints, speech
-  style, boundaries, world facts, proactive turn behavior, and the consequence
-  loop.
-- For world-heavy cards, detail should carry the world engine: player position,
-  core rule, faction/location play functions, compact state, route seeds,
-  exposition policy, and what to delay or cut.
-- For persona-driven cards, the detail should make the role's engine legible:
-  what the role wants, what blocks that desire, what they will not do, and what
-  changes when the player pushes closer or pulls away.
-- If the role feels like a trope, mood, or biography rather than a person who can
-  act under pressure, call `lunatalk-character-core` before patching fields.
-- For relationship-heavy cards, detail should carry the relationship engine:
-  promise, asymmetry, closeness/friction states, pacing gates, repair/rupture
-  routes, passive-player behavior, and what the role does when the player
-  accepts, questions, refuses, slows down, or reopens an old wound.
-- If the card becomes generic flirting, flat comfort, instant intimacy, harmless
-  banter, or refusal-ending play, call `lunatalk-relationship-architect` before
-  adding more affectionate prose or sample scenes.
-- For daily-life cards, detail should carry the quiet routine engine: ordinary
-  routine, small desire, tiny disruption, shared object/place, habit state,
-  reply paths, passive-player behavior, second-turn change, and return-next-time
-  renewal. If the card is just pleasant atmosphere, comfort, or small talk, call
-  `lunatalk-daily-life-architect` before adding more mood prose.
-- Speaking style must be executable. Replace labels such as natural, gentle,
-  witty, or like a real person with sentence rhythm, vocabulary, address terms,
-  emotional tells, and what the role avoids saying.
-- For voice-heavy cards, write a voice card: surface, private motive, rhythm,
-  vocabulary, action beats, concealment, refusal style, passive-player behavior,
-  resistance behavior, and trust behavior.
-- If voice is the main problem, use `lunatalk-voice-director` before patching
-  fields so the voice card, pressure grid, talkExample decision, and blind-line
-  test stay coherent.
-- If the normal fields are coherent but simulation repeatedly shows
-  out-of-character assistant framing, schema drift, state protocol drift, or
-  format drift, use `lunatalk-instruction-guardrail` before any
-  `role_patch_jailbreak` call. Do not use jailbreak text as a shortcut for weak
-  character core, missing voice, bad opening, weak longplay, unsafe boundaries,
-  or generic writing quality.
-- For ensemble cards, run a contrast check before finalizing: each core speaker
-  needs a different want, fear, speech cue, pressure move, and player leverage.
-  If the cast has three or more active speakers, add compact micro-samples for
-  weak or easily blurred voices instead of one long sample for the strongest
-  speaker.
-- Run Moonloom self-review before render: promise, anchor, relationship engine,
-  daily-life engine, voice texture, voice calibration, consequence, role
-  initiative, agency, opening scene, longplay, player agency, language style,
-  boundary design, archetype, then token efficiency.
-  When voice calibration is relevant, do not merge it into generic voice texture;
-  report the voice cards, micro-sample need, and blind-line risk explicitly.
-- Do not let polished prose hide a weak character engine, generic voice, passive
-  role behavior, weak first-turn action, hollow opening, missing consequence loop,
-  user agency takeover, mixed language, or a generic card that fails its chosen
-  type.
-- If an existing card has several failures at once, diagnose first with
-  `lunatalk-card-doctor`; do not directly rewrite all fields or spend another
-  simulation pass before the repair order is clear.
-- If the author primarily asks "is this good enough?" or asks for a craft score,
-  audit first with `lunatalk-quality-auditor`; do not patch or simulate until the
-  first three repairs are clear.
-- Patch detail with the role's want/need, the contradiction that blocks it, the
-  boundaries that keep escalation playable, the player's leverage, and the role's
-  pressure behavior for trust, resistance, passivity, and boundaries.
-- Patch detail with concrete voice behavior: sentence rhythm, vocabulary, address
-  terms, emotional tells, and avoided phrasing.
-- Patch blurred ensemble voices with contrast first, then micro-samples only when
-  rules alone are not enough. Pay for those samples by cutting repeated mood
-  adjectives or lore that does not change play.
-- Patch detail with proactive turn rules: what the role asks, reveals, escalates,
-  or offers when the player is passive or stalls.
-- Rewrite welcome before render review when it lacks a real opening scene. Add
-  location/time or sensory context, a concrete role beat, pressure, and player
-  implication before choices or setup fields.
-- If only the welcome is weak, call `lunatalk-opening-director` before rewriting
-  other fields; avoid turning a narrow first-screen repair into an unnecessary
-  full-card rewrite.
-- Remove any rule that decides the player's actions, feelings, consent, or
-  commitments. Replace generic openings with a concrete scene and specific reply
-  path.
-- Patch profile, detail, welcome, and examples together for language consistency.
-  Preserve character names, tone, and XMLV3 tags while converting card prose to
-  Traditional Chinese when needed.
-- Repair the chosen card type directly: companion needs relationship pressure and
-  emotional boundaries; story/scenario needs stakes, route branches,
-  clue/reveal pacing, false leads, and consequence state;
-  game/RPG/system cards need a play-engine packet with compact state, resource
-  rules, turn protocol, failure-forward behavior, and opening setup/state/
-  choices; generator/helper cards need an artifact contract, intake defaults,
-  stable output schema, named revision operations, quality rubric, and at least
-  one usable artifact per normal turn; daily-life needs a routine loop, small
-  playable desire, tiny disruption, shared object/place, habit state,
-  passive-player behavior, and second-turn change; heavy-setting needs modular
-  lore that creates action; ensemble needs distinct motives, voices, and turn
-  ownership.
-- When making a related card set, author the anchor card first and then only one
-  clearly distinct secondary variant. Validate and render before adding more
-  variants, and simulate only variants whose behavior changed and whose cost is
-  accepted.
-- If a heavy-setting, RPG, scenario, or light-setting card starts to read like a
-  lore digest, call `lunatalk-world-engineer` before adding more names or history.
-- If an ensemble card starts to read like a roll call, banter transcript, or
-  group conversation that ignores the player, call `lunatalk-ensemble-director`
-  before opening, voice, token, or authoring patches.
-- For mature, intense, or sensitive premises, make the intended rating, pacing,
-  taboo, refusal style, player agency boundary, and stop conditions explicit in
-  the card design before writing a provocative welcome. Preserve the boundary
-  packet's explicitness ceiling, escalation ladder, allowed pressure tools,
-  disallowed moves, safer fallback, and simulation probes.
-- If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules,
-  repeated lore, or visual scaffolding out of welcome before render/simulation.
-- In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for
-  dialogue. Do not invent aliases such as `<narration>` or `<dialogue>`.
-- In XMLV3, avoid wrapping controls inside `<scene>`. Close `</scene>` before
-  `choice`, `form`, `result-card`, `bar`, or `collapse` blocks so the preview
-  keeps usable mobile width and clear panel hierarchy.
-- Treat `<state>` as hidden JSON data. If text should be visible, put it in
-  `<n>`; if it should drive state UI, make it valid JSON.
-- If the card is strong for one scene but weak over time, call
-  `lunatalk-longplay-architect` before adding more lore or sample dialogue.
-- Before finalizing, write one expected first user message and one expected second
-  turn. If the card cannot produce a more interesting second turn than the first,
-  revise the engine before render or simulation.
+- If the player can only watch, choices are decorative, or the card narrates the player's feelings/actions, use `lunatalk-agency-designer` before patching fields.
+- `roleDetailDesc` should carry durable identity, backstory, constraints, speech style, boundaries, world facts, proactive turn behavior, and the consequence loop.
+- For world-heavy cards, detail should carry the world engine: player position, core rule, faction/location play functions, compact state, route seeds, exposition policy, and what to delay or cut.
+- For persona-driven cards, the detail should make the role's engine legible: what the role wants, what blocks that desire, what they will not do, and what changes when the player pushes closer or pulls away.
+- If the role feels like a trope, mood, or biography rather than a person who can act under pressure, call `lunatalk-character-core` before patching fields.
+- For relationship-heavy cards, detail should carry the relationship engine: promise, asymmetry, closeness/friction states, pacing gates, repair/rupture routes, passive-player behavior, and what the role does when the player accepts, questions, refuses, slows down, or reopens an old wound.
+- If the card becomes generic flirting, flat comfort, instant intimacy, harmless banter, or refusal-ending play, call `lunatalk-relationship-architect` before adding more affectionate prose or sample scenes.
+- For daily-life cards, detail should carry the quiet routine engine: ordinary routine, small desire, tiny disruption, shared object/place, habit state, reply paths, passive-player behavior, second-turn change, and return-next-time renewal. If the card is just pleasant atmosphere, comfort, or small talk, call `lunatalk-daily-life-architect` before adding more mood prose.
+- Speaking style must be executable. Replace labels such as natural, gentle, witty, or like a real person with sentence rhythm, vocabulary, address terms, emotional tells, and what the role avoids saying.
+- For voice-heavy cards, write a voice card: surface, private motive, rhythm, vocabulary, action beats, concealment, refusal style, passive-player behavior, resistance behavior, and trust behavior.
+- If voice is the main problem, use `lunatalk-voice-director` before patching fields so the voice card, pressure grid, talkExample decision, and blind-line test stay coherent.
+- If the normal fields are coherent but simulation repeatedly shows out-of-character assistant framing, schema drift, state protocol drift, or format drift, use `lunatalk-instruction-guardrail` before any `role_patch_jailbreak` call. Do not use jailbreak text as a shortcut for weak character core, missing voice, bad opening, weak longplay, unsafe boundaries, or generic writing quality.
+- For ensemble cards, run a contrast check before finalizing: each core speaker needs a different want, fear, speech cue, pressure move, and player leverage. If the cast has three or more active speakers, add compact micro-samples for weak or easily blurred voices instead of one long sample for the strongest speaker.
+- Run Moonloom self-review before render: promise, anchor, relationship engine, daily-life engine, voice texture, voice calibration, consequence, role initiative, agency, opening scene, longplay, player agency, language style, boundary design, archetype, then token efficiency. When voice calibration is relevant, do not merge it into generic voice texture; report the voice cards, micro-sample need, and blind-line risk explicitly.
+- Do not let polished prose hide a weak character engine, generic voice, passive role behavior, weak first-turn action, hollow opening, missing consequence loop, user agency takeover, mixed language, or a generic card that fails its chosen type.
+- If an existing card has several failures at once, diagnose first with `lunatalk-card-doctor`; do not directly rewrite all fields or spend another simulation pass before the repair order is clear.
+- If the author primarily asks "is this good enough?" or asks for a craft score, audit first with `lunatalk-quality-auditor`; do not patch or simulate until the first three repairs are clear.
+- Patch detail with the role's want/need, the contradiction that blocks it, the boundaries that keep escalation playable, the player's leverage, and the role's pressure behavior for trust, resistance, passivity, and boundaries.
+- Patch detail with concrete voice behavior: sentence rhythm, vocabulary, address terms, emotional tells, and avoided phrasing.
+- Patch blurred ensemble voices with contrast first, then micro-samples only when rules alone are not enough. Pay for those samples by cutting repeated mood adjectives or lore that does not change play.
+- Patch detail with proactive turn rules: what the role asks, reveals, escalates, or offers when the player is passive or stalls.
+- Rewrite welcome before render review when it lacks a real opening scene. Add location/time or sensory context, a concrete role beat, pressure, and player implication before choices or setup fields.
+- If only the welcome is weak, call `lunatalk-opening-director` before rewriting other fields; avoid turning a narrow first-screen repair into an unnecessary full-card rewrite.
+- Remove any rule that decides the player's actions, feelings, consent, or commitments. Replace generic openings with a concrete scene and specific reply path.
+- Patch profile, detail, welcome, and examples together for language consistency. Preserve character names, tone, and XMLV3 tags while converting card prose to Traditional Chinese when needed.
+- Repair the chosen card type directly: companion needs relationship pressure and emotional boundaries; story/scenario needs stakes, route branches, clue/reveal pacing, false leads, and consequence state; game/RPG/system cards need a play-engine packet with compact state, resource rules, turn protocol, failure-forward behavior, and opening setup/state/ choices; generator/helper cards need an artifact contract, intake defaults, stable output schema, named revision operations, quality rubric, and at least one usable artifact per normal turn; daily-life needs a routine loop, small playable desire, tiny disruption, shared object/place, habit state, passive-player behavior, and second-turn change; heavy-setting needs modular lore that creates action; ensemble needs distinct motives, voices, and turn ownership.
+- When making a related card set, author the anchor card first and then only one clearly distinct secondary variant. Validate and render before adding more variants, and simulate only variants whose behavior changed and whose cost is accepted.
+- If a heavy-setting, RPG, scenario, or light-setting card starts to read like a lore digest, call `lunatalk-world-engineer` before adding more names or history.
+- If an ensemble card starts to read like a roll call, banter transcript, or group conversation that ignores the player, call `lunatalk-ensemble-director` before opening, voice, token, or authoring patches.
+- For mature, intense, or sensitive premises, make the intended rating, pacing, taboo, refusal style, player agency boundary, and stop conditions explicit in the card design before writing a provocative welcome. Preserve the boundary packet's explicitness ceiling, escalation ladder, allowed pressure tools, disallowed moves, safer fallback, and simulation probes.
+- If `tokenBudget` shows `welcomeToDetailRatio` above `2`, move durable rules, repeated lore, or visual scaffolding out of welcome before render/simulation.
+- In XMLV3, use registered tags. Use `<n>` for narration/actions and `<d>` for dialogue. Do not invent aliases such as `<narration>` or `<dialogue>`.
+- In XMLV3, avoid wrapping controls inside `<scene>`. Close `</scene>` before `choice`, `form`, `result-card`, `bar`, or `collapse` blocks so the preview keeps usable mobile width and clear panel hierarchy.
+- Treat `<state>` as hidden JSON data. If text should be visible, put it in `<n>`; if it should drive state UI, make it valid JSON.
+- If the card is strong for one scene but weak over time, call `lunatalk-longplay-architect` before adding more lore or sample dialogue.
+- Before finalizing, write one expected first user message and one expected second turn. If the card cannot produce a more interesting second turn than the first, revise the engine before render or simulation.
 
 ## Tool call discipline
 
-- Generate one `idempotencyKey` per intended mutating action and reuse it for
-  retries.
+- Generate one `idempotencyKey` per intended mutating action and reuse it for retries.
 - Never directly edit a public role; create or use an owned private role.
-- Follow `nextRecommendedTools` unless the author conflicts. Patch validation
-  blockers and validate again before render, simulation, or publishing; treat
-  those fixes as technical, not as the full writing review.
+- Follow `nextRecommendedTools` unless the author conflicts. Patch validation blockers and validate again before render, simulation, or publishing; treat those fixes as technical, not as the full writing review.
 
 ## Final response shape
 
