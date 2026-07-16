@@ -129,6 +129,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
 - `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
 - `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
+- `skills/lunatalk-preview-page-designer` decorates a role's preview page: builds
+  the whitelisted preview document, selects or generates `pass` images, saves
+  through `role_patch_preview_page`, and drives the moderation and image polling
+  loops to a settled state.
 - `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks
   and returns benchmark report packets or end-to-end acceptance packets for the
   next prompt or skill repair.
@@ -194,6 +198,10 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `references/mcp-client-workflow.md` defines external AI client readiness,
   tool availability checks, auth handling, idempotency, and stage gates for MCP
   operations.
+- `references/preview-page-authoring.md` defines the preview page document
+  contract: the schema v1 block/inline/mark whitelist, hard limits, node-to-visual
+  semantics, `pass`-only image rules, and the pending/passed/rejected moderation
+  state machine.
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.

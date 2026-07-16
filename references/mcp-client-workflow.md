@@ -97,6 +97,10 @@ Expected Card Writer tools:
 - `publish_submit`
 - optional `public_search` — read-only; finds public roles and worlds by keyword
 - optional `creator_analytics_brief` — read-only; the author's own creator brief
+- optional `role_get_preview_page` — read-only; the author's editable preview page
+- optional `role_patch_preview_page` — saves the whole preview page document
+- optional `role_reset_preview_page` — restores the default preview page
+- optional `creator_image_list` — read-only; the account's asset-library images
 
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
@@ -196,7 +200,49 @@ not at the JSON-RPC top level.
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
 | Conversation testing | `conversation_model_catalog`, `conversation_create`, `conversation_list`, `conversation_send_message`, `conversation_turn_status`, `conversation_inspect`; optional `conversation_load` for resume/rollback | spend cost before validation and author acceptance; parse the normal chat UI for transcript data; hold a request open beyond the 60 seconds `waitMs: 60000` window |
+| Preview page decoration | `role_get_preview_page`, `role_patch_preview_page`, `creator_image_list`; optional `role_reset_preview_page` and `role_generate_assets` for a private role | place an image whose `moderationState` is not `pass`; reuse an idempotency key across different documents; report a `pending` page as live |
 | Public submission | `publish_submit` | submit without explicit author confirmation |
+
+## Preview page decoration stage
+
+The preview page is the author-controlled long-form section on a role's detail
+screen — a whitelisted block document, not free HTML. Route this work to
+`lunatalk-preview-page-designer` and read `preview-page-authoring.md` for the
+schema, limits, and moderation states. The happy path is
+`read -> save -> poll -> settle`, but plan for the non-happy paths from the
+start:
+
+```text
+role_get_preview_page (version) -> build whitelisted doc -> creator_image_list (pass only)
+  -> role_patch_preview_page (fresh idempotencyKey, version) -> poll role_get_preview_page
+```
+
+- **read**: `role_get_preview_page` returns `{ doc, status, version, rejectReason }`.
+  `status: "none"` is a normal empty state, not an error. Keep the `version`.
+- **save**: `role_patch_preview_page` takes the whole document plus the read
+  `version` and a **new** `idempotencyKey` per document — the server caches by key,
+  so replaying an old key ignores a changed document.
+- **poll**: after a save, `status` is usually `pending`. That is non-terminal and
+  can take longer than a few seconds; poll with backoff and do not resubmit.
+- **reset**: `role_reset_preview_page` restores the default and is idempotent.
+
+Non-happy paths:
+
+- `version_conflict` (409-style): the page changed since the read `version` —
+  re-read, reapply, save again.
+- `rate_limited` (429-style): saving or generating too quickly — back off and
+  retry, not in a tight loop.
+- `rejected`: `rejectReason` is a category only, with no per-node path — re-read
+  the document, self-check against the category, and save a corrected version with
+  a fresh key.
+- Image selection: only `creator_image_list` entries with `moderationState: "pass"`
+  may go into the document. A generated image enters the library under review;
+  poll the list until its URL reads `pass`. A generated URL that was seen and then
+  disappeared is a terminal rejection (the row was removed); one that never
+  appeared is insert lag.
+- `public_role_requires_clone`: `role_generate_assets` only runs for a private
+  role the account owns. For a public role it returns this code — do not retry
+  generation; fall back to an existing `pass` image or drop the image block.
 
 For accepted conversation tests, call `conversation_model_catalog` first and read
 `recommendedModel`, model status, `costScore`, and `effectiveCostScore`. Pass the
@@ -244,6 +290,9 @@ only when retrying the same intended operation.
 | Render unavailable | preview tool missing or validation still blocked | fix tool/config or validation first |
 | Conversation tools unavailable | billing/auth/tool missing, or validation not ready | fix prerequisite before spending cost |
 | Publish blocked | missing confirmation or readiness failure | use publish readiness / author confirmation |
+| Preview save rejected on image | image `moderationState` is not `pass` | pick a `pass` image from `creator_image_list`, or wait for a generated one to read `pass` |
+| Preview save conflict / rate limit | stale `version` or too many saves | re-read `version` and reapply, or back off and retry |
+| Generation blocked on preview image | target role is public | do not retry; use an existing `pass` image or drop the image block |
 
 ## Handoff
 
@@ -254,6 +303,9 @@ only when retrying the same intended operation.
 - Use `lunatalk-chat-simulation` after validation passes and the author accepts
   normal conversation-test cost.
 - Use `lunatalk-publish-readiness` before public submission.
+- Use `lunatalk-preview-page-designer` for preview page decoration: building the
+  whitelisted document, selecting or generating `pass` images, saving through
+  `role_patch_preview_page`, and driving the moderation and image polling loops.
 - Use `lunatalk-collaboration-director` when the next move is a choice rather
   than a tool call.
 

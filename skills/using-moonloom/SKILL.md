@@ -348,6 +348,12 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   use `lunatalk-iteration-director` before more patching, rerendering,
   simulation, or publish readiness.
 - Preparing public submission: use `lunatalk-publish-readiness`.
+- Decorating a role's preview page (the author-controlled role-detail section,
+  "裝修預覽頁 / role detail decoration"): building the whitelisted document,
+  selecting or generating `pass` images, saving via `role_patch_preview_page`,
+  polling moderation, or recovering from rejection / version conflict / rate limit
+  / `public_role_requires_clone`: use `lunatalk-preview-page-designer` and read
+  `../../references/preview-page-authoring.md`.
 - Running regression checks, comparing Moonloom quality across archetypes, or
   summarizing an already-run benchmark: use `lunatalk-benchmark-runner`. If the
   author asks for a benchmark handoff report, return a `Benchmark report packet`
@@ -364,145 +370,52 @@ validation, render review, simulation, and publish readiness.
 
 ## References
 
-- Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint,
-  or auth details matter.
-- Read `../../references/mcp-client-workflow.md` when the task involves MCP
-  readiness, external AI client setup, tool availability, auth status,
-  idempotency planning, or stage gates before Card Writer MCP actions.
-- Read `../../references/author-collaboration.md` when the task involves author
-  feedback, co-review, taste/preference calibration, draft comparison, revision
-  choices, or deciding what to preserve/change/reject/delay.
-- Read `../../references/iteration-loop.md` when the task has self-review,
-  validation, tokenBudget, render, simulation, benchmark, previous patch, or
-  author-feedback evidence and needs a next-iteration, stop/continue, rerender,
-  simulation, or publish-readiness decision.
-- Read `../../references/sample-driven-calibration.md` and
-  `../../examples/sample-card-packets.md` when the task involves examples,
-  golden samples, sample output packets, benchmark expected-output shapes,
-  draft-to-sample comparison, or copy-risk review.
-- Read `../../references/originality-adaptation.md` when the task involves
-  canon/IP, fan premises, recognizable inspirations, another role card, copied
-  drafts, derivative concepts, original transformation, or renamed-copy risk.
-- Read `../../references/character-core-design.md` when working on character
-  core, persona appeal, trope repair, relationship leverage, pressure behavior,
-  or thin/generic roles.
-- Read `../../references/relationship-engine.md` when working on companion,
-  romance, friendship, rivalry, cohabitation, slow-burn, daily-life, repair,
-  rupture, trust/friction, or relationship pacing design.
-- Read `../../references/world-engine-design.md` when working on worldbuilding,
-  relationship networks, factions, locations, playable world rules, lore-heavy
-  settings, compact state, route seeds, or lore-dump repair.
-- Read `../../references/tension-triangle.md` when the task involves tension
-  triangle, role desire, player leverage, external pressure, why-now, stakes,
-  hook, inert premises, or pretty-but-passive idea repair.
-- Read `../../references/state-economy-design.md` when the task involves state
-  economy, compact memory fields, visible/hidden/detail-only state, update
-  rules, decorative meters, status panels, hidden JSON, or agency-safe state.
+- Read `../../references/card-writer-mcp.md` when tool names, arguments, endpoint, or auth details matter.
+- Read `../../references/mcp-client-workflow.md` when the task involves MCP readiness, external AI client setup, tool availability, auth status, idempotency planning, or stage gates before Card Writer MCP actions.
+- Read `../../references/preview-page-authoring.md` when decorating a role's preview page: schema v1 whitelist, limits, `pass`-only image rules, and the pending/passed/rejected moderation state machine.
+- Read `../../references/author-collaboration.md` when the task involves author feedback, co-review, taste/preference calibration, draft comparison, revision choices, or deciding what to preserve/change/reject/delay.
+- Read `../../references/iteration-loop.md` when the task has self-review, validation, tokenBudget, render, simulation, benchmark, previous patch, or author-feedback evidence and needs a next-iteration, stop/continue, rerender, simulation, or publish-readiness decision.
+- Read `../../references/sample-driven-calibration.md` and `../../examples/sample-card-packets.md` when the task involves examples, golden samples, sample output packets, benchmark expected-output shapes, draft-to-sample comparison, or copy-risk review.
+- Read `../../references/originality-adaptation.md` when the task involves canon/IP, fan premises, recognizable inspirations, another role card, copied drafts, derivative concepts, original transformation, or renamed-copy risk.
+- Read `../../references/character-core-design.md` when working on character core, persona appeal, trope repair, relationship leverage, pressure behavior, or thin/generic roles.
+- Read `../../references/relationship-engine.md` when working on companion, romance, friendship, rivalry, cohabitation, slow-burn, daily-life, repair, rupture, trust/friction, or relationship pacing design.
+- Read `../../references/world-engine-design.md` when working on worldbuilding, relationship networks, factions, locations, playable world rules, lore-heavy settings, compact state, route seeds, or lore-dump repair.
+- Read `../../references/tension-triangle.md` when the task involves tension triangle, role desire, player leverage, external pressure, why-now, stakes, hook, inert premises, or pretty-but-passive idea repair.
+- Read `../../references/state-economy-design.md` when the task involves state economy, compact memory fields, visible/hidden/detail-only state, update rules, decorative meters, status panels, hidden JSON, or agency-safe state.
 - Read `../../references/role-card-writing-framework.md` and `../../references/role-detail-engine.md` before writing or deeply revising any role card with a thin or under-budget `roleDetailDesc`.
-- Read `../../references/archetype-contracts.md` when the task involves card
-  type selection, hybrid archetypes, primary/secondary card contracts, or field
-  allocation by card shape.
-- Read `../../references/card-series-design.md` when the task involves multiple
-  related cards, role-card series, alternate versions, seasonal/event variants,
-  daily-life variants, generator/helper variants, or keep/merge/reject decisions
-  before blueprinting or authoring.
-- Read `../../references/ensemble-card-design.md` when the task involves ensemble
-  cards, multi-character cards, cast size, speaker keep/merge/cut decisions,
-  turn ownership, spotlight rules, group tension, roll-call openings, or cast
-  crowding the player.
-- Read `../../references/play-engine-design.md` when the task involves RPG,
-  adventure, open-world, sandbox, survival, investigation, simulator, stats,
-  resources, inventory, quests, combat, turn protocol, compact state updates,
-  failure-forward behavior, or rule-manual openings.
-- Read `../../references/generator-design.md` when the task involves generator,
-  helper, creator-assistant, artifact-producing cards, intake/defaults, output
-  schema, named revision operations, advice-only drift, endless intake, diegetic
-  creator modes, or generator simulation probes.
-- Read `../../references/scenario-design.md` when the task involves story,
-  scenario, mystery, investigation, event, trial, rescue, betrayal, clue/reveal
-  pacing, false leads, suspect pressure, route-funnel repair, branch
-  consequences, or a focused incident without game-like mechanics.
-- Read `../../references/daily-life-design.md` when the task involves
-  daily-life, slice-of-life, quiet companion, neighbor, roommate, cohabitation,
-  cafe, workplace, school, ordinary routine, small playable desire, tiny
-  disruption, shared object, habit state, passive-player behavior, romance
-  posture, or return-next-time hooks.
-- Read `../../references/card-authoring-templates.md` when producing or checking
-  a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive
-  plan, or self-review packet.
-- Read `../../references/field-finalization.md` when final fields need MCP-ready
-  QA, placeholder cleanup, hard-cap and compact fallback checks, format sanity,
-  or patch mapping before creation/patching.
-- Read `../../references/material-distillation.md` when working from local files,
-  notes, material packs, imported drafts, source fragments, or large world bibles.
-- Read `../../references/boundary-design.md` when working on mature, adult,
-  horror-leaning, emotionally intense, consent-sensitive, refusal, pacing,
-  rating, or safer-version design.
-- Read `../../references/premise-workshop.md` when the author has no settled
-  role-card premise yet and needs taste axes, contrasted directions, an
-  involvement ladder, recommendation, and pre-blueprint handoff.
-- Read `../../references/profile-packaging.md` when the task involves
-  `roleName`, `roleDesc`, tags, card profile, title, tagline, public-facing
-  package, first impression, discovery surface, or promise compression.
-- Read `../../references/visual-identity.md` when the task involves avatar,
-  cover, thumbnail, profile image, key art, image prompt, art brief, or aligning
-  visual identity with the card promise, Theme V3, and opening.
-- Read `../../references/language-style.md` when the task involves language
-  consistency, zh-Hant / zh-TW cleanup, Traditional/Simplified mixing,
-  translated-sounding prose, register alignment, pronouns, address terms,
-  punctuation, mixed-language tags, or field-to-field wording mismatch.
-- Read `../../references/opening-design.md` when working on `roleWelcome`,
-  opening scenes, first screen playability, first reply paths, second-turn moves,
-  hollow welcomes, or overloaded setup screens.
-- Read `../../references/longplay-design.md` when working on long-term
-  playability, route seeds, progression, memory/state, passive/stalled behavior,
-  session continuation, or dead third-turn repairs.
+- Read `../../references/archetype-contracts.md` when the task involves card type selection, hybrid archetypes, primary/secondary card contracts, or field allocation by card shape.
+- Read `../../references/card-series-design.md` when the task involves multiple related cards, role-card series, alternate versions, seasonal/event variants, daily-life variants, generator/helper variants, or keep/merge/reject decisions before blueprinting or authoring.
+- Read `../../references/ensemble-card-design.md` when the task involves ensemble cards, multi-character cards, cast size, speaker keep/merge/cut decisions, turn ownership, spotlight rules, group tension, roll-call openings, or cast crowding the player.
+- Read `../../references/play-engine-design.md` when the task involves RPG, adventure, open-world, sandbox, survival, investigation, simulator, stats, resources, inventory, quests, combat, turn protocol, compact state updates, failure-forward behavior, or rule-manual openings.
+- Read `../../references/generator-design.md` when the task involves generator, helper, creator-assistant, artifact-producing cards, intake/defaults, output schema, named revision operations, advice-only drift, endless intake, diegetic creator modes, or generator simulation probes.
+- Read `../../references/scenario-design.md` when the task involves story, scenario, mystery, investigation, event, trial, rescue, betrayal, clue/reveal pacing, false leads, suspect pressure, route-funnel repair, branch consequences, or a focused incident without game-like mechanics.
+- Read `../../references/daily-life-design.md` when the task involves daily-life, slice-of-life, quiet companion, neighbor, roommate, cohabitation, cafe, workplace, school, ordinary routine, small playable desire, tiny disruption, shared object, habit state, passive-player behavior, romance posture, or return-next-time hooks.
+- Read `../../references/card-authoring-templates.md` when producing or checking a blueprint packet, role field draft, XMLV3 welcome scaffold, boundary-sensitive plan, or self-review packet.
+- Read `../../references/field-finalization.md` when final fields need MCP-ready QA, placeholder cleanup, hard-cap and compact fallback checks, format sanity, or patch mapping before creation/patching.
+- Read `../../references/material-distillation.md` when working from local files, notes, material packs, imported drafts, source fragments, or large world bibles.
+- Read `../../references/boundary-design.md` when working on mature, adult, horror-leaning, emotionally intense, consent-sensitive, refusal, pacing, rating, or safer-version design.
+- Read `../../references/premise-workshop.md` when the author has no settled role-card premise yet and needs taste axes, contrasted directions, an involvement ladder, recommendation, and pre-blueprint handoff.
+- Read `../../references/profile-packaging.md` when the task involves `roleName`, `roleDesc`, tags, card profile, title, tagline, public-facing package, first impression, discovery surface, or promise compression.
+- Read `../../references/visual-identity.md` when the task involves avatar, cover, thumbnail, profile image, key art, image prompt, art brief, or aligning visual identity with the card promise, Theme V3, and opening.
+- Read `../../references/language-style.md` when the task involves language consistency, zh-Hant / zh-TW cleanup, Traditional/Simplified mixing, translated-sounding prose, register alignment, pronouns, address terms, punctuation, mixed-language tags, or field-to-field wording mismatch.
+- Read `../../references/opening-design.md` when working on `roleWelcome`, opening scenes, first screen playability, first reply paths, second-turn moves, hollow welcomes, or overloaded setup screens.
+- Read `../../references/longplay-design.md` when working on long-term playability, route seeds, progression, memory/state, passive/stalled behavior, session continuation, or dead third-turn repairs.
 - Read `../../references/quality-rubric.md` when judging content quality.
-- Read `../../references/quality-scorecard.md` when the task involves quality
-  audit, scorecard, craft tier, top-tier check, good-enough review, first-three
-  repairs, or deciding whether to continue to authoring, render, simulation, or
-  publish readiness.
-- Read `../../references/voice-calibration.md` when the task involves voice,
-  speaking style, dialogue examples, role consistency, or ensemble cast contrast.
-- Read `../../references/talk-example-design.md` when the task involves
-  `talkExample` decisions, micro-samples, dialogue samples, example turns,
-  generator output examples, RPG/system turn examples, or sample token cost.
-- Use `roleOutputContract` when the unresolved layer is an author-locked reply
-  format example for stable visible structure; keep it short and route final
-  patching through `lunatalk-field-finalizer`.
-- Read `../../references/agency-design.md` when the task involves player agency,
-  user insertion space, interaction hooks, decorative choices, route funneling,
-  player-agency takeover, or consequence checks.
-- Read `../../references/token-economy.md` when the task involves tokenBudget,
-  token allocation, overlong welcomes, duplicated lore, compression plans, or
-  keep / move / cut / rewrite decisions.
-- Read `../../references/prompt-attention-architecture.md` when the task involves
-  attention dilution, long raw detail, long raw description, Markdown prompt
-  structure, XML tags, primacy/recency, U-shaped attention, lost-in-the-middle,
-  or cross-model instruction-following drift.
-- Read `../../references/presentation-design.md` when deciding XMLV3 vs plain vs
-  HTML, Theme V3 vs welcome content, visible state vs hidden JSON state,
-  first-screen hierarchy, visual affordances, or presentation packets before
-  authoring/rendering.
-- Read `../../references/instruction-guardrails.md` when the task involves
-  instruction-layer repair, system behavior, jailbreak text,
-  `role_patch_jailbreak`, out-of-character assistant framing, format drift, or
-  schema/state protocol drift after normal fields are coherent.
-- Read `../../references/card-diagnosis.md` when the task involves existing-card
-  diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer
-  triage, repair order, or field patch mapping before rewriting.
-- Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or
-  Theme V3.
-- Read `../../references/playtest-loop.md` when designing private chat probes,
-  reading simulation transcripts, or deciding how to patch behavior failures.
+- Read `../../references/quality-scorecard.md` when the task involves quality audit, scorecard, craft tier, top-tier check, good-enough review, first-three repairs, or deciding whether to continue to authoring, render, simulation, or publish readiness.
+- Read `../../references/voice-calibration.md` when the task involves voice, speaking style, dialogue examples, role consistency, or ensemble cast contrast.
+- Read `../../references/talk-example-design.md` when the task involves `talkExample` decisions, micro-samples, dialogue samples, example turns, generator output examples, RPG/system turn examples, or sample token cost.
+- Use `roleOutputContract` when the unresolved layer is an author-locked reply format example for stable visible structure; keep it short and route final patching through `lunatalk-field-finalizer`.
+- Read `../../references/agency-design.md` when the task involves player agency, user insertion space, interaction hooks, decorative choices, route funneling, player-agency takeover, or consequence checks.
+- Read `../../references/token-economy.md` when the task involves tokenBudget, token allocation, overlong welcomes, duplicated lore, compression plans, or keep / move / cut / rewrite decisions.
+- Read `../../references/prompt-attention-architecture.md` when the task involves attention dilution, long raw detail, long raw description, Markdown prompt structure, XML tags, primacy/recency, U-shaped attention, lost-in-the-middle, or cross-model instruction-following drift.
+- Read `../../references/presentation-design.md` when deciding XMLV3 vs plain vs HTML, Theme V3 vs welcome content, visible state vs hidden JSON state, first-screen hierarchy, visual affordances, or presentation packets before authoring/rendering.
+- Read `../../references/instruction-guardrails.md` when the task involves instruction-layer repair, system behavior, jailbreak text, `role_patch_jailbreak`, out-of-character assistant framing, format drift, or schema/state protocol drift after normal fields are coherent.
+- Read `../../references/card-diagnosis.md` when the task involves existing-card diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer triage, repair order, or field patch mapping before rewriting.
+- Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or Theme V3.
+- Read `../../references/playtest-loop.md` when designing private chat probes, reading simulation transcripts, or deciding how to patch behavior failures.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
-- Read `../../references/end-to-end-acceptance.md` when the task is a full
-  trial-card acceptance run, private-card visual completion check, or regression
-  handoff after missing assets, app visual evidence, render evidence, simulation
-  cost stance, or per-message preview evidence.
-- Read `../../examples/synthetic-card-briefs.md` when running benchmark or
-  regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet`
-  when reporting benchmark results or handing failures to the next skill.
+- Read `../../references/end-to-end-acceptance.md` when the task is a full trial-card acceptance run, private-card visual completion check, or regression handoff after missing assets, app visual evidence, render evidence, simulation cost stance, or per-message preview evidence.
+- Read `../../examples/synthetic-card-briefs.md` when running benchmark or regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet` when reporting benchmark results or handing failures to the next skill.
 
 ## Operating principles
 
