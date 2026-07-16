@@ -101,6 +101,48 @@ test('preview page designer skill states rejection has category only, no per-nod
   assert.match(skill, /(?:no\s+per-node|without[\s\S]{0,40}location|re-?read[\s\S]{0,60}doc)/i);
 });
 
+test('preview page designer skill teaches the columns anti-pattern', async () => {
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  // a single column is the default; columns is an exception, not a layout habit
+  assert.match(skill, /(?:single column|one column)[\s\S]{0,160}(?:default|prefer|first)/i);
+  assert.match(skill, /(?:do not|don't|avoid)[\s\S]{0,120}(?:wrap|put)[\s\S]{0,80}everything[\s\S]{0,60}`?columns`?/i);
+  // narrow screens stack columns top-to-bottom, so side-by-side is never guaranteed
+  assert.match(skill, /(?:collapse|stack)[\s\S]{0,160}(?:narrow|small)[\s\S]{0,60}(?:screen|viewport|width)/i);
+  assert.match(skill, /(?:never|do not|don't)[\s\S]{0,120}(?:rely|depend)[\s\S]{0,120}side-by-side/i);
+  // column order is the reading order on a phone
+  assert.match(skill, /column order[\s\S]{0,160}reading order/i);
+});
+
+test('preview page designer skill bounds meter to static setting values', async () => {
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  // meter marks a fixed setting value chosen by the author
+  assert.match(skill, /`meter`[\s\S]{0,300}?static/i);
+  assert.match(skill, /(?:danger|difficulty|threat|power|attribute)/i);
+  // it is NOT a live state readout: values that move during chat do not belong here
+  assert.match(skill, /(?:do not|don't|never)[\s\S]{0,200}(?:change|move|shift)[\s\S]{0,120}(?:chat|conversation|play)/i);
+  assert.match(skill, /(?:affection|tension|mood)/i);
+  assert.match(skill, /(?:decorative|decoration|misleads?|mislead\w*)[\s\S]{0,200}(?:live|real-?time|current)|(?:live|real-?time)[\s\S]{0,200}(?:misleads?|decorat\w+)/i);
+});
+
+test('preview page designer skill states the accent budget for meter tone', async () => {
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  assert.match(skill, /`?tone`?[\s\S]{0,160}default[\s\S]{0,60}`?gold`?/i);
+  assert.match(skill, /(?:at most|no more than|only)\s+one[\s\S]{0,160}(?:non-gold|other tone|accent)/i);
+});
+
+test('preview page designer skill disambiguates the overlapping new blocks', async () => {
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  // meter vs statCard: a scale versus a key/value table
+  assert.match(skill, /`meter`[\s\S]{0,300}?`statCard`/);
+  assert.match(skill, /(?:scale|magnitude|bar)[\s\S]{0,300}?(?:key\/value|key-value|rows)/i);
+  // gallery vs image: a set versus a single anchor
+  assert.match(skill, /`gallery`[\s\S]{0,300}?`image`/);
+  assert.match(skill, /(?:set|group|several)[\s\S]{0,300}?(?:single|one)[\s\S]{0,120}(?:anchor|figure|hero)/i);
+  // profileCard vs dialogueBubble: a cast wall versus a conversation
+  assert.match(skill, /`profileCard`[\s\S]{0,300}?`dialogueBubble`/);
+  assert.match(skill, /(?:cast|ensemble|group)[\s\S]{0,300}?`profileCard`|`profileCard`[\s\S]{0,300}?(?:cast|ensemble)/i);
+});
+
 test('lunatalk-mcp-operator skill exposes the four preview page tools', async () => {
   const operator = await readFile('skills/lunatalk-mcp-operator/SKILL.md', 'utf8');
   for (const tool of TOOLS) {
@@ -155,10 +197,25 @@ test('preview-page-authoring reference documents schema whitelist, limits, and s
   assert.match(authoring, /200\s?KB/i);
   assert.match(authoring, /200\s+blocks/i);
   assert.match(authoring, /20000|20,000/);
-  assert.match(authoring, /11\s+block|block types/i);
+  // Anchored to the real count. The previous `/11\s+block|block types/i` was an
+  // alternation over the whole pattern, so the bare words "block types" satisfied
+  // it and the number could never go stale-Red.
+  assert.match(authoring, /16\s+block\s+types/i);
   // image sourcing rule in author-facing language, pass-only
   assert.match(authoring, /pass/);
   assert.match(authoring, /moderationState/);
+  // image.attrs.width: the five-step enum is the wire contract. An author that
+  // cannot read the legal values here has no way to discover them — a width outside
+  // the enum is rejected, and the rejection does not enumerate what would have been
+  // accepted. This reference is the only place a client can learn them, so the steps
+  // are pinned literally rather than left to prose.
+  assert.match(authoring, /`width`|attrs\.width/);
+  for (const step of ['25', '33', '50', '66', '100']) {
+    assert.match(authoring, new RegExp(`\`${step}\``), `authoring missing width step ${step}`);
+  }
+  // Absent width is legal and means full width — an author who omits it must not
+  // think the block is malformed.
+  assert.match(authoring, /(?:omit\w*|absent|without)[\s\S]{0,160}`?100`?/i);
   // state machine
   assert.match(authoring, /pending/);
   assert.match(authoring, /passed/);
@@ -173,7 +230,8 @@ test('preview-page-authoring reference states the REAL wire node/mark vocabulary
   // node type strings ARE the public wire contract — a client must send these
   // exact names. Docs listing invented names strand every external AI client.
   for (const node of ['heading', 'paragraph', 'blockquote', 'bulletList', 'orderedList',
-    'listItem', 'dialogueBubble', 'statCard', 'spoiler', 'divider', 'image']) {
+    'listItem', 'dialogueBubble', 'statCard', 'spoiler', 'divider', 'image',
+    'columns', 'column', 'profileCard', 'gallery', 'meter']) {
     assert.match(authoring, new RegExp('`' + node + '`'), `missing block node \`${node}\``);
   }
   for (const mark of ['bold', 'italic', 'underline', 'strike', 'highlight', 'textStyle']) {
@@ -182,10 +240,72 @@ test('preview-page-authoring reference states the REAL wire node/mark vocabulary
   // palette + tone enums and alignment attr key
   assert.match(authoring, /gold/);
   assert.match(authoring, /textAlign/);
-  // invented vocabulary must never come back
-  for (const fake of ['`gallery`', '`callout`', '`spacer`']) {
+  // Invented vocabulary must never come back. This guard was added after a round
+  // that documented node names the server had never accepted, which strands every
+  // external AI client that sends them verbatim.
+  //
+  // DELIBERATE RATCHET RELAXATION: `gallery` was removed from this list because it
+  // is now a REAL node in the schema whitelist — it moved into the positive wire
+  // assertion above, which is the stronger guard (it must be documented, not merely
+  // absent). `callout` and `spacer` remain invented and stay protected here. Only
+  // ever remove a name from this list in the same change that ships it as a real
+  // node and adds it to the positive loop; never delete the list itself.
+  for (const fake of ['`callout`', '`spacer`']) {
     assert.ok(!authoring.includes(fake), `invented node ${fake} must not be documented`);
   }
   // dialogue bubble content shape: inline preferred, paragraphs flattened
   assert.match(authoring, /dialogueBubble[\s\S]{0,400}?(?:inline|flatten)/i);
+});
+
+test('preview-page-authoring reference states the columns/column structural contract', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // children are only `column`, and there are exactly 2 or 3 of them
+  assert.match(authoring, /`columns`[\s\S]{0,400}?only[\s\S]{0,80}?`column`/i);
+  assert.match(authoring, /`columns`[\s\S]{0,500}?(?:two or three|2 or 3)/i);
+  // there is no cols attr: the count is derived from the children
+  assert.match(authoring, /no\s+`cols`/i);
+  assert.match(authoring, /(?:derived|comes)\s+from[\s\S]{0,80}children/i);
+  // columns is top-level only, never nested in another block and never self-nested
+  assert.match(authoring, /`columns`[\s\S]{0,400}?top level/i);
+  assert.match(authoring, /`spoiler`[\s\S]{0,120}`blockquote`[\s\S]{0,120}`listItem`/);
+  assert.match(authoring, /(?:nest|inside)[\s\S]{0,120}another\s+`columns`/i);
+  // column may only appear as a direct child of columns
+  assert.match(authoring, /`column`[\s\S]{0,300}?direct child[\s\S]{0,80}?`columns`/i);
+  // image width steps do not apply inside a column
+  assert.match(authoring, /`column`[\s\S]{0,400}?(?:image|width)[\s\S]{0,300}?(?:no effect|ignored|does not apply)/i);
+});
+
+test('preview-page-authoring reference states profileCard, gallery, meter, and side attrs', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // profileCard field caps and no children
+  assert.match(authoring, /`profileCard\.attrs\.name`[\s\S]{0,140}20/);
+  assert.match(authoring, /`profileCard\.attrs\.subtitle`[\s\S]{0,140}40/);
+  assert.match(authoring, /`profileCard\.attrs\.desc`[\s\S]{0,140}60/);
+  assert.match(authoring, /`profileCard\.attrs\.avatarSrc`/);
+  assert.match(authoring, /`profileCard\.attrs\.tags`[\s\S]{0,300}?6[\s\S]{0,200}?12/);
+  assert.match(authoring, /`profileCard`[\s\S]{0,500}?no children/i);
+  // gallery item shape and count bounds
+  assert.match(authoring, /`gallery\.attrs\.items`[\s\S]{0,300}?`src`/);
+  assert.match(authoring, /`gallery`[\s\S]{0,400}?(?:1 to 6|one to six)/i);
+  // meter: label cap, integer 0-100, tone enum
+  assert.match(authoring, /`meter\.attrs\.label`[\s\S]{0,140}20/);
+  assert.match(authoring, /`meter\.attrs\.value`[\s\S]{0,240}?0[\s\S]{0,40}?100/);
+  assert.match(authoring, /`meter\.attrs\.value`[\s\S]{0,300}?integer/i);
+  assert.match(authoring, /`meter\.attrs\.tone`[\s\S]{0,160}?`gold`[\s\S]{0,60}`rose`[\s\S]{0,60}`violet`/);
+  // an out-of-range, non-integer, or omitted value is rejected — never clamped
+  assert.match(authoring, /(?:omitted|missing)[\s\S]{0,200}?reject/i);
+  assert.match(authoring, /not\s+clamped|no\s+clamping|never\s+clamp/i);
+  // dialogueBubble side enum with left default
+  assert.match(authoring, /`dialogueBubble\.attrs\.side`[\s\S]{0,160}?`left`[\s\S]{0,60}`right`/);
+  assert.match(authoring, /`side`[\s\S]{0,200}?default[\s\S]{0,40}?`left`/i);
+});
+
+test('preview-page-authoring reference caps total images per document', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // gallery breaks the implicit "one block = one image" ceiling, so the doc-wide
+  // image cap is now an explicit part of the author contract.
+  assert.match(authoring, /200\s+images/i);
+  // every image-bearing attr obeys the same pass-only rule
+  assert.match(authoring, /`gallery`[\s\S]{0,400}?`src`[\s\S]{0,300}?same[\s\S]{0,120}(?:image rule|rules as)/i);
+  assert.match(authoring, /`avatarSrc`[\s\S]{0,400}?(?:same|pass)/i);
 });

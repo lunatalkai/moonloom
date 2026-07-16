@@ -77,6 +77,71 @@ save needs a fresh key or the edit is silently dropped as an old-key replay.
 7. **Wait for moderation to settle** (see State handling), then report the final
    state to the author in their language.
 
+## Layout: a single column is the default
+
+A preview page is read as one vertical column, and that is the layout to prefer.
+`columns` is an exception you reach for when two or three short parallel items
+genuinely belong beside each other — a two-up cast pairing, a compact before and
+after. Do not wrap everything in `columns`; a page whose sections are all grids
+reads as a form, not as an introduction.
+
+Two rules follow from how the grid renders:
+
+- **A narrow screen collapses the grid.** Columns stack top to bottom once the
+  reading area is narrow — a phone screen, a small window — and most visitors
+  read on a phone. Never rely on a
+  side-by-side arrangement for the meaning: content that only makes sense read
+  across (a comparison whose two halves must sit level, a left/right visual pun,
+  a table faked out of columns) breaks the moment it stacks. If the point needs
+  the pairing, say it in the text instead.
+- **Column order is the reading order.** When the grid stacks, the columns appear
+  in the order you sent them — first column first. Order them so the stacked
+  sequence still reads correctly, and check that sequence before the wide layout.
+
+## `meter` marks a static setting value
+
+`meter` shows where one fixed, author-chosen value sits on a 0-100 scale: how
+dangerous a place is, the difficulty of a route, how strong a faction stands, a
+character attribute. The value is part of the setting, decided while writing the
+page, and it never changes on its own.
+
+Do not use `meter` for anything that moves during chat. Affection, trust,
+tension, mood, a quest counter — these change as the conversation plays out, and
+the preview page is a static introduction that knows nothing about any reader's
+session. A meter of a live value is decorative at best, and at worst it misleads
+the reader into thinking they are seeing a real-time state readout of their own
+playthrough. Describe a changing quantity in prose ("she warms slowly, and only
+to people who tell her the truth") instead of drawing a bar for it.
+
+## Accent budget
+
+`meter.attrs.tone` defaults to `gold`, which is the page's own accent. Use it
+unless a meter has a reason to differ. Across one screen, use at most one
+non-gold tone — a `rose` danger bar among gold ones reads as a warning, while
+three tones read as decoration and the highlight lands nowhere. The same budget
+covers `highlight` and `textStyle` colors: the whole page holds one or two
+accents, not one per block.
+
+## Choosing between blocks that look alike
+
+Three pairs overlap in practice:
+
+- **`meter` vs `statCard`.** A `meter` is one scale — a bar the eye reads as a
+  magnitude. A `statCard` is a key/value table of short facts in rows. Use the
+  meter when the number's position on a range is the point; use the card when
+  the labels are the point. Do not draw five meters where one card with five rows
+  is clearer.
+- **`gallery` vs `image`.** A `gallery` shows a set of pictures read as one group
+  (a wardrobe, several locations). An `image` is a single figure anchoring a
+  section — a hero shot. If one picture carries the section, use `image`; a
+  one-item gallery is just a weaker image.
+- **`profileCard` vs `dialogueBubble`.** A `profileCard` introduces a person at a
+  glance; a `dialogueBubble` previews a voice by showing a line spoken. For an
+  ensemble, prefer a cast wall of `profileCard` blocks over a long bubble
+  string — a chain of bubbles between several people asks the reader to
+  reconstruct who is who, which is exactly what the wall does for them. Bubbles
+  are strongest as a couple of lines showing how one character actually talks.
+
 ## Image generation: rejection is a vanished URL
 
 A generated image is moderated in the background. The result is written back into
