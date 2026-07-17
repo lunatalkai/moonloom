@@ -74,8 +74,9 @@ Attribute contract per node:
 - `image.attrs.width`: `25`, `33`, `50`, `66`, or `100` — the percentage of the
   text column the figure spans. These five steps are the entire range; a width
   outside them is rejected, not rounded to the nearest step. When `width` is
-  omitted (or `null`) the figure spans the full column, as if you had sent
-  `100`. There is no pixel sizing: a preview page is read at every screen width,
+  omitted (or `null`) it defaults to `100` and the figure spans the full column.
+  (`gallery.attrs.width` takes the same five steps but defaults to `33` — see
+  below.) There is no pixel sizing: a preview page is read at every screen width,
   so a figure is always a share of the column. Reach for a narrower step when a
   figure is a portrait or an aside that prose should sit beside — a hero image
   stays at `100`.
@@ -104,13 +105,22 @@ Attribute contract per node:
   side in one gallery.
 - `gallery.attrs.width`: `25`, `33`, `50`, `66`, or `100` — the same five steps as
   `image.attrs.width`, and the same rule that a width outside them is rejected
-  rather than rounded. When `width` is omitted (or `null`) it behaves as `100`.
+  rather than rounded. When `width` is omitted (or `null`) it defaults to `33`.
   The step means something different here, and it is the easy thing to get wrong:
   an image width sizes the block, while a gallery width sizes **each picture** in
   the rail. The `gallery` block itself always spans the full column. So the step
   chooses how many pictures a reader sees at once before scrolling — `33` shows
   about three, `50` about two, and `100` shows one picture at a time with the next
   one edging into view, which is to say a carousel.
+
+  **The two defaults differ on purpose.** `image.attrs.width` defaults to `100`
+  and `gallery.attrs.width` defaults to `33`; sharing the five steps does not mean
+  sharing the default. The reason is the per-picture split above: a lone figure
+  spanning the whole column is what an `image` is for, but a `gallery` that
+  defaulted to `100` would show exactly one picture and hide the rest of the set —
+  and a gallery showing one picture is only a worse `image`. The default therefore
+  shows the set as a set. `100` remains available for when a one-at-a-time
+  carousel is genuinely what you want.
 - `meter.attrs.label`: at most 20 characters. `meter.attrs.value`: an integer
   from 0 to 100 — a `value` that is omitted, out of range, or not a whole number
   is rejected, not clamped to the nearest legal value.
