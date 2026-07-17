@@ -273,7 +273,45 @@ Two more author-facing facts:
   the platform pauses preview display. This is a display pause, not a rejection,
   and does not require re-saving.
 
+## How the page is used: `landOnHome` and `showComments`
+
+A decorated page is the role's home — the page a visitor sees first. Two author
+switches on `role_patch_preview_page` control how it is used. Both are read back
+by `role_get_preview_page`.
+
+- `landOnHome` defaults to true. When it is on, a visitor who taps the role from
+  a listing, from discovery, or from a newly created share link opens the role
+  home instead of going straight to chat. Turn it off when the author wants the
+  role to keep opening chat directly even though a home page exists.
+- `showComments` defaults to true. It controls whether the role home offers a
+  comments tab alongside the page itself. Turn it off for a role whose author
+  wants the home to stay purely presentational.
+
+Three behaviours worth stating plainly, because each one produces a confused
+author if it is discovered rather than explained:
+
+- Omitting a switch leaves it unchanged. A patch that carries only `doc` never
+  alters either switch, so you can keep saving document revisions without
+  touching the author's settings. Send a switch only when you intend to change
+  it.
+- A rejected page ignores `landOnHome`. While the page is rejected, visitors go
+  to chat no matter how the switch is set. The switch is not cleared — it takes
+  effect again once a new version clears moderation. If an author asks why their
+  role still opens chat with the switch on, check the status first.
+- A page that is still pending moderation does honour `landOnHome`. Saving takes
+  effect immediately, so a visitor can land on a page that has not finished
+  moderation yet.
+
+Changing where every visitor lands is not a cosmetic edit. Confirm a switch
+change with the author in the conversation before sending it; never flip a
+switch as a side effect of saving a document.
+
 ## Reset
 
 Resetting a preview page restores the default (no custom decoration). Reset is
 idempotent: resetting an already-default page is a success, not an error.
+
+Reset also returns both switches to their defaults (on). They describe how a
+page is used, so they carry no meaning once the page itself is gone. An author
+who decorates the role again starts from the defaults, not from the settings
+they had before the reset.

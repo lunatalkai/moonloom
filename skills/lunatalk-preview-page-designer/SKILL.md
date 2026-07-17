@@ -24,11 +24,13 @@ for where preview decoration sits among the other MCP stages.
 Four Card Writer MCP tools cover the preview page:
 
 - `role_get_preview_page` (read): returns the author's current editable page as
-  `{ doc, status, version, rejectReason }`. When the role has no decoration yet
-  the call still succeeds with `status: "none"`, `doc: null`, and `version: 0`.
+  `{ doc, status, version, rejectReason, landOnHome, showComments }`. When the
+  role has no decoration yet the call still succeeds with `status: "none"`,
+  `doc: null`, `version: 0`, and both switches reported at their defaults (true).
 - `role_patch_preview_page` (mutating): saves the whole document. It is the only
   write path for content; there is no partial patch. Returns `{ status, version,
-  moderating }`.
+  moderating }`. It also accepts the two optional switches `landOnHome` and
+  `showComments` — see below.
 - `role_reset_preview_page` (mutating): restores the default (no custom page).
   Idempotent.
 - `creator_image_list` (read): lists the authenticated account's own asset-library
@@ -39,6 +41,29 @@ Four Card Writer MCP tools cover the preview page:
 call carries `schemaVersion` and an `idempotencyKey` of at least 8 characters.
 `role_get_preview_page` and `creator_image_list` are read-only: they carry
 `schemaVersion` but no `idempotencyKey`.
+
+## The two switches: confirm before you flip
+
+`role_patch_preview_page` carries two optional booleans that decide how the page
+is used rather than what it contains:
+
+- `landOnHome` (default true): a visitor tapping the role from a listing, from
+  discovery, or from a newly created share link opens the role home instead of
+  going straight to chat.
+- `showComments` (default true): the role home offers a comments tab.
+
+Omitting a switch leaves it unchanged, so a save that carries only `doc` never
+disturbs the author's settings. Send a switch only when the author has asked for
+that change, and confirm it in the conversation first — `landOnHome` decides
+where every visitor to this role lands, which is a product decision belonging to
+the author, not a formatting detail you may infer.
+
+Two facts to have ready when an author reports the switch "not working":
+
+- While the page is `rejected`, `landOnHome` has no effect and visitors go to
+  chat. The setting is retained and applies again once a new version passes.
+- While the page is `pending`, `landOnHome` does apply — saving takes effect
+  immediately, ahead of moderation.
 
 ## Idempotency: a new key per document
 
