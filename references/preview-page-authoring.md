@@ -80,9 +80,12 @@ Attribute contract per node:
   figure is a portrait or an aside that prose should sit beside — a hero image
   stays at `100`.
 - `columns` takes no attributes. Its children are only `column` nodes, and there
-  must be two or three of them. There is no `cols` attribute: the column count is
+  must be two to four of them. There is no `cols` attribute: the column count is
   derived from the number of children you send, so a `columns` holding one child
-  or four children is rejected rather than silently reflowed.
+  or five children is rejected rather than silently reflowed. Four is the ceiling,
+  not a recommendation: the reading column is narrow, and four ways of splitting it
+  leaves each column too tight for anything but a few words — a `profileCard` in
+  particular has no room left for its text beside the portrait. Prefer two.
 - `column` takes no attributes and may only appear as a direct child of
   `columns`. Its content is block nodes. A `column` anywhere else is an unknown
   node.
@@ -113,8 +116,8 @@ styles, class names, script handlers, or raw HTML.
 `columns` may only appear at the top level of the document — as a direct child of
 `doc`, never inside `spoiler`, `blockquote`, or `listItem`, and never inside
 another `columns`. A grid nested anywhere else is rejected. Build a page as a
-flat sequence of blocks and reach for a `columns` row only where two or three
-short parallel items genuinely belong beside each other.
+flat sequence of blocks and reach for a `columns` row only where a few short
+parallel items genuinely belong beside each other.
 
 Inside a `column`, a block spans the column it sits in: an `image` fills its
 column, so the image width step has no effect there. Choose the split by how many
@@ -157,9 +160,10 @@ Use the block that matches the reading intent, not the one that looks densest.
   short "what you can do here" list. Keep items short.
 - `image`: one figure. Use it for a hero or a section anchor.
 - `divider`: a quiet section break between two ideas.
-- `columns` with `column` children: a row of two or three short parallel items —
+- `columns` with `column` children: a row of two to four short parallel items —
   a two-up cast pairing, a compact "before / after". A wide screen shows them
-  side by side; a narrow one stacks them in order.
+  side by side; a narrow one stacks them in order. Two reads best; three still
+  holds a short line; four is for terse items only, such as a stat or a word.
 - `profileCard`: one person at a glance — portrait, name, a one-line role, a
   short description, a few tags. A row or grid of them is the natural way to
   introduce an ensemble.
