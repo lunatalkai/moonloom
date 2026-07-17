@@ -106,6 +106,9 @@ test('preview page designer skill teaches the columns anti-pattern', async () =>
   // a single column is the default; columns is an exception, not a layout habit
   assert.match(skill, /(?:single column|one column)[\s\S]{0,160}(?:default|prefer|first)/i);
   assert.match(skill, /(?:do not|don't|avoid)[\s\S]{0,120}(?:wrap|put)[\s\S]{0,80}everything[\s\S]{0,60}`?columns`?/i);
+  // the cap is 2-4 and the skill must not still teach the old 2-3 ceiling (2026-07-17)
+  assert.doesNotMatch(skill, /two or three short parallel/i);
+  assert.match(skill, /(?:two to four|2 to 4)/i);
   // narrow screens stack columns top-to-bottom, so side-by-side is never guaranteed
   assert.match(skill, /(?:collapse|stack)[\s\S]{0,160}(?:narrow|small)[\s\S]{0,60}(?:screen|viewport|width)/i);
   assert.match(skill, /(?:never|do not|don't)[\s\S]{0,120}(?:rely|depend)[\s\S]{0,120}side-by-side/i);
@@ -259,9 +262,13 @@ test('preview-page-authoring reference states the REAL wire node/mark vocabulary
 
 test('preview-page-authoring reference states the columns/column structural contract', async () => {
   const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
-  // children are only `column`, and there are exactly 2 or 3 of them
+  // children are only `column`, and there are 2 to 4 of them
   assert.match(authoring, /`columns`[\s\S]{0,400}?only[\s\S]{0,80}?`column`/i);
-  assert.match(authoring, /`columns`[\s\S]{0,500}?(?:two or three|2 or 3)/i);
+  assert.match(authoring, /`columns`[\s\S]{0,500}?(?:two to four|2 to 4)/i);
+  // the rejected counts are one and five — the old text named four as rejected,
+  // which silently became wrong when the cap moved 3 -> 4 (2026-07-17)
+  assert.match(authoring, /`columns`[\s\S]{0,600}?five children[\s\S]{0,80}?rejected/i);
+  assert.doesNotMatch(authoring, /four children is rejected|two or three of them/i);
   // there is no cols attr: the count is derived from the children
   assert.match(authoring, /no\s+`cols`/i);
   assert.match(authoring, /(?:derived|comes)\s+from[\s\S]{0,80}children/i);

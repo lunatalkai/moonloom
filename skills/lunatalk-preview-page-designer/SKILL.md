@@ -80,12 +80,19 @@ save needs a fresh key or the edit is silently dropped as an old-key replay.
 ## Layout: a single column is the default
 
 A preview page is read as one vertical column, and that is the layout to prefer.
-`columns` is an exception you reach for when two or three short parallel items
+`columns` is an exception you reach for when a few short parallel items
 genuinely belong beside each other — a two-up cast pairing, a compact before and
 after. Do not wrap everything in `columns`; a page whose sections are all grids
 reads as a form, not as an introduction.
 
-Two rules follow from how the grid renders:
+Three rules follow from how the grid renders:
+
+- **Two to four columns are allowed, and the number you pick is a reading
+  decision, not a capacity one.** The reading area is narrow to begin with, and
+  every extra column divides it again: two columns still hold a sentence, three
+  hold a short line, and four hold only a few words — a stat, a label, a name.
+  Four is the ceiling, not a target; a `profileCard` at four across has almost no
+  room for text beside its portrait. When in doubt, send two.
 
 - **A narrow screen collapses the grid.** Columns stack top to bottom once the
   reading area is narrow — a phone screen, a small window — and most visitors
