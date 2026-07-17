@@ -157,23 +157,31 @@ its column. Pick the step by asking **how many pictures the reader should see at
 once**, since that is all the step controls: `33` fits about three across, `50`
 about two, `100` one at a time.
 
+The default is `33`, and it is a sensible default: three across reads
+immediately as a set. Note this differs from `image.attrs.width`, which defaults
+to `100` — the shared steps do not mean a shared default, so omitting `width` on
+a gallery gives you three across, not a full-width picture.
+
 Let the pictures decide:
 
 - **A set to browse** — a wardrobe, a handful of locations, a cast's faces. The
   point is that there are several and they belong together, so show several at
   once: `33` or `50`. The reader takes in the group first and scrolls for the
   rest.
-- **Pictures that each deserve a look** — a few strong establishing shots, art
-  worth reading detail out of. `100` makes the gallery a **carousel**: one
-  picture at a time, the next one edging in to say there is more. Reach for it
-  when three thumbnails would waste the images, and when the reader losing the
-  overview costs nothing.
-- **Tall pictures** are the common case for `100`. Nothing is cropped, so a
-  portrait shown three-across is a sliver; give it the width.
+- **Tall pictures** want a wider step. Nothing is cropped, so a portrait shown
+  three-across is a sliver; `50` or `66` gives it room while still showing that
+  more follows.
+- **`100` means one picture at a time.** The rail shows a single picture with the
+  next one edging in — a **carousel**. Reach for it only when a one-at-a-time
+  presentation is what you actually want: a few strong establishing shots where
+  each deserves the whole width and the reader loses nothing by not seeing the
+  group at a glance. It is not a general-purpose step and it is not the safe
+  pick. A `100` gallery hides the set it exists to show, and at that point an
+  `image` is usually the honest block.
 
-When unsure, `50` is the safe middle: two pictures read as a set, and neither is
-a stamp. Do not mix a `100` gallery with an `image` in the same section — two
-full-width figures in a row read as one thing broken in half.
+When unsure, stay at `33` or step to `50`: the pictures still read as a group,
+and no picture is a stamp. Do not put a `100` gallery next to an `image` in the
+same section — two full-width figures in a row read as one thing broken in half.
 
 ## Image generation: rejection is a vanished URL
 

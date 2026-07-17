@@ -217,8 +217,13 @@ test('preview-page-authoring reference documents schema whitelist, limits, and s
     assert.match(authoring, new RegExp(`\`${step}\``), `authoring missing width step ${step}`);
   }
   // Absent width is legal and means full width — an author who omits it must not
-  // think the block is malformed.
-  assert.match(authoring, /(?:omit\w*|absent|without)[\s\S]{0,160}`?100`?/i);
+  // think the block is malformed. Anchored to `image.attrs.width`: this default is
+  // NOT shared with `gallery.attrs.width` (which defaults to `33`), so an
+  // unanchored "omitted ... 100" would drift onto the wrong node's prose.
+  assert.match(
+    authoring,
+    /`image\.attrs\.width`[\s\S]{0,400}?(?:omit\w*|absent|without)[\s\S]{0,160}`?100`?/i,
+  );
   // state machine
   assert.match(authoring, /pending/);
   assert.match(authoring, /passed/);
@@ -320,10 +325,12 @@ test('preview-page-authoring reference states gallery width as a per-picture ste
       `authoring missing gallery width step ${step}`,
     );
   }
-  // Absent width is legal and means full width, same as image width.
+  // Absent gallery width means `33`, NOT `100`. The two widths share an enum but
+  // not a default, so an author who assumes the shared enum implies a shared
+  // default sends nothing and expects a full-width picture.
   assert.match(
     authoring,
-    /`gallery\.attrs\.width`[\s\S]{0,700}?(?:omit\w*|absent|null)[\s\S]{0,200}?`?100`?/i,
+    /`gallery\.attrs\.width`[\s\S]{0,700}?(?:omit\w*|absent|null)[\s\S]{0,200}?`?33`?/i,
   );
   // The semantic that authors WILL get wrong: image width sizes the block, gallery
   // width sizes each picture inside the rail. The gallery block itself always spans
@@ -342,6 +349,40 @@ test('preview-page-authoring reference states gallery width as a per-picture ste
   // A gallery scrolls horizontally and keeps each picture's natural proportions.
   assert.match(authoring, /`gallery`[\s\S]{0,900}?scroll\w*[\s\S]{0,80}horizontal|horizontal\w*[\s\S]{0,80}scroll/i);
   assert.match(authoring, /(?:not cropped|no cropping|never cropped|without cropping)/i);
+});
+
+test('preview-page-authoring reference states the two width defaults differ on purpose', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // The shared five-step enum invites the assumption of a shared default. The
+  // reference must state both defaults in the SAME breath and say the split is
+  // deliberate, or an author reads one bullet and generalizes it to the other node.
+  //
+  // These two are pinned as literal "defaults to `N`" phrases rather than as a
+  // loose <node> ... <number> proximity. An earlier draft of this test used
+  // proximity and passed against prose that mentioned `image.attrs.width` and
+  // `100` while stating no default at all — the assertion has to fail when the
+  // defaults are missing, which is the entire point of the test.
+  assert.match(authoring, /defaults?\s+to\s+`33`/i);
+  assert.match(authoring, /defaults?\s+to\s+`100`/i);
+  assert.match(
+    authoring,
+    /defaults?\s+to\s+`33`[\s\S]{0,400}?`100`|`100`[\s\S]{0,400}?defaults?\s+to\s+`33`/i,
+  );
+  assert.match(
+    authoring,
+    /(?:deliberate\w*|on\s+purpose|intentional\w*|diverge\w*|not\s+the\s+same\s+default)/i,
+  );
+  // The reason is the per-picture vs per-block split, stated where the defaults are.
+  assert.match(
+    authoring,
+    /`33`[\s\S]{0,500}?(?:each\s+picture|per\s+picture|sizes?\s+each)/i,
+  );
+  // A defaulted-to-100 gallery would show one picture and hide the set — that is
+  // the author-facing reason the defaults cannot match.
+  assert.match(
+    authoring,
+    /(?:hide|conceal|lose|hidden)[\s\S]{0,200}(?:set|rest|group)|(?:one\s+picture)[\s\S]{0,200}(?:hide|hides|hiding)/i,
+  );
 });
 
 test('preview-page-authoring reference exempts gallery width from the column rule', async () => {
@@ -365,6 +406,13 @@ test('preview page designer skill guides the gallery width step choice', async (
   assert.match(skill, /`gallery`[\s\S]{0,900}?how many[\s\S]{0,120}(?:picture|image)/i);
   // `100` is the one-at-a-time carousel case.
   assert.match(skill, /`100`[\s\S]{0,240}?(?:carousel|one at a time)/i);
+  // `100` is a deliberate carousel choice, not a general-purpose step and not the
+  // default — the skill must not leave it reading as the safe pick.
+  assert.match(
+    skill,
+    /(?:only|reach for it only|not|rather than)[\s\S]{0,200}(?:when you (?:actually )?want|general|default)/i,
+  );
+  assert.match(skill, /`33`[\s\S]{0,300}?default/i);
 });
 
 test('preview-page-authoring reference caps total images per document', async () => {
