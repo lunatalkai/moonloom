@@ -296,6 +296,15 @@ test('preview-page-authoring reference states profileCard, gallery, meter, and s
   assert.match(authoring, /`profileCard\.attrs\.avatarSrc`/);
   assert.match(authoring, /`profileCard\.attrs\.tags`[\s\S]{0,300}?6[\s\S]{0,200}?12/);
   assert.match(authoring, /`profileCard`[\s\S]{0,500}?no children/i);
+  // bgSrc: the second image-bearing attr on profileCard. A client that does not
+  // know it exists cannot use it and cannot discover it from a 400 either.
+  assert.match(authoring, /`profileCard\.attrs\.bgSrc`/);
+  // ...and the avatar fallback, which is the whole point of bgSrc: one pick,
+  // both a card background and an avatar. Stated where the attr is defined.
+  assert.match(
+    authoring,
+    /`profileCard\.attrs\.bgSrc`[\s\S]{0,420}?`avatarSrc`[\s\S]{0,200}?(?:absent|omitted|missing|not set)/i,
+  );
   // gallery item shape and count bounds
   assert.match(authoring, /`gallery\.attrs\.items`[\s\S]{0,300}?`src`/);
   assert.match(authoring, /`gallery`[\s\S]{0,400}?(?:1 to 6|one to six)/i);
