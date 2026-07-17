@@ -97,6 +97,16 @@ Attribute contract per node:
   rules). `profileCard.attrs.tags`: optional array of short strings, at most 6
   tags, each at most 12 characters. `profileCard` has no children (`content`
   stays empty).
+- `profileCard.attrs.bgSrc`: optional; an allowed asset URL (see Image rules)
+  that fills the card behind the text as a background picture. When `avatarSrc`
+  is absent, the portrait is cropped from `bgSrc` instead, so one picture can
+  serve as both the card background and the portrait; set `avatarSrc` as well
+  only when the portrait should be a different picture. The two are separate
+  image-bearing attributes and each is checked against the image rules on its
+  own — a card that carries only `bgSrc` still needs that picture to have passed
+  review. Text stays readable over the picture without any work from you, so
+  choose the picture for mood; a portrait whose subject sits high in the frame
+  crops best, since the derived avatar is taken from the top of the picture.
 - `gallery.attrs.items`: an array of `{ "src": "..." }` entries — a `gallery`
   holds 1 to 6 items. Each `src` is an allowed asset URL (see Image rules).
   `gallery` has no children. A `gallery` renders as a rail the reader scrolls
@@ -208,13 +218,16 @@ most one or two accent colors. Over-marking reads as noise.
 
 ## Image rules
 
-Three attributes carry an image, and every one of them obeys the same rule:
+Four attributes carry an image, and every one of them obeys the same rule:
 
 - An `image` node: `attrs.src` is the figure.
 - A `gallery` node: every item in `attrs.items` carries a `src`, and each one
   follows the same image rules as a single `image` node.
 - A `profileCard` node: `avatarSrc` is optional, and when present it follows the
   same rule as any other image.
+- A `profileCard` node: `bgSrc` is optional, and follows the same rule
+  independently of `avatarSrc`. A portrait derived from `bgSrc` does not make
+  `bgSrc` exempt: the picture itself must have passed review either way.
 
 Every image in a preview page — each of those attributes — must be a
 URL from the account's own asset library that has already passed review
