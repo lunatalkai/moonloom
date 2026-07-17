@@ -149,6 +149,32 @@ Three pairs overlap in practice:
   reconstruct who is who, which is exactly what the wall does for them. Bubbles
   are strongest as a couple of lines showing how one character actually talks.
 
+## Choosing a `gallery` width step
+
+`gallery.attrs.width` takes the same five steps as `image.attrs.width`, but it
+sizes each picture in the rail rather than the block — the gallery always spans
+its column. Pick the step by asking **how many pictures the reader should see at
+once**, since that is all the step controls: `33` fits about three across, `50`
+about two, `100` one at a time.
+
+Let the pictures decide:
+
+- **A set to browse** — a wardrobe, a handful of locations, a cast's faces. The
+  point is that there are several and they belong together, so show several at
+  once: `33` or `50`. The reader takes in the group first and scrolls for the
+  rest.
+- **Pictures that each deserve a look** — a few strong establishing shots, art
+  worth reading detail out of. `100` makes the gallery a **carousel**: one
+  picture at a time, the next one edging in to say there is more. Reach for it
+  when three thumbnails would waste the images, and when the reader losing the
+  overview costs nothing.
+- **Tall pictures** are the common case for `100`. Nothing is cropped, so a
+  portrait shown three-across is a sliver; give it the width.
+
+When unsure, `50` is the safe middle: two pictures read as a set, and neither is
+a stamp. Do not mix a `100` gallery with an `image` in the same section — two
+full-width figures in a row read as one thing broken in half.
+
 ## Image generation: rejection is a vanished URL
 
 A generated image is moderated in the background. The result is written back into

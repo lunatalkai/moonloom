@@ -307,6 +307,66 @@ test('preview-page-authoring reference states profileCard, gallery, meter, and s
   assert.match(authoring, /`side`[\s\S]{0,200}?default[\s\S]{0,40}?`left`/i);
 });
 
+test('preview-page-authoring reference states gallery width as a per-picture step', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // `gallery.attrs.width` reuses the image width enum. Like image width, the
+  // rejection does not enumerate the legal values, so this reference is the only
+  // place an external client can learn them — pin the steps literally.
+  assert.match(authoring, /`gallery\.attrs\.width`/);
+  for (const step of ['25', '33', '50', '66', '100']) {
+    assert.match(
+      authoring,
+      new RegExp(`\`gallery\\.attrs\\.width\`[\\s\\S]{0,400}?\`${step}\``),
+      `authoring missing gallery width step ${step}`,
+    );
+  }
+  // Absent width is legal and means full width, same as image width.
+  assert.match(
+    authoring,
+    /`gallery\.attrs\.width`[\s\S]{0,700}?(?:omit\w*|absent|null)[\s\S]{0,200}?`?100`?/i,
+  );
+  // The semantic that authors WILL get wrong: image width sizes the block, gallery
+  // width sizes each picture inside the rail. The gallery block itself always spans
+  // the column. Without this the enum reads as "same meaning", and a `100` gallery
+  // gets sent expecting a full-width strip of six pictures.
+  assert.match(
+    authoring,
+    /`gallery\.attrs\.width`[\s\S]{0,600}?each[\s\S]{0,80}(?:picture|image|item)/i,
+  );
+  assert.match(
+    authoring,
+    /`gallery`[\s\S]{0,900}?(?:block|itself)[\s\S]{0,120}(?:always|full)[\s\S]{0,80}column/i,
+  );
+  // A 100 step is one picture at a time — a carousel, not a wide single figure.
+  assert.match(authoring, /`100`[\s\S]{0,200}?one[\s\S]{0,80}(?:picture|image)[\s\S]{0,80}at a time/i);
+  // A gallery scrolls horizontally and keeps each picture's natural proportions.
+  assert.match(authoring, /`gallery`[\s\S]{0,900}?scroll\w*[\s\S]{0,80}horizontal|horizontal\w*[\s\S]{0,80}scroll/i);
+  assert.match(authoring, /(?:not cropped|no cropping|never cropped|without cropping)/i);
+});
+
+test('preview-page-authoring reference exempts gallery width from the column rule', async () => {
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  // Inside a `column`, `image.attrs.width` has no effect but `gallery.attrs.width`
+  // still applies: the column decides the BLOCK width, not how many pictures fit on
+  // one screen. The existing "no effect inside a column" sentence must not be read
+  // as covering gallery, or authors drop a legal attribute believing it is inert.
+  // \s+ rather than a literal space: the reference is hard-wrapped, so any
+  // multi-word phrase can land across a line break.
+  assert.match(
+    authoring,
+    /`column`[\s\S]{0,700}?`gallery`[\s\S]{0,300}?(?:still\s+applies|still\s+has\s+effect|does\s+apply|continues\s+to)/i,
+  );
+});
+
+test('preview page designer skill guides the gallery width step choice', async () => {
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  assert.match(skill, /`?width`?/);
+  // The step is chosen by how many pictures should be visible at once.
+  assert.match(skill, /`gallery`[\s\S]{0,900}?how many[\s\S]{0,120}(?:picture|image)/i);
+  // `100` is the one-at-a-time carousel case.
+  assert.match(skill, /`100`[\s\S]{0,240}?(?:carousel|one at a time)/i);
+});
+
 test('preview-page-authoring reference caps total images per document', async () => {
   const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
   // gallery breaks the implicit "one block = one image" ceiling, so the doc-wide

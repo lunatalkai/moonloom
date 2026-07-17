@@ -98,7 +98,19 @@ Attribute contract per node:
   stays empty).
 - `gallery.attrs.items`: an array of `{ "src": "..." }` entries — a `gallery`
   holds 1 to 6 items. Each `src` is an allowed asset URL (see Image rules).
-  `gallery` has no children.
+  `gallery` has no children. A `gallery` renders as a rail the reader scrolls
+  horizontally, and each picture keeps its own natural proportions — pictures are
+  not cropped to a common shape, so a portrait and a landscape may sit side by
+  side in one gallery.
+- `gallery.attrs.width`: `25`, `33`, `50`, `66`, or `100` — the same five steps as
+  `image.attrs.width`, and the same rule that a width outside them is rejected
+  rather than rounded. When `width` is omitted (or `null`) it behaves as `100`.
+  The step means something different here, and it is the easy thing to get wrong:
+  an image width sizes the block, while a gallery width sizes **each picture** in
+  the rail. The `gallery` block itself always spans the full column. So the step
+  chooses how many pictures a reader sees at once before scrolling — `33` shows
+  about three, `50` about two, and `100` shows one picture at a time with the next
+  one edging into view, which is to say a carousel.
 - `meter.attrs.label`: at most 20 characters. `meter.attrs.value`: an integer
   from 0 to 100 — a `value` that is omitted, out of range, or not a whole number
   is rejected, not clamped to the nearest legal value.
@@ -122,6 +134,13 @@ parallel items genuinely belong beside each other.
 Inside a `column`, a block spans the column it sits in: an `image` fills its
 column, so the image width step has no effect there. Choose the split by how many
 columns you send, not by sizing the contents.
+
+That does not extend to `gallery`. Inside a `column`, `gallery.attrs.width` still
+applies, because the two settings decide different things: the column decides how
+wide the gallery block is, while the gallery width decides how many pictures fit
+across whatever width the block ends up with. A gallery in a narrow column is a
+narrow rail, and its width step still chooses whether that rail shows one picture
+or three.
 
 ## Hard limits
 
