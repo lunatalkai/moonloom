@@ -24,15 +24,18 @@ for where preview decoration sits among the other MCP stages.
 Four Card Writer MCP tools cover the preview page:
 
 - `role_get_preview_page` (read): returns the author's current editable page as
-  `{ doc, status, version, rejectReason, landOnHome, showComments }`. When the
-  role has no decoration yet the call still succeeds with `status: "none"`,
-  `doc: null`, `version: 0`, and both switches reported at their defaults (true).
+  `{ doc, status, version, rejectReason, landOnHome, showComments, skinId }`.
+  When the role has no decoration yet the call still succeeds with
+  `status: "none"`, `doc: null`, `version: 0`, both switches reported at their
+  defaults (true), and `skinId` at `""` (the default gold skin).
 - `role_patch_preview_page` (mutating): saves the whole document. It is the only
   write path for content; there is no partial patch. Returns `{ status, version,
   moderating }`. It also accepts the two optional switches `landOnHome` and
-  `showComments` — see below.
-- `role_reset_preview_page` (mutating): restores the default (no custom page).
-  Idempotent.
+  `showComments` (see below) and an optional `skinId` (see "Page skin" below) —
+  three independent fields that ride on the same save call as the document, each
+  changed only when you explicitly send it.
+- `role_reset_preview_page` (mutating): restores the default (no custom page)
+  and also returns the skin to default gold (`skinId: ""`). Idempotent.
 - `creator_image_list` (read): lists the authenticated account's own asset-library
   images with each image's URL, `moderationState`, owning role, and create time.
   Only images whose `moderationState` is `pass` may be placed in the document.
@@ -64,6 +67,27 @@ Two facts to have ready when an author reports the switch "not working":
   chat. The setting is retained and applies again once a new version passes.
 - While the page is `pending`, `landOnHome` does apply — saving takes effect
   immediately, ahead of moderation.
+
+## Page skin: choosing and changing it
+
+`skinId` on `role_patch_preview_page` picks one of eight official color skins
+for the whole page: the seven named skins `indigo-night`, `sakura-mist`,
+`azure-dawn`, `jade-bamboo`, `crimson-flame`, `silver-ash`, `dark-violet`, plus
+`""` for the default gold look every page starts with. See
+`preview-page-authoring.md` for the exact wire semantics — omit to leave it
+unchanged, send `""` to reset, an unlisted value is rejected and the save
+fails.
+
+Treat a skin choice as lighter than the two switches — it changes how the page
+looks, not where a visitor lands or what they can do — but it is still a
+deliberate author choice, not something to set from a guess. When an author
+has not said which skin they want, ask, or leave `skinId` unset (which keeps
+the page on whatever skin it already has, or the default gold for a first
+decoration) rather than picking one for them. Match the skin to the
+character's own tone the way you would pick an accent color: `crimson-flame`
+for a hot-blooded action lead, `sakura-mist` for a gentle slice-of-life role,
+`dark-violet` for something moody or gothic. A mismatch — a horror
+antagonist's page in `sakura-mist` — reads as careless rather than playful.
 
 ## Idempotency: a new key per document
 
@@ -153,6 +177,69 @@ non-gold tone — a `rose` danger bar among gold ones reads as a warning, while
 three tones read as decoration and the highlight lands nowhere. The same budget
 covers `highlight` and `textStyle` colors: the whole page holds one or two
 accents, not one per block.
+
+## Panel: a colored box, not a coat of paint
+
+`panel` wraps a block of content in a tinted, bordered box — `gold`, `rose`,
+`violet`, `sky`, `mint`, `amber`, `silver`, or `ink`. It exists to make one
+section visually distinct from the plain page around it: a warning, a house
+rule, a "what you can do here" list, a pulled-out fact worth a second look.
+
+`panel` only appears at the top level of the document, the same restriction as
+`columns` — it cannot sit inside a `columns` column, inside a `spoiler`, or
+inside another `panel`. Give it ordinary block content: a `paragraph`, a
+`heading`, a short `bulletList`, a `dialogueBubble` or two — anything that is
+otherwise legal at the top level, except `columns` and `panel` itself.
+
+Reach for it sparingly. A panel earns its background by standing out against a
+page that is mostly plain paragraphs; a page where every section sits in its
+own panel has no plain page left to stand out from, and the color reads as
+noise the same way over-marking with `highlight` does. One or two panels on a
+page — never every section — is the strongest use. A `tone` is required, so
+pick deliberately: `gold` restates the page's own accent (reach for it only
+when a section genuinely deserves the same weight as the brand color), while a
+distinct tone like `rose` or `violet` sets a section further apart still.
+
+## Heading art: a highlight, not a hat you put on every heading
+
+`heading.attrs.art` layers a decorative CSS style on a heading's text —
+`bubble`, `neon`, `outline`, `glitch`, `ink`, or `serif` — with no font files
+involved, so it renders the same way across every script. Omitting `art`, or
+sending it as `none`, keeps the heading plain.
+
+Use it the way a magazine uses a display face on one masthead, not on every
+subheading: pick at most one or two headings on the page to carry an `art`
+style — usually the page's own title or its single strongest hook line — and
+leave the rest of the headings plain. A page where every `heading` carries
+`neon` or `glitch` has no plain heading left to contrast against, so the
+effect stops reading as emphasis and starts reading as the page's default
+typeface. Match the style to the character rather than reaching for the
+flashiest one: `outline` or `serif` suit a composed, elegant role; `glitch` or
+`neon` suit something high-energy, cyberpunk, or unstable; `ink` suits a
+brush-and-paper or folklore setting; `bubble` suits something playful or cute.
+A horror role's title in `bubble` is a mismatch the same way a `sakura-mist`
+skin would be.
+
+## Image frame: match the picture to the frame
+
+`image.attrs.frame` adds a display treatment around a figure — `default` (a
+plain figure, the same as before `frame` existed), `none` (no framing at all,
+for a borderless cutout), or `polaroid` / `tape` (a bordered, scrapbook-style
+presentation). It has no effect inside `gallery`: every picture in a gallery
+renders at `default` in this release, and sending `frame` on a gallery item is
+rejected rather than silently ignored — do not try to frame individual
+gallery pictures.
+
+`polaroid` and `tape` want a picture that already reads as a snapshot or a
+pinned-up photo — a candid shot, a single portrait — not a wide establishing
+shot or a picture that already has its own border drawn into it; a landscape
+squeezed into a polaroid crop usually looks worse than the plain figure.
+`none` is for a picture with a transparent background made to be used as a
+sticker or cutout decoration rather than a photograph — using it on an
+ordinary rectangular photo just removes the (already minimal) plain framing
+with no visual gain. When the picture is an ordinary photograph and no
+specific scrapbook effect is called for, `default` — or simply omitting
+`frame` — is the right choice.
 
 ## Choosing between blocks that look alike
 

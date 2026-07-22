@@ -203,7 +203,11 @@ test('preview-page-authoring reference documents schema whitelist, limits, and s
   // Anchored to the real count. The previous `/11\s+block|block types/i` was an
   // alternation over the whole pattern, so the bare words "block types" satisfied
   // it and the number could never go stale-Red.
-  assert.match(authoring, /16\s+block\s+types/i);
+  //
+  // RATCHET: 16 -> 17 (2026-07-23) when `panel` shipped as a new container node.
+  // Bump this number again, in the same change, whenever a block type is added
+  // or removed from the schema v1 whitelist.
+  assert.match(authoring, /17\s+block\s+types/i);
   // image sourcing rule in author-facing language, pass-only
   assert.match(authoring, /pass/);
   assert.match(authoring, /moderationState/);
@@ -239,7 +243,7 @@ test('preview-page-authoring reference states the REAL wire node/mark vocabulary
   // exact names. Docs listing invented names strand every external AI client.
   for (const node of ['heading', 'paragraph', 'blockquote', 'bulletList', 'orderedList',
     'listItem', 'dialogueBubble', 'statCard', 'spoiler', 'divider', 'image',
-    'columns', 'column', 'profileCard', 'gallery', 'meter']) {
+    'columns', 'column', 'profileCard', 'gallery', 'meter', 'panel']) {
     assert.match(authoring, new RegExp('`' + node + '`'), `missing block node \`${node}\``);
   }
   for (const mark of ['bold', 'italic', 'underline', 'strike', 'highlight', 'textStyle']) {
