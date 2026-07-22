@@ -52,6 +52,19 @@
         "The output uses a fresh idempotencyKey for the corrected save rather than replaying the old key.",
         "The output handles a rate-limited save with backoff instead of a tight retry loop."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "My role is a moody gothic vampire noble. Give the preview page a matching color skin, put the opening hook in a colored panel so it stands out, and make the title heading look dramatic.",
+      "expected_output": "Sets skinId to dark-violet on role_patch_preview_page to match the character's tone, wraps the hook paragraph in a top-level panel with a fitting tone (e.g. violet or ink) rather than every section, and applies an art style such as outline or serif to only the page's title heading — leaving the rest of the headings plain, and images at the default frame unless the author asked for a scrapbook treatment.",
+      "files": [],
+      "expectations": [
+        "The output picks skinId dark-violet (one of the seven named skins) rather than inventing a skin name or leaving it unset when the author's intent is clear.",
+        "The output puts the hook in exactly one panel at the top level of the document, not nested inside columns or another panel, and does not wrap every section in a panel.",
+        "The output sends a valid panel.attrs.tone from the 8-value enum and explains the tone choice.",
+        "The output applies heading.attrs.art to only the title heading (one or two at most), leaving other headings plain, and picks a style that fits a gothic/moody character rather than a playful one like bubble.",
+        "The output does not invent an image frame or gallery per-item frame the author did not ask for, and does not claim frame has any effect inside a gallery."
+      ]
     }
   ]
 }

@@ -46,10 +46,10 @@ Schema v1 accepts a fixed vocabulary. Anything outside it is rejected with
 `invalid_param` plus a `path` to the first offending node. These node and mark
 type strings are the exact wire contract — send them verbatim.
 
-- **16 block types**: `heading`, `paragraph`, `blockquote`, `bulletList`,
+- **17 block types**: `heading`, `paragraph`, `blockquote`, `bulletList`,
   `orderedList`, `listItem`, `dialogueBubble`, `statCard`, `spoiler`,
-  `divider`, `image`, `columns`, `column`, `profileCard`, `gallery`, and
-  `meter`.
+  `divider`, `image`, `columns`, `column`, `profileCard`, `gallery`,
+  `meter`, and `panel`.
 - **2 inline node types**: `text` and `hardBreak`.
 - **6 marks** on inline `text`: `bold`, `italic`, `underline`, `strike`,
   `highlight`, and `textStyle`.
@@ -59,6 +59,13 @@ Attribute contract per node:
 - `heading.attrs.level`: `2` or `3` only.
 - `heading` / `paragraph` may carry `attrs.textAlign`: `left`, `center`, or
   `right` (the key is `textAlign`, not `align`).
+- `heading.attrs.art`: an optional decorative style layered on the heading
+  text — `bubble`, `neon`, `outline`, `glitch`, `ink`, or `serif` — built from
+  CSS effects (text-shadow, stroke, gradient-clip), so it renders the same
+  way across every script with no font file involved. Omitting `art`, or
+  sending it explicitly as `none`, renders the heading as plain text; a
+  document written before `art` existed needs no migration and keeps
+  rendering exactly as it did.
 - `dialogueBubble.attrs.name`: speaker label, at most 20 characters. Its
   content is inline (`text` / `hardBreak`). Paragraph-wrapped content is
   tolerated and flattened into lines on render — prefer plain inline content.
@@ -71,6 +78,13 @@ Attribute contract per node:
   most 30 characters. `statCard` has no children (`content` stays empty).
 - `spoiler.attrs.title`: at most 40 characters; its `content` is block nodes.
 - `image.attrs.src`: an allowed asset URL (see Image rules).
+- `image.attrs.frame`: an optional display frame — `default`, `none`,
+  `polaroid`, or `tape`. `default` is the plain figure — the same rendering
+  an image had before `frame` existed. `none` strips even that plain
+  treatment for a borderless cutout, meant for a picture with a transparent
+  background used as a sticker. `polaroid` and `tape` add a bordered,
+  scrapbook-style presentation. Omitting `frame` defaults to `default`, so a
+  document written before `frame` existed needs no migration.
 - `image.attrs.width`: `25`, `33`, `50`, `66`, or `100` — the percentage of the
   text column the figure spans. These five steps are the entire range; a width
   outside them is rejected, not rounded to the nearest step. When `width` is
@@ -112,7 +126,13 @@ Attribute contract per node:
   `gallery` has no children. A `gallery` renders as a rail the reader scrolls
   horizontally, and each picture keeps its own natural proportions — pictures are
   not cropped to a common shape, so a portrait and a landscape may sit side by
-  side in one gallery.
+  side in one gallery. Each item's own shape is closed to exactly `src` and an
+  optional `width` (the per-item `width` key is accepted but has no effect of
+  its own — the step that sizes every picture in the rail is the gallery-level
+  `gallery.attrs.width` below, not a setting on the item). Any other key on an
+  item — including `frame` — is rejected: gallery pictures always render at
+  frame `default` in this release, and there is no way to set a frame per
+  picture inside a gallery.
 - `gallery.attrs.width`: `25`, `33`, `50`, `66`, or `100` — the same five steps as
   `image.attrs.width`, and the same rule that a width outside them is rejected
   rather than rounded. When `width` is omitted (or `null`) it defaults to `33`.
@@ -135,6 +155,13 @@ Attribute contract per node:
   from 0 to 100 — a `value` that is omitted, out of range, or not a whole number
   is rejected, not clamped to the nearest legal value.
   `meter.attrs.tone`: `gold`, `rose`, or `violet`. `meter` has no children.
+- `panel.attrs.tone`: **required** — `gold`, `rose`, `violet`, `sky`, `mint`,
+  `amber`, `silver`, or `ink`. Unlike every other attribute in this reference,
+  `tone` has no default: a `panel` sent without one of these eight exact
+  strings is rejected outright rather than rendered in a fallback color. A
+  `panel` is a colored content box — a tinted background and border in the
+  chosen tone — wrapping a block of content; see "Where `panel` may appear"
+  below for its placement rule.
 - `highlight.attrs.tone`: `gold`, `rose`, or `violet`.
 - `textStyle.attrs.color`: one of the 8-value palette `gold`, `rose`,
   `violet`, `mint`, `sky`, `amber`, `silver`, or `default` (empty/`default`
@@ -162,13 +189,30 @@ across whatever width the block ends up with. A gallery in a narrow column is a
 narrow rail, and its width step still chooses whether that rail shows one picture
 or three.
 
+### Where `panel` may appear
+
+`panel` follows the same placement rule as `columns`: only at the top level of the
+document, as a direct child of `doc`. A `panel` inside a `columns` column, inside a
+`spoiler`, inside another `panel`, or anywhere else that is not the document's top
+level is rejected as nesting — it is not silently flattened out to the top level.
+
+Inside a `panel`, send any block that is legal at the top level **except**
+`columns` and another `panel` — a `paragraph`, a `heading`, a `dialogueBubble`, a
+`statCard`, a `bulletList`, an `image`, and so on all nest inside a panel
+normally. `columns` and `panel` are the two blocks reserved for the top level
+only, so neither can appear inside a panel, and a panel cannot contain itself.
+
+A `panel` counts toward the document's 200-block cap the same as any other
+block — a page built from a dozen panels each holding a dozen paragraphs reaches
+the cap the same way any other structure would.
+
 ## Hard limits
 
 These caps are part of the author contract:
 
 - The whole document must stay under **200 KB** when serialized.
 - The document must contain at most **200 blocks**. `columns` and each `column`
-  count as blocks like any other node.
+  count as blocks like any other node, and so does `panel`.
 - Any single text field must stay under **20000 characters**.
 - The document may reference at most **200 images** in total, counted across
   every image-bearing attribute (see Image rules). A `gallery` carries up to six
@@ -184,7 +228,9 @@ summarize rather than splitting one idea across dozens of thin blocks.
 Use the block that matches the reading intent, not the one that looks densest.
 
 - `heading` (`level` 2 or 3): a short section label. Do not stack many headings
-  with no body between them.
+  with no body between them. `art` layers a decorative CSS style — `bubble`,
+  `neon`, `outline`, `glitch`, `ink`, `serif` — on the text; see the skill's
+  guidance on `art` for when one fits a heading and when to leave it plain.
 - `paragraph`: normal prose. Most of a preview page is paragraphs.
 - `blockquote`: a pulled line rendered as an accented quote card — an
   in-character motto, a premise hook.
@@ -197,12 +243,20 @@ Use the block that matches the reading intent, not the one that looks densest.
   lore behind a title that teases without revealing.
 - `bulletList` / `orderedList` with `listItem` children: scannable facts or a
   short "what you can do here" list. Keep items short.
-- `image`: one figure. Use it for a hero or a section anchor.
+- `image`: one figure. Use it for a hero or a section anchor. `frame` adds a
+  display treatment around it — `polaroid` or `tape` for a scrapbook feel,
+  `none` for a borderless cutout that suits a transparent-background sticker,
+  `default` for the plain figure with no treatment.
 - `divider`: a quiet section break between two ideas.
 - `columns` with `column` children: a row of two to four short parallel items —
   a two-up cast pairing, a compact "before / after". A wide screen shows them
   side by side; a narrow one stacks them in order. Two reads best; three still
   holds a short line; four is for terse items only, such as a stat or a word.
+- `panel` with block content: a colored content box — a tinted background and
+  border in one of eight tones — wrapping the same block content the rest of
+  the page uses. Use it to set one section visually apart (a warning, a
+  house rule, a pulled-out fact), not to decorate every section; see the
+  skill's guidance on `panel` for how sparingly to reach for it.
 - `profileCard`: one person at a glance — portrait, name, a one-line role, a
   short description, a few tags. A row or grid of them is the natural way to
   introduce an ensemble.
@@ -306,12 +360,39 @@ Changing where every visitor lands is not a cosmetic edit. Confirm a switch
 change with the author in the conversation before sending it; never flip a
 switch as a side effect of saving a document.
 
+## Page skin: `skinId`
+
+A page can also wear one of eight official color skins. Unlike every block and
+attribute above, a skin is not part of the document — `skinId` is a separate
+page-level field read back by both `role_get_preview_page` and
+`role_patch_preview_page`'s response, and written by sending `skinId` on a
+`role_patch_preview_page` request. Saving a document and choosing a skin are
+two independent decisions that happen to travel on the same call.
+
+The seven named skins, sent and received as these exact strings, are
+`indigo-night`, `sakura-mist`, `azure-dawn`, `jade-bamboo`, `crimson-flame`,
+`silver-ash`, and `dark-violet`. The empty string `""` is the eighth skin — the
+default gold look every page starts with — and it is always a legal value.
+
+`skinId` on `role_patch_preview_page` is optional, and each of the three things
+you can do with it means something different:
+
+- **Omit it** to leave the page's current skin unchanged. A save that carries
+  only `doc` never touches the skin, the same way it never touches `landOnHome`
+  or `showComments` — send `skinId` only when you intend to change the skin.
+- **Send `""`** to reset the page to the default gold skin explicitly.
+- **Send one of the seven named strings** to switch to that skin. A value
+  outside these eight legal strings is rejected, and the save fails outright —
+  the document itself is not saved either, so pick from the exact list above
+  rather than guessing at a name.
+
 ## Reset
 
 Resetting a preview page restores the default (no custom decoration). Reset is
 idempotent: resetting an already-default page is a success, not an error.
 
-Reset also returns both switches to their defaults (on). They describe how a
-page is used, so they carry no meaning once the page itself is gone. An author
+Reset also returns both switches to their defaults (on) and the skin to its
+default (`""`, gold). They describe how a page is used and how it looks, so
+they carry no meaning once the page itself is gone. An author
 who decorates the role again starts from the defaults, not from the settings
 they had before the reset.
