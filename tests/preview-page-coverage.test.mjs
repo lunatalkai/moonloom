@@ -437,3 +437,14 @@ test('preview-page-authoring reference caps total images per document', async ()
   assert.match(authoring, /`gallery`[\s\S]{0,400}?`src`[\s\S]{0,300}?same[\s\S]{0,120}(?:image rule|rules as)/i);
   assert.match(authoring, /`avatarSrc`[\s\S]{0,400}?(?:same|pass)/i);
 });
+
+test('thin_doc substance rejection is documented with actionable guidance', async () => {
+  // Server rejects saves with no substantive content (reason code `thin_doc`).
+  // External AI clients must know the code and the repair action (add text,
+  // an image, or a component) in both the MCP reference and the designer skill.
+  const reference = await readFile('references/card-writer-mcp.md', 'utf8');
+  assert.match(reference, /thin_doc/, 'card-writer-mcp.md must document the thin_doc reject reason');
+
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  assert.match(skill, /thin_doc/, 'preview page designer skill must document the thin_doc reject reason');
+});
