@@ -353,6 +353,10 @@ text.
   `version`, reapply your change, and save again.
 - **Rate limited** (`rate_limited`, a 429-style refusal): you saved or generated
   too quickly. Wait and retry with backoff, not in a tight loop.
+- **Too thin** (`thin_doc`): the page has no substantive content (barely any
+  text, no images, no components). Add real content — a proper introduction,
+  an image, or a component like a stat card — then save again. Do not pad with
+  filler to clear the gate; thin decoration serves no visitor.
 - Other save errors: `empty_doc` (nothing to save), `rejected_content_reused`
   (re-saving content already rejected), `invalid_param` (a block, mark, attribute,
   or limit is out of the schema v1 whitelist — the `reason` and `path` point at

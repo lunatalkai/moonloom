@@ -1707,7 +1707,9 @@ state instead of resubmitting.
 Error codes: `version_conflict` (the page changed since the read `version` —
 re-read and reapply), `rate_limited` (saving too quickly — back off and retry),
 `rejected_content_reused` (re-saving content already rejected), `empty_doc`
-(nothing to save), `invalid_param` (a block, mark, attribute, or limit is outside
+(nothing to save), `thin_doc` (the page has no substantive content — add some
+real text, an image, or a component such as a stat card before saving; pages
+need substance to be publishable), `invalid_param` (a block, mark, attribute, or limit is outside
 the schema v1 whitelist — the response includes a `reason` and a `path` to the
 first offending node), and `permission_denied` (the role is not owned by the
 authenticated account).
