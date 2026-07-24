@@ -1,6 +1,6 @@
 {
   "name": "moonloom",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "description": "LunaTalk AI creation toolkit for agent clients.",
   "type": "module",
   "scripts": {
