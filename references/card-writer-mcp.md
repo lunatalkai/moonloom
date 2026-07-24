@@ -62,7 +62,7 @@ role, but they do not grant edit rights to that role.
 
 ## Schema version
 
-Every tool call uses:
+Card Writer authoring tool calls use:
 
 ```json
 {
@@ -70,9 +70,117 @@ Every tool call uses:
 }
 ```
 
-Mutating tools also require `idempotencyKey` with at least 8 characters. Generate
-a stable key per intended operation; retrying the same operation should reuse the
-same key.
+Mutating Card Writer authoring tools also require `idempotencyKey` with at least
+8 characters. Generate a stable key per intended operation; retrying the same
+operation should reuse the same key. MOD marketplace calls use the separate
+schema and key rules below.
+
+## MOD marketplace and approved beta mutations
+
+The MOD marketplace contract uses a separate schema:
+
+```json
+{
+  "schemaVersion": "2026-07-23.mod-marketplace.v1"
+}
+```
+
+### Portable rollout attempt keys
+
+The client cannot know or observe whether the server will place an action in a
+measured cohort. Every `mod_market_find` logical action sends `attemptKey`.
+Every `mod_role_set_enabled` logical action with `enabled: true` sends
+`attemptKey`. Use an opaque string from 1 to 256 characters; the server can
+ignore it when the action is not measured. A disable action may omit it.
+
+Use the tool argument by default. A client whose transport already supports the
+legacy HTTP `X-Mod-Attempt-Key` header may use that header instead. When both
+are supplied they must match; otherwise the server returns
+`mod_rollout_attempt_key_conflict`. A measured call with neither source returns
+`mod_rollout_attempt_key_required`.
+
+Use a fresh opaque key for each logical user action. Reuse it only for an exact
+retry of the same logical action. Never use an account, MOD, role, order, or
+other ID as the key. Reuse the same `attemptKey` only for a transport retry
+when no terminal response was observed. After any terminal response—success,
+user error, or technical error—a later user action is a new logical action and
+sends a fresh `attemptKey`, even when its payload is identical. `attemptKey`
+does not query or recover purchase status; use `mod_purchase_status` with the
+first-party `idempotencyKey`. Keep the same `idempotencyKey` for the same
+intended purchase and its status recovery; do not rotate it merely because a
+response was lost or an error was observed. The attempt key is excluded from
+canonical business-request evidence.
+
+Use these read-only tools for discovery and account state:
+
+- `mod_market_find`: search public MODs. Set optional `officialOnly: true` only
+  for an official-only search; omission or `false` keeps official and community
+  MODs together. To find the same author's other listed MODs, pass the positive
+  `authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier.
+- `mod_market_get`: read a public MOD summary, public-worldbook summary, and
+  public lineage summary.
+- `mod_lineage_get`: read public parent/ancestor/descendant relationships.
+- `mod_public_worldbook_read`: read the public, read-only worldbook bound to a
+  listed MOD by `modId`; it does not take or return a worldbook storage ID.
+- `mod_entitlement_list`: list the authenticated user's usable MOD assets and
+  expiry state.
+- `mod_role_list`: list the authenticated user's selected role MOD states. A
+  blocked expired item is `suspended_expired`.
+- `mod_review_list`: read public ratings, review summaries, and comments.
+- `mod_purchase_quote`: read a current price for a plan only after the shared
+  acquisition gate passes: authorized rollout, enforced runtime, and
+  reconciliation readback. All point-priced plans, including lifetime, require
+  a fresh successful reconciliation readback within the 24-hour window before
+  quote, purchase, or renewal. If it cannot pass, the quote fails closed; do
+  not retry around or bypass the denial.
+- `mod_purchase_status`: remains readable for the authenticated user's own
+  idempotency key even while a quote is unavailable, so an existing first-party
+  purchase outcome can still be checked safely.
+
+The adjusted `mod_public_worldbook_read` tool is the equivalent public contract
+for accessible worldbook discovery and reading. It is addressed by `modId`,
+returns public read-only recommendations and entries, and never becomes an
+authoring handle: do not expect a storage ID or recommend update/delete. The
+last-published MOD release owns the immutable worldbook snapshot returned by
+this tool; unpublished live binding or entry edits do not appear until a newer
+MOD release is approved and promoted.
+
+The following operations are available only inside the server-authorized MOD
+beta cohort:
+
+- `mod_role_set_enabled`: enable or disable an installed MOD on an
+  authenticated caller-owned role. Enabling requires an active entitlement;
+  retries are idempotent, and the server remains authoritative about selector
+  displacement.
+- `mod_update_preview`: preview a role-scoped or all-role update. Explain the
+  target version, affected role count, parameter migration, and worldbook
+  snapshot impact before asking the user to confirm.
+- `mod_update_apply`: call only after explicit user confirmation, passing the
+  preview's `previewToken`, `expectedInstalledVersion`, and `confirm: true`.
+  A stale/conflicting preview must be discarded and previewed again.
+- `mod_author_offer_get`: read only the authenticated author's own
+  collaboration mode, plans, prices, and discounts. It is read-only and is not
+  a way to inspect another author's private configuration.
+
+An outside-beta response is authoritative and fail-closed. Do not bypass it
+through another tool or by inventing storage identifiers.
+
+There is no MCP purchase or free-claim tool. The contract does not expose
+`mod_purchase`, `mod_review_write`, `mod_review_helpful_set`,
+`mod_review_reply`, `mod_favorite_set`, `mod_author_offer_put`, renewal,
+refund, offer mutation, or expiry acknowledgement. Quotes are informational;
+purchase and renewal happen only in the LunaTalk first-party UI.
+
+When `conversation_send_message` returns
+`user_confirmation_required`, stop the retry loop. Explain that the user must
+use the first-party UI to renew or remove the expired MOD, then inspect
+`mod_role_list`. Do not auto-ack, auto-renew, or auto-purchase; never invent an
+acknowledgement argument or silently bypass the enabled MOD.
+
+All marketplace responses are allowlisted. They never expose an account UUID, a
+private worldbook, a closed MOD implementation, raw source, or another user's
+purchase/order/expiry data. An unavailable result is not evidence about hidden
+content.
 
 ## Response envelope
 
@@ -101,6 +209,11 @@ reading fields:
 - Worldbook bind tools: read `structuredContent.binding`; this includes target
   type, target id, active bindings, and next recommended tools.
 - `publish_submit`: read `structuredContent.publish`.
+- MOD marketplace tools: read `structuredContent.market`, `lineage`,
+  `worldbook`, `assets`, `roleMods`, `reviews` / `aggregate`, `quote`, or
+  `purchase` according to the read tool. Approved role/update/author-offer
+  tools return `roleMod`, `updatePreview`, `update`, or `authorOffer`. These are
+  safe projections, not persistence records.
 
 Do not assume `previewUrl`, `messages`, `entries`, `bindings`, or `evaluation`
 are top-level fields of the JSON-RPC response.

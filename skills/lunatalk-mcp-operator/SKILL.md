@@ -28,12 +28,94 @@ packet names the next authoring stage.
 Do not print tokens, cookies, auth headers, or secret values. Report auth as
 configured, missing, expired, or unverified.
 
-Do not call mutating Card Writer tools from this skill. Creation, patching,
+Do not call general authoring mutations from this skill. Creation, patching,
 rendering, billed conversation testing, and publishing belong to the downstream
-Moonloom skill after readiness is clear.
+Moonloom skill after readiness is clear. The beta-only MOD role/update
+operations below are the narrow exception and must pass every listed gate.
 
 Do not invent tools or scopes. Moonloom uses the client-configured MCP server and
 the authenticated LunaTalk account.
+
+## MOD marketplace boundary
+
+When the requested operation is MOD discovery, asset inspection, public
+worldbook reading, lineage, review reading, price quotation, purchase-status
+recovery, role use, or version updates, use the dedicated
+`2026-07-23.mod-marketplace.v1` contract rather than Card Writer's authoring
+schema. The read tools are:
+`mod_market_find`, `mod_market_get`, `mod_lineage_get`,
+`mod_public_worldbook_read`, `mod_entitlement_list`, `mod_role_list`,
+`mod_review_list`, `mod_purchase_quote`, and `mod_purchase_status`.
+The client cannot know or observe whether the server will place an action in a
+measured cohort. Every `mod_market_find` logical action sends `attemptKey`.
+Every `mod_role_set_enabled` logical action with `enabled: true` sends
+`attemptKey`. Use an opaque 1-to-256-character tool argument; the server can
+ignore it for an unmeasured action. A disable action may omit it.
+
+Use the tool argument by default. The legacy `X-Mod-Attempt-Key` header remains
+valid for transports that already support it. Both forms must match when both
+are supplied or the server returns `mod_rollout_attempt_key_conflict`; a
+measured call without either source returns
+`mod_rollout_attempt_key_required`. Use a fresh opaque key for each logical
+user action. Reuse it only for an exact retry of the same logical action.
+Reuse the same `attemptKey` only for a transport retry when no terminal
+response was observed. After any terminal response—success, user error, or
+technical error—a later user action is a new logical action and sends a fresh
+`attemptKey`, even when its payload is identical.
+Never use an account, MOD, role, order, or other ID as the key. `attemptKey`
+does not query or recover purchase status; use `mod_purchase_status` with the
+first-party `idempotencyKey`. Keep the same `idempotencyKey` for the same
+intended purchase and its status recovery; do not rotate it merely because a
+response was lost or an error was observed. The key is excluded from canonical
+business-request evidence.
+For discovery, set `officialOnly: true` only when the user explicitly wants
+official MODs; omit it or use `false` to keep both official and community MODs.
+When the user asks for the same author's other listed MODs, pass the positive
+`authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier;
+never substitute, infer, or expose an account UUID.
+
+`mod_purchase_quote` passes the shared acquisition gate before it can return a
+price: authorized rollout, enforced runtime, and reconciliation readback. All
+point-priced plans, including lifetime, require a fresh successful
+reconciliation readback within the 24-hour window before quote, purchase, or
+renewal. If a prerequisite is missing, the quote fails closed. Do not retry
+around or bypass the denial.
+`mod_purchase_status` remains readable for the authenticated caller's own
+idempotency key when a quote is unavailable, so an existing first-party purchase
+outcome can still be checked safely.
+
+`mod_public_worldbook_read` is the adjusted equivalent of accessible public
+worldbook discovery/read: it is read-only, addressed by `modId`, and never
+exposes a worldbook storage ID or an update/delete path. The last-published MOD
+release owns the immutable worldbook snapshot returned here, so unpublished live
+binding or entry edits remain invisible until a newer MOD release is approved
+and promoted.
+
+The beta cohort additionally permits `mod_role_set_enabled`,
+`mod_update_preview`, and `mod_update_apply`. It may change only a caller-owned role;
+the MOD must be installed, and enabling requires an
+active entitlement. Always preview an update first, explain the role,
+version, parameter, and worldbook snapshot impact, and wait for explicit user
+confirmation. Apply only with the returned `previewToken`,
+`expectedInstalledVersion`, and `confirm: true`; re-preview after a stale
+preview or conflict. A denial outside the beta cohort is fail-closed and must
+not be bypassed.
+
+`mod_author_offer_get` is read-only and may inspect only the authenticated
+author's own plans and discounts.
+
+There is no MCP purchase or free-claim mutation. The only permitted
+purchase/renewal path is the LunaTalk first-party UI. Do not auto-ack,
+auto-renew, or auto-purchase, and do not invent `mod_purchase`, an
+expiry acknowledgement, a review/favorite/offer write, or another mutation.
+If `conversation_send_message` returns
+`user_confirmation_required`, stop and hand the user to the first-party UI to
+confirm renewal or removal; after that, `mod_role_list` may be read again.
+
+Keep the report public-safe: never expose or infer an account UUID, private
+worldbook, closed MOD implementation, source, or another user's purchase/order
+or expiry data. `suspended_expired` is a state report, not consent to change the
+role or entitlement.
 
 ## Workflow
 
@@ -71,13 +153,16 @@ Self-review:
 - no credentials printed:
 - no environment-specific URL hard-coded:
 - no tool invented:
-- mutating action deferred to downstream skill:
+- mutation is deferred or satisfies the approved MOD gate and confirmation:
 - stage gate is correct:
 ```
 
 ## Stage routing
 
 - Setup/auth/tool list problems: stay in `lunatalk-mcp-operator`.
+- MOD use and update: stay here for the beta gate, role/entitlement checks,
+  preview, confirmation, and safe result envelope; defer purchase, renewal,
+  public interaction, or offer mutation to the first-party UI.
 - Draft-only ideation, blueprinting, packets, collaboration, quality, or profile
   work: do not require MCP yet; route to the narrow Moonloom writing skill.
 - Creator analytics or trend-aware planning: require `creator_analytics_brief`
