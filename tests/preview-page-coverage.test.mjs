@@ -442,9 +442,13 @@ test('thin_doc substance rejection is documented with actionable guidance', asyn
   // Server rejects saves with no substantive content (reason code `thin_doc`).
   // External AI clients must know the code and the repair action (add text,
   // an image, or a component) in both the MCP reference and the designer skill.
+  // 契約鍵是 reason 而非頂級錯誤碼：文檔必須把 thin_doc 綁在 invalid_param 的
+  // reason 之下（server bridge/router 均如此回），不得寫成 empty_doc 的碼級同儕。
   const reference = await readFile('references/card-writer-mcp.md', 'utf8');
   assert.match(reference, /thin_doc/, 'card-writer-mcp.md must document the thin_doc reject reason');
+  assert.match(reference, /`invalid_param`[\s\S]{0,400}`thin_doc`/, 'thin_doc must be documented as a reason under invalid_param, not a peer error code');
 
   const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
   assert.match(skill, /thin_doc/, 'preview page designer skill must document the thin_doc reject reason');
+  assert.match(skill, /invalid_param[\s\S]{0,120}thin_doc/, 'skill must tie thin_doc to invalid_param reason semantics');
 });
