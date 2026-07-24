@@ -240,11 +240,11 @@ test('MCP workflow documents the safe MOD marketplace read contract', async () =
   }
   assert.match(cardWriter, /suspended_expired/);
   assert.match(cardWriter, /No MCP purchase|does not expose.*mod_purchase/i);
-  assert.equal(packageJSON.version, '0.1.37');
-  assert.equal(pluginJSON.version, '0.1.37');
+  assert.equal(packageJSON.version, '0.1.38');
+  assert.equal(pluginJSON.version, '0.1.38');
 });
 
-test('MCP workflow gives portable MOD rollout attempt-key guidance', async () => {
+test('MCP workflow keeps MOD discovery and role enablement free of rollout attempt metadata', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
   const operator = await readFile('skills/lunatalk-mcp-operator/SKILL.md', 'utf8');
@@ -260,35 +260,27 @@ test('MCP workflow gives portable MOD rollout attempt-key guidance', async () =>
   ].map(async (path) => JSON.parse(await readFile(path, 'utf8'))));
 
   for (const source of [workflow, cardWriter, operator]) {
-    assert.match(source, /attemptKey/);
-    assert.match(source, /mod_rollout_attempt_key_required/);
-    assert.match(source, /mod_rollout_attempt_key_conflict/);
-    assert.match(source, /client (?:cannot|does not) (?:know|observe|predict)[\s\S]{0,160}(?:measured|cohort)/i);
-    assert.match(source, /every `mod_market_find`[\s\S]{0,180}`attemptKey`/i);
-    assert.match(source, /every `mod_role_set_enabled`[\s\S]{0,180}`enabled:\s*true`[\s\S]{0,180}`attemptKey`/i);
-    assert.match(source, /fresh opaque key[\s\S]{0,80}logical\s+user action/i);
-    assert.match(source, /reuse[\s\S]{0,80}only[\s\S]{0,80}exact[\s\S]{0,30}retry[\s\S]{0,80}same logical action/i);
-    assert.match(source, /reuse the same `attemptKey` only for a transport retry\s+when no terminal\s+response/i);
-    assert.match(source, /after any terminal response[\s\S]{0,180}sends a fresh\s+`attemptKey`/i);
-    assert.match(source, /attemptKey[\s\S]{0,80}does not[\s\S]{0,80}recover purchase status/i);
+    assert.match(source, /mod_market_find[\s\S]{0,180}(?:no|without) rollout attempt metadata/i);
+    assert.match(source, /mod_role_set_enabled[\s\S]{0,240}(?:no|without) rollout attempt metadata/i);
+    assert.doesNotMatch(source, /attemptKey|X-Mod-Attempt-Key|mod_rollout_attempt_key/i);
     assert.match(source, /mod_purchase_status[\s\S]{0,80}idempotencyKey/i);
-    assert.match(source, /same `idempotencyKey` for the same\s+intended purchase/i);
-    assert.match(source, /never use[\s\S]{0,80}account[\s\S]{0,80}MOD[\s\S]{0,80}role[\s\S]{0,80}ID/i);
+    assert.match(source, /same\s+`idempotencyKey` for the same\s+intended purchase/i);
+    assert.match(source, /acquisition gate[\s\S]{0,180}(?:reconciliation|readback)/i);
   }
   assert.match(cardWriter, /Card Writer authoring tool calls use[\s\S]{0,120}2026-05-26\.m1/i);
   assert.doesNotMatch(cardWriter, /Every tool call uses:/i);
   assert.ok(
-    evals.evals.some((entry) => /attemptKey/.test(JSON.stringify(entry))
-      && /logical user action/.test(JSON.stringify(entry))
-      && /terminal response/.test(JSON.stringify(entry))
+    evals.evals.some((entry) => /without rollout attempt metadata/.test(JSON.stringify(entry))
+      && /mod_market_find/.test(JSON.stringify(entry))
+      && /mod_role_set_enabled/.test(JSON.stringify(entry))
       && /mod_purchase_status/.test(JSON.stringify(entry))
       && /idempotencyKey/.test(JSON.stringify(entry))
-      && /cannot (?:know|observe|predict).*(?:measured|cohort)/i.test(JSON.stringify(entry))),
-    'missing portable rollout attempt-key eval',
+      && !/attemptKey|X-Mod-Attempt-Key|mod_rollout_attempt_key/i.test(JSON.stringify(entry))),
+    'missing no-attempt-metadata MOD workflow eval',
   );
-  assert.equal(packageJSON.version, '0.1.37');
+  assert.equal(packageJSON.version, '0.1.38');
   for (const manifest of manifests) {
-    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.37');
+    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.38');
   }
 });
 
@@ -349,7 +341,7 @@ test('MCP workflow preserves the fail-closed quote and readable status contract'
   );
 });
 
-test('MCP workflow documents the approved MOD role/update contract without opening irreversible writes', async () => {
+test('MCP workflow documents the approved MOD role/update contract without a retired beta presentation gate', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
   const operator = await readFile('skills/lunatalk-mcp-operator/SKILL.md', 'utf8');
@@ -375,8 +367,9 @@ test('MCP workflow documents the approved MOD role/update contract without openi
     assert.match(operator, new RegExp(tool));
   }
   for (const source of [workflow, cardWriter, operator]) {
-    assert.match(source, /beta (?:cohort|rollout)|outside (?:the )?beta/i);
-    assert.match(source, /owned role|role ownership/i);
+    assert.doesNotMatch(source, /beta[- ]only|beta cohort|outside (?:the )?beta/i);
+    assert.match(source, /role authored by (?:the )?caller|caller.*CURRENT conversation/i);
+    assert.match(source, /unrelated roles?.*(?:not exposed|not disclose)|(?:not exposed|not disclose).*unrelated roles?/i);
     assert.match(source, /active entitlement|valid entitlement/i);
     assert.match(source, /preview token|previewToken/i);
     assert.match(source, /expectedInstalledVersion/);
@@ -401,12 +394,15 @@ test('MCP workflow documents the approved MOD role/update contract without openi
     'missing update preview/apply eval',
   );
   assert.ok(
-    evals.evals.some((entry) => /beta cohort|outside beta/i.test(JSON.stringify(entry))),
-    'missing fail-closed beta cohort eval',
+    evals.evals.some((entry) => /CURRENT conversation/.test(JSON.stringify(entry))
+      && /unrelated[- ]role|not exposed|not disclose/i.test(JSON.stringify(entry))
+      && /active entitlement/.test(JSON.stringify(entry))
+      && !/beta cohort|outside beta|beta-only/i.test(JSON.stringify(entry))),
+    'missing role-access and entitlement denial eval without retired beta gate',
   );
-  assert.equal(packageJSON.version, '0.1.37');
+  assert.equal(packageJSON.version, '0.1.38');
   for (const manifest of manifests) {
     const version = manifest.version ?? manifest.plugins?.[0]?.version;
-    assert.equal(version, '0.1.37');
+    assert.equal(version, '0.1.38');
   }
 });
