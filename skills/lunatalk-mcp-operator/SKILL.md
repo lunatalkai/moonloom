@@ -30,7 +30,7 @@ configured, missing, expired, or unverified.
 
 Do not call general authoring mutations from this skill. Creation, patching,
 rendering, billed conversation testing, and publishing belong to the downstream
-Moonloom skill after readiness is clear. The beta-only MOD role/update
+Moonloom skill after readiness is clear. The role-scoped MOD role/update
 operations below are the narrow exception and must pass every listed gate.
 
 Do not invent tools or scopes. Moonloom uses the client-configured MCP server and
@@ -46,28 +46,15 @@ schema. The read tools are:
 `mod_market_find`, `mod_market_get`, `mod_lineage_get`,
 `mod_public_worldbook_read`, `mod_entitlement_list`, `mod_role_list`,
 `mod_review_list`, `mod_purchase_quote`, and `mod_purchase_status`.
-The client cannot know or observe whether the server will place an action in a
-measured cohort. Every `mod_market_find` logical action sends `attemptKey`.
-Every `mod_role_set_enabled` logical action with `enabled: true` sends
-`attemptKey`. Use an opaque 1-to-256-character tool argument; the server can
-ignore it for an unmeasured action. A disable action may omit it.
+`mod_market_find` has no rollout attempt metadata requirement. Use only its
+documented search inputs, and retry a transport failure with the same request
+parameters. `mod_role_set_enabled` likewise has no rollout attempt metadata
+requirement. Its availability comes from the server's authorization, role
+access, installed-MOD, and entitlement checks.
 
-Use the tool argument by default. The legacy `X-Mod-Attempt-Key` header remains
-valid for transports that already support it. Both forms must match when both
-are supplied or the server returns `mod_rollout_attempt_key_conflict`; a
-measured call without either source returns
-`mod_rollout_attempt_key_required`. Use a fresh opaque key for each logical
-user action. Reuse it only for an exact retry of the same logical action.
-Reuse the same `attemptKey` only for a transport retry when no terminal
-response was observed. After any terminal response—success, user error, or
-technical error—a later user action is a new logical action and sends a fresh
-`attemptKey`, even when its payload is identical.
-Never use an account, MOD, role, order, or other ID as the key. `attemptKey`
-does not query or recover purchase status; use `mod_purchase_status` with the
-first-party `idempotencyKey`. Keep the same `idempotencyKey` for the same
-intended purchase and its status recovery; do not rotate it merely because a
-response was lost or an error was observed. The key is excluded from canonical
-business-request evidence.
+Commerce remains distinct: call `mod_purchase_status` with the same
+`idempotencyKey` for the same intended purchase and its status recovery. Do not
+rotate that key merely because a response was lost or an error was observed.
 For discovery, set `officialOnly: true` only when the user explicitly wants
 official MODs; omit it or use `false` to keep both official and community MODs.
 When the user asks for the same author's other listed MODs, pass the positive
@@ -82,7 +69,8 @@ renewal. If a prerequisite is missing, the quote fails closed. Do not retry
 around or bypass the denial.
 `mod_purchase_status` remains readable for the authenticated caller's own
 idempotency key when a quote is unavailable, so an existing first-party purchase
-outcome can still be checked safely.
+outcome can still be checked safely; it does not bypass the acquisition gate or
+authorize a new purchase, claim, or renewal.
 
 `mod_public_worldbook_read` is the adjusted equivalent of accessible public
 worldbook discovery/read: it is read-only, addressed by `modId`, and never
@@ -91,15 +79,17 @@ release owns the immutable worldbook snapshot returned here, so unpublished live
 binding or entry edits remain invisible until a newer MOD release is approved
 and promoted.
 
-The beta cohort additionally permits `mod_role_set_enabled`,
-`mod_update_preview`, and `mod_update_apply`. It may change only a caller-owned role;
-the MOD must be installed, and enabling requires an
-active entitlement. Always preview an update first, explain the role,
-version, parameter, and worldbook snapshot impact, and wait for explicit user
-confirmation. Apply only with the returned `previewToken`,
+The MCP surface additionally permits `mod_role_set_enabled`,
+`mod_update_preview`, and `mod_update_apply`. It may change the caller's
+personal MOD state only for a role authored by caller or a role for which caller
+has a CURRENT conversation; unrelated roles are not exposed. The MOD must be
+installed, and enabling requires an active entitlement. Always preview an
+update first, explain the role, version, parameter, and worldbook snapshot
+impact, and wait for explicit user confirmation. Apply only with the returned `previewToken`,
 `expectedInstalledVersion`, and `confirm: true`; re-preview after a stale
-preview or conflict. A denial outside the beta cohort is fail-closed and must
-not be bypassed.
+preview or conflict. Authentication, role access, installed-MOD, entitlement,
+lifecycle, acquisition, and update precondition denials are authoritative and
+must not be bypassed.
 
 `mod_author_offer_get` is read-only and may inspect only the authenticated
 author's own plans and discounts.
