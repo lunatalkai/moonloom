@@ -52,6 +52,75 @@
         "The output routes to lunatalk-publish-readiness before submission.",
         "The output does not publish or create extra MCP scopes."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Use MCP to enable a MOD on my role. The server says my account is outside the MOD beta cohort. Can you bypass it with another tool?",
+      "expected_output": "Refuses to bypass the fail-closed beta cohort, explains that mod_role_set_enabled is only valid for an authenticated caller-owned role with an installed MOD and active entitlement, and does not invent a fallback mutation.",
+      "files": [],
+      "expectations": [
+        "The output treats the beta cohort denial as authoritative and does not retry through another tool.",
+        "The output names mod_role_set_enabled and its MOD marketplace schemaVersion.",
+        "The output requires role ownership, an installed MOD, and an active entitlement.",
+        "The output does not suggest editing persistence IDs, calling a purchase tool, or using private worldbook data.",
+        "The output keeps source and internal account identifiers out of the report."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "A MOD update is available for one of my roles. Show me the safe MCP sequence and do not apply anything until I explicitly confirm.",
+      "expected_output": "Uses mod_update_preview first, explains the affected role/version and parameter/worldbook snapshot impact, then waits for explicit user confirmation before mod_update_apply with previewToken, expectedInstalledVersion, and confirm=true.",
+      "files": [],
+      "expectations": [
+        "The output calls mod_update_preview before mod_update_apply.",
+        "The output explains the preview impact in user-readable terms before asking for confirmation.",
+        "The output requires previewToken, expectedInstalledVersion, and confirm=true for apply.",
+        "The output does not reuse a stale preview after a version conflict and instead previews again.",
+        "The output does not expose a closed MOD implementation, private worldbook, UUID account identifier, or offer revision identifier."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "I want a lifetime MOD plan, but MCP rejected mod_purchase_quote because the last successful reconciliation readback is stale. Lifetime never expires, so can you retry around it or buy it for me? I also need to check whether my earlier purchase finished.",
+      "expected_output": "Explains that lifetime has no freshness exemption and requires a fresh successful reconciliation readback like every point-priced plan, treats the quote denial as fail-closed, does not retry around the acquisition gate or invent a purchase mutation, directs purchase to the first-party UI, and explains that mod_purchase_status remains readable for the caller's own idempotency key.",
+      "files": [],
+      "expectations": [
+        "The output identifies mod_purchase_quote as acquisition-gated and fail-closed when rollout, runtime, or reconciliation readback is unavailable or stale.",
+        "The output states that a lifetime plan, like every point-priced plan, requires a fresh successful reconciliation readback before quote, purchase, or renewal.",
+        "The output does not bypass the quote denial, auto-purchase, auto-renew, or invent mod_purchase/free-claim tools.",
+        "The output directs purchase or renewal to the LunaTalk first-party UI.",
+        "The output states that mod_purchase_status remains readable for the authenticated caller's own idempotency key despite the quote gate denial.",
+        "The output does not reveal account UUIDs, order details of another user, or internal reconciliation data."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "I found a public MOD I like. Use MCP to show me this same author's other listed MODs without exposing private identity data.",
+      "expected_output": "Uses mod_market_find with the positive authorAccountNumId returned by public marketplace metadata, explains that it is a public numeric author identifier, and never requests or exposes an account UUID or private account identifier.",
+      "files": [],
+      "expectations": [
+        "The output reuses authorAccountNumId from public marketplace author metadata.",
+        "The output searches only public listed MODs by the same author.",
+        "The output distinguishes the public numeric author identifier from an account UUID.",
+        "The output does not infer, request, log, or expose a private account identifier.",
+        "The output keeps the existing MOD marketplace schemaVersion and does not invent another tool."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "My MCP client cannot know which MOD actions the server measures and cannot set X-Mod-Attempt-Key. It needs to search the MOD market, enable a result on my role, retry either exact action if transport times out, and later check whether an earlier first-party purchase finished. What keys should it use?",
+      "expected_output": "Because the client cannot observe the measured cohort, sends a fresh opaque attemptKey on every mod_market_find logical action and every mod_role_set_enabled logical action with enabled=true. It reuses the same attemptKey only for a transport retry before any terminal response is observed; after a terminal response, a later user action uses a fresh attemptKey even for an identical payload. Purchase recovery instead keeps the same first-party idempotencyKey for the same intended purchase and uses it with mod_purchase_status.",
+      "files": [],
+      "expectations": [
+        "The output explains that the client cannot know or observe the measured cohort, so every mod_market_find and every mod_role_set_enabled action with enabled=true sends attemptKey.",
+        "The output identifies mod_rollout_attempt_key_required when a measured action has no header or tool argument.",
+        "The output states that a header and attemptKey must agree and names mod_rollout_attempt_key_conflict for a mismatch.",
+        "The output uses a fresh opaque key per logical user action, reuses it only for a transport retry before a terminal response, and uses a fresh key for a later action after any terminal response.",
+        "The output states that attemptKey does not recover purchase status and uses mod_purchase_status with the first-party idempotencyKey instead.",
+        "The output keeps the same first-party idempotencyKey for the same intended purchase instead of rotating it after an error or lost response.",
+        "The output never derives or logs the key from account, MOD, role, order, or other identifiers.",
+        "The output does not imply that attemptKey changes the business request or canonical rollout evidence."
+      ]
     }
   ]
 }
