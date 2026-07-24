@@ -138,6 +138,14 @@ The read surface includes:
   `authorAccountNumId` returned in public marketplace author metadata. This is
   a public numeric author identifier; never pass, infer, or reveal an account
   UUID or another private account identifier.
+- A public market item may expose optional `backgroundUrl` (the 2:1
+  marketplace/detail visual) and `avatarUrl` (the independent 1:1 role/picker
+  visual) from its immutable last-published release. `iconUrl` remains a legacy
+  display field. Do not substitute, crop, or infer between these slots, and do
+  not expect internal image IDs in public structured output.
+- Raw MOD media upload and author media mutation are not exposed through MCP.
+  Do not invent URL/base64 mutation fields; use the first-party LunaTalk editor,
+  which enforces ownership, dimensions, and moderation.
 - The public-worldbook reader is addressed by `modId`, returns only a public
   read-only document, and is not an authoring handle.
 - Personal state: `mod_entitlement_list` and `mod_role_list`; the latter may
@@ -272,7 +280,7 @@ MOD marketplace reads return `market`, `lineage`, `worldbook`, `assets`,
 `roleMods`, `reviews` plus `aggregate`, `quote`, or `purchase` as applicable.
 Approved role/update/author-offer tools return `roleMod`, `updatePreview`,
 `update`, or `authorOffer`. Only unwrap these allowlisted objects; never expect
-raw account, order, source, or worldbook storage identifiers.
+raw account, order, source, worldbook storage, or MOD media image identifiers.
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.

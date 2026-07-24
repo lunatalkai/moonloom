@@ -61,6 +61,14 @@ When the user asks for the same author's other listed MODs, pass the positive
 `authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier;
 never substitute, infer, or expose an account UUID.
 
+Public marketplace results may include optional `backgroundUrl` and
+`avatarUrl` from the immutable published MOD release. `backgroundUrl` is the
+2:1 marketplace/detail visual; `avatarUrl` is the independent 1:1 role/picker
+visual. Treat `iconUrl` as a legacy display field only. Never crop or substitute
+one slot for another, and never request or expose the internal image IDs behind
+these URLs. MOD media upload and author media mutation are not MCP operations;
+direct the author to the first-party LunaTalk editor.
+
 `mod_purchase_quote` passes the shared acquisition gate before it can return a
 price: authorized rollout, enforced runtime, and reconciliation readback. All
 point-priced plans, including lifetime, require a fresh successful

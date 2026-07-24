@@ -119,6 +119,19 @@
         "The output keeps the same first-party idempotencyKey for the same intended purchase instead of rotating it after an error or lost response.",
         "The output does not invent a bypass for a denied enablement or a purchase mutation."
       ]
+    },
+    {
+      "id": 10,
+      "prompt": "Use MCP to show a public MOD in a marketplace card and a role picker. Which images should I use, and can you replace its Avatar by uploading a URL for me?",
+      "expected_output": "Uses optional backgroundUrl for the 2:1 marketplace/detail visual and optional avatarUrl for the independent 1:1 role/picker visual from the immutable public MOD projection, treats iconUrl as legacy-only, never substitutes between slots or exposes internal image IDs, and explains that MOD media upload or author mutation must use the first-party LunaTalk editor rather than an invented MCP URL/base64 mutation.",
+      "files": [],
+      "expectations": [
+        "The output maps backgroundUrl only to the 2:1 marketplace/detail visual.",
+        "The output maps avatarUrl only to the independent 1:1 role/picker visual.",
+        "The output treats iconUrl as legacy-only and does not crop or substitute it or backgroundUrl into Avatar.",
+        "The output does not request or expose an internal image ID.",
+        "The output refuses to invent a MOD media upload or author mutation tool and directs the author to the first-party LunaTalk editor."
+      ]
     }
   ]
 }

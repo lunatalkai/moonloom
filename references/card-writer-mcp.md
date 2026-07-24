@@ -105,6 +105,10 @@ Use these read-only tools for discovery and account state:
   `authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier.
 - `mod_market_get`: read a public MOD summary, public-worldbook summary, and
   public lineage summary.
+- Public marketplace summaries may include optional `backgroundUrl` for the
+  immutable 2:1 marketplace/detail visual and `avatarUrl` for the independent
+  1:1 role/picker visual. `iconUrl` remains legacy-only. Do not substitute one
+  slot for another or expect internal image IDs in structured output.
 - `mod_lineage_get`: read public parent/ancestor/descendant relationships.
 - `mod_public_worldbook_read`: read the public, read-only worldbook bound to a
   listed MOD by `modId`; it does not take or return a worldbook storage ID.
@@ -131,6 +135,11 @@ authoring handle: do not expect a storage ID or recommend update/delete. The
 last-published MOD release owns the immutable worldbook snapshot returned by
 this tool; unpublished live binding or entry edits do not appear until a newer
 MOD release is approved and promoted.
+
+Raw MOD media upload and author media mutation are not exposed by this MCP
+contract. Do not invent URL/base64 mutation fields or internal image IDs; use
+the first-party LunaTalk editor, which enforces ownership, dimensions, and
+moderation.
 
 The following operations use the same server-authoritative access and lifecycle
 checks as the first-party MOD workflow:
