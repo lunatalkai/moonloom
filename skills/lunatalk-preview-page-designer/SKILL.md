@@ -344,10 +344,13 @@ text.
 - `passed`: the page cleared moderation. Report success. Note that a passed page
   can still be temporarily hidden from visitors during a platform display pause;
   that is not a rejection and needs no re-save.
-- `rejected`: the content did not clear moderation. The `rejectReason` is a
-  **category only** (such as a text or image policy class) with **no per-node
-  path**, so re-read the document and self-check against the category, then save a
-  corrected version with a fresh `idempotencyKey`.
+- `rejected`: a human reviewer took the page down. Read `rejectReasonCodes` (the
+  policy categories) and `rejectReasonNote` (the reviewer's own words) rather than
+  parsing the raw `rejectReason` string. The categories carry **no per-node path**,
+  so re-read the document, self-check against each category, address the note if
+  there is one, then save a corrected version with a fresh `idempotencyKey`.
+  Automated rating never rejects a page by itself, so a rejection is considered
+  feedback — do not treat it as a threshold to retry past.
 - **Version conflict** (`version_conflict`, a 409-style refusal): the page changed
   since you last read it. Re-read with `role_get_preview_page` to get the current
   `version`, reapply your change, and save again.

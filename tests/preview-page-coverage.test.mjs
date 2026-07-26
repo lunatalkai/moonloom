@@ -452,3 +452,22 @@ test('thin_doc substance rejection is documented with actionable guidance', asyn
   assert.match(skill, /thin_doc/, 'preview page designer skill must document the thin_doc reject reason');
   assert.match(skill, /invalid_param[\s\S]{0,120}thin_doc/, 'skill must tie thin_doc to invalid_param reason semantics');
 });
+
+test('preview page docs expose the parsed reject reason fields', async () => {
+  // A rejection is now always a human decision, and the stored reason is a
+  // structured string. Clients must be told about the parsed fields so they do
+  // not hand-roll a parser for the raw value.
+  const reference = await readFile('references/card-writer-mcp.md', 'utf8');
+  assert.match(reference, /rejectReasonCodes/);
+  assert.match(reference, /rejectReasonNote/);
+
+  const skill = await readFile('skills/lunatalk-preview-page-designer/SKILL.md', 'utf8');
+  assert.match(skill, /rejectReasonCodes/);
+});
+
+test('preview page docs state that a rejection is a human decision', async () => {
+  // Authors only ever receive a takedown notice from a human reviewer; automated
+  // rating alone never rejects a page. Client guidance must not imply otherwise.
+  const authoring = await readFile('references/preview-page-authoring.md', 'utf8');
+  assert.match(authoring, /(?:human|reviewer)/i);
+});
