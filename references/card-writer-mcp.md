@@ -1661,14 +1661,16 @@ Read the authenticated author's own editable preview page for a role.
 }
 ```
 
-The response is a closed four-field shape:
+The response is a closed shape:
 
 ```json
 {
   "doc": { "schemaVersion": "1", "blocks": [] },
   "status": "none",
   "version": 0,
-  "rejectReason": null
+  "rejectReason": null,
+  "rejectReasonCodes": [],
+  "rejectReasonNote": ""
 }
 ```
 
@@ -1677,11 +1679,22 @@ The response is a closed four-field shape:
   `status: "none"`, `doc: null`, and `version: 0` — this is a normal empty state,
   not an error.
 - `version` is the concurrency guard: pass it back on the next save.
-- `rejectReason` is a category (such as a text or image policy class) when
-  `status` is `rejected`, otherwise null. It carries no per-node path.
+- `rejectReason` is the raw stored reason when `status` is `rejected`, otherwise
+  null. It carries no per-node path.
+- `rejectReasonCodes` and `rejectReasonNote` are that same reason already parsed
+  for you: a list of policy categories, plus the reviewer's free-text note when
+  there is one. **Read these two instead of parsing `rejectReason` yourself** —
+  the raw string has a versioned internal format and is kept only so older
+  clients keep working.
 
-The response never exposes reviewer-only or internal fields. Read only these four
-keys; do not expect a moderation review document, a content hash, or an account
+A rejection is always a person's decision. Automated rating never takes a page
+down on its own: it either clears the page or routes it to a human queue, and only
+a reviewer's verdict produces a rejected status and the author-facing notice.
+So treat a rejected status as considered feedback worth reading closely, not as a
+threshold you can nudge past by resaving.
+
+The response never exposes reviewer-only or internal fields. Read only the keys
+above; do not expect a moderation review document, a content hash, or an account
 identifier.
 
 ### `role_patch_preview_page`

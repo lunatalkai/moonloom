@@ -312,10 +312,13 @@ A saved preview page moves through three moderation states:
   seconds. Poll with backoff; do not resubmit the same document repeatedly while
   it is pending — resubmitting does not speed it up.
 - `passed`: the page cleared moderation and can be shown to visitors.
-- `rejected`: the saved content did not clear moderation. Adjust the content and
-  save a new version. A rejection carries a `rejectReason` category (such as a
-  text or image policy class) but no per-node location, so re-read the document
-  and self-check against the category rather than expecting an exact pointer.
+- `rejected`: a human reviewer took the page down. Adjust the content and save a
+  new version. A rejection carries policy categories (`rejectReasonCodes`) and,
+  when the reviewer wrote one, a note (`rejectReasonNote`) — but no per-node
+  location, so re-read the document and self-check against each category rather
+  than expecting an exact pointer. Automated rating alone never rejects a page: it
+  either clears it or sends it to a person, so a rejection is a considered
+  judgement, not a threshold to retry past.
 
 Two more author-facing facts:
 
