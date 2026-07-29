@@ -363,6 +363,11 @@ Configure authentication through the AI client's normal MCP OAuth flow. For loca
 development, use `examples/local-mcp.json` and provide the local endpoint and
 token through your private environment.
 
+The normal authorization uses an 8-hour access token with a rotating refresh
+session of up to 30 days. See
+[`references/oauth-client-lifecycle.md`](references/oauth-client-lifecycle.md)
+for consent, localhost callback, token rotation, and recovery behavior.
+
 Moonloom does not introduce separate MCP-specific scopes; the server applies
 normal login identity, account ownership, quota, moderation, publishing, and
 billing rules.

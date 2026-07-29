@@ -55,6 +55,20 @@ test('MCP client workflow reference documents the public plugin endpoint', async
   assert.doesNotMatch(cardWriter, /Public Moonloom files use endpoint placeholders/i);
 });
 
+test('MCP OAuth lifecycle documents rotating refresh and loopback recovery', async () => {
+  const lifecycle = await readFile('references/oauth-client-lifecycle.md', 'utf8');
+  const readme = await readFile('README.md', 'utf8');
+
+  assert.match(lifecycle, /8 hours/);
+  assert.match(lifecycle, /30 days/);
+  assert.match(lifecycle, /rotate|rotating/i);
+  assert.match(lifecycle, /replayed refresh token revokes/i);
+  assert.match(lifecycle, /127\.0\.0\.1|localhost/);
+  assert.match(lifecycle, /compatibility fallback/i);
+  assert.match(lifecycle, /invalid_grant/);
+  assert.match(readme, /oauth-client-lifecycle\.md/);
+});
+
 test('MCP workflow documents worldbook authoring and binding tools', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const mcpReference = await readFile('references/card-writer-mcp.md', 'utf8');
@@ -245,8 +259,8 @@ test('MCP workflow documents the safe MOD marketplace read contract', async () =
   }
   assert.match(cardWriter, /suspended_expired/);
   assert.match(cardWriter, /No MCP purchase|does not expose.*mod_purchase/i);
-  assert.equal(packageJSON.version, '0.1.39');
-  assert.equal(pluginJSON.version, '0.1.39');
+  assert.equal(packageJSON.version, '0.1.40');
+  assert.equal(pluginJSON.version, '0.1.40');
 });
 
 test('MCP workflow keeps MOD discovery and role enablement free of rollout attempt metadata', async () => {
@@ -283,9 +297,9 @@ test('MCP workflow keeps MOD discovery and role enablement free of rollout attem
       && !/attemptKey|X-Mod-Attempt-Key|mod_rollout_attempt_key/i.test(JSON.stringify(entry))),
     'missing no-attempt-metadata MOD workflow eval',
   );
-  assert.equal(packageJSON.version, '0.1.39');
+  assert.equal(packageJSON.version, '0.1.40');
   for (const manifest of manifests) {
-    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.39');
+    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.40');
   }
 });
 
@@ -405,9 +419,9 @@ test('MCP workflow documents the approved MOD role/update contract without a ret
       && !/beta cohort|outside beta|beta-only/i.test(JSON.stringify(entry))),
     'missing role-access and entitlement denial eval without retired beta gate',
   );
-  assert.equal(packageJSON.version, '0.1.39');
+  assert.equal(packageJSON.version, '0.1.40');
   for (const manifest of manifests) {
     const version = manifest.version ?? manifest.plugins?.[0]?.version;
-    assert.equal(version, '0.1.39');
+    assert.equal(version, '0.1.40');
   }
 });

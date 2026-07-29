@@ -44,6 +44,9 @@ The AI client loads that config during plugin installation or refresh, then
 connects to the public Card Writer endpoint through its normal MCP OAuth flow.
 For local development only, use `examples/local-mcp.json` with private
 environment variables for a local endpoint and token.
+The maintained token lifecycle and recovery contract is
+`references/oauth-client-lifecycle.md`; clients should support refresh-token
+rotation and replace the stored refresh token after every successful refresh.
 
 ## Tool availability
 

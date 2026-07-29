@@ -53,6 +53,8 @@ Configure authentication through the AI client's normal MCP OAuth flow. Do not
 print credentials, tokens, cookies, or authorization headers in skills, prompts,
 references, reports, or public examples. For local development only, use
 `examples/local-mcp.json` with private environment variables.
+For the 8-hour access token, rotating 30-day refresh session, localhost callback,
+and reauthorization rules, read `references/oauth-client-lifecycle.md`.
 
 Moonloom does not add separate MCP scopes. The server enforces account identity,
 role ownership, normal publish gates, quota, moderation, and billing. Role patch,
