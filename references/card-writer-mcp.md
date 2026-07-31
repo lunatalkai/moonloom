@@ -1363,7 +1363,7 @@ specific chat proportion:
   "roleId": "...",
   "conversationId": "...",
   "message": "...",
-  "model": "qwen3.7-plus",
+  "model": "deepseek-v4-pro",
   "thinkingDepth": "max",
   "waitMs": 60000,
   "viewport": "mobile"
