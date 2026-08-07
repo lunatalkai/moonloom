@@ -360,14 +360,22 @@ Non-happy paths:
   generation; fall back to an existing `pass` image or drop the image block.
 
 For accepted conversation tests, call `conversation_model_catalog` first and read
-`recommendedModel`, model status, `costScore`, and `effectiveCostScore`. Pass the
-chosen value as `model` in `conversation_send_message` when the default model is
-unknown, unavailable, or unsuitable for the current client environment. Also pass
-`waitMs: 60000`. The server default and cap are 60 seconds; a pending
+`recommendedModel`, model status, `costScore`, `effectiveCostScore`,
+`thinkingDepthOptions`, and `defaultThinkingDepth`. Pass the chosen model value
+as `model` in `conversation_send_message` when the default model is unknown,
+unavailable, or unsuitable for the current client environment. If the selected
+model exposes thinking metadata, choose from its `thinkingDepthOptions`. Pass the selected value as `thinkingDepth`; use `defaultThinkingDepth` only when the author accepts the quality/cost tradeoff. Also pass `waitMs: 60000`. The server
+default and cap are 60 seconds; a pending
 `generationStatus` after that window is an async handoff, not a failure. Use
 `conversation_turn_status` and then `conversation_inspect` for completion and
 per-message evidence. Do not send another probe while the latest message is a
 USER message or the latest turn is `waiting_ai` / `generating`.
+When token telemetry is present, include `inputTokens`, `outputTokens`,
+`cacheReadTokens`, and `cacheReadRatio` in the cost/caching note for the run. A
+high `inputTokens` value with low `cacheReadRatio` is a token-economy signal:
+inspect author-visible field bloat, worldbook bindings, and repeated setup
+before paying for repeated probes. Server prompt-cache internals belong outside
+Moonloom.
 
 ## Operation packet
 

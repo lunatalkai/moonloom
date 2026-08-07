@@ -147,3 +147,82 @@ Self-review:
 - Keep output public-safe. Do not mention deployment details,
   environment-specific URLs, account implementation details, or unsupported
   platform claims.
+
+## MOD marketplace boundary
+
+When the requested operation is MOD discovery, asset inspection, public
+worldbook reading, lineage, review reading, price quotation, purchase-status
+recovery, role use, or version updates, use the dedicated
+`2026-07-23.mod-marketplace.v1` contract rather than Card Writer's authoring
+schema. The read tools are:
+`mod_market_find`, `mod_market_get`, `mod_lineage_get`,
+`mod_public_worldbook_read`, `mod_entitlement_list`, `mod_role_list`,
+`mod_review_list`, `mod_purchase_quote`, and `mod_purchase_status`.
+`mod_market_find` has no rollout attempt metadata requirement. Use only its
+documented search inputs, and retry a transport failure with the same request
+parameters. `mod_role_set_enabled` likewise has no rollout attempt metadata
+requirement. Its availability comes from the server's authorization, role
+access, installed-MOD, and entitlement checks.
+
+Commerce remains distinct: call `mod_purchase_status` with the same
+`idempotencyKey` for the same intended purchase and its status recovery. Do not
+rotate that key merely because a response was lost or an error was observed.
+For discovery, set `officialOnly: true` only when the user explicitly wants
+official MODs; omit it or use `false` to keep both official and community MODs.
+When the user asks for the same author's other listed MODs, pass the positive
+`authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier;
+never substitute, infer, or expose an account UUID.
+
+Public marketplace results may include optional `backgroundUrl` and
+`avatarUrl` from the immutable published MOD release. `backgroundUrl` is the
+2:1 marketplace/detail visual; `avatarUrl` is the independent 1:1 role/picker
+visual. Treat `iconUrl` as a legacy display field only. Never crop or substitute
+one slot for another, and never request or expose the internal image IDs behind
+these URLs. MOD media upload and author media mutation are not MCP operations;
+direct the author to the first-party LunaTalk editor.
+
+`mod_purchase_quote` passes the shared acquisition gate before it can return a
+price: authorized rollout, enforced runtime, and reconciliation readback. All
+point-priced plans, including lifetime, require a fresh successful
+reconciliation readback within the 24-hour window before quote, purchase, or
+renewal. If a prerequisite is missing, the quote fails closed. Do not retry
+around or bypass the denial.
+`mod_purchase_status` remains readable for the authenticated caller's own
+idempotency key when a quote is unavailable, so an existing first-party purchase
+outcome can still be checked safely; it does not bypass the acquisition gate or
+authorize a new purchase, claim, or renewal.
+
+`mod_public_worldbook_read` is the adjusted equivalent of accessible public
+worldbook discovery/read: it is read-only, addressed by `modId`, and never
+exposes a worldbook storage ID or an update/delete path. The last-published MOD
+release owns the immutable worldbook snapshot returned here, so unpublished live
+binding or entry edits remain invisible until a newer MOD release is approved
+and promoted.
+
+The MCP surface additionally permits `mod_role_set_enabled`,
+`mod_update_preview`, and `mod_update_apply`. It may change the caller's
+personal MOD state only for a role authored by caller or a role for which caller
+has a CURRENT conversation; unrelated roles are not exposed. The MOD must be
+installed, and enabling requires an active entitlement. Always preview an
+update first, explain the role, version, parameter, and worldbook snapshot
+impact, and wait for explicit user confirmation. Apply only with the returned `previewToken`,
+`expectedInstalledVersion`, and `confirm: true`; re-preview after a stale
+preview or conflict. Authentication, role access, installed-MOD, entitlement,
+lifecycle, acquisition, and update precondition denials are authoritative and
+must not be bypassed.
+
+`mod_author_offer_get` is read-only and may inspect only the authenticated
+author's own plans and discounts.
+
+There is no MCP purchase or free-claim mutation. The only permitted
+purchase/renewal path is the LunaTalk first-party UI. Do not auto-ack,
+auto-renew, or auto-purchase, and do not invent `mod_purchase`, an
+expiry acknowledgement, a review/favorite/offer write, or another mutation.
+If `conversation_send_message` returns
+`user_confirmation_required`, stop and hand the user to the first-party UI to
+confirm renewal or removal; after that, `mod_role_list` may be read again.
+
+Keep the report public-safe: never expose or infer an account UUID, private
+worldbook, closed MOD implementation, source, or another user's purchase/order
+or expiry data. `suspended_expired` is a state report, not consent to change the
+role or entitlement.

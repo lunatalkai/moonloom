@@ -59,8 +59,7 @@ role ownership, normal publish gates, quota, moderation, and billing.
 
 ## Schema version
 
-Every tool call uses:
-and reauthorization rules, read `references/oauth-client-lifecycle.md`.
+Card Writer authoring tool calls use:
 
 ```json
 {
@@ -309,30 +308,38 @@ Returns `structuredContent.roles.roles[]` with `roleId`, `roleName`,
 
 ### `public_search`
 
-Search public roles and worlds. This is for public discovery and accessible
-conversation testing, not for editing or reading private role definitions.
+Find public roles and public worlds by keyword. Read-only: it mutates nothing and
+takes no `idempotencyKey`. Use it to resolve a name the author mentioned into a
+public `roleId` you can pass to `conversation_create`, or to survey what already
+exists before authoring something similar.
 
 ```json
 {
   "schemaVersion": "2026-05-26.m1",
-  "query": "rainy visitor",
+  "query": "detective",
+  "pageNum": 1,
   "pageSize": 20,
+  "language": "all",
   "includeNsfw": false
 }
 ```
 
-Returns `structuredContent.search.results[]` with `type`, `roleId` or
-`worldId`, `name`, `description`, public visibility, public stats, `systemTag`
-public AI/system classification metadata, and `nextRecommendedTools`.
-For role hits, call `conversation_model_catalog` before `conversation_create`
-when the author wants a real chat probe.
+Only `query` is required. `language` accepts `zh-Hans`, `zh-Hant`, `en`, `ja`,
+`ko`, or `all`. `pageSize` caps at 100. `includeNsfw` only takes effect when both
+the account's own NSFW setting and the global switch allow it — passing `true`
+does not override either.
 
-`roleDetailDesc` is confidential/private role core data. `public_search` never
-returns `roleDetailDesc`, `roleWelcome`, `jailbreak`, `talkExample`, or
-`roleOutputContract`. Non-owner conversation context for public roles follows the
-same boundary; use the returned public summary to choose a role, not to inspect
-the author's hidden card definition. `includeNsfw` only works when the
-authenticated account setting and the platform switch allow NSFW discovery.
+Read `structuredContent.search`: `query`, `total`, `pageNum`, `pageSize`,
+`hasNextPage`, and `results`. Page forward while `hasNextPage` is true rather
+than requesting a huge `pageSize`.
+
+Each result carries public surface only — `type`, `roleId` or `worldId`, `name`,
+`description`, `avatar`, visibility, `language`, `roleType`, `isR18`, and public
+counters. **Search results never include `roleDetailDesc`, `jailbreak`,
+`talkExample`, or `roleOutputContract`**, even for a role the caller happens to
+own; those are author-only fields reachable through owner-scoped tools such as
+`role_get`. Do not build a workflow that expects a public role's prompt body to
+come back from search.
 
 ### `creator_analytics_brief`
 
@@ -1431,10 +1438,28 @@ Optional: `query`, `recommendedOnly`, and `includeUnavailable`.
 
 Read `recommendedModel` first. Each model entry may include `costScore`,
 `effectiveCostScore`, `maxScore`, `effectiveMaxScore`, `status`, discount fields,
-and notes. `effectiveCostScore` includes active model discounts; actual billing
-still follows LunaTalk membership, context, MAX, stop, and server-side billing
-rules. If the selected model is not the server default, pass that value as
-`model` in `conversation_send_message`.
+`thinkingDepthOptions`, `defaultThinkingDepth`, and notes. When present, inspect `status.confidence`,
+`status.gatewayHealth`, and `status.errorBuckets` before choosing a paid probe
+model. Treat `status.status: "unknown"` as a sample confidence warning rather
+than proof that the model is broken. Treat `status.gatewayHealth.state:
+"unknown"` as gateway sample insufficiency, not healthy capacity; prefer a
+non-red model with usable confidence and no severe gateway or error-bucket
+warning.
+`effectiveCostScore` includes active model discounts; actual billing still
+follows LunaTalk membership, context, MAX, stop, and server-side billing rules.
+If the selected model is not the server default, pass that value as `model` in
+`conversation_send_message`. If the selected model exposes
+`thinkingDepthOptions`, choose one of those values and pass it as
+`thinkingDepth`; omit it only when the catalog entry has no thinking metadata or
+the author has not accepted the additional token/cost tradeoff. Record the
+chosen `model` and `thinkingDepth` in local playtest evidence.
+
+Conversation model catalog entries may also expose thinking mode metadata:
+`thinkingDepthOptions` and `defaultThinkingDepth`. Thinking mode is a
+quality/cost choice for supported models. Product labels follow Instant, High,
+Max, and Ultra; tool values may include `off`, `on`, `high`, `max`, and `ultra`
+depending on the selected model. Only pass values listed by that model's catalog
+entry.
 
 ### `conversation_list`
 
@@ -1856,3 +1881,108 @@ so a rejected generated URL simply disappears from this list rather than showing
 `rejected` state. A URL that was seen (usually as `pending`) and then vanished is
 a terminal rejection; a URL that has never appeared yet is insert lag. Poll the
 exact URL the document needs, with bounded polling and backoff.
+
+## MOD marketplace and approved mutations
+
+The MOD marketplace contract uses a separate schema:
+
+```json
+{
+  "schemaVersion": "2026-07-23.mod-marketplace.v1"
+}
+```
+
+### Discovery and role-state availability
+
+`mod_market_find` has no rollout attempt metadata requirement. Use only the
+documented search inputs, and retry a transport failure with the same request
+parameters. `mod_role_set_enabled` also has no rollout attempt metadata
+requirement. Its availability is determined by the server's authorization,
+role-access, installed-MOD, and entitlement checks.
+
+Commerce remains distinct: call `mod_purchase_status` with the same
+`idempotencyKey` for the same intended purchase and its status recovery. Do not
+rotate that key merely because a response was lost or an error was observed.
+
+Use these read-only tools for discovery and account state:
+
+- `mod_market_find`: search public MODs. Set optional `officialOnly: true` only
+  for an official-only search; omission or `false` keeps official and community
+  MODs together. To find the same author's other listed MODs, pass the positive
+  `authorAccountNumId` returned in public marketplace metadata. It is a public numeric author identifier, not an account UUID or private account identifier.
+- `mod_market_get`: read a public MOD summary, public-worldbook summary, and
+  public lineage summary.
+- Public marketplace summaries may include optional `backgroundUrl` for the
+  immutable 2:1 marketplace/detail visual and `avatarUrl` for the independent
+  1:1 role/picker visual. `iconUrl` remains legacy-only. Do not substitute one
+  slot for another or expect internal image IDs in structured output.
+- `mod_lineage_get`: read public parent/ancestor/descendant relationships.
+- `mod_public_worldbook_read`: read the public, read-only worldbook bound to a
+  listed MOD by `modId`; it does not take or return a worldbook storage ID.
+- `mod_entitlement_list`: list the authenticated user's usable MOD assets and
+  expiry state.
+- `mod_role_list`: list the authenticated user's selected role MOD states. A
+  blocked expired item is `suspended_expired`.
+- `mod_review_list`: read public ratings, review summaries, and comments.
+- `mod_purchase_quote`: read a current price for a plan only after the shared
+  acquisition gate passes: authorized rollout, enforced runtime, and
+  reconciliation readback. All point-priced plans, including lifetime, require
+  a fresh successful reconciliation readback within the 24-hour window before
+  quote, purchase, or renewal. If it cannot pass, the quote fails closed; do
+  not retry around or bypass the denial.
+- `mod_purchase_status`: remains readable for the authenticated user's own
+  idempotency key even while a quote is unavailable, so an existing first-party
+  purchase outcome can still be checked safely. It does not bypass the
+  acquisition gate or authorize a new purchase, claim, or renewal.
+
+The adjusted `mod_public_worldbook_read` tool is the equivalent public contract
+for accessible worldbook discovery and reading. It is addressed by `modId`,
+returns public read-only recommendations and entries, and never becomes an
+authoring handle: do not expect a storage ID or recommend update/delete. The
+last-published MOD release owns the immutable worldbook snapshot returned by
+this tool; unpublished live binding or entry edits do not appear until a newer
+MOD release is approved and promoted.
+
+Raw MOD media upload and author media mutation are not exposed by this MCP
+contract. Do not invent URL/base64 mutation fields or internal image IDs; use
+the first-party LunaTalk editor, which enforces ownership, dimensions, and
+moderation.
+
+The following operations use the same server-authoritative access and lifecycle
+checks as the first-party MOD workflow:
+
+- `mod_role_set_enabled`: enable or disable an installed MOD in the caller's
+  personal state for a role authored by caller or a role for which caller has a
+  CURRENT conversation; unrelated roles are not exposed. The MOD must be
+  installed, enabling requires an active entitlement, retries are idempotent,
+  and the server remains authoritative about selector displacement.
+- `mod_update_preview`: preview a role-scoped or all-role update. Explain the
+  target version, affected role count, parameter migration, and worldbook
+  snapshot impact before asking the user to confirm.
+- `mod_update_apply`: call only after explicit user confirmation, passing the
+  preview's `previewToken`, `expectedInstalledVersion`, and `confirm: true`.
+  A stale/conflicting preview must be discarded and previewed again.
+- `mod_author_offer_get`: read only the authenticated author's own
+  collaboration mode, plans, prices, and discounts. It is read-only and is not
+  a way to inspect another author's private configuration.
+
+An authentication, role-access, installed-MOD, entitlement, lifecycle,
+acquisition, or update-precondition denial is authoritative. Do not bypass it
+through another tool or by inventing storage identifiers.
+
+There is no MCP purchase or free-claim tool. The contract does not expose
+`mod_purchase`, `mod_review_write`, `mod_review_helpful_set`,
+`mod_review_reply`, `mod_favorite_set`, `mod_author_offer_put`, renewal,
+refund, offer mutation, or expiry acknowledgement. Quotes are informational;
+purchase and renewal happen only in the LunaTalk first-party UI.
+
+When `conversation_send_message` returns
+`user_confirmation_required`, stop the retry loop. Explain that the user must
+use the first-party UI to renew or remove the expired MOD, then inspect
+`mod_role_list`. Do not auto-ack, auto-renew, or auto-purchase; never invent an
+acknowledgement argument or silently bypass the enabled MOD.
+
+All marketplace responses are allowlisted. They never expose an account UUID, a
+private worldbook, a closed MOD implementation, raw source, or another user's
+purchase/order/expiry data. An unavailable result is not evidence about hidden
+content.
