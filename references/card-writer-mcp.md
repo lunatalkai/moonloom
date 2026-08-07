@@ -60,6 +60,7 @@ role ownership, normal publish gates, quota, moderation, and billing.
 ## Schema version
 
 Every tool call uses:
+and reauthorization rules, read `references/oauth-client-lifecycle.md`.
 
 ```json
 {
@@ -70,6 +71,25 @@ Every tool call uses:
 Mutating tools also require `idempotencyKey` with at least 8 characters. Generate
 a stable key per intended operation; retrying the same operation should reuse the
 same key.
+`mod_market_find` has no rollout attempt metadata requirement. Use only the
+parameters. `mod_role_set_enabled` also has no rollout attempt metadata
+Commerce remains distinct: call `mod_purchase_status` with the same
+- `mod_market_find`: search public MODs. Set optional `officialOnly: true` only
+- `mod_market_get`: read a public MOD summary, public-worldbook summary, and
+- `mod_lineage_get`: read public parent/ancestor/descendant relationships.
+- `mod_public_worldbook_read`: read the public, read-only worldbook bound to a
+- `mod_entitlement_list`: list the authenticated user's usable MOD assets and
+- `mod_role_list`: list the authenticated user's selected role MOD states. A
+- `mod_review_list`: read public ratings, review summaries, and comments.
+- `mod_purchase_quote`: read a current price for a plan only after the shared
+- `mod_purchase_status`: remains readable for the authenticated user's own
+The adjusted `mod_public_worldbook_read` tool is the equivalent public contract
+- `mod_role_set_enabled`: enable or disable an installed MOD in the caller's
+- `mod_update_apply`: call only after explicit user confirmation, passing the
+- `mod_author_offer_get`: read only the authenticated author's own
+`mod_purchase`, `mod_review_write`, `mod_review_helpful_set`,
+`mod_review_reply`, `mod_favorite_set`, `mod_author_offer_put`, renewal,
+`mod_role_list`. Do not auto-ack, auto-renew, or auto-purchase; never invent an
 
 ## Response envelope
 
@@ -83,6 +103,11 @@ reading fields:
 - Conversation tools: read `structuredContent.conversation`; this includes
   `conversationId`, `turn`, `latestMessage`, `messages`, `evaluation`, and
   per-message `previewUrl`.
+- `public_search`: read `structuredContent.search`; this includes public role
+  and world summaries only.
+- `creator_analytics_brief`: read `structuredContent.creatorAnalytics`; this
+  includes Creator Brief, period range, metric contract, confidence guidance,
+  and next recommended tools.
 - Worldbook tools: read `structuredContent.worldbook`; this includes worldbook
   summaries, detail payloads, and entry lists.
 - `worldbook_patch_document`: read `structuredContent.document`; this includes
@@ -101,6 +126,7 @@ are top-level fields of the JSON-RPC response.
 
 ## Core tool order
 
+0. Optional trend-aware planning: `creator_analytics_brief` when the author asks
 1. `role_create_private`, or `role_find` then `role_get` when the author gives a name instead of a roleId
 2. `role_patch_profile`
 3. `role_patch_assets`
@@ -130,6 +156,15 @@ are top-level fields of the JSON-RPC response.
 17. `conversation_inspect`
 18. Optional `conversation_load` when the author wants to resume or roll back
 19. `publish_submit` only after explicit author confirmation
+
+For public marketplace discovery, use `public_search` instead of `role_find`.
+`role_find` is for owned cards; `public_search` searches public roles and worlds
+and returns public summaries plus public role ids that can be tested with
+`conversation_model_catalog` and `conversation_create`.
+
+For creator trend decisions, use `creator_analytics_brief` before ideation or
+repair. It is read-only, returns `structuredContent.creatorAnalytics`, and is a
+decision aid rather than a writing-quality gate.
 
 ## Theme V3 custom authoring loop
 
@@ -271,6 +306,62 @@ but does not provide its roleId.
 Returns `structuredContent.roles.roles[]` with `roleId`, `roleName`,
 `roleVisibility`, `reviewStatus`, `language`, `isR18`, `accountPermission`, and
 `lastUpdateTime`.
+
+### `public_search`
+
+Search public roles and worlds. This is for public discovery and accessible
+conversation testing, not for editing or reading private role definitions.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "query": "rainy visitor",
+  "pageSize": 20,
+  "includeNsfw": false
+}
+```
+
+Returns `structuredContent.search.results[]` with `type`, `roleId` or
+`worldId`, `name`, `description`, public visibility, public stats, `systemTag`
+public AI/system classification metadata, and `nextRecommendedTools`.
+For role hits, call `conversation_model_catalog` before `conversation_create`
+when the author wants a real chat probe.
+
+`roleDetailDesc` is confidential/private role core data. `public_search` never
+returns `roleDetailDesc`, `roleWelcome`, `jailbreak`, `talkExample`, or
+`roleOutputContract`. Non-owner conversation context for public roles follows the
+same boundary; use the returned public summary to choose a role, not to inspect
+the author's hidden card definition. `includeNsfw` only works when the
+authenticated account setting and the platform switch allow NSFW discovery.
+
+### `creator_analytics_brief`
+
+Read the authenticated author's Creator Brief before trend-aware ideation,
+existing-card repair, or opportunity selection.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "period": "last30d",
+  "rating": "all",
+  "language": "zh-Hant"
+}
+```
+
+Allowed periods are `last1d`, `last7d`, `last30d`, `last90d`, `lastMonth`,
+`lastQuarter`, and `custom`. For `custom`, include `startMonth` and `endMonth`
+as `YYYY-MM`. Allowed ratings are `all`, `safe`, and `r18`; allowed languages
+are `zh-Hant`, `zh-Hans`, `en`, `ja`, `ko`, and `all`.
+
+Returns `structuredContent.creatorAnalytics` with `brief`, `periodRange`,
+`metricContract`, and `nextRecommendedTools`. The tool is read-only and does
+not need `idempotencyKey`.
+
+Use `confidenceLevel` to control language strength. Treat `high` as a strong
+signal, `medium` as a reference, and low or insufficient signals as observation.
+Do not treat creator analytics as a writing-quality gate; Moonloom writing
+skills still decide premise, character, agency, detail, presentation, and
+simulation repairs.
 
 ### `role_get`
 

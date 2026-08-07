@@ -25,6 +25,7 @@ repair, token budgeting, render review, simulation, and publish readiness.
 - `skills/lunatalk-mcp-operator` checks external AI client MCP readiness, tool
   availability, auth posture, idempotency planning, and stage gates before real
   Card Writer MCP actions.
+  Card Writer MCP actions, including `creator_analytics_brief` readiness when an
 - `skills/lunatalk-collaboration-director` turns author feedback, co-review,
   taste/preference calibration, draft comparisons, and revision choices into a
   decision packet before rewriting, simulating, or publishing.
@@ -202,6 +203,7 @@ repair, token budgeting, render review, simulation, and publish readiness.
   contract: the schema v1 block/inline/mark whitelist, hard limits, node-to-visual
   semantics, `pass`-only image rules, and the pending/passed/rejected moderation
   state machine.
+  `creator_analytics_brief` as a read-only Creator Brief, trend, owned-card
 - `references/material-distillation.md` defines source-to-play mapping,
   large-world compression, source hygiene, conflict handling, and token budget
   rules for material-heavy cards.
@@ -356,6 +358,11 @@ https://api.lunatalk.ai/mcp/card-writer
 Configure authentication through the AI client's normal MCP OAuth flow. For local
 development, use `examples/local-mcp.json` and provide the local endpoint and
 token through your private environment.
+
+The normal authorization uses an 8-hour access token with a rotating refresh
+session of up to 30 days. See
+[`references/oauth-client-lifecycle.md`](references/oauth-client-lifecycle.md)
+for consent, localhost callback, token rotation, and recovery behavior.
 
 Moonloom does not introduce separate MCP-specific scopes; the server applies
 normal login identity, account ownership, quota, moderation, publishing, and

@@ -82,6 +82,7 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   before role creation, render, simulation, or publish actions: use
   `lunatalk-mcp-operator`. If the task is draft-only writing, do not block on MCP
   readiness; route to the narrow writing skill instead.
+  / `creator_analytics_brief` availability, or stage-gating before role creation,
 - Author feedback, co-review, taste/preference calibration, draft comparison,
   "almost right but off", choosing between patch options, or deciding what to
   preserve/change/reject/delay before rewriting, simulation, or publishing: use
