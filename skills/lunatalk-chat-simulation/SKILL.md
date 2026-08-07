@@ -103,10 +103,21 @@ not call the tool.
    before reading `conversationId`, `latestMessage`, `messages`, `evaluation`,
    or `previewUrl`.
 5. Call `conversation_model_catalog` before the first paid probe. Read
-   `recommendedModel`, model status, `costScore`, and `effectiveCostScore`, then
-   pass the chosen value as `model` in `conversation_send_message` when the
-   environment default is unknown or known to be unavailable. Do not hard-code a
-   model when the catalog can provide one.
+   `recommendedModel`, model status, `status.confidence`,
+   `status.gatewayHealth`, `status.errorBuckets`, `costScore`,
+   `effectiveCostScore`, `thinkingDepthOptions`, and `defaultThinkingDepth`,
+   then pass the chosen value as `model` in
+   `conversation_send_message` when the environment default is unknown or known
+   to be unavailable. Treat `status.status: "unknown"` as a sample confidence
+   warning, not as proof that the model is broken. Treat
+   `status.gatewayHealth.state: "unknown"` as gateway sample insufficiency, not
+   as healthy capacity. Prefer models with non-red status, non-`none`
+   confidence, and no severe gateway or error-bucket warning. If the chosen
+   model exposes thinking metadata, choose a listed `thinkingDepth` value from
+   `thinkingDepthOptions`; use `defaultThinkingDepth` only after the author
+   accepts that stronger thinking can improve hard probes while using more
+   tokens. Do not hard-code a model or thinking mode when the catalog can provide
+   one. Record the selected thinkingDepth in the simulation evidence.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
    still returns `generationStatus: "waiting_ai"` or `"generating"`, treat it as

@@ -10,6 +10,11 @@ right specialized skill, guide the author through ideation and revision, and cal
 the MCP tools only when the card is ready for concrete creation, render review,
 simulation, or publishing.
 
+Moonloom is for LunaTalk authors and the external AI clients assisting them. This public repository
+contains author-facing card creation, review, MCP readiness, publish workflow guidance,
+public MCP response contracts, and safe client workflows. Platform implementation details
+belong in LunaTalk's private engineering guidance.
+
 This is Moonloom's entry router. When an agent is unsure what to use, load this
 skill first, classify the task, and then route to the narrowest matching skill.
 This mirrors the start-with-the-router pattern: if a task might be Moonloom work,

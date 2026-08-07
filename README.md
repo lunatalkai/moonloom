@@ -14,6 +14,15 @@ It helps an agent collaborate with an author through ideation, character
 positioning, worldbuilding, opening-scene design, voice control, interaction-loop
 repair, token budgeting, render review, simulation, and publish readiness.
 
+## Audience and scope
+
+Moonloom is for LunaTalk authors and the external AI clients that help those
+authors create, revise, validate, render-review, simulate, and submit LunaTalk
+cards through public MCP workflows. This public repository should teach
+author-facing creation and review behavior, public MCP response contracts, and
+safe client workflows. Platform implementation details belong in LunaTalk's
+private engineering guidance.
+
 ## What is included
 
 - `skills/using-moonloom` is the router skill. Start here when an agent is unsure
