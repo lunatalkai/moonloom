@@ -44,6 +44,9 @@ The AI client loads that config during plugin installation or refresh, then
 connects to the public Card Writer endpoint through its normal MCP OAuth flow.
 For local development only, use `examples/local-mcp.json` with private
 environment variables for a local endpoint and token.
+The maintained token lifecycle and recovery contract is
+`references/oauth-client-lifecycle.md`; clients should support refresh-token
+rotation and replace the stored refresh token after every successful refresh.
 
 ## Tool availability
 
@@ -55,6 +58,19 @@ Expected Card Writer tools:
 - `role_patch_profile`
 - `role_patch_assets`
 - optional `role_generate_assets` — generates an avatar and background; charges the author's score
+- `mod_market_find`
+- `mod_market_get`
+- `mod_lineage_get`
+- `mod_public_worldbook_read`
+- `mod_entitlement_list`
+- `mod_role_list`
+- `mod_role_set_enabled`
+- `mod_update_apply`
+- `mod_review_list`
+- `mod_purchase_quote`
+- `mod_purchase_status`
+- `mod_author_offer_get`
+- `creator_analytics_brief`
 - `role_patch_detail`
 - `role_patch_welcome`
 - `role_patch_talk_example`
@@ -104,6 +120,102 @@ Expected Card Writer tools:
 
 If a tool is missing, do not invent a substitute. Either choose a workflow that
 does not need it yet or ask the author to fix the client configuration.
+
+## MOD marketplace: safe reads and approved mutations
+
+Use `schemaVersion: 2026-07-23.mod-marketplace.v1` for all MOD marketplace
+calls. This is a separate contract from Card Writer authoring's
+`2026-05-26.m1` schema.
+
+`mod_market_find` has no rollout attempt metadata requirement. Call discovery
+with its documented search filters; a normal retry uses the same request
+parameters and the server remains authoritative about the returned result.
+`mod_role_set_enabled` likewise has no rollout attempt metadata requirement.
+Its authorization, role access, installed-MOD, and entitlement checks are the
+only availability gates described by this contract.
+
+Commerce remains distinct: call `mod_purchase_status` with the same
+`idempotencyKey` for the same intended purchase and its status recovery. Do not
+rotate that key merely because a response was lost or an error was observed.
+
+The read surface includes:
+
+- Discovery: `mod_market_find`, `mod_market_get`, `mod_lineage_get`, and
+  `mod_public_worldbook_read`.
+- `mod_market_find` accepts optional `officialOnly: true` for an official-only
+  result set. Omit it or use `false` for the normal official-plus-community
+  discovery result.
+- To find the same author's other listed MODs, reuse the positive
+  `authorAccountNumId` returned in public marketplace author metadata. This is
+  a public numeric author identifier; never pass, infer, or reveal an account
+  UUID or another private account identifier.
+- A public market item may expose optional `backgroundUrl` (the 2:1
+  marketplace/detail visual) and `avatarUrl` (the independent 1:1 role/picker
+  visual) from its immutable last-published release. `iconUrl` remains a legacy
+  display field. Do not substitute, crop, or infer between these slots, and do
+  not expect internal image IDs in public structured output.
+- Raw MOD media upload and author media mutation are not exposed through MCP.
+  Do not invent URL/base64 mutation fields; use the first-party LunaTalk editor,
+  which enforces ownership, dimensions, and moderation.
+- The public-worldbook reader is addressed by `modId`, returns only a public
+  read-only document, and is not an authoring handle.
+- Personal state: `mod_entitlement_list` and `mod_role_list`; the latter may
+  report `suspended_expired` for a MOD already attached to a role.
+- Social proof: `mod_review_list`.
+- `mod_purchase_quote` passes the shared acquisition gate before it can return
+  a price. The gate requires the authorized rollout, enforced runtime, and
+  reconciliation readback. All point-priced plans, including lifetime, require
+  a fresh successful reconciliation readback within the 24-hour window before
+  quote, purchase, or renewal. The quote fails closed if any prerequisite is
+  unavailable. Do not retry around or bypass that denial.
+- `mod_purchase_status` remains readable for the authenticated caller's own
+  idempotency key when a quote is unavailable, so a prior first-party purchase
+  can still be checked safely; it does not bypass the acquisition gate or
+  authorize a new purchase, claim, or renewal.
+
+`mod_public_worldbook_read` is the adjusted, equivalent accessible-worldbook
+contract. It is addressed by `modId`, returns only public read-only
+recommendations and entries, and never exposes a storage ID or an update/delete
+authoring path. The last-published MOD release owns the immutable worldbook
+snapshot returned here: unpublished live binding or entry edits remain invisible
+until a newer MOD release is approved and promoted.
+
+Three writes and one author-only read are approved:
+
+- `mod_role_set_enabled` may change the caller's personal MOD
+  state only for a role authored by caller or a role for which caller has a
+  CURRENT conversation; unrelated roles are not exposed. The MOD must be
+  installed, and enabling requires an active entitlement. The shared server
+  policy is authoritative and retries are idempotent.
+- `mod_update_preview` always precedes an update. Explain the
+  target version, affected role count, parameter migration, and worldbook
+  snapshot impact to the user.
+- `mod_update_apply` requires the preview's `previewToken`,
+  `expectedInstalledVersion`, and explicit `confirm: true`. On a stale preview
+  or version conflict, discard it and preview again.
+- `mod_author_offer_get` is read-only and can return only the authenticated
+  author's own plans and discounts.
+
+Authentication, role access, installed-MOD, entitlement, lifecycle, and update
+precondition denials remain authoritative. Do not bypass a denial or invent
+another mutation.
+
+There is no MCP purchase, free-claim, review-write, helpful/reply, favorite,
+offer-mutation, or expiry-acknowledgement tool. In particular,
+`mod_purchase`, `mod_review_write`, `mod_review_helpful_set`,
+`mod_review_reply`, `mod_favorite_set`, and `mod_author_offer_put` are not
+exposed. A quote is information only: purchase or renewal must happen in the
+LunaTalk first-party UI.
+
+If a chat action receives `user_confirmation_required`, stop and tell the user
+that the first-party UI must confirm renewal or removal before sending again.
+Do not auto-ack, auto-renew, or auto-purchase; do not retry the message with a
+made-up acknowledgement field.
+
+The marketplace DTOs are public-safe: they must not expose an account UUID, a
+private worldbook, a closed MOD implementation, source JSON, or another
+person's order/expiry data. Do not infer hidden details from an unavailable or
+not-found result.
 
 Also inspect `initialize` capabilities when the client exposes them. Card Writer
 adds `capabilities.lunatalkPreview` with the clean preview paths and inline
@@ -184,6 +296,7 @@ worldbook bind tools return `binding`, `theme_bind` returns `binding`,
 `theme_submit`, `theme_get`, `theme_create`, `theme_update`, `theme_fork`,
 `theme_unbind`, and `theme_delete` all return `theme`, and `publish_submit`
 returns `publish`.
+`public_search` returns `search`, `creator_analytics_brief` returns
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
 not at the JSON-RPC top level.
@@ -195,6 +308,8 @@ not at the JSON-RPC top level.
 | Draft-only design | none | create private role, render, simulate, publish |
 | Private creation | `role_create_private`, profile/assets/detail/welcome/talkExample/output-contract patch tools; use direct `deepPatch` / `textPatches` for small edits to long existing fields, or `role_patch_document.fieldPatches` for coordinated multi-field edits | render or simulate before validation |
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
+| Creator analytics brief | `creator_analytics_brief` when the author asks for trend-aware next steps, owned-card insight, writing suggestion, or creative opportunity | treat analytics as a writing-quality gate; force low-confidence observations into a final premise |
+| MOD marketplace | `mod_market_find` / `mod_market_get` for public discovery; `mod_entitlement_list` and `mod_role_list` for use state; role-scoped `mod_role_set_enabled`; `mod_update_preview` then explicit confirmation and `mod_update_apply`; `mod_author_offer_get` for the author's own offers | bypass authentication, role access, entitlement, lifecycle, acquisition, or update preconditions; purchase, renewal, claiming, review/favorite/offer writes, or expiry acknowledgement through MCP |
 | Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, direct `contentDeepPatch` / `textPatches` for small edits, or `worldbook_patch_document` for coordinated metadata/entry/binding updates, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
@@ -293,6 +408,7 @@ only when retrying the same intended operation.
 | Preview save rejected on image | image `moderationState` is not `pass` | pick a `pass` image from `creator_image_list`, or wait for a generated one to read `pass` |
 | Preview save conflict / rate limit | stale `version` or too many saves | re-read `version` and reapply, or back off and retry |
 | Generation blocked on preview image | target role is public | do not retry; use an existing `pass` image or drop the image block |
+| `user_confirmation_required` | a role's enabled MOD is expired | stop; ask the user to use the first-party UI to renew or remove it, then read `mod_role_list` again |
 
 ## Handoff
 

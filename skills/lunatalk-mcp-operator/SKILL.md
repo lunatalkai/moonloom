@@ -37,6 +37,20 @@ the authenticated LunaTalk account.
 
 1. Identify the client and intended stage: setup, draft-only, create private
    role, patch, validate, render, conversation test, or publish.
+`mod_market_find`, `mod_market_get`, `mod_lineage_get`,
+`mod_public_worldbook_read`, `mod_entitlement_list`, `mod_role_list`,
+`mod_review_list`, `mod_purchase_quote`, and `mod_purchase_status`.
+`mod_market_find` has no rollout attempt metadata requirement. Use only its
+parameters. `mod_role_set_enabled` likewise has no rollout attempt metadata
+Commerce remains distinct: call `mod_purchase_status` with the same
+`mod_purchase_quote` passes the shared acquisition gate before it can return a
+`mod_purchase_status` remains readable for the authenticated caller's own
+`mod_public_worldbook_read` is the adjusted equivalent of accessible public
+The MCP surface additionally permits `mod_role_set_enabled`,
+`mod_update_preview`, and `mod_update_apply`. It may change the caller's
+`mod_author_offer_get` is read-only and may inspect only the authenticated
+auto-renew, or auto-purchase, and do not invent `mod_purchase`, an
+confirm renewal or removal; after that, `mod_role_list` may be read again.
 2. Check whether the client has a Card Writer MCP server configured.
 3. If the client can list MCP tools, compare the tool availability with the
    intended stage.
@@ -78,6 +92,7 @@ Self-review:
 - Setup/auth/tool list problems: stay in `lunatalk-mcp-operator`.
 - Draft-only ideation, blueprinting, packets, collaboration, quality, or profile
   work: do not require MCP yet; route to the narrow Moonloom writing skill.
+- Creator analytics or trend-aware planning: require `creator_analytics_brief`
 - Private creation or field patching: hand off to `lunatalk-card-author`.
 - Validation and render evidence: hand off to `lunatalk-render-review` only after
   `validate_role` has no blockers and `render_preview` is available.
