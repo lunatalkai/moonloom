@@ -49,6 +49,15 @@ entry `content`. Deep patch is the preferred path for small edits to long
 existing fields because only the old/new anchors and inserted text pass through
 MCP arguments.
 
+When a patch does not apply, the error identifies which operation failed rather
+than rejecting the batch as a whole. `invalid_field_patch` carries
+`operationIndex`, the `anchorField` and `anchor` that missed, a `reason` of
+`anchor_not_found`, `anchor_not_unique`, or `invalid_operation`, plus
+`matchCount` for a repeated anchor and `nearestContext` — the surrounding text at
+the closest place the anchor almost matched. Fix that one operation instead of
+regenerating the whole patch: a near-miss usually means one wrong character, and
+`nearestContext` shows what is actually stored there.
+
 Configure authentication through the AI client's normal MCP OAuth flow. Do not
 print credentials, tokens, cookies, or authorization headers in skills, prompts,
 references, reports, or public examples. For local development only, use
@@ -424,6 +433,10 @@ deletes need `entryId`.
 }
 ```
 
+Entries come back with `keywords` as an array of strings, the same shape
+`worldbook_entry_create` and `worldbook_entry_update` accept, so an entry can be
+read, edited, and written back without converting between types.
+
 Worldbook entry fields are authoring handles, not a complete runtime contract.
 `keywords` are trigger terms, `isConstant` marks an always-available entry, and
 `category` supports systematic review. Allowed categories are exactly `rule`,
@@ -461,6 +474,21 @@ Authoring implications for AI clients:
 - Do not require many entries from the same category to appear in one turn.
 - Keep identity, voice, and behavior that must be stable every turn in the role
   fields, not only in keyed worldbook entries.
+
+### `worldbook_entry_get`
+
+Read one entry by `entryId`.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "entryId": "..."
+}
+```
+
+Use this to check an entry you just changed. A worldbook with many entries can
+exceed the response limit when listed in full, and verifying one edit does not
+need the rest of the book.
 
 ### `worldbook_create`
 
@@ -861,7 +889,6 @@ Document format:
     "roleAvatar": "https://...",
     "roleBackground": "https://...",
     "roleDetailDesc": "Long stable role engine...",
-    "roleWelcomeMode": "xmlv3",
     "roleWelcome": "<scene><n>Opening...</n></scene>",
     "talkExample": [
       {"roleType": "user", "content": "Short player line."},
@@ -905,7 +932,6 @@ Tool call:
     "roleId": "...",
     "fields": {
       "roleDetailDesc": "...",
-      "roleWelcomeMode": "xmlv3",
       "roleWelcome": "..."
     }
   }
@@ -980,8 +1006,9 @@ the same `TextDeepPatch` shape as `role_patch_detail`.
 
 ### `role_patch_welcome`
 
-Update the opening welcome. Supported modes are `plain`, `html`, and `xmlv3`.
-Prefer `xmlv3` for new cards unless the author explicitly needs custom HTML.
+Update the opening welcome. Clients render the welcome from its content, so
+there is no format field to set: write XMLV3 and it renders as XMLV3. Prefer
+XMLV3 for new cards unless the author explicitly needs custom HTML.
 For XMLV3, use registered tags such as `<scene>`, `<n>`, `<speaker>`, `<d>`,
 `<quote>`, `<choice>`, `<form>`, and `<state>`. `<state>` must be JSON and is
 hidden from inline rendering. Use the preview-compatible Theme V3 state shape:
@@ -1034,7 +1061,6 @@ semantic CSS variable hooks over inline XML styling. Common hooks:
   "idempotencyKey": "welcome-...",
   "roleId": "...",
   "patch": {
-    "mode": "xmlv3",
     "roleWelcome": "<scene>...</scene>"
   }
 }
@@ -1108,11 +1134,49 @@ first to get an owned, editable copy.
 }
 ```
 
+`theme_update` writes only the fields present in the call. Sending `tagConfig`
+alone leaves `css` byte-for-byte unchanged, and sending `css` alone leaves
+`tagConfig` unchanged. `tagConfig` itself is replaced whole, so a `theme_update`
+that carries it must carry every component; to change one component, use
+`theme_patch_component` instead of retyping the rest.
+
 Read `structuredContent.theme.componentDiagnostics` and `styleHookCount` the
 same way as `theme_validate_css` and `theme_create`: fix any `error`-severity
 entry and rerun `render_xmlv3_theme_case` before rebinding or resubmitting.
-Calling `theme_update` on an official theme returns `official_theme_read_only`;
-fork it first.
+`styleHookCount` describes the theme's current CSS, so a call that does not send
+`css` still reports the stored hooks rather than zero. Calling `theme_update` on
+an official theme returns `official_theme_read_only`; fork it first.
+
+### `theme_patch_component`
+
+Change one custom component in a theme. Fields you omit keep their current
+values, other components are untouched, and `css` is not involved.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "theme-component-...",
+  "themeId": "...",
+  "tag": "show-title",
+  "component": {
+    "example": "<show-title level=\"1\">標題</show-title>"
+  }
+}
+```
+
+`component` accepts the same fields as a component declaration in `tagConfig`:
+`name`, `description`, `attributes`, `defaults`, `example`, `template`, and
+`extends`. Each one you send replaces that field wholesale.
+
+An unknown `tag` returns `theme_component_not_found`; use `theme_get` to see
+which components exist, and `theme_update` to add a new one. The same component
+diagnostics that guard `theme_update` apply here, so a broken template is
+rejected on this path too.
+
+Component `example` is the sample a model copies every turn. An attribute that
+appears in `example` but is not declared in `attributes` or `defaults` now
+returns an `example_unknown_attr` warning, because the model will reproduce that
+attribute name and the renderer will drop it.
 
 ### `theme_fork`
 
@@ -1279,8 +1343,12 @@ agent's Moonloom skills and author conversation.
 Use `tokenBudget` to inspect role structure before spending render or simulation
 cost:
 
-- `roleDescChars`, `roleDetailDescChars`, and `roleWelcomeChars` show where the
-  card spends context.
+- `roleDescChars`, `roleDetailDescChars`, `roleWelcomeChars`, `jailbreakChars`,
+  and `roleOutputContractChars` show where the card spends context.
+- `limits` carries the hard character cap for each of those fields. Read it
+  before writing a long field instead of discovering the cap by being rejected.
+  The jailbreak cap depends on the card's language, so read it per card rather
+  than assuming one number.
 - `estimatedTokens` is approximate and should be used for comparison, not billing.
 - `welcomeToDetailRatio` above `2` with a long welcome usually means durable
   engine content is in the wrong field.
@@ -1603,9 +1671,21 @@ Required:
 }
 ```
 
-Optional: `chatId`, `pageSize`, and `viewport`. A complete result includes the
-latest message metadata and can be followed by `conversation_inspect` for the
-raw context and evaluation.
+Optional: `chatId`, `pageSize`, `viewport`, and `includeRole`. A complete result
+includes the latest message metadata and can be followed by
+`conversation_inspect` for the raw context and evaluation.
+
+An agent turn runs for minutes while `waitMs` caps out at 60 seconds, so a turn
+almost always has to be polled. Poll with `conversation_list` when the question
+is only "is it done": it carries `generationStatus` and the last message and
+costs a fraction of the other tools. Use `conversation_turn_status` when you
+need the `agentPrep` trace, and `conversation_inspect` when you need the
+history.
+
+`conversation_create`, `conversation_load`, `conversation_turn_status`, and
+`conversation_inspect` do not return the card definition unless you ask for it
+with `includeRole: true`. A full card can be most of a polling response, and
+waiting for a turn does not need it.
 
 An agent turn also returns `agentPrep`:
 
@@ -1628,6 +1708,19 @@ has not started the reply, and `generationStatus` reads `preparing`. This is the
 difference between waiting and failing: preparation can run for minutes while the
 conversation shows no new message, so do not read a quiet conversation as a dead
 turn, and do not send the next message on top of it.
+
+`resource` names which of the card's materials the step touched. The full set is
+`setting` (the worldbook), `requirement` (the format template or module sections
+the reply has to satisfy), `status` (values, inventory, and open threads the
+character tracks), `settled` (facts already fixed by a roll and no longer
+changeable), `draft` (the character's own working notes), `note` (what it wrote
+down in earlier turns), `shared` (the notepad it shares with the player), `past`
+(earlier conversation), and `mod` (installed play modules).
+
+Which resources a turn reaches for tells you where the card actually keeps its
+engine. A card whose every-turn logic lives in role fields and hidden state
+routes to `status` or `settled` and never opens the worldbook — that is a fact
+about the card's shape, not a failure to find anything.
 
 `steps` is the record of what the model went looking for and with what words. For
 iterating on a card this is the useful half of the result — the reply tells you
@@ -1768,6 +1861,34 @@ Two failure modes to avoid:
   the outcome; it only produces repeated no-op submissions. If the author asks why
   it is taking time, explain that a human reviewer has to look at it, and offer to
   keep improving the card in the meantime — a queued card can still be patched.
+
+### `role_set_visibility`
+
+Take one of the author's own cards back to private.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "visibility-...",
+  "roleId": "...",
+  "visibility": "private"
+}
+```
+
+Once a card is public or waiting for review, every patch tool refuses it with
+`public_role_requires_clone`. This tool is how a public card gets back into an
+editable state: take it private, patch it, then submit it again with
+`publish_submit`. Going public is not available here — `visibility` only accepts
+`private`, and raising visibility always goes through review.
+
+A card that is still in review returns `role_in_review` instead. Review settles
+the card's visibility when it finishes, so pulling it back early would be undone
+at that moment without anything saying so. Wait for review to settle, check the
+state with `role_get`, then take it private.
+
+Because that round trip costs a review cycle, it is worth spending the extra
+test rounds before the first submission rather than after. Agent-mode behavior
+in particular tends to surface only when a real turn runs.
 
 A `pending` result is not an error and not a rejection. It carries no verdict about
 the card's content; it only means a person, not a model, makes the final call.

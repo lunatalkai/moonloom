@@ -131,8 +131,14 @@ matter, or the card decides the player's feelings/actions.
    lives entirely in trigger terms are invisible when it searches by name and
    wording. When the author declines the extra cost, say so explicitly instead of
    reporting the card as fully checked. See `../../references/agent-mode-runtime.md`.
-9. Summarize remaining warnings and tradeoffs.
-10. Ask for explicit confirmation if the author has not already given it.
+9. Spend the extra rounds now rather than after submission. Once a card is
+   public or queued for review, every patch tool refuses it — fixing anything
+   means taking it private with `role_set_visibility`, patching, and going
+   through review again. That round trip is the reason a thin pre-publish check
+   is expensive: an agent-mode defect found on the live card costs a full review
+   cycle, while the same defect found one probe earlier costs one probe.
+10. Summarize remaining warnings and tradeoffs.
+11. Ask for explicit confirmation if the author has not already given it.
 
 ## Publishing rule
 
