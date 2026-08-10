@@ -52,7 +52,7 @@ test('router, card author, and templates expose visual identity as a narrow work
   const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
   const framework = await readFile('references/role-card-writing-framework.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-visual-identity-director/);
   assert.match(router, /avatar|cover|thumbnail|image prompt|roleAvatar|roleBackground/i);

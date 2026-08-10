@@ -1,0 +1,511 @@
+# Moonloom
+
+**[繁體中文](README.md) · English · [日本語](README.ja.md) · [한국어](README.ko.md)**
+
+Moonloom is the LunaTalk creation toolkit for AI assistants. Install it into the
+AI client you already write with, and that assistant learns how to build, revise,
+test, and submit LunaTalk role cards with you — through the same rules the app
+itself enforces.
+
+You do the deciding. The assistant does the drafting, the checking, and the
+tedious parts.
+
+## Before you start
+
+- A LunaTalk account. Cards are created under your own account and stay private
+  until you submit them.
+- One of the AI clients below.
+
+## Install
+
+### Claude (desktop app or web)
+
+1. Open **Customize** in the left sidebar, then the **Plugins** tab.
+   In Claude Cowork, open the **Cowork** tab first.
+2. In the **Personal plugins** section, click **+** → **Add marketplace**.
+3. Choose **Add from a repository** and paste:
+   `https://github.com/lunatalkai/moonloom`
+4. Find **Moonloom** in the list and click **Install**.
+
+### Claude Code (command line)
+
+```bash
+claude plugin marketplace add lunatalkai/moonloom
+claude plugin install moonloom
+```
+
+Restart Claude Code once so the plugin loads. Inside a session you can do the
+same interactively with `/plugin`.
+
+To update later:
+
+```bash
+claude plugin update moonloom
+```
+
+### ChatGPT Work / Codex
+
+Add the source from the command line:
+
+```bash
+codex plugin marketplace add lunatalkai/moonloom
+```
+
+Then restart the ChatGPT desktop app, open the **Plugins Directory**, pick this
+source, and install **Moonloom**.
+
+To update later: `codex plugin marketplace upgrade`.
+
+### Cursor
+
+A Cursor plugin manifest ships in this repository as well. Follow Cursor's own
+instructions for adding a plugin from a Git repository.
+
+## Sign in the first time
+
+Moonloom talks to LunaTalk through a hosted connection, so the first time the
+assistant calls a LunaTalk tool your browser opens and asks you to sign in and
+approve access. Approve it once and the assistant keeps working.
+
+- Access lasts 8 hours, and the session renews for up to 30 days before asking
+  again.
+- If the browser says authorization is complete, leave the page open for a moment
+  while it hands back to your AI client.
+
+Details: [`references/oauth-client-lifecycle.md`](references/oauth-client-lifecycle.md).
+
+## Check that it works
+
+Ask your assistant:
+
+> List my LunaTalk role cards with Moonloom.
+
+If it comes back with your cards, you are set up.
+
+## What to say next
+
+Moonloom is not a menu of commands. Say what you want in your own words:
+
+> I have an idea for a detective who lies to protect people. Build me a card.
+
+> This card gets boring after three turns. Find out why and fix it.
+
+> Play-test this card and tell me where a player would lose interest.
+
+> Is this card ready to submit for review?
+
+The assistant picks the right workflow, drafts the fields, checks the technical
+requirements, runs real test conversations when you agree to the cost, and tells
+you what still needs work.
+
+## Two ways your card gets played
+
+A player can chat with your card in the normal way, or switch the conversation to
+**Agent mode**, where the character goes looking through your material itself
+before it replies.
+
+That changes what makes a worldbook entry findable. Normally the entry surfaces
+because its trigger terms matched. In Agent mode the character browses and
+searches: it sees entry **names** first, then the wording inside them. An entry
+called "Location 3" is effectively invisible there.
+
+Moonloom writes for both, tests both, and tells you which one a card was actually
+checked in. See
+[`references/agent-mode-runtime.md`](references/agent-mode-runtime.md).
+
+## Cost and limits
+
+- Drafting, reviewing, and validating cost nothing beyond your AI client's own
+  usage.
+- Real test conversations run through LunaTalk's normal chat billing and deduct
+  points. Your assistant asks before spending them. Agent-mode test turns bill by
+  actual usage and cost more.
+- Moonloom only edits private cards owned by your account, and it will not submit
+  a card for review until you say so explicitly.
+
+## If something goes wrong
+
+- **The assistant does not see any LunaTalk tools.** Restart the client after
+  installing or updating; plugins load at startup.
+- **The browser finished authorizing but the assistant is still waiting.** Leave
+  the page open and use the return action shown on it.
+- **Agent mode is refused.** Free models cannot run it. Pick a paid model; the
+  model list marks which ones support it.
+- **A card cannot be edited.** Public cards are read-only. Clone one into your own
+  private card first.
+
+---
+
+The rest of this file documents what ships inside Moonloom for people who want to
+look under the hood.
+
+## Audience and scope
+
+Moonloom is for LunaTalk authors and the external AI clients that help those
+authors create, revise, validate, render-review, simulate, and submit LunaTalk
+cards through public MCP workflows. This public repository should teach
+author-facing creation and review behavior, public MCP response contracts, and
+safe client workflows. Platform implementation details belong in LunaTalk's
+private engineering guidance.
+
+## What is included
+
+- `skills/using-moonloom` is the router skill. Start here when an agent is unsure
+  which Moonloom workflow applies.
+- `skills/lunatalk-creation-conductor` coordinates end-to-end creation from a
+  vague idea, packet stack, source material, or existing private role through
+  skill queue, MCP readiness, assets, validation, render, simulation, iteration,
+  and publish-readiness gates.
+- `skills/lunatalk-mcp-operator` checks external AI client MCP readiness, tool
+  availability, auth posture, idempotency planning, and stage gates before real
+  Card Writer MCP actions.
+  Card Writer MCP actions, including `creator_analytics_brief` readiness when an
+- `skills/lunatalk-collaboration-director` turns author feedback, co-review,
+  taste/preference calibration, draft comparisons, and revision choices into a
+  decision packet before rewriting, simulating, or publishing.
+- `skills/lunatalk-iteration-director` turns self-review, validation,
+  tokenBudget, render, simulation, benchmark, previous-patch, and author
+  feedback evidence into a closed-loop next iteration decision with one repair,
+  stop / continue criteria, cost stance, and handoff.
+- `skills/lunatalk-sample-calibrator` compares drafts against public synthetic
+  sample packet shapes, flags copy risk, and turns example requests into
+  structure-only calibration before blueprinting or authoring.
+- `skills/lunatalk-originality-adapter` transforms canon/IP, fan premises,
+  copied drafts, similar cards, and recognizable inspirations into original
+  card engines before blueprinting or authoring.
+- `skills/lunatalk-archetype-director` chooses the primary card contract,
+  secondary overlays, field allocation, hybrid risks, and Moonloom skill order
+  before blueprinting or authoring mixed card types.
+- `skills/lunatalk-series-architect` plans related card sets, alternate
+  versions, seasonal/event variants, daily-life variants, RPG/system variants,
+  and generator/helper variants before blueprinting or authoring.
+- `skills/lunatalk-ensemble-director` plans multi-character cards, cast
+  keep/merge/cut decisions, turn ownership, spotlight rules, group tension,
+  player agency, and voice/sample tradeoffs before blueprinting or authoring.
+- `skills/lunatalk-play-engineer` plans RPG, adventure, open-world, survival,
+  investigation, sandbox, and simulator cards through compact state, resources,
+  quests, turn protocol, failure-forward behavior, and simulation probes before
+  blueprinting or authoring.
+- `skills/lunatalk-generator-architect` plans generator, helper, and
+  creator-assistant cards through artifact contracts, intake defaults, stable
+  output schemas, revision operations, and artifact-focused simulation probes.
+- `skills/lunatalk-scenario-architect` plans story, mystery, investigation,
+  event, trial, rescue, and drama cards through stakes, route branches,
+  clue/reveal pacing, false leads, consequence state, and scenario probes before
+  blueprinting or authoring.
+- `skills/lunatalk-daily-life-architect` plans daily-life, slice-of-life,
+  neighbor, roommate, cafe, workplace, school, cohabitation, and quiet routine
+  cards through small playable desires, tiny disruptions, shared objects, habit
+  state, and return-next-time probes before blueprinting or authoring.
+- `skills/lunatalk-character-core` turns thin, trope-only, or generic personas
+  into memorable character-core packets before blueprinting or authoring.
+- `skills/lunatalk-relationship-architect` turns flat relationship dynamics,
+  generic flirting, comfort loops, instant intimacy, and weak repair/rupture
+  routes into relationship-engine packets.
+- `skills/lunatalk-world-engineer` turns world seeds, relationship networks,
+  factions, locations, and lore-heavy settings into playable world-engine packets.
+- `skills/lunatalk-tension-weaver` turns inert or pretty-but-passive premises into
+  role desire, player leverage, external pressure, why-now, and first-scene hooks.
+- `skills/lunatalk-state-economist` decides which state fields deserve token
+  budget, which are visible/hidden/detail-only, which decorative meters to omit,
+  and how state updates before authoring, longplay, or presentation.
+- `skills/lunatalk-detail-engineer` turns thin biographies, under-budget
+  `roleDetailDesc`, and missing durable role engines into full Detail engine
+  packets before field assembly, MCP patching, render, or simulation.
+- `skills/lunatalk-voice-director` turns generic dialogue, voice drift,
+  catchphrase overuse, and blurred ensemble speakers into voice-director packets.
+- `skills/lunatalk-talk-example-curator` decides when to omit `talkExample`, add
+  compact micro-samples, or use full examples for voice, format, and turn protocol.
+- `skills/lunatalk-agency-designer` turns spectator openings, decorative choices,
+  route funneling, and player-agency takeover into agency packets.
+- `skills/lunatalk-token-architect` turns tokenBudget warnings, overlong
+  welcomes, misplaced rules, and visual bloat into token architecture packets.
+- `skills/lunatalk-presentation-director` plans pre-render XMLV3, Theme V3,
+  HTML, visible state, hidden state, visual affordances, and first-screen
+  hierarchy before authoring or render review.
+- `skills/lunatalk-html-card-components` explains supported `hc-*` HTML card
+  components, attribute meanings, support tiers, and safe cross-client usage.
+- `skills/lunatalk-instruction-guardrail` designs narrow instruction-layer
+  guardrails and `role_patch_jailbreak` handoffs only when normal fields are
+  coherent but behavior or format still drifts.
+- `skills/lunatalk-quality-auditor` reviews drafts, blueprints, packet stacks,
+  and role fields with a public craft scorecard before authoring, simulation, or
+  publishing.
+- `skills/lunatalk-card-doctor` diagnoses existing cards, drafts, validation
+  results, render reports, simulation symptoms, or author feedback before
+  choosing a repair order or rewriting fields.
+- `skills/lunatalk-card-blueprint` turns chosen directions, packet stacks,
+  settings, and relationship seeds into card-ready blueprints before MCP creation.
+- `skills/lunatalk-material-distiller` turns author-provided notes, local files,
+  material packs, drafts, and large world bibles into source-to-play maps before
+  blueprinting or authoring.
+- `skills/lunatalk-boundary-designer` turns mature, intense, horror-leaning, or
+  consent-sensitive premises into boundary packets before blueprinting,
+  authoring, simulation, or publish readiness.
+- `skills/lunatalk-premise-workshop` turns early mood, trope, aesthetic, genre
+  clusters, and "open this idea up" requests into contrasted playable directions
+  before blueprinting or authoring.
+- `skills/lunatalk-profile-packager` sharpens `roleName`, `roleDesc`, tags, and
+  first-impression promise when the card engine exists but the public profile is weak.
+- `skills/lunatalk-visual-identity-director` plans avatar, cover, thumbnail,
+  image prompts, first-impression visual proof, and MCP asset readiness without
+  replacing profile, presentation, or render review.
+- `skills/lunatalk-language-stylist` cleans language consistency, zh-Hant /
+  zh-TW style, register, pronouns, address terms, and field-to-field wording
+  without changing the card engine.
+- `skills/lunatalk-opening-director` turns greeting-only, hollow, or overloaded
+  welcomes into opening packets with first reply paths and second-turn moves.
+- `skills/lunatalk-longplay-architect` turns dead third turns, repetitive loops,
+  weak memory, and flat routes into longplay packets for sustained sessions.
+- `skills/lunatalk-card-author` assembles packet stacks into field-ready drafts
+  and guides end-to-end private role card creation.
+- `skills/lunatalk-field-finalizer` performs last-mile field QA for MCP-ready
+  drafts: hard caps, placeholders, compact fallbacks, formats, and patch mapping.
+- `skills/lunatalk-render-review` reviews HTML/XMLV3/Theme V3 render output.
+- `skills/lunatalk-chat-simulation` runs and evaluates private chat simulation.
+- `skills/lunatalk-publish-readiness` checks whether a private card is ready to submit.
+- `skills/lunatalk-preview-page-designer` decorates a role's preview page: builds
+  the whitelisted preview document, selects or generates `pass` images, saves
+  through `role_patch_preview_page`, and drives the moderation and image polling
+  loops to a settled state.
+- `skills/lunatalk-benchmark-runner` runs public-safe synthetic regression checks
+  and returns benchmark report packets or end-to-end acceptance packets for the
+  next prompt or skill repair.
+- `references/character-core-design.md` defines desire, contradiction, boundary,
+  player leverage, relationship asymmetry, pressure behavior, and appeal repair.
+- `references/relationship-engine.md` defines relationship promise, asymmetry,
+  closeness/friction state, pacing gates, repair/rupture routes, passive-player
+  behavior, and field allocation for relationship-heavy cards.
+- `references/world-engine-design.md` defines playable world rules, relationship
+  networks, location functions, compact state, route seeds, and lore compression.
+- `references/tension-triangle.md` defines role desire, player leverage, external
+  pressure, why-now checks, and tension packets for inert premise repair.
+- `references/state-economy-design.md` defines visible/hidden/detail-only state
+  decisions, update rules, decorative meter removal, agency-safe state, and State
+  economy packets.
+- `references/role-detail-engine.md` defines language-aware detail budgets,
+  durable detail modules, field placement, thin biography repair, and Detail
+  engine packets.
+- `references/benchmark-pattern-calibration.md` defines how to consume an
+  already-anonymized benchmark pattern packet for detail density, ordinary-card
+  contrast, first-turn proof, longplay spine, and XMLV3 presentation repair. It
+  intentionally does not define source selection, platform score access, or
+  source collection workflows.
+- `references/role-card-writing-framework.md` defines the practical framework for
+  writing high-playability cards.
+- `references/archetype-contracts.md` defines primary card contracts, hybrid
+  rules, field allocation, and archetype packets for companion, story, system,
+  RPG, generator, daily-life, light-setting, heavy-setting, and ensemble cards.
+- `references/card-series-design.md` defines shared-core discipline, keep/merge/
+  reject rules, variant contracts, authoring order, and regression checks for
+  related role-card sets.
+- `references/ensemble-card-design.md` defines cast scope, decision matrices,
+  turn ownership, spotlight rules, group tension state, opening policy, and
+  agency probes for ensemble cards.
+- `references/play-engine-design.md` defines compact state, resource economy,
+  quest/risk routes, turn protocol, failure-forward behavior, opening contract,
+  token plan, and probes for game-like cards.
+- `references/generator-design.md` defines artifact contracts, intake defaults,
+  output schemas, revision operations, diegetic creator modes, and probes for
+  generator/helper/creator-assistant cards.
+- `references/system-intake-card-design.md` defines setup wizard and intake
+  console patterns for system/simulator/generator cards, including
+  HTML-to-XMLV3 rewrite parity for panel, form, choices, state, and visible
+  controls.
+- `references/scenario-design.md` defines branchable incidents, story spines,
+  clue/reveal ladders, false lead handling, suspect pressure networks, compact
+  consequence state, and probes for story-first cards.
+- `references/daily-life-design.md` defines quiet routine loops, micro-tension,
+  shared objects, habit state, second-turn changes, romance posture, and probes
+  for daily-life cards.
+- `references/card-authoring-templates.md` provides reusable draft packets,
+  final role-field authoring packets, field templates, XMLV3 welcome scaffolds,
+  boundary-sensitive prompts, and self-review packets.
+- `references/field-finalization.md` defines MCP-ready last-mile field gates:
+  placeholders, hard caps, compact fallbacks, format checks, and patch mapping.
+- `references/creation-workflow.md` defines the end-to-end creation runway,
+  stage ladder, Creation runway packet, MCP gates, asset gates, cost gates, and
+  completion checks for external AI clients.
+- `references/end-to-end-acceptance.md` defines trial-card acceptance evidence:
+  skill route, MCP private card, avatar/background patching, validation, render,
+  app visual checks, simulation cost gate, per-message preview checks, and
+  root-cause reruns.
+- `references/mcp-client-workflow.md` defines external AI client readiness,
+  tool availability checks, auth handling, idempotency, and stage gates for MCP
+  operations.
+- `references/preview-page-authoring.md` defines the preview page document
+  contract: the schema v1 block/inline/mark whitelist, hard limits, node-to-visual
+  semantics, `pass`-only image rules, and the pending/passed/rejected moderation
+  state machine.
+  `creator_analytics_brief` as a read-only Creator Brief, trend, owned-card
+- `references/material-distillation.md` defines source-to-play mapping,
+  large-world compression, source hygiene, conflict handling, and token budget
+  rules for material-heavy cards.
+- `references/boundary-design.md` defines rating intent, explicitness ceilings,
+  player agency contracts, escalation ladders, refusal behavior, safer fallbacks,
+  first-scene guardrails, and probes for boundary-sensitive cards.
+- `references/premise-workshop.md` defines early taste-to-direction workshops,
+  contrast axes, involvement ladders, pressure tests, and pre-blueprint handoff
+  packets.
+- `references/profile-packaging.md` defines role profile packaging, promise
+  compression, scannable `roleDesc` patterns, tag sets, and first-impression checks.
+- `references/visual-identity.md` defines avatar, cover, thumbnail, image prompt,
+  visual proof, public-safe art direction, `role_patch_assets` handoff, and
+  visual identity packets.
+- `references/language-style.md` defines language-style packets, Traditional
+  Chinese consistency, register alignment, pronoun/address matrices, and
+  field-level localization passes.
+- `references/opening-design.md` defines five-beat opening design, opening
+  packets, first reply paths, second-turn moves, XMLV3 scaffolds, and opening
+  failure repairs.
+- `references/longplay-design.md` defines continuity spines, progression phases,
+  state economy, route seeds, memory threads, role initiative, and continuation
+  probes.
+- `references/playtest-loop.md` defines simulation probe design, transcript
+  triage, patch mapping, and author co-review for closed-loop card testing.
+- `references/author-collaboration.md` defines conversation-only author
+  feedback, taste-to-behavior translation, decision frames, and collaboration
+  packets for co-review.
+- `references/iteration-loop.md` defines evidence stacks, decision ladders, patch
+  budgets, 10,000-character detail hard-cap vs target guidance, stop criteria,
+  and iteration packets for closed-loop card improvement.
+- `references/sample-driven-calibration.md` defines how to use public synthetic
+  samples as output-shape fixtures without copying sample text or implying
+  non-public origin claims.
+- `references/originality-adaptation.md` defines transferable fantasy,
+  original substitutions, copy-distance checks, and originality adaptation
+  packets for recognizable inspirations.
+- `references/voice-calibration.md` defines executable voice cards,
+  micro-samples, ensemble contrast checks, and blind-line tests for consistent
+  character voice.
+- `references/talk-example-design.md` defines `talkExample` decisions, sample
+  jobs, token payment, player-agency checks, and compact example packets.
+- `references/agency-design.md` defines player insertion space, reply-path
+  matrices, agency guardrails, consequence checks, and interaction hooks.
+- `references/token-economy.md` defines token budget diagnostics, field
+  allocation, compression ladders, and keep / move / cut / rewrite plans.
+- `references/prompt-attention-architecture.md` defines Markdown / tag structure,
+  primacy/recency placement, U-shaped attention risk handling, and cross-model
+  standards for long raw description and raw detail prompts.
+- `references/one-shot-prompt-runtime.md` defines the sanitized Prompt V2
+  one-shot layout, where `RoleDetail`, `RoleUserName`, history, summaries,
+  near-generation rules, and assistant output position sit.
+- `references/agent-mode-runtime.md` defines the second runtime a player can
+  choose, what the model reaches on its own before writing, how that changes
+  entry naming and wording, and how to test both modes on one card.
+- `references/presentation-design.md` defines pre-render presentation decisions
+  for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
+  hierarchy.
+- `references/html-card-components.md` defines the supported `hc-*` HTML card
+  component catalog, safe attributes, legacy compatibility notes, and XMLV3-first
+  decision rules for HTML mode.
+- `skills/lunatalk-html-card-components` routes HTML component authoring,
+  attribute meanings, support tiers, and cross-client `hc-*` review.
+- `references/instruction-guardrails.md` defines when a narrow instruction layer
+  is justified, how to avoid jailbreak misuse, and how to hand off optional
+  `role_patch_jailbreak` patches.
+- `references/quality-scorecard.md` defines the public craft score scale,
+  dimensions, blockers, tiers, and quality audit packet for "is this good
+  enough?" reviews.
+- `references/card-diagnosis.md` defines multi-symptom card diagnosis,
+  weakest-layer triage, field patch mapping, repair order, and verification
+  planning for existing-card improvement.
+- `references/quality-rubric.md` defines the public checklist for judging whether
+  a card is playable, anchored, consequential, token-efficient, visually readable,
+  and ready for simulation or submission.
+- `references/safety-and-cost.md` covers ownership, public actions, mature-content
+  boundaries, simulation cost, and credential handling.
+- `examples/synthetic-card-briefs.md` provides fictional benchmark prompts for
+  testing authoring, render review, and simulation loops.
+- `examples/sample-card-packets.md` provides fictional sample output packets for
+  relationship, daily-life, story/scenario, RPG/play-engine, and generator/helper
+  card shapes.
+- `examples/complete-synthetic-card-fixture.md` provides one public-safe complete
+  synthetic card fixture with final fields, compact fallback, playtest probes,
+  field finalization, and acceptance handoff shape.
+- `examples/system-intake-synthetic-card-fixture.md` provides one public-safe
+  system/simulator intake fixture with XMLV3 layout controls, visible state,
+  setup defaults, action grouping, and render-review plan.
+- `examples/simulation-evidence.fixture.json` provides a public-safe closed-loop
+  simulation evidence packet shape for eight probes and per-message preview
+  evidence.
+- `examples/end-to-end-acceptance.fixture.json` provides a public-safe
+  end-to-end acceptance evidence packet shape covering skill route, assets,
+  validation, render, app visual checks, simulation, and per-message previews.
+- `examples/benchmark-pattern.fixture.json` provides a public-safe anonymized
+  benchmark pattern packet shape for carrying aggregate signals, deep-reading
+  craft patterns, ordinary-card contrast, source-safety flags, and one repair
+  target without source-selection details.
+- `examples/iteration-summary.fixture.json` provides a public-safe iteration
+  summary shape for recording the test-card type, MCP visual result, chat
+  playtest result, validated benchmark pattern gap, repair target, rerun result,
+  and next TODO without full field text, transcripts, IDs, queries, or source
+  selection details.
+- `.mcp.json` contains an example remote MCP client configuration.
+
+## Skill references
+
+Shared references live in the repository-level `references/` directory so every
+skill can reuse the same public guidance without duplicating it. Inside a skill,
+link to these files relative to the skill directory, for example
+`../../references/voice-calibration.md`. When an agent runs from the repository
+root, the same file is available as `references/voice-calibration.md`.
+
+References are not loaded automatically by the plugin manifest. The active skill
+should name the specific references it needs, and the agent should load only
+those files for the current workflow.
+
+## Local validation
+
+Run `npm test` for validator unit tests and `npm run validate` before publishing
+changes. The validator checks plugin JSON, skill frontmatter, eval coverage,
+reference links, skill size, basic release-safety patterns, and the complete
+synthetic fixture's field structure, XMLV3 state, probe coverage, and acceptance
+handoff shape. Use `npm run validate:fixture` when only the complete fixture or
+its expected structure changes. Use `npm run validate:xmlv3-presentation` when
+an XMLV3 welcome, scaffold, or fixture changes; it rejects left-heavy naked
+choice piles, controls nested inside `<scene>`, flat state JSON, and raw
+style/class hooks while allowing constrained `panel` / `choice` presentation
+attributes. Use `npm run validate:system-intake` when system/simulator setup
+wizard fixtures or HTML-to-XMLV3 rewrite parity guidance changes; it checks
+panel/form/choices/state structure, grouped actions, and public-safe fixture
+shape. Use `npm run validate:simulation` after recording MCP simulation
+evidence to check required probes, per-message preview coverage,
+repair-packet requirements, and public-safe evidence shape. Use
+`npm run validate:acceptance` after a full trial-card run to check that assets,
+validation, render, app visual proof, accepted simulation, and per-message
+preview evidence support the claimed completion status. Use
+`npm run validate:benchmark-pattern` before committing any benchmark-derived
+method update; it accepts only anonymized pattern packets and rejects raw source,
+exact markup, identifiers, query text, non-public provenance mechanics, and
+protected source claims. Use `npm run validate:iteration-summary` before committing a
+closed-loop Moonloom improvement; it verifies that the saved iteration summary
+has field review, MCP visual validation, chat playtest, per-message preview,
+validated benchmark pattern evidence, one repair target, rerun result, and a
+public-safe next TODO.
+
+## MCP endpoint
+
+Moonloom's production Card Writer MCP endpoint is:
+
+```text
+https://api.lunatalk.ai/mcp/card-writer
+```
+
+Configure authentication through the AI client's normal MCP OAuth flow. For local
+development, use `examples/local-mcp.json` and provide the local endpoint and
+token through your private environment.
+
+The normal authorization uses an 8-hour access token with a rotating refresh
+session of up to 30 days. See
+[`references/oauth-client-lifecycle.md`](references/oauth-client-lifecycle.md)
+for consent, localhost callback, token rotation, and recovery behavior.
+
+Moonloom does not introduce separate MCP-specific scopes; the server applies
+normal login identity, account ownership, quota, moderation, publishing, and
+billing rules.
+
+## Status
+
+This repository is an initial public scaffold. The skills are designed to match
+the LunaTalk Card Writer MCP M1 workflow and will evolve as the MCP surface expands.

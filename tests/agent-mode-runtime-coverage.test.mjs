@@ -4,7 +4,7 @@ import test from 'node:test';
 
 test('agent mode runtime is documented as a second runtime and routed', async () => {
   const reference = await readFile('references/agent-mode-runtime.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   const oneShot = await readFile('references/one-shot-prompt-runtime.md', 'utf8');
   const simulation = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');

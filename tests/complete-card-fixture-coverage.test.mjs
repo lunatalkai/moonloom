@@ -87,7 +87,7 @@ test('complete fixture includes playtest and acceptance evidence plan', async ()
 });
 
 test('README and benchmark runner expose the complete fixture', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const benchmark = await readFile('skills/lunatalk-benchmark-runner/SKILL.md', 'utf8');
 
   assert.match(readme, /complete-synthetic-card-fixture\.md/);

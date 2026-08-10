@@ -79,7 +79,7 @@ test('Moonloom exposes hc-* component guidance as a dedicated skill', async () =
 
 test('Moonloom routes HTML mode and hc-* work to the component reference', async () => {
   const sources = await Promise.all([
-    readFile('README.md', 'utf8'),
+    readFile('README.en.md', 'utf8'),
     readFile('references/theme-v3-rendering.md', 'utf8'),
     readFile('references/presentation-design.md', 'utf8'),
     readFile('skills/using-moonloom/SKILL.md', 'utf8'),

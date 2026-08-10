@@ -22,7 +22,7 @@ test('Moonloom documents creator analytics MCP workflow', async () => {
   const workflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const mcpOperator = await readFile('skills/lunatalk-mcp-operator/SKILL.md', 'utf8');
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   for (const source of [creatorAnalytics, cardWriter, workflow, mcpOperator, router, readme]) {
     assert.match(source, /creator_analytics_brief/);

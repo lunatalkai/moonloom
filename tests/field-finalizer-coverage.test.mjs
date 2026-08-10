@@ -73,7 +73,7 @@ test('router, card author, templates, and README expose field finalization', asy
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-field-finalizer/);
   assert.match(router, /field-ready|MCP-ready|final fields/i);

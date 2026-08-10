@@ -63,7 +63,7 @@ test('router, authoring templates, framework, and quality docs expose detail eng
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
   const framework = await readFile('references/role-card-writing-framework.md', 'utf8');
   const quality = await readFile('references/quality-rubric.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-detail-engineer/);
   assert.match(router, /detail engine|thin biography|roleDetailDesc/i);

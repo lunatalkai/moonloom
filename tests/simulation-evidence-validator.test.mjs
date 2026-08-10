@@ -158,7 +158,7 @@ test('simulation evidence validator rejects raw transcript storage and protected
 });
 
 test('README and chat simulation guidance expose the simulation evidence validator', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const chatSimulation = await readFile('skills/lunatalk-chat-simulation/SKILL.md', 'utf8');
   const playtestLoop = await readFile('references/playtest-loop.md', 'utf8');
 
