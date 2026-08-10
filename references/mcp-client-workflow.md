@@ -65,6 +65,7 @@ Expected Card Writer tools:
 - `mod_entitlement_list`
 - `mod_role_list`
 - `mod_role_set_enabled`
+- `mod_update_preview`
 - `mod_update_apply`
 - `mod_review_list`
 - `mod_purchase_quote`
