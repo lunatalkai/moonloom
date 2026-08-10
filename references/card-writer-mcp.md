@@ -49,6 +49,20 @@ entry `content`. Deep patch is the preferred path for small edits to long
 existing fields because only the old/new anchors and inserted text pass through
 MCP arguments.
 
+A dedicated `role_patch_*` tool will not replace a text field with nothing. If
+the replacement value is empty — including when the payload was shaped wrongly
+and the field never arrived — the call returns `empty_field_patch` and the stored
+field is left alone. These tools take a bare string, so a malformed request and a
+deliberate erasure look identical to them, and the malformed one used to win.
+To edit part of a field use `patch.deepPatch`; to replace it put the whole new
+text in the patch field; to genuinely empty a field use `role_patch_document`,
+whose `document.fields` entries are explicit. A `deepPatch` that shortens a
+field is untouched by this — that is an explicit operation.
+
+Every text patch response carries `fieldChars` with the field's `before` and
+`after` length, so a caller can confirm the write landed without paying for a
+`validate_role` round trip.
+
 When a patch does not apply, the error identifies which operation failed rather
 than rejecting the batch as a whole. `invalid_field_patch` carries
 `operationIndex`, the `anchorField` and `anchor` that missed, a `reason` of
@@ -1134,6 +1148,15 @@ first to get an owned, editable copy.
 }
 ```
 
+Themes are deliberately not covered by the publish lock. A card's role fields
+freeze once it is public, but its bound theme stays editable — including the
+custom component `description` and `example` text, which reaches the model. This
+is a product decision, not an oversight: one theme can back several cards at
+once, and freezing it whenever any of them goes public would make ordinary
+styling work impossible. Treat a component description as content the author can
+still change after review, and keep behavioral rules that must not drift in the
+role fields.
+
 `theme_update` writes only the fields present in the call. Sending `tagConfig`
 alone leaves `css` byte-for-byte unchanged, and sending `css` alone leaves
 `tagConfig` unchanged. `tagConfig` itself is replaced whole, so a `theme_update`
@@ -1173,10 +1196,13 @@ which components exist, and `theme_update` to add a new one. The same component
 diagnostics that guard `theme_update` apply here, so a broken template is
 rejected on this path too.
 
-Component `example` is the sample a model copies every turn. An attribute that
-appears in `example` but is not declared in `attributes` or `defaults` now
-returns an `example_unknown_attr` warning, because the model will reproduce that
-attribute name and the renderer will drop it.
+Component `example` is the sample a model copies every turn. For a component
+that defines a `template`, an attribute appearing in `example` but not declared
+in `attributes` or `defaults` now returns an `example_unknown_attr` warning: the
+template substitutes only declared attributes, so the model reproduces a name
+that never reaches the rendered output. Components that only `extends` a
+primitive are not checked — there, undeclared attributes pass through to the
+base primitive and still take effect.
 
 ### `theme_fork`
 
