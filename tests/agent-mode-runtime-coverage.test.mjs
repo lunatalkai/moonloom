@@ -70,3 +70,23 @@ test('playtest and cost guidance treat two-runtime coverage as billable work', a
   assert.match(cost, /agentModeCostWarning/);
   assert.match(cost, /conversation_stop/);
 });
+
+test('the quality and publish layer can tell one runtime from two', async () => {
+  const scorecard = await readFile('references/quality-scorecard.md', 'utf8');
+  const publish = await readFile('skills/lunatalk-publish-readiness/SKILL.md', 'utf8');
+  const acceptance = await readFile('references/end-to-end-acceptance.md', 'utf8');
+
+  // 沒有這個維度的話，一張只在一種模式下測過的卡照樣拿滿分、照樣送審。
+  assert.match(scorecard, /Runtime coverage/);
+  assert.match(scorecard, /- runtime coverage:/);
+  // 分數要說清楚是在哪一種模式下拿到的，不能讓沒測過的那邊靜默算通過。
+  assert.match(scorecard, /one runtime is a tier in one runtime/i);
+  assert.match(scorecard, /agent-mode-runtime\.md/);
+
+  // 送審前要指名涵蓋了哪些模式，作者不想付第二次錢也要講出來，不能報成全測過。
+  assert.match(publish, /agent-mode-runtime\.md/);
+  assert.match(publish, /agentMode/);
+  assert.match(publish, /runtime coverage/i);
+
+  assert.match(acceptance, /runtime coverage/i);
+});

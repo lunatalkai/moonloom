@@ -45,6 +45,7 @@ Use the dimensions that apply to the card shape. Mark irrelevant dimensions as
 | Boundary handling | Are rating, pacing, refusal, slowdown, and stop conditions explicit when needed? |
 | Token allocation | Do long sections create reusable behavior, state, voice, routes, or first-action clarity? |
 | Presentation | Does XMLV3, HTML, or Theme V3 support readability, state, action, and mood without hiding the engine? |
+| Runtime coverage | Does the card hold up both when this turn's material is picked for the character in advance and when the character goes looking itself? Are worldbook entries reachable by trigger terms *and* by entry name and body wording? |
 | Testability | Are render checks, simulation probes, and patch triggers clear enough for a later closed loop? |
 
 ## Overall tier
@@ -56,6 +57,12 @@ Use this tier after scoring:
 - `Usable private draft`: most relevant dimensions are at least `2`, with known repairs.
 - `Strong candidate`: core dimensions are mostly `3`, no blocker, and first repair is narrow.
 - `Signature candidate`: several dimensions reach `4`, no major weak layer, and simulation probes are ready.
+
+A tier earned in one runtime is a tier in one runtime. Players choose between the
+two, so when the card was only evaluated with material pre-selected for the
+character, or only with the character looking things up itself, say which one
+and score `Runtime coverage` on what is actually known. Do not let an untested
+runtime pass silently as covered — see `agent-mode-runtime.md`.
 
 ## Critical blockers
 
@@ -107,6 +114,7 @@ Quality audit packet:
   - boundary handling:
   - token allocation:
   - presentation:
+  - runtime coverage:
   - testability:
 - strongest dimensions:
 - weakest dimensions:
