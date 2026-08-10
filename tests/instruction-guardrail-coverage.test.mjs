@@ -47,7 +47,7 @@ test('router and card author expose instruction guardrails as a narrow workflow'
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-instruction-guardrail/);
   assert.match(router, /jailbreak|system behavior|instruction/i);

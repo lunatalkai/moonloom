@@ -154,7 +154,7 @@ test('lunatalk-mcp-operator skill exposes the four preview page tools', async ()
 });
 
 test('README registers the preview page designer skill', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   assert.match(readme, /lunatalk-preview-page-designer/);
   assert.match(readme, /preview-page-authoring\.md/);
 });

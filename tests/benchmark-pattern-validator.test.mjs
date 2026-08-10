@@ -123,7 +123,7 @@ test('benchmark pattern validator rejects SQL, UUIDs, exact markup, and underspe
 });
 
 test('README and benchmark reference expose the benchmark pattern validator', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const reference = await readFile('references/benchmark-pattern-calibration.md', 'utf8');
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
 

@@ -154,7 +154,7 @@ test('acceptance evidence validator rejects raw transcript storage and protected
 });
 
 test('README and end-to-end reference expose the acceptance evidence validator', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const reference = await readFile('references/end-to-end-acceptance.md', 'utf8');
 
   assert.match(readme, /validate:acceptance/);

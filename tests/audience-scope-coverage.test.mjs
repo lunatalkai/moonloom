@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 test('Moonloom public docs define author-facing audience and exclude server-internal work', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   const forbiddenPublicTerms = [
     /server-internal/i,

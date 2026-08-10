@@ -51,7 +51,7 @@ test('router, card author, longplay, presentation, and templates expose state ec
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
   const framework = await readFile('references/role-card-writing-framework.md', 'utf8');
   const quality = await readFile('references/quality-rubric.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-state-economist/);
   assert.match(router, /state economy|decorative meters|visible.*hidden/i);

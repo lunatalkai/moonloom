@@ -30,7 +30,7 @@ test('author collaboration has a dedicated public skill and reference', async ()
 
 test('router and README expose author collaboration as a first-class workflow', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-collaboration-director/);
   assert.match(router, /author feedback|co-review|taste|preference/i);

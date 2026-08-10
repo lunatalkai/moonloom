@@ -47,7 +47,7 @@ test('iteration director defines evidence stack and one-repair iteration packet'
 
 test('router and README expose closed-loop iteration as first-class workflow', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-iteration-director/);
   assert.match(router, /closed-loop|next-iteration|iteration/i);

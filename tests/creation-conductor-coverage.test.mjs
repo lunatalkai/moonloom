@@ -49,7 +49,7 @@ test('creation workflow defines runway packet and stage gates', async () => {
 
 test('router and README expose creation conductor as end-to-end workflow', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const mcpWorkflow = await readFile('references/mcp-client-workflow.md', 'utf8');
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
 

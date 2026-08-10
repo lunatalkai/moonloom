@@ -160,7 +160,7 @@ test('iteration summary validator rejects incomplete evidence and untraceable re
 });
 
 test('README, iteration reference, and iteration director expose iteration summary validation', async () => {
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const reference = await readFile('references/iteration-loop.md', 'utf8');
   const skill = await readFile('skills/lunatalk-iteration-director/SKILL.md', 'utf8');
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));

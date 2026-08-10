@@ -50,7 +50,7 @@ test('router, blueprint, authoring templates, and quality docs expose tension we
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
   const framework = await readFile('references/role-card-writing-framework.md', 'utf8');
   const quality = await readFile('references/quality-scorecard.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-tension-weaver/);
   assert.match(router, /why now|external pressure|tension triangle/i);

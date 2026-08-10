@@ -49,7 +49,7 @@ test('router, card author, and voice reference expose talkExample curation', asy
   const cardAuthor = await readFile('skills/lunatalk-card-author/SKILL.md', 'utf8');
   const templates = await readFile('references/card-authoring-templates.md', 'utf8');
   const voiceReference = await readFile('references/voice-calibration.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-talk-example-curator/);
   assert.match(router, /talkExample|micro-sample|dialogue sample/i);

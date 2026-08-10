@@ -47,7 +47,7 @@ test('benchmark runner routes full trial-card acceptance through the new referen
 
 test('router and README expose end-to-end acceptance as a first-class workflow', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /end-to-end-acceptance\.md/);
   assert.match(router, /avatar\/background/);

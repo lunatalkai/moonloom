@@ -35,7 +35,7 @@ test('sample calibration has a dedicated public skill, reference, and examples',
 
 test('router and README expose sample calibration workflow', async () => {
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
 
   assert.match(router, /lunatalk-sample-calibrator/);
   assert.match(router, /sample|golden|calibration|benchmark/i);

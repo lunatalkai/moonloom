@@ -120,7 +120,7 @@ test('XMLV3 presentation validator rejects flat state and raw styling hooks', ()
 
 test('complete synthetic fixture and README expose XMLV3 presentation validation', async () => {
   const fixture = await readFile('examples/complete-synthetic-card-fixture.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const presentation = await readFile('references/presentation-design.md', 'utf8');
   const presentationSkill = await readFile('skills/lunatalk-presentation-director/SKILL.md', 'utf8');
   const packageJson = JSON.parse(await readFile('package.json', 'utf8'));

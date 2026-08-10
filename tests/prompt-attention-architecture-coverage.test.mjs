@@ -4,7 +4,7 @@ import test from 'node:test';
 
 test('prompt attention architecture standard is documented and routed', async () => {
   const reference = await readFile('references/prompt-attention-architecture.md', 'utf8');
-  const readme = await readFile('README.md', 'utf8');
+  const readme = await readFile('README.en.md', 'utf8');
   const router = await readFile('skills/using-moonloom/SKILL.md', 'utf8');
   const token = await readFile('references/token-economy.md', 'utf8');
   const detail = await readFile('references/role-detail-engine.md', 'utf8');
