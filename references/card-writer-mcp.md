@@ -441,6 +441,14 @@ important behavior with real conversation tests. Do not claim that worldbooks re
 always-on role detail while keeping core identity and behavior stable in the
 card.
 
+Recall as described above is the default runtime. A conversation running in agent
+mode reaches the same entries a different way: the model browses and searches
+them itself, so it sees entry names first and matches against the words in the
+bodies rather than against `keywords`. Both runtimes are available on any card,
+so an entry needs a name that says what is inside it and a body written in the
+words someone would search for, in addition to its trigger terms. See
+`agent-mode-runtime.md`.
+
 Authoring implications for AI clients:
 
 - Make each entry a small, independently useful lore / rule / memory slice.
@@ -448,6 +456,8 @@ Authoring implications for AI clients:
   entries into another long role detail.
 - Give `keywords` aliases the player is likely to type: names, nicknames,
   places, objects, quest terms, and natural question phrases.
+- Name entries descriptively. A name like `Location 3` is unfindable to a model
+  browsing the list, and browsing is how the agent runtime starts.
 - Do not require many entries from the same category to appear in one turn.
 - Keep identity, voice, and behavior that must be stable every turn in the role
   fields, not only in keyed worldbook entries.
@@ -1438,7 +1448,8 @@ Optional: `query`, `recommendedOnly`, and `includeUnavailable`.
 
 Read `recommendedModel` first. Each model entry may include `costScore`,
 `effectiveCostScore`, `maxScore`, `effectiveMaxScore`, `status`, discount fields,
-`thinkingDepthOptions`, `defaultThinkingDepth`, and notes. When present, inspect `status.confidence`,
+`thinkingDepthOptions`, `defaultThinkingDepth`, `supportsAgentMode`,
+`agentModeCostWarning`, and notes. When present, inspect `status.confidence`,
 `status.gatewayHealth`, and `status.errorBuckets` before choosing a paid probe
 model. Treat `status.status: "unknown"` as a sample confidence warning rather
 than proof that the model is broken. Treat `status.gatewayHealth.state:
@@ -1453,6 +1464,12 @@ If the selected model is not the server default, pass that value as `model` in
 `thinkingDepth`; omit it only when the catalog entry has no thinking metadata or
 the author has not accepted the additional token/cost tradeoff. Record the
 chosen `model` and `thinkingDepth` in local playtest evidence.
+
+`supportsAgentMode` says whether that model can run `conversation_send_message`
+with `agentMode: true`; free models cannot. `agentModeCostWarning` marks models
+whose agent turns are expensive enough to be worth confirming with the author
+first, since agent turns bill by actual usage rather than a flat per-turn
+estimate.
 
 Conversation model catalog entries may also expose thinking mode metadata:
 `thinkingDepthOptions` and `defaultThinkingDepth`. Thinking mode is a
@@ -1523,8 +1540,27 @@ Required:
 ```
 
 Optional: `conversationId` to continue a prior MCP-operated conversation. If it
-is absent, the server creates a new MCP test conversation. Optional: `model` and
-`pageSize`.
+is absent, the server creates a new MCP test conversation. Optional: `model`,
+`agentMode`, and `pageSize`.
+
+Set `agentMode: true` to run this one turn in agent mode, where the model works
+through the card's material itself before writing instead of answering in one
+pass from what was pre-selected for it. See `agent-mode-runtime.md` for what that
+changes about the card. Three properties matter for the tool contract:
+
+- It applies to that turn only and never changes the conversation's saved
+  setting, so the same conversation can alternate modes for an A/B comparison.
+- It is refused rather than silently downgraded. A model that cannot run agent
+  mode returns an error whose code names the reason
+  (`agent_mode_free_model`, `agent_mode_model_unsupported`,
+  `agent_mode_runtime_disabled`) and the turn is not sent. Check
+  `supportsAgentMode` in `conversation_model_catalog` before choosing a model, or
+  retry without `agentMode`.
+- Agent turns take longer and bill by actual usage, so expect the async path
+  below rather than a reply inside the wait window.
+
+The response echoes `agentMode` so a client can confirm which runtime produced
+the turn it is evaluating.
 
 Optional `waitMs` controls how long the MCP call waits for the generated reply
 before returning. Use `waitMs: 60000` for accepted playtests. The default wait is
@@ -1570,6 +1606,55 @@ Required:
 Optional: `chatId`, `pageSize`, and `viewport`. A complete result includes the
 latest message metadata and can be followed by `conversation_inspect` for the
 raw context and evaluation.
+
+An agent turn also returns `agentPrep`:
+
+```json
+{
+  "agentPrep": {
+    "running": true,
+    "steps": [
+      {"stage": "looking_up", "resource": "setting", "keywords": "..."},
+      {"stage": "found", "resource": "setting", "count": 7},
+      {"stage": "reading", "resource": "setting", "count": 3},
+      {"stage": "done"}
+    ]
+  }
+}
+```
+
+`running: true` means the model is still working through the card's material and
+has not started the reply, and `generationStatus` reads `preparing`. This is the
+difference between waiting and failing: preparation can run for minutes while the
+conversation shows no new message, so do not read a quiet conversation as a dead
+turn, and do not send the next message on top of it.
+
+`steps` is the record of what the model went looking for and with what words. For
+iterating on a card this is the useful half of the result — the reply tells you
+what it wrote, the trace tells you what it could find. An agent turn whose trace
+searches and finds nothing is usually an entry-naming or body-wording problem, not
+a reply problem.
+
+### `conversation_stop`
+
+Stop the turn currently running in a conversation. Use it when an agent turn is
+taking longer than the author wants to spend, or when the test should move on to
+a different probe.
+
+Required:
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "conversation-stop-...",
+  "conversationId": "..."
+}
+```
+
+Optional: `roleId`, which is checked against the conversation when supplied.
+
+`stopped: false` means there was nothing left to stop, usually because the turn
+had already finished. That is a normal result, not an error.
 
 ### `conversation_inspect`
 

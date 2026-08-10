@@ -109,6 +109,7 @@ Expected Card Writer tools:
 - optional `conversation_load`
 - `conversation_send_message`
 - `conversation_turn_status`
+- `conversation_stop`
 - `conversation_inspect`
 - `publish_submit`
 - optional `public_search` — read-only; finds public roles and worlds by keyword

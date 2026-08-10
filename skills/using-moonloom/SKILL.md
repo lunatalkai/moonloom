@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom/LunaTalk creation work involving role cards, end-to-end creation workflow, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
+description: Use when routing Moonloom/LunaTalk creation work involving role cards, end-to-end creation workflow, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, agent mode vs one-shot coverage, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
 ---
 
 # Using Moonloom
@@ -419,6 +419,7 @@ validation, render review, simulation, and publish readiness.
 - Read `../../references/card-diagnosis.md` when the task involves existing-card diagnosis, mixed symptoms, author feedback, simulation symptoms, weakest-layer triage, repair order, or field patch mapping before rewriting.
 - Read `../../references/theme-v3-rendering.md` when working with HTML, XMLV3, or Theme V3.
 - Read `../../references/playtest-loop.md` when designing private chat probes, reading simulation transcripts, or deciding how to patch behavior failures.
+- Read `../../references/agent-mode-runtime.md` when the task involves agent mode, the two runtimes a player chooses between, why one card behaves differently for two players, entries the model must find by name and wording, preparation traces, or two-mode test coverage.
 - Read `../../references/safety-and-cost.md` before simulation or publish actions.
 - Read `../../references/end-to-end-acceptance.md` when the task is a full trial-card acceptance run, private-card visual completion check, or regression handoff after missing assets, app visual evidence, render evidence, simulation cost stance, or per-message preview evidence.
 - Read `../../examples/synthetic-card-briefs.md` when running benchmark or regression checks. Use `lunatalk-benchmark-runner`'s `Benchmark report packet` when reporting benchmark results or handing failures to the next skill.
