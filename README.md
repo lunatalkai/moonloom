@@ -265,6 +265,9 @@ private engineering guidance.
 - `references/one-shot-prompt-runtime.md` defines the sanitized Prompt V2
   one-shot layout, where `RoleDetail`, `RoleUserName`, history, summaries,
   near-generation rules, and assistant output position sit.
+- `references/agent-mode-runtime.md` defines the second runtime a player can
+  choose, what the model reaches on its own before writing, how that changes
+  entry naming and wording, and how to test both modes on one card.
 - `references/presentation-design.md` defines pre-render presentation decisions
   for XMLV3, Theme V3, HTML, visible state, hidden state, and first-screen visual
   hierarchy.

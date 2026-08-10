@@ -143,6 +143,35 @@ If the conversation tools do not include message identifiers, record
 "message preview unavailable" in the repair or acceptance packet and keep the
 visual claim narrower.
 
+## Runtime coverage: one card, two modes
+
+A conversation runs in one of two runtimes and the player picks, so a card that
+was only tested in one of them is half tested. `agent-mode-runtime.md` explains
+what differs; the testing rule is short.
+
+Ask which runtime the card is meant for. If the answer is "both" — which it is
+for any published card — the plan needs coverage of both, though not a full
+duplicated matrix. Pick the probes whose result actually depends on how the
+card's material is reached: background question, secret exploration, and
+long-arc macro-progression are the ones that move; a boundary test rarely is.
+
+Run the chosen probe in each mode on the same card and compare:
+
+- Did the agent turn use material the default turn missed? That is a trigger-term
+  gap in the default runtime.
+- Did the default turn use material the agent turn missed? That is a naming or
+  body-wording gap: the model browsed the list and could not tell that the entry
+  it needed was the one to open.
+- Did the agent turn spend its preparation and arrive with nothing extra? Read
+  the preparation trace before blaming the reply.
+
+The preparation trace is the part of an agent turn worth reading first. It records
+what the model went looking for and with what words, which is the evidence for
+whether the card's material is findable. The reply only shows what it managed to
+write from what it found.
+
+Expect agent turns to be slower and to cost more; see `safety-and-cost.md`.
+
 ## Simulation evidence packet
 
 After a real MCP-backed simulation run, record a compact simulation evidence
@@ -155,6 +184,8 @@ The evidence packet should cover:
 - eight probe kinds: normal interaction, short reply, off-path reply, background
   question, relationship push, secret exploration, boundary test, and
   long-arc macro-progression
+- which runtime each probe ran in, and for any probe run in both, a public-safe
+  note on what the two modes reached differently
 - one public-safe paraphrased `evidenceSummary` per probe
 - checks for character consistency, voice consistency, interaction tension, user
   agency, format stability, reasonable length, safety boundary, and

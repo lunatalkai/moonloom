@@ -1,7 +1,7 @@
 {
   "name": "moonloom",
   "description": "LunaTalk role-card authoring skills and MCP workflows for external agent clients.",
-  "version": "0.1.48",
+  "version": "0.1.49",
   "author": {
     "name": "LunaTalk AI",
     "email": "contact@lunatalk.ai"

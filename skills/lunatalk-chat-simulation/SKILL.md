@@ -17,6 +17,9 @@ Read `../../references/card-writer-mcp.md` for `conversation_send_message` and
 `conversation_model_catalog`, `conversation_create`, `conversation_list`, and
 `conversation_load` when the test needs model/cost selection, a fresh thread,
 conversation discovery, resume, or rollback.
+Read `../../references/agent-mode-runtime.md` before planning coverage: a card
+can be played in the default runtime or in agent mode, the two reach the card's
+material differently, and a card tested in only one of them is half tested.
 Read `../../references/playtest-loop.md` for probe design, transcript triage,
 patch mapping, per-message preview, and author co-review.
 Use `npm run validate:simulation` when a run produces a redacted simulation
@@ -71,6 +74,12 @@ Read `../../references/safety-and-cost.md` before running a simulation.
 
 ## Cost and consent
 
+An `agentMode: true` turn costs more and runs longer, and covering both runtimes
+means paying for both. Say so when proposing two-mode coverage, check
+`supportsAgentMode` and `agentModeCostWarning` in `conversation_model_catalog`
+before choosing the model, and use `conversation_stop` when the author does not
+want to keep waiting on a turn.
+
 `conversation_send_message` uses normal LunaTalk chat billing and deducts points
 or credits. If the author has not already asked to run a conversation test,
 explain that it costs normal chat resources and ask for confirmation before
@@ -86,6 +95,8 @@ not call the tool.
    - target risk: opening hook, agency, continuity, longplay, boundary,
      token/progression, archetype behavior, or onboarding clarity
    - probe scope: narrow spot-check or behavior-complete acceptance
+   - runtime coverage: which probes run in the default runtime, which run with
+     `agentMode: true`, and which run in both for comparison
    - probe text: realistic player messages, not evaluator instructions
    - required matrix: behavior-complete acceptance uses the eight-probe
      Moonloom matrix: normal interaction, short reply, off-path reply,
