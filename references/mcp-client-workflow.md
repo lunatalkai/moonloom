@@ -93,6 +93,7 @@ Expected Card Writer tools:
 - `worldbook_find`
 - `worldbook_get`
 - `worldbook_entry_list`
+- `worldbook_entry_get`
 - `worldbook_create`
 - `worldbook_update`
 - `worldbook_patch_document`
@@ -113,6 +114,8 @@ Expected Card Writer tools:
 - `conversation_stop`
 - `conversation_inspect`
 - `publish_submit`
+- `role_set_visibility` — takes one of the author's own cards back to private
+- optional `theme_patch_component` — edits one custom component in a theme
 - optional `public_search` — read-only; finds public roles and worlds by keyword
 - optional `creator_analytics_brief` — read-only; the author's own creator brief
 - optional `role_get_preview_page` — read-only; the author's editable preview page
@@ -273,7 +276,8 @@ owned theme the author no longer needs; deleting a theme automatically unbinds
 every role that still referenced it.
 
 For long role or worldbook fields, prefer direct deep patch. Read the current
-field with `role_get`, `worldbook_get`, or `worldbook_entry_list`, compute the
+field with `role_get`, `worldbook_get`, `worldbook_entry_get`, or
+`worldbook_entry_list`, compute the
 SHA-256 of the exact current field text, then send only a small `TextDeepPatch`
 through MCP. Use `replaceText`, `insertText`, `deleteText`, `appendText`, or
 `prependText`; include `baseSha256` for conflict protection. The server rejects
@@ -295,9 +299,9 @@ conversation tools return `conversation`, `role_find` returns `roles`,
 worldbook read/write/entry tools return `worldbook`, document patch tools return
 `document`, direct deep patch role tools may return `patch` or `textPatches`,
 worldbook bind tools return `binding`, `theme_bind` returns `binding`,
-`theme_submit`, `theme_get`, `theme_create`, `theme_update`, `theme_fork`,
-`theme_unbind`, and `theme_delete` all return `theme`, and `publish_submit`
-returns `publish`.
+`theme_submit`, `theme_get`, `theme_create`, `theme_update`,
+`theme_patch_component`, `theme_fork`, `theme_unbind`, and `theme_delete` all
+return `theme`, and `publish_submit` returns `publish`.
 `public_search` returns `search`, `creator_analytics_brief` returns
 Preview URLs, generation status, messages, role/worldbook search
 matches, entry lists, bindings, and evaluations are inside those nested payloads,
@@ -312,7 +316,7 @@ not at the JSON-RPC top level.
 | Existing role lookup | `role_find` then `role_get` when the author provides a name but not a roleId | ask the author to manually copy roleId from the URL before trying role search |
 | Creator analytics brief | `creator_analytics_brief` when the author asks for trend-aware next steps, owned-card insight, writing suggestion, or creative opportunity | treat analytics as a writing-quality gate; force low-confidence observations into a final premise |
 | MOD marketplace | `mod_market_find` / `mod_market_get` for public discovery; `mod_entitlement_list` and `mod_role_list` for use state; role-scoped `mod_role_set_enabled`; `mod_update_preview` then explicit confirmation and `mod_update_apply`; `mod_author_offer_get` for the author's own offers | bypass authentication, role access, entitlement, lifecycle, acquisition, or update preconditions; purchase, renewal, claiming, review/favorite/offer writes, or expiry acknowledgement through MCP |
-| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, create/update/delete entry tools, direct `contentDeepPatch` / `textPatches` for small edits, or `worldbook_patch_document` for coordinated metadata/entry/binding updates, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
+| Worldbook authoring | `worldbook_find`, `worldbook_get`, `worldbook_entry_list`, `worldbook_entry_get` to re-read one entry, create/update/delete entry tools, direct `contentDeepPatch` / `textPatches` for small edits, or `worldbook_patch_document` for coordinated metadata/entry/binding updates, then `worldbook_bind` | hide world lore inside roleDetailDesc when a reusable worldbook is intended |
 | Worldbook binding check | `worldbook_bindings` for the role, then `worldbook_bind` or `worldbook_unbind` as needed | simulate before confirming the intended worldbook is attached |
 | Technical validation | `validate_role` | render/simulate if blockers remain |
 | Visual review | `render_preview` | treat render as writing-quality proof |
@@ -372,6 +376,14 @@ default and cap are 60 seconds; a pending
 `conversation_turn_status` and then `conversation_inspect` for completion and
 per-message evidence. Do not send another probe while the latest message is a
 USER message or the latest turn is `waiting_ai` / `generating`.
+
+An agent turn runs well past the 60-second cap, so plan on polling rather than
+treating it as an exception. Poll with `conversation_list`: it reports
+`generationStatus` and the last message without the card definition, which makes
+it the cheap way to ask whether a turn has finished. Move to
+`conversation_turn_status` when you want the `agentPrep` trace, and to
+`conversation_inspect` when you want the transcript. None of the conversation
+tools return the card definition unless the call sets `includeRole: true`.
 When token telemetry is present, include `inputTokens`, `outputTokens`,
 `cacheReadTokens`, and `cacheReadRatio` in the cost/caching note for the run. A
 high `inputTokens` value with low `cacheReadRatio` is a token-economy signal:

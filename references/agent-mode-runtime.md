@@ -77,6 +77,32 @@ A card whose discoverability lives entirely in trigger words degrades in agent
 mode: the model looks, sees a list of opaque names, and writes from what it
 already had.
 
+### Where a rule is written seems to matter as much as how often it is repeated
+
+One author's field report, running the same nesting rules through five placements
+on one card with one model: rules about **which tag may contain which**, how many
+levels of JSON `<state>` is allowed, and whether the model may invent new tags
+were followed only when they lived in `jailbreak`. The same rules placed at the
+end of `roleDetailDesc`, inside `roleOutputContract`, inside `talkExample`, or in
+a component's `description` were ignored, including when the surrounding field
+already demonstrated the correct structure.
+
+Rules about **whether a tag appears at all, which attribute keys it carries, and
+what values those attributes may take** behaved the opposite way in the same
+session: a checklist near the end of `roleDetailDesc` was enough to fix a missing
+tag and missing attributes in one round.
+
+This is one author, one card, one model, so treat it as a lead rather than a law.
+It is worth knowing because it cuts against the usual advice to fix an ignored
+rule by moving it earlier or repeating it: if a structural rule is being ignored
+after two rounds of that, the placement itself may be the problem.
+
+Two things to check before acting on it. `jailbreak` has a hard character cap
+that depends on the card's language and is small for Chinese-language cards —
+read `limits.jailbreakMaxChars` from `validate_role` rather than assuming, and
+expect to compress a structural rule to a terse line rather than a paragraph. And
+verify on your own card: this is a single observation, not a measured effect.
+
 ### Constant entries are the only guaranteed material
 
 Always-available entries are still always available. Everything else is reached
