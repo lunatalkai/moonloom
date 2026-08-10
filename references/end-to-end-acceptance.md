@@ -109,6 +109,8 @@ Collect concrete evidence instead of vibes:
 - image request status for avatar/background:
 - simulation cost accepted:
 - simulation probes:
+- runtime coverage: which runtimes the probes ran in, and what the two reached
+  differently when a probe ran in both:
 - simulation result:
 - simulation evidence validator:
 - message preview evidence:

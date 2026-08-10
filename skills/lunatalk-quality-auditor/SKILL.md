@@ -54,6 +54,9 @@ submit a private role for public review.
 2. State missing evidence. Do not invent field content or simulation results.
 3. Flag critical blockers before scoring.
 4. Score relevant dimensions from `quality-scorecard.md` on the `0-4` scale.
+   `Runtime coverage` asks whether the card holds up in both runtimes a player can
+   choose between; when the evidence only covers one, score what is known and say
+   which one, rather than letting the untested runtime pass silently.
 5. Assign an overall tier: blocked, needs architecture, usable private draft,
    strong candidate, or signature candidate.
 6. Name strongest dimensions and weakest dimensions.

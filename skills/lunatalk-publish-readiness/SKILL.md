@@ -12,6 +12,9 @@ review, and to call `publish_submit` only after explicit author confirmation.
 
 Read `../../references/card-writer-mcp.md` for `publish_submit` details.
 Read `../../references/quality-rubric.md` for readiness criteria.
+Read `../../references/agent-mode-runtime.md` before signing off on the behavior
+check: a published card can be played in either runtime and the player chooses,
+so coverage of one is not coverage of both.
 Read `../../references/quality-scorecard.md` when the author asks for a craft
 score, top-tier check, good-enough review, or first-three repairs instead of
 explicit submission. Use `lunatalk-quality-auditor` before publish readiness when
@@ -119,8 +122,17 @@ matter, or the card decides the player's feelings/actions.
 7. Run `conversation_send_message` and `conversation_inspect`, or record that the
    author explicitly skipped the real behavior check after understanding normal
    billing.
-8. Summarize remaining warnings and tradeoffs.
-9. Ask for explicit confirmation if the author has not already given it.
+8. Name which runtimes the behavior check covered. A published card can be played
+   with this turn's material picked for the character in advance, or with the
+   character looking things up itself, and the player chooses — so a card checked
+   in only one of them is checked in only one of them. If the worldbook carries
+   material the card depends on, run at least one probe with `agentMode: true` and
+   confirm the character could find what it needed; entries whose discoverability
+   lives entirely in trigger terms are invisible when it searches by name and
+   wording. When the author declines the extra cost, say so explicitly instead of
+   reporting the card as fully checked. See `../../references/agent-mode-runtime.md`.
+9. Summarize remaining warnings and tradeoffs.
+10. Ask for explicit confirmation if the author has not already given it.
 
 ## Publishing rule
 
@@ -148,6 +160,7 @@ Return:
 - validation status
 - render status
 - simulation status
+- runtime coverage: which runtimes the behavior check actually covered
 - unresolved warnings
 - whether `publish_submit` was called
 - review status or task id when available
