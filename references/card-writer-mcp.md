@@ -2161,7 +2161,12 @@ Use these read-only tools for discovery and account state:
   reconciliation readback. All point-priced plans, including lifetime, require
   a fresh successful reconciliation readback within the 24-hour window before
   quote, purchase, or renewal. If it cannot pass, the quote fails closed; do
-  not retry around or bypass the denial.
+  not retry around or bypass the denial. The quote states the split as well as
+  the price: `commissionPoints` is what the platform takes and `authorNetPoints`
+  is what the author receives. Both are always present, including zero, so a
+  zero share reads differently from a server that said nothing. Quote these
+  numbers rather than deriving them — the platform share is charged in slices,
+  so a percentage applied to the whole price gives the wrong answer.
 - `mod_purchase_status`: remains readable for the authenticated user's own
   idempotency key even while a quote is unavailable, so an existing first-party
   purchase outcome can still be checked safely. It does not bypass the
