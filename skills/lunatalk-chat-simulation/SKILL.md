@@ -128,7 +128,13 @@ not call the tool.
    `thinkingDepthOptions`; use `defaultThinkingDepth` only after the author
    accepts that stronger thinking can improve hard probes while using more
    tokens. Do not hard-code a model or thinking mode when the catalog can provide
-   one. Record the selected thinkingDepth in the simulation evidence.
+   one. When the catalog offers `value_based` and `stable_1` variants, use the
+   exact returned model value and record the selected channel. Open-source
+   `official-*` variants are paid dynamic usage and never unlimited-card usage;
+   do not construct unlisted aliases such as `official-deepseek-v4-pro` or
+   `official-qwen3.7-plus`. The current GLM-5 official value is
+   `official-glm-5`.
+   Record the selected thinkingDepth in the simulation evidence.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
    still returns `generationStatus: "waiting_ai"` or `"generating"`, treat it as

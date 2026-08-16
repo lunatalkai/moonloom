@@ -1552,6 +1552,15 @@ non-red model with usable confidence and no severe gateway or error-bucket
 warning.
 `effectiveCostScore` includes active model discounts; actual billing still
 follows LunaTalk membership, context, MAX, stop, and server-side billing rules.
+When a family has multiple provider variants, read `channel` and pass the
+returned `value` unchanged. `value_based` is the lower-cost multi-provider pool;
+`stable_1` is the dedicated official-provider pool. Open-source `official-*`
+variants use paid dynamic token billing and are never covered by an unlimited
+card, even when `noLimitCovered` is absent from the response. Do not construct
+an `official-*` value that the catalog did not return. In particular,
+`deepseek-v4-pro` has no separate `official-deepseek-v4-pro` variant. The
+current GLM-5 official value is `official-glm-5`; Qwen3.7 Plus currently has no
+official-channel variant, so do not construct `official-qwen3.7-plus`.
 If the selected model is not the server default, pass that value as `model` in
 `conversation_send_message`. If the selected model exposes
 `thinkingDepthOptions`, choose one of those values and pass it as
