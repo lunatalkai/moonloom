@@ -370,6 +370,13 @@ For accepted conversation tests, call `conversation_model_catalog` first and rea
 `thinkingDepthOptions`, and `defaultThinkingDepth`. Pass the chosen model value
 as `model` in `conversation_send_message` when the default model is unknown,
 unavailable, or unsuitable for the current client environment. If the selected
+family has both `value_based` and `stable_1` entries, treat them as distinct
+paid provider channels and use the exact catalog `value`. Open-source
+`official-*` entries are never unlimited-card usage; do not infer otherwise
+from stable prompt behavior or an omitted `noLimitCovered` field, and never
+invent `official-deepseek-v4-pro` because the catalog does not expose it. If the selected
+GLM-5 official channel is used, pass the returned `official-glm-5` value; do not
+construct `official-qwen3.7-plus`, which is not currently exposed. If the selected
 model exposes thinking metadata, choose from its `thinkingDepthOptions`. Pass the selected value as `thinkingDepth`; use `defaultThinkingDepth` only when the author accepts the quality/cost tradeoff. Also pass `waitMs: 60000`. The server
 default and cap are 60 seconds; a pending
 `generationStatus` after that window is an async handoff, not a failure. Use
