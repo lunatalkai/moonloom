@@ -16,6 +16,9 @@ test('official open-source model guidance preserves paid channel boundaries', as
     assert.match(source, /never (?:covered by an )?unlimited/i);
     assert.match(source, /official-deepseek-v4-pro/);
     assert.match(source, /official-glm-5/);
+    assert.match(source, /official-glm-5\.3/);
+    assert.match(source, /bare\s+`glm-5\.3`/);
+    assert.match(source, /gemini-3\.7-flash/);
     assert.match(source, /official-qwen3\.7-plus/);
   }
 });
