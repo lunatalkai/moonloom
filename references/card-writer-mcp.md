@@ -1559,8 +1559,10 @@ variants use paid dynamic token billing and are never covered by an unlimited
 card, even when `noLimitCovered` is absent from the response. Do not construct
 an `official-*` value that the catalog did not return. In particular,
 `deepseek-v4-pro` has no separate `official-deepseek-v4-pro` variant. The
-current GLM-5 official value is `official-glm-5`; Qwen3.7 Plus currently has no
-official-channel variant, so do not construct `official-qwen3.7-plus`.
+current GLM-5 official value is `official-glm-5`; GLM-5.3 is official-only, so
+use the returned `official-glm-5.3` value and never construct a bare `glm-5.3`.
+Gemini 3.7 Flash is returned as `gemini-3.7-flash`. Qwen3.7 Plus currently has
+no official-channel variant, so do not construct `official-qwen3.7-plus`.
 If the selected model is not the server default, pass that value as `model` in
 `conversation_send_message`. If the selected model exposes
 `thinkingDepthOptions`, choose one of those values and pass it as
