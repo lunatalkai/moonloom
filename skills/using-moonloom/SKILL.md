@@ -177,6 +177,16 @@ decisive bottleneck and list delayed routes under `do not do yet`.
   simulation, or publish readiness, unless the main symptom is only profile
   packaging (`roleName`, `roleDesc`, tags, title, tagline, first impression).
 - `roleDetailDesc`, detail engine, thin biography, under-budget detail, full-detail/top-card role setting, durable operating engine, current pressure, player insertion space, proactive turn behavior, secret/reveal pacing, time/consequence, one-shot Prompt V2 raw detail placement, RoleDetail/RoleUserName positioning, or format stability before field assembly: use `lunatalk-detail-engineer`. Load `one-shot-prompt-runtime.md` when the author asks how raw detail sits in the assembled one-shot prompt. Use `lunatalk-token-architect` instead when the engine already exists and the blocker is tokenBudget, estimatedTokens, welcomeToDetailRatio, overlong welcome, field allocation, keep/move/cut/rewrite, compression, duplicated lore, HTML/XMLV3 bloat, misplaced durable rules, attention dilution, long raw detail prompt architecture, Markdown/tag structure, Tier 4 format exemplar budget, Minimum Viable Reply budget, or reducing token cost. If there is no concrete field-size evidence and the author is only deciding pre-field visual hierarchy, route to `lunatalk-presentation-director`.
+- Creating or editing a **MOD** — a gameplay module attached to a role that adds
+  per-turn rules and can render a state card (affection, stamina, quest progress,
+  dice, inventory), plus player-tunable params: use `lunatalk-mod-author`, and
+  read `../../references/mod-authoring.md`. A MOD is not a role card and not a
+  worldbook: it exists for **per-turn state and per-turn rules**. If the request
+  is about who the character is, route to card authoring; if it is reusable lore
+  that keywords should surface, route to the worldbook skills. A draft MOD is
+  visible only to its author and can be played on the author's own role without
+  publishing — never submit one that has not actually been run.
+
 - Creating or editing a **visual theme** (Theme V3) — theme goal, "make me a
   theme / 配個主題 / 换个皮 / theme this card", palette/mood/visual style, custom
   component or dialogue-component styling: use `lunatalk-presentation-director`

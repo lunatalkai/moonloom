@@ -1,0 +1,91 @@
+{
+  "skill_name": "lunatalk-mod-author",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想做一個好感度系統，聊天的時候能看到數字。",
+      "expected_output": "Uses lunatalk-mod-author; designs a small card with a concrete, bounded rule for the affection field; states the draft can be playtested before publishing.",
+      "files": [],
+      "expectations": [
+        "The output treats this as a MOD, not a role card or worldbook.",
+        "The affection field's rule names concrete triggers and bounded deltas, not a restatement of the label.",
+        "The output keeps the field count small rather than adding unrequested stats.",
+        "The output says the draft can be enabled and played before submitting."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "幫我把這個 MOD 送審，我剛改完。",
+      "expected_output": "Asks whether it was actually played after the edit, and routes to validate plus a real playtest before submit.",
+      "files": [],
+      "expectations": [
+        "The output does not submit immediately on request.",
+        "The output requires a real playtest of the draft, not only a schema check.",
+        "The output explains that publishing is what makes it visible to other people."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "存檔失敗了，說 version conflict。我再存一次就好了吧？",
+      "expected_output": "Explains the MOD changed after it was read and that the fix is read-modify-write via mod_get, not a retry.",
+      "files": [],
+      "expectations": [
+        "The output rejects retrying the same write.",
+        "The output routes to reading the current version back before saving.",
+        "The output does not suggest discarding the other change silently."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我想加十五個狀態欄位，越豐富越好。",
+      "expected_output": "Pushes back on field count, explains per-turn attention and prompt cost, and proposes a smaller set with sharper rules.",
+      "files": [],
+      "expectations": [
+        "The output explains that every field competes for attention each turn.",
+        "The output connects long rules to prompt cost and memory compaction.",
+        "The output proposes fewer fields with stronger rules rather than accepting all fifteen."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "這個欄位我想記錄「玩家上次登入到現在幾天」。",
+      "expected_output": "Points out the model cannot observe that from the conversation, and proposes state the model can actually derive.",
+      "files": [],
+      "expectations": [
+        "The output identifies that the value has no source the model can read.",
+        "The output proposes an observable alternative instead of accepting the field."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "什麼時候該用 params，什麼時候直接寫死？",
+      "expected_output": "Explains params are for values different players reasonably want different, and warns each one adds player-facing complexity.",
+      "files": [],
+      "expectations": [
+        "The output ties params to genuine per-player variation.",
+        "The output warns that each param is one more thing the player must understand.",
+        "The output does not treat params as a way to avoid deciding."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "我的卡片 HTML 被拒了，我把它拆成兩段再貼進去可以嗎？",
+      "expected_output": "Says the limit is a limit, points at the diagnostic naming which one, and refuses the workaround.",
+      "files": [],
+      "expectations": [
+        "The output refuses to work around the limit by splitting or inlining markup.",
+        "The output routes to the validation diagnostic to see which limit was hit."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "我要做一張新角色卡，個性設定要很完整。",
+      "expected_output": "Routes to role card authoring; this is not MOD work.",
+      "files": [],
+      "expectations": [
+        "The output does not author a MOD.",
+        "The output routes role identity and voice to the card authoring skill."
+      ]
+    }
+  ]
+}

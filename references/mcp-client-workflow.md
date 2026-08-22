@@ -71,6 +71,12 @@ Expected Card Writer tools:
 - `mod_purchase_quote`
 - `mod_purchase_status`
 - `mod_author_offer_get`
+- `mod_find`
+- `mod_get`
+- `mod_create`
+- `mod_author_save`
+- `mod_validate`
+- `mod_submit`
 - `creator_analytics_brief`
 - `role_patch_detail`
 - `role_patch_welcome`
@@ -290,6 +296,27 @@ Use `role_patch_document` with `document.fieldPatches` when several role text
 fields must change together. For worldbooks, use `worldbook_update`
 `textPatches.description`, `worldbook_entry_update.contentDeepPatch`, or
 `worldbook_patch_document` entry/metadata patches.
+
+### Authoring the caller's own MODs
+
+`mod_find` / `mod_get` / `mod_create` / `mod_author_save` / `mod_validate` /
+`mod_submit` operate on MODs the authenticated account authored. They are not
+marketplace actions and need no purchase or rollout gating.
+
+Order that works:
+
+1. `mod_create` for a new draft, or `mod_find` → `mod_get` for an existing one.
+2. `mod_validate` before spending a turn on it.
+3. Enable the draft on a role the caller owns and send real messages. A draft
+   needs no publishing to be played, and this is the only step that shows
+   whether the rules actually drive the model.
+4. `mod_get` → edit → `mod_author_save` with the `version` from that read.
+5. `mod_submit` once it holds up.
+
+`mod_validate` returns an invalid document as a *successful* check carrying
+diagnostics — treat it as "here is what to fix", not as a failed call. A version
+conflict on `mod_author_save` means the MOD changed after the read: read back,
+re-apply, save. Never retry the same write.
 
 ## Reading tool results
 
