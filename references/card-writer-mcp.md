@@ -2234,3 +2234,29 @@ All marketplace responses are allowlisted. They never expose an account UUID, a
 private worldbook, a closed MOD implementation, raw source, or another user's
 purchase/order/expiry data. An unavailable result is not evidence about hidden
 content.
+
+
+### MOD authoring
+
+The authoring side is exposed as well. These write the author's own MODs through
+the same server paths the app uses, so ownership, validation, moderation and
+concurrency behave identically.
+
+- `mod_find`: list the authenticated author's own MODs.
+- `mod_get`: read one of them, including `sourceJson` and the current `version`.
+  Read before editing — `mod_author_save` needs that `version`.
+- `mod_create`: create a draft. Drafts are visible only to their author.
+- `mod_author_save`: update a draft, passing `expectedVersion`. Named this way
+  and not `mod_update` because `mod_update_preview` / `mod_update_apply` already
+  mean "the player updates a MOD they installed", which is a different action.
+- `mod_validate`: check a `sourceJson` without writing. An invalid document is
+  returned as a successful check carrying diagnostics, not as a tool failure.
+- `mod_submit`: submit for review so other people can see it.
+
+A draft can be enabled on a role the author owns and played before it is ever
+published; that is how an agent confirms a MOD works. Field definitions are in
+`lunatalk://schemas/mod-source`, the flow in `lunatalk://guides/mod`, and the
+authoring judgment in `mod-authoring.md`.
+
+A version conflict from `mod_author_save` means the MOD changed after it was
+read. Read it back, re-apply the edit, save again — do not retry the same write.
