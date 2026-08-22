@@ -17,6 +17,8 @@ const AUTHORING_TOOLS = [
   'mod_author_save',
   'mod_validate',
   'mod_submit',
+  'mod_delete',
+  'mod_unpublish',
 ];
 
 test('Moonloom carries the MOD authoring surface', async () => {
@@ -78,4 +80,29 @@ test('the reference points at the schema resource instead of copying it', async 
     !/"?schemaVersion"?\s*[:=]\s*7/.test(reference),
     'reference copies the schema instead of pointing at it',
   );
+});
+
+// 刪除與下架的差別要講出來：對已經裝了它的人，兩者的後果完全不同。
+test('the guidance distinguishes deleting a draft from unpublishing a listed MOD', async () => {
+  const skill = await readFile('skills/lunatalk-mod-author/SKILL.md', 'utf8');
+  const reference = await readFile('references/mod-authoring.md', 'utf8');
+
+  for (const [name, text] of [['skill', skill], ['reference', reference]]) {
+    assert.ok(/draft/i.test(text) && /publish/i.test(text), `${name} does not cover both removal paths`);
+    assert.ok(
+      /keep the version|keep the version they|existing holders/i.test(text),
+      `${name} never says existing holders keep what they have`,
+    );
+  }
+});
+
+// 省略設定會保留，不是回預設。搞錯這件事的 agent 會每次都重送一整份設定，
+// 而它猜的那份會把它沒看到的標籤刪掉。
+test('the guidance says omitted settings are preserved', async () => {
+  const reference = await readFile('references/mod-authoring.md', 'utf8');
+  assert.ok(
+    /omitting|only what is sent|only the fields/i.test(reference),
+    'reference does not explain that a save changes only what it names',
+  );
+  assert.ok(/pricing/i.test(reference), 'reference does not state the commerce boundary');
 });

@@ -2252,6 +2252,10 @@ concurrency behave identically.
 - `mod_validate`: check a `sourceJson` without writing. An invalid document is
   returned as a successful check carrying diagnostics, not as a tool failure.
 - `mod_submit`: submit for review so other people can see it.
+- `mod_delete`: delete a draft. Requires `confirm: true`; nothing recovers a
+  deleted draft. Drafts only.
+- `mod_unpublish`: take a listed MOD off the market. Existing holders keep the
+  version they have; nobody new can acquire it. It can be listed again later.
 
 A draft can be enabled on a role the author owns and played before it is ever
 published; that is how an agent confirms a MOD works. Field definitions are in
@@ -2260,3 +2264,7 @@ authoring judgment in `mod-authoring.md`.
 
 A version conflict from `mod_author_save` means the MOD changed after it was
 read. Read it back, re-apply the edit, save again — do not retry the same write.
+
+A save changes only the fields the request names: omitting `collaborationMode`
+or `tags` preserves them. Commerce is never stated over MCP at all, so editing
+content cannot reprice a MOD somebody already bought.

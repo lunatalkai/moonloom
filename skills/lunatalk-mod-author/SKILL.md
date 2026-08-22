@@ -71,6 +71,27 @@ Custom card HTML has hard limits (size, allowed components, scoped CSS). When it
 is rejected, `mod_validate` says which limit — do not work around it by
 inlining more markup.
 
+## Taking one back
+
+Delete only works on drafts, and asks for explicit confirmation because nothing
+recovers a deleted draft. Anything already published is taken down instead:
+people who acquired it keep the version they hold, nobody new can get it, and it
+can be listed again later. Erasing it is not on offer — other people are using
+it.
+
+Tell the author which of the two is about to happen. "Remove my MOD" means
+different things depending on whether anyone can already see it.
+
+## Editing changes only what you send
+
+Saving changes the fields the request names. Leave the collaboration mode or
+tags out and they stay as they are — there is no need to re-send them, and no
+risk of dropping them by omission.
+
+Pricing cannot be changed here at all, by design. That matters more than it
+sounds: this is why editing text through an assistant can never accidentally
+turn a paid MOD into a free one.
+
 ## Concurrency
 
 `mod_author_save` needs the `version` from `mod_get`. If it comes back as a
