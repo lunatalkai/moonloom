@@ -77,6 +77,8 @@ Expected Card Writer tools:
 - `mod_author_save`
 - `mod_validate`
 - `mod_submit`
+- `mod_delete`
+- `mod_unpublish`
 - `creator_analytics_brief`
 - `role_patch_detail`
 - `role_patch_welcome`
@@ -312,6 +314,13 @@ Order that works:
    whether the rules actually drive the model.
 4. `mod_get` → edit → `mod_author_save` with the `version` from that read.
 5. `mod_submit` once it holds up.
+
+Removing one splits by visibility: `mod_delete` takes drafts only and requires
+`confirm: true`; anything published goes through `mod_unpublish`, which leaves
+existing holders on the version they have and can be reversed with `mod_submit`.
+
+A save only changes what it names — omitted `collaborationMode` and `tags` are
+preserved, and commerce is never sent over MCP.
 
 `mod_validate` returns an invalid document as a *successful* check carrying
 diagnostics — treat it as "here is what to fix", not as a failed call. A version

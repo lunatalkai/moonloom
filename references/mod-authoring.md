@@ -72,6 +72,29 @@ card. When a template is rejected, the validation diagnostics name the limit
 that was hit. That limit is the answer, not an obstacle to route around by
 splitting or inlining markup.
 
+## Removing one
+
+Two different actions, and which applies depends on whether anyone can see it
+yet:
+
+- A **draft** can be deleted. It requires explicit confirmation, because nothing
+  recovers it afterwards.
+- Anything **published** is unpublished instead. Existing holders keep the
+  version they have, nobody new can acquire it, and it can be listed again
+  later. It is not erased, because that would take away something people are
+  already using.
+
+Worth stating plainly to an author who says "remove my MOD" — the two outcomes
+are very different for the people who installed it.
+
+## Editing changes only what is sent
+
+A save changes the fields the request names. Omitting the collaboration mode or
+tags leaves them as they were.
+
+Pricing is not editable through an assistant at all. That boundary is what stops
+an edit to one line of text from repricing a product somebody already bought.
+
 ## Editing safely
 
 Saving requires the `version` returned by the read. A version conflict means the
