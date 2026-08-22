@@ -1,0 +1,13 @@
+[
+  {"query": "我想做一個好感度系統，聊天的時候能看到數字", "should_trigger": true},
+  {"query": "幫我做一個會擲骰判定的玩法，每輪顯示結果", "should_trigger": true},
+  {"query": "我要給我的角色加一個體力和飢餓度的狀態卡", "should_trigger": true},
+  {"query": "我的 MOD 存檔失敗，說 version conflict", "should_trigger": true},
+  {"query": "想讓玩家自己調好感度的增減速度", "should_trigger": true},
+  {"query": "把我做的那個模組下架", "should_trigger": true},
+  {"query": "我要做一張新角色卡，個性設定要完整一點", "should_trigger": false},
+  {"query": "幫我寫一個世界書條目，講這個城市的歷史", "should_trigger": false},
+  {"query": "我想換個聊天介面的配色，做個主題", "should_trigger": false},
+  {"query": "幫我看看這張卡的開場白怎麼寫比較吸引人", "should_trigger": false},
+  {"query": "今天天氣如何", "should_trigger": false}
+]
