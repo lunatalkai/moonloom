@@ -461,8 +461,8 @@ current player message as a literal keyword check: constant entries are availabl
 player message plus recent conversation context. A hit in the current player
 message should be treated as the strongest design signal.
 
-Worldbook recall is a bounded ranked selection, not a full import of every
-related entry. The global runtime cap currently does not exceed 20 entries per
+Worldbook recall is a bounded ranked selection judged against the turn, not a
+full import of every entry whose keywords matched. The global runtime cap currently does not exceed 20 entries per
 turn, with per-category competition and additional runtime ranking. This is current runtime behavior, not a permanent product contract; verify
 important behavior with real conversation tests. Do not claim that worldbooks remove token limits; use them to move reusable lore and optional rules out of the
 always-on role detail while keeping core identity and behavior stable in the
@@ -482,7 +482,11 @@ Authoring implications for AI clients:
 - Put only short every-turn invariants in `isConstant`; avoid turning constant
   entries into another long role detail.
 - Give `keywords` aliases the player is likely to type: names, nicknames,
-  places, objects, quest terms, and natural question phrases.
+  places, objects, quest terms, and natural question phrases. Aliases for the
+  thing the entry is actually about, not every word that might co-occur with it
+  — matching is only the first step, and an entry that matched but does not fit
+  what the turn is about can still be left out. A term broad enough to match
+  most turns tends to earn the entry nothing.
 - Name entries descriptively. A name like `Location 3` is unfindable to a model
   browsing the list, and browsing is how the agent runtime starts.
 - Do not require many entries from the same category to appear in one turn.
