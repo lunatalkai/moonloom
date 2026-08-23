@@ -169,6 +169,10 @@ test('MCP workflow documents worldbook injection limits conservatively', async (
   assert.match(mcpReference, /per-category/i);
   assert.match(mcpReference, /not a permanent product contract/i);
   assert.match(mcpReference, /do not claim that worldbooks remove token limits/i);
+  // 命中只是入場，不是保證。少了這半，作者會把關鍵詞塞寬來「提高命中率」，
+  // 而寬到每輪都命中的詞反而換不到位置。
+  assert.match(mcpReference, /judged against the turn/i);
+  assert.match(mcpReference, /matched but does not fit/i);
 });
 
 test('MCP workflow documents fixed worldbook entry categories', async () => {
