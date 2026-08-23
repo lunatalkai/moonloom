@@ -23,6 +23,16 @@ Step 3 is the one people skip, and it is the only step that tells you whether
 the MOD actually works. A draft does not need to be published to be played, so
 there is no reason to submit something you have never seen run.
 
+## Reading someone else's MOD
+
+`collaborationMode: open` on a listed MOD means anyone can `mod_get` its
+`sourceJson` — that is the point of it, and it is how you study a MOD you like
+or work on one someone invited you into. `closed` keeps the implementation to
+the author, so a MOD people paid for stays a black box.
+
+Reading it does not let you change it. `mod_author_save` only ever writes the
+caller's own MOD; contributing to someone else's goes through their inbox.
+
 ## What decides whether a MOD is good
 
 **The `rule` on each field is the product.** It is the sentence the AI reads

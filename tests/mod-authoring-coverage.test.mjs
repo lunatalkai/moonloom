@@ -106,3 +106,18 @@ test('the guidance says omitted settings are preserved', async () => {
   );
   assert.ok(/pricing/i.test(reference), 'reference does not state the commerce boundary');
 });
+
+// 開放協作的讀取邊界。寫錯的方向有兩個而且都很貴：以為別人的都讀不到，
+// 協作就沒人做得起來；以為讀得到就改得動，agent 會拿別人的 MOD 去存檔。
+test('the guidance separates reading an open MOD from writing it', async () => {
+  const reference = await readFile('references/mod-authoring.md', 'utf8');
+  const skill = await readFile('skills/lunatalk-mod-author/SKILL.md', 'utf8');
+  const cardWriter = await readFile('references/card-writer-mcp.md', 'utf8');
+
+  for (const [name, text] of [['reference', reference], ['skill', skill], ['card-writer', cardWriter]]) {
+    assert.ok(/open/i.test(text) && /closed|black box|not found/i.test(text),
+      `${name} does not contrast an open MOD with a closed one`);
+    assert.ok(/own MOD|their own|caller's own/i.test(text),
+      `${name} never says a save is limited to the caller's own MOD`);
+  }
+});

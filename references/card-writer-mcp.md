@@ -2243,8 +2243,13 @@ the same server paths the app uses, so ownership, validation, moderation and
 concurrency behave identically.
 
 - `mod_find`: list the authenticated author's own MODs.
-- `mod_get`: read one of them, including `sourceJson` and the current `version`.
-  Read before editing — `mod_author_save` needs that `version`.
+- `mod_get`: read a MOD, including `sourceJson` and the current `version`.
+  Read before editing — `mod_author_save` needs that `version`. The author's own
+  MODs always read. Someone else's reads only when it is listed and its
+  `collaborationMode` is `open`, which is what makes open collaboration possible
+  at all; anything else comes back as not found, so a paid closed MOD never
+  hands out its implementation. Reading is not writing: a save only ever touches
+  the caller's own MOD.
 - `mod_create`: create a draft. Drafts are visible only to their author.
 - `mod_author_save`: update a draft, passing `expectedVersion`. Named this way
   and not `mod_update` because `mod_update_preview` / `mod_update_apply` already
