@@ -95,6 +95,17 @@ tags leaves them as they were.
 Pricing is not editable through an assistant at all. That boundary is what stops
 an edit to one line of text from repricing a product somebody already bought.
 
+## Collaboration mode decides who can read the implementation
+
+`open` on a listed MOD means anyone can read its `sourceJson` — that is what
+makes open collaboration work, and without it nobody could contribute to a MOD
+they did not write. `closed` keeps the implementation with the author, which is
+what a paid MOD relies on: buyers play it, they do not get to read it.
+
+Reading and writing are separate. A save only ever touches the caller's own MOD,
+whatever the collaboration mode says, so an open MOD is readable without being
+editable by strangers.
+
 ## Editing safely
 
 Saving requires the `version` returned by the read. A version conflict means the
