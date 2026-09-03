@@ -153,7 +153,16 @@ are top-level fields of the JSON-RPC response.
 2. `role_patch_profile`
 3. `role_patch_assets`
 4. `role_patch_detail`
-5. `role_patch_welcome`
+5. `role_patch_welcome`. A card can carry more than one opening (imported
+   tavern / V2 cards often do): send `patch.alternates` as the full ordered
+   list of alternate openings (max 20, each within the `roleWelcome` limit).
+   The player picks one before the first turn; `roleWelcome` stays the
+   default. Omit `alternates` to leave them unchanged; send `[]` to clear.
+   `patch.prologue` is a different thing: suggested first lines for the
+   *player* to say (max 20). Picking one fills the player's input box and the
+   player sends it; it never replaces the character's opening. Cards imported
+   from platforms that show a "choose an opening" list under the first message
+   belong here, not in `alternates`. Same replace / omit / `[]` semantics.
 6. `role_patch_talk_example` when compact Example Chat samples are needed for
    voice, refusal, interaction rhythm, or output-shape calibration
 7. `role_patch_output_contract` when the card needs an author-locked reply
