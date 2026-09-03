@@ -134,8 +134,9 @@ not call the tool.
    do not construct unlisted aliases such as `official-deepseek-v4-pro` or
    `official-qwen3.7-plus`. The current GLM-5 official value is
    `official-glm-5`. GLM-5.3 is official-only, so pass the catalog's
-   `official-glm-5.3` value and never a bare `glm-5.3`; Gemini 3.7 Flash uses
-   the returned `gemini-3.7-flash` value.
+   `official-glm-5.3` value and never a bare `glm-5.3`; Gemini 3.8 Flash uses
+   the returned `gemini-3.8-flash` value and has the same input, output, cache,
+   and catalog pricing as Gemini 3.7 Flash (`gemini-3.7-flash`).
    Record the selected thinkingDepth in the simulation evidence.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
