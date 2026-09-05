@@ -462,7 +462,14 @@ read, edited, and written back without converting between types.
 
 Worldbook entry fields are authoring handles, not a complete runtime contract.
 `keywords` are trigger terms, `isConstant` marks an always-available entry, and
-`category` supports systematic review. Allowed categories are exactly `rule`,
+`category` supports systematic review. `secondaryKeywords` is an optional AND
+gate: when it is non-empty, the entry triggers only if one of `keywords` **and**
+one of `secondaryKeywords` both appear in the scanned messages. Use it for lore
+that should surface only in a specific context (for example `keywords:
+["blood rite"]`, `secondaryKeywords: ["past", "childhood"]`), and leave it empty
+for plain keyword triggering. Entries read back with both arrays, and
+`worldbook_entry_update` / `worldbook_patch_document` treat an omitted
+`secondaryKeywords` as "unchanged" and an empty array as "clear". Allowed categories are exactly `rule`,
 `character`, `location`, `item`, `event`, and `custom`. Do not invent categories
 such as `faction`, `timeline`, `relationship`, or `scene`; map them to the
 closest allowed category, or use `custom` when none fits. Recall is not only the
@@ -893,6 +900,10 @@ fields. Short one-field edits can still use `role_patch_detail`,
 `role_patch_welcome`, `role_patch_profile`, `role_patch_output_contract`, or
 `role_patch_jailbreak`.
 
+`roleSex` in `role_patch_document.fields` is the character's gender shown on
+the card: `man`, `women`, `other`, or `""` to clear it (`male` / `female` are
+accepted and normalized). Any other value is rejected with `invalid_role_sex`.
+
 `roleTag` fields in `role_patch_profile` and `role_patch_document` accept a
 plain array of tag text strings. Do not send one comma-separated string. The
 server persists each item as the LunaTalk platform tag object shape
@@ -912,6 +923,7 @@ Document format:
     "roleDesc": "Short public/search description.",
     "roleTag": ["story", "mystery"],
     "userName": "你",
+    "roleSex": "women",
     "roleType": "story",
     "roleAvatar": "https://...",
     "roleBackground": "https://...",
