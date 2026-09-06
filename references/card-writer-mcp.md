@@ -2036,46 +2036,59 @@ family, and the server caches the result by key — use a new key for each new
 document. Read tools (`role_get_preview_page`, `creator_image_list`) carry
 `schemaVersion` but take no `idempotencyKey`.
 
-### `role_get_regex_rules` / `role_patch_regex_rules`
+### `role_get_author_asset` / `role_patch_author_asset` / `role_reset_author_asset`
 
-Regex rules are display-layer rewrites the player's client applies to AI replies
-before rendering: each rule is "find → replace". `find` written as
-`/pattern/flags` is a JavaScript regex (`$1` works in `replace`); any other
-string is a literal replaced everywhere. `replace` may contain HTML, CSS and
-JavaScript — the same trust model as HTML cards. Use them to turn markers the
-character emits (`『dialogue』`, `<status>…</status>`, `《panel1》`) into styled,
-interactive panels. The server stores the document and never executes it.
+The author asset is the card's display layer: a list of find→replace rules the
+player's client applies to AI replies before rendering, plus an optional mounted
+block that stays on the chat page. Nothing here reaches the model — the prompt and
+the reply text are unchanged; only what the viewer sees is rewritten. It is how
+SillyTavern regex scripts and MMD-style HUD panels are carried over.
 
-`role_get_regex_rules` returns `{ regexRules: { roleId, doc, version } }`; `doc`
-is `null` and `version` is `0` when the role has no rules. Public roles are
-readable by anyone; private roles only by the author.
+`role_get_author_asset` returns `{ authorAsset: { rules, mountTrigger, mountLayer,
+pageMode, status, version, variants } }`. A card without an asset has `status:
+"none"` and `version: 0`. Only the author can read or write it.
 
-`role_patch_regex_rules` replaces the whole document under an optimistic lock:
-send the `version` you read (0 for a role without rules). A stale version fails
-with `version_conflict`; read again and retry. Limits: 100 rules, `name` 40,
-`find` 1000, `replace` 20000, `statusbar` 4000 characters, 600 KB total.
+`role_patch_author_asset` replaces the whole asset under an optimistic lock: send
+the `version` you read (0 for a card without an asset). A stale version fails with
+`version_conflict`; read again and retry. `role_reset_author_asset` removes it
+(idempotent).
 
 ```json
 {
   "schemaVersion": "2026-05-26.m1",
-  "idempotencyKey": "regex-2026-09-06-01",
+  "idempotencyKey": "asset-2026-09-06-01",
   "roleId": "...",
   "version": 0,
-  "doc": {
-    "version": 1,
-    "depth": 1,
-    "statusbar": "《status》",
-    "rules": [
-      { "id": "quote-color", "name": "Colour quotes", "find": "/『([\\s\\S]*?)』/g", "replace": "<span style=\"color:#AB47BC\">『$1』</span>", "enabled": true },
-      { "id": "status", "name": "Status panel", "find": "《status》", "replace": "<div class=\"hp\">…</div>", "enabled": true }
-    ]
-  }
+  "rules": [
+    { "id": "quote-color", "name": "Colour quotes", "find": "/『([\\s\\S]*?)』/g", "replace": "<span style=\"color:#AB47BC\">『$1』</span>", "enabled": true },
+    { "id": "status", "name": "Status panel", "find": "《status》", "replace": "<div class=\"hp\">…</div>", "enabled": true }
+  ],
+  "mountTrigger": "《status》",
+  "mountLayer": "under"
 }
 ```
 
-`statusbar` is appended to the latest `depth` AI replies before the rules run —
-usually a row of placeholder markers that the rules expand into panels. Rules
-are not part of the prompt; changing them never changes what the model sees.
+- `find`: `/pattern/flags` is a JavaScript regex (`$1` works in `replace`); anything
+  else is a literal string replaced everywhere. A pattern that can match the empty
+  string is rejected.
+- `replace`: the HTML that goes in. Author styles and scripts in it run as-is on the
+  player's page; that is the trust model of the feature, not a bug to report.
+- `mountTrigger`: the text of the mounted block. The rules run on it too, so it is
+  usually a row of placeholder markers (`《美1》《狀1》`) that expand into global styles
+  and side tools. It is rendered once per page, never appended to messages.
+- `mountLayer`: `under` sits above the messages and below the composer, `over` covers
+  the composer, `cover` covers the whole page (intros, full-screen play).
+- `pageMode`: `classic` (default) or `immersive` — the latter asks the client to
+  hide its own chrome and give the whole viewport to the card.
+- `variants` in responses maps each CJK character used in `find` to its
+  Simplified/Traditional forms; clients expand them into character classes so a
+  rule written in Simplified still matches a reply the site rendered in Traditional.
+- Limits: 32 KB per `replace`, 1 MB for the whole asset.
+
+Third-party sites without MCP use the same asset over the public API:
+`GET /open/v1/role/author-asset?roleId=` and `PUT` / `DELETE
+/open/v1/role/{roleId}/author-asset` for the author, `GET
+/open/v1/role/author-asset/serve?roleId=` for players.
 
 ### `role_get_preview_page`
 
