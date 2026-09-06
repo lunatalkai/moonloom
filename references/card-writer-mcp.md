@@ -2036,6 +2036,47 @@ family, and the server caches the result by key — use a new key for each new
 document. Read tools (`role_get_preview_page`, `creator_image_list`) carry
 `schemaVersion` but take no `idempotencyKey`.
 
+### `role_get_regex_rules` / `role_patch_regex_rules`
+
+Regex rules are display-layer rewrites the player's client applies to AI replies
+before rendering: each rule is "find → replace". `find` written as
+`/pattern/flags` is a JavaScript regex (`$1` works in `replace`); any other
+string is a literal replaced everywhere. `replace` may contain HTML, CSS and
+JavaScript — the same trust model as HTML cards. Use them to turn markers the
+character emits (`『dialogue』`, `<status>…</status>`, `《panel1》`) into styled,
+interactive panels. The server stores the document and never executes it.
+
+`role_get_regex_rules` returns `{ regexRules: { roleId, doc, version } }`; `doc`
+is `null` and `version` is `0` when the role has no rules. Public roles are
+readable by anyone; private roles only by the author.
+
+`role_patch_regex_rules` replaces the whole document under an optimistic lock:
+send the `version` you read (0 for a role without rules). A stale version fails
+with `version_conflict`; read again and retry. Limits: 100 rules, `name` 40,
+`find` 1000, `replace` 20000, `statusbar` 4000 characters, 600 KB total.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "regex-2026-09-06-01",
+  "roleId": "...",
+  "version": 0,
+  "doc": {
+    "version": 1,
+    "depth": 1,
+    "statusbar": "《status》",
+    "rules": [
+      { "id": "quote-color", "name": "Colour quotes", "find": "/『([\\s\\S]*?)』/g", "replace": "<span style=\"color:#AB47BC\">『$1』</span>", "enabled": true },
+      { "id": "status", "name": "Status panel", "find": "《status》", "replace": "<div class=\"hp\">…</div>", "enabled": true }
+    ]
+  }
+}
+```
+
+`statusbar` is appended to the latest `depth` AI replies before the rules run —
+usually a row of placeholder markers that the rules expand into panels. Rules
+are not part of the prompt; changing them never changes what the model sees.
+
 ### `role_get_preview_page`
 
 Read the authenticated author's own editable preview page for a role.
