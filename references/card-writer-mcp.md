@@ -469,7 +469,13 @@ that should surface only in a specific context (for example `keywords:
 ["blood rite"]`, `secondaryKeywords: ["past", "childhood"]`), and leave it empty
 for plain keyword triggering. Entries read back with both arrays, and
 `worldbook_entry_update` / `worldbook_patch_document` treat an omitted
-`secondaryKeywords` as "unchanged" and an empty array as "clear". Allowed categories are exactly `rule`,
+`secondaryKeywords` as "unchanged" and an empty array as "clear".
+`triggerRegion` picks which side of the conversation is scanned for the
+keywords: `both` (the default) scans everything, `user_only` scans only what the
+player types, and `ai_only` scans only what the character says. Use `user_only`
+for something only the player would raise, and `ai_only` for lore only the
+character brings up; leave it at `both` when either side may mention it.
+Allowed categories are exactly `rule`,
 `character`, `location`, `item`, `event`, and `custom`. Do not invent categories
 such as `faction`, `timeline`, `relationship`, or `scene`; map them to the
 closest allowed category, or use `custom` when none fits. Recall is not only the
