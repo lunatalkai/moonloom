@@ -586,7 +586,8 @@ Patch an owned worldbook from a locally prepared document. Use this when many
 entries need to be created, updated, deleted, and bound in one authoring pass.
 Use full `content` for replacement and `contentDeepPatch` / `textPatches` for
 small edits to existing long entries. Short one-entry edits can still use
-`worldbook_entry_create`, `worldbook_entry_update`, or `worldbook_entry_delete`.
+`worldbook_entry_create`, `worldbook_entry_update`, `worldbook_entry_delete`, or
+`worldbook_entry_reorder`.
 
 MCP cannot read a client-local file path by itself. The AI client must read and
 validate the file, then send its parsed JSON object as `document`.
@@ -729,6 +730,22 @@ Delete an owned worldbook entry by `entryId`.
   "schemaVersion": "2026-05-26.m1",
   "idempotencyKey": "worldbook-entry-delete-...",
   "entryId": "..."
+}
+```
+
+### `worldbook_entry_reorder`
+
+Decide which always-on entries survive when they do not all fit. Only so many
+`isConstant` entries can be carried into a turn; past that limit the server keeps
+the ones nearest the front of this order. Send the whole list from
+`worldbook_entry_list` — entries you leave out stay where they are.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "worldbook-entry-reorder-...",
+  "worldbookId": "...",
+  "entryIds": ["...", "..."]
 }
 ```
 
