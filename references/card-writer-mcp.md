@@ -2113,6 +2113,35 @@ Third-party sites without MCP use the same asset over the public API:
 /open/v1/role/{roleId}/author-asset` for the author, `GET
 /open/v1/role/author-asset/serve?roleId=` for players.
 
+### `role_share_grant` / `role_share_revoke` / `role_share_list`
+
+A card's full definition (`roleDetailDesc`, openings, worldbook, author asset,
+jailbreak) is author-only. Sharing lets the author hand **read-only** access to one
+card to one specific account — typically a community site's review account — so
+that site can review the card without any admin being able to read every card.
+The grantee reads the card through the Open API (`GET /open/v1/share/role/detail`),
+not through MCP; these three tools only manage the grant.
+
+`role_share_grant` requires the grantee's public numeric account id
+(`granteeAccountNumId`, what `/open/v1/me` returns as `accountNumId`). Only the
+author can grant, the grant is per card, and the author is notified. Granting the
+same account twice is idempotent. `role_share_revoke` withdraws it immediately
+(revoking a card that was never shared succeeds with `revoked: false`).
+`role_share_list` shows who can currently read the card and which client asked for
+the grant.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "roleId": "...",
+  "granteeAccountNumId": 123456
+}
+```
+
+Do not grant on the author's behalf without an explicit instruction naming the
+account; a grant exposes the card's private definition to that account until the
+author revokes it.
+
 ### `role_get_preview_page`
 
 Read the authenticated author's own editable preview page for a role.
