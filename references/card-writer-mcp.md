@@ -1631,7 +1631,9 @@ Conversation model catalog entries may also expose thinking mode metadata:
 quality/cost choice for supported models. Product labels follow Instant, High,
 Max, and Ultra; tool values may include `off`, `on`, `high`, `max`, and `ultra`
 depending on the selected model. Only pass values listed by that model's catalog
-entry.
+entry. An option may carry `surcharge`: the flat extra credits charged per turn
+when that depth is selected, on top of the model's base price. Treat a missing
+or zero `surcharge` as no extra charge for that depth.
 
 ### `conversation_list`
 
