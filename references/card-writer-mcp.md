@@ -2070,7 +2070,7 @@ the reply text are unchanged; only what the viewer sees is rewritten. It is how
 SillyTavern regex scripts and MMD-style HUD panels are carried over.
 
 `role_get_author_asset` returns `{ authorAsset: { rules, mountTrigger, mountLayer,
-pageMode, status, version, variants } }`. A card without an asset has `status:
+cardFormat, status, version, variants } }`. A card without an asset has `status:
 "none"` and `version: 0`. Only the author can read or write it.
 
 `role_patch_author_asset` replaces the whole asset under an optimistic lock: send
@@ -2089,7 +2089,8 @@ the `version` you read (0 for a card without an asset). A stale version fails wi
     { "id": "status", "name": "Status panel", "find": "《status》", "replace": "<div class=\"hp\">…</div>", "enabled": true }
   ],
   "mountTrigger": "《status》",
-  "mountLayer": "under"
+  "mountLayer": "under",
+  "cardFormat": "tavern"
 }
 ```
 
@@ -2105,6 +2106,12 @@ the `version` you read (0 for a card without an asset). A stale version fails wi
   the composer, `cover` covers the whole page (intros, full-screen play).
 - `pageMode`: `classic` (default) or `immersive` — the latter asks the client to
   hide its own chrome and give the whole viewport to the card.
+- `cardFormat`: how the `<style>` blocks inside `replace` were written. `mmd`
+  (default) applies them to the whole page as-is — MMD authors restyle the page
+  background and composer that way. `tavern` prefixes every selector with the
+  message container, exactly as SillyTavern does, so a rule like `body { … }` stays
+  inert instead of reshaping the chat page. Rules carried over from a SillyTavern
+  card should say `tavern`; an unknown value fails with `invalid_card_format`.
 - `variants` in responses maps each CJK character used in `find` to its
   Simplified/Traditional forms; clients expand them into character classes so a
   rule written in Simplified still matches a reply the site rendered in Traditional.
