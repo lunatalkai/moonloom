@@ -672,6 +672,12 @@ patches, `structuredContent.document.textPatches`.
 
 Create an entry in an owned worldbook.
 
+`worldbook_entry_create`, `worldbook_entry_update`, and entry operations in
+`worldbook_patch_document` accept optional integer `priority` from 0 through 100.
+Use it to preserve an imported entry priority; omitting it retains the existing
+automatic calculation. Immutable hosted entries reject all edits, including
+same-value updates. Edit the source draft for a new version.
+
 ```json
 {
   "schemaVersion": "2026-05-26.m1",
@@ -922,6 +928,15 @@ full replacement and `fieldPatches` for direct deep patch of existing long text
 fields. Short one-field edits can still use `role_patch_detail`,
 `role_patch_welcome`, `role_patch_profile`, `role_patch_output_contract`, or
 `role_patch_jailbreak`.
+
+`role_patch_document.fields` also accepts authored translations through
+`roleNameEn/Ja/Ko`, `roleDescEn/Ja/Ko`, `roleDetailDescEn/Ja/Ko`, and
+`roleWelcomeEn/Ja/Ko`. Each slash-separated suffix is a separate field, such as
+`roleNameJa`. Omitted fields are retained; an explicit empty string clears that
+translation. These fields store supplied text and do not trigger translation.
+Immutable hosted versions cannot be edited; update the source draft and submit
+through the community's version workflow. Backend seal/stage/promote operations
+are issuer-only and are not MCP tools.
 
 `roleSex` in `role_patch_document.fields` is the character's gender shown on
 the card: `man`, `women`, `other`, or `""` to clear it (`male` / `female` are
