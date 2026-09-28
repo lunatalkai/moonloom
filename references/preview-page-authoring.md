@@ -46,10 +46,10 @@ Schema v1 accepts a fixed vocabulary. Anything outside it is rejected with
 `invalid_param` plus a `path` to the first offending node. These node and mark
 type strings are the exact wire contract — send them verbatim.
 
-- **17 block types**: `heading`, `paragraph`, `blockquote`, `bulletList`,
+- **18 block types**: `heading`, `paragraph`, `blockquote`, `bulletList`,
   `orderedList`, `listItem`, `dialogueBubble`, `statCard`, `spoiler`,
   `divider`, `image`, `columns`, `column`, `profileCard`, `gallery`,
-  `meter`, and `panel`.
+  `meter`, `panel`, and `video`.
 - **2 inline node types**: `text` and `hardBreak`.
 - **6 marks** on inline `text`: `bold`, `italic`, `underline`, `strike`,
   `highlight`, and `textStyle`.
@@ -156,12 +156,23 @@ Attribute contract per node:
   is rejected, not clamped to the nearest legal value.
   `meter.attrs.tone`: `gold`, `rose`, or `violet`. `meter` has no children.
 - `panel.attrs.tone`: **required** — `gold`, `rose`, `violet`, `sky`, `mint`,
-  `amber`, `silver`, or `ink`. Unlike every other attribute in this reference,
+  `amber`, `silver`, or `ink`. Unlike most attributes in this reference,
   `tone` has no default: a `panel` sent without one of these eight exact
   strings is rejected outright rather than rendered in a fallback color. A
   `panel` is a colored content box — a tinted background and border in the
   chosen tone — wrapping a block of content; see "Where `panel` may appear"
   below for its placement rule.
+- `video.attrs.provider`: **required** — `youtube` is the only accepted value.
+  A `video` without a provider, or with any other provider, is rejected.
+- `video.attrs.videoId`: **required** — the bare 11-character video ID and
+  nothing else (letters, digits, `-`, and `_`). From
+  `https://www.youtube.com/watch?v=<id>` or `https://youtu.be/<id>`, send only
+  `<id>`. A full URL, a short link, a path, a query string, quotes, whitespace,
+  a non-string value, or an ID of any other length is rejected rather than
+  parsed — the page stores the ID only, and the platform builds the embed
+  address itself at render time. `video` has no children (`content` stays
+  empty). A video goes live under the same page status as the rest of the
+  document; it is not held for a separate review step.
 - `highlight.attrs.tone`: `gold`, `rose`, or `violet`.
 - `textStyle.attrs.color`: one of the 8-value palette `gold`, `rose`,
   `violet`, `mint`, `sky`, `amber`, `silver`, or `default` (empty/`default`
@@ -265,6 +276,10 @@ Use the block that matches the reading intent, not the one that looks densest.
 - `meter`: a labelled bar showing where one fixed setting value sits on a 0-100
   scale — danger, difficulty, how strong a faction is, a character attribute.
   It is a static author-chosen value, not a live readout.
+- `video`: one embedded video. The visitor sees the video's cover image with a
+  play button first; the player loads only when they tap it. Hold the video to
+  the same content rating as the page's text and images. A video whose owner
+  disabled embedding, or that is age-restricted, will not play inside the page.
 
 Marks add emphasis inside prose. Use `bold` and `italic` sparingly, `highlight`
 for at most a few glowing phrases, and `textStyle` colors so the page keeps at

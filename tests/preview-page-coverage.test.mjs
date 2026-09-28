@@ -204,10 +204,11 @@ test('preview-page-authoring reference documents schema whitelist, limits, and s
   // alternation over the whole pattern, so the bare words "block types" satisfied
   // it and the number could never go stale-Red.
   //
-  // RATCHET: 16 -> 17 (2026-07-23) when `panel` shipped as a new container node.
+  // RATCHET: 16 -> 17 (2026-07-23) when `panel` shipped as a new container node;
+  // 17 -> 18 (2026-09-28) when `video` shipped as a controlled embed node.
   // Bump this number again, in the same change, whenever a block type is added
   // or removed from the schema v1 whitelist.
-  assert.match(authoring, /17\s+block\s+types/i);
+  assert.match(authoring, /18\s+block\s+types/i);
   // image sourcing rule in author-facing language, pass-only
   assert.match(authoring, /pass/);
   assert.match(authoring, /moderationState/);

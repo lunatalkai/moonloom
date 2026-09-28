@@ -64,10 +64,19 @@ test('authoring reference states role_reset_preview_page also clears the skin', 
   );
 });
 
-test('authoring reference documents the panel block as the 17th block type', async () => {
+// The block-type count itself is ratcheted in preview-page-coverage.test.mjs.
+test('authoring reference documents the panel block', async () => {
   const ref = await readFile(REFERENCE, 'utf8');
-  assert.match(ref, /17\s+block\s+types/i, 'reference still says 16 block types');
   assert.match(ref, /`panel`/, 'reference does not mention the panel node');
+});
+
+test('authoring reference documents video as a youtube-only, bare-id block', async () => {
+  const ref = await readFile(REFERENCE, 'utf8');
+  assert.match(ref, /`video\.attrs\.provider`[\s\S]{0,200}`youtube`/, 'reference missing video provider enum');
+  // The validator stores the ID, never a URL: a client that sends the watch URL
+  // gets a 400 that does not say what shape would have passed.
+  assert.match(ref, /`video\.attrs\.videoId`[\s\S]{0,200}bare 11-character video ID/, 'reference missing bare-id rule');
+  assert.match(ref, /`video\.attrs\.videoId`[\s\S]{0,600}full URL[\s\S]{0,250}rejected/, 'reference does not say URLs are rejected');
 });
 
 test('authoring reference documents panel.attrs.tone as a required 8-value enum', async () => {
