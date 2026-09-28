@@ -108,6 +108,7 @@ Expected Card Writer tools:
 - `worldbook_entry_create`
 - `worldbook_entry_update`
 - `worldbook_entry_delete`
+- `worldbook_entry_reorder` — sets which always-on entries are kept first when they do not all fit
 - `worldbook_bind`
 - `worldbook_unbind`
 - `worldbook_bindings`
@@ -128,6 +129,12 @@ Expected Card Writer tools:
 - optional `creator_analytics_brief` — read-only; the author's own creator brief
 - optional `role_get_preview_page` — read-only; the author's editable preview page
 - optional `role_patch_preview_page` — saves the whole preview page document
+- optional `role_get_author_asset` — read-only; the card's display rules and mounted block
+- optional `role_patch_author_asset` — replaces the whole author asset under a version lock
+- optional `role_reset_author_asset` — clears the author asset; idempotent
+- optional `role_share_grant` — gives one account read-only access to one of the author's cards
+- optional `role_share_revoke` — withdraws that access; idempotent
+- optional `role_share_list` — read-only; who can currently read the card
 - optional `role_reset_preview_page` — restores the default preview page
 - optional `creator_image_list` — read-only; the account's asset-library images
 
