@@ -420,10 +420,10 @@ from stable prompt behavior or an omitted `noLimitCovered` field, and never
 invent `official-deepseek-v4-pro` because the catalog does not expose it. If the selected
 GLM-5 official channel is used, pass the returned `official-glm-5` value. GLM-5.3
 is official-only: pass `official-glm-5.3` exactly and never construct a bare
-`glm-5.3`. Gemini 3.8 Flash is returned as `gemini-3.8-flash` and uses the same
-input, output, cache, and catalog pricing as Gemini 3.7 Flash, returned as
-`gemini-3.7-flash`. Do not construct `official-qwen3.7-plus`, which is not
-currently exposed. If the selected
+`glm-5.3`. Gemini 3.8 Flash is returned as `gemini-3.8-flash`. Gemini 3.7 Flash,
+Gemini 3.6 Flash, Gemini 3 Pro, Gemini 3.1 Pro, Gemini 2.5 Pro, and
+Qwen3.7 Plus were removed from selectable catalogs on 2026-10-13.
+Read the live catalog for current values; Qwen3.8 Flash remains available. If the selected
 model exposes thinking metadata, choose from its `thinkingDepthOptions`. Pass the selected value as `thinkingDepth`; use `defaultThinkingDepth` only when the author accepts the quality/cost tradeoff. Also pass `waitMs: 60000`. The server
 default and cap are 60 seconds; a pending
 `generationStatus` after that window is an async handoff, not a failure. Use

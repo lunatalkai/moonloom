@@ -1624,10 +1624,10 @@ an `official-*` value that the catalog did not return. In particular,
 `deepseek-v4-pro` has no separate `official-deepseek-v4-pro` variant. The
 current GLM-5 official value is `official-glm-5`; GLM-5.3 is official-only, so
 use the returned `official-glm-5.3` value and never construct a bare `glm-5.3`.
-Gemini 3.8 Flash is returned as `gemini-3.8-flash` and uses the same input,
-output, cache, and catalog pricing as Gemini 3.7 Flash, returned as
-`gemini-3.7-flash`. Qwen3.7 Plus currently has no official-channel variant, so
-do not construct `official-qwen3.7-plus`.
+Gemini 3.8 Flash is returned as `gemini-3.8-flash`. Gemini 3.7 Flash,
+Gemini 3.6 Flash, Gemini 3 Pro, Gemini 3.1 Pro, Gemini 2.5 Pro, and
+Qwen3.7 Plus were removed from selectable HTTP and MCP catalogs on 2026-10-13.
+Read the live catalog for current values; Qwen3.8 Flash remains available.
 If the selected model is not the server default, pass that value as `model` in
 `conversation_send_message`. If the selected model exposes
 `thinkingDepthOptions`, choose one of those values and pass it as

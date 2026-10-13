@@ -131,12 +131,14 @@ not call the tool.
    one. When the catalog offers `value_based` and `stable_1` variants, use the
    exact returned model value and record the selected channel. Open-source
    `official-*` variants are paid dynamic usage and never unlimited-card usage;
-   do not construct unlisted aliases such as `official-deepseek-v4-pro` or
-   `official-qwen3.7-plus`. The current GLM-5 official value is
-   `official-glm-5`. GLM-5.3 is official-only, so pass the catalog's
-   `official-glm-5.3` value and never a bare `glm-5.3`; Gemini 3.8 Flash uses
-   the returned `gemini-3.8-flash` value and has the same input, output, cache,
-   and catalog pricing as Gemini 3.7 Flash (`gemini-3.7-flash`).
+   do not construct unlisted aliases such as `official-deepseek-v4-pro`.
+   The current GLM-5 official value is `official-glm-5`. GLM-5.3 is
+   official-only, so pass the catalog's `official-glm-5.3` value and never
+   a bare `glm-5.3`. Gemini 3.8 Flash uses `gemini-3.8-flash`;
+   Qwen3.8 Flash remains selectable. Gemini 3.7 Flash, Gemini 3.6 Flash,
+   Gemini 3 Pro, Gemini 3.1 Pro, Gemini 2.5 Pro, and Qwen3.7 Plus were
+   removed from selectable catalogs on 2026-10-13. Always use the live
+   catalog value for a simulation.
    Record the selected thinkingDepth in the simulation evidence.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
