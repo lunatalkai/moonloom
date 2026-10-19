@@ -19,8 +19,13 @@ test('official open-source model guidance preserves paid channel boundaries', as
     assert.match(source, /official-glm-5\.3/);
     assert.match(source, /bare\s+`glm-5\.3`/);
     assert.match(source, /gemini-3\.8-flash/);
-    assert.match(source, /gemini-3\.7-flash/);
-    assert.match(source, /same\s+input,\s+output,\s+cache,\s+and\s+catalog\s+pricing/i);
-    assert.match(source, /official-qwen3\.7-plus/);
+    // The older Gemini and Qwen values were delisted on 2026-10-13.
+    // Preserve that current public contract instead of requiring stale price parity.
+    assert.match(source, /Gemini 3\.7 Flash/);
+    assert.match(source, /Qwen3\.7 Plus/);
+    assert.match(source, /removed from selectable (?:HTTP and MCP )?catalogs/);
+    assert.match(source, /2026-10-13/);
+    assert.match(source, /Qwen3\.8 Flash/);
+    assert.match(source, /gemini-4-argon-high/);
   }
 });

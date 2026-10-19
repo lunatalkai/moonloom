@@ -420,7 +420,12 @@ from stable prompt behavior or an omitted `noLimitCovered` field, and never
 invent `official-deepseek-v4-pro` because the catalog does not expose it. If the selected
 GLM-5 official channel is used, pass the returned `official-glm-5` value. GLM-5.3
 is official-only: pass `official-glm-5.3` exactly and never construct a bare
-`glm-5.3`. Gemini 3.8 Flash is returned as `gemini-3.8-flash`. Gemini 3.7 Flash,
+`glm-5.3`. Gemini 4 Argon High is selectable as `gemini-4-argon-high` when returned by
+`conversation_model_catalog`. Pass that value unchanged. It uses paid dynamic
+token billing and is not covered by an unlimited card. Catalog scores are
+estimates; read the live catalog and server-reported token usage for cost.
+Other models retain their existing prices.
+Gemini 3.8 Flash is returned as `gemini-3.8-flash`. Gemini 3.7 Flash,
 Gemini 3.6 Flash, Gemini 3 Pro, Gemini 3.1 Pro, Gemini 2.5 Pro, and
 Qwen3.7 Plus were removed from selectable catalogs on 2026-10-13.
 Read the live catalog for current values; Qwen3.8 Flash remains available. If the selected

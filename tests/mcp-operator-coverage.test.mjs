@@ -248,8 +248,8 @@ test('MCP workflow documents the safe MOD marketplace read contract', async () =
   }
   assert.match(cardWriter, /suspended_expired/);
   assert.match(cardWriter, /No MCP purchase|does not expose.*mod_purchase/i);
-  assert.equal(packageJSON.version, '0.1.71');
-  assert.equal(pluginJSON.version, '0.1.71');
+  assert.equal(packageJSON.version, '0.1.72');
+  assert.equal(pluginJSON.version, '0.1.72');
 });
 
 test('MCP workflow keeps MOD discovery and role enablement free of rollout attempt metadata', async () => {
@@ -286,9 +286,9 @@ test('MCP workflow keeps MOD discovery and role enablement free of rollout attem
       && !/attemptKey|X-Mod-Attempt-Key|mod_rollout_attempt_key/i.test(JSON.stringify(entry))),
     'missing no-attempt-metadata MOD workflow eval',
   );
-  assert.equal(packageJSON.version, '0.1.71');
+  assert.equal(packageJSON.version, '0.1.72');
   for (const manifest of manifests) {
-    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.71');
+    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.72');
   }
 });
 
@@ -408,10 +408,10 @@ test('MCP workflow documents the approved MOD role/update contract without a ret
       && !/beta cohort|outside beta|beta-only/i.test(JSON.stringify(entry))),
     'missing role-access and entitlement denial eval without retired beta gate',
   );
-  assert.equal(packageJSON.version, '0.1.71');
+  assert.equal(packageJSON.version, '0.1.72');
   for (const manifest of manifests) {
     const version = manifest.version ?? manifest.plugins?.[0]?.version;
-    assert.equal(version, '0.1.71');
+    assert.equal(version, '0.1.72');
   }
 });
 
@@ -427,5 +427,14 @@ test('conversation model guidance follows the October 2026 delist', async () => 
     assert.match(source, /Gemini 3\.8 Flash/);
     assert.match(source, /live\s+catalog/i);
     assert.doesNotMatch(source, /`gemini-3\.7-flash`|`qwen3\.7-plus`/);
+  }
+});
+
+
+test('Gemini 4 Argon High is documented as a paid catalog value', async () => {
+  for (const path of ['references/card-writer-mcp.md', 'references/mcp-client-workflow.md', 'skills/lunatalk-chat-simulation/SKILL.md']) {
+    const text = await readFile(new URL(`../${path}`, import.meta.url), 'utf8');
+    assert.match(text, /gemini-4-argon-high/);
+    assert.match(text, /paid dynamic/);
   }
 });

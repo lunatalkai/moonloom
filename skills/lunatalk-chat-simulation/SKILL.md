@@ -139,6 +139,10 @@ not call the tool.
    Gemini 3 Pro, Gemini 3.1 Pro, Gemini 2.5 Pro, and Qwen3.7 Plus were
    removed from selectable catalogs on 2026-10-13. Always use the live
    catalog value for a simulation.
+   Gemini 4 Argon High uses the returned `gemini-4-argon-high` value. It is
+   paid dynamic token usage, without unlimited-card coverage; read current
+   cost estimates from `conversation_model_catalog`. Other model prices remain
+   unchanged.
    Record the selected thinkingDepth in the simulation evidence.
 6. Call `conversation_send_message` after cost is accepted. Set `waitMs: 60000`
    so the MCP call waits up to 60 seconds for the LunaTalk reply. If the result
