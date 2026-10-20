@@ -100,6 +100,7 @@ Expected Card Writer tools:
 - optional `extension_enable`
 - `worldbook_find`
 - `worldbook_get`
+- `worldbook_export`
 - `worldbook_entry_list`
 - `worldbook_entry_get`
 - `worldbook_create`
@@ -508,3 +509,17 @@ only when retrying the same intended operation.
 
 Keep the report concise. The goal is to unblock the authoring loop, not to expose
 client internals.
+
+### Saving an owned worldbook export
+
+Confirm `worldbook_export` is present in `tools/list`, then use its contract in
+`card-writer-mcp.md`. The whole saved owner snapshot is independent of filters and
+includes disabled entries. Ask for an authorized local destination before writing
+`structuredContent.worldbookExport.file.contentUtf8` verbatim as UTF-8; verify
+`byteLength` and `sha256` from the saved bytes. Report preparation and local file
+readback separately. If the complete response or local save is unsupported, stop
+with an explicit limit; do not create a public/cloud fallback. Keep the original
+file because compatible imports can change or omit text/settings and another
+tool's re-export may drop the original-data backup. LunaTalk cannot yet import
+this file back. Export authority applies to owned copies and private/public own
+books, never merely to someone else's publicly readable book.

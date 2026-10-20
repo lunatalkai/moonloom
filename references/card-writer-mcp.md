@@ -442,6 +442,49 @@ filtering.
 }
 ```
 
+### `worldbook_export`
+
+Prepare one UTF-8 JSON file from an entire saved worldbook you own, including
+private/public books, owned copies, and disabled entries. Public read access to
+someone else's book does not grant export permission. Search and category filters
+are not applied. This read does not save drafts, alter the book or bindings, or
+create a cloud file.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "worldbookId": "fictional-owned-book"
+}
+```
+
+Read `structuredContent.worldbookExport`: `formatVersion: 1`, `entryCount`,
+`file` (`filename`, `mimeType: "application/json"`, `encoding: "utf-8"`,
+`contentUtf8`, `byteLength`, `sha256`), and `compatibility` (`profile`, `warnings`).
+The text summary does not repeat the file. Write **exactly** `contentUtf8`, as UTF-8
+without a BOM, to an author-approved local path; do not parse and reserialize it.
+Check the resulting file's byte length and SHA-256. Preparation is not evidence
+that a local file was saved or obtained. If the client cannot receive the entire
+response or write a file, report that limit; never truncate or upload it to an
+anonymous link. A failed preparation provides no partial file.
+
+The file contains a World Info projection and a versioned original-author-data
+backup under the root `extensions.lunatalk.worldbookExport`. Other tools may
+shorten names, change text, omit entries/settings, or use different matching and
+ordering. The backup does not mean those values take effect in another tool;
+re-exporting there may discard it. Keep the original downloaded file. LunaTalk
+does not currently support importing this file back. Empty books remain valid
+exports, though another tool may reject them; `large_book` warns above 200 entries
+and is not an export count quota.
+
+Errors are content-free codes: `auth`, `not_found`, `read_failed`,
+`invalid_source`, `unsupported_source`, or `too_large`. Only `read_failed` invites
+manual preparation again; sign in for `auth`, verify ownership/availability for
+`not_found`, and preserve the original book for source/capacity failures. Current
+transport budgets are at most 8 MiB file bytes and 64 MiB complete response bytes,
+with a bounded source-allocation preflight; these are transport limits, not a
+promise that all clients can receive that much. No content is split or omitted to
+fit. Do not modify author text to silence compatibility warnings.
+
 ### `worldbook_entry_list`
 
 List entries in a worldbook, optionally filtered by `category`. This is the
