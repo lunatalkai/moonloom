@@ -504,7 +504,7 @@ Entries come back with `keywords` as an array of strings, the same shape
 read, edited, and written back without converting between types.
 
 Worldbook entry fields are authoring handles, not a complete runtime contract.
-`keywords` are trigger terms, `isConstant` marks an always-available entry, and
+`keywords` are trigger terms, `isConstant` is the author’s always-active mark, and
 `category` supports systematic review. `secondaryKeywords` is an optional AND
 gate: when it is non-empty, the entry triggers only if one of `keywords` **and**
 one of `secondaryKeywords` both appear in the scanned messages. Use it for lore
@@ -522,7 +522,7 @@ Allowed categories are exactly `rule`,
 `character`, `location`, `item`, `event`, and `custom`. Do not invent categories
 such as `faction`, `timeline`, `relationship`, or `scene`; map them to the
 closest allowed category, or use `custom` when none fits. Recall is not only the
-current player message as a literal keyword check: constant entries are available every turn, and non-constant entries are selected from the current
+current player message as a literal keyword check: constant entries have a separate runtime selection path, and non-constant entries are selected from the current
 player message plus recent conversation context. A hit in the current player
 message should be treated as the strongest design signal.
 
@@ -540,6 +540,35 @@ bodies rather than against `keywords`. Both runtimes are available on any card,
 so an entry needs a name that says what is inside it and a body written in the
 words someone would search for, in addition to its trigger terms. See
 `agent-mode-runtime.md`.
+
+### Always-active author marks: 8 per worldbook
+
+Each mutable author worldbook permits at most **8 `isConstant` marks**, including
+disabled entries. Binding a book to a MOD does not exempt that author book.
+Disabling an entry keeps its mark; clearing `isConstant` or deleting the entry
+releases it. This authoring limit does not guarantee that every marked entry
+fits a turn’s token budget or is loaded in agent mode.
+
+Existing books above 8 are preserved. Ordinary edits, dynamic entries, and
+clearing existing marks remain available. A request may not introduce a new
+marked entry identity while its final state is above 8, even if another mark is
+removed in the same request. Once the final state is at most 8, normal
+replacement is allowed. Forking creates new entry identities, so an over-limit
+book cannot be forked unchanged.
+
+`worldbook_patch_document` validates the final worldbook state in one database
+transaction; a cap rejection leaves that document’s worldbook changes
+uncommitted. Separate create/update HTTP requests are separate commits. Trial
+keeps its existing recoverable section order: its worldbook child plan and
+entry mapping commit together, while earlier card or welcome sections may
+already be committed. A cap error is not a whole-Trial rollback receipt.
+
+On `worldbook_constant_limit`, read `detail.max` (8), fetch the complete
+unfiltered `worldbook_entry_list`, and clear a mark or reduce the proposed
+constant set before retrying with a new intended operation. Do not count only
+enabled entries or a category-filtered list. If a write result or canonical read
+is unknown, do not infer a free slot, match a new entry by name, or blindly
+resend the write; preserve the draft and reconcile by known entry identity.
 
 Authoring implications for AI clients:
 

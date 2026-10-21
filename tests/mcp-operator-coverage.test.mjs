@@ -163,7 +163,12 @@ test('MCP workflow documents worldbook injection limits conservatively', async (
   assert.match(mcpReference, /isConstant/);
   assert.match(mcpReference, /current player message/i);
   assert.match(mcpReference, /recent conversation context/i);
-  assert.match(mcpReference, /constant entries are available every turn/i);
+  assert.match(mcpReference, /at most \*\*8 `isConstant` marks\*\*/i);
+  assert.match(mcpReference, /including\s+disabled entries/i);
+  assert.match(mcpReference, /does not guarantee that every marked entry\s+fits a turn/);
+  assert.match(mcpReference, /worldbook_constant_limit/);
+  assert.match(mcpReference, /whole-Trial rollback receipt/);
+  assert.doesNotMatch(mcpReference, /constant entries are available every turn/i);
   assert.match(mcpReference, /bounded ranked selection/i);
   assert.match(mcpReference, /global runtime cap currently does not exceed 20 entries/i);
   assert.match(mcpReference, /per-category/i);
@@ -248,8 +253,8 @@ test('MCP workflow documents the safe MOD marketplace read contract', async () =
   }
   assert.match(cardWriter, /suspended_expired/);
   assert.match(cardWriter, /No MCP purchase|does not expose.*mod_purchase/i);
-  assert.equal(packageJSON.version, '0.1.73');
-  assert.equal(pluginJSON.version, '0.1.73');
+  assert.equal(packageJSON.version, '0.1.74');
+  assert.equal(pluginJSON.version, '0.1.74');
 });
 
 test('MCP workflow keeps MOD discovery and role enablement free of rollout attempt metadata', async () => {
@@ -286,9 +291,9 @@ test('MCP workflow keeps MOD discovery and role enablement free of rollout attem
       && !/attemptKey|X-Mod-Attempt-Key|mod_rollout_attempt_key/i.test(JSON.stringify(entry))),
     'missing no-attempt-metadata MOD workflow eval',
   );
-  assert.equal(packageJSON.version, '0.1.73');
+  assert.equal(packageJSON.version, '0.1.74');
   for (const manifest of manifests) {
-    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.73');
+    assert.equal(manifest.version ?? manifest.plugins?.[0]?.version, '0.1.74');
   }
 });
 
@@ -408,10 +413,10 @@ test('MCP workflow documents the approved MOD role/update contract without a ret
       && !/beta cohort|outside beta|beta-only/i.test(JSON.stringify(entry))),
     'missing role-access and entitlement denial eval without retired beta gate',
   );
-  assert.equal(packageJSON.version, '0.1.73');
+  assert.equal(packageJSON.version, '0.1.74');
   for (const manifest of manifests) {
     const version = manifest.version ?? manifest.plugins?.[0]?.version;
-    assert.equal(version, '0.1.73');
+    assert.equal(version, '0.1.74');
   }
 });
 
