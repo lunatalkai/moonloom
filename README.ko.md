@@ -42,7 +42,22 @@ claude plugin update moonloom
 
 ### ChatGPT Work / Codex
 
-먼저 명령줄에서 소스를 추가합니다:
+아래 명령은 본인 컴퓨터의 터미널에서 직접 실행하세요. Windows에서는 PowerShell이나
+명령 프롬프트를 사용할 수 있습니다. 로그인 명령을 ChatGPT에게 대신 실행해 달라고 하지
+마세요. 어시스턴트의 샌드박스에서는 인터넷에 연결하거나 로그인 콜백을 받지 못할 수 있습니다.
+
+`codex` 명령을 찾을 수 없다면 [Node.js LTS](https://nodejs.org/)를 설치하고 터미널을
+다시 연 뒤 Codex CLI를 설치하세요. ChatGPT 데스크톱 앱만 설치하면 `codex` 명령이
+없을 수 있습니다.
+
+```bash
+npm install -g @openai/codex
+```
+
+Windows PowerShell에서 `npm.ps1` 실행이 차단되거나 스크립트를 실행할 수 없다는 메시지가
+나오면 명령 프롬프트를 열어 같은 명령을 실행하세요.
+
+이어서 소스를 추가합니다:
 
 ```bash
 codex plugin marketplace add lunatalkai/moonloom
@@ -50,6 +65,15 @@ codex plugin marketplace add lunatalkai/moonloom
 
 그다음 ChatGPT 데스크톱 앱을 재시작하고 **Plugins Directory**를 연 뒤 이 소스를
 선택해 **Moonloom**을 설치합니다.
+
+Moonloom 설치가 끝나면 컴퓨터의 터미널로 돌아가 다음 명령을 직접 실행하세요:
+
+```bash
+codex mcp login lunatalk-card-writer
+```
+
+브라우저에서 LunaTalk 로그인 및 권한 승인 페이지가 열립니다. 승인을 마친 뒤
+ChatGPT 또는 Codex로 돌아가면 됩니다.
 
 나중에 업데이트할 때: `codex plugin marketplace upgrade`.
 
@@ -60,9 +84,11 @@ codex plugin marketplace add lunatalkai/moonloom
 
 ## 처음 로그인
 
-Moonloom은 온라인 연결로 LunaTalk과 통신합니다. 그래서 어시스턴트가 LunaTalk 도구를
-처음 호출할 때 브라우저가 열리고 로그인과 권한 승인을 요청합니다. 한 번 승인하면
-이후에는 그대로 사용할 수 있습니다.
+ChatGPT Work 또는 Codex에서는 위 안내에 따라 본인 컴퓨터의 터미널에서
+`codex mcp login lunatalk-card-writer`를 직접 실행하고 LunaTalk 접근을 승인하세요.
+
+다른 클라이언트에서는 LunaTalk 도구를 처음 호출할 때 브라우저가 열리고 로그인과
+권한 승인을 요청합니다. 한 번 승인하면 이후에는 그대로 사용할 수 있습니다.
 
 - 승인은 8시간 유효하며, 최대 30일까지 자동으로 갱신됩니다.
 - 브라우저에 승인 완료가 표시되면, AI 클라이언트로 돌아갈 때까지 페이지를 닫지 말고
@@ -117,6 +143,14 @@ Moonloom은 양쪽 모두를 염두에 두고 쓰며, 양쪽에서 시험하고,
 
 ## 문제가 있을 때
 
+- **`codex` 명령을 찾을 수 없다면**: Node.js LTS를 설치하고 위의 Codex CLI 설치 명령을
+  실행한 다음 터미널을 다시 여세요. PowerShell에서 `npm.ps1`이 차단되면 명령 프롬프트를
+  사용하세요.
+- **로그인 중 `OAuth metadata discovery failed ... error decoding response body`가 나온다면**:
+  백신의 웹 보호 기능이 연결을 가로막을 수 있습니다. 해당 기능의 신뢰할 수 있는 사이트에
+  `api.lunatalk.ai`를 추가하거나 웹 보호를 잠시 끈 다음, 컴퓨터의 터미널에서
+  `codex mcp login lunatalk-card-writer`를 다시 실행하세요. 웹 보호를 껐다면 확인 후
+  다시 켜세요.
 - **LunaTalk 도구가 보이지 않습니다**: 설치하거나 업데이트한 뒤에는 클라이언트를
   재시작하세요. 플러그인은 시작할 때 로드됩니다.
 - **브라우저는 승인이 끝났는데 어시스턴트가 계속 기다립니다**: 페이지를 닫지 말고

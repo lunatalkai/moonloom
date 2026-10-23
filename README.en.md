@@ -45,7 +45,22 @@ claude plugin update moonloom
 
 ### ChatGPT Work / Codex
 
-Add the source from the command line:
+Run these commands yourself in a terminal on your computer. On Windows, you can
+use PowerShell or Command Prompt. Do not ask ChatGPT to run the login command;
+the assistant's sandbox may be unable to reach the internet or receive the login callback.
+
+If `codex` is not recognized, install [Node.js LTS](https://nodejs.org/), reopen
+your terminal, and install the Codex CLI. Installing only the ChatGPT desktop app
+may not give you the `codex` command:
+
+```bash
+npm install -g @openai/codex
+```
+
+If Windows PowerShell blocks `npm.ps1` or says script execution is disabled,
+open Command Prompt and run the same command there.
+
+Then add the source:
 
 ```bash
 codex plugin marketplace add lunatalkai/moonloom
@@ -53,6 +68,15 @@ codex plugin marketplace add lunatalkai/moonloom
 
 Then restart the ChatGPT desktop app, open the **Plugins Directory**, pick this
 source, and install **Moonloom**.
+
+Once Moonloom is installed, return to your computer's terminal and run this yourself:
+
+```bash
+codex mcp login lunatalk-card-writer
+```
+
+Your browser opens the LunaTalk sign-in and authorization page. Approve access,
+then return to ChatGPT or Codex.
 
 To update later: `codex plugin marketplace upgrade`.
 
@@ -63,9 +87,11 @@ instructions for adding a plugin from a Git repository.
 
 ## Sign in the first time
 
-Moonloom talks to LunaTalk through a hosted connection, so the first time the
-assistant calls a LunaTalk tool your browser opens and asks you to sign in and
-approve access. Approve it once and the assistant keeps working.
+For ChatGPT Work or Codex, first run `codex mcp login lunatalk-card-writer`
+yourself in your computer's terminal as described above, then authorize LunaTalk.
+
+In other clients, your browser asks you to sign in and approve access when the
+assistant first calls a LunaTalk tool. Approve it once and the assistant keeps working.
 
 - Access lasts 8 hours, and the session renews for up to 30 days before asking
   again.
@@ -125,6 +151,14 @@ checked in. See
 
 ## If something goes wrong
 
+- **The `codex` command is not recognized.** Install Node.js LTS, run the Codex CLI
+  installation command above, then reopen your terminal. If PowerShell blocks
+  `npm.ps1`, use Command Prompt instead.
+- **Login fails with `OAuth metadata discovery failed ... error decoding response body`.**
+  Your antivirus web protection may be intercepting the connection. Try adding
+  `api.lunatalk.ai` to its trusted sites, or temporarily pause web protection,
+  then retry `codex mcp login lunatalk-card-writer` in your computer's terminal.
+  If you paused web protection, turn it back on after the check.
 - **The assistant does not see any LunaTalk tools.** Restart the client after
   installing or updating; plugins load at startup.
 - **The browser finished authorizing but the assistant is still waiting.** Leave

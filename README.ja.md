@@ -43,7 +43,23 @@ claude plugin update moonloom
 
 ### ChatGPT Work / Codex
 
-まずコマンドラインでソースを追加します：
+以下のコマンドは、お使いのパソコンのターミナルで自分で実行してください。
+Windows では PowerShell または「コマンド プロンプト」を使えます。ログインコマンドを
+ChatGPT に代わりに実行させないでください。アシスタントのサンドボックスからは、
+インターネットへの接続やログイン後のコールバックの受信ができない場合があります。
+
+`codex` が見つからない場合は、[Node.js LTS](https://nodejs.org/) をインストールし、
+ターミナルを開き直してから Codex CLI をインストールします。ChatGPT デスクトップアプリ
+だけでは `codex` コマンドが使えない場合があります。
+
+```bash
+npm install -g @openai/codex
+```
+
+Windows の PowerShell で `npm.ps1` やスクリプトの実行が禁止されていると表示されたら、
+「コマンド プロンプト」を開いて同じコマンドを実行してください。
+
+続いてソースを追加します：
 
 ```bash
 codex plugin marketplace add lunatalkai/moonloom
@@ -51,6 +67,15 @@ codex plugin marketplace add lunatalkai/moonloom
 
 そのあと ChatGPT デスクトップアプリを再起動し、**Plugins Directory** を開いて
 このソースを選び、**Moonloom** をインストールしてください。
+
+Moonloom のインストール後、パソコンのターミナルに戻り、自分で次を実行します：
+
+```bash
+codex mcp login lunatalk-card-writer
+```
+
+ブラウザーで LunaTalk のログイン・認可ページが開きます。許可したら、ChatGPT／Codex
+に戻って使い始められます。
 
 更新するとき：`codex plugin marketplace upgrade`。
 
@@ -61,9 +86,11 @@ codex plugin marketplace add lunatalkai/moonloom
 
 ## 最初のサインイン
 
-Moonloom はオンライン接続で LunaTalk とやり取りします。そのためアシスタントが
-最初に LunaTalk のツールを呼ぶとき、ブラウザーが開いてサインインと許可を求めます。
-一度許可すれば、あとはそのまま使えます。
+ChatGPT Work／Codex では、上の手順に沿ってパソコンのターミナルで
+`codex mcp login lunatalk-card-writer` を自分で実行し、LunaTalk へのアクセスを許可します。
+
+ほかのクライアントでは、初めて LunaTalk のツールを呼ぶときにブラウザーが開き、
+サインインと許可を求めます。一度許可すれば、あとはそのまま使えます。
 
 - 認可は 8 時間有効で、最長 30 日まで自動的に更新されます。
 - ブラウザーに認可完了と表示されたら、AI クライアントへ戻るまでページを閉じずに
@@ -121,6 +148,14 @@ Moonloom は両方に向けて書き、両方でテストし、そのカード�
 
 ## うまくいかないとき
 
+- **`codex` コマンドが見つからない**：Node.js LTS をインストールし、上記の Codex CLI
+  インストールコマンドを実行してから、ターミナルを開き直してください。PowerShell が
+  `npm.ps1` をブロックする場合は「コマンド プロンプト」で実行できます。
+- **ログイン時に `OAuth metadata discovery failed ... error decoding response body` が出る**：
+  セキュリティソフトの Web 保護機能が通信を遮っている可能性があります。
+  `api.lunatalk.ai` をその機能の信頼済みサイトに追加するか、Web 保護を一時停止してから、
+  パソコンのターミナルで `codex mcp login lunatalk-card-writer` を再実行してください。
+  Web 保護を停止した場合は、確認後に有効に戻してください。
 - **LunaTalk のツールが見えない**：インストールや更新のあとはクライアントを再起動
   してください。プラグインは起動時に読み込まれます。
 - **ブラウザーは認可完了なのにアシスタントが待ったまま**：ページを閉じず、表示

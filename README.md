@@ -40,7 +40,20 @@ claude plugin update moonloom
 
 ### ChatGPT Work / Codex
 
-先在命令列加來源：
+以下指令請你在電腦的終端機中親自執行。Windows 可用 PowerShell 或「命令提示字元」。
+不要請 ChatGPT 代跑登入指令；助手的沙箱可能無法連到外網或接收登入回呼。
+
+如果找不到 `codex` 指令，先安裝 [Node.js LTS](https://nodejs.org/)，重開終端機，再安裝
+Codex CLI（只裝 ChatGPT 桌面 App 不一定會有這個指令）：
+
+```bash
+npm install -g @openai/codex
+```
+
+Windows 的 PowerShell 如果提示無法執行 `npm.ps1` 或禁止執行指令碼，改開「命令提示字元」
+執行相同指令即可。
+
+接著加來源：
 
 ```bash
 codex plugin marketplace add lunatalkai/moonloom
@@ -48,6 +61,14 @@ codex plugin marketplace add lunatalkai/moonloom
 
 然後重啟 ChatGPT 桌面 App，打開 **Plugins Directory**，選這個來源，安裝
 **Moonloom**。
+
+裝好 Moonloom 後，回到你電腦的終端機，親自執行：
+
+```bash
+codex mcp login lunatalk-card-writer
+```
+
+瀏覽器會開啟 LunaTalk 登入與授權頁。完成授權後，回到 ChatGPT／Codex 繼續使用。
 
 之後要更新：`codex plugin marketplace upgrade`。
 
@@ -58,8 +79,11 @@ codex plugin marketplace add lunatalkai/moonloom
 
 ## 第一次登入
 
-Moonloom 是透過線上連線跟 LunaTalk 溝通，所以助手第一次呼叫 LunaTalk 的工具時，
-瀏覽器會跳出來要你登入並授權。同意一次之後就能繼續用。
+ChatGPT Work／Codex 請先照上方步驟，在你電腦的終端機執行
+`codex mcp login lunatalk-card-writer`，完成 LunaTalk 授權。
+
+其他客戶端第一次呼叫 LunaTalk 工具時，瀏覽器會跳出來要你登入並授權。
+同意一次之後就能繼續用。
 
 - 授權有效 8 小時，最長 30 天內會自動續期，之後才會再問一次。
 - 如果瀏覽器顯示授權完成，先別關頁面，等它跳回你的 AI 客戶端。
@@ -110,6 +134,12 @@ Moonloom 寫卡時兩種都顧、測試時兩種都跑，也會告訴你這張�
 
 ## 遇到問題
 
+- **找不到 `codex` 指令**：先安裝 Node.js LTS，再執行上方的 Codex CLI 安裝指令，
+  然後重開終端機。PowerShell 若擋住 `npm.ps1`，可改用「命令提示字元」。
+- **登入時出現 `OAuth metadata discovery failed ... error decoding response body`**：
+  防毒軟體的網頁防護可能攔截了連線。可先把 `api.lunatalk.ai` 加入該功能的信任清單，
+  或暫時關閉網頁防護，再於你電腦的終端機重試 `codex mcp login lunatalk-card-writer`。
+  若暫時關閉了網頁防護，測完請重新開啟。
 - **助手看不到任何 LunaTalk 工具**：裝完或更新完要重開客戶端，外掛是啟動時載入的。
 - **瀏覽器說授權完成了，助手還在等**：別關頁面，用頁面上的返回動作跳回去。
 - **Agent 模式被拒絕**：免費模型不能跑，換一個付費模型；模型清單上有標示哪些可以。
