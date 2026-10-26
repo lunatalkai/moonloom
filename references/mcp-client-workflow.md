@@ -7,6 +7,16 @@ simulating, or submitting a role card.
 This is an operational readiness workflow. It does not judge writing quality and
 does not replace Moonloom authoring skills.
 
+For player reply preferences, inspect the live schemas for
+`response_preferences_get` and `response_preferences_patch`. Card scope requires
+roleId; account scope uses `scope:"account"` without roleId and affects defaults
+across cards. Read the same scope first; write only on the player's explicit
+request with its revision and `confirmSave:true`. Null restores inheritance,
+while empty text pins a blank. Card fields override account defaults separately.
+Use the [reply preference contract](card-writer-mcp.md#player-reply-preferences-and-account-defaults)
+for response fields and conflict handling; do not assume an older server has
+account scope just because the client guide does.
+
 ## Readiness order
 
 ```text

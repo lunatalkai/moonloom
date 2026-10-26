@@ -2,6 +2,40 @@
 
 Use this reference when a Moonloom skill needs concrete Card Writer MCP details.
 
+## Player reply preferences and account defaults
+
+When the live catalog exposes `response_preferences_get` and
+`response_preferences_patch`, use them for the authenticated player's reply
+preferences, separately from a role's authored definition. Read the live schema
+before using account scope; older servers may support card scope only.
+
+- Card scope: omit scope or use `scope:"card"`, and provide roleId.
+- Account defaults: use `scope:"account"` without roleId. These defaults apply
+  across cards; each card's explicitly adjusted fields take precedence.
+- Read first, then send only player-requested fields in changes with that
+  scope's revision and `confirmSave:true`. A simulation never implicitly saves
+  preferences. Obtain a clear player request before changing account defaults.
+- Null removes an override at the selected scope. Empty text is an intentional
+  blank. The hierarchy is per field: card, account, original default.
+
+The result is inside preferences. `fieldOverrides` contains the current scope's
+flat values (null means unset); `accountDefaults` contains inherited account
+values for a card. Each `effective` entry includes value, source, overridden and
+defaultEquivalent. source is player for an explicit value at the selected scope,
+account for an inherited account value, or legacy for original behavior.
+Displaying an inherited value does not save it. Do not send metadata as changes.
+An account read has no card-specific style equivalent or fixed-model hint.
+
+The change keys are agency, style, perspective, length, pace, customStyle, the
+five axisNote fields, sandboxLevel, limitLevel, templateStyle, jailbreak and
+systemPrompt. Follow live enums and text limits. Old saved card fields that
+match historical defaults can follow the account; non-default legacy values
+remain card overrides. To pin a default explicitly, save that field; to follow
+again, save null. On revision_conflict, preserve the draft, read again, compare
+the values and ask the player before retrying. Editing account defaults can
+invalidate an open card revision. Length units follow reply language; a tool's
+English description does not imply English replies.
+
 ## Endpoint
 
 Moonloom's published plugin exposes the production Card Writer MCP endpoint in
