@@ -51,10 +51,15 @@ playability.
    speaker must address the player.
 7. Define spotlight rules and opening focus. If the welcome is the main failure,
    hand off to `lunatalk-opening-director` after the ensemble packet.
-8. Define voice contrast and `talkExample` decision. Use `lunatalk-voice-director`
+8. Decide the cast layout. When the author can use multi-character story
+   cards and the card has no XMLV3 theme, plan one cast member per kept
+   speaker (name, aliases, sex, intro, persona, at most one primary) and add
+   recurring side characters who speak across scenes. Otherwise keep the
+   matrix in `roleDetailDesc` and say why.
+9. Define voice contrast and `talkExample` decision. Use `lunatalk-voice-director`
    for detailed voice cards or blind-line repair after cast structure is clear.
-9. Produce token plan and field allocation.
-10. Produce agency and simulation probes, then hand off to blueprint, authoring,
+10. Produce token plan and field allocation.
+11. Produce agency and simulation probes, then hand off to blueprint, authoring,
     opening repair, voice calibration, longplay, or chat simulation.
 
 ## Output format
@@ -88,6 +93,8 @@ Ensemble packet:
 - talkExample decision:
 - token plan:
 - agency and simulation probes:
+- cast members (multi-character story card, or "single-role" with reason):
+  - [name]: aliases, sex, intro, persona focus, isPrimary
 - field allocation:
 - handoff:
 
@@ -116,6 +123,11 @@ Self-review:
 - Do not distinguish speakers only by name, punctuation, accent, or a catchphrase.
   Distinguish motive, fear, pressure move, rhythm, vocabulary, and player leverage.
 - Add micro-samples only when rules cannot preserve voice or turn style.
+- On a multi-character story card, the matrix lives in cast members, not in
+  `roleDetailDesc`. Each persona stays within 1,500 tokens and the cast within
+  8,000. Openings and replies mark each speaker with a `【名字】` header line;
+  text before the first header is narration. Never plan an XMLV3 theme for a
+  cast card.
 - Keep output original and public-safe. Do not copy unprovided material or make
   unsupported source, ranking, traffic, analytics, or provenance claims.
 
@@ -128,7 +140,7 @@ Hand the packet to:
 - `lunatalk-card-blueprint` when the author wants a card-ready blueprint after
   cast structure is clear.
 - `lunatalk-card-author` when the author wants an MCP-backed private card or
-  patch.
+  patch, including writing cast members with `role_patch_cast`.
 - `lunatalk-opening-director` when the first screen is a roll call or lacks a
   focal crisis.
 - `lunatalk-voice-director` when speakers still blur after cast decisions.

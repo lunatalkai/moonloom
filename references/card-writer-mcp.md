@@ -187,6 +187,9 @@ are top-level fields of the JSON-RPC response.
 2. `role_patch_profile`
 3. `role_patch_assets`
 4. `role_patch_detail`
+4a. Optional `role_patch_cast` for a multi-character story card: read
+   `castVersion` from `role_get`, replace the whole cast, then write the
+   welcome with `【名字】` header lines in the next step
 5. `role_patch_welcome`. A card can carry more than one opening (imported
    tavern / V2 cards often do): send `patch.alternates` as the full ordered
    list of alternate openings (max 20, each within the `roleWelcome` limit).
@@ -349,7 +352,17 @@ Required:
 }
 ```
 
-Optional: `language`, `cardType`, `contentRatingIntent`, `successCriteria`.
+Optional: `language`, `cardType`, `contentRatingIntent`, `successCriteria`,
+`cast`.
+
+`cast` creates a multi-character story card in one call: an array of 2-8 cast
+members using the member fields described under `role_patch_cast` (without
+`castKey`, `formerNames`, or `reviewState`, which the server owns). The cast is
+validated before the card is created, so an invalid member list returns
+`cast_invalid` and no card. If the call still fails after validation, call
+`role_find` before retrying: when a private card with that name now exists
+without cast members, add them with `role_patch_cast` instead of creating a
+second card. Omit `cast` for an ordinary single-role card.
 
 Defaults: `language` follows the authenticated user's LunaTalk language when the
 server can resolve it, `cardType` is `story`, and visibility is private.
@@ -446,6 +459,14 @@ Read a role owned by the authenticated account.
   "roleId": "..."
 }
 ```
+
+The result also carries `cast` and `castVersion`. A single-role card returns
+`cast: []` and `castVersion: ""`. A multi-character story card returns its cast
+members in author view, each with `castKey`, `name`, `sex`, `aliases`,
+`formerNames`, `avatar`, `reviewState` (`pending`, `pass`, or `rejected`),
+`intro`, `persona`, `personaPublic`, `voiceId`, `speechSpeed`, and `isPrimary`.
+Keep the latest `castVersion`: it is the `baseVersion` for the next
+`role_patch_cast`.
 
 ### `worldbook_find`
 
@@ -1248,6 +1269,124 @@ semantic CSS variable hooks over inline XML styling. Common hooks:
   }
 }
 ```
+
+For a multi-character story card (`role_get` returns 2 or more `cast`
+members), the welcome is plain text with speaker header lines instead of
+XMLV3, because cast cards cannot use an XMLV3 theme. Rules:
+
+- Before each character speaks, write a line that contains only `【名字】`,
+  using a cast member's name or alias. Their action and dialogue start on the
+  next line.
+- Text before the first header line is scene narration. A `【旁白】` line
+  starts narration explicitly after a character has spoken.
+- Even when only one character speaks, start that part with their header line.
+- Do not wrap header lines in XML or HTML tags. A bracketed line that is not a
+  cast name, such as `【狀態】`, is ordinary text and never starts a speaker.
+
+```text
+雨停後的天文台只剩一盞燈。望遠鏡的鏡筒還在滴水。
+【林汐】
+她把觀測簿推到你面前。「第三頁被撕掉了，昨晚只有你和他進來過。」
+【韓燼】
+「別看我。」他靠著門框，手裡轉著一枚舊硬幣。「我只負責開門。」
+【旁白】
+窗外傳來第三個人的腳步聲，停在樓梯轉角。
+```
+
+### `role_patch_cast`
+
+Replace the whole cast of a multi-character story card. Use it to turn a
+single-role card into a story with 2-8 cast members, to edit, add, remove, or
+rename members, or to turn the card back into a single-role card. Other
+`role_patch_*` tools never change cast members.
+
+```json
+{
+  "schemaVersion": "2026-05-26.m1",
+  "idempotencyKey": "cast-...",
+  "roleId": "...",
+  "baseVersion": "",
+  "cast": [
+    {
+      "name": "林汐",
+      "sex": "women",
+      "aliases": ["汐"],
+      "intro": "天文台夜班管理員，記得每一顆星的位置。",
+      "persona": "林汐：觀測員。說話短，先講證據再講感受。在意觀測簿的完整，對失竊的那一頁有自己的懷疑。",
+      "personaPublic": false,
+      "isPrimary": true
+    },
+    {
+      "name": "韓燼",
+      "sex": "man",
+      "persona": "韓燼：守門人。語氣輕，用玩笑轉移問題。知道誰昨晚來過，但要等玩家拿出交換條件才說。"
+    }
+  ]
+}
+```
+
+Rules:
+
+- The list is a whole replacement. Send every member you want to keep.
+  Existing members keep their `castKey` from `role_get`; new members omit
+  `castKey` and the server generates one. A member left out of the list is
+  removed.
+- `baseVersion` is the latest `castVersion` from `role_get` or the previous
+  `role_patch_cast` result. Use `""` when the card has no cast yet.
+- `cast: []` turns the card back into a single-role card.
+- Story-level fields stay on the card: `roleName`, avatar, background,
+  `roleDesc`, `roleDetailDesc` (the story and relationships), and
+  `roleWelcome`. Per-member fields:
+  - `name` (required): at most 30 characters, unique in the card after
+    normalization, also across simplified/traditional Chinese variants and
+    across every member's aliases. No `【`, `】`, or line breaks. A narrator
+    word (`旁白`, `narrator`, `ナレーション`, `내레이션`) is reserved.
+  - `sex`: `man`, `women`, or `other`.
+  - `aliases`: at most 5, under the same rules as `name`.
+  - `avatar`: image URL. Generate it with the existing image tools first, then
+    write the URL back here. A changed avatar is reviewed again.
+  - `intro`: public one-line introduction, at most 500 characters.
+  - `persona` (required): the member's persona for the model, at most 1,500
+    tokens each and 8,000 tokens across the whole cast.
+  - `personaPublic`: whether players can read the persona.
+  - `voiceId`, `speechSpeed`: optional voice settings. `speechSpeed` must be
+    greater than 0 and at most 9.99.
+  - `isPrimary`: at most one member. `{{char}}` expands to the primary member.
+- Renaming a member keeps the old name in `formerNames` and rewrites `【舊名】`
+  header lines in the welcome automatically.
+- Multi-character mode and an XMLV3 theme exclude each other. Unbind the theme
+  before adding cast members.
+
+Output: `{ roleId, cast, castVersion, review?, taskId?, nextRecommendedTools }`.
+`cast` is the saved author view, and `castVersion` replaces the one you sent.
+When the change needs review again, `review` is `running` with a `taskId`, or
+`to_human_review`. Tell the author and poll `role_get` for the settled
+`reviewState` instead of patching again.
+
+Errors:
+
+| Code | Meaning | Next step |
+|---|---|---|
+| `cast_disabled` | Multi-character story cards are not open to this account yet. | Tell the author. Keep the card single-role; do not retry. |
+| `cast_forbidden` / `permission_denied` | The card is not one of the author's own editable cards. | Check the roleId; do not retry. |
+| `public_role_requires_clone` | The card is not private. | Same rule as other `role_patch_*` tools: work on a private card. |
+| `cast_version_conflict` | The cast changed since your `baseVersion`. | Re-read `role_get`, merge your change into the latest cast, and retry with the new `castVersion`. |
+| `cast_theme_conflict` | The card has an XMLV3 theme bound. | Ask the author, then `theme_unbind` before retrying. |
+| `role_not_found` | No such card. | Check the roleId. |
+| `cast_invalid` | The member list breaks a rule. | Read `detail` and fix that member. |
+
+`cast_invalid` carries `detail { code, index, castKey, field, names }`.
+`index` is the member position, or `-1` for the whole list. Codes:
+`cast_count` (not 2-8 members), `name_required`, `name_too_long`,
+`name_invalid_char`, `name_reserved`, `name_duplicate`, `aliases_required`,
+`aliases_too_long`, `aliases_invalid_char`, `aliases_reserved`,
+`aliases_too_many`, `sex_invalid`, `intro_too_long`, `persona_required`,
+`persona_too_long`, `persona_total_too_long`, `avatar_invalid`,
+`voice_invalid`, `speech_speed_invalid`, `primary_multiple`,
+`cast_key_unknown` (a `castKey` that is not on this card, or used twice), and
+`welcome_references_removed`: the welcome still has a `【名字】` header for a
+member you are removing. `names` lists them. Edit the welcome with
+`role_patch_welcome` first, then patch the cast again.
 
 ### `role_patch_jailbreak`
 

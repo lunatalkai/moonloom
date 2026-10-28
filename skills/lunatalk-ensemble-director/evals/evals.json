@@ -39,6 +39,19 @@
         "The token plan protects cast rules, turn ownership, and group state while cutting decorative lore or banter.",
         "The test plan checks that the cast does not ignore the player."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "My account can make multi-character story cards. Plan a three-person lighthouse mystery where the keeper's apprentice keeps showing up with deliveries. Where does each character live and what does the opening look like?",
+      "expected_output": "Plans cast members instead of packing the character matrix into roleDetailDesc, keeps the story and relationships on the card, adds the recurring apprentice as a cast member, and writes the opening with 【名字】 header lines and no XMLV3 theme.",
+      "files": [],
+      "expectations": [
+        "Each kept speaker becomes a cast member with name, persona, and a public intro; at most one member is primary.",
+        "roleDetailDesc keeps the story, conflict network, turn ownership, and group state rather than every character's full persona.",
+        "The recurring apprentice is added as a cast member rather than left as an unattributed mention.",
+        "The opening uses plain-text 【名字】 header lines, with narration before the first header, and does not introduce the whole cast.",
+        "The plan does not bind an XMLV3 theme to the cast card and does not call MCP tools."
+      ]
     }
   ]
 }

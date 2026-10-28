@@ -86,6 +86,16 @@ const ALLOWED_XML_TAGS = new Set([...REQUIRED_XML_TAGS, 'speaker']);
 const MIN_DETAIL_CHARS = 7000;
 const MIN_DETAIL_SECTION_CHARS = 80;
 
+// Multi-character story card cast rules (public Card Writer contract).
+const CAST_MIN = 2;
+const CAST_MAX = 8;
+const CAST_NAME_MAX = 30;
+const CAST_ALIASES_MAX = 5;
+const CAST_INTRO_MAX = 500;
+const CAST_SEX = new Set(['man', 'women', 'other']);
+const NARRATOR_WORDS = ['旁白', 'narrator', 'ナレーション', '내레이션'];
+const WELCOME_XMLV3_PATTERN = /```xml|<\/?\s*(?:scene|state|n|d|speaker|quote|choices?|form)\b[^>]*>/i;
+
 const PLACEHOLDER_PATTERNS = [
   /\bTODO\b/i,
   /\[[^\]\n]*(?:fill|replace|later|todo|tbd|placeholder)[^\]\n]*\]/i,
@@ -126,6 +136,98 @@ function extractXmlBlock(markdown) {
 function extractRoleDetailBlock(markdown) {
   const match = markdown.match(/### roleDetailDesc\s+```text\s*([\s\S]*?)\s*```\s+### roleWelcome/i);
   return match?.[1]?.trim() || '';
+}
+
+function extractCastBlock(markdown) {
+  const match = markdown.match(/^### cast\s+```json\s*([\s\S]*?)```/im);
+  return match ? match[1] : null;
+}
+
+function extractWelcomeSection(markdown) {
+  const match = markdown.match(/### roleWelcome\s*([\s\S]*?)(?=\n### talkExample|\n## |$)/i);
+  return match?.[1] || '';
+}
+
+// ponytail: case/width/space folding only; the server also folds simplified/traditional variants.
+function normalizeCastName(name) {
+  return name.normalize('NFKC').replace(/\s+/g, '').toLowerCase();
+}
+
+function validateCast(markdown, issues, file) {
+  const raw = extractCastBlock(markdown);
+  if (raw === null) {
+    return 0;
+  }
+
+  let cast;
+  try {
+    cast = JSON.parse(raw);
+  } catch (error) {
+    issues.push(issue('fixture.cast.invalid_json', file, `Invalid cast JSON: ${error.message}`));
+    return 0;
+  }
+  if (!Array.isArray(cast) || cast.length < CAST_MIN || cast.length > CAST_MAX) {
+    issues.push(issue('fixture.cast.count', file, `cast must be an array of ${CAST_MIN}-${CAST_MAX} members.`));
+    return Array.isArray(cast) ? cast.length : 0;
+  }
+
+  const owners = new Map(NARRATOR_WORDS.map((word) => [normalizeCastName(word), -1]));
+  let primaries = 0;
+  cast.forEach((member, index) => {
+    const at = (code, message) => issues.push(issue(`fixture.cast.${code}`, file, `cast[${index}]: ${message}`));
+    const aliases = Array.isArray(member?.aliases) ? member.aliases : [];
+    if (aliases.length > CAST_ALIASES_MAX) {
+      at('aliases_too_many', `at most ${CAST_ALIASES_MAX} aliases.`);
+    }
+    [member?.name, ...aliases].forEach((value, position) => {
+      const field = position === 0 ? 'name' : 'aliases';
+      const name = typeof value === 'string' ? value.trim() : '';
+      if (!name) {
+        at(`${field}_required`, `${field} is required.`);
+        return;
+      }
+      if ([...name].length > CAST_NAME_MAX) {
+        at(`${field}_too_long`, `${field} exceeds ${CAST_NAME_MAX} characters.`);
+      }
+      if (/[【】\r\n]/.test(name)) {
+        at(`${field}_invalid_char`, `${field} must not contain 【】 or line breaks.`);
+      }
+      const key = normalizeCastName(name);
+      const owner = owners.get(key);
+      if (owner === -1) {
+        at(`${field}_reserved`, `${field} must not be a narrator word.`);
+      } else if (owner !== undefined && owner !== index) {
+        at('name_duplicate', `${field} duplicates another cast name or alias.`);
+      } else {
+        owners.set(key, index);
+      }
+    });
+    if (member?.sex !== undefined && member.sex !== '' && !CAST_SEX.has(member.sex)) {
+      at('sex_invalid', 'sex must be man, women, or other.');
+    }
+    if (typeof member?.intro === 'string' && [...member.intro].length > CAST_INTRO_MAX) {
+      at('intro_too_long', `intro exceeds ${CAST_INTRO_MAX} characters.`);
+    }
+    if (typeof member?.persona !== 'string' || !member.persona.trim()) {
+      at('persona_required', 'persona is required.');
+    }
+    if (member?.isPrimary === true && ++primaries > 1) {
+      at('primary_multiple', 'at most one member may be primary.');
+    }
+  });
+
+  const welcome = extractWelcomeSection(markdown);
+  if (WELCOME_XMLV3_PATTERN.test(welcome)) {
+    issues.push(issue('fixture.cast.welcome_xmlv3', file, 'Cast card welcome must use header lines, not XMLV3.'));
+  }
+  const headers = [...welcome.matchAll(/^[ \t]*【([^【】\n]+)】[ \t]*$/gm)].map((match) => normalizeCastName(match[1]));
+  if (!headers.some((name) => owners.has(name) && owners.get(name) !== -1)) {
+    issues.push(
+      issue('fixture.cast.welcome_header_missing', file, 'Cast card welcome needs a 【名字】 header line for a cast member.'),
+    );
+  }
+
+  return cast.length;
 }
 
 function sectionBody(markdown, section, allSections) {
@@ -251,6 +353,7 @@ export function validateCompleteFixture(markdown, options = {}) {
         stateKeys: 0,
         visualAssetBriefs: 0,
         detailChars: 0,
+        castMembers: 0,
       },
     };
   }
@@ -306,13 +409,16 @@ export function validateCompleteFixture(markdown, options = {}) {
   validatePlaceholders(markdown, issues, file);
   validatePublicSafety(markdown, issues, file);
   const { detailChars } = validateDetailDensity(markdown, issues, file);
+  const castMembers = validateCast(markdown, issues, file);
+  // Cast cards cannot use XMLV3, so the XMLV3 welcome requirements apply to single-role cards only.
+  const isCastCard = extractCastBlock(markdown) !== null;
 
   const xml = extractXmlBlock(markdown);
   const { tags, unknown } = collectXmlTags(xml);
-  if (!xml) {
+  if (!xml && !isCastCard) {
     issues.push(issue('fixture.xmlv3.missing', file, 'Missing XMLV3 code block.'));
   }
-  for (const tag of REQUIRED_XML_TAGS) {
+  for (const tag of isCastCard ? [] : REQUIRED_XML_TAGS) {
     if (!tags.has(tag)) {
       issues.push(issue('fixture.xmlv3.tag_missing', file, `Missing XMLV3 tag: ${tag}`));
     }
@@ -322,9 +428,9 @@ export function validateCompleteFixture(markdown, options = {}) {
   }
 
   const { state, error } = extractStateObject(xml);
-  if (error === 'missing') {
+  if (error === 'missing' && !isCastCard) {
     issues.push(issue('fixture.xmlv3.state_missing', file, 'Missing XMLV3 state JSON.'));
-  } else if (error) {
+  } else if (error && error !== 'missing') {
     issues.push(issue('fixture.xmlv3.state_invalid', file, `Invalid XMLV3 state JSON: ${error}`));
   }
 
@@ -337,6 +443,7 @@ export function validateCompleteFixture(markdown, options = {}) {
       stateKeys: state && typeof state === 'object' && !Array.isArray(state) ? Object.keys(state).length : 0,
       visualAssetBriefs: countPresent(markdown, ['avatar prompt:', 'background prompt:']),
       detailChars,
+      castMembers,
     },
   };
 }
@@ -369,7 +476,8 @@ async function main() {
       `${result.summary.playtestProbes} probes`,
       `${result.summary.visualAssetBriefs} visual asset briefs`,
       `${result.summary.detailChars} detail chars`,
-      `${result.summary.stateKeys} state keys.`,
+      `${result.summary.stateKeys} state keys`,
+      `${result.summary.castMembers} cast members.`,
     ].join(', '),
   );
 }

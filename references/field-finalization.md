@@ -17,7 +17,8 @@ Check these gates in order:
    resolved, or sent back to the right narrow skill.
 2. Field completeness: `roleName`, `roleDesc`, `roleDetailDesc`, `roleWelcome`,
    tags, talkExample decision, language, rating posture, and visual asset status
-   are explicit.
+   are explicit. A multi-character story card also has an explicit `cast`
+   list (see Cast checks).
 3. No placeholders or authoring metadata: remove bracket labels, TODO text,
    "fill later" notes, unresolved choices, meta commentary, author-facing
    instructions, working-document metadata, version banner / version marker,
@@ -47,7 +48,8 @@ Check these gates in order:
 7. MCP patch mapping: map each final field to the intended tool:
    `role_patch_profile`, `role_patch_assets`, `role_patch_detail`,
    `role_patch_welcome`, optional `role_patch_talk_example`, optional
-   `role_patch_jailbreak`, `theme_bind`, and `extension_enable`.
+   `role_patch_jailbreak`, optional `role_patch_cast`, `theme_bind`, and
+   `extension_enable`. A cast card never maps `theme_bind` to an XMLV3 theme.
    XMLV3 real chat requires `theme_bind` before conversation acceptance; if
    `roleWelcome` is XMLV3 and the author expects real chat controls, missing
    theme binding is not MCP-ready.
@@ -73,6 +75,31 @@ Check these gates in order:
   free prose, broken colons, and unclosed quotes.
 - Plain text: preserve paragraph breaks for action, dialogue, rules, and examples.
 
+## Cast checks
+
+Apply these only to a multi-character story card:
+
+- `cast` has 2-8 members. Every member has a `name` and a `persona`.
+- Names and aliases: at most 30 characters, at most 5 aliases, unique in the
+  card after normalization (case, width, spacing, simplified/traditional
+  variants, and every member's aliases), no `【`, `】`, or line breaks, and no
+  narrator word (`旁白`, `narrator`, `ナレーション`, `내레이션`).
+- `sex` is `man`, `women`, or `other` when set; `intro` is at most 500
+  characters; at most one member is `isPrimary`.
+- Persona budget: at most 1,500 tokens per member and 8,000 tokens across the
+  cast. Personas carry behavior and voice; the story and relationships stay in
+  `roleDetailDesc`.
+- `roleWelcome` is plain text with speaker header lines: a line containing only
+  `【名字】` before each speaker, narration before the first header, `【旁白】`
+  for later narration. Every header names a cast member or alias. No XMLV3, no
+  HTML tags around headers.
+- Members to be removed have no headers left in the welcome; otherwise patch the
+  welcome first (`welcome_references_removed`).
+- No XMLV3 theme is bound or planned (`cast_theme_conflict`).
+- Patch order: `role_create_private` with `cast`, or `role_get` for
+  `castVersion` then `role_patch_cast`, then `role_patch_welcome`. Member
+  avatars are generated first and written back through `role_patch_cast`.
+
 ## Field Finalization Packet
 
 Return this packet before MCP-backed creation/patching or when handing off an
@@ -92,6 +119,7 @@ Field finalization packet:
   - roleOutputContract:
   - tags:
   - avatar/background:
+  - cast: single-role | 2-8 members ready | needs narrow repair
 - hard-cap and density check:
   - language / locale:
   - roleDesc estimate:
@@ -115,6 +143,7 @@ Field finalization packet:
   - roleOutputContract:
 - format checks:
   - XMLV3:
+  - cast speaker header lines:
   - JSON:
   - Markdown:
   - YAML-style lists:
@@ -131,6 +160,7 @@ Field finalization packet:
   - role_patch_talk_example:
   - role_patch_output_contract:
   - role_patch_jailbreak:
+  - role_patch_cast:
   - theme_bind / extension_enable:
 - validation / render / simulation handoff:
   - validate_role focus:

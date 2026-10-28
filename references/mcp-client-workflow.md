@@ -92,6 +92,7 @@ Expected Card Writer tools:
 - `creator_analytics_brief`
 - `role_patch_detail`
 - `role_patch_welcome`
+- optional `role_patch_cast` — replaces the whole cast of a multi-character story card
 - `role_patch_talk_example`
 - `role_patch_output_contract`
 - `role_patch_document`

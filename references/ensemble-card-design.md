@@ -49,6 +49,8 @@ Ensemble packet:
 - talkExample decision:
 - token plan:
 - agency and simulation probes:
+- cast members (multi-character story card, or "single-role" with reason):
+  - [name]: aliases, sex, intro, persona focus, isPrimary
 - field allocation:
 - handoff:
 
@@ -101,6 +103,70 @@ Useful functions:
 - wildcard: changes the group state when ignored
 
 A good matrix makes cast conflict playable. Names and archetypes are not enough.
+
+## Cast members on a multi-character story card
+
+LunaTalk can store a story's characters as separate cast members (2-8) instead
+of packing every character into `roleDetailDesc`. When the author's account can
+use multi-character story cards, the matrix above becomes the cast list:
+
+- one cast member per keep row: `name`, `aliases` for the names players will
+  actually type, `sex`, a public `intro` one-liner, and a `persona` that holds
+  that row's function, want, fear/cost, speech cue, pressure move, and player
+  leverage
+- mark at most one member `isPrimary`; `{{char}}` expands to that member
+- the story itself stays on the card: `roleDesc` sells the situation,
+  `roleDetailDesc` holds the story, the conflict network, turn ownership,
+  group tension state, and route rules, and `roleWelcome` opens the scene
+- merge and cut rows before writing members; a cut row must not become a
+  member
+- recurring side characters who speak more than once in a route (a landlord, a
+  rival's second, a recurring witness) are worth adding as cast members so
+  their lines are attributed and their voice stays stable. One-scene
+  background characters stay as mentions in `roleDetailDesc`.
+
+Persona budget: at most 1,500 tokens per member and 8,000 tokens across the
+cast. Write the persona as behavior, not biography. Names must be unique in the
+card (including aliases and simplified/traditional variants), contain no `【】`
+or line breaks, and cannot be a narrator word such as `旁白` or `narrator`.
+
+Multi-character story cards cannot bind an XMLV3 theme. If the card needs XMLV3
+controls, keep it single-role and use the matrix inside `roleDetailDesc`.
+When the account cannot use cast members (`cast_disabled`), fall back to the
+same single-role layout.
+
+## Speaker header lines
+
+Cast cards mark who is speaking with plain-text header lines. Both the welcome
+and the model's replies use the same format:
+
+```text
+暴雨把渡口的燈吹得一明一暗。
+【沈鷺】
+她把船票拍在桌上。「三張票，四個人。誰留下，你來決定。」
+【阿遲】
+「我可以游過去。」他笑著說，眼睛卻一直看著你。
+【旁白】
+最後一班船的汽笛響了第一聲。
+```
+
+- Before each character speaks, a line contains only `【名字】`, using a cast
+  name or alias.
+- Text before the first header is scene narration. `【旁白】` starts narration
+  again after a character has spoken.
+- Even a single speaker starts with their header line.
+- No XML or HTML tags around headers.
+
+Readers also accept a few common slips when the name is a known cast name or
+alias: `名字：…` at the start of a line, `【名字】「…」` on one line,
+`**【名字】**`, and `**名字**` only when it stands alone on its line or is
+followed directly by `：`, `:`, or an opening quote. `**名字**走進來` is
+narration, not a header. A bracketed line that is not a cast name, such as
+`【狀態】`, never starts a speaker. Write the canonical form; do not rely on
+the tolerated ones.
+
+Put the header rule into `roleDetailDesc` as part of the card's output format
+when the turn style matters, and show it in `talkExample` samples.
 
 ## Turn ownership
 
@@ -176,6 +242,12 @@ The welcome should not introduce the full cast. Start with:
 The rest of the cast can enter by interruption, evidence, noise, absence, a door
 opening, a message, or a consequence of the player's first action.
 
+On a multi-character story card, write the opening with speaker header lines:
+narration first, then `【名字】` before the focal speaker. A second speaker may
+enter only when it changes the pressure. Every header name must be a cast
+name or alias; remove a member's headers from the welcome before removing the
+member.
+
 ## Voice and talkExample
 
 Voice contrast starts from motive and pressure, not punctuation.
@@ -198,12 +270,18 @@ from the others. Cut repeated lore or decorative banter to pay for samples.
 ## Field allocation
 
 - `roleDesc`: group situation, player role, and immediate ensemble pressure.
-- `roleDetailDesc`: cast decision matrix, conflict network, turn ownership,
-  group tension state, voice contrast, player agency boundaries, and route rules.
-- `roleWelcome`: one focal crisis, not the whole cast manual.
+- `cast` (multi-character story card): one member per kept speaker; each
+  `persona` carries that speaker's matrix row and voice; `intro` is the public
+  one-liner.
+- `roleDetailDesc`: the story and relationships: conflict network, turn
+  ownership, group tension state, player agency boundaries, route rules, and
+  the speaker header rule. On a single-role card it also holds the cast
+  decision matrix and voice contrast.
+- `roleWelcome`: one focal crisis, not the whole cast manual. On a cast card,
+  use speaker header lines.
 - `talkExample`: compact micro-samples only for weak voices or turn format.
-- XMLV3 / Theme V3: show current speaker, state, clue, choice, or tension only
-  when it helps the player act.
+- XMLV3 / Theme V3: single-role ensemble cards only. Show current speaker,
+  state, clue, choice, or tension only when it helps the player act.
 
 ## Testing
 
@@ -228,4 +306,6 @@ Pass criteria:
   risk, relationship, boundary, or route
 - refusal and passivity keep play alive
 - blind-line checks can identify the core speakers without names
+- on a cast card, every speaking turn starts with a `【名字】` header for a
+  cast name, and narration does not borrow a character's header
 
