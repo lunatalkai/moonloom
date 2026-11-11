@@ -1698,7 +1698,7 @@ technical repair surface:
 - `role_patch_profile` when required profile fields are missing.
 - `role_patch_assets` when avatar or background image URLs are missing.
 - `role_patch_detail` when required detail fields are missing.
-- `role_patch_welcome` for required welcome content, unsafe HTML, invalid XMLV3,
+- `role_patch_welcome` for missing welcome content in message mode, unsafe HTML, invalid XMLV3,
   or unsupported render tags.
 - `role_patch_talk_example` when the final field packet includes compact Example
   Chat samples that need to be stored separately from `roleDetailDesc`.
@@ -2328,6 +2328,27 @@ document. Read tools (`role_get_preview_page`, `creator_image_list`) carry
 
 ### `role_get_author_asset` / `role_patch_author_asset` / `role_reset_author_asset`
 
+The opening presentation is independent of `roleWelcome`. Set `openingMode` to
+`welcome` for the character's AI opening message, or `page` for an author-written
+`openingPage` (HTML/CSS/JavaScript). Page mode does not create an assistant opening
+row; `roleWelcome` is optional in this mode. Switching modes keeps the inactive
+content. The page is display-only: it never enters the story prompt, memory
+summaries, or model usage. Author scripts and handlers are preserved inside a
+sandboxed frame; this does not require XMLV3.
+
+Read the current asset first, preserve its existing rules/mount fields, and send
+its `version` with the patch. `openingMode` and `openingPage` are optional additions:
+omitting either keeps its saved value, while an empty `openingPage` clears it.
+The HTML limit is 512 KiB, counted in the shared 32 MiB asset total, measured in
+UTF-8 bytes. HTML is stored exactly as supplied; do not translate or trim code.
+`role_reset_author_asset` removes this presentation together with the other assets.
+
+Player first-message choices remain `role_patch_welcome.patch.prologue` (up to
+20), not `alternates`. Web clients show “Choose opening” before a player message
+exists; picking a choice only fills the composer. A nonempty draft needs the
+player's confirmation before replacement. Store player choices in their original
+language; do not translate them automatically or send them on selection.
+
 The author asset is the card's display layer: a list of find→replace rules the
 player's client applies to AI replies before rendering, plus an optional mounted
 block that stays on the chat page. Nothing here reaches the model — the prompt and
@@ -2335,7 +2356,7 @@ the reply text are unchanged; only what the viewer sees is rewritten. It is how
 SillyTavern regex scripts and MMD-style HUD panels are carried over.
 
 `role_get_author_asset` returns `{ authorAsset: { rules, mountTrigger, mountLayer,
-cardFormat, status, version, variants } }`. A card without an asset has `status:
+cardFormat, openingMode, openingPage, status, version, variants } }`. A card without an asset has `status:
 "none"` and `version: 0`. Only the author can read or write it.
 
 `role_patch_author_asset` replaces the whole asset under an optimistic lock: send
