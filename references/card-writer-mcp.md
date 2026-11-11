@@ -2343,6 +2343,16 @@ The HTML limit is 512 KiB, counted in the shared 32 MiB asset total, measured in
 UTF-8 bytes. HTML is stored exactly as supplied; do not translate or trim code.
 `role_reset_author_asset` removes this presentation together with the other assets.
 
+`cardCss` is a separate, verbatim CSS field (512 KiB, included in the shared
+32 MiB asset total). Omit it to preserve it; send an empty string to clear it.
+Web clients scope it to this chat page and automatically adapt supported Fengyue
+selectors. This conversion applies only to `cardCss`: never move old MMD/Tavern
+rules or rewrite their style text to enable it. CSS does not enter model prompts.
+
+For a Fengyue JSON export, follow [the bounded import mapping](fengyue-import.md).
+The web editor exposes this only for a new H5 card. MCP clients use the existing
+role, author-asset and worldbook tools with the same ownership/version/quota rules.
+
 Player first-message choices remain `role_patch_welcome.patch.prologue` (up to
 20), not `alternates`. Web clients show “Choose opening” before a player message
 exists; picking a choice only fills the composer. A nonempty draft needs the
@@ -2350,13 +2360,13 @@ player's confirmation before replacement. Store player choices in their original
 language; do not translate them automatically or send them on selection.
 
 The author asset is the card's display layer: a list of find→replace rules the
-player's client applies to AI replies before rendering, plus an optional mounted
+player's client applies to displayed messages before rendering, plus an optional mounted
 block that stays on the chat page. Nothing here reaches the model — the prompt and
 the reply text are unchanged; only what the viewer sees is rewritten. It is how
 SillyTavern regex scripts and MMD-style HUD panels are carried over.
 
 `role_get_author_asset` returns `{ authorAsset: { rules, mountTrigger, mountLayer,
-cardFormat, openingMode, openingPage, status, version, variants } }`. A card without an asset has `status:
+cardFormat, openingMode, openingPage, cardCss, status, version, variants } }`. A card without an asset has `status:
 "none"` and `version: 0`. Only the author can read or write it.
 
 `role_patch_author_asset` replaces the whole asset under an optimistic lock: send
