@@ -52,6 +52,42 @@
         "The HTML decision compares HTML-to-XMLV3 rewrite parity for sectioning, form controls, state, and action density without mixing renderers.",
         "The output does not call validate_role, render_preview, conversation_send_message, conversation_inspect, or mutating tools."
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "幫我寫一個開場網頁，有介紹圖片和按鈕，按了先填入玩家第一句，不要直接送出。另列三句第一句候選；現在只要草稿。",
+      "expected_output": "Reads opening-page-and-card-css.md; produces ordinary iframe HTML with luna.fill, explains draft-only behavior, separates page mode from roleWelcome and prologue, and makes no MCP mutation.",
+      "files": [],
+      "expectations": [
+        "Uses openingPage rather than rewriting roleWelcome as a web page.",
+        "Uses ordinary HTML controls, not unregistered hc-* components inside the iframe.",
+        "States the 512 KiB UTF-8 page limit and player confirmation before sending.",
+        "Does not invent luna.* APIs or call mutating tools for a draft-only request."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "卡片樣式 CSS 用 body 和 --lt-chat-bubble-bg 都沒變，幫我列出會生效的氣泡、旁白、台詞、hc-btn 選擇器，桌機手機都要，先不要改卡。",
+      "expected_output": "Reads the guide and separates native data-lt message hooks, authored .hc-d/.hc-n, XMLV3 .lt-d/.lt-n, shadow DOM attributes, and actually consumed variables.",
+      "files": [],
+      "expectations": [
+        "Explains body/html/:root are dropped in cardCss but valid inside openingPage.",
+        "Offers message-body CSS instead of promising unconsumed bubble tokens.",
+        "Does not claim hc-btn button selectors penetrate shadow DOM.",
+        "Does not promise .dark mirrors the player OS theme."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "把【Status:Waiting】變成顯示卡片，訊息後面還有 **粗體** 和多行 Markdown。給我可貼的正則清單，說明之後 AI 能不能幫我存。",
+      "expected_output": "Reads the guide; returns bounded pattern with a span styled as block, sample before/after, desktop manual editor path, and accurate existing MCP rules write/version/whole-asset/owner contract without performing a write.",
+      "files": [],
+      "expectations": [
+        "Preserves Markdown by avoiding a first-line div/section/p replacement in mixed messages.",
+        "States display-only behavior and model original-text preservation.",
+        "Explains MCP rules writing exists and needs owner permission, fresh version and preserved existing rules/mount fields.",
+        "Gives the desktop manual editor path and does not claim drafting saved the card."
+      ]
     }
   ]
 }

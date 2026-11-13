@@ -1,6 +1,6 @@
 ---
 name: using-moonloom
-description: Use when routing Moonloom/LunaTalk creation work involving role cards, end-to-end creation workflow, MCP setup, private card creation/patching, field drafts, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render review, simulation, agent mode vs one-shot coverage, closed-loop iteration, publish readiness, instruction guardrails, benchmark handoff reports, Benchmark report packet, or uncertainty about which skill applies.
+description: Use when routing Moonloom/LunaTalk creation work: opening web pages, cardCss/CSS, display rules/regex (開場網頁／卡片樣式／顯示規則／正則), role cards, end-to-end creation, MCP setup, private edits, premise/tension/state, samples/originality, profile/visual/language/talkExample, Theme V3/XMLV3, render, simulation, agent vs one-shot, iteration, publishing, guardrails, benchmark handoff reports, Benchmark report packet, or skill uncertainty.
 ---
 
 # Using Moonloom
@@ -72,6 +72,13 @@ benchmark, or collaboration. If several routes are plausible, choose the first
 decisive bottleneck and list delayed routes under `do not do yet`.
 
 ## Skill routing
+
+- Opening web page / 開場網頁, `openingPage`, card CSS / 卡片樣式, `cardCss`,
+  selector mapping, display rules / 顯示規則, or regex / 正則: use
+  `lunatalk-presentation-director` and read
+  `../../references/opening-page-and-card-css.md`. For actual authorized card
+  writes, hand off to `lunatalk-card-author` and the Card Writer MCP contract.
+  Use the guide's manual editor path when delivering pasteable rules instead.
 
 - Unsure which Moonloom skill applies, or deciding whether this is a Moonloom
   task at all: stay in `using-moonloom` long enough to classify and route.

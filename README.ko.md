@@ -8,6 +8,9 @@ Moonloom은 LunaTalk의 창작 도구 모음입니다. 평소 쓰던 AI 어시�
 
 결정은 당신이 합니다. 초안과 점검, 번거로운 작업은 어시스턴트의 몫입니다.
 
+오프닝 웹 페이지, 카드 CSS, 표시 규칙(정규식)의 작성 예제와 저장 절차:
+[Opening pages, card CSS, and display rules](references/opening-page-and-card-css.md) (English).
+
 ## 시작하기 전에
 
 - LunaTalk 계정. 카드는 본인 계정 아래에 만들어지며, 제출하기 전까지 비공개입니다.

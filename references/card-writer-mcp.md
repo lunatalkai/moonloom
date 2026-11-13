@@ -2328,6 +2328,9 @@ document. Read tools (`role_get_preview_page`, `creator_image_list`) carry
 
 ### `role_get_author_asset` / `role_patch_author_asset` / `role_reset_author_asset`
 
+For executable page examples, CSS selectors/variables, and display-rule recipes,
+read [Opening pages, card CSS, and display rules](opening-page-and-card-css.md).
+
 The opening presentation is independent of `roleWelcome`. Set `openingMode` to
 `welcome` for the character's AI opening message, or `page` for an author-written
 `openingPage` (HTML/CSS/JavaScript). Page mode does not create an assistant opening

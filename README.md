@@ -7,6 +7,9 @@ Moonloom 是 LunaTalk 的創作工具包，裝進你本來就在用的 AI 助手
 
 決定由你下，草稿、檢查和瑣事交給它。
 
+開場網頁、卡片樣式 CSS、顯示規則（正則）的寫法、範例與 MCP／手動儲存流程：
+[Opening pages, card CSS, and display rules](references/opening-page-and-card-css.md) (English).
+
 ## 開始之前
 
 - 一個 LunaTalk 帳號。卡片建在你自己的帳號底下，在你送審之前都是私有的。

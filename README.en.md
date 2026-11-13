@@ -10,6 +10,9 @@ itself enforces.
 You do the deciding. The assistant does the drafting, the checking, and the
 tedious parts.
 
+Opening web pages, card CSS, and display rules/regex: examples, selectors, and MCP/manual saving:
+[Opening pages, card CSS, and display rules](references/opening-page-and-card-css.md) (English).
+
 ## Before you start
 
 - A LunaTalk account. Cards are created under your own account and stay private

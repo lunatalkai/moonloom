@@ -8,6 +8,9 @@ Moonloom は LunaTalk の創作ツールキットです。ふだん使ってい�
 
 決めるのはあなた。下書きと確認と面倒な作業はアシスタントの担当です。
 
+開場ウェブページ、カード CSS、表示ルール（正規表現）の書き方・例・保存手順：
+[Opening pages, card CSS, and display rules](references/opening-page-and-card-css.md) (English).
+
 ## はじめる前に
 
 - LunaTalk のアカウント。カードはあなたのアカウントの下に作られ、提出するまで

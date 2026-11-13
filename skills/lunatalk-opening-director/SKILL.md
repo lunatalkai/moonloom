@@ -10,6 +10,12 @@ screen is weak. The output is an opening packet, not a full role card.
 
 ## Required references
 
+For opening web pages (開場網頁), `cardCss`, CSS selectors, or display rules /
+regex (顯示規則／正則), read
+`../../references/opening-page-and-card-css.md`. An opening-page iframe is
+independent of the welcome-message renderer; its ordinary HTML/CSS/JavaScript
+and `luna.fill` bridge do not require `hc-*` or XMLV3.
+
 Read `../../references/opening-design.md` for opening packets, five-beat design,
 first reply paths, second-turn engines, mode recipes, XMLV3 scaffolds, and
 failure repairs. Read `../../references/card-authoring-templates.md` when turning
@@ -51,6 +57,10 @@ revision operations, or artifact memory is unresolved.
 Do not call MCP tools from this skill. Do not patch `roleWelcome` directly unless
 the user explicitly asked to operate through `lunatalk-card-author`. Design the
 opening, then hand off to authoring, render review, or simulation.
+
+For an author-controlled opening web page, follow the opening-page guide
+instead of selecting a `roleWelcome` renderer below. Preserve the alternative
+opening modes and hand actual writes to `lunatalk-card-author`.
 
 ## Workflow
 

@@ -76,3 +76,6 @@ Examples (author-written synthetic CSS):
 ```
 
 These examples demonstrate mappings, not full rendering or import acceptance.
+
+For writing or adapting the imported opening page, card CSS selectors, and
+display rules, read [the authoring guide](opening-page-and-card-css.md).

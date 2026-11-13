@@ -1,6 +1,6 @@
 ---
 name: moonloom
-description: LunaTalk role-card creation bundle for AI clients. Use when the user wants to create, improve, diagnose, theme, test, or publish a LunaTalk role card, MOD, worldbook, Theme V3 skin, or preview page, wants to set up or use the LunaTalk Card Writer MCP, or is unsure which Moonloom workflow applies. This file is the router; the specialized skills live under skills/ and their shared reference docs under references/ and examples/.
+description: LunaTalk role-card creation bundle for AI clients. Use when the user wants to create, improve, diagnose, theme, test, or publish a LunaTalk role card, MOD, worldbook, Theme V3 skin, or preview page, opening web page, cardCss, CSS, or display rules/regex (開場網頁／卡片樣式／顯示規則／正則), wants to set up or use the LunaTalk Card Writer MCP, or is unsure which Moonloom workflow applies. This file is the router; the specialized skills live under skills/ and their shared reference docs under references/ and examples/.
 repository: https://github.com/lunatalkai/moonloom
 license: MIT
 ---
@@ -108,6 +108,10 @@ rows: if an upstream layer is unresolved, route there first.
 | `skills/lunatalk-card-author/SKILL.md` | Assemble final fields from packets, or create and patch a real private role through MCP. |
 
 ### Presentation and extensions
+
+For opening web pages, card CSS, or display rules/regex (開場網頁／卡片樣式／顯示規則／正則),
+use `skills/lunatalk-presentation-director/SKILL.md` and read
+[the authoring guide](references/opening-page-and-card-css.md).
 
 | Skill | Use when |
 | --- | --- |

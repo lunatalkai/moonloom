@@ -1,6 +1,6 @@
 ---
 name: lunatalk-presentation-director
-description: Use when LunaTalk role-card work needs pre-authoring or pre-render decisions about XMLV3, Theme V3, HTML, visible state, hidden state, first-screen hierarchy, visual affordances, or theme-vs-welcome structure before card authoring, render review, simulation, or publishing.
+description: Use when an author asks for an opening web page, cardCss, CSS selectors, display rules, regex, 開場網頁, 卡片樣式, 顯示規則, 正則, or when LunaTalk role-card work needs pre-authoring or pre-render decisions about XMLV3, Theme V3, HTML, visible state, hidden state, first-screen hierarchy, visual affordances, or theme-vs-welcome structure before card authoring, render review, simulation, or publishing.
 ---
 
 # LunaTalk Presentation Director
@@ -10,6 +10,12 @@ the presentation layer is unresolved. The output is a presentation packet, not a
 real card patch and not a render report.
 
 ## Required references
+
+For opening web pages (開場網頁), `cardCss`, CSS selectors, or display rules /
+regex (顯示規則／正則), read
+`../../references/opening-page-and-card-css.md`. An opening-page iframe is
+independent of the welcome-message renderer; its ordinary HTML/CSS/JavaScript
+and `luna.fill` bridge do not require `hc-*` or XMLV3.
 
 Read `../../references/presentation-design.md` first. Read
 `../../references/theme-v3-rendering.md` for XMLV3, Theme V3, and HTML syntax
@@ -51,6 +57,15 @@ feelings/actions or funnel every route.
 Use `lunatalk-state-economist` first when the task has not decided which state
 fields exist, how they update, which are visible vs hidden vs detail-only, or
 which meters are decorative and should be omitted.
+
+## Opening pages, card CSS, and display rules
+
+For these author-display tasks, follow `opening-page-and-card-css.md` instead of
+the welcome-renderer selection steps below. An explicit opening-page request
+uses ordinary iframe HTML; it does not need an XMLV3 justification or a rewrite
+of `roleWelcome`. Return the requested page/CSS/ordered rules with test inputs,
+limits, and a draft-only or authorized-authoring handoff. Keep the MCP boundary
+above: real writes belong to `lunatalk-card-author`.
 
 ## Workflow
 
