@@ -155,8 +155,9 @@ compact JSON copy of the complete `result.structuredContent` in
 text block and use the same payload paths below. The JSON is not truncated;
 it contains the same fields and values as `structuredContent`, including large
 HTML, CSS, or rule documents. Do not treat the summary alone as the returned data.
-Tool execution errors set `isError: true`; their first text block contains
-`code: message`, so the error code remains visible to content-only clients.
+Errors returned by the common tool-result helper set `isError: true`; their
+first text block contains `code: message`. Some tool-specific validation errors
+provide only the message in text; read their error code from `structuredContent`.
 
 MCP clients receive each tool result inside the normal JSON-RPC
 `result.structuredContent` envelope. Unwrap the tool-specific payload before
