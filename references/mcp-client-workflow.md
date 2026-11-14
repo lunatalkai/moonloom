@@ -348,6 +348,15 @@ re-apply, save. Never retry the same write.
 
 ## Reading tool results
 
+Successful tool results keep the summary in `result.content[0].text` and put a
+compact JSON copy of the complete `result.structuredContent` in
+`result.content[1].text`. If the client exposes only `content`, parse that JSON
+text block and use the same payload paths below. The JSON is not truncated;
+it contains the same fields and values as `structuredContent`, including large
+HTML, CSS, or rule documents. Do not treat the summary alone as the returned data.
+Tool execution errors set `isError: true`; their first text block contains
+`code: message`, so the error code remains visible to content-only clients.
+
 Read tool payloads from `result.structuredContent` before evaluating them:
 `validate_role` returns `report`, `render_preview` returns `render`,
 conversation tools return `conversation`, `role_find` returns `roles`,
